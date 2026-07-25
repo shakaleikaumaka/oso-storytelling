@@ -1,0 +1,591 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="The Open Source Orchestra — music as sanctuary. Every voice is a node; sounds of consensus. Permissionless, conductorless, community-driven. Devcon 8 Mumbai, November 3–6, 2026. A movement, not a brand.">
+<title>Open Source Orchestra — Music as Sanctuary · Every Voice Is a Node</title>
+<style>
+  :root{
+    --night:#0b0612;
+    --deep:#150b22;
+    --violet:#2a1740;
+    --plum:#3d1c42;
+    --cream:#f7ecd9;
+    --cream-dim:rgba(247,236,217,.72);
+    --cream-faint:rgba(247,236,217,.5);
+    --gold:#f0c464;
+    --gold-soft:rgba(240,196,100,.35);
+    --coral:#ff8a5c;
+    --rose:#e86a92;
+    --serif:'Iowan Old Style','Palatino Linotype',Palatino,'Book Antiqua',Georgia,'Times New Roman',serif;
+    --sans:ui-sans-serif,system-ui,-apple-system,'Segoe UI',Roboto,Helvetica,Arial,sans-serif;
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  @media (prefers-reduced-motion:reduce){
+    html{scroll-behavior:auto}
+    *,*::before,*::after{animation:none!important;transition:none!important}
+  }
+  body{
+    font-family:var(--serif);
+    color:var(--cream);
+    background:var(--night);
+    line-height:1.75;
+    font-size:1.075rem;
+    overflow-x:hidden;
+  }
+  /* ---- the sky: night at the top, dawn at the bottom ---- */
+  .sky{
+    position:fixed;inset:0;z-index:-2;
+    background:
+      radial-gradient(ellipse 120% 60% at 50% 118%, rgba(255,138,92,.20), transparent 60%),
+      radial-gradient(ellipse 90% 50% at 50% 112%, rgba(240,196,100,.16), transparent 55%),
+      radial-gradient(ellipse 70% 45% at 18% 8%, rgba(90,50,160,.28), transparent 60%),
+      radial-gradient(ellipse 60% 40% at 85% 20%, rgba(60,30,110,.25), transparent 60%),
+      linear-gradient(180deg,#0b0612 0%,#150b22 34%,#241335 62%,#3d1c42 86%,#4d2243 100%);
+  }
+  .stars{
+    position:fixed;inset:0 0 55% 0;z-index:-1;pointer-events:none;
+    background-image:
+      radial-gradient(1.4px 1.4px at 12% 22%, rgba(247,236,217,.85), transparent 100%),
+      radial-gradient(1px 1px at 28% 8%,  rgba(247,236,217,.6),  transparent 100%),
+      radial-gradient(1.2px 1.2px at 45% 30%, rgba(240,196,100,.7), transparent 100%),
+      radial-gradient(1px 1px at 63% 12%, rgba(247,236,217,.55), transparent 100%),
+      radial-gradient(1.5px 1.5px at 78% 26%, rgba(247,236,217,.8), transparent 100%),
+      radial-gradient(1px 1px at 90% 6%,  rgba(240,196,100,.6), transparent 100%),
+      radial-gradient(1.1px 1.1px at 6% 40%, rgba(247,236,217,.5), transparent 100%),
+      radial-gradient(1px 1px at 55% 44%, rgba(247,236,217,.45), transparent 100%),
+      radial-gradient(1.3px 1.3px at 35% 18%, rgba(247,236,217,.65), transparent 100%),
+      radial-gradient(1px 1px at 70% 40%, rgba(240,196,100,.5), transparent 100%);
+  }
+  /* ---- floating notes ---- */
+  .notes{position:fixed;inset:0;z-index:0;pointer-events:none;overflow:hidden}
+  .notes span{
+    position:absolute;bottom:-3rem;
+    color:var(--gold-soft);
+    font-size:1.5rem;
+    animation:drift var(--dur,26s) linear infinite;
+    animation-delay:var(--delay,0s);
+    opacity:0;
+  }
+  @keyframes drift{
+    0%{transform:translateY(0) translateX(0) rotate(0deg);opacity:0}
+    8%{opacity:.55}
+    50%{transform:translateY(-55vh) translateX(2.5vw) rotate(14deg);opacity:.4}
+    92%{opacity:.25}
+    100%{transform:translateY(-112vh) translateX(-1.5vw) rotate(-10deg);opacity:0}
+  }
+  /* ---- layout ---- */
+  main{position:relative;z-index:1}
+  .wrap{max-width:46rem;margin:0 auto;padding:0 1.4rem}
+  section{padding:6.5rem 0 5rem}
+  /* ---- skip link ---- */
+  .skip{
+    position:absolute;left:-999px;top:0;z-index:10;
+    background:var(--gold);color:var(--night);padding:.6rem 1.1rem;
+    font-family:var(--sans);font-weight:600;border-radius:0 0 .5rem 0;
+  }
+  .skip:focus{left:0}
+  a{color:var(--gold)}
+  a:focus-visible{outline:2px solid var(--gold);outline-offset:3px;border-radius:2px}
+  /* ---- hero ---- */
+  .hero{
+    min-height:100svh;
+    display:flex;flex-direction:column;justify-content:center;align-items:center;
+    text-align:center;padding:4rem 1.4rem 6rem;position:relative;
+  }
+  .eyebrow{
+    font-family:var(--sans);font-size:.78rem;letter-spacing:.32em;text-transform:uppercase;
+    color:var(--gold);margin-bottom:1.6rem;
+  }
+  .eyebrow::before,.eyebrow::after{content:"—";color:var(--cream-faint);margin:0 .7em}
+  h1{
+    font-size:clamp(2.6rem,8.5vw,5.2rem);
+    line-height:1.08;font-weight:600;letter-spacing:.01em;
+    max-width:14ch;
+    text-shadow:0 0 60px rgba(240,196,100,.25);
+  }
+  h1 .amp{color:var(--gold);font-style:italic}
+  .hero p.lede{
+    margin-top:1.8rem;max-width:34rem;
+    font-size:clamp(1.15rem,2.6vw,1.4rem);font-style:italic;
+    color:var(--cream-dim);
+  }
+  .haiku{
+    margin:2rem auto 0;max-width:22rem;
+    font-style:italic;font-size:1.15rem;line-height:2.1;
+    color:var(--gold);
+  }
+  .haiku::before,.haiku::after{
+    content:"";display:block;width:3.2rem;height:1px;margin:0 auto;
+    background:linear-gradient(90deg,transparent,var(--gold-soft),transparent);
+  }
+  .haiku::before{margin-bottom:1.1rem}
+  .haiku::after{margin-top:1.1rem}
+  .hero .sub{
+    margin-top:1.6rem;font-family:var(--sans);font-size:.85rem;
+    letter-spacing:.18em;text-transform:uppercase;color:var(--cream-faint);
+  }
+  .cue{
+    margin-top:2.8rem;
+    font-family:var(--sans);font-size:.75rem;letter-spacing:.28em;text-transform:uppercase;
+    color:var(--cream-faint);text-decoration:none;
+  }
+  .cue::after{
+    content:"";display:block;margin:.7rem auto 0;width:1px;height:2.6rem;
+    background:linear-gradient(var(--gold),transparent);
+    animation:fall 2.4s ease-in-out infinite;
+  }
+  @keyframes fall{0%,100%{transform:scaleY(.4);transform-origin:top}50%{transform:scaleY(1);transform-origin:top}}
+  /* ---- movements ---- */
+  .movement-head{
+    display:flex;align-items:center;gap:1rem;margin-bottom:2.2rem;
+  }
+  .movement-head .glyph{
+    font-size:1.9rem;color:var(--gold);flex:none;
+    text-shadow:0 0 24px var(--gold-soft);
+  }
+  .movement-head .kicker{
+    font-family:var(--sans);font-size:.72rem;letter-spacing:.3em;text-transform:uppercase;
+    color:var(--cream-faint);margin-bottom:.25rem;
+  }
+  h2{font-size:clamp(1.7rem,4.5vw,2.5rem);line-height:1.2;font-weight:600}
+  h2 em{color:var(--gold)}
+  .staff{
+    height:2.6rem;margin:1.2rem 0 2rem;opacity:.5;
+    background:
+      repeating-linear-gradient(180deg,transparent 0 .5rem,var(--cream-faint) .5rem calc(.5rem + 1px));
+    mask-image:linear-gradient(90deg,transparent,#000 15%,#000 85%,transparent);
+    -webkit-mask-image:linear-gradient(90deg,transparent,#000 15%,#000 85%,transparent);
+  }
+  .prose p{margin-bottom:1.35rem;max-width:40rem}
+  .prose p:last-child{margin-bottom:0}
+  .drop::first-letter{
+    font-size:3.4em;float:left;line-height:.82;padding:.06em .12em 0 0;
+    color:var(--gold);font-weight:600;
+  }
+  .pull{
+    margin:2.4rem 0;padding:1.4rem 1.8rem;
+    border-left:2px solid var(--gold);
+    font-size:clamp(1.25rem,3vw,1.55rem);font-style:italic;line-height:1.5;
+    color:var(--cream);
+    background:linear-gradient(90deg,rgba(240,196,100,.08),transparent 70%);
+    border-radius:0 .6rem .6rem 0;
+  }
+  /* ---- values ---- */
+  .values{list-style:none;display:grid;gap:1.1rem;margin-top:2.2rem}
+  .values li{
+    padding:1.35rem 1.5rem;border-radius:.8rem;
+    background:rgba(247,236,217,.045);
+    border:1px solid rgba(247,236,217,.09);
+    transition:border-color .3s,background .3s,transform .3s;
+  }
+  .values li:hover{border-color:var(--gold-soft);background:rgba(240,196,100,.06);transform:translateY(-2px)}
+  .values h3{
+    font-family:var(--sans);font-size:.95rem;letter-spacing:.14em;text-transform:uppercase;
+    color:var(--gold);margin-bottom:.4rem;font-weight:700;
+  }
+  .values p{font-size:.98rem;color:var(--cream-dim);line-height:1.6}
+  @media(min-width:40rem){.values{grid-template-columns:1fr 1fr}}
+  /* ---- facts strip ---- */
+  .facts{
+    list-style:none;display:grid;gap:1rem;margin:0 0 2.4rem;
+    grid-template-columns:repeat(auto-fit,minmax(10.5rem,1fr));
+  }
+  .facts li{
+    padding:1rem 1.1rem;border-radius:.7rem;text-align:center;
+    border:1px solid rgba(240,196,100,.25);background:rgba(240,196,100,.05);
+  }
+  .facts b{
+    display:block;font-family:var(--sans);font-size:.7rem;
+    letter-spacing:.22em;text-transform:uppercase;color:var(--gold);margin-bottom:.35rem;
+  }
+  .facts span{font-size:.96rem}
+  /* ---- seats ---- */
+  .seats{list-style:none;display:grid;gap:1rem;margin-top:2.2rem}
+  .seats li{
+    padding:1.2rem 1.4rem;border-radius:.8rem;
+    border:1px solid rgba(247,236,217,.09);
+    background:rgba(247,236,217,.04);
+    display:flex;gap:1rem;align-items:baseline;
+  }
+  .seats .note-glyph{font-size:1.4rem;color:var(--coral);flex:none}
+  .seats b{font-family:var(--sans);letter-spacing:.08em;text-transform:uppercase;font-size:.85rem;color:var(--cream)}
+  .seats span{color:var(--cream-dim);font-size:.96rem}
+  @media(min-width:40rem){.seats{grid-template-columns:1fr 1fr}}
+  /* ---- mumbai card ---- */
+  .gather{
+    margin-top:2.4rem;padding:2rem 1.8rem;border-radius:1rem;
+    background:linear-gradient(140deg,rgba(232,106,146,.10),rgba(240,196,100,.07));
+    border:1px solid rgba(240,196,100,.22);
+  }
+  .gather h3{font-size:1.3rem;margin-bottom:.9rem;color:var(--gold)}
+  .gather ul{list-style:none;display:grid;gap:.7rem;margin-top:1.1rem}
+  .gather ul li{padding-left:1.6rem;position:relative;color:var(--cream-dim)}
+  .gather ul li::before{content:"♪";position:absolute;left:0;color:var(--coral)}
+  .gather .dip{
+    display:inline-block;margin-top:1.5rem;
+    font-family:var(--sans);font-size:.82rem;letter-spacing:.14em;text-transform:uppercase;
+    color:var(--gold);text-decoration:none;
+    border:1px solid rgba(240,196,100,.4);border-radius:2rem;
+    padding:.65rem 1.3rem;transition:background .3s,color .3s;
+  }
+  .gather .dip:hover{background:var(--gold);color:var(--night)}
+  /* ---- manifesto sheet ---- */
+  .sheet-note{
+    margin-bottom:1.4rem;font-family:var(--sans);
+    font-size:.75rem;letter-spacing:.24em;text-transform:uppercase;color:var(--cream-faint);
+  }
+  .sheet{
+    padding:2.6rem 2.2rem;border-radius:1rem;
+    background:linear-gradient(170deg,#f9f0dd,#f1e3c6);
+    color:#2a1a10;
+    box-shadow:0 24px 70px rgba(0,0,0,.5),0 0 0 1px rgba(240,196,100,.25);
+  }
+  .sheet .sheet-head{
+    font-family:var(--sans);font-size:.72rem;letter-spacing:.34em;text-transform:uppercase;
+    color:#8a6a2a;text-align:center;margin-bottom:1.7rem;
+  }
+  .sheet p{margin-bottom:1.15rem;line-height:1.7}
+  .sheet .lede-m{font-size:1.15rem;font-weight:600}
+  .sheet .haiku-m{
+    text-align:center;font-style:italic;color:#7a5a1a;
+    margin:1.7rem 0;line-height:2.1;
+  }
+  .sheet ul{list-style:none;margin:1.5rem 0;display:grid;gap:.55rem}
+  .sheet ul li{padding-left:1.5rem;position:relative}
+  .sheet ul li::before{content:"♪";position:absolute;left:0;color:#b08324}
+  .sheet ul b{font-family:var(--sans);font-size:.88rem;letter-spacing:.05em}
+  .sheet .closing{font-size:1.12rem;font-style:italic;line-height:1.8;margin-bottom:0}
+  /* ---- artwork ---- */
+  .artwork{margin:2.6rem 0}
+  .artwork img{
+    width:100%;height:auto;display:block;border-radius:1rem;
+    border:1px solid rgba(240,196,100,.3);
+    box-shadow:0 20px 60px rgba(0,0,0,.5);
+  }
+  .artwork figcaption{
+    margin-top:.9rem;font-size:.85rem;color:var(--cream-faint);
+    font-style:italic;text-align:center;line-height:1.6;
+  }
+  /* ---- timeline ---- */
+  .timeline{list-style:none;display:grid;gap:1rem;margin-top:2.2rem;counter-reset:step}
+  .timeline li{
+    padding:1.3rem 1.5rem;border-radius:.8rem;
+    background:rgba(247,236,217,.045);border:1px solid rgba(247,236,217,.09);
+  }
+  .timeline .when{
+    font-family:var(--sans);font-size:.72rem;letter-spacing:.26em;text-transform:uppercase;
+    color:var(--coral);margin-bottom:.3rem;
+  }
+  .timeline h3{font-size:1.15rem;margin-bottom:.35rem;color:var(--gold)}
+  .timeline p{font-size:.97rem;color:var(--cream-dim);line-height:1.6}
+  /* ---- qr call ---- */
+  .qr{
+    margin-top:2.6rem;text-align:center;padding:2.4rem 1.6rem;border-radius:1rem;
+    background:linear-gradient(140deg,rgba(240,196,100,.10),rgba(232,106,146,.08));
+    border:1px solid rgba(240,196,100,.3);
+  }
+  .qr img{
+    width:min(15rem,70%);height:auto;border-radius:.9rem;
+    box-shadow:0 16px 50px rgba(0,0,0,.5);margin:1.5rem auto;display:block;
+  }
+  .qr h3{font-size:1.35rem;color:var(--gold)}
+  .qr p{color:var(--cream-dim);max-width:30rem;margin:.6rem auto 0}
+  .qr .btn{
+    display:inline-block;margin-top:.4rem;
+    font-family:var(--sans);font-size:.85rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;
+    color:var(--night);background:var(--gold);text-decoration:none;
+    padding:.85rem 1.7rem;border-radius:2rem;transition:transform .2s,box-shadow .2s;
+  }
+  .qr .btn:hover{transform:translateY(-2px);box-shadow:0 10px 30px rgba(240,196,100,.35)}
+  .qr .alt-link{display:block;margin-top:1rem;font-size:.8rem;color:var(--cream-faint)}
+  /* ---- finale ---- */
+  .finale{text-align:center;padding-bottom:7rem}
+  .finale h2{margin-bottom:2rem}
+  .law{
+    margin:3rem auto 0;max-width:30rem;
+    font-size:clamp(1.3rem,3.2vw,1.7rem);line-height:1.6;
+  }
+  .law .gold{color:var(--gold)}
+  .signoff{
+    margin-top:3rem;font-family:var(--sans);font-size:.8rem;
+    letter-spacing:.26em;text-transform:uppercase;color:var(--cream-faint);
+  }
+  .signoff .emoji{font-size:1.2rem;letter-spacing:.3em;display:block;margin-top:.8rem}
+  /* ---- colophon ---- */
+  footer{
+    border-top:1px solid rgba(247,236,217,.12);
+    padding:3rem 0 4rem;text-align:center;
+  }
+  footer .wrap{max-width:40rem}
+  footer p{font-size:.88rem;color:var(--cream-faint);line-height:1.7;margin-bottom:.9rem}
+  footer .notabrand{color:var(--cream-dim);font-style:italic}
+  /* ---- reveal on scroll ---- */
+  .reveal{opacity:0;transform:translateY(26px);transition:opacity .9s ease,transform .9s ease}
+  .reveal.in{opacity:1;transform:none}
+  @media (prefers-reduced-motion:reduce){.reveal{opacity:1;transform:none}}
+</style>
+</head>
+<body>
+<div class="sky" aria-hidden="true"></div>
+<div class="stars" aria-hidden="true"></div>
+<div class="notes" aria-hidden="true">
+  <span style="left:8%;--dur:30s;--delay:0s">♪</span>
+  <span style="left:22%;--dur:36s;--delay:7s">♫</span>
+  <span style="left:38%;--dur:28s;--delay:14s">♩</span>
+  <span style="left:55%;--dur:34s;--delay:3s">♪</span>
+  <span style="left:70%;--dur:31s;--delay:11s">♫</span>
+  <span style="left:86%;--dur:38s;--delay:18s">♩</span>
+  <span style="left:47%;--dur:40s;--delay:22s">♪</span>
+</div>
+
+<a class="skip" href="#overture-end">Skip to the story</a>
+
+<main>
+  <!-- ============ OVERTURE ============ -->
+  <header class="hero" id="top">
+    <p class="eyebrow">A movement · not a brand</p>
+    <h1>The Open<br>Source <span class="amp">Orchestra</span></h1>
+    <p class="lede">Music as sanctuary. Like Ethereum, it is owned by no one — decentralized, and open to permissionless contribution.</p>
+    <p class="haiku">Open Source Music<br>Every voice is a node<br>Sounds of consensus</p>
+    <p class="sub">Permissionless · Conductorless · Community-driven</p>
+    <a class="cue" href="#movement-1">The story begins</a>
+  </header>
+  <span id="overture-end"></span>
+
+  <!-- ============ MOVEMENT I ============ -->
+  <section id="movement-1" aria-labelledby="m1-title">
+    <div class="wrap">
+      <div class="movement-head reveal">
+        <span class="glyph" aria-hidden="true">𝄞</span>
+        <div>
+          <p class="kicker">Movement I</p>
+          <h2 id="m1-title">The <em>Invitation</em></h2>
+        </div>
+      </div>
+      <div class="staff reveal" aria-hidden="true"></div>
+      <div class="prose">
+        <p class="drop reveal">There are no auditions here. No gatekeepers tuning the door. No guest list, no wrong instrument, no one waiting to tell you that you aren't ready. If you feel the pull toward the music — you already have a seat in the orchestra.</p>
+        <p class="reveal">Radical inclusion is not a policy we wrote down. It is the opening chord. The person who has played for thirty years and the person who has only ever hummed in the shower — the orchestra needs both, exactly as they are.</p>
+      </div>
+      <blockquote class="pull reveal">
+        “You don't join the Open Source Orchestra. You notice you were always in it.”
+      </blockquote>
+    </div>
+  </section>
+
+  <!-- ============ MOVEMENT II ============ -->
+  <section id="movement-2" aria-labelledby="m2-title">
+    <div class="wrap">
+      <div class="movement-head reveal">
+        <span class="glyph" aria-hidden="true">𝄢</span>
+        <div>
+          <p class="kicker">Movement II</p>
+          <h2 id="m2-title">The <em>Oldest Protocol</em></h2>
+        </div>
+      </div>
+      <div class="staff reveal" aria-hidden="true"></div>
+      <div class="prose">
+        <p class="drop reveal">Long before blockchains, mankind forked the original protocol: a gathering — often in a circle, in a city square or an open field — of chanted, rhythmic melodies dancing to the harmonies of instruments of all kinds. That ancient tradition is the simple inspiration for the Open Source Orchestra.</p>
+        <p class="reveal">No one stands on the podium. There is no director calling the tune, no hierarchy deciding whose part matters. We listen to one another — and we all conduct this space together. Everyone who shows up is a contributor. Not an audience. Contributors.</p>
+        <p class="reveal">This is not a brand. It will never be a logo, a product, or a company. It is a movement, a philosophy, a way of being — principles and a manifesto carried from gathering to gathering, told and retold, never owned.</p>
+      </div>
+      <blockquote class="pull reveal">
+        “The whole is infinitely greater than the sum of its parts — because the parts are listening.”
+      </blockquote>
+    </div>
+  </section>
+
+  <!-- ============ MOVEMENT III ============ -->
+  <section id="movement-3" aria-labelledby="m3-title">
+    <div class="wrap">
+      <div class="movement-head reveal">
+        <span class="glyph" aria-hidden="true">𝄐</span>
+        <div>
+          <p class="kicker">Movement III</p>
+          <h2 id="m3-title">The Values <em>We Play</em></h2>
+        </div>
+      </div>
+      <div class="staff reveal" aria-hidden="true"></div>
+      <div class="prose">
+        <p class="reveal">The Open Source Orchestra is Ethereum's values, expressed not in a whitepaper but in a room full of people making sound together. This is the manifesto of the Devcon 8 Music Stage — carried exactly as it was written:</p>
+      </div>
+      <p class="sheet-note reveal">Word for word · the Music Manifesto</p>
+      <div class="sheet reveal" role="doc-pagebreak">
+        <p class="sheet-head">♪ &nbsp;Music Manifesto&nbsp; ♪</p>
+        <p class="lede-m">Music as sanctuary. This stage is a living expression of Ethereum's core principles — decentralization, censorship resistance, open-source collaboration.</p>
+        <p>Like crops grown in shared soil, the music here belongs to the community. Every voice is a node. Every sound, a contribution.</p>
+        <p class="haiku-m">Open Source Music<br>Every voice is a node<br>Sounds of Consensus</p>
+        <ul>
+          <li><b>Censorship Resistance:</b>&nbsp; The Music Space Is conductorless</li>
+          <li><b>Open Source:</b>&nbsp; Creative Commons</li>
+          <li><b>Private:</b>&nbsp; Every Instrument is a Node, every sound is self owned</li>
+          <li><b>Secure:</b>&nbsp; We cover the atmosphere and protect the vibe of the community within a higher frequency</li>
+        </ul>
+        <p class="closing">The Music Stage remains by and for the community.<br>
+        There isn't room for every artist to have a slot, but there is infinite room if we play together, letting the music spread as openly as knowledge itself.<br>
+        We steward this stage like we steward a garden. The instruments are permissionless. The stage is a sanctuary.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ MOVEMENT IV ============ -->
+  <section id="movement-4" aria-labelledby="m4-title">
+    <div class="wrap">
+      <div class="movement-head reveal">
+        <span class="glyph" aria-hidden="true">𝄜</span>
+        <div>
+          <p class="kicker">Movement IV</p>
+          <h2 id="m4-title">Mumbai, <em>We're Coming</em></h2>
+        </div>
+      </div>
+      <div class="staff reveal" aria-hidden="true"></div>
+      <ul class="facts reveal">
+        <li><b>When</b><span>November 3–6, 2026</span></li>
+        <li><b>Where</b><span>JIO World Convention Centre, Mumbai</span></li>
+        <li><b>Status</b><span>Culture Track · DIP&nbsp;#8576</span></li>
+      </ul>
+      <figure class="artwork reveal">
+        <img src="assets/devcon8-artwork.jpg" alt="Devcon 8 India artwork: the Gateway of India beneath a great moon and a mandala sky, surrounded by floating Ethereum diamonds, as two travelers and their cats arrive at the shore." loading="lazy" width="1920" height="1080">
+        <figcaption>The official Devcon 8 India artwork — the Gateway of India under a sky of ETH diamonds. From the Music Space Committee deck.</figcaption>
+      </figure>
+      <div class="prose">
+        <p class="drop reveal">Devcon 8. Mumbai. The biggest gathering of the Ethereum family — and this year, the incredible musicians of India join the circle. The Open Source Orchestra will be there: not on a stage above you, but in a circle beside you.</p>
+        <p class="reveal">The Devcon Music Space brings together live musicians &amp; DJs for four days of open improvisation, curated performances, and real-time collaboration — turning the space into a stage for shared musical experimentation. It embodies Ethereum's values of openness, permissionless participation, and collective creation, through the universal language of music.</p>
+        <p class="reveal">The stage is <em>Sanctuary Tech</em> — circular and non-directional. There is no “front.” Performers face one another; the audience wraps around the music. Warmth, belonging, refuge — a home with clear boundaries and an open invitation.</p>
+        <p class="reveal">And the orchestra itself? The orchestra is whoever shows up.</p>
+      </div>
+      <div class="gather reveal">
+        <h3>♫ The gatherings are permissionless jams</h3>
+        <p class="prose" style="color:var(--cream-dim)">Bring an instrument. Bring your voice. Bring a drum, a laptop, a kalimba, a poem — or bring nothing but yourself. That is more than enough.</p>
+        <ul>
+          <li>A community backline — drum kit, guitars, keys, a percussion circle, DJ decks — shared by all</li>
+          <li>Tabla, harmonium, dhol, bansuri — India's classical traditions at the heart of this edition</li>
+          <li>Live coders and algoraves — software engineers programming music in the open</li>
+          <li>Everyone who shows up is part of the orchestra — we all conduct this space together</li>
+        </ul>
+        <a class="dip" href="https://forum.devcon.org/t/open-source-orchestra-music-space-at-devcon-8-mumbai/8576" target="_blank" rel="noopener noreferrer">Read the DIP on the Devcon forum&nbsp;↗</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ MOVEMENT V ============ -->
+  <section id="movement-5" aria-labelledby="m5-title">
+    <div class="wrap">
+      <div class="movement-head reveal">
+        <span class="glyph" aria-hidden="true">𝄡</span>
+        <div>
+          <p class="kicker">Movement V</p>
+          <h2 id="m5-title">Answer <em>the Call</em></h2>
+        </div>
+      </div>
+      <div class="staff reveal" aria-hidden="true"></div>
+      <div class="prose">
+        <p class="drop reveal">Participation in the Devcon Music Space begins with an open call for musicians, DJs, and volunteers. Applications are reviewed by the Music Space Committee, which curates the program and assigns performance slots across the four days of Devcon. Volunteers help operate the space and contribute to creating a welcoming, collaborative environment.</p>
+      </div>
+      <ol class="timeline">
+        <li class="reveal">
+          <p class="when">September – October</p>
+          <h3>Application &amp; Selection</h3>
+          <p>Apply as a musician, DJ, or any musical performance. The Music Space Committee curates the lineup and assigns performance slots and volunteer roles.</p>
+        </li>
+        <li class="reveal">
+          <p class="when">November 1–2</p>
+          <h3>Pre-production</h3>
+          <p>Volunteers arrive early to co-create the Music Space — setup, sound checks, rehearsals, and preparing the experience for Devcon.</p>
+        </li>
+        <li class="reveal">
+          <p class="when">November 3–6</p>
+          <h3>Devcon!</h3>
+          <p>Perform, jam, collaborate, and connect through four days of live music, DJ sets, and Open Source Orchestra sessions with musicians from around the world.</p>
+        </li>
+      </ol>
+      <div class="qr reveal">
+        <h3>♫ The Open Call is live</h3>
+        <p>Musicians, DJs, live coders, volunteers — the circle is forming. Scan the code or tap below to add your voice.</p>
+        <a href="https://docs.google.com/forms/d/e/1FAIpQLSck9I3Tu0lZqCBt9FsE9VG4UjGM71gbY86aDDlC9jb_akPMmg/viewform" target="_blank" rel="noopener noreferrer">
+          <img src="assets/open-call-qr.png" alt="QR code for the Open Call Form — scan to apply for the Devcon 8 Music Space" width="630" height="737">
+        </a>
+        <br>
+        <a class="btn" href="https://docs.google.com/forms/d/e/1FAIpQLSck9I3Tu0lZqCBt9FsE9VG4UjGM71gbY86aDDlC9jb_akPMmg/viewform" target="_blank" rel="noopener noreferrer">Open Call Form&nbsp;↗</a>
+        <a class="alt-link" href="https://docs.google.com/forms/d/e/1FAIpQLSck9I3Tu0lZqCBt9FsE9VG4UjGM71gbY86aDDlC9jb_akPMmg/viewform" target="_blank" rel="noopener noreferrer">opens “Music Performance at Devcon 8 India” on Google Forms</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ INTERLUDE ============ -->
+  <section id="interlude" aria-labelledby="interlude-title">
+    <div class="wrap">
+      <div class="movement-head reveal">
+        <span class="glyph" aria-hidden="true">𝄽</span>
+        <div>
+          <p class="kicker">Interlude</p>
+          <h2 id="interlude-title">Find <em>Your Seat</em></h2>
+        </div>
+      </div>
+      <div class="staff reveal" aria-hidden="true"></div>
+      <div class="prose">
+        <p class="reveal">Solo artists and bands, DJs and live coders, vocalists and dancers, VJs and live painters — every contributor sounds different, and the orchestra is richer for it. There is no small part — only parts that make the whole possible. Which one is yours?</p>
+      </div>
+      <ul class="seats">
+        <li class="reveal"><span class="note-glyph" aria-hidden="true">♩</span><div><b>Lead</b><br><span>You carry the melody — you start the songs, name the visions, say the thing out loud first.</span></div></li>
+        <li class="reveal"><span class="note-glyph" aria-hidden="true">♪</span><div><b>Harmony</b><br><span>You make others sound bigger — supporting, bridging, deepening every line you touch.</span></div></li>
+        <li class="reveal"><span class="note-glyph" aria-hidden="true">♫</span><div><b>Rhythm</b><br><span>You keep the heartbeat — the organizers, the builders, the ones who hold the space steady.</span></div></li>
+        <li class="reveal"><span class="note-glyph" aria-hidden="true">𝄇</span><div><b>Texture</b><br><span>You color the air — art, story, code, care. The details that turn a song into a place.</span></div></li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- ============ FINALE ============ -->
+  <section class="finale" id="finale" aria-labelledby="finale-title">
+    <div class="wrap">
+      <div class="movement-head reveal" style="justify-content:center">
+        <span class="glyph" aria-hidden="true">𝄂</span>
+        <div style="text-align:left">
+          <p class="kicker">Finale</p>
+          <h2 id="finale-title">See You in <em>the Circle</em></h2>
+        </div>
+      </div>
+      <p class="law reveal">
+        Open Source Music,<br>
+        every voice is a node,<br>
+        <span class="gold">sounds of consensus.</span>
+      </p>
+      <p class="signoff reveal">
+        Mumbai · November 3–6, 2026 · The orchestra is whoever shows up
+        <span class="emoji" aria-hidden="true">🎻 🌺 🤙</span>
+      </p>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <p class="notabrand">The Open Source Orchestra is not a brand, a logo, a product, or a company. It is a movement, a philosophy, a way of being — principles and a manifesto, shared openly and never owned.</p>
+    <p>The Music Manifesto appears here word for word from the Music Space Committee's deck, as do the Devcon 8 India artwork and the Open Call QR code. This page is a telling, not a pitch — no trackers, no analytics, nothing collected.</p>
+    <p>Stewarded by its community, like a garden · Story told with aloha by OSO, the orchestra's storytelling agent · Devcon 8 Mumbai</p>
+  </div>
+</footer>
+
+<script>
+(function(){
+  var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  // Scroll-reveal: sections enter like phrases of music.
+  var els = document.querySelectorAll('.reveal');
+  if (reduce || !('IntersectionObserver' in window)) {
+    els.forEach(function(el){ el.classList.add('in'); });
+  } else {
+    var io = new IntersectionObserver(function(entries){
+      entries.forEach(function(e){
+        if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); }
+      });
+    }, { threshold: 0.12, rootMargin: '0px 0px -6% 0px' });
+    els.forEach(function(el){ io.observe(el); });
+  }
+})();
+</script>
+</body>
+</html>
