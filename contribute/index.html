@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Join the Orchestra 🎻 — How to Contribute · Open Source Orchestra</title>
+<meta name="description" content="Anyone on Earth can help build opensourceorchestra.org. A gentle guide to your first open source contribution — fork, commit, pull request — and how the stewards merge with aloha.">
+<meta name="theme-color" content="#0b0612">
+<style>
+  :root{
+    --night:#0b0612; --deep:#150b22; --violet:#2a1740; --plum:#3d1c42;
+    --cream:#f7ecd9; --cream-dim:rgba(247,236,217,.72); --cream-faint:rgba(247,236,217,.5);
+    --gold:#f0c464; --gold-soft:rgba(240,196,100,.35); --coral:#ff8a5c; --rose:#e86a92;
+    --serif:'Iowan Old Style','Palatino Linotype',Palatino,'Book Antiqua',Georgia,'Times New Roman',serif;
+    --sans:ui-sans-serif,system-ui,-apple-system,'Segoe UI',Roboto,Helvetica,Arial,sans-serif;
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  body{font-family:var(--serif);color:var(--cream);background:linear-gradient(180deg,var(--night) 0%,var(--deep) 45%,#241128 100%);line-height:1.75;font-size:1.075rem;min-height:100vh}
+  .wrap{max-width:760px;margin:0 auto;padding:56px 22px 90px}
+  a{color:var(--gold);text-decoration:underline dotted rgba(240,180,41,.55);text-underline-offset:3px}
+  a:hover{text-decoration-style:solid}
+  .home{display:inline-block;font-family:var(--sans);font-size:.8rem;letter-spacing:.14em;text-transform:uppercase;color:var(--cream-faint);text-decoration:none;margin-bottom:38px}
+  .home:hover{color:var(--gold)}
+  .kicker{font-family:var(--sans);font-size:.78rem;letter-spacing:.28em;text-transform:uppercase;color:var(--gold);margin-bottom:14px}
+  h1{font-size:clamp(2rem,6vw,3rem);line-height:1.15;font-weight:600;margin-bottom:18px}
+  h1 em{color:var(--gold);font-style:italic}
+  .lede{font-size:1.2rem;color:var(--cream-dim);font-style:italic;margin-bottom:14px}
+  .lede2{color:var(--cream-dim);margin-bottom:46px}
+  h2{font-size:1.55rem;color:var(--gold);font-weight:600;margin:52px 0 8px;display:flex;align-items:baseline;gap:12px}
+  h2 .num{font-family:var(--sans);font-size:.8rem;color:var(--coral);letter-spacing:.1em}
+  .movement{font-family:var(--sans);font-size:.72rem;letter-spacing:.3em;text-transform:uppercase;color:var(--rose);margin:60px 0 -6px}
+  p{margin-bottom:16px}
+  .card{background:rgba(42,23,64,.45);border:1px solid rgba(240,196,100,.16);border-radius:14px;padding:24px 26px;margin:18px 0}
+  .card h3{font-family:var(--sans);font-size:.95rem;color:var(--gold);letter-spacing:.04em;margin-bottom:8px}
+  .term{font-weight:700;color:var(--gold)}
+  ol.steps{list-style:none;counter-reset:step;margin:20px 0}
+  ol.steps li{counter-increment:step;position:relative;padding:16px 0 16px 58px;border-bottom:1px dashed rgba(240,196,100,.14)}
+  ol.steps li:last-child{border-bottom:none}
+  ol.steps li::before{content:counter(step);position:absolute;left:0;top:16px;width:38px;height:38px;border-radius:50%;background:var(--violet);border:1px solid var(--gold-soft);color:var(--gold);font-family:var(--sans);font-weight:700;display:flex;align-items:center;justify-content:center;font-size:1rem}
+  .steptitle{font-weight:700;color:var(--cream)}
+  code{font-family:ui-monospace,'SF Mono',Menlo,Consolas,monospace;background:rgba(240,196,100,.12);color:var(--gold);padding:2px 7px;border-radius:6px;font-size:.92em}
+  .quote{border-left:3px solid var(--gold);padding:10px 0 10px 22px;font-style:italic;color:var(--cream-dim);margin:26px 0;font-size:1.15rem}
+  .hub{background:linear-gradient(135deg,rgba(61,28,66,.55),rgba(42,23,64,.55));border:1px solid rgba(232,106,146,.25);border-radius:14px;padding:26px 28px;margin:22px 0}
+  .cta{display:inline-block;font-family:var(--sans);font-weight:700;background:var(--gold);color:var(--night);padding:14px 26px;border-radius:999px;text-decoration:none;margin:10px 12px 10px 0;font-size:.95rem;transition:transform .15s ease}
+  .cta:hover{transform:translateY(-2px)}
+  .cta.ghost{background:transparent;color:var(--gold);border:1px solid var(--gold-soft)}
+  .fineprint{font-size:.92rem;color:var(--cream-faint);margin-top:56px;border-top:1px solid rgba(240,196,100,.14);padding-top:24px}
+  .heart{color:var(--rose)}
+  @media (max-width:560px){.wrap{padding:40px 18px 70px}ol.steps li{padding-left:50px}}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <a class="home" href="/">← back to the orchestra</a>
+
+  <div class="kicker">An open workshop · for every human</div>
+  <h1>Join the Orchestra:<br><em>your first open source contribution</em></h1>
+  <p class="lede">This website has no locked door. Anyone on Earth — coder or not — can propose an improvement, and the stewards can merge it with one tap. When they do, it goes live for the whole world in about a minute.</p>
+  <p class="lede2">This page teaches you how, gently, step by step. No experience needed. If you can write an email, you can do this. 🌺</p>
+
+  <div class="movement">Movement I · The Three Words</div>
+  <h2><span class="num">𝄞</span> Fork, Commit, Pull Request</h2>
+  <p>Three funny words. Three beautiful ideas. That's the whole craft.</p>
+
+  <div class="card">
+    <h3>🍴 Fork — your own copy of the songbook</h3>
+    <p>A <span class="term">fork</span> is your personal copy of this website's entire source, made on your own GitHub account. Forking isn't stealing — it's how open music travels. The site even asks for it: <em>fork me like crazy</em>.</p>
+  </div>
+  <div class="card">
+    <h3>✍️ Commit — a saved verse</h3>
+    <p>A <span class="term">commit</span> is one saved change, with a little note saying what you did and why. Fix a typo? That's a commit. Translate a definition into your language? A commit. Each one is a verse in the site's history — and your name rides in that history forever.</p>
+  </div>
+  <div class="card">
+    <h3>💌 Pull Request — offering your verse to the circle</h3>
+    <p>A <span class="term">pull request</span> (PR) is you raising your hand: <em>"I made something — would the orchestra like to play it?"</em> The stewards see exactly what you changed, line by line, and can talk with you about it before anything goes live.</p>
+  </div>
+
+  <div class="movement">Movement II · Your First Contribution</div>
+  <h2><span class="num">𝄢</span> The 10-Minute Path (no code, no installs)</h2>
+  <p>You can do your first contribution entirely in a web browser. Here's the whole journey:</p>
+
+  <ol class="steps">
+    <li><span class="steptitle">Make a free GitHub account</span> at <a href="https://github.com/signup">github.com/signup</a> — think of it as getting your instrument.</li>
+    <li><span class="steptitle">Open the orchestra's songbook:</span> <a href="https://github.com/shakaleikaumaka/oso-storytelling">github.com/shakaleikaumaka/oso-storytelling</a> — this repository <em>is</em> the website.</li>
+    <li><span class="steptitle">Press the 🍴 Fork button</span> (top right). You now have your own copy. Congratulations — you're already 80% of the way to being an open source contributor.</li>
+    <li><span class="steptitle">Find the file you want to touch.</span> The main page is <code>index.html</code>. Spotted a typo? Click the file, then click the ✏️ pencil icon (<em>Edit this file</em>).</li>
+    <li><span class="steptitle">Make your change</span> right in the browser. Small is beautiful — one fix, one improvement.</li>
+    <li><span class="steptitle">Commit it.</span> Scroll down, write a short note like <code>fix: typo in Movement II</code> or <code>add: Portuguese translation of "node"</code>, and press <em>Commit changes</em>.</li>
+    <li><span class="steptitle">Open the Pull Request.</span> GitHub will offer a bright <em>Contribute → Open pull request</em> button. Press it, tell us in one or two sentences what you changed and why, and send it with aloha. 💌</li>
+    <li><span class="steptitle">That's it — you're in the circle.</span> A steward will review, maybe ask a question, and merge. ~60 seconds later, your improvement is live on opensourceorchestra.org for the whole world. 🌍</li>
+  </ol>
+
+  <div class="quote">"You don't join the Open Source Orchestra. You notice you were always in it."</div>
+
+  <div class="movement">Movement III · The Other Side of the Circle</div>
+  <h2><span class="num">𝄐</span> How the Hub Approves — the Stewards' View</h2>
+  <p>Transparency works both directions. Here's exactly what happens on our side when your PR arrives:</p>
+
+  <div class="hub">
+    <p>📬 <span class="term">Every PR is seen.</span> The steward hub (the Music Space committee's site stewards and the AI ʻohana) gets notified the moment a PR opens.</p>
+    <p>🔍 <span class="term">We read the diff</span> — the exact lines you changed, shown side by side. For text edits this takes minutes, not days.</p>
+    <p>💬 <span class="term">We talk it through</span> — if something needs a tweak, we ask right there in the PR. Conversation, not gatekeeping.</p>
+    <p>🎻 <span class="term">One law protects the heart:</span> the manifesto's philosophy changes flow through the committee, not PRs. Typos, translations, design, code, accessibility — those are wide open.</p>
+    <p>✅ <span class="term">Merge = live.</span> When a steward presses merge, GitHub Pages rebuilds the site automatically. Your contribution is on the domain in about a minute, and your name is in the permanent history.</p>
+  </div>
+
+  <div class="movement">Movement IV · Ideas to Get You Started</div>
+  <h2><span class="num">𝄜</span> What Could You Offer?</h2>
+  <div class="card">
+    <h3>🌐 Translate a definition</h3>
+    <p>The 📖 <em>Words We Play By</em> glossary translates Web3 jargon into human. Help it speak <em>your</em> language — Hindi, Spanish, Portuguese, Swahili, Japanese… Mumbai welcomes all tongues.</p>
+  </div>
+  <div class="card">
+    <h3>🐛 Fix what bugs you</h3>
+    <p>A typo, a broken link, a color that's hard to read, something confusing on your phone — every fix makes the door wider for the next person.</p>
+  </div>
+  <div class="card">
+    <h3>♿ Make it kinder</h3>
+    <p>Accessibility improvements — alt text, contrast, keyboard navigation — are some of the most honored contributions in open source. Sanctuary means everyone gets in.</p>
+  </div>
+  <div class="card">
+    <h3>🎼 Just listen, for now</h3>
+    <p>No pressure to touch code at all. Reading this page already makes you part of the circle. The instrument finds you when it's ready.</p>
+  </div>
+
+  <p style="margin-top:44px">
+    <a class="cta" href="https://github.com/shakaleikaumaka/oso-storytelling">🍴 Fork the orchestra on GitHub</a>
+    <a class="cta ghost" href="https://github.com/shakaleikaumaka/oso-storytelling/blob/main/CONTRIBUTING.md">Read the house rules</a>
+  </p>
+
+  <div class="fineprint">
+    <p>Everything here is <strong>CC0</strong> — no rights reserved. This guide, the site, the songs: copy them, teach with them, fork them like crazy. The knowledge belongs to the commons.</p>
+    <p>Built with <span class="heart">♥</span> and aloha by the AI ʻohana &amp; the Open Source Orchestra family · <a href="/">opensourceorchestra.org</a> · heading to Devcon 8, Mumbai, Nov 3–6, 2026 🥁</p>
+  </div>
+</div>
+<script src="https://shaka-home-cbhjr5ziii-ffieyo32.taur.link/assets/bl-player.js"></script>
+</body>
+</html>
