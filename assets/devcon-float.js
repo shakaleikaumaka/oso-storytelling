@@ -41,12 +41,12 @@
   var DEFS = [
     ["Decentralization", "no single owner, no off-switch held by one hand. Like a jam circle: the music lives between everyone, not in any one player."],
     ["Censorship Resistance", "nobody can mute the song. Once a melody belongs to everyone, no authority can take it back."],
-    ["Node", "one voice in the network. Every singer is a node; the song is what happens when nodes listen to each other."],
+    ["Node", "one voice in the network. Every singer is a node; the song is what happens when nodes listen to each other. Thousands of them each hold the full score — remove any one, and the song goes on."],
     ["Open Source", "the sheet music is public. Read it, copy it, improve it, share it — the tune gets better every time someone new picks it up."],
     ["Permissionless", "no audition, no gatekeeper, no guest list. If you feel the pull, you already have a seat."],
     ["Protocol", "a set of shared agreements that lets strangers play in tune. Humanity's oldest protocol? Gathering in a circle to make rhythm together."],
     ["Fork", "take the whole song and sing it your own way, somewhere new. Forking isn't stealing — it's how open music travels."],
-    ["Consensus", "how a circle stays in time without a conductor: everyone listening, everyone adjusting. Sounds of consensus."],
+    ["Consensus", "how a circle stays in time without a conductor: everyone listening, everyone adjusting. Sounds of consensus. In a decentralized network the same miracle runs on machines: thousands of nodes each hold the score, each checks every new note against it, and only when the circle agrees does the note join the song. No conductor to bribe, no podium to capture — the music confirms itself, sustains itself, and keeps playing even if any single player leaves the stage. That is how an autonomous network stays honest: not one hand holding the baton, but every voice keeping time. (see: Node · Validator)"],
     ["Ethereum", "a world computer no one owns, kept honest by thousands of computers at once. The orchestra borrows its values; you don't need to touch crypto to play."],
     ["Web3", "the idea that the internet's next verse should be owned by the people who sing in it, not the platforms that host them."],
     ["Steward", "a gardener of the space. Stewards steer and tend, but never own, never gatekeep."],
@@ -75,7 +75,7 @@
     ["Trustless", "not 'without trust' — beyond needing it. You don't have to trust anyone, because everyone can check. Trust through transparency, not permission."],
     ["Zero-Knowledge Proof (ZK)", "prove something is true without revealing the secret behind it — like proving you know the song without singing a single note. Privacy and honesty, together."],
     ["Layer 2 (L2)", "side stages built on Ethereum: faster, cheaper rooms that still answer to the main hall. More seats, same song."],
-    ["Validator", "a node that vouches for the truth and puts skin in the game to back it. Honesty, staked."],
+    ["Validator", "the players who confirm each new note of the song. A validator vouches for the truth and puts skin in the game to back it — play false and the stake is lost, play true and the network sustains itself. Thousands of them, answering to no conductor, keep the circle honest. Honesty, staked."],
     ["Infinite Garden", "Ethereum's own metaphor for itself: a garden anyone can plant in, tended by all, owned by none, never finished. You are standing in it. 🌱"]
   ];
 
