@@ -705,5 +705,22 @@ const btn=document.getElementById('ohsend');if(btn)btn.addEventListener('click',
 setTimeout(()=>add('🌺 the ʻohana','aloha! ask us anything — a domain, an agent, the story, the dream…'),800);
 })();
 </script>
+<script>
+function otr(lang){
+  var mob=/Mobi|Android|iPhone|iPad|Silk/i.test(navigator.userAgent)||Math.min(screen.width,screen.height)<820;
+  var proxy='https://translate.google.com/translate?sl=en&tl='+lang+'&u='+encodeURIComponent(location.href);
+  if(lang==='en'){document.cookie='googtrans=;expires=Thu, 01 Jan 1970 00:00:00 GMT;path=/';if(!mob){location.reload();return;}location.href='https://'+location.host+location.pathname;return;}
+  if(mob){location.href=proxy;return;}
+  try{
+    document.cookie='googtrans=/en/'+lang+';path=/';
+    document.cookie='googtrans=/en/'+lang+';path=/;domain='+location.hostname;
+    if(window.google&&google.translate){location.reload();return;}
+  }catch(e){}
+  location.href=proxy;
+}
+function googleTranslateElementInit(){try{new google.translate.TranslateElement({pageLanguage:'en',includedLanguages:'haw,es,zh-CN,hi,ar,fr,pt,ru,ja,de,ko,it,vi,id,th,tr,pl,nl,sv,sw,uk',layout:google.translate.TranslateElement.InlineLayout.SIMPLE},'google_translate_element');}catch(e){}}
+</script>
+<script src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+
 </body>
 </html>
