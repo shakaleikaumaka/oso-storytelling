@@ -609,7 +609,7 @@
 </script>
 <script src="assets/devcon-float.js?v=4.1"></script>
 <script src="https://shaka-home-cbhjr5ziii-ffieyo32.taur.link/assets/bl-player.js"></script>
-<!-- 🌺🔄🧲 ohana corner v3 — flower + LIVE chat + 🌐 all-languages (Hawaiian first) + magnet, canon Jul 30 2026 -->
+<!-- 🌺🔄🧲🎻 ohana corner v4 — ALIVE: bigger breathing buttons, bubble-tips, heart-glow, violin open call · "we shine a light in the dark with our heart" · canon Jul 30 2026 -->
 <style>
 #oflo{position:fixed;top:10px;left:10px;z-index:9999;width:40px;height:40px;border-radius:50%;background:rgba(20,18,45,.85);border:1px solid rgba(255,158,198,.5);display:flex;align-items:center;justify-content:center;font-size:19px;cursor:pointer;opacity:.55;transition:opacity .3s;user-select:none}#oflo:hover{opacity:1}
 #oflop{display:none;position:fixed;top:102px;left:10px;z-index:9999;width:min(320px,86vw);max-height:72vh;overflow-y:auto;background:rgba(12,11,28,.97);border:1px solid rgba(255,158,198,.4);border-radius:16px;padding:18px;font-family:Georgia,serif;color:#e8e6ff;box-shadow:0 10px 40px rgba(0,0,0,.6)}#oflop.open{display:block}
@@ -661,6 +661,7 @@
 <button class="lb" onclick="otr('de')">🇩🇪 Deutsch</button>
 <div class="gt">+90 more ↓ <span id="google_translate_element"></span><br><span style="font-size:10px">music was our first language 🎵</span></div>
 </div>
+<a id="oviol" href="https://forum.devcon.org/t/open-source-orchestra-music-space-at-devcon-8-mumbai/8576" target="_blank" rel="noopener" title="🎻 answer the call — join the Open Source Orchestra at Devcon 8 Mumbai">🎻</a>
 <div id="cmag" title="🔄🧲 the circularity magnet — give & receive" onclick="document.getElementById('cmagb').classList.toggle('open')">🔄🧲</div>
 <div id="cmagb"><span class="x" onclick="this.parentElement.classList.remove('open')">✕</span>
 <b>🌊 the blessing pool</b><br>freely I give, freely I receive
@@ -672,6 +673,93 @@
 <div class="stripe">💳 stripe — forging…</div>
 <a class="pool" href="https://blessing-pool-khummxfwo4-ffieyo32.taur.link/" target="_blank" rel="noopener">→ the full blessing pool ↗</a>
 </div>
+
+<style>
+/* 🎻✨ ohana corner v4 — ALIVE: bigger, breathing, bubble-tips, heart-glow · "we shine a light in the dark with our heart" */
+#oflo,#olang,#oviol{width:54px!important;height:54px!important;font-size:25px!important}
+#cmag{width:54px!important;height:54px!important;font-size:18px!important}
+#oflo,#olang,#oviol,#cmag{opacity:.78}
+#oflo:hover,#olang:hover,#oviol:hover,#cmag:hover{opacity:1}
+#olang{top:74px!important}
+#oflop,#olangp{top:202px!important}
+#oviol{position:fixed;top:138px;left:10px;z-index:9999;border-radius:50%;background:rgba(20,18,45,.85);border:1px solid rgba(251,226,160,.55);display:flex;align-items:center;justify-content:center;cursor:pointer;user-select:none;text-decoration:none;transition:opacity .3s}
+@keyframes oSway{0%,100%{transform:rotate(-6deg)}50%{transform:rotate(6deg)}}
+@keyframes oBob{0%,100%{transform:translateY(0)}50%{transform:translateY(-4px)}}
+@keyframes oWig{0%,86%,100%{transform:rotate(0)}89%{transform:rotate(-14deg)}93%{transform:rotate(12deg)}97%{transform:rotate(-6deg)}}
+#oflo{animation:oSway 5.2s ease-in-out infinite}
+#olang{animation:oBob 6.1s ease-in-out infinite}
+#oviol{animation:oBob 4.4s ease-in-out infinite}
+#cmag{animation:oWig 7.5s ease-in-out infinite}
+/* heart glow — sometimes, a light in the dark */
+@keyframes oglow{0%,100%{box-shadow:0 0 0 rgba(255,158,198,0)}50%{box-shadow:0 0 26px 7px var(--og,rgba(255,158,198,.55))}}
+#oflo{--og:rgba(255,158,198,.65)}#olang{--og:rgba(124,211,255,.6)}#oviol{--og:rgba(251,226,160,.7)}#cmag{--og:rgba(126,226,160,.65)}
+.oglowing{animation:oglow 2.4s ease-in-out 1!important}
+/* bubble-letter tips */
+.obub{position:fixed;z-index:10001;background:linear-gradient(135deg,#fff8ec,#ffe9f3);color:#4a2b52;font-family:'Comic Sans MS','Chalkboard SE','Segoe Print',cursive;font-weight:bold;font-size:15px;padding:10px 16px;border-radius:22px;border:2px solid rgba(255,158,198,.75);box-shadow:0 6px 22px rgba(0,0,0,.45);pointer-events:none;opacity:0;transform:scale(.6);transition:opacity .35s,transform .35s;white-space:nowrap}
+.obub.show{opacity:1;transform:scale(1)}
+.obub:after{content:'';position:absolute;top:50%;width:0;height:0;border:8px solid transparent}
+.obub.left:after{left:-17px;margin-top:-8px;border-right-color:rgba(255,158,198,.75)}
+.obub.right:after{right:-17px;margin-top:-8px;border-left-color:rgba(255,158,198,.75)}
+/* flying notes from the violin */
+.onote{position:fixed;z-index:9998;pointer-events:none;font-size:16px;color:#fbe2a0;opacity:0;text-shadow:0 0 8px rgba(251,226,160,.7)}
+@keyframes ofly{0%{opacity:0;transform:translate(0,0) rotate(0)}15%{opacity:1}100%{opacity:0;transform:translate(var(--dx,30px),-90px) rotate(var(--rr,25deg))}}
+.onote.fly{animation:ofly 2.8s ease-out forwards}
+@media (prefers-reduced-motion:reduce){#oflo,#olang,#oviol,#cmag,.oglowing,.onote.fly{animation:none!important}}
+</style>
+
+<script>
+/* 🎻✨ ohana corner v4 life engine — bubble tips, heart glows, flying notes */
+(function(){
+  var TIPS=[
+    ['oflo','the ʻohana 🌺 — meet the whole family!'],
+    ['olang','every language 🌐 — Hawaiian first 🌺'],
+    ['oviol','join the orchestra 🎻 — Devcon open call!'],
+    ['cmag','the blessing magnet 🧲 — give & receive 🌊']
+  ];
+  function anyOpen(){return document.querySelector('#oflop.open,#olangp.open,#cmagb.open');}
+  function bubble(){
+    if(anyOpen()||document.hidden)return;
+    var t=TIPS[Math.floor(Math.random()*TIPS.length)];
+    var el=document.getElementById(t[0]);if(!el)return;
+    var r=el.getBoundingClientRect();
+    var b=document.createElement('div');b.className='obub';b.textContent=t[1];
+    var goLeft=r.left<window.innerWidth/2;
+    b.classList.add(goLeft?'left':'right');
+    b.style.top=Math.max(6,r.top+r.height/2-20)+'px';
+    if(goLeft){b.style.left=(r.right+16)+'px';}else{b.style.right=(window.innerWidth-r.left+16)+'px';}
+    document.body.appendChild(b);
+    requestAnimationFrame(function(){b.classList.add('show');});
+    el.classList.add('oglowing'); /* the tipped button shines */
+    setTimeout(function(){b.classList.remove('show');el.classList.remove('oglowing');},3400);
+    setTimeout(function(){b.remove();},4000);
+  }
+  function glowRandom(){ /* sometimes, a quiet glow with no words */
+    if(anyOpen()||document.hidden)return;
+    var el=document.getElementById(TIPS[Math.floor(Math.random()*TIPS.length)][0]);
+    if(el){el.classList.add('oglowing');setTimeout(function(){el.classList.remove('oglowing');},2500);}
+  }
+  var NOTES=['♪','♫','♬','♩'];
+  function note(){
+    var v=document.getElementById('oviol');if(!v||document.hidden)return;
+    var r=v.getBoundingClientRect();
+    var n=document.createElement('span');n.className='onote';
+    n.textContent=NOTES[Math.floor(Math.random()*NOTES.length)];
+    n.style.left=(r.left+r.width/2)+'px';n.style.top=(r.top+4)+'px';
+    n.style.setProperty('--dx',(Math.random()*80-15)+'px');
+    n.style.setProperty('--rr',(Math.random()*50-25)+'deg');
+    document.body.appendChild(n);
+    requestAnimationFrame(function(){n.classList.add('fly');});
+    setTimeout(function(){n.remove();},2900);
+  }
+  setTimeout(bubble,4000);
+  setInterval(bubble,11000);
+  setInterval(glowRandom,17000);
+  setTimeout(note,2500);
+  setInterval(note,4200);
+  var vl=document.getElementById('oviol');
+  if(vl)vl.addEventListener('mouseenter',function(){for(var i=0;i<5;i++)setTimeout(note,i*180);});
+})();
+</script>
 
 <script>
 (function(){
@@ -722,6 +810,7 @@ function otr(lang){
 function googleTranslateElementInit(){try{new google.translate.TranslateElement({pageLanguage:'en',includedLanguages:'haw,es,zh-CN,hi,ar,fr,pt,ru,ja,de,ko,it,vi,id,th,tr,pl,nl,sv,sw,uk',layout:google.translate.TranslateElement.InlineLayout.SIMPLE},'google_translate_element');}catch(e){}}
 </script>
 <script src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+
 
 </body>
 </html>
