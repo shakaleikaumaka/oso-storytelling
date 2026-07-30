@@ -795,21 +795,22 @@ setTimeout(()=>add('🌺 the ʻohana','aloha! ask us anything — a domain, an a
 </script>
 <script>
 function otr(lang){
-  var mob=/Mobi|Android|iPhone|iPad|Silk/i.test(navigator.userAgent);
+  /* v4.1 — mobile stays on-site: cookie+reload first, proxy only as last resort */
   var proxy='https://translate.google.com/translate?sl=en&tl='+lang+'&u='+encodeURIComponent(location.href);
   function clr(){var e='googtrans=;expires=Thu, 01 Jan 1970 00:00:00 GMT;path=/';document.cookie=e;document.cookie=e+';domain='+location.hostname;var p=location.hostname.split('.');if(p.length>2){document.cookie=e+';domain=.'+p.slice(-2).join('.');}}
-  if(lang==='en'){clr();if(!mob&&window.google&&window.google.translate){location.reload();return;}location.href='https://'+location.host+location.pathname;return;}
-  if(mob){location.href=proxy;return;}
+  if(lang==='en'){clr();location.reload();return;}
   try{
     document.cookie='googtrans=/en/'+lang+';path=/';
     document.cookie='googtrans=/en/'+lang+';path=/;domain='+location.hostname;
     if(window.google&&google.translate){location.reload();return;}
   }catch(e){}
+  /* GT widget not loaded (ad-blockers, slow connections) — proxy fallback */
   location.href=proxy;
 }
 function googleTranslateElementInit(){try{new google.translate.TranslateElement({pageLanguage:'en',includedLanguages:'haw,es,zh-CN,hi,ar,fr,pt,ru,ja,de,ko,it,vi,id,th,tr,pl,nl,sv,sw,uk',layout:google.translate.TranslateElement.InlineLayout.SIMPLE},'google_translate_element');}catch(e){}}
 </script>
 <script src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+
 
 
 </body>
