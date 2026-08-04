@@ -428,42 +428,50 @@ footer .fork{font-size:.95rem;color:var(--cream-dim);margin-top:14px}
 
 <section id="backline">
   <div class="sec-head"><span class="num">§ 7</span><h2>Backline — the <em>community instruments</em></h2></div>
-  <div class="card"><h3>Core band (rental ask per DIP)</h3><div class="tbl-scroll"><table>
-    <tr><th>Item</th><th>Status</th></tr>
-    <tr><td>Drum kit — ⚠️ open question: can the room take an acoustic kit? Fallback: e-kit + hand percussion</td><td><span class="tag tag-proposed">Proposed</span> <span class="tag tag-tbd tag-in">TBD decision</span></td></tr>
-    <tr><td>Electric guitar + amp (Twin Reverb-class)</td><td><span class="tag tag-proposed">Proposed</span></td></tr>
-    <tr><td>Acoustic guitar</td><td><span class="tag tag-proposed">Proposed</span></td></tr>
-    <tr><td>Bass guitar + amp/DI</td><td><span class="tag tag-proposed">Proposed</span></td></tr>
-    <tr><td>Electric piano + synth/MIDI keyboard w/ laptop DAW (or two electric pianos)</td><td><span class="tag tag-proposed">Proposed</span></td></tr>
-    <tr><td>Drum machine</td><td><span class="tag tag-proposed">Proposed</span></td></tr>
-  </table></div></div>
-  <div class="card"><h3>Percussion circle</h3><div class="tbl-scroll"><table>
-    <tr><td>Djembe · cajon · congas · shakers/tambourines basket</td><td><span class="tag tag-proposed">Proposed</span></td></tr>
-  </table></div></div>
-  <div class="card"><h3>🧺 The basket at the door — Tier One, "everyone plays" <span style="font-size:.72rem;color:var(--cream-faint)">(from OSO v0 — see Circle Instruments)</span></h3>
-  <p style="font-size:.88rem;color:var(--cream-dim);margin-bottom:8px">Purchase, not rental — cheap, durable, shareable. This basket is what turns spectators into players.</p><div class="tbl-scroll"><table>
-    <tr><th>Item</th><th>Qty</th><th>Status</th></tr>
-    <tr><td>Kartal (करताल, hand cymbals)</td><td>12 pairs</td><td><span class="tag tag-proposed">Proposed purchase</span></td></tr>
-    <tr><td>Manjira (मंजीरा, small cymbals)</td><td>8 pairs</td><td><span class="tag tag-proposed">Proposed purchase</span></td></tr>
-    <tr><td>Shruti box (श्रुति बॉक्स, drone)</td><td>4</td><td><span class="tag tag-proposed">Proposed purchase</span></td></tr>
-    <tr><td>Exact quantities — set by Aakash + volunteer coordinators against expected circle size</td><td>—</td><td><span class="tag tag-tbd">TBD</span></td></tr>
-  </table></div></div>
-  <div class="card"><h3>🇮🇳 Indian instruments — the cultural heart of this edition (Aakash curating)</h3><div class="tbl-scroll"><table>
-    <tr><th>Item</th><th>Status</th></tr>
-    <tr><td><b>★ THE BARE MINIMUM — Harmonium · Tabla · Bansuri.</b> Aakash's law (Aug 4): everyone who begins classical music in India plays these three — players guaranteed, must be on site before anything else</td><td><span class="tag tag-proposed">Must-have</span></td></tr>
-    <tr><td>Tabla (pair)</td><td><span class="tag tag-proposed">Proposed</span></td></tr>
-    <tr><td>Harmonium</td><td><span class="tag tag-proposed">Proposed</span></td></tr>
-    <tr><td>Bansuri (बाँसुरी, bamboo flute)</td><td><span class="tag tag-proposed">Proposed</span></td></tr>
-    <tr><td>Dhol</td><td><span class="tag tag-proposed">Proposed</span></td></tr>
-    <tr><td>Dholak (ढोलक — the dhol's gentler sibling, ideal for seated circles)</td><td><span class="tag tag-proposed">Proposed · v0</span></td></tr>
-    <tr><td>Kanjira (कांजीरा — South Indian frame drum; uncommon players, but small & cheap — worth having)</td><td><span class="tag tag-proposed">Proposed · v0</span></td></tr>
-    <tr><td>Bansuri-friendly setup (condenser + floor seating)</td><td><span class="tag tag-proposed">Proposed</span></td></tr>
-    <tr><td>Sitar — bring-your-own watch: carriers travel with their own; decide on a rental only after the musician walkthroughs (Aakash, Aug 4)</td><td><span class="tag tag-tbd">Watch · v0</span></td></tr>
-    <tr><td>Released with love (Aug 4): tanpura, santoor, violin, sarod — high-maintenance or too few players to rent for. If a carrier walks in with their own, the honored seat + secure storage + tuned-mic setup is theirs</td><td><span class="tag tag-tbd">Cut · v0</span></td></tr>
-  </table></div></div>
-  <div class="card"><h3>DJ rig</h3><div class="tbl-scroll"><table>
-    <tr><td>DJ system (XDJ-XZ or CDJ pair + mixer) · laptop stands · DJ table</td><td><span class="tag tag-proposed">Proposed</span></td></tr>
-  </table></div></div>
+  <style>
+  #backline .onechart td.grp{background:rgba(240,196,100,.09);font-family:var(--sans);font-size:.7rem;letter-spacing:.18em;text-transform:uppercase;color:var(--gold-bright);border-top:2px solid rgba(240,196,100,.3);padding-top:10px}
+  #backline .onechart .note{display:block;font-size:.8rem;color:var(--cream-faint);font-style:italic;margin-top:2px}
+  #backline .onechart tr.must td{background:rgba(126,226,160,.07)}
+  #backline .onechart .qty{font-family:var(--sans);font-size:.82rem;white-space:nowrap}
+  </style>
+  <div class="card"><h3>🎛️ The community instruments — one chart <span style="font-size:.72rem;color:var(--cream-faint)">(rental ask per DIP · tuned with Aakash, Aug 4)</span></h3>
+  <div class="tbl-scroll"><table class="onechart">
+    <tr><th style="width:58%">Item</th><th>Qty</th><th>Status</th></tr>
+
+    <tr><td class="grp" colspan="3">🎸 Core band — rental</td></tr>
+    <tr><td>Drum kit<span class="note">⚠️ open question: can the room take an acoustic kit? If not → e-kit + hand percussion (needs the allocated room's isolation facts)</span></td><td class="qty">1</td><td><span class="tag tag-proposed">Proposed</span> <span class="tag tag-tbd tag-in">TBD decision</span></td></tr>
+    <tr><td>Electric guitar + amp (Twin Reverb-class)</td><td class="qty">1</td><td><span class="tag tag-proposed">Proposed</span></td></tr>
+    <tr><td>Acoustic guitar</td><td class="qty">1</td><td><span class="tag tag-proposed">Proposed</span></td></tr>
+    <tr><td>Bass guitar + amp/DI</td><td class="qty">1</td><td><span class="tag tag-proposed">Proposed</span></td></tr>
+    <tr><td>Electric piano + synth/MIDI keyboard w/ laptop DAW (or two electric pianos)</td><td class="qty">1</td><td><span class="tag tag-proposed">Proposed</span></td></tr>
+    <tr><td>Drum machine</td><td class="qty">1</td><td><span class="tag tag-proposed">Proposed</span></td></tr>
+
+    <tr><td class="grp" colspan="3">🥁 Percussion circle — rental</td></tr>
+    <tr><td>Djembe · cajon · congas · shakers/tambourines basket</td><td class="qty">set</td><td><span class="tag tag-proposed">Proposed</span></td></tr>
+
+    <tr><td class="grp" colspan="3">🧺 The basket at the door — purchase, not rental: cheap, durable, shareable · turns spectators into players</td></tr>
+    <tr><td>Kartal (करताल, hand cymbals)</td><td class="qty">12 pairs</td><td><span class="tag tag-proposed">Proposed purchase</span></td></tr>
+    <tr><td>Manjira (मंजीरा, small cymbals — kartal's twin; keep both)</td><td class="qty">8 pairs</td><td><span class="tag tag-proposed">Proposed purchase</span></td></tr>
+    <tr><td>Shruti box (श्रुति बॉक्स, drone — small thing, used daily)</td><td class="qty">4</td><td><span class="tag tag-proposed">Proposed purchase</span></td></tr>
+    <tr><td class="note" colspan="2" style="font-style:italic">Exact quantities set by Aakash + volunteer coordinators against expected circle size</td><td><span class="tag tag-tbd">TBD</span></td></tr>
+
+    <tr><td class="grp" colspan="3">🇮🇳 Indian instruments — the cultural heart of this edition (Aakash curating)</td></tr>
+    <tr class="must"><td><b>★ THE BARE MINIMUM — Harmonium · Tabla · Bansuri</b><span class="note">Aakash's law (Aug 4): everyone who begins classical music in India plays these three — players guaranteed, must be on site first</span></td><td class="qty">1 ea</td><td><span class="tag tag-proposed">Must-have</span></td></tr>
+    <tr><td>Tabla (pair)</td><td class="qty">1</td><td><span class="tag tag-proposed">Proposed</span></td></tr>
+    <tr><td>Harmonium</td><td class="qty">1</td><td><span class="tag tag-proposed">Proposed</span></td></tr>
+    <tr><td>Bansuri (बाँसुरी, bamboo flute)</td><td class="qty">1</td><td><span class="tag tag-proposed">Proposed</span></td></tr>
+    <tr><td>Dhol</td><td class="qty">1</td><td><span class="tag tag-proposed">Proposed</span></td></tr>
+    <tr><td>Dholak (ढोलक — the dhol's gentler sibling, ideal for seated circles)</td><td class="qty">1</td><td><span class="tag tag-proposed">Proposed</span></td></tr>
+    <tr><td>Kanjira (कांजीरा — South Indian frame drum; uncommon players, but small &amp; cheap — worth having)</td><td class="qty">1</td><td><span class="tag tag-proposed">Proposed</span></td></tr>
+    <tr><td>Bansuri-friendly setup (condenser + floor seating)</td><td class="qty">—</td><td><span class="tag tag-proposed">Proposed</span></td></tr>
+    <tr><td>Sitar<span class="note">bring-your-own watch: carriers travel with their own; decide on a rental only after the musician walkthroughs (Aakash, Aug 4)</span></td><td class="qty">—</td><td><span class="tag tag-tbd">Watch</span></td></tr>
+    <tr><td style="opacity:.75"><s>Tanpura · santoor · violin · sarod</s><span class="note">released with love (Aug 4): high-maintenance or too few players to rent for — if a carrier walks in with their own, the honored seat + secure storage + tuned-mic setup is theirs</span></td><td class="qty">—</td><td><span class="tag tag-tbd">Cut</span></td></tr>
+
+    <tr><td class="grp" colspan="3">🎧 DJ rig — rental</td></tr>
+    <tr><td>DJ system (XDJ-XZ or CDJ pair + mixer)</td><td class="qty">1</td><td><span class="tag tag-proposed">Proposed</span></td></tr>
+    <tr><td>Laptop stands · DJ table</td><td class="qty">1 set</td><td><span class="tag tag-proposed">Proposed</span></td></tr>
+  </table></div>
+  <p style="font-size:.8rem;color:var(--cream-faint);margin-top:10px">Legend: <span class="tag tag-proposed">Proposed</span> rental ask per DIP · <span class="tag tag-proposed">Must-have</span> on site before anything else · <span class="tag tag-tbd">Watch / TBD / Cut</span> decided with Aakash &amp; the musician walkthroughs</p></div>
 </section>
 
 <section id="circle-instruments">

@@ -147,46 +147,38 @@ The DIP asks for a full production sound system; the exact rig is not yet specif
 
 ## 7 · Backline / instruments (rental ask per DIP)
 
-**Core band:**
-| Item | Status |
-|---|---|
-| Drum kit | 🔵 PROPOSED · ⚠️ 🟠 TBD open question: can the room take an acoustic kit? If not → e-kit + hand percussion (decision needs the allocated room's isolation facts) |
-| Electric guitar + amp (Twin Reverb-class) | 🔵 PROPOSED |
-| Acoustic guitar | 🔵 PROPOSED |
-| Bass guitar + amp/DI | 🔵 PROPOSED |
-| Electric piano + synth/MIDI keyboard w/ laptop DAW (or two electric pianos) | 🔵 PROPOSED |
-| Drum machine | 🔵 PROPOSED |
-
-**Percussion circle:** djembe · cajon · congas · shakers/tambourines basket — 🔵 PROPOSED
-
-**🧺 The basket at the door — Tier One, "everyone plays" (from OSO v0, Annex A):**
-Purchase, not rental — cheap, durable, shareable; this basket is what turns spectators into players.
 | Item | Qty | Status |
 |---|---|---|
+| **🎸 CORE BAND — rental** | | |
+| Drum kit — ⚠️ open question: can the room take an acoustic kit? If not → e-kit + hand percussion (needs the allocated room's isolation facts) | 1 | 🔵 PROPOSED · 🟠 TBD decision |
+| Electric guitar + amp (Twin Reverb-class) | 1 | 🔵 PROPOSED |
+| Acoustic guitar | 1 | 🔵 PROPOSED |
+| Bass guitar + amp/DI | 1 | 🔵 PROPOSED |
+| Electric piano + synth/MIDI keyboard w/ laptop DAW (or two electric pianos) | 1 | 🔵 PROPOSED |
+| Drum machine | 1 | 🔵 PROPOSED |
+| **🥁 PERCUSSION CIRCLE — rental** | | |
+| Djembe · cajon · congas · shakers/tambourines basket | set | 🔵 PROPOSED |
+| **🧺 THE BASKET AT THE DOOR — purchase, not rental: cheap, durable, shareable · turns spectators into players** | | |
 | Kartal (करताल, hand cymbals) | 12 pairs | 🔵 PROPOSED (purchase) |
-| Manjira (मंजीरा, small cymbals) | 8 pairs | 🔵 PROPOSED (purchase) |
-| Shruti box (श्रुति बॉक्स, drone) | 4 | 🔵 PROPOSED (purchase) |
-| 🟠 TBD: exact quantities set by Aakash + the volunteer coordinators against expected circle size | | 🟠 TBD |
+| Manjira (मंजीरा, small cymbals — kartal's twin; keep both) | 8 pairs | 🔵 PROPOSED (purchase) |
+| Shruti box (श्रुति बॉक्स, drone — small thing, used daily) | 4 | 🔵 PROPOSED (purchase) |
+| 🟠 Exact quantities set by Aakash + the volunteer coordinators against expected circle size | — | 🟠 TBD |
+| **🇮🇳 INDIAN INSTRUMENTS — the cultural heart of this edition (Aakash curating)** | | |
+| ★ **THE BARE MINIMUM — Harmonium · Tabla · Bansuri** (Aakash's law, Aug 4: everyone who begins classical music in India plays these three — players guaranteed, must be on site first) | 1 ea | 🟢 MUST-HAVE |
+| Tabla (pair) | 1 | 🔵 PROPOSED |
+| Harmonium | 1 | 🔵 PROPOSED |
+| Bansuri (बाँसुरी, bamboo flute) | 1 | 🔵 PROPOSED |
+| Dhol | 1 | 🔵 PROPOSED |
+| Dholak (ढोलक — the dhol's gentler sibling, ideal for seated circles) | 1 | 🔵 PROPOSED (v0 merge) |
+| Kanjira (कांजीरा — South Indian frame drum; uncommon players, but small & cheap — worth having) | 1 | 🔵 PROPOSED (v0 merge) |
+| Bansuri-friendly setup (condenser + floor seating) | — | 🔵 PROPOSED |
+| Sitar — bring-your-own watch: carriers travel with their own; decide on a rental only after the musician walkthroughs (Aakash, Aug 4) | — | 🟠 WATCH |
+| ~~Tanpura · santoor · violin · sarod~~ — released with love (Aug 4): high-maintenance or too few players to rent for; if a carrier walks in with their own, the honored seat + secure storage + tuned-mic setup is theirs | — | ⚪ CUT |
+| **🎧 DJ RIG — rental** | | |
+| DJ system (XDJ-XZ or CDJ pair + mixer) | 1 | 🔵 PROPOSED |
+| Laptop stands · DJ table | 1 set | 🔵 PROPOSED |
 
-**🇮🇳 Indian instruments — the cultural heart of this edition (Aakash curating):**
-| Item | Status |
-|---|---|
-| ★ **THE BARE MINIMUM — Harmonium · Tabla · Bansuri** (Aakash's law, Aug 4: everyone who begins classical music in India plays these three — players guaranteed, must be on site first) | 🟢 MUST-HAVE |
-| Tabla (pair) | 🔵 PROPOSED |
-| Harmonium | 🔵 PROPOSED |
-| Bansuri (बाँसुरी, bamboo flute) | 🔵 PROPOSED |
-| Dhol | 🔵 PROPOSED |
-| Dholak (ढोलक — the dhol's gentler sibling, ideal for seated circles) | 🔵 PROPOSED (v0 merge) |
-| Kanjira (कांजीरा — South Indian frame drum; uncommon players, but small & cheap — worth having) | 🔵 PROPOSED (v0 merge) |
-| Bansuri-friendly setup (condenser + floor seating) | 🔵 PROPOSED |
-| Sitar — bring-your-own watch: carriers travel with their own; decide on a rental only after the musician walkthroughs (Aakash, Aug 4) | 🟠 WATCH |
-| ~~Tanpura / santoor / violin / sarod~~ — released with love (Aug 4): high-maintenance or too few players to rent for; if a carrier walks in with their own, the honored seat + secure storage + tuned-mic setup is theirs | ⚪ CUT |
-
-**DJ rig:**
-| Item | Status |
-|---|---|
-| DJ system (XDJ-XZ or CDJ pair + mixer) | 🔵 PROPOSED |
-| Laptop stands, DJ table | 🔵 PROPOSED |
+*Legend: 🔵 PROPOSED = rental ask per DIP · 🟢 MUST-HAVE = on site before anything else · 🟠 WATCH/TBD · ⚪ CUT = decided with Aakash & the musician walkthroughs.*
 
 ## 8 · Monitors
 
