@@ -171,14 +171,16 @@ Purchase, not rental — cheap, durable, shareable; this basket is what turns sp
 **🇮🇳 Indian instruments — the cultural heart of this edition (Aakash curating):**
 | Item | Status |
 |---|---|
+| ★ **THE BARE MINIMUM — Harmonium · Tabla · Bansuri** (Aakash's law, Aug 4: everyone who begins classical music in India plays these three — players guaranteed, must be on site first) | 🟢 MUST-HAVE |
 | Tabla (pair) | 🔵 PROPOSED |
 | Harmonium | 🔵 PROPOSED |
+| Bansuri (बाँसुरी, bamboo flute) | 🔵 PROPOSED |
 | Dhol | 🔵 PROPOSED |
 | Dholak (ढोलक — the dhol's gentler sibling, ideal for seated circles) | 🔵 PROPOSED (v0 merge) |
-| Kanjira (कांजीरा — South Indian frame drum) | 🔵 PROPOSED (v0 merge) |
-| Tanpura (तानपुरा — the eternal drone; master-provided or rental) | 🟠 TBD (v0 merge) |
+| Kanjira (कांजीरा — South Indian frame drum; uncommon players, but small & cheap — worth having) | 🔵 PROPOSED (v0 merge) |
 | Bansuri-friendly setup (condenser + floor seating) | 🔵 PROPOSED |
-| Sitar / sarod / santoor / veena / violin — honored seats: masters of Mumbai bring their own, OSO provides secure storage + tuned-mic setups | 🟠 TBD — rentals fragile; Aakash finalises with local musicians (v0 merge) |
+| Sitar — bring-your-own watch: carriers travel with their own; decide on a rental only after the musician walkthroughs (Aakash, Aug 4) | 🟠 WATCH |
+| ~~Tanpura / santoor / violin / sarod~~ — released with love (Aug 4): high-maintenance or too few players to rent for; if a carrier walks in with their own, the honored seat + secure storage + tuned-mic setup is theirs | ⚪ CUT |
 
 **DJ rig:**
 | Item | Status |
@@ -300,8 +302,8 @@ Daily grid, slot lengths, and curated lineup are the committee's September–Oct
 | **Kartal** करताल | Rhythm | Minutes | Strike on beat one of the taal, and simply stay there — you are now the circle's pulse |
 | **Manjira** मंजीरा | Rhythm | Minutes | Small strikes off the beat; let the ring do the work |
 | **Shruti box** श्रुति बॉक्स | Drone | Minutes | Steady bellows, one note — you've become the home every melody returns to |
-| **Tanpura** तानपुरा | Drone | Minutes | One slow strum, then another; the drone is not a solo, it is the ground itself |
 | **Dhol** ढोल | Rhythm | An afternoon | The basic *dha-ge-na* groove comes in an afternoon; mastery is lifelong |
+| **Harmonium** हारमोनियम | Melody & keys | Minutes | Every classical singer in India grew up beside one — touch a keyboard and you're holding the sa-pa drone for the whole circle in minutes |
 
 ### Tier Two · An afternoon to join — quick to join, deep to master
 *The welcoming middle — folk instruments with forgiving hands.*
@@ -310,19 +312,17 @@ Daily grid, slot lengths, and curated lineup are the committee's September–Oct
 |---|---|---|---|
 | **Dholak** ढोलक | Rhythm | An afternoon | Bass with one hand, edge with the other — the groove finds you |
 | **Kanjira** कांजीरा | Rhythm | An afternoon | The shake-and-stroke groove comes fast; the masters turn it into water |
-| **Harmonium** हारमोनियम | Melody & keys | An afternoon | If you've ever touched a keyboard, you can hold chords for the singers within one session |
 
 ### Tier Three · Masters hold these seats — honored voices
-*Decades-deep traditions. Not handed out at the door — the masters of Mumbai hold these seats as honored guests, and the circle gathers around them.*
+*Decades-deep traditions. Not handed out at the door — the masters of Mumbai hold these seats as honored guests, and the circle gathers around them.* **Tabla & bansuri are also the circle's bare minimum — every classical musician in India knows them, so these two seats are never empty for long.**
 
 | Instrument | Family | Mastery | In the circle |
 |---|---|---|---|
 | **Tabla** तबला | Rhythm | Years of riyaz | The soul of the jam — the circle's North Star; twenty kartal keep the same taal alongside |
 | **Bansuri** बाँसुरी | Melody | Years | Breath itself made music; when the master plays, the whole jam leans in |
-| **Sitar** सितार | Melody | Decades | A seat of honor at the heart of the jam, offered with deep respect |
-| **Sarod** सरोद | Melody | Decades | When the sarod speaks, even the dhol plays softer |
-| **Santoor** संतूर | Melody | Decades | A hundred strings like rain on a rooftop — the sound of the circle exhaling |
-| **Violin** वायलिन | Melody | Years | At home in Carnatic tradition *and* Western jam culture — the bridge was always there |
+| **Sitar** सितार | Melody | Bring your own · watch | High-maintenance — carriers travel with their own; when one walks in, the seat of honor is theirs (Aakash, Aug 4) |
+
+> 🪔 **Tuned Aug 4 with Aakash (Devcon Music Space call):** bare minimum = harmonium · tabla · bansuri; tanpura, santoor, violin & sarod released with love (high-maintenance / rare players); sitar = bring-your-own watch until the musician walkthroughs. Tiers kept for now — dissolving them into one wish list was floated, no final call.
 
 ### The design
 - **The gradient is not a problem to solve. The gradient is the design.** The tabla master and the first-time kartal player keep the same taal — one holds the architecture, twenty hold the pulse.
