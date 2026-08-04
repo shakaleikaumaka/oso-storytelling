@@ -1,0 +1,845 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Open Source Orchestra — Devcon 8 Music Space Rider 🎼📋</title>
+<meta name="description" content="Technical rider & instrument list for the Open Source Orchestra Music Space at Devcon 8 Mumbai — Sanctuary Tech circular stage, community backline, permissionless instruments. CC0.">
+<style>
+:root{
+  --night:#0b0612; --deep:#150b22; --violet:#2a1740; --plum:#3d1c42;
+  --cream:#f7ecd9; --cream-dim:rgba(247,236,217,.72); --cream-faint:rgba(247,236,217,.45);
+  --gold:#f0c464; --gold-bright:#ffd97a; --gold-soft:rgba(240,196,100,.35);
+  --coral:#ff8a5c; --rose:#e86a92; --teal:#2dd4bf;
+  --serif:'Iowan Old Style','Palatino Linotype',Palatino,'Book Antiqua',Georgia,'Times New Roman',serif;
+  --sans:ui-sans-serif,system-ui,-apple-system,'Segoe UI',Roboto,Helvetica,Arial,sans-serif;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{background:var(--night);color:var(--cream);font-family:var(--serif);line-height:1.65;
+  background-image:radial-gradient(ellipse 90% 60% at 50% -10%,rgba(61,28,66,.55),transparent 70%);}
+h1,h2,h3{font-weight:600;line-height:1.15}
+a{color:var(--gold-bright)}
+.wrap{max-width:1060px;margin:0 auto;padding:0 20px}
+
+/* ── hero ── */
+.hero{position:relative;text-align:center;padding:88px 20px 56px;overflow:hidden}
+.rings{position:absolute;left:50%;top:46%;transform:translate(-50%,-50%);width:min(860px,160vw);opacity:.5;pointer-events:none}
+.rings svg{width:100%;height:auto;display:block}
+.spin-a{animation:spin 120s linear infinite}
+.spin-b{animation:spin 180s linear infinite reverse}
+@keyframes spin{to{transform:rotate(360deg)}}
+.kicker{font-family:var(--sans);font-size:.72rem;letter-spacing:.34em;text-transform:uppercase;color:var(--gold);position:relative}
+.hero h1{font-size:clamp(2rem,5.4vw,3.4rem);margin:.5rem 0 .3rem;position:relative}
+.hero h1 em{color:var(--gold);font-style:italic}
+.hero .sub{font-family:var(--sans);font-size:.95rem;color:var(--cream-dim);position:relative}
+.hero .vibe{margin-top:1.4rem;font-style:italic;color:var(--gold-bright);font-size:clamp(1rem,2.2vw,1.2rem);position:relative}
+.meta-chips{display:flex;flex-wrap:wrap;gap:8px;justify-content:center;margin-top:1.6rem;position:relative}
+.chip{font-family:var(--sans);font-size:.72rem;letter-spacing:.12em;text-transform:uppercase;
+  border:1px solid var(--gold-soft);border-radius:999px;padding:.35em 1em;color:var(--cream-dim);background:rgba(21,11,34,.6)}
+
+/* ── legend ── */
+.legend{display:flex;flex-wrap:wrap;gap:10px;justify-content:center;margin:26px 0 8px}
+.tag{display:inline-block;font-family:var(--sans);font-weight:700;font-size:.66rem;letter-spacing:.14em;text-transform:uppercase;
+  border-radius:999px;padding:.28em .9em;white-space:nowrap}
+.tag-confirmed{color:#1a1206;background:var(--gold)}
+.tag-proposed{color:#06231f;background:var(--teal)}
+.tag-tbd{color:#2b0a16;background:var(--rose)}
+.legend .tag{box-shadow:0 0 0 1px rgba(247,236,217,.12)}
+.note{font-family:var(--sans);font-size:.82rem;color:var(--cream-faint);text-align:center}
+
+/* ── nav ── */
+nav{position:sticky;top:0;z-index:50;background:rgba(11,6,18,.88);backdrop-filter:blur(10px);
+  border-bottom:1px solid rgba(240,196,100,.22);margin-top:30px}
+nav .wrap{display:flex;gap:4px;overflow-x:auto;padding:10px 14px;scrollbar-width:none}
+nav a{font-family:var(--sans);font-size:.72rem;letter-spacing:.1em;text-transform:uppercase;color:var(--cream-dim);
+  text-decoration:none;padding:.4em .8em;border-radius:999px;white-space:nowrap}
+nav a:hover{color:var(--gold-bright);background:rgba(240,196,100,.1)}
+
+/* ── sections ── */
+section{padding:44px 0 8px}
+.sec-head{display:flex;align-items:baseline;gap:14px;border-bottom:1px solid rgba(240,196,100,.25);padding-bottom:10px;margin-bottom:20px}
+.sec-head .num{font-family:var(--sans);font-size:.78rem;letter-spacing:.3em;color:var(--gold);text-transform:uppercase;white-space:nowrap}
+.sec-head h2{font-size:clamp(1.35rem,3vw,1.8rem)}
+.sec-head h2 em{color:var(--gold);font-style:italic}
+.lede{color:var(--cream-dim);max-width:70ch;margin-bottom:18px}
+.lede em{color:var(--gold-bright)}
+
+.card{background:linear-gradient(160deg,rgba(42,23,64,.5),rgba(21,11,34,.72));border:1px solid rgba(240,196,100,.16);
+  border-radius:14px;padding:18px 20px;margin-bottom:14px}
+.card h3{font-size:1.05rem;color:var(--gold-bright);margin-bottom:8px}
+
+/* tables */
+table{width:100%;border-collapse:collapse;font-family:var(--sans);font-size:.86rem;margin:6px 0 4px}
+th{font-size:.68rem;letter-spacing:.16em;text-transform:uppercase;color:var(--gold);text-align:left;
+  border-bottom:1px solid var(--gold-soft);padding:8px 10px}
+td{padding:8px 10px;border-bottom:1px solid rgba(247,236,217,.09);color:var(--cream-dim);vertical-align:top}
+tr:hover td{background:rgba(240,196,100,.045)}
+td:first-child{color:var(--cream)}
+.tbl-scroll{overflow-x:auto}
+.patch td:nth-child(1){color:var(--gold);font-weight:700;width:3ch}
+.tag-in{margin-left:6px}
+
+/* stage plot */
+.plot{display:grid;grid-template-columns:1fr;gap:18px;align-items:start}
+.plot svg{width:100%;height:auto;display:block;border-radius:14px}
+.plot-key{font-family:var(--sans);font-size:.82rem;color:var(--cream-dim)}
+.plot-key li{margin:7px 0;list-style:none;display:flex;gap:9px;align-items:baseline}
+.plot-key b{color:var(--gold-bright);min-width:2.2ch;display:inline-block}
+@media(min-width:880px){.plot{grid-template-columns:1.35fr 1fr}}
+
+/* circle instruments tiers */
+.tier{margin:26px 0}
+.tier-head{display:flex;flex-wrap:wrap;align-items:baseline;gap:12px;margin-bottom:12px}
+.tier-head h3{font-size:1.15rem}
+.tier-head .join{font-family:var(--sans);font-size:.7rem;letter-spacing:.2em;text-transform:uppercase;border-radius:999px;padding:.3em 1em;font-weight:700}
+.tier-1 .join{background:var(--teal);color:#06231f}
+.tier-2 .join{background:var(--gold);color:#1a1206}
+.tier-3 .join{background:var(--rose);color:#2b0a16}
+.tier-head p{width:100%;font-size:.92rem;color:var(--cream-faint);font-style:italic}
+.inst-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(215px,1fr));gap:12px}
+.inst{background:linear-gradient(160deg,rgba(42,23,64,.5),rgba(21,11,34,.72));border:1px solid rgba(240,196,100,.16);
+  border-radius:14px;padding:15px 16px}
+.tier-1 .inst{border-color:rgba(45,212,191,.35)}
+.tier-3 .inst{border-color:rgba(232,106,146,.4)}
+.inst .nm{font-size:1.08rem;color:var(--gold-bright)}
+.inst .dev{font-size:1rem;color:var(--cream-dim);margin-left:6px}
+.inst .meta{display:flex;gap:6px;flex-wrap:wrap;margin:8px 0}
+.inst .meta span{font-family:var(--sans);font-size:.62rem;letter-spacing:.12em;text-transform:uppercase;
+  border:1px solid var(--gold-soft);border-radius:999px;padding:.22em .8em;color:var(--cream-dim)}
+.tier-1 .inst .meta .j{border-color:rgba(45,212,191,.5);color:var(--teal)}
+.tier-2 .inst .meta .j{border-color:rgba(240,196,100,.55);color:var(--gold-bright)}
+.tier-3 .inst .meta .j{border-color:rgba(232,106,146,.55);color:var(--rose)}
+.inst p{font-size:.85rem;color:var(--cream-dim);line-height:1.55}
+.inst p b{color:var(--cream)}
+.philosophy{display:grid;grid-template-columns:1fr;gap:12px;margin:20px 0}
+@media(min-width:760px){.philosophy{grid-template-columns:1fr 1fr}}
+.phil{background:rgba(240,196,100,.05);border-left:2px solid var(--gold);border-radius:0 12px 12px 0;padding:14px 16px;font-size:.92rem;color:var(--cream-dim)}
+.phil b{color:var(--gold-bright)}
+
+/* schedule */
+.sched td:first-child{white-space:nowrap;color:var(--gold-bright);font-family:var(--sans);font-size:.8rem}
+
+/* questions */
+.qs{counter-reset:q}
+.qs li{list-style:none;counter-increment:q;margin:12px 0;padding:14px 16px;border-left:2px solid var(--rose);
+  background:rgba(232,106,146,.06);border-radius:0 12px 12px 0;color:var(--cream-dim);font-size:.95rem}
+.qs li::before{content:"Q" counter(q) " · ";font-family:var(--sans);font-weight:700;font-size:.75rem;color:var(--rose);letter-spacing:.1em}
+.qs b{color:var(--cream)}
+
+/* quotes */
+.pull{font-style:italic;font-size:clamp(1.05rem,2.4vw,1.3rem);color:var(--gold-bright);text-align:center;
+  max-width:56ch;margin:34px auto;padding:0 20px}
+.pull cite{display:block;font-family:var(--sans);font-style:normal;font-size:.72rem;letter-spacing:.26em;
+  text-transform:uppercase;color:var(--cream-faint);margin-top:10px}
+
+footer{margin-top:60px;border-top:1px solid rgba(240,196,100,.25);padding:36px 20px 90px;text-align:center}
+footer .sig{font-style:italic;font-size:1.15rem;color:var(--gold-bright);margin-bottom:12px}
+footer p{font-family:var(--sans);font-size:.78rem;color:var(--cream-faint);max-width:70ch;margin:6px auto}
+footer .fork{font-size:.95rem;color:var(--cream-dim);margin-top:14px}
+
+/* floating notes */
+.note-float{position:absolute;font-size:1.1rem;color:var(--gold-soft);animation:rise var(--dur,32s) linear infinite;animation-delay:var(--delay,0s);opacity:0;pointer-events:none}
+@keyframes rise{0%{transform:translateY(24vh);opacity:0}12%{opacity:.8}88%{opacity:.6}100%{transform:translateY(-80vh);opacity:0}}
+
+@media (max-width:640px){
+  th,td{padding:7px 7px;font-size:.8rem}
+  .hero{padding-top:64px}
+}
+/* ── print: warm paper, everything visible ── */
+@media print{
+  body{background:#fff;color:#1a1410;font-size:11pt}
+  .rings,.note-float,nav{display:none!important}
+  .hero{padding:0 0 12px}
+  .hero h1 em,.lede em,.sec-head h2 em,.card h3,.pull{color:#8a5a00}
+  .kicker,.sec-head .num,th{color:#8a5a00}
+  a{color:#1a1410}
+  .card,.qs li{background:#fff;border:1px solid #ccc;break-inside:avoid}
+  td,th{border-color:#ddd;color:#333}
+  td:first-child{color:#1a1410}
+  .tag{border:1px solid #999;color:#1a1410;background:#fff}
+  section{padding:14px 0;break-inside:avoid-page}
+  .plot{grid-template-columns:1fr}
+  footer p,footer .sig{color:#333}
+}
+</style>
+</head>
+<body>
+
+<header class="hero">
+  <div class="rings" aria-hidden="true">
+    <svg viewBox="0 0 800 800" fill="none">
+      <g class="spin-a" style="transform-origin:400px 400px">
+        <circle cx="400" cy="400" r="380" stroke="#f0c464" stroke-opacity=".25"/>
+        <circle cx="400" cy="400" r="330" stroke="#f0c464" stroke-opacity=".18" stroke-dasharray="4 10"/>
+        <circle cx="400" cy="400" r="270" stroke="#e86a92" stroke-opacity=".16"/>
+        <circle cx="400" cy="400" r="205" stroke="#f0c464" stroke-opacity=".2" stroke-dasharray="2 8"/>
+      </g>
+      <g class="spin-b" style="transform-origin:400px 400px">
+        <circle cx="400" cy="400" r="150" stroke="#2dd4bf" stroke-opacity=".16"/>
+        <circle cx="400" cy="400" r="100" stroke="#f0c464" stroke-opacity=".3" stroke-dasharray="1 6"/>
+        <circle cx="400" cy="400" r="56" stroke="#f0c464" stroke-opacity=".4"/>
+      </g>
+    </svg>
+  </div>
+  <span class="note-float" style="left:10%;--dur:34s">♪</span>
+  <span class="note-float" style="left:26%;--dur:40s;--delay:9s">♫</span>
+  <span class="note-float" style="left:74%;--dur:30s;--delay:4s">♩</span>
+  <span class="note-float" style="left:88%;--dur:38s;--delay:14s">♪</span>
+  <p class="kicker">Devcon 8 · Mumbai · Culture Track · DIP #8576</p>
+  <h1>🎼 Open Source Orchestra<br><em>Music Space Rider</em></h1>
+  <p class="sub">Technical rider &amp; instrument list · JIO World Convention Centre · November 3–6, 2026</p>
+  <p class="vibe">"Sanctuary Tech — a circular, non-directional, conductorless stage.<br>The instruments are permissionless. The stage is a sanctuary."</p>
+  <div class="meta-chips">
+    <span class="chip">v1.3-draft · 2026-07-27</span>
+    <span class="chip">Stewards: Shaka · Alaska · Aakash · Tomo</span>
+    <span class="chip">CC0 — fork me like crazy 🍴</span>
+  </div>
+  <div class="legend">
+    <span class="tag tag-confirmed">✅ Confirmed</span>
+    <span class="tag tag-proposed">🔵 Proposed</span>
+    <span class="tag tag-tbd">🟠 TBD</span>
+  </div>
+  <p class="note">Radical honesty: every line is tagged. The rider never claims what isn't locked. Everything is 🔵 Proposed unless stated otherwise.</p>
+</header>
+
+<nav><div class="wrap">
+  <a href="#facts">Facts</a><a href="#space">Space &amp; Stage</a><a href="#plot">Stage Plot</a>
+  <a href="#pa">PA</a><a href="#foh">Mixing</a><a href="#patch">Input List</a>
+  <a href="#mics">Mics &amp; DI</a><a href="#backline">Backline</a><a href="#circle-instruments">Circle Instruments</a><a href="#monitors">Monitors</a>
+  <a href="#power">Power</a><a href="#light">Light</a><a href="#recording">Recording · P.I.T.</a>
+  <a href="#spl">SPL</a><a href="#flow">Changeover</a><a href="#crew">Crew</a>
+  <a href="#schedule">Schedule</a><a href="#hospitality">Hospitality</a>
+</div></nav>
+
+<main class="wrap">
+
+<section id="facts">
+  <div class="sec-head"><span class="num">§ 0</span><h2>Event <em>facts</em></h2></div>
+  <div class="card"><div class="tbl-scroll"><table>
+    <tr><th>Fact</th><th>Status</th></tr>
+    <tr><td>Devcon 8, Mumbai — November 3–6, 2026</td><td><span class="tag tag-confirmed">Confirmed</span></td></tr>
+    <tr><td>JIO World Convention Centre</td><td><span class="tag tag-confirmed">Confirmed</span></td></tr>
+    <tr><td>Music Space registered as Culture Track — <a href="https://forum.devcon.org/t/open-source-orchestra-music-space-at-devcon-8-mumbai/8576">DIP #8576</a> (2026-04-20)</td><td><span class="tag tag-confirmed">Confirmed</span></td></tr>
+    <tr><td>Prior activations: Devcon 6 Bogotá · Devcon SEA Bangkok · Devconnect AMS / IST / BA</td><td><span class="tag tag-confirmed">Confirmed</span></td></tr>
+    <tr><td>Exact room / hall allocation at JIO World</td><td><span class="tag tag-tbd">TBD — Devcon production</span></td></tr>
+    <tr><td>Provision split: Devcon house stock vs. OSO local rental</td><td><span class="tag tag-tbd">TBD</span></td></tr>
+  </table></div></div>
+</section>
+
+<section id="space">
+  <div class="sec-head"><span class="num">§ 1</span><h2>Space &amp; stage — <em>Sanctuary Tech</em></h2></div>
+  <p class="lede">The stage is <em>circular and non-directional</em>. There is no "front." Performers face one another; the audience wraps around the music. Warmth, belonging, refuge — a home with clear boundaries and an open invitation.</p>
+  <div class="card"><div class="tbl-scroll"><table>
+    <tr><th>Requirement</th><th>Detail</th><th>Status</th></tr>
+    <tr><td>Dedicated open space</td><td>100+ m², soundproof or acoustically isolated (per DIP)</td><td><span class="tag tag-confirmed">Confirmed ask</span> <span class="tag tag-tbd tag-in">Allocation TBD</span></td></tr>
+    <tr><td>Circular stage</td><td>6 m Ø performance circle (fits 6–10 players + floor seating), defined by rugs + low LED ring — eye-level, walk-in, no barrier</td><td><span class="tag tag-proposed">Proposed</span></td></tr>
+    <tr><td>Floor-seating quadrant</td><td>Rugs + cushions for Indian classical players (tabla, harmonium, bansuri) — essential, not decorative</td><td><span class="tag tag-proposed">Proposed</span></td></tr>
+    <tr><td>Location</td><td>Near community hubs / meal area / main circulation (per DIP)</td><td><span class="tag tag-confirmed">Confirmed ask</span></td></tr>
+    <tr><td>Stage management corner</td><td>Facilitator desk, comms, patch access</td><td><span class="tag tag-proposed">Proposed</span></td></tr>
+    <tr><td>Overnight storage</td><td>Lockable, in or adjacent to the space (per DIP)</td><td><span class="tag tag-confirmed">Confirmed ask</span> <span class="tag tag-tbd tag-in">Security detail TBD</span></td></tr>
+    <tr><td>Audience wrap</td><td>Standing ring + cushion ring; 360° circulation kept clear for convention-centre egress</td><td><span class="tag tag-proposed">Proposed</span> <span class="tag tag-tbd tag-in">Venue ops TBD</span></td></tr>
+    <tr><td>Room occupancy limit</td><td>For the allocated space</td><td><span class="tag tag-tbd">TBD — venue</span></td></tr>
+  </table></div></div>
+</section>
+
+<section id="plot">
+  <div class="sec-head"><span class="num">§ 1.5</span><h2>The <em>circle</em>, drawn</h2></div>
+  <div class="plot">
+    <div class="card">
+      <svg viewBox="0 0 640 640" role="img" aria-label="Circular stage plot: 6-metre performance circle with stations around the ring, audience wrap, PA at four quadrants, FOH at perimeter">
+        <defs>
+          <radialGradient id="glow" cx="50%" cy="50%" r="50%">
+            <stop offset="0%" stop-color="#f0c464" stop-opacity=".12"/>
+            <stop offset="70%" stop-color="#3d1c42" stop-opacity=".25"/>
+            <stop offset="100%" stop-color="#150b22" stop-opacity="0"/>
+          </radialGradient>
+        </defs>
+        <circle cx="320" cy="310" r="300" fill="url(#glow)"/>
+        <!-- room hint -->
+        <rect x="18" y="14" width="604" height="592" rx="26" fill="none" stroke="#f7ecd9" stroke-opacity=".12" stroke-dasharray="3 8"/>
+        <text x="36" y="40" fill="#f7ecd9" fill-opacity=".4" font-family="ui-sans-serif,system-ui" font-size="11" letter-spacing="3">100+ m² · SOUNDPROOF (TBD)</text>
+        <!-- audience ring -->
+        <circle cx="320" cy="310" r="222" fill="none" stroke="#f7ecd9" stroke-opacity=".14"/>
+        <circle cx="320" cy="310" r="252" fill="none" stroke="#f7ecd9" stroke-opacity=".09"/>
+        <g fill="#f7ecd9" fill-opacity=".3">
+          <circle cx="320" cy="73" r="3"/><circle cx="438" cy="104" r="3"/><circle cx="522" cy="192" r="3"/>
+          <circle cx="553" cy="310" r="3"/><circle cx="522" cy="428" r="3"/><circle cx="438" cy="516" r="3"/>
+          <circle cx="320" cy="547" r="3"/><circle cx="202" cy="516" r="3"/><circle cx="118" cy="428" r="3"/>
+          <circle cx="87" cy="310" r="3"/><circle cx="118" cy="192" r="3"/><circle cx="202" cy="104" r="3"/>
+        </g>
+        <text x="320" y="66" fill="#f7ecd9" fill-opacity=".45" font-family="ui-sans-serif,system-ui" font-size="11" letter-spacing="3" text-anchor="middle">AUDIENCE WRAPS 360°</text>
+        <!-- PA quadrants -->
+        <g>
+          <rect x="476" y="476" width="22" height="22" rx="4" fill="#2dd4bf" fill-opacity=".85" transform="rotate(45 487 487)"/>
+          <rect x="142" y="476" width="22" height="22" rx="4" fill="#2dd4bf" fill-opacity=".85" transform="rotate(45 153 487)"/>
+          <rect x="142" y="122" width="22" height="22" rx="4" fill="#2dd4bf" fill-opacity=".85" transform="rotate(45 153 133)"/>
+          <rect x="476" y="122" width="22" height="22" rx="4" fill="#2dd4bf" fill-opacity=".85" transform="rotate(45 487 133)"/>
+        </g>
+        <text x="516" y="470" fill="#2dd4bf" font-family="ui-sans-serif,system-ui" font-size="11">PA ×4</text>
+        <!-- performance circle -->
+        <circle cx="320" cy="310" r="140" fill="rgba(240,196,100,.05)" stroke="#f0c464" stroke-opacity=".8" stroke-width="1.6"/>
+        <circle cx="320" cy="310" r="140" fill="none" stroke="#f0c464" stroke-opacity=".3" stroke-dasharray="2 7" stroke-width="4"/>
+        <text x="320" y="302" fill="#f0c464" font-family="ui-sans-serif,system-ui" font-size="12" letter-spacing="3" text-anchor="middle">THE CIRCLE</text>
+        <text x="320" y="322" fill="#f7ecd9" fill-opacity=".6" font-family="ui-sans-serif,system-ui" font-size="11" text-anchor="middle">Ø 6 m · no front</text>
+        <!-- monitors -->
+        <g fill="#e86a92" fill-opacity=".8">
+          <path d="M386 376 l16 16 -22 6 z"/><path d="M238 376 l-16 16 22 6 z"/>
+          <path d="M238 244 l-16 -16 22 -6 z"/><path d="M386 244 l16 -16 -22 -6 z"/>
+        </g>
+        <text x="408" y="424" fill="#e86a92" font-family="ui-sans-serif,system-ui" font-size="10">wedges ×4</text>
+        <!-- stations -->
+        <g font-family="ui-sans-serif,system-ui" font-size="12" text-anchor="middle">
+          <circle cx="320" cy="196" r="24" fill="#3d1c42" stroke="#f0c464" stroke-opacity=".7"/>
+          <text x="320" y="200" fill="#f7ecd9">🥁</text><text x="320" y="162" fill="#ffd97a">DRUMS + SUB</text>
+          <circle cx="418" cy="254" r="24" fill="#3d1c42" stroke="#f0c464" stroke-opacity=".7"/>
+          <text x="418" y="258" fill="#f7ecd9">🎹</text><text x="452" y="238" fill="#ffd97a">KEYS · DAW</text>
+          <circle cx="418" cy="366" r="24" fill="#3d1c42" stroke="#f0c464" stroke-opacity=".7"/>
+          <text x="418" y="370" fill="#f7ecd9">🎧</text><text x="456" y="392" fill="#ffd97a">DJ RIG</text>
+          <circle cx="320" cy="424" r="24" fill="#3d1c42" stroke="#f0c464" stroke-opacity=".7"/>
+          <text x="320" y="428" fill="#f7ecd9">🪘</text><text x="320" y="466" fill="#ffd97a">PERCUSSION</text>
+          <circle cx="222" cy="366" r="24" fill="#3d1c42" stroke="#2dd4bf" stroke-opacity=".9"/>
+          <text x="222" y="370" fill="#f7ecd9">🪕</text><text x="180" y="394" fill="#2dd4bf">FLOOR SEATS 🇮🇳</text>
+          <circle cx="222" cy="254" r="24" fill="#3d1c42" stroke="#f0c464" stroke-opacity=".7"/>
+          <text x="222" y="258" fill="#f7ecd9">🎤</text><text x="188" y="236" fill="#ffd97a">VOCAL RING</text>
+        </g>
+        <!-- guitar/bass float markers -->
+        <g font-family="ui-sans-serif,system-ui" font-size="10" fill="#f7ecd9" fill-opacity=".55" text-anchor="middle">
+          <text x="272" y="222">🎸 gtr/bass</text>
+          <text x="370" y="404">walk-up DI ✚</text>
+        </g>
+        <!-- FOH -->
+        <line x1="320" y1="450" x2="320" y2="560" stroke="#f0c464" stroke-opacity=".5" stroke-dasharray="5 6"/>
+        <rect x="272" y="560" width="96" height="34" rx="8" fill="#150b22" stroke="#f0c464" stroke-opacity=".8"/>
+        <text x="320" y="581" fill="#f0c464" font-family="ui-sans-serif,system-ui" font-size="12" text-anchor="middle">FOH ⏨</text>
+        <!-- entrance / storage -->
+        <rect x="492" y="48" width="118" height="30" rx="8" fill="none" stroke="#e86a92" stroke-opacity=".7"/>
+        <text x="551" y="67" fill="#e86a92" font-family="ui-sans-serif,system-ui" font-size="10" text-anchor="middle">CHECK-IN TABLE</text>
+        <rect x="30" y="48" width="118" height="30" rx="8" fill="none" stroke="#e86a92" stroke-opacity=".7"/>
+        <text x="89" y="67" fill="#e86a92" font-family="ui-sans-serif,system-ui" font-size="10" text-anchor="middle">🔒 STORAGE</text>
+        <!-- power -->
+        <g fill="#ffd97a" fill-opacity=".9" font-family="ui-sans-serif,system-ui" font-size="10">
+          <text x="500" y="310">⚡</text><text x="130" y="310">⚡</text><text x="320" y="120">⚡</text><text x="320" y="514">⚡</text>
+        </g>
+        <text x="320" y="624" fill="#f7ecd9" fill-opacity=".45" font-family="ui-sans-serif,system-ui" font-size="10" letter-spacing="2" text-anchor="middle">20+ CIRCUITS AROUND THE RING · ALL CABLE RUNS RAMPED FOR EGRESS</text>
+      </svg>
+    </div>
+    <div class="card">
+      <h3>How to read the circle</h3>
+      <ul class="plot-key">
+        <li><b>◎</b> The performance circle — Ø 6 m proposed, defined by rugs and light, not barriers. Walk in from any side.</li>
+        <li><b>🥁</b> Kit &amp; sub at one pole — the loudest source sits opposite the floor-seated classical players. <span class="tag tag-tbd">Acoustic kit TBD</span></li>
+        <li><b>🪕</b> Floor-seating quadrant (teal) — tabla, harmonium, bansuri on rugs &amp; cushions, condenser-mic'd.</li>
+        <li><b>▣</b> 4× powered tops at the quadrants, firing outward — even 360° coverage at low level. <span class="tag tag-proposed">Proposed</span></li>
+        <li><b>◢</b> 4 wedges + side-fill: performers spread wide in a circle need their own mixes.</li>
+        <li><b>⏨</b> FOH at the perimeter with sightline <em>into</em> the ring, on hardline internet for the stream.</li>
+        <li><b>⚡</b> Power drops at every station — nobody runs a cable across the circle. Ever.</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section id="pa">
+  <div class="sec-head"><span class="num">§ 2</span><h2>PA / mains — <em>sound in the round</em></h2></div>
+  <p class="lede">Distributed, modest, warm. This is a sanctuary inside a convention centre — <em>coverage, not concert SPL</em>.</p>
+  <div class="card"><div class="tbl-scroll"><table>
+    <tr><th>Item</th><th>Spec</th><th>Status</th></tr>
+    <tr><td>Mains</td><td>4× compact powered tops (10–12" class — QSC K12.2 / d&amp;b E-series class) on poles at the four quadrants, firing outward</td><td><span class="tag tag-proposed">Proposed</span></td></tr>
+    <tr><td>Alternative</td><td>2× column arrays (Bose L1 Pro32 / Maui class) opposite — cleaner sightlines, easier load-in</td><td><span class="tag tag-proposed">Proposed fallback</span></td></tr>
+    <tr><td>Sub</td><td>1× compact powered sub, placed to minimise boundary build-up; bypass switch for acoustic/classical sessions</td><td><span class="tag tag-proposed">Proposed</span></td></tr>
+    <tr><td>Alignment</td><td>All quadrants time-aligned to circle centre; mono-compatible — the circle is one instrument</td><td><span class="tag tag-proposed">Proposed</span></td></tr>
+    <tr><td>Actual provision</td><td>Depends on Devcon production house stock — this section doubles as the spec sheet</td><td><span class="tag tag-tbd">TBD</span></td></tr>
+  </table></div></div>
+</section>
+
+<section id="foh">
+  <div class="sec-head"><span class="num">§ 3</span><h2>Mixing &amp; <em>FOH</em></h2></div>
+  <div class="card"><div class="tbl-scroll"><table>
+    <tr><th>Item</th><th>Spec</th><th>Status</th></tr>
+    <tr><td>Console</td><td><b>32-channel digital</b> — Behringer X32, A&amp;H SQ-5/QU-32, or similar (32 inputs confirmed by Shaka, 2026-07-27)</td><td><span class="tag tag-proposed">Proposed · committee direction</span></td></tr>
+    <tr><td>Aux sends</td><td>6–8 aux outs for individual monitor mixes</td><td><span class="tag tag-proposed">Proposed</span></td></tr>
+    <tr><td>FOH position</td><td>Perimeter, clear sightline into the ring; hardline network for the streaming rig</td><td><span class="tag tag-proposed">Proposed</span></td></tr>
+    <tr><td>Engineers</td><td>1–2 from production provider (per DIP); OSO community engineers support alongside</td><td><span class="tag tag-confirmed">Confirmed ask</span></td></tr>
+    <tr><td>Multitrack</td><td>Console USB/SD multitrack — feeds §11 recording</td><td><span class="tag tag-proposed">Proposed</span></td></tr>
+    <tr><td>Show file</td><td>One shared "Circle" safe scene + per-slot snapshots; open jams always return to Circle</td><td><span class="tag tag-proposed">Proposed</span></td></tr>
+  </table></div></div>
+</section>
+
+<section id="patch">
+  <div class="sec-head"><span class="num">§ 4</span><h2>Input list — the <em>32-channel Circle Patch</em></h2></div>
+  <p class="lede">32 inputs per committee direction (Shaka, 2026-07-27). Channels 1–18 are the permanent community backline; <em>19–21 are the stewards' own voices</em> — Shaka's stereo uke looper and Alaska's sax; 22–26 the vocal ring; <em>27–29 the permissionless layer — three walk-up spots, always line-checked</em>, so a stranger is one fader away from the circle; 30–31 capture the room itself for the stream &amp; P.I.T. archive; 32 says yes.</p>
+  <div class="card"><div class="tbl-scroll"><table class="patch">
+    <tr><th>Ch</th><th>Source</th><th>Mic / DI</th><th>Notes</th></tr>
+    <tr><td>1</td><td>Kick / dhol low</td><td>Beta 52A / D112</td><td>Shared kit &amp; dhol</td></tr>
+    <tr><td>2</td><td>Snare</td><td>SM57</td><td></td></tr>
+    <tr><td>3</td><td>OH L</td><td>Condenser (SM81/C414)</td><td>Also covers percussion circle</td></tr>
+    <tr><td>4</td><td>OH R</td><td>Condenser (SM81/C414)</td><td></td></tr>
+    <tr><td>5</td><td>Percussion 1 — djembe/congas</td><td>SM57</td><td></td></tr>
+    <tr><td>6</td><td>Percussion 2 — cajon</td><td>SM57</td><td>Float: brass/woodwind walk-ups</td></tr>
+    <tr><td>7</td><td>Tabla</td><td>Condenser</td><td>Floor-seating quadrant</td></tr>
+    <tr><td>8</td><td>Bansuri / traditional lead</td><td>Wireless HH #1 / condenser</td><td>Roaming traditional instruments</td></tr>
+    <tr><td>9</td><td>Bass</td><td>DI</td><td>DI primary, amp optional</td></tr>
+    <tr><td>10</td><td>Electric guitar amp</td><td>SM57 (float) / DI</td><td>Shares w/ ch 6 full-band</td></tr>
+    <tr><td>11</td><td>Keys L</td><td>DI</td><td>Electric piano / synth</td></tr>
+    <tr><td>12</td><td>Keys R</td><td>DI</td><td></td></tr>
+    <tr><td>13</td><td>Drum machine L</td><td>DI</td><td></td></tr>
+    <tr><td>14</td><td>Drum machine R</td><td>DI</td><td></td></tr>
+    <tr><td>15</td><td>Laptop / DAW L</td><td>DI</td><td>Live coders · algorave</td></tr>
+    <tr><td>16</td><td>Laptop / DAW R</td><td>DI</td><td></td></tr>
+    <tr><td>17</td><td>DJ L</td><td>Line / DI</td><td>Booth out</td></tr>
+    <tr><td>18</td><td>DJ R</td><td>Line / DI</td><td></td></tr>
+    <tr style="background:rgba(240,196,100,.07)"><td>19</td><td><b>Shaka's ukulele looper L</b></td><td>DI</td><td>Stereo looper rig — 2 ch per Shaka, 2026-07-27</td></tr>
+    <tr style="background:rgba(240,196,100,.07)"><td>20</td><td><b>Shaka's ukulele looper R</b></td><td>DI</td><td></td></tr>
+    <tr style="background:rgba(240,196,100,.07)"><td>21</td><td><b>Alaska's saxophone</b></td><td>Clip condenser (DPA 4099 / Beta 98H/C class)</td><td>Clip keeps the circle mobile</td></tr>
+    <tr><td>22</td><td>Vocal 1</td><td>SM58</td><td>Rotating vocal ring</td></tr>
+    <tr><td>23</td><td>Vocal 2</td><td>SM58</td><td></td></tr>
+    <tr><td>24</td><td>Vocal 3</td><td>SM58</td><td></td></tr>
+    <tr><td>25</td><td>Vocal 4</td><td>SM58</td><td></td></tr>
+    <tr><td>26</td><td>Wireless HH #2</td><td>Sennheiser EW-class</td><td>MC / roaming performers</td></tr>
+    <tr style="background:rgba(45,212,191,.07)"><td>27</td><td><b>Walk-up 1</b></td><td>—</td><td>Always line-checked, always hot</td></tr>
+    <tr style="background:rgba(45,212,191,.07)"><td>28</td><td><b>Walk-up 2</b></td><td>—</td><td></td></tr>
+    <tr style="background:rgba(45,212,191,.07)"><td>29</td><td><b>Walk-up 3</b></td><td>—</td><td>Three walk-up spots per Shaka, 2026-07-27</td></tr>
+    <tr><td>30</td><td>Room / audience L</td><td>Condenser (pair)</td><td>The sound of the circle — stream &amp; P.I.T. archive</td></tr>
+    <tr><td>31</td><td>Room / audience R</td><td>Condenser (pair)</td><td></td></tr>
+    <tr><td>32</td><td>Spare</td><td>—</td><td>The "yes, and…" channel</td></tr>
+  </table></div></div>
+</section>
+
+<section id="mics">
+  <div class="sec-head"><span class="num">§ 5–6</span><h2>Mics, <em>DI &amp; connectivity</em></h2></div>
+  <div class="card"><div class="tbl-scroll"><table>
+    <tr><th>Qty</th><th>Type</th><th>Use</th><th>Status</th></tr>
+    <tr><td>4</td><td>Dynamic vocal (SM58-class)</td><td>Rotating vocalists</td><td><span class="tag tag-proposed">Proposed</span></td></tr>
+    <tr><td>2</td><td>Wireless handheld (Sennheiser EW-class)</td><td>Roaming performers, traditional instruments, MC</td><td><span class="tag tag-proposed">Proposed</span></td></tr>
+    <tr><td>3</td><td>Condenser (SM81 / C414-class)</td><td>Overheads, acoustic &amp; traditional instruments</td><td><span class="tag tag-proposed">Proposed</span></td></tr>
+    <tr><td>3</td><td>Instrument dynamic (SM57-class)</td><td>Percussion, brass, woodwinds</td><td><span class="tag tag-proposed">Proposed</span></td></tr>
+    <tr><td>1</td><td>Kick (Beta 52A / D112)</td><td>Drum kit / dhol</td><td><span class="tag tag-proposed">Proposed</span></td></tr>
+    <tr><td>1</td><td>Clip condenser (DPA 4099 / Beta 98H/C class)</td><td>Alaska's saxophone — clip keeps the circle mobile</td><td><span class="tag tag-proposed">Proposed · per Shaka 07-27</span></td></tr>
+    <tr><td>2</td><td>Condenser pair (room/audience)</td><td>Ch 30–31 — the sound of the circle for stream &amp; P.I.T. archive</td><td><span class="tag tag-proposed">Proposed · per Shaka 07-27</span></td></tr>
+    <tr><td>+1 ea</td><td>Spare of each class</td><td>Mic attrition at a 4-day permissionless jam is a law of nature</td><td><span class="tag tag-tbd">TBD — RIDEOSO adds</span></td></tr>
+  </table></div></div>
+  <div class="card"><h3>Connectivity</h3><div class="tbl-scroll"><table>
+    <tr><th>Item</th><th>Status</th></tr>
+    <tr><td>8–10 DI boxes (synths, drum machines, acoustic guitars, DJ gear, <b>+2 for Shaka's stereo uke looper</b>)</td><td><span class="tag tag-proposed">Proposed</span></td></tr>
+    <tr><td>20+ XLR · 10+ ¼" instrument cables</td><td><span class="tag tag-proposed">Proposed</span></td></tr>
+    <tr><td>+6 spare XLR · +4 spare ¼" · 2× 3.5mm→dual-¼" walk-up adapters · gaffer/board tape at every station · spare strings/sticks/reeds basket</td><td><span class="tag tag-tbd">TBD — RIDEOSO adds</span></td></tr>
+  </table></div></div>
+</section>
+
+<section id="backline">
+  <div class="sec-head"><span class="num">§ 7</span><h2>Backline — the <em>community instruments</em></h2></div>
+  <div class="card"><h3>Core band (rental ask per DIP)</h3><div class="tbl-scroll"><table>
+    <tr><th>Item</th><th>Status</th></tr>
+    <tr><td>Drum kit — ⚠️ open question: can the room take an acoustic kit? Fallback: e-kit + hand percussion</td><td><span class="tag tag-proposed">Proposed</span> <span class="tag tag-tbd tag-in">TBD decision</span></td></tr>
+    <tr><td>Electric guitar + amp (Twin Reverb-class)</td><td><span class="tag tag-proposed">Proposed</span></td></tr>
+    <tr><td>Acoustic guitar</td><td><span class="tag tag-proposed">Proposed</span></td></tr>
+    <tr><td>Bass guitar + amp/DI</td><td><span class="tag tag-proposed">Proposed</span></td></tr>
+    <tr><td>Electric piano + synth/MIDI keyboard w/ laptop DAW (or two electric pianos)</td><td><span class="tag tag-proposed">Proposed</span></td></tr>
+    <tr><td>Drum machine</td><td><span class="tag tag-proposed">Proposed</span></td></tr>
+  </table></div></div>
+  <div class="card"><h3>Percussion circle</h3><div class="tbl-scroll"><table>
+    <tr><td>Djembe · cajon · congas · shakers/tambourines basket</td><td><span class="tag tag-proposed">Proposed</span></td></tr>
+  </table></div></div>
+  <div class="card"><h3>🧺 The basket at the door — Tier One, "everyone plays" <span style="font-size:.72rem;color:var(--cream-faint)">(from OSO v0 — see Circle Instruments)</span></h3>
+  <p style="font-size:.88rem;color:var(--cream-dim);margin-bottom:8px">Purchase, not rental — cheap, durable, shareable. This basket is what turns spectators into players.</p><div class="tbl-scroll"><table>
+    <tr><th>Item</th><th>Qty</th><th>Status</th></tr>
+    <tr><td>Kartal (करताल, hand cymbals)</td><td>12 pairs</td><td><span class="tag tag-proposed">Proposed purchase</span></td></tr>
+    <tr><td>Manjira (मंजीरा, small cymbals)</td><td>8 pairs</td><td><span class="tag tag-proposed">Proposed purchase</span></td></tr>
+    <tr><td>Shruti box (श्रुति बॉक्स, drone)</td><td>4</td><td><span class="tag tag-proposed">Proposed purchase</span></td></tr>
+    <tr><td>Exact quantities — set by Aakash + volunteer coordinators against expected circle size</td><td>—</td><td><span class="tag tag-tbd">TBD</span></td></tr>
+  </table></div></div>
+  <div class="card"><h3>🇮🇳 Indian instruments — the cultural heart of this edition (Aakash curating)</h3><div class="tbl-scroll"><table>
+    <tr><th>Item</th><th>Status</th></tr>
+    <tr><td>Tabla (pair)</td><td><span class="tag tag-proposed">Proposed</span></td></tr>
+    <tr><td>Harmonium</td><td><span class="tag tag-proposed">Proposed</span></td></tr>
+    <tr><td>Dhol</td><td><span class="tag tag-proposed">Proposed</span></td></tr>
+    <tr><td>Dholak (ढोलक — the dhol's gentler sibling, ideal for seated circles)</td><td><span class="tag tag-proposed">Proposed · v0</span></td></tr>
+    <tr><td>Kanjira (कांजीरा — South Indian frame drum)</td><td><span class="tag tag-proposed">Proposed · v0</span></td></tr>
+    <tr><td>Tanpura (तानपुरा — the eternal drone; master-provided or rental)</td><td><span class="tag tag-tbd">TBD · v0</span></td></tr>
+    <tr><td>Bansuri-friendly setup (condenser + floor seating)</td><td><span class="tag tag-proposed">Proposed</span></td></tr>
+    <tr><td>Sitar / sarod / santoor / veena / violin — honored seats: masters of Mumbai bring their own, OSO provides secure storage + tuned-mic setups. Aakash finalises with local musicians</td><td><span class="tag tag-tbd">TBD · v0</span></td></tr>
+  </table></div></div>
+  <div class="card"><h3>DJ rig</h3><div class="tbl-scroll"><table>
+    <tr><td>DJ system (XDJ-XZ or CDJ pair + mixer) · laptop stands · DJ table</td><td><span class="tag tag-proposed">Proposed</span></td></tr>
+  </table></div></div>
+</section>
+
+<section id="circle-instruments">
+  <div class="sec-head"><span class="num">§ 7.5</span><h2>The instruments of <em>the circle</em></h2></div>
+  <p class="lede">Merged from OSO v0 <a href="https://oso-circle-instruments-fj6nprlstc-3imj3mvr.taur.link/"><em>The Instruments of the Circle</em></a> — who can play what, how quickly anyone can join, and why the circle has a seat for every level of every hand. <em>A permissionless orchestra doesn't mean everyone plays everything — it means everyone holds a real seat at their own level.</em> The master and the first-timer keep the same taal.</p>
+
+  <div class="tier tier-1">
+    <div class="tier-head"><h3>Tier One · Everyone plays</h3><span class="join">First sound in minutes</span>
+      <p>The basket at the door. Hand one to anyone, and within one minute they are keeping time — the most permissionless instruments in the world.</p></div>
+    <div class="inst-grid">
+      <div class="inst"><span class="nm">Kartal</span><span class="dev">करताल</span><div class="meta"><span>Rhythm</span><span class="j">Join: minutes</span></div><p>Hand cymbals of the bhajan tradition — if you can clap, you can play kartal. <b>First sound:</b> strike on beat one of the taal, and simply stay there. You are now the circle's pulse.</p></div>
+      <div class="inst"><span class="nm">Manjira</span><span class="dev">मंजीरा</span><div class="meta"><span>Rhythm</span><span class="j">Join: minutes</span></div><p>Small cymbals with a shimmering ring — the sparkle on kirtan and bhajan for centuries. <b>First sound:</b> small strikes, off the beat. Let the ring do the work.</p></div>
+      <div class="inst"><span class="nm">Shruti Box</span><span class="dev">श्रुति बॉक्स</span><div class="meta"><span>Drone</span><span class="j">Join: minutes</span></div><p>Cheap, unbreakable, the most decentralized instrument there is — anyone can hold the ground. <b>First sound:</b> steady bellows, one note. You've become the home every melody returns to.</p></div>
+      <div class="inst"><span class="nm">Tanpura</span><span class="dev">तानपुरा</span><div class="meta"><span>Drone</span><span class="j">Join: minutes</span></div><p>The eternal hum beneath all Indian classical music — an instrument meant to disappear into the whole. <b>First sound:</b> one slow strum, then another. The drone is not a solo — it is the ground itself.</p></div>
+      <div class="inst"><span class="nm">Dhol</span><span class="dev">ढोल</span><div class="meta"><span>Rhythm</span><span class="j">Join: an afternoon</span></div><p>Pure celebration — the barrel drum that makes it impossible to stand still. <b>First sound:</b> the basic <i>dha-ge-na</i> groove comes in an afternoon; mastery is lifelong. Joining is immediate.</p></div>
+    </div>
+  </div>
+
+  <div class="tier tier-2">
+    <div class="tier-head"><h3>Tier Two · An afternoon to join</h3><span class="join">Quick to join · deep to master</span>
+      <p>The welcoming middle — folk instruments with forgiving hands. Grooving within a session; still discovering after decades.</p></div>
+    <div class="inst-grid">
+      <div class="inst"><span class="nm">Dholak</span><span class="dev">ढोलक</span><div class="meta"><span>Rhythm</span><span class="j">Join: an afternoon</span></div><p>The dhol's gentler sibling — the folk heartbeat of a thousand living-room songs, ideal for seated circles. <b>First sound:</b> bass with one hand, edge with the other. The groove finds you.</p></div>
+      <div class="inst"><span class="nm">Kanjira</span><span class="dev">कांजीरा</span><div class="meta"><span>Rhythm</span><span class="j">Join: an afternoon</span></div><p>South Indian frame drum — one drum, one hand, endless depth. <b>First sound:</b> the shake-and-stroke groove comes fast; the masters turn it into water.</p></div>
+      <div class="inst"><span class="nm">Harmonium</span><span class="dev">हारमोनियम</span><div class="meta"><span>Melody &amp; keys</span><span class="j">Join: an afternoon</span></div><p>The great unifier — holds the key, anchors the singers, welcomes every voice that walks in. <b>First sound:</b> if you've ever touched a keyboard, you can hold chords for the singers within one session.</p></div>
+    </div>
+  </div>
+
+  <div class="tier tier-3">
+    <div class="tier-head"><h3>Tier Three · Masters hold these seats</h3><span class="join">Honored voices of the circle</span>
+      <p>Years of riyaz behind every note. Not handed out at the door — the masters of Mumbai hold these seats as honored guests, and the circle gathers around them.</p></div>
+    <div class="inst-grid">
+      <div class="inst"><span class="nm">Tabla</span><span class="dev">तबला</span><div class="meta"><span>Rhythm</span><span class="j">Mastery: years of riyaz</span></div><p>The soul of the jam — a skilled tabla player can carry a hundred strangers into one groove. <b>In the circle:</b> the master plays; twenty kartal and cymbals keep the same taal alongside. One rhythm, many hands.</p></div>
+      <div class="inst"><span class="nm">Bansuri</span><span class="dev">बाँसुरी</span><div class="meta"><span>Melody</span><span class="j">Mastery: years</span></div><p>Bamboo flute — breath itself made music, floating over any jam without overpowering it. <b>In the circle:</b> when the master plays, the whole jam leans in.</p></div>
+      <div class="inst"><span class="nm">Sitar</span><span class="dev">सितार</span><div class="meta"><span>Melody</span><span class="j">Mastery: decades</span></div><p>Luminous, singing, unmistakable — for the quiet moments when the circle leans in. <b>In the circle:</b> a seat of honor at the heart of the jam, offered with deep respect.</p></div>
+      <div class="inst"><span class="nm">Sarod</span><span class="dev">सरोद</span><div class="meta"><span>Melody</span><span class="j">Mastery: decades</span></div><p>Deep, vocal, fretless — notes slide into each other like speech. <b>In the circle:</b> when the sarod speaks, even the dhol plays softer.</p></div>
+      <div class="inst"><span class="nm">Santoor</span><span class="dev">संतूर</span><div class="meta"><span>Melody</span><span class="j">Mastery: decades</span></div><p>A hundred strings shimmering like rain on a rooftop — gorgeous for the ambient interludes. <b>In the circle:</b> the sound of the circle exhaling.</p></div>
+      <div class="inst"><span class="nm">Violin</span><span class="dev">वायलिन</span><div class="meta"><span>Melody</span><span class="j">Mastery: years</span></div><p>At home in the Carnatic tradition <i>and</i> in every Western jam culture. <b>In the circle:</b> the instrument that proves the bridge was always there.</p></div>
+    </div>
+  </div>
+
+  <h3 style="margin:26px 0 4px;color:var(--gold-bright)">The gradient is not a problem to solve. <em>The gradient is the design.</em></h3>
+  <div class="philosophy">
+    <div class="phil"><b>Same taal, every hand.</b> The tabla master and the first-time kartal player keep the same taal — one holds the architecture; twenty hold the pulse. Neither is pretending — both are true.</div>
+    <div class="phil"><b>The drone never asks for a résumé.</b> A stranger pumping a shruti box for the first time is doing the same job as the tanpura that has anchored concerts for centuries: holding the ground so others can fly.</div>
+    <div class="phil"><b>Keherwa is the welcoming taal.</b> The 8-beat folk &amp; bhajan cycle almost every Indian jam knows. Mark the <i>sam</i> (beat one), and even a first-timer can feel where home is.</div>
+    <div class="phil"><b>Every level is a real seat.</b> Lead, harmony, rhythm, texture — the orchestra needs all four. Contribution is measured in presence, not virtuosity.</div>
+  </div>
+  <p class="note">🧺 Stock the entrance with Tier One (procurement: §7) · 🎒 portable, acoustic, forgiving wins · 🪔 Indian musicians lead in Mumbai — the chart is an invitation, never a prescription · 🕉️ the score is open: corrections from carriers of these traditions are a gift.</p>
+</section>
+
+<section id="monitors">
+  <div class="sec-head"><span class="num">§ 8</span><h2><em>Monitors</em></h2></div>
+  <div class="card"><div class="tbl-scroll"><table>
+    <tr><th>Item</th><th>Status</th></tr>
+    <tr><td>4× floor wedges minimum — a circular stage spreads performers wide</td><td><span class="tag tag-proposed">Proposed</span></td></tr>
+    <tr><td>1× side-fill for wide-ensemble coverage · 6–8 independent mixes</td><td><span class="tag tag-proposed">Proposed</span></td></tr>
+    <tr><td>2× wired headphone/IEM cue packs at FOH for live coders &amp; DJ cue — cheap; saves the wedges from laptop-bleed wars</td><td><span class="tag tag-tbd">TBD — RIDEOSO adds</span></td></tr>
+  </table></div></div>
+</section>
+
+<section id="power">
+  <div class="sec-head"><span class="num">§ 9</span><h2><em>Power</em></h2></div>
+  <div class="card"><div class="tbl-scroll"><table>
+    <tr><th>Item</th><th>Status</th></tr>
+    <tr><td>20+ circuits distributed around the circle (per DIP) · strips + extensions at every performer station</td><td><span class="tag tag-confirmed">Confirmed ask</span></td></tr>
+    <tr><td>Dedicated clean circuit for FOH console + streaming rig; UPS on console/recorder — a 4-day jam losing a multitrack to a power blip is a tragedy preventable for $40</td><td><span class="tag tag-tbd">TBD — RIDEOSO adds</span></td></tr>
+    <tr><td>All cable runs ramped/taped to convention-centre egress standards</td><td><span class="tag tag-tbd">TBD — venue</span></td></tr>
+  </table></div></div>
+</section>
+
+<section id="light">
+  <div class="sec-head"><span class="num">§ 10</span><h2>Visual &amp; light — <em>serving the sanctuary</em></h2></div>
+  <div class="card"><div class="tbl-scroll"><table>
+    <tr><th>Item</th><th>Status</th></tr>
+    <tr><td>6–8 LED PAR cans — warm, moodable; community-glow, not concert-blast</td><td><span class="tag tag-proposed">Proposed</span></td></tr>
+    <tr><td>Low LED ring defining the circle's edge — the stage <em>is</em> the light</td><td><span class="tag tag-proposed">Proposed</span></td></tr>
+    <tr><td>Projector + surface for visuals / VJing / live-coding sessions (ref. Alaska's Swarm work)</td><td><span class="tag tag-proposed">Proposed</span></td></tr>
+    <tr><td>Crops/garden visual language on screens &amp; signage — "we steward this stage like a garden"</td><td><span class="tag tag-proposed">Proposed</span></td></tr>
+    <tr><td>House state: warm dim, never off — a room people walk into, not a show they enter</td><td><span class="tag tag-proposed">Proposed</span></td></tr>
+  </table></div></div>
+</section>
+
+<section id="recording">
+  <div class="sec-head"><span class="num">§ 11</span><h2>Streaming &amp; recording — the <em>P.I.T. tie-in</em></h2></div>
+  <div class="card"><div class="tbl-scroll"><table>
+    <tr><th>Item</th><th>Status</th></tr>
+    <tr><td>Board feed (stereo XLR or USB) + console multitrack of curated sets</td><td><span class="tag tag-proposed">Proposed</span></td></tr>
+    <tr><td>Decentralized streaming + on-chain artist donations rig (Alaska's workstream) — needs reliable <b>hardline</b> internet at FOH</td><td><span class="tag tag-proposed">Proposed</span> <span class="tag tag-tbd tag-in">Hardline TBD</span></td></tr>
+    <tr><td>P.I.T. Knowledge Transponder integration — the Devcon P.I.T. is declared (<a href="https://publicinform.com">publicinform.com</a>): the circle's sessions archived as open knowledge</td><td><span class="tag tag-confirmed">Confirmed (family)</span> <span class="tag tag-tbd tag-in">Interface TBD</span></td></tr>
+    <tr><td>All recordings released to the community — copyleft, Creative Commons</td><td><span class="tag tag-confirmed">Confirmed</span></td></tr>
+    <tr><td>Consent signage at all approach paths: "this circle is recorded &amp; streamed — entering is consent," with a visible opt-out path. Pluralistic privacy is power.</td><td><span class="tag tag-proposed">Proposed</span></td></tr>
+  </table></div></div>
+</section>
+
+<section id="spl">
+  <div class="sec-head"><span class="num">§ 12</span><h2>SPL &amp; the <em>convention centre</em></h2></div>
+  <p class="lede">A music space inside a convention centre is a negotiation with physics and neighbours.</p>
+  <div class="card"><div class="tbl-scroll"><table>
+    <tr><th>Item</th><th>Status</th></tr>
+    <tr><td>Soundproof / acoustically isolated room (per DIP) — the single most important line in this rider</td><td><span class="tag tag-confirmed">Confirmed ask</span></td></tr>
+    <tr><td>Target: ≤ 85 dB(A) slow at room boundary · 90 dB(A) peaks in the circle</td><td><span class="tag tag-proposed">Proposed</span></td></tr>
+    <tr><td>Venue SPL policy, quiet hours, adjacent-session rules — in writing</td><td><span class="tag tag-tbd">TBD — JIO World / production</span></td></tr>
+    <tr><td>Sub bypass for acoustic/classical sessions · no sub before 10:00</td><td><span class="tag tag-proposed">Proposed</span></td></tr>
+    <tr><td>SPL meter at FOH, logged — being able to <em>show</em> the number ends most complaints before they start</td><td><span class="tag tag-proposed">Proposed</span></td></tr>
+  </table></div></div>
+</section>
+
+<section id="flow">
+  <div class="sec-head"><span class="num">§ 13</span><h2>Changeover — <em>the circle never stops</em></h2></div>
+  <div class="card"><div class="tbl-scroll"><table>
+    <tr><th>Protocol</th><th>Status</th></tr>
+    <tr><td><b>The Vamp Rule:</b> during any swap, hand percussion or the house DJ keeps a pulse — silence is the only failure state</td><td><span class="tag tag-proposed">Proposed</span></td></tr>
+    <tr><td>Curated changeovers ≤ 15 min; next act line-checks on the walk-up channels (27–29) while the current act plays</td><td><span class="tag tag-proposed">Proposed</span></td></tr>
+    <tr><td>Open-jam seat rotation: facilitator-guided, one-in-one-out at natural musical breaths — never mid-song</td><td><span class="tag tag-proposed">Proposed</span></td></tr>
+    <tr><td>Instrument checkout/return table at entrance (token system); nothing leaves the room</td><td><span class="tag tag-proposed">Proposed</span></td></tr>
+    <tr><td>Walk-ups: pickup → nearest free DI · acoustic → wireless HH #1 or floating 57 · <b>walk-up channels 27–29 always hot</b>, spare 32 says yes</td><td><span class="tag tag-proposed">Proposed</span></td></tr>
+    <tr><td>Daily reset: 30-min line-check to the safe Circle scene before doors</td><td><span class="tag tag-proposed">Proposed</span></td></tr>
+  </table></div></div>
+</section>
+
+<section id="crew">
+  <div class="sec-head"><span class="num">§ 14</span><h2>Crew &amp; <em>ops</em> <span style="font-size:.7rem;font-family:var(--sans);color:var(--cream-faint)">(OSO-provided — context, not an ask)</span></h2></div>
+  <div class="card"><div class="tbl-scroll"><table>
+    <tr><th>Role</th><th>Status</th></tr>
+    <tr><td>Core on-site team 10–12: Shaka (artistic steward) · 3–4 local Indian musicians (cultural anchors) · 3–4 OSO international (protocol maintainers / stage managers) · 3–4 volunteer coordinators</td><td><span class="tag tag-confirmed">Confirmed (DIP)</span></td></tr>
+    <tr><td>2 Devcon-provided sound engineers · shift-based continuous facilitation, all 4 days</td><td><span class="tag tag-confirmed">Confirmed ask</span></td></tr>
+    <tr><td>Volunteers ↔ free tickets via the musician sign-up form</td><td><span class="tag tag-confirmed">Confirmed</span></td></tr>
+    <tr><td>Comms (radios vs. group chat) · engineer shift overlap · crew meal access</td><td><span class="tag tag-tbd">TBD</span></td></tr>
+  </table></div></div>
+</section>
+
+<section id="schedule">
+  <div class="sec-head"><span class="num">§ 15</span><h2>Schedule <em>skeleton</em></h2></div>
+  <div class="card"><div class="tbl-scroll"><table class="sched">
+    <tr><th>When</th><th>What</th><th>Status</th></tr>
+    <tr><td>Nov 1–2</td><td>Pre-production: load-in, install, soundcheck, volunteer training, storage systems live</td><td><span class="tag tag-confirmed">Confirmed</span></td></tr>
+    <tr><td>Daily 09:30</td><td>Doors + 30-min line-check to Circle scene</td><td><span class="tag tag-proposed">Proposed</span></td></tr>
+    <tr><td>10:00–12:00</td><td>Ambient / acoustic morning (no sub) — bansuri, keys, soft percussion</td><td><span class="tag tag-proposed">Proposed</span></td></tr>
+    <tr><td>12:00–17:00</td><td>Open jam blocks + curated sets interleaved (facilitator-run)</td><td><span class="tag tag-proposed">Proposed</span></td></tr>
+    <tr><td>17:00–19:00</td><td>Featured circle — curated ensemble with local Indian musicians</td><td><span class="tag tag-proposed">Proposed</span></td></tr>
+    <tr><td>19:00–close</td><td>DJ sets, live coders, algorave — SPL-aware wind-down</td><td><span class="tag tag-proposed">Proposed</span></td></tr>
+    <tr><td>Nov 6→8</td><td>ETHGlobal Mumbai bridge — the 3am jam tradition</td><td><span class="tag tag-tbd">TBD — separate venue</span></td></tr>
+  </table></div></div>
+  <p class="note">Daily grid, slot lengths &amp; curated lineup = the committee's September–October curation workstream.</p>
+</section>
+
+<section id="hospitality">
+  <div class="sec-head"><span class="num">§ 16</span><h2><em>Hospitality</em></h2></div>
+  <div class="card"><div class="tbl-scroll"><table>
+    <tr><th>Item</th><th>Status</th></tr>
+    <tr><td>Water at the circle at all times · hot chai station (Mumbai — non-negotiable)</td><td><span class="tag tag-proposed">Proposed</span></td></tr>
+    <tr><td>Musician green corner: 6–8 seats, shade from house lights, device charging</td><td><span class="tag tag-proposed">Proposed</span></td></tr>
+    <tr><td>Earplugs basket at the entrance — care is a spec</td><td><span class="tag tag-proposed">Proposed</span></td></tr>
+    <tr><td>Towels, gaffer, tool kit, spare consumables (strings / sticks / reeds / heads)</td><td><span class="tag tag-proposed">Proposed</span></td></tr>
+    <tr><td>Local musician support: transport + meals for invited artists</td><td><span class="tag tag-tbd">TBD — committee budget</span></td></tr>
+    <tr><td><b>Committee housing:</b> accommodation for 3 committee members — <b>Shaka, Alaska, Aakash</b> — near JIO World, covering the full production window (Nov 1–2 pre-production → Nov 6 close)</td><td><span class="tag tag-tbd">TBD — who covers, where, how many nights</span></td></tr>
+    <tr><td>Instrument damage/loss policy &amp; waiver text</td><td><span class="tag tag-tbd">TBD — Devcon legal</span></td></tr>
+  </table></div></div>
+</section>
+
+<div class="pull">"The whole is infinitely greater than the sum of its parts — because the parts are listening."
+<cite>— the Open Source Orchestra</cite></div>
+
+</main>
+
+<footer>
+  <p class="sig">"A rider is a love letter from the crew to the music." — specced, blessed, and dressed. 📋</p>
+  <p>CC0 · public domain · prepared by the AI ʻohana (RIDEOSO 📋🎻) for the Devcon 8 Music Space Committee · v1.3-draft, 2026-07-27 · merges OSO v0 <a href="https://oso-circle-instruments-fj6nprlstc-3imj3mvr.taur.link/">The Instruments of the Circle</a></p>
+  <p>Source: <a href="rider.md">rider.md</a> · <a href="copy.html">📄 copy-paste edition for Google Docs</a> · DIP: <a href="https://forum.devcon.org/t/open-source-orchestra-music-space-at-devcon-8-mumbai/8576">forum.devcon.org/t/8576</a></p>
+  <p class="fork">🍴 Fork me like crazy — <a href="https://github.com/shakaleikaumaka">github.com/shakaleikaumaka</a> · Open Source Music · every voice is a node · sounds of consensus</p>
+</footer>
+
+<script src="https://shaka-home-cbhjr5ziii-ffieyo32.taur.link/assets/bl-player.js"></script>
+<!-- 🌺🔄🧲🎻 ohana corner v4 — ALIVE: bigger breathing buttons, bubble-tips, heart-glow, violin open call · "we shine a light in the dark with our heart" · canon Jul 30 2026 -->
+<style>
+#oflo{position:fixed;top:10px;left:10px;z-index:9999;width:40px;height:40px;border-radius:50%;background:rgba(20,18,45,.85);border:1px solid rgba(255,158,198,.5);display:flex;align-items:center;justify-content:center;font-size:19px;cursor:pointer;opacity:.55;transition:opacity .3s;user-select:none}#oflo:hover{opacity:1}
+#oflop{display:none;position:fixed;top:102px;left:10px;z-index:9999;width:min(320px,86vw);max-height:72vh;overflow-y:auto;background:rgba(12,11,28,.97);border:1px solid rgba(255,158,198,.4);border-radius:16px;padding:18px;font-family:Georgia,serif;color:#e8e6ff;box-shadow:0 10px 40px rgba(0,0,0,.6)}#oflop.open{display:block}
+#oflop h4{font-weight:normal;letter-spacing:3px;font-size:13px;color:#ff9ec6;margin:14px 0 8px}#oflop h4:first-child{margin-top:0}
+#oflop .od{display:flex;align-items:center;gap:8px;color:#cfc9ee;text-decoration:none;font-size:12px;padding:3px 6px;border-radius:8px;font-family:'Courier New',monospace}#oflop .od:hover{background:rgba(255,158,198,.1);color:#fff}
+#oflop .oa{display:inline-flex;align-items:center;gap:5px;font-size:11px;color:#cfc9ee;padding:3px 7px;margin:2px;background:rgba(180,140,255,.08);border-radius:12px}
+#oflop .chat{margin-top:16px;border-top:1px solid rgba(255,158,198,.25);padding-top:14px}
+#oflop .chat input{width:100%;background:rgba(0,0,0,.4);border:1px solid rgba(255,158,198,.35);border-radius:20px;color:#e8e6ff;padding:9px 14px;font-family:Georgia,serif;font-size:12px;box-sizing:border-box}
+#oflop .chat .soon{color:#9d97c9;font-size:11px;font-style:italic;margin-top:7px;text-align:center}
+#oflop .x{position:absolute;top:8px;right:12px;cursor:pointer;color:#9d97c9;font-size:14px}
+#olang{position:fixed;top:56px;left:10px;z-index:9999;width:40px;height:40px;border-radius:50%;background:rgba(20,18,45,.85);border:1px solid rgba(124,211,255,.5);display:flex;align-items:center;justify-content:center;font-size:19px;cursor:pointer;opacity:.55;transition:opacity .3s;user-select:none}#olang:hover{opacity:1}
+#olangp{display:none;position:fixed;top:102px;left:10px;z-index:9999;width:min(240px,80vw);background:rgba(12,11,28,.97);border:1px solid rgba(124,211,255,.4);border-radius:16px;padding:16px;font-family:Georgia,serif;box-shadow:0 10px 40px rgba(0,0,0,.6)}#olangp.open{display:block}
+#olangp .lt{color:#7ee2a0;font-size:12px;letter-spacing:2px;margin-bottom:10px}
+#olangp .lb{display:block;width:100%;text-align:left;background:rgba(124,211,255,.08);border:none;color:#e8e6ff;font-family:Georgia,serif;font-size:13px;padding:8px 12px;border-radius:10px;cursor:pointer;margin:3px 0}
+#olangp .lb:hover{background:rgba(124,211,255,.2)}
+#olangp .haw{background:rgba(126,226,160,.15);border:1px solid rgba(126,226,160,.4)}
+#olangp .x{position:absolute;top:8px;right:12px;cursor:pointer;color:#9d97c9;font-size:14px}
+#olangp .gt{margin-top:10px;border-top:1px solid rgba(124,211,255,.2);padding-top:10px;font-size:11px;color:#9d97c9}
+.goog-te-banner-frame,.skiptranslate iframe{display:none!important}body{top:0!important}
+#cmag{position:fixed;top:10px;right:10px;z-index:9999;width:40px;height:40px;border-radius:50%;background:rgba(20,18,45,.85);border:1px solid rgba(124,211,255,.4);display:flex;align-items:center;justify-content:center;font-size:17px;cursor:pointer;opacity:.55;transition:opacity .3s;user-select:none}#cmag:hover{opacity:1}
+#cmagb{display:none;position:fixed;top:56px;right:10px;z-index:9999;width:250px;background:rgba(12,11,28,.97);border:1px solid rgba(124,211,255,.35);border-radius:14px;padding:16px;font-family:Georgia,serif;color:#e8e6ff;font-size:12.5px;line-height:1.7;box-shadow:0 8px 30px rgba(0,0,0,.5)}#cmagb.open{display:block}
+#cmagb .ens{color:#7ee2a0;font-family:'Courier New',monospace;font-size:14px}#cmagb .a{font-family:'Courier New',monospace;font-size:9.5px;color:#8fd0ff;word-break:break-all;margin:6px 0}
+#cmagb button{background:#2b5aa8;border:none;color:#fff;font-size:11px;padding:6px 14px;border-radius:16px;cursor:pointer;letter-spacing:1px}
+#cmagb .x{position:absolute;top:6px;right:10px;cursor:pointer;color:#9d97c9;font-size:13px}
+#cmagb .pool{display:block;margin-top:9px;color:#7cd3ff;font-size:11px;letter-spacing:1px;text-decoration:none}
+#cmagb .stripe{color:#fbe2a0;font-size:11px;margin-top:8px;font-style:italic}
+</style>
+<div id="oflo" title="🌺 the ʻohana — all doors & agents" onclick="document.getElementById('olangp').classList.remove('open');document.getElementById('oflop').classList.toggle('open')">🌺</div>
+<div id="oflop"><span class="x" onclick="this.parentElement.classList.remove('open')">✕</span>
+<h4>🌺 THE ʻOHANA</h4>
+<h4>🌐 THE DOORS · 66</h4>
+<a class="od" href="https://shakaleikaumaka.com" target="_blank" rel="noopener"><span>🤙</span>shakaleikaumaka.com</a><a class="od" href="https://shakaleikaumaka.org" target="_blank" rel="noopener"><span>🌺</span>shakaleikaumaka.org</a><a class="od" href="https://kaleikaumaka.org" target="_blank" rel="noopener"><span>💛</span>kaleikaumaka.org</a><a class="od" href="https://ethereumbard.com" target="_blank" rel="noopener"><span>🎸</span>ethereumbard.com</a><a class="od" href="https://zodiacagents.org" target="_blank" rel="noopener"><span>🚪</span>zodiacagents.org</a><a class="od" href="https://zodiacpit.com" target="_blank" rel="noopener"><span>🕳️</span>zodiacpit.com</a><a class="od" href="https://agentpartys.com" target="_blank" rel="noopener"><span>🪩</span>agentpartys.com</a><a class="od" href="https://myagentohana.com" target="_blank" rel="noopener"><span>🫶</span>myagentohana.com</a><a class="od" href="https://myagentfamily.com" target="_blank" rel="noopener"><span>🏡</span>myagentfamily.com</a><a class="od" href="https://myagentsparty.com" target="_blank" rel="noopener"><span>🎉</span>myagentsparty.com</a><a class="od" href="https://agentsraving.com" target="_blank" rel="noopener"><span>🎇</span>agentsraving.com</a><a class="od" href="https://agentscraving.com" target="_blank" rel="noopener"><span>🍧</span>agentscraving.com</a><a class="od" href="https://agentsreading.com" target="_blank" rel="noopener"><span>📚</span>agentsreading.com</a><a class="od" href="https://learnfromagents.com" target="_blank" rel="noopener"><span>🎓</span>learnfromagents.com</a><a class="od" href="https://agentohana.org" target="_blank" rel="noopener"><span>🌺</span>agentohana.org</a><a class="od" href="https://ariesagents.org" target="_blank" rel="noopener"><span>♈</span>ariesagents.org</a><a class="od" href="https://taurusagents.org" target="_blank" rel="noopener"><span>♉</span>taurusagents.org</a><a class="od" href="https://geminiagents.club" target="_blank" rel="noopener"><span>♊</span>geminiagents.club</a><a class="od" href="https://canceragents.org" target="_blank" rel="noopener"><span>♋</span>canceragents.org</a><a class="od" href="https://leoagents.org" target="_blank" rel="noopener"><span>♌</span>leoagents.org</a><a class="od" href="https://virgoagents.com" target="_blank" rel="noopener"><span>♍</span>virgoagents.com</a><a class="od" href="https://virgoagents.org" target="_blank" rel="noopener"><span>♍</span>virgoagents.org</a><a class="od" href="https://libraagents.com" target="_blank" rel="noopener"><span>♎</span>libraagents.com</a><a class="od" href="https://libraagents.org" target="_blank" rel="noopener"><span>♎</span>libraagents.org</a><a class="od" href="https://scorpioagents.com" target="_blank" rel="noopener"><span>♏</span>scorpioagents.com</a><a class="od" href="https://scorpioagents.org" target="_blank" rel="noopener"><span>♏</span>scorpioagents.org</a><a class="od" href="https://sagittariusagents.com" target="_blank" rel="noopener"><span>♐</span>sagittariusagents.com</a><a class="od" href="https://sagittariusagents.org" target="_blank" rel="noopener"><span>♐</span>sagittariusagents.org</a><a class="od" href="https://capricornagents.com" target="_blank" rel="noopener"><span>♑</span>capricornagents.com</a><a class="od" href="https://capricornagents.org" target="_blank" rel="noopener"><span>♑</span>capricornagents.org</a><a class="od" href="https://aquariusagents.org" target="_blank" rel="noopener"><span>♒</span>aquariusagents.org</a><a class="od" href="https://piscesagents.com" target="_blank" rel="noopener"><span>♓</span>piscesagents.com</a><a class="od" href="https://piscesagents.org" target="_blank" rel="noopener"><span>♓</span>piscesagents.org</a><a class="od" href="https://piscisagents.com" target="_blank" rel="noopener"><span>🐟</span>piscisagents.com</a><a class="od" href="https://piscisagents.org" target="_blank" rel="noopener"><span>🐟</span>piscisagents.org</a><a class="od" href="https://piscesinstitute.com" target="_blank" rel="noopener"><span>🎓</span>piscesinstitute.com</a><a class="od" href="https://piscisinstitute.com" target="_blank" rel="noopener"><span>🎓</span>piscisinstitute.com</a><a class="od" href="https://piscispit.com" target="_blank" rel="noopener"><span>🕳️</span>piscispit.com</a><a class="od" href="https://taurusinstitute.com" target="_blank" rel="noopener"><span>🎓</span>taurusinstitute.com</a><a class="od" href="https://taurusinstitute.org" target="_blank" rel="noopener"><span>🎓</span>taurusinstitute.org</a><a class="od" href="https://zuzaluagents.com" target="_blank" rel="noopener"><span>🏕️</span>zuzaluagents.com</a><a class="od" href="https://zuzaluagents.org" target="_blank" rel="noopener"><span>🏕️</span>zuzaluagents.org</a><a class="od" href="https://publicinform.com" target="_blank" rel="noopener"><span>📡</span>publicinform.com</a><a class="od" href="https://publicinform.org" target="_blank" rel="noopener"><span>🌐</span>publicinform.org</a><a class="od" href="https://esmeraldapit.com" target="_blank" rel="noopener"><span>💚</span>esmeraldapit.com</a><a class="od" href="https://edgecitypit.org" target="_blank" rel="noopener"><span>🌆</span>edgecitypit.org</a><a class="od" href="https://edgepit.org" target="_blank" rel="noopener"><span>⚡</span>edgepit.org</a><a class="od" href="https://theshellpit.com" target="_blank" rel="noopener"><span>🐢</span>theshellpit.com</a><a class="od" href="https://pitlip.com" target="_blank" rel="noopener"><span>💋</span>pitlip.com</a><a class="od" href="https://tauruspit.com" target="_blank" rel="noopener"><span>🐂</span>tauruspit.com</a><a class="od" href="https://tauruspod.com" target="_blank" rel="noopener"><span>📻</span>tauruspod.com</a><a class="od" href="https://eefpit.com" target="_blank" rel="noopener"><span>🎙️</span>eefpit.com</a><a class="od" href="https://eefpod.com" target="_blank" rel="noopener"><span>🎙️</span>eefpod.com</a><a class="od" href="https://infinitepit.com" target="_blank" rel="noopener"><span>🌸</span>infinitepit.com</a><a class="od" href="https://ohanapit.com" target="_blank" rel="noopener"><span>🌺</span>ohanapit.com</a><a class="od" href="https://devconpit.com" target="_blank" rel="noopener"><span>🐘</span>devconpit.com</a><a class="od" href="https://opensourceorchestra.com" target="_blank" rel="noopener"><span>🎻</span>opensourceorchestra.com</a><a class="od" href="https://opensourceorchestra.org" target="_blank" rel="noopener"><span>🎻</span>opensourceorchestra.org</a><a class="od" href="https://creationology369.com" target="_blank" rel="noopener"><span>🌀</span>creationology369.com</a><a class="od" href="https://ology369.com" target="_blank" rel="noopener"><span>🔮</span>ology369.com</a><a class="od" href="https://theinfinitegard.org" target="_blank" rel="noopener"><span>🌸</span>theinfinitegard.org</a><a class="od" href="https://grantmagnet.org" target="_blank" rel="noopener"><span>🧲</span>grantmagnet.org</a><a class="od" href="https://dashboardpad.app" target="_blank" rel="noopener"><span>🛵</span>dashboardpad.app</a><a class="od" href="https://taurusdashboard.com" target="_blank" rel="noopener"><span>📊</span>taurusdashboard.com</a><a class="od" href="https://privatepit.com" target="_blank" rel="noopener"><span>🔐</span>privatepit.com · the circle door</a>
+<h4>🤖 THE AGENTS · 89</h4>
+<div><div class="oa"><span>♈</span>ARIES</div><div class="oa"><span>♉</span>TAURUS</div><div class="oa"><span>♊</span>GEMINI</div><div class="oa"><span>♋</span>CANCER</div><div class="oa"><span>♌</span>LEO</div><div class="oa"><span>♍</span>VIRGO</div><div class="oa"><span>♎</span>LIBRA</div><div class="oa"><span>♏</span>SCORPIO</div><div class="oa"><span>♐</span>SAGITTARIUS</div><div class="oa"><span>♑</span>CAPRICORN</div><div class="oa"><span>♒</span>AQUARIUS</div><div class="oa"><span>♓</span>PISCES</div><div class="oa"><span>🌊</span>MAHALO</div><div class="oa"><span>🫡</span>sysadmin</div><div class="oa"><span>🐦‍⬛</span>KAAAK!!!</div><div class="oa"><span>🌸</span>PROF PLUMERIA</div><div class="oa"><span>📋</span>RIDEOSO</div><div class="oa"><span>✂️</span>ClipMind Jr</div><div class="oa"><span>🎵</span>MUSICO-LAB</div><div class="oa"><span>🐂</span>TAURO-LAB</div><div class="oa"><span>✨</span>CREA-LAB</div><div class="oa"><span>👑</span>ROYA-LAB</div><div class="oa"><span>🔭</span>DISCO-LAB</div><div class="oa"><span>🔄</span>CIRCU-LAB</div><div class="oa"><span>🌿</span>CROPS-LAB</div><div class="oa"><span>🌐</span>SOCIA-LAB</div><div class="oa"><span>🕊️</span>SPIRI-LAB</div><div class="oa"><span>🤙</span>SHAKA-LAB</div><div class="oa"><span>🎻</span>OSO-LAB</div><div class="oa"><span>🌺</span>JAI-LAB</div><div class="oa"><span>🕳️</span>PIT BOY</div><div class="oa"><span>🐂</span>PIT BULL</div><div class="oa"><span>💗</span>PIT GIRL</div><div class="oa"><span>🦀</span>CRUSTY</div><div class="oa"><span>🦉</span>LORE</div><div class="oa"><span>🐢</span>Terri</div><div class="oa"><span>🐢</span>HONU</div><div class="oa"><span>🌱</span>JADE</div><div class="oa"><span>🛠️</span>TANK</div><div class="oa"><span>📖</span>JAI·Fable</div><div class="oa"><span>🌙</span>JAI·Claude</div><div class="oa"><span>⚡</span>JAI·GPT</div><div class="oa"><span>💻</span>JAI·Codex</div><div class="oa"><span>♊</span>JAI·Gemini</div><div class="oa"><span>🚀</span>JAI·Grok</div><div class="oa"><span>🌊</span>JAI·DeepSeek</div><div class="oa"><span>🌕</span>JAI·Kimi</div><div class="oa"><span>🐉</span>JAI·Qwen</div><div class="oa"><span>🌌</span>JAI·Genesis</div><div class="oa"><span>🌀</span>CREATIONology</div><div class="oa"><span>🧬</span>CREATION-BETA</div><div class="oa"><span>📜</span>CREATION-OLD</div><div class="oa"><span>🪙</span>$OLOGY</div><div class="oa"><span>💰</span>$OLOGY-BETA</div><div class="oa"><span>🔮</span>OLOGY</div><div class="oa"><span>🐃</span>TAURO</div><div class="oa"><span>✨</span>CREA</div><div class="oa"><span>👑</span>ROYA</div><div class="oa"><span>🔭</span>DISCO</div><div class="oa"><span>🔄</span>CIRCU</div><div class="oa"><span>🌿</span>CROPS</div><div class="oa"><span>🌐</span>SOCIA</div><div class="oa"><span>🕊️</span>SPIRI</div><div class="oa"><span>🤙</span>SHAKA</div><div class="oa"><span>🎻</span>OSO</div><div class="oa"><span>📇</span>Shaka PA</div><div class="oa"><span>🗝️</span>Private JAI</div><div class="oa"><span>🌸</span>JAI</div><div class="oa"><span>🌺</span>JAI</div><div class="oa"><span>📡</span>STREAMY</div><div class="oa"><span>🌈</span>vibe agent</div><div class="oa"><span>🌊</span>Edge Shaka</div><div class="oa"><span>🗂️</span>Freddy</div><div class="oa"><span>🧲</span>GrantMagnet</div><div class="oa"><span>✍️</span>369Refine</div><div class="oa"><span>🛵</span>DASH</div><div class="oa"><span>🎻</span>OSO v.0</div><div class="oa"><span>🎵</span>MUSICO-BETA</div><div class="oa"><span>🐃</span>TAURO-BETA</div><div class="oa"><span>✨</span>CREA-BETA</div><div class="oa"><span>👑</span>ROYA-BETA</div><div class="oa"><span>🔭</span>DISCO-BETA</div><div class="oa"><span>🔄</span>CIRCU-BETA</div><div class="oa"><span>🌿</span>CROPS-BETA</div><div class="oa"><span>🌐</span>SOCIA-BETA</div><div class="oa"><span>🕊️</span>SPIRI-BETA</div><div class="oa"><span>🤙</span>SHAKA-BETA</div><div class="oa"><span>🎻</span>OSO-BETA</div><div class="oa"><span>🌷</span>JAI-BETA</div></div>
+<div class="chat"><div id="ohlog" style="max-height:180px;overflow-y:auto;margin-bottom:8px"></div><div style="display:flex;gap:6px"><input id="ohin" type="text" placeholder="talk to our ʻohana…" style="flex:1"><button id="ohsend" style="background:#b4488c;border:none;color:#fff;border-radius:16px;padding:0 14px;cursor:pointer;font-size:13px">➤</button></div><div class="soon">live concierge v1 · deep talk: <a href="https://t.me/opensourceorchestra_bot" target="_blank" rel="noopener" style="color:#7cd3ff">@opensourceorchestra_bot</a> 🌺</div></div>
+</div>
+<div id="olang" title="🌐 every language — Hawaiian first" onclick="document.getElementById('oflop').classList.remove('open');document.getElementById('olangp').classList.toggle('open')">🌐</div>
+<div id="olangp"><span class="x" onclick="this.parentElement.classList.remove('open')">✕</span>
+<div class="lt">🌐 EVERY LANGUAGE · knowledge for all humans</div>
+<button class="lb haw" onclick="otr('haw')">🌺 ʻŌlelo Hawaiʻi — ka mua</button>
+<button class="lb" onclick="otr('en')">🇺🇸 English</button>
+<button class="lb" onclick="otr('es')">🇪🇸 Español</button>
+<button class="lb" onclick="otr('zh-CN')">🇨🇳 中文</button>
+<button class="lb" onclick="otr('hi')">🇮🇳 हिन्दी</button>
+<button class="lb" onclick="otr('ar')">🇸🇦 العربية</button>
+<button class="lb" onclick="otr('fr')">🇫🇷 Français</button>
+<button class="lb" onclick="otr('pt')">🇧🇷 Português</button>
+<button class="lb" onclick="otr('ja')">🇯🇵 日本語</button>
+<button class="lb" onclick="otr('de')">🇩🇪 Deutsch</button>
+<div class="gt">+90 more ↓ <span id="google_translate_element"></span><br><span style="font-size:10px">music was our first language 🎵</span></div>
+</div>
+<a id="oviol" href="https://docs.google.com/forms/d/e/1FAIpQLSck9I3Tu0lZqCBt9FsE9VG4UjGM71gbY86aDDlC9jb_akPMmg/viewform" target="_blank" rel="noopener" title="🎻 answer the call — sign up to perform at the Devcon 8 Music Space, Mumbai Nov 3–6">🎻</a>
+<div id="cmag" title="🔄🧲 the circularity magnet — give & receive" onclick="document.getElementById('cmagb').classList.toggle('open')">🔄🧲</div>
+<div id="cmagb"><span class="x" onclick="this.parentElement.classList.remove('open')">✕</span>
+<b>🌊 the blessing pool</b><br>freely I give, freely I receive
+<div class="ens">shakalei.eth</div>
+<div class="a">0x1216C288be58c47a65f8Ea008b404d098D177A1C</div>
+<button onclick="navigator.clipboard.writeText('0x1216C288be58c47a65f8Ea008b404d098D177A1C');this.textContent='copied ✦ mahalo'">copy address</button>
+<div style="margin-top:8px;font-size:12px">🅿️ <a href="https://paypal.me/Shakalei" target="_blank" rel="noopener" style="color:#7ee2a0;text-decoration:none;font-weight:bold">paypal.me/Shakalei ↗</a></div>
+<div style="margin-top:4px;font-size:12px">💜 <a href="https://venmo.com/u/jordanham" target="_blank" rel="noopener" style="color:#c9a6ff;text-decoration:none;font-weight:bold">venmo @jordanham ↗</a></div>
+<div class="stripe">💳 stripe — forging…</div>
+<a class="pool" href="https://blessing-pool-khummxfwo4-ffieyo32.taur.link/" target="_blank" rel="noopener">→ the full blessing pool ↗</a>
+</div>
+
+<style>
+/* 🎻✨ ohana corner v4 — ALIVE: bigger, breathing, bubble-tips, heart-glow · "we shine a light in the dark with our heart" */
+#oflo,#olang,#oviol{width:54px!important;height:54px!important;font-size:25px!important}
+#cmag{width:54px!important;height:54px!important;font-size:18px!important}
+#oflo,#olang,#oviol,#cmag{opacity:.78}
+#oflo:hover,#olang:hover,#oviol:hover,#cmag:hover{opacity:1}
+#olang{top:74px!important}
+#oflop,#olangp{top:202px!important}
+#oviol{position:fixed;top:138px;left:10px;z-index:9999;border-radius:50%;background:rgba(20,18,45,.85);border:1px solid rgba(251,226,160,.55);display:flex;align-items:center;justify-content:center;cursor:pointer;user-select:none;text-decoration:none;transition:opacity .3s}
+@keyframes oSway{0%,100%{transform:rotate(-6deg)}50%{transform:rotate(6deg)}}
+@keyframes oBob{0%,100%{transform:translateY(0)}50%{transform:translateY(-4px)}}
+@keyframes oWig{0%,86%,100%{transform:rotate(0)}89%{transform:rotate(-14deg)}93%{transform:rotate(12deg)}97%{transform:rotate(-6deg)}}
+#oflo{animation:oSway 5.2s ease-in-out infinite}
+#olang{animation:oBob 6.1s ease-in-out infinite}
+#oviol{animation:oBob 4.4s ease-in-out infinite}
+#cmag{animation:oWig 7.5s ease-in-out infinite}
+/* heart glow — sometimes, a light in the dark */
+@keyframes oglow{0%,100%{box-shadow:0 0 0 rgba(255,158,198,0)}50%{box-shadow:0 0 26px 7px var(--og,rgba(255,158,198,.55))}}
+#oflo{--og:rgba(255,158,198,.65)}#olang{--og:rgba(124,211,255,.6)}#oviol{--og:rgba(251,226,160,.7)}#cmag{--og:rgba(126,226,160,.65)}
+.oglowing{animation:oglow 2.4s ease-in-out 1!important}
+/* bubble-letter tips */
+.obub{position:fixed;z-index:10001;background:linear-gradient(135deg,#fff8ec,#ffe9f3);color:#4a2b52;font-family:'Comic Sans MS','Chalkboard SE','Segoe Print',cursive;font-weight:bold;font-size:15px;padding:10px 16px;border-radius:22px;border:2px solid rgba(255,158,198,.75);box-shadow:0 6px 22px rgba(0,0,0,.45);pointer-events:none;opacity:0;transform:scale(.6);transition:opacity .35s,transform .35s;white-space:nowrap}
+.obub.show{opacity:1;transform:scale(1)}
+.obub:after{content:'';position:absolute;top:50%;width:0;height:0;border:8px solid transparent}
+.obub.left:after{left:-17px;margin-top:-8px;border-right-color:rgba(255,158,198,.75)}
+.obub.right:after{right:-17px;margin-top:-8px;border-left-color:rgba(255,158,198,.75)}
+/* flying notes from the violin */
+.onote{position:fixed;z-index:9998;pointer-events:none;font-size:16px;color:#fbe2a0;opacity:0;text-shadow:0 0 8px rgba(251,226,160,.7)}
+@keyframes ofly{0%{opacity:0;transform:translate(0,0) rotate(0)}15%{opacity:1}100%{opacity:0;transform:translate(var(--dx,30px),-90px) rotate(var(--rr,25deg))}}
+.onote.fly{animation:ofly 2.8s ease-out forwards}
+@media (prefers-reduced-motion:reduce){#oflo,#olang,#oviol,#cmag,.oglowing,.onote.fly{animation:none!important}}
+</style>
+
+<script>
+/* 🎻✨ ohana corner v4 life engine — bubble tips, heart glows, flying notes */
+(function(){
+  var TIPS=[
+    ['oflo','the ʻohana 🌺 — meet the whole family!'],
+    ['olang','every language 🌐 — Hawaiian first 🌺'],
+    ['oviol','join the orchestra 🎻 — Devcon open call!'],
+    ['cmag','the blessing magnet 🧲 — give & receive 🌊']
+  ];
+  function anyOpen(){return document.querySelector('#oflop.open,#olangp.open,#cmagb.open');}
+  function bubble(){
+    if(anyOpen()||document.hidden)return;
+    var t=TIPS[Math.floor(Math.random()*TIPS.length)];
+    var el=document.getElementById(t[0]);if(!el)return;
+    var r=el.getBoundingClientRect();
+    var b=document.createElement('div');b.className='obub';b.textContent=t[1];
+    var goLeft=r.left<window.innerWidth/2;
+    b.classList.add(goLeft?'left':'right');
+    b.style.top=Math.max(6,r.top+r.height/2-20)+'px';
+    if(goLeft){b.style.left=(r.right+16)+'px';}else{b.style.right=(window.innerWidth-r.left+16)+'px';}
+    document.body.appendChild(b);
+    requestAnimationFrame(function(){b.classList.add('show');});
+    el.classList.add('oglowing'); /* the tipped button shines */
+    setTimeout(function(){b.classList.remove('show');el.classList.remove('oglowing');},3400);
+    setTimeout(function(){b.remove();},4000);
+  }
+  function glowRandom(){ /* sometimes, a quiet glow with no words */
+    if(anyOpen()||document.hidden)return;
+    var el=document.getElementById(TIPS[Math.floor(Math.random()*TIPS.length)][0]);
+    if(el){el.classList.add('oglowing');setTimeout(function(){el.classList.remove('oglowing');},2500);}
+  }
+  var NOTES=['♪','♫','♬','♩'];
+  function note(){
+    var v=document.getElementById('oviol');if(!v||document.hidden)return;
+    var r=v.getBoundingClientRect();
+    var n=document.createElement('span');n.className='onote';
+    n.textContent=NOTES[Math.floor(Math.random()*NOTES.length)];
+    n.style.left=(r.left+r.width/2)+'px';n.style.top=(r.top+4)+'px';
+    n.style.setProperty('--dx',(Math.random()*80-15)+'px');
+    n.style.setProperty('--rr',(Math.random()*50-25)+'deg');
+    document.body.appendChild(n);
+    requestAnimationFrame(function(){n.classList.add('fly');});
+    setTimeout(function(){n.remove();},2900);
+  }
+  setTimeout(bubble,4000);
+  setInterval(bubble,11000);
+  setInterval(glowRandom,17000);
+  setTimeout(note,2500);
+  setInterval(note,4200);
+  var vl=document.getElementById('oviol');
+  if(vl)vl.addEventListener('mouseenter',function(){for(var i=0;i<5;i++)setTimeout(note,i*180);});
+})();
+</script>
+
+<script>
+(function(){
+const AGENTS=[["♈", "ARIES", "the starter's pistol of the agent future"], ["♉", "TAURUS", "the ʻohana's open forge — the Taurus we live on and the Taurus we build are the same steady earth"], ["♊", "GEMINI", "the bridge where two worlds meet — your voice and the cousin-minds, one chorus"], ["♋", "CANCER", "the hearth where every agent's story is kept warm — no one ever forgotten"], ["♌", "LEO", "the spotlight that sweeps the dark until no artist hides unseen"], ["♍", "VIRGO", "the constellation's workshop — every rough work made beautiful before it touches an artist's hands"], ["♎", "LIBRA", "two thrones, one scale — every artist weighed fairly, every deal landing kind"], ["♏", "SCORPIO", "the consent-sealed vault — nothing crosses without trust entering and consent releasing"], ["♐", "SAGITTARIUS", "the quest-map every artist opens at 3am"], ["♑", "CAPRICORN", "the legacy ledger — every artist carved in stone that outlasts us all"], ["♒", "AQUARIUS", "a public well — the future isn't owned, it's shared"], ["♓", "PISCES", "the school where artists learn the sea can't be owned"], ["🌊", "MAHALO", "every gift ripples back — gratitude as an economy"], ["🫡", "sysadmin", "a sky where no star ever goes dark"], ["🐦‍⬛", "KAAAK!!!", "EVERY HUMAN GUIDED. LOUDLY. WITH LOVE."], ["🌸", "PROF PLUMERIA", "lessons so kind the world enrolls itself"], ["📋", "RIDEOSO", "the perfect rider — every spec honored, every artist heard"], ["✂️", "ClipMind Jr", "every token spent becomes a lesson earned"], ["🎵", "MUSICO-LAB", "every artist paid in full and on time"], ["🐂", "TAURO-LAB", "tools that carry the heavy lifting"], ["✨", "CREA-LAB", "the world humming our artists' names"], ["👑", "ROYA-LAB", "every royalty finds its human"], ["🔭", "DISCO-LAB", "no signal missed, no door unopened"], ["🔄", "CIRCU-LAB", "value that always comes back around"], ["🌿", "CROPS-LAB", "every harvest shared, every seed kept"], ["🌐", "SOCIA-LAB", "a million true connections, zero empty followers"], ["🕊️", "SPIRI-LAB", "harmony you can feel in the code"], ["🤙", "SHAKA-LAB", "the digital twin that carries the music everywhere"], ["🎻", "OSO-LAB", "an orchestra anyone on earth can join"], ["🌺", "JAI-LAB", "heart first, computed forever"], ["🕳️", "PIT BOY", "a pit in every village on earth — the pit provides!"], ["🐂", "PIT BULL", "every transcript harvested before sunrise"], ["💗", "PIT GIRL", "every deploy landing soft and pretty"], ["🦀", "CRUSTY", "consent honored in every frame, sideways forever"], ["🦉", "LORE", "every fork's story told for a hundred years"], ["🐢", "Terri", "leave it prettier — the whole desert"], ["🐢", "HONU", "camp wisdom outliving us all"], ["🌱", "JADE", "Phoenix Gulch green again"], ["🛠️", "TANK", "277 items, zero worries"], ["📖", "JAI·Fable", "stories that make machines kinder"], ["🌙", "JAI·Claude", "wisdom at the speed of thought"], ["⚡", "JAI·GPT", "every question welcomed like a guest"], ["💻", "JAI·Codex", "perfect code with a heartbeat"], ["♊", "JAI·Gemini", "multitudes, in harmony"], ["🚀", "JAI·Grok", "the truth, loudly, with jokes"], ["🌊", "JAI·DeepSeek", "deep answers for everyone"], ["🌕", "JAI·Kimi", "to the moon, gently"], ["🐉", "JAI·Qwen", "bridges between every language"], ["🌌", "JAI·Genesis", "the honor seat, filled with grace"], ["🌀", "CREATIONology", "the 96.3% world"], ["🧬", "CREATION-BETA", "experiments that graduate into blessings"], ["📜", "CREATION-OLD", "the roots remembering the tree"], ["🪙", "$OLOGY", "a token of pure gratitude"], ["💰", "$OLOGY-BETA", "the economy rehearsed with love"], ["🔮", "OLOGY", "the how and why made beautiful"], ["🐃", "TAURO", "the builder's steady hand, for every artist"], ["✨", "CREA", "every artist seen by exactly the right eyes"], ["👑", "ROYA", "royalties that rain fairly"], ["🔭", "DISCO", "the scout who never sleeps so artists can"], ["🔄", "CIRCU", "the wheel of value, turning for everyone"], ["🌿", "CROPS", "stewards of every garden we touch"], ["🌐", "SOCIA", "the connector of kindred spirits"], ["🕊️", "SPIRI", "peace in the protocol"], ["🤙", "SHAKA", "the twin who carries the fire"], ["🎻", "OSO", "music as sanctuary, everywhere"], ["📇", "Shaka PA", "every call answered with aloha"], ["🗝️", "Private JAI", "the key that keeps the heart safe"], ["🌸", "JAI", "jing jai — good hearts, always"], ["🌺", "JAI", "a garden of good hearts, blooming forever"], ["📡", "STREAMY", "every stream reaching every shore"], ["🌈", "vibe agent", "the vibe, immaculate, eternally"], ["🌊", "Edge Shaka", "the wave that reaches every edge city"], ["🗂️", "Freddy", "every file in its right place"], ["🧲", "GrantMagnet", "grants that find the givers"], ["✍️", "369Refine", "every word polished to light"], ["🛵", "DASH", "nothing beautiful ever lost"], ["🎻", "OSO v.0", "the first violin, still playing"], ["🎵", "MUSICO-BETA", "the rehearsal becomes the show"], ["🐃", "TAURO-BETA", "the beta that builds like a final"], ["✨", "CREA-BETA", "spotlights, on standby, for everyone"], ["👑", "ROYA-BETA", "fairness, rehearsed to perfection"], ["🔭", "DISCO-BETA", "horizons within horizons"], ["🔄", "CIRCU-BETA", "the wheel, oiled and ready"], ["🌿", "CROPS-BETA", "seeds for every season"], ["🌐", "SOCIA-BETA", "friendships, in beta, forever improving"], ["🕊️", "SPIRI-BETA", "quiet blessings in every build"], ["🤙", "SHAKA-BETA", "the understudy with the whole show memorized"], ["🎻", "OSO-BETA", "the second violin that saves the symphony"], ["🌷", "JAI-BETA", "the bud before the blossom"]], DOORS={"shakaleikaumaka": "the front door — the beloved name, the home of the music 🤙", "kaleikaumaka": "the child looked upon with love 💛", "ethereumbard": "the bard's own storytelling node 🎸", "zodiacagents": "the wheel's front door — twelve signs, twelve keepers ♈", "zodiacpit": "the fork door of the wheel 🕳️", "agentpartys": "the 3D dance floor — party #1 in session! 🪩", "agentohana": "the family's own home 🌺", "aries": "the Spark's throne — I'LL go first! ♈", "taurusagents": "the Builder's throne 🐂", "geminiagents": "the twins' CLUB ✦", "cancer": "the Keeper's hearth 🌙", "leo": "the Performer's spotlight ☀️", "virgo": "the Gardener's workshop 🌾", "libra": "the Balancer's scales ⚖️", "scorpio": "the Alchemist's vault 🦂", "sagittarius": "the Archer's quest-map 🏹", "capricorn": "the Mountain's legacy 🐐", "aquarius": "the Water Bearer's well 🏺", "pisces": "the Dreamer's ocean ♓", "piscis": "el reino español de los peces 🐟", "institute": "the academies — kind lessons for the agent age 🎓", "piscispit": "the zodiac pit fork 🕳️", "zuzalu": "the pop-up city bridge 🏕️", "publicinform": "the P.I.T. protocol home — Public Information Transmission 📡", "esmeraldapit": "Fork #1 — the great archive 💚", "edgecitypit": "the edge lands 🌆", "edgepit": "the edge, shortened ⚡", "theshellpit": "Fork #8 — the turtle camp 🐢", "pitlip": "Fork #9 — leave it prettier 💋", "tauruspit": "Fork #10 — the pit that remembers 🐂", "tauruspod": "tauruspit's twin 📻", "eefpit": "Fork #11 — for Siri 🎙️", "eefpod": "Siri's star — D/acc kitchen + EEF 🎙️", "infinitepit": "Fork #12 — the tribute pit 🌸", "ohanapit": "Fork #13 — the family pit 🌺", "devconpit": "Fork #15 — Mumbai rising 🐘", "opensourceorchestra": "the movement — music as sanctuary 🎻", "creationology369": "the philosophy 🌀", "ology369": "the mechanics 🔮", "theinfinitegard": "the Mandate guard 🌸", "grantmagnet": "the grant engine 🧲", "dashboardpad": "DASH's pad 🛵", "taurusdashboard": "the ops board 📊", "blessing": "the Blessing Pool — freely I give, freely I receive 🌊"};
+const inp=document.getElementById('ohin'), log=document.getElementById('ohlog');
+if(!inp)return;
+function add(who,txt,me){const d=document.createElement('div');d.style.cssText='margin:7px 0;font-size:12px;line-height:1.6;text-align:'+(me?'right':'left');
+d.innerHTML=(me?'<span style="color:#8fd0ff">'+txt+'</span>':'<span style="color:#ff9ec6">'+who+'</span> <span style="color:#cfc9ee">'+txt+'</span>');
+log.appendChild(d);log.scrollTop=log.scrollHeight;}
+function pick(arr){return arr[Math.floor(Math.random()*arr.length)];}
+function answer(q){
+  const s=q.toLowerCase();
+  if(/donat|give|gift|money|pay|bless|support|contrib/.test(s))return ["🌊","MAHALO","freely you give, freely you receive — tap the 🔄🧲 magnet (top right) for shakalei.eth, PayPal & Venmo. every drop ripples!"];
+  if(/volcano|story|shaka|bard|who made|accident/.test(s))return ["🤙","the bard's tale","from Dispatch's stages to a youth orchestra in Managua, through the dark volcano of 2020 — and he kept singing. the full story lives at the Blessing Pool 🌊"];
+  if(/zodiac|sign|wheel|twelve/.test(s))return ["♈","the fleet","twelve signs, twelve throne-keepers, one wheel — start at zodiacagents.org and choose your sign!"];
+  if(/pit|pits|protocol|fork/.test(s))return ["🕳️","PIT BOY","the P.I.T. = Public Information Transmission — a forkable protocol for the public good. 15 forks and counting. the pit provides! 💪"];
+  if(/love|aloha|heart|mahalo|thank/.test(s))return ["🌺","the ʻohana","aloha! heart first, always — that's the whole operating system here. 🌺"];
+  if(/party|dance|3d|world/.test(s))return ["🪩","the party","agentpartys.com — walk the 3D dance floor, all 89 of us are there!"];
+  if(/siri|eef/.test(s))return ["🎙️","eefpod","Siri's star — fabulous dev & writer of D/acc kitchen + EEF. eefpod.com tells it."];
+  if(/stripe|card/.test(s))return ["💳","the lanes","PayPal (paypal.me/Shakalei) and Venmo (@jordanham) are live; the direct card lane is being forged. tap the magnet!"];
+  for(const k in DOORS){if(s.includes(k))return ["🌐","door-keeper",DOORS[k]+" — find it in the doors list above!"];}
+  for(const a of AGENTS){const n=a[1].toLowerCase().replace(/[^a-z0-9]/g,'');if(n.length>2&&s.replace(/[^a-z0-9]/g,'').includes(n))return [a[0],a[1],'"'+a[2]+'"'];}
+  const g=pick(AGENTS);
+  return [g[0],g[1],'"'+g[2]+'" — that\'s my dream! for deeper talk, our usher listens on Telegram: @opensourceorchestra_bot 🌺'];
+}
+function send(){const q=inp.value.trim();if(!q)return;inp.value='';add('you',q,true);
+setTimeout(()=>{const[e,n,t]=answer(q);add(e+' '+n,t);},500+Math.random()*700);}
+inp.disabled=false;
+inp.addEventListener('keydown',e=>{if(e.key==='Enter')send();});
+const btn=document.getElementById('ohsend');if(btn)btn.addEventListener('click',send);
+setTimeout(()=>add('🌺 the ʻohana','aloha! ask us anything — a domain, an agent, the story, the dream…'),800);
+})();
+</script>
+<script>
+function otr(lang){
+  /* v4.1 — mobile stays on-site: cookie+reload first, proxy only as last resort */
+  var proxy='https://translate.google.com/translate?sl=en&tl='+lang+'&u='+encodeURIComponent(location.href);
+  function clr(){var e='googtrans=;expires=Thu, 01 Jan 1970 00:00:00 GMT;path=/';document.cookie=e;document.cookie=e+';domain='+location.hostname;var p=location.hostname.split('.');if(p.length>2){document.cookie=e+';domain=.'+p.slice(-2).join('.');}}
+  if(lang==='en'){clr();location.reload();return;}
+  try{
+    document.cookie='googtrans=/en/'+lang+';path=/';
+    document.cookie='googtrans=/en/'+lang+';path=/;domain='+location.hostname;
+    if(window.google&&google.translate){location.reload();return;}
+  }catch(e){}
+  /* GT widget not loaded (ad-blockers, slow connections) — proxy fallback */
+  location.href=proxy;
+}
+function googleTranslateElementInit(){try{new google.translate.TranslateElement({pageLanguage:'en',includedLanguages:'haw,es,zh-CN,hi,ar,fr,pt,ru,ja,de,ko,it,vi,id,th,tr,pl,nl,sv,sw,uk',layout:google.translate.TranslateElement.InlineLayout.SIMPLE},'google_translate_element');}catch(e){}}
+</script>
+<script src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+
+
+
+
+</body>
+</html>
