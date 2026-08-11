@@ -15,7 +15,11 @@
     { icon: '🦋', title: 'Butterflies and Love', chords: 'G–Em–C–D',
       src: 'https://shaka-anthem-gzdk4epeah-ffieyo32.taur.link/assets/i-open-sourced-my-whole-universe.mp3' },
     { icon: '🌍', title: 'A Planet We Share As One', chords: 'C–G–D–D',
-      src: 'https://shaka-anthem-gzdk4epeah-ffieyo32.taur.link/assets/a-planet-we-share-as-one.mp3' }
+      src: 'https://shaka-anthem-gzdk4epeah-ffieyo32.taur.link/assets/a-planet-we-share-as-one.mp3' },
+    { icon: '🎻', title: 'Ginger Game — Matteo Tambussi', chords: 'instrumental',
+      src: 'https://shaka-anthem-gzdk4epeah-ffieyo32.taur.link/assets/matteo-tambussi--ginger-game.mp3' },
+    { icon: '🎻', title: 'Luogoper — Matteo Tambussi', chords: 'instrumental',
+      src: 'https://shaka-anthem-gzdk4epeah-ffieyo32.taur.link/assets/matteo-tambussi--luogoper.mp3' }
   ];
 
   function esc(s) { return String(s).replace(/[&<>"]/g, function (c) {
