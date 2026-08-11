@@ -16,9 +16,9 @@
       src: 'https://shaka-anthem-gzdk4epeah-ffieyo32.taur.link/assets/i-open-sourced-my-whole-universe.mp3' },
     { icon: '🌍', title: 'A Planet We Share As One', chords: 'C–G–D–D',
       src: 'https://shaka-anthem-gzdk4epeah-ffieyo32.taur.link/assets/a-planet-we-share-as-one.mp3' },
-    { icon: '🎻', title: 'Ginger Game — Matteo Tambussi', chords: 'instrumental',
+    { icon: '🎻', title: 'Ginger Game — Matteo Tambussi', chords: 'lyrics on the way',
       src: 'https://shaka-anthem-gzdk4epeah-ffieyo32.taur.link/assets/matteo-tambussi--ginger-game.mp3' },
-    { icon: '🎻', title: 'Luogoper — Matteo Tambussi', chords: 'instrumental',
+    { icon: '🎻', title: 'Luogoper — Matteo Tambussi', chords: 'lyrics on the way',
       src: 'https://shaka-anthem-gzdk4epeah-ffieyo32.taur.link/assets/matteo-tambussi--luogoper.mp3' }
   ];
 
