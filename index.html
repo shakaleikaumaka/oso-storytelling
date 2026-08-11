@@ -833,7 +833,7 @@ function googleTranslateElementInit(){try{new google.translate.TranslateElement(
 </div>
 <script>
 (function(){
-const HUB='https://oso-chat.shakaverse.workers.dev'; // → swap to https://chat.opensourceorchestra.org once DNS (AAAA chat 100::, proxied) exists
+const HUB='https://chat.opensourceorchestra.org'; // swapped 2026-08-11 by sysadmin — DNS live (AAAA chat 100:: proxied). fallback origin: https://oso-chat.shakaverse.workers.dev
 const $=id=>document.getElementById(id);
 let sess=localStorage.getItem('oso_sess');if(!sess){sess=(crypto.randomUUID?crypto.randomUUID():Date.now()+'-'+Math.random().toString(36).slice(2)).slice(0,36);localStorage.setItem('oso_sess',sess);}
 let after=Number(localStorage.getItem('oso_after')||0),polling=false,open=false;
