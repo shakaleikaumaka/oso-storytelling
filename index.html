@@ -819,6 +819,9 @@ function googleTranslateElementInit(){try{new google.translate.TranslateElement(
      lift the chat above the player and hide the promo float + lyric/download panels. */
   body.oso-open.oso-player #oso-chat{bottom:calc(72px + env(safe-area-inset-bottom));height:auto;top:0;max-height:none}
   body.oso-open #devcon-float-wrap,body.oso-open #devcon-defs-panel,body.oso-open #blyrics,body.oso-open #bldownload{display:none!important}
+  /* 2026-08-12 part 2 (Shaka: floaters make the header hard to read): globe + violin buttons
+     ride z-index 9999 over the fullscreen chat — hide them while chatting, same as JAI desk */
+  body.oso-open #olang,body.oso-open #olangp,body.oso-open #oviol{display:none!important}
   #oso-log{-webkit-overflow-scrolling:touch}
   #oso-in{font-size:16px}
   #oso-form{padding-bottom:calc(12px + env(safe-area-inset-bottom))}
