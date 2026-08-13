@@ -70,6 +70,21 @@ footer a{color:var(--gold)}
   text-transform:uppercase;color:var(--cream-dim);text-decoration:none;border:1px solid var(--gold-soft);
   border-radius:999px;padding:.5em 1.2em}
 .back:hover{color:var(--gold-bright);border-color:var(--gold-bright)}
+
+/* song words — collapsible lyrics */
+.words details{margin:10px 0;border:1px solid rgba(240,196,100,.14);border-radius:12px;background:rgba(21,11,34,.45);overflow:hidden}
+.words summary{cursor:pointer;list-style:none;padding:12px 16px;font-family:var(--sans);font-size:.82rem;letter-spacing:.08em;color:var(--gold-bright);display:flex;align-items:center;gap:10px}
+.words summary::-webkit-details-marker{display:none}
+.words summary:hover{background:rgba(240,196,100,.06)}
+.words summary .st{margin-left:auto;font-size:.62rem;letter-spacing:.14em;text-transform:uppercase;border:1px solid var(--gold-soft);border-radius:999px;padding:.22em .8em;color:var(--cream-dim);white-space:nowrap}
+.words summary .st.off{border-color:rgba(45,212,191,.5);color:var(--teal)}
+.words .ly{padding:4px 18px 16px;color:var(--cream-dim);font-size:.92rem}
+.words .ly p{margin:0 0 12px}
+.words .ly .flag{font-family:var(--sans);font-size:.72rem;color:var(--cream-faint);font-style:italic;border-top:1px solid rgba(240,196,100,.12);padding-top:10px;margin-top:4px}
+.songbook-cta{display:block;text-align:center;margin:18px 0 6px;padding:14px;border:1px dashed var(--gold-soft);border-radius:12px;text-decoration:none}
+.songbook-cta:hover{background:rgba(240,196,100,.07)}
+.songbook-cta b{color:var(--gold-bright)}
+.songbook-cta span{display:block;font-family:var(--sans);font-size:.74rem;color:var(--cream-dim);margin-top:4px}
 </style>
 </head>
 <body>
@@ -82,7 +97,7 @@ footer a{color:var(--gold)}
   <nav class="roster" aria-label="Node roster">
     <a class="node-chip active" href="#node-001">001 · Matteo Tambussi 🎻</a>
     <span class="node-chip">002 · Justin Holmes</span>
-    <span class="node-chip">003 · Shaka</span>
+    <a class="node-chip" href="#node-003">003 · Shaka 🌺</a>
     <a class="node-chip active" href="#node-004">004 · Manu Alzuru 🎧</a>
   </nav>
 </header>
@@ -107,11 +122,11 @@ footer a{color:var(--gold)}
     <h3>The music — free to keep 🎁</h3>
     <p>The full Tambussi vault, gifted to the orchestra. Every track also rides the jukebox in the corner — and its ⬇ tab means take them home. CC0, artist-credited, no gate.</p>
     <div class="track">
-      <p class="nm">🎻 Ginger Game <span>lyrics on the way</span></p>
+      <p class="nm">🎻 Ginger Game <span>draft lyrics 🦋 in the jukebox</span></p>
       <audio controls preload="metadata" src="https://shaka-anthem-gzdk4epeah-ffieyo32.taur.link/assets/matteo-tambussi--ginger-game.mp3"></audio>
     </div>
     <div class="track">
-      <p class="nm">🎻 Luogoper <span>lyrics on the way</span></p>
+      <p class="nm">🎻 Luogoper <span>draft lyrics 🦋 in the jukebox</span></p>
       <audio controls preload="metadata" src="https://shaka-anthem-gzdk4epeah-ffieyo32.taur.link/assets/matteo-tambussi--luogoper.mp3"></audio>
     </div>
     <div class="track">
@@ -119,7 +134,7 @@ footer a{color:var(--gold)}
       <audio controls preload="metadata" src="https://shaka-anthem-gzdk4epeah-ffieyo32.taur.link/assets/matteo-tambussi--tanta-paura.mp3"></audio>
     </div>
     <div class="track">
-      <p class="nm">🎻 Gioia Perfetta <span>lyrics on the way</span></p>
+      <p class="nm">🎻 Gioia Perfetta <span>draft lyrics 🦋 in the jukebox</span></p>
       <audio controls preload="metadata" src="https://shaka-anthem-gzdk4epeah-ffieyo32.taur.link/assets/matteo-tambussi--gioia-perfetta.mp3"></audio>
     </div>
     <div class="track">
@@ -135,29 +150,91 @@ footer a{color:var(--gold)}
       <audio controls preload="metadata" src="https://shaka-anthem-gzdk4epeah-ffieyo32.taur.link/assets/matteo-tambussi--island.mp3"></audio>
     </div>
     <div class="track">
-      <p class="nm">🎻 Cioccolato Fondente <span>lyrics on the way</span></p>
+      <p class="nm">🎻 Cioccolato Fondente <span>draft lyrics 🦋 in the jukebox</span></p>
       <audio controls preload="metadata" src="https://shaka-anthem-gzdk4epeah-ffieyo32.taur.link/assets/matteo-tambussi--cioccolato-fondente.mp3"></audio>
     </div>
     <div class="track">
-      <p class="nm">🎻 La Canzone del Tuono <span>lyrics on the way</span></p>
+      <p class="nm">🎻 La Canzone del Tuono <span>draft lyrics 🦋 in the jukebox</span></p>
       <audio controls preload="metadata" src="https://shaka-anthem-gzdk4epeah-ffieyo32.taur.link/assets/matteo-tambussi--la-canzone-del-tuono.mp3"></audio>
     </div>
     <div class="track">
-      <p class="nm">🎻 Be My Friend <span>lyrics on the way</span></p>
+      <p class="nm">🎻 Be My Friend <span>draft lyrics 🦋 in the jukebox</span></p>
       <audio controls preload="metadata" src="https://shaka-anthem-gzdk4epeah-ffieyo32.taur.link/assets/matteo-tambussi--be-my-friend.mp3"></audio>
     </div>
     <div class="track">
-      <p class="nm">🎻 Pharmacist Wife (Mv. 2) · with Marek K <span>lyrics on the way</span></p>
+      <p class="nm">🎻 Pharmacist Wife (Mv. 2) · with Marek K <span>draft lyrics 🦋 in the jukebox</span></p>
       <audio controls preload="metadata" src="https://shaka-anthem-gzdk4epeah-ffieyo32.taur.link/assets/matteo-tambussi--pharmacist-wife-mv2.mp3"></audio>
     </div>
     <div class="track">
-      <p class="nm">🎻 Plato (ORCHI Rework) <span>lyrics on the way</span></p>
+      <p class="nm">🎻 Plato (ORCHI Rework) <span>draft lyrics 🦋 in the jukebox</span></p>
       <audio controls preload="metadata" src="https://shaka-anthem-gzdk4epeah-ffieyo32.taur.link/assets/matteo-tambussi--plato-orchi-rework.mp3"></audio>
     </div>
     <div class="track">
-      <p class="nm">🎻 Pollo <span>lyrics on the way</span></p>
+      <p class="nm">🎻 Pollo <span>draft lyrics 🦋 in the jukebox</span></p>
       <audio controls preload="metadata" src="https://shaka-anthem-gzdk4epeah-ffieyo32.taur.link/assets/matteo-tambussi--pollo.mp3"></audio>
     </div>
+  </div>
+
+  <div class="card words">
+    <h3>The words — sing along 📖</h3>
+    <p>Every song, word by word. Four carry Matteo's <b>official lyrics</b> from his own hand; nine are <b>AI-transcription drafts</b> the ʻohana transcribed with love (he forgot where he stored the words — so we listened). The artist is blessing them now.</p>
+    <a class="songbook-cta" href="/nodes/TAMBUSSI-SONGBOOK-2026-08-13.pdf"><b>📖 The Tambussi Songbook — the PDF, beautiful for reading &amp; correcting</b><span>18 pages · one song per page · take it home, mark it up, send it back 🎻</span></a>
+    <details><summary>🫚 Ginger Game <span class="st">📝 draft</span></summary><div class="ly">
+<p>I have got a trick to foil those evil plans I hide it A fun remade is what I need to play, Because we could game against the house of slaves.<br>Flaming locks and driving eyes are my shame, In the thickness, they were even brighter now Ginger game, ginger game<br>Orange crash, honey pain Pull the strings from the chains The devil's got no game against ginger's game<br>Change of thoughts am I a part time?<br>Space me out into the deepest sky Far above the mountains through the stratosphere I will hit the sun and kill your fucking fears<br>Change your game, change your game Orange crush, honey pain I'll kill that queen, Freddy Sam<br>The killing is Jesus' name Oh, you said it all One, two, three, four, five, six, seven, four, five, six, seven, four</p>
+<p class="flag">📝 AI transcription draft (faster-whisper) — Matteo is blessing the official words. Hear a wrong line? It probably is — the artist has the final say. 🌺</p></div></details><details><summary>📍 Luogoper <span class="st">📝 draft</span></summary><div class="ly">
+<p>Ho trovato un luogo be' per tornare a immaginare Muove cure per il nostro amore, questo amore che ci tratta male<br>Per poterci arrivare C'è una sola indicazione Prendi quella strada senza nome Dopo il ponte sul fiume delle tue parole<br>E con il vento in coda superma salita Non farai fatica e la notte ti aspetterà Entra senza esitazione Questa casa ti conosce già<br>Svesti in dubbio ed il rumore Incontrami con curiosità</p>
+<p class="flag">📝 AI transcription draft (faster-whisper) — Matteo is blessing the official words. Hear a wrong line? It probably is — the artist has the final say. 🌺</p></div></details><details><summary>🌊 Tanta Paura <span class="st off">✓ official</span></summary><div class="ly">
+<p>TANTA PAURA</p>
+<p>Non è la disumanità che mi spaventa<br>Né l'avverata fantascienza<br>Quanto il dovere rinunciare, fino in fondo<br>A ciò in cui io mi riconosco,fIn cui sono più capace</p>
+<p>Ho così tante paure,<br>Ho sempre nuove paure</p>
+<p>E  Faccio fatica a sbarazzarmi del tuo amore di coniglio<br>Ci han detto che l’integrità si ottiene solo con un figlio<br>Ma un figlio è un atto criminale,<br>è un tradimento della specie<br>Quando a riscrivere l'amore tutti vanno col macete,</p>
+<p>E con le lame taglieranno tutti i ponti col passato,<br>garantiranno il futuro, un futuro inviolato</p>
+<p>Ho così tanta paura<br>Di essere solo con la mia paura</p>
+<p>E mi sforzo<br>A livello intuitivo<br>Di capire qual è il luogo<br>Qual è il momento conclusivo<br>Dov’è sepolta l’altra metà del mio cuore<br>Dove ho le mie virtù<br>Dimmi ora se ce l’hai tu<br>Dimmi ora se ce l’hai tu</p>
+<p>Sono Pacifico e avverto serenità</p>
+<p>Rit 2<br>e ti penso, come il vento respiro nelle valli<br>sopra i mari, di un desiderio conclusivo<br>a cui sarò per sempre fedele<br>Senza perdermi in tanta paura<br>Senza perdermi in tanta paura</p>
+</div></details><details><summary>✨ Gioia Perfetta <span class="st">📝 draft</span></summary><div class="ly">
+<p>Come triste il giorno di maggio, dentro il vicolo povero e solo di tanto sole ne pure un raggio, con tante rondini ne anche un voro<br>pure c'era in quello squallore, in quel luce a greve e amara un profumo di c'è il fiore, un barlume di gioia chiara<br>c'era c'erano tante rose, affacciata una finestra che ridevano come spose, preparate per la festa<br>C'era seduto sui gradini, d'una casa di pezzenti, un bambino piccino piccino, dai grandi occhi risprendenti.<br>C'era in alto una voce di mamma Cos'e calma e cos'e pura Che cantava la ninna nanna Alla propria creatura<br>E poi dopo non c'era più nulla Ma di magia la mia poveretta past un bimbo, un fiore, una kulla<br>per formarsi una gioia perfetta per formarsi Performersi</p>
+<p class="flag">📝 AI transcription draft (faster-whisper) — Matteo is blessing the official words. Hear a wrong line? It probably is — the artist has the final say. 🌺</p></div></details><details><summary>🌷 3MILY <span class="st off">✓ official</span></summary><div class="ly">
+<p>3MILY</p>
+<p>Ci incontriamo in volo<br>e in volo ci lasciamo<br>tu alla tua missione<br>ed io all’Uragano<br>che raffredda la mente<br>dopo una calda estate<br>e il pianeta in fiamme</p>
+<p>chissà se troveremo<br>ognuno per sè<br>felicità, era una vasca piena<br>dove potevo guardarti affogare<br>accarezzando una canzone<br>semplice come te</p>
+<p>3mily 3mily<br>cosa fai 3mily</p>
+<p>incontrerai qualcuno<br>o qualcuno ti incontrerà<br>digli di no, tu non ci credi alla slealtà<br>dei corpi sensuali orbitanti<br>travolti dalla gravità<br>di una altra cometa.</p>
+<p>3mily 3mily<br>dove sei 3milydormi qui 3mily</p>
+</div></details><details><summary>🔥 Burnout <span class="st off">✓ official</span></summary><div class="ly">
+<p>BURNOUT</p>
+<p>Mi piacciono le farfalle<br>Mi piacciono colorate<br>Mi perdo nelle trame<br>Delle loro traversate</p>
+<p>e questa emozione che graffia il corso del vento<br>Fa scorta di pace prima del riarmamento</p>
+<p>Oggi non posso fare altro che cedere<br>che dare ragione all'irragionevole</p>
+<p>I mantra osceni degli motivatori alla conquista<br>Getto la spugna e vado in spiaggia</p>
+<p>ma sulla sabbia un inatteso batticuore<br>mi spinge sul ciglio un abisso interiore</p>
+<p>Tutti i volti rubati a persone migliori<br>Non mi aiuteranno<br>Mi sento esposto e in preda all'affanno</p>
+<p>Cade ogni tipo di fede<br>Anche quella che avevo in te<br>Non mi resta che cedere, eccedere</p>
+<p>E quando tocco il fondo una convinzione!<br>Un'idea senza soggetto, misura o sapore!</p>
+<p>si fa strada in me<br>e mi porta con sé<br>per aria |  per i sentieri antichi<br>nell’aria | che collegano i pianeti</p>
+<p>Mi piaccion le farfalle, mi piacciono colorate<br>Mi piaccion le farfalle, mi piacciono colorate<br>Mi piaccion le farfalle, mi piacciono colorate</p>
+</div></details><details><summary>🏝️ Island <span class="st off">✓ official</span></summary><div class="ly">
+<p>ISLAND</p>
+<p>oh life<br>you got me rowing<br>under the sun<br>no way I can find my island</p>
+<p>fine line<br>between the blue<br>ocean and soul<br>tears won’t let me see my island</p>
+<p>low lives<br>my family<br>the only ones I know<br>go, go with the flow<br>miles and miles away from the skyline</p>
+<p>you rock and rollers<br>take the oars<br>you castaway lovers<br>feel the roar of Life<br>life on an island<br>searching for islands<br>sailing by the stars<br>never be lost</p>
+<p>all mine<br>nothing to lose, under this sun<br>just nowhere to run<br>we’ll never stop chasing our Islands</p>
+<p>you rock and rollers<br>take the oars<br>you exiled looters feel the roar<br>of Life<br>life on an Island<br>searchin for islands<br>sailing by the stars<br>never be lost<br>never grow old</p>
+</div></details><details><summary>🍫 Cioccolato Fondente <span class="st">📝 draft</span></summary><div class="ly">
+<p>Questa tempesta monta, monta e non scarica mai e quando arriverà la sete allora vedrai berremo da una fontana di sangue<br>vita fresca e nocente come il primo peccato di cola ci ricorderà un po' Cioccolato fondente<br>E mentre il mondo discende, il suo segreto a mezz'aria rimane un tessuto di sogno lo appolge e inibisce prende l'azione<br>sui resti delle loro battaglie, sui simboli del loro potere Ciò colato fondente Uuuh, uuuh, uuuh</p>
+<p class="flag">📝 AI transcription draft (faster-whisper) — Matteo is blessing the official words. Hear a wrong line? It probably is — the artist has the final say. 🌺</p></div></details><details><summary>⛈️ La Canzone del Tuono <span class="st">📝 draft</span></summary><div class="ly">
+<p>music Music playing Music You Music You And I'm not afraid of you I'm afraid of you You</p>
+<p class="flag">⛈️ The thunder sings in textures — our transcriber heard only fragments. Matteo, send us the true words and we will carve them in. 🎻</p></div></details><details><summary>🤝 Be My Friend <span class="st">📝 draft</span></summary><div class="ly">
+<p>Be my friend, don't let me down Oh, be my friend, hold my hand<br>In the dark, we make a bright light In the dark, we give another try<br>Be my friend, oh, don't let me down Don't let me down<br>Be my friend, oh, don't let me down Don't let me down<br>Be my friend, don't let me down<br>Be my friend, hold my hand</p>
+<p class="flag">📝 AI transcription draft (faster-whisper) — Matteo is blessing the official words. Hear a wrong line? It probably is — the artist has the final say. 🌺</p></div></details><details><summary>💊 Pharmacist Wife (Mv. 2, w/ Marek K) <span class="st">📝 draft</span></summary><div class="ly">
+<p>I ain't gotta worry cuz I'm rich baby If you wanna have an easy life Just make sure to marry a pharmacist, why?<br>Ditches great, we're drinkin' it, they're great One after another for screams, then the rest<br>By the time we hit the bronze, we're out of supplies It's time to go my pharmacist, why?<br>Policies, why do you make me believe that happiness grows on gentle trees?<br>African dancers in a hotel suite, 20 horses couldn't make a leap By the time they are gone, I'm more dead than alive<br>Who will call my pharmacist why?<br>Pharmacist why to make me believe That happiness grows on terrarium trees She's a bit of a whore with a flower in her hair<br>Seven husbands watching as she climbs the stairs Seven husbands watching, waiting in line Who will be the next to please their pharmacist wife?<br>Pharmacist wife can make us believe That happiness grows on cherry trees Pharmacist wife can make us believe<br>That happiness grows on cherry trees You</p>
+<p class="flag">📝 AI transcription draft (faster-whisper) — Matteo is blessing the official words. Hear a wrong line? It probably is — the artist has the final say. 🌺</p></div></details><details><summary>🏛️ Plato (ORCHI Rework) <span class="st">📝 draft</span></summary><div class="ly">
+<p>Da i venti celesti We are keepers I have a little bit of a headache but I'll try to get some rest<br>and I'll see you in a bit I'll come back as soon as I can and you'll see me in a bit I'll be back<br>The key to go away from the illusion Where are my friends? Where are the good spies?<br>Noi eravamo felici My soul, my soul Contro gniorki io e te Una cosa sola Contro gniorki io e te<br>Contro Giorchi io e te, una cosa sola, Contro Giorchi io e te, una cosa sola, Contro<br>Sola Contro agli occhi di io e te Una cosa sola</p>
+<p class="flag">📝 AI transcription draft (faster-whisper) — Matteo is blessing the official words. Hear a wrong line? It probably is — the artist has the final say. 🌺</p></div></details><details><summary>🐔 Pollo <span class="st">📝 draft</span></summary><div class="ly">
+<p>Nell'Arabia c'è il deserto Non c'è traccia di te stesso<br>Se ti senti incompreso Perché morti se ti tiene chiesto<br>Dove hai messo il dolore L'hai nascosto scambiato per un po' d'amore<br>Che ti piace lo sai bene È una gioia in un mondo da bruciare<br>Che cosa ti è successo Pollo Dici cosa è successo a te<br>Dove che ti sei perso Pollo Dove che perso a me<br>Ti ricordi di una volta Fica il Rammstein in piscina<br>Capitano nuova rota Prendi il largo e tutto il resto che si fotta<br>Che cosa ti è successo Pollo Che cosa è successo a me<br>Dove che ti sei perso Pollo Dove che perso a me<br>Dove che ti sei perso Pollo Dove che perso a me<br>Dove che ti sei perso Pollo Dove che ti sei perso<br>Dove che ti sei perso Pollo Dove che ti sei perso Pollo<br>Pollo</p>
+<p class="flag">📝 AI transcription draft (faster-whisper) — Matteo is blessing the official words. Hear a wrong line? It probably is — the artist has the final say. 🌺</p></div></details>
   </div>
   <div class="linkrow">
       <a href="https://forum.devcon.org/t/music-sessions-open-mic-stage/387">The first DIP · 2022</a>
@@ -165,6 +242,62 @@ footer a{color:var(--gold)}
       <a href="https://docs.google.com/forms/d/e/1FAIpQLSck9I3Tu0lZqCBt9FsE9VG4UjGM71gbY86aDDlC9jb_akPMmg/viewform">Open call — play with us</a>
       <a href="https://x.com/matteotambussi">@matteotambussi</a>
     </div>
+  </div>
+
+  <p style="text-align:center"><a class="back" href="/">← back to the orchestra</a></p>
+</section>
+
+
+<section id="node-003">
+  <div class="sec-head">
+    <span class="num">Node 003</span>
+    <h2>Shaka <em>Lei Kaumaka</em> 🌺🤙</h2>
+  </div>
+
+  <div class="card">
+    <h3>The bard who opened the circle</h3>
+    <p>Touring musician turned <b>Ethereum bard</b> — the voice behind the OSO Flow Radio and the keeper of the ʻohana that built this orchestra. Shaka carries the songs across every door: the music never stops, the gate never closes, and every voice that arrives finds a chair already set.</p>
+    <p>He wrote these two songs with <b>Ethereum Singapore</b> — love letters to the infinite garden, sung for the people who tend it. The first is for <b>Aya Miyaguchi</b> and every builder who chooses butterflies over war; the second is a frustration sung into a prayer — protection of creation as a collaboration of every nation.</p>
+    <p class="dedication">"We should only wage war with butterflies and love." — Node 003 🌺</p>
+  </div>
+
+  <div class="card">
+    <h3>The music — free to keep 🎁</h3>
+    <p>Both songs ride the jukebox in the corner of every door — and the ⬇ tab means take them home. CC0, no gate.</p>
+    <div class="track">
+      <p class="nm">🦋 Butterflies and Love <span>sing along 🎤 below</span></p>
+      <audio controls preload="metadata" src="https://shakaleikaumaka.com/radio-assets/i-open-sourced-my-whole-universe.mp3"></audio>
+    </div>
+    <div class="track">
+      <p class="nm">🌍 A Planet We Share As One <span>sing along 🎤 below</span></p>
+      <audio controls preload="metadata" src="https://shakaleikaumaka.com/radio-assets/a-planet-we-share-as-one.mp3"></audio>
+    </div>
+  </div>
+
+  <div class="card words">
+    <h3>The words — sing along 📖</h3>
+    <p>Every word, straight from the bard's hand. ✓ official.</p>
+    <details open><summary>🦋 Butterflies and Love <span class="st off">✓ official</span></summary><div class="ly">
+<p><strong>Hey Solana</strong><br>We can be your (blockchain)<br>(soy boy) big brother<br>We don't need to fight a war<br>for users and developers<br>We build apps that bridge us all together<br>Competition can be over<br>Because Ethereum<br>Is a positive Sum<br>Built by and for everyone</p>
+<p><strong>Hey Bitcoin</strong><br>Lucky you were never called a shitcoin (altcoin)<br>you were the first to inspire<br>Our Ethereum co-creator<br>His magazine wasn't<br>just an ordinary page turner<br>Even though we don't<br>Know your founder<br>Vitalik found inspiration<br>From your magical ledger</p>
+<p><strong>We should only wage war<br>with butterflies and love<br>The infinite garden isn't just a place for fun<br>Decentralized<br>Permission-less<br>and open-sourced<br>Even with the layer one as our shield,<br>and the layer two as our sword<br>All we need to wage in a war<br>Is butterflies and love</strong><br>Because Ethereum is a positive sum<br>Built by and for everyone</p>
+<p><strong>Hey Ethereum</strong><br>I still love you most of all<br>You are the world computer<br>Built by all my brothers and sisters<br>Together we don't have to fight a war<br>All we need is butterflies and love<br>To pollinate the infinite-garden<br>Which grows strong and tall<br>And make us all look small<br>In the infinite garden</p>
+<p><strong>Hey Aya 🌸</strong><br>Don't let the arrows pointed at ya<br>Ever pierce your lovely heart<br>From the start<br>you were the heart beat<br>Of the ethereum foundation<br>You taught us the power of subtraction<br>and your very first reaction<br>Was that you didn't want a title<br>That's why we have such fertile soil<br>For us all to grow equal<br>In the infinite garden</p>
+</div></details>
+    <details><summary>🌍 A Planet We Share As One <span class="st off">✓ official</span></summary><div class="ly">
+<p><strong>You know I had a frustration</strong><br>That I come from the nation<br>That dropped an atomic bomb<br><strong>On a planet we share as one</strong></p>
+<p><strong>And I have a frustration</strong><br>They also tested those fucking bombs<br>In our ocean<br>And now you see with all the plastic<br>It's choking our reefs, you see<br><strong>Protection of creation<br>Must be a collaboration<br>Of every nation<br>For a planet we share as one</strong></p>
+<p><strong>You know I had a frustration</strong><br>That two bordering nations<br>Have to fight for the greed<br>Of one fucking man's manipulations<br>Why does war have to be a typical situation<br>Can't we see a better resolution<br><strong>For a planet we share as one</strong></p>
+<p><strong>It doesn't matter if you count up<br>To Web 1, 2 or 3</strong><br>We all can evolve<br>Like we evolve our technology<br>And now we see — like an experiment<br>With a Zuzalu pop-up city<br>We can build and dogfood<br>Our own technology<br>So we can see<br><strong>How we can be free</strong></p>
+<p><strong>We can build it up like a layer one</strong><br>The world computer called Ethereum<br><strong>For a planet we share as one 🌍</strong></p>
+</div></details>
+  </div>
+
+  <div class="linkrow">
+    <a href="https://shakaleikaumaka.com">the front door 🌺</a>
+    <a href="https://x.com/shakaleikaumaka">@shakaleikaumaka</a>
+    <a href="https://forum.devcon.org/t/open-source-orchestra-music-space-at-devcon-8-mumbai/8576">DIP #8576 · Mumbai</a>
+    <a href="https://docs.google.com/forms/d/e/1FAIpQLSck9I3Tu0lZqCBt9FsE9VG4UjGM71gbY86aDDlC9jb_akPMmg/viewform">Open call — play with us</a>
   </div>
 
   <p style="text-align:center"><a class="back" href="/">← back to the orchestra</a></p>
