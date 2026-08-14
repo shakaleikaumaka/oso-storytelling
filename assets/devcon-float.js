@@ -1,4 +1,7 @@
-/* devcon-float.js v4 — golden Devcon 8 ticket CTA + the Definition Button (📖 Words We Play By).
+/* devcon-float.js v5 — golden Devcon 8 ticket CTA + the Definition Button (📖 Words We Play By).
+   v5 (2026-08-14, Shaka): the ✕ — every floater on every door can bow out gracefully, like the OSO
+   Flow Radio's ✕→🎵. Close the ticket pill and it becomes a tiny 🎟️ note in the corner; tap the
+   note and the pill returns. Remembered in localStorage (dv_closed).
    Floats bottom-LEFT, opposite the jukebox.
    Shaka's canon (Jul 27, 2026): "float opposite of the juke box at all times with the CTA to buy your Devcon Tickets!"
    v2 mobile canon (Shaka, Jul 27 2026): shrink to sit side-by-side with the jukebox on phones;
@@ -34,6 +37,11 @@
   + '#devcon-defs-panel dt:first-of-type{margin-top:10px}'
   + '#devcon-defs-panel dd{margin:4px 0 0;font-size:.84rem;line-height:1.55;color:rgba(247,236,217,.85)}'
   + '#devcon-defs-panel .devcon-defs-shelf{margin:20px 0 0;font-size:.68rem;letter-spacing:.22em;text-transform:uppercase;color:rgba(240,196,100,.75);border-top:1px solid rgba(240,196,100,.25);padding-top:14px}'
+  + '#devcon-close-tab{position:absolute;top:-13px;left:-7px;width:26px;height:26px;border-radius:999px;background:linear-gradient(135deg,#3d1c42,#2a1740);border:1px solid rgba(240,196,100,.7);color:#f0c464;font-size:.8rem;line-height:1;cursor:pointer;display:flex;align-items:center;justify-content:center;padding:0;box-shadow:0 3px 10px rgba(0,0,0,.5);transition:transform .2s ease}'
+  + '#devcon-close-tab:hover{transform:scale(1.12)}'
+  + '#devcon-mini{display:none;position:fixed;left:20px;bottom:20px;z-index:999998;width:44px;height:44px;border-radius:999px;background:linear-gradient(135deg,#f5b942,#e09c1f);border:1px solid rgba(255,255,255,.35);color:#1a1206;font-size:1.15rem;cursor:pointer;align-items:center;justify-content:center;padding:0;box-shadow:0 4px 14px rgba(245,185,66,.4)}'
+  + '@media(max-width:600px){#devcon-mini{left:12px;bottom:12px;width:38px;height:38px;font-size:1rem}#devcon-close-tab{width:22px;height:22px;top:-10px;left:-6px;font-size:.7rem}'
+  + '@media(max-width:400px){#devcon-mini{bottom:76px}}'
   + '@media(max-width:600px){#devcon-float-wrap{left:12px;bottom:12px}#devcon-float-cta{padding:7px 12px;gap:0}#devcon-float-cta strong{font-size:.72rem}#devcon-float-cta span{font-size:.56rem}#devcon-defs-tab{width:26px;height:26px;top:-11px;right:-6px;font-size:.8rem}#devcon-defs-panel{left:12px;bottom:66px;width:min(340px,calc(100vw - 24px));max-height:56vh;padding:16px 18px 12px}}'
   + '@media(max-width:400px){#devcon-float-wrap{bottom:76px}#devcon-defs-panel{bottom:128px}}';
   document.head.appendChild(css);
@@ -137,8 +145,39 @@
     if (e.key === 'Escape' && panel.style.display === 'block') closePanel();
   });
 
+  // v5 — the ✕: let the ticket bow out to a tiny 🎟️ note (radio-style)
+  var closeTab = document.createElement('button');
+  closeTab.id = 'devcon-close-tab';
+  closeTab.title = 'hide the ticket (a tiny 🎟️ stays)';
+  closeTab.setAttribute('aria-label', 'Hide the Devcon ticket button');
+  closeTab.textContent = '✕';
+
+  var mini = document.createElement('button');
+  mini.id = 'devcon-mini';
+  mini.title = 'Devcon 8 tickets — bring the button back';
+  mini.setAttribute('aria-label', 'Show the Devcon ticket button');
+  mini.textContent = '🎟️';
+
+  function minimize() {
+    wrap.style.display = 'none';
+    panel.style.display = 'none';
+    mini.style.display = 'flex';
+    try { localStorage.setItem('dv_closed', '1'); } catch (e) {}
+  }
+  function restore() {
+    mini.style.display = 'none';
+    wrap.style.display = '';
+    try { localStorage.removeItem('dv_closed'); } catch (e) {}
+  }
+  closeTab.addEventListener('click', function (e) { e.stopPropagation(); minimize(); });
+  mini.addEventListener('click', function (e) { e.stopPropagation(); restore(); });
+
   wrap.appendChild(a);
   wrap.appendChild(tab);
+  wrap.appendChild(closeTab);
   document.body.appendChild(wrap);
   document.body.appendChild(panel);
+  document.body.appendChild(mini);
+
+  try { if (localStorage.getItem('dv_closed') === '1') minimize(); } catch (e) {}
 })();
