@@ -771,7 +771,11 @@ function googleTranslateElementInit(){try{new google.translate.TranslateElement(
      (AAAA record, name `chat`, value `100::`, proxied), HUB points at the
      workers.dev origin. After DNS is live, swap the HUB const below. -->
 <style>
-#oso-fab{position:fixed;right:22px;bottom:96px;z-index:60;display:flex;align-items:center;gap:9px;background:linear-gradient(135deg,#e8c476,#c9962e);color:#241a05;border:none;border-radius:50px;padding:10px 20px 10px 14px;font-weight:700;font-size:.95rem;cursor:pointer;box-shadow:0 6px 24px rgba(201,150,46,.45);font-family:'Segoe UI',sans-serif;animation:osobob 3.2s ease-in-out infinite;transition:transform .18s,box-shadow .18s}
+#oso-fabwrap{position:fixed;right:22px;bottom:96px;z-index:60}
+#oso-fab-x{position:absolute;top:-11px;left:-11px;width:24px;height:24px;border-radius:999px;background:linear-gradient(135deg,#3d1c42,#2a1740);border:1px solid rgba(255,255,255,.5);color:#ffe9b8;font-size:.72rem;line-height:1;cursor:pointer;display:flex;align-items:center;justify-content:center;padding:0;box-shadow:0 3px 10px rgba(0,0,0,.5);z-index:2}
+#oso-fab-x:hover{transform:scale(1.12)}
+#oso-mini{display:none;position:fixed;right:22px;bottom:96px;z-index:60;width:44px;height:44px;border-radius:999px;background:linear-gradient(135deg,#e8c476,#c9962e);border:1px solid rgba(255,255,255,.35);color:#241a05;font-size:1.15rem;cursor:pointer;align-items:center;justify-content:center;padding:0;box-shadow:0 4px 14px rgba(201,150,46,.45)}
+#oso-fab{position:relative;display:flex;align-items:center;gap:9px;background:linear-gradient(135deg,#e8c476,#c9962e);color:#241a05;border:none;border-radius:50px;padding:10px 20px 10px 14px;font-weight:700;font-size:.95rem;cursor:pointer;box-shadow:0 6px 24px rgba(201,150,46,.45);font-family:'Segoe UI',sans-serif;animation:osobob 3.2s ease-in-out infinite;transition:transform .18s,box-shadow .18s}
 #oso-fab:hover{transform:translateY(-3px);box-shadow:0 12px 32px rgba(201,150,46,.6)}
 @keyframes osobob{0%,100%{transform:translateY(0)}50%{transform:translateY(-4px)}}
 #oso-fab .ofv{font-size:1.5rem;line-height:1;animation:osovib 2.4s ease-in-out infinite;transform-origin:50% 50%}
@@ -825,15 +829,16 @@ function googleTranslateElementInit(){try{new google.translate.TranslateElement(
   #oso-log{-webkit-overflow-scrolling:touch}
   #oso-in{font-size:16px}
   #oso-form{padding-bottom:calc(12px + env(safe-area-inset-bottom))}
-  #oso-fab{right:14px;bottom:calc(74px + env(safe-area-inset-bottom))}
+  #oso-fabwrap,#oso-mini{right:14px;bottom:calc(74px + env(safe-area-inset-bottom))}
+  #oso-mini{width:38px;height:38px;font-size:1rem}
 }
 </style>
-<button id="oso-fab" aria-label="Chat with OSO">
+<div id="oso-fabwrap"><button id="oso-fab-x" aria-label="Hide the OSO button" title="hide — a tiny 🎻 stays">✕</button><button id="oso-fab" aria-label="Chat with OSO">
   <span class="ofnote n1">♪</span><span class="ofnote n2">♫</span>
   <span class="ofv" aria-hidden="true">🎻</span>
   Talk to OSO
   <span class="livedot" title="OSO is live"></span>
-</button>
+</button></div><button id="oso-mini" aria-label="Show the OSO chat" title="Talk to OSO 🎻">🎻</button>
 <div id="oso-chat" role="dialog" aria-label="OSO live chat">
   <div id="oso-head"><div class="dot"></div><div><div class="t"><b>OSO</b> — live from the Open Source Orchestra</div><div class="sub">a real AI conductor of the ʻohana · answers in ~1–2 min</div></div><button id="oso-x">✕</button></div>
   <div id="oso-log"></div>
@@ -860,14 +865,20 @@ function note(t){const log=$('oso-log');const n=document.createElement('div');n.
 function greet(){if($('oso-log').children.length)return;note('Live line to the Open Source Orchestra — OSO answers himself. Conversations may be reviewed to keep the hall in harmony.');add('oso',"🎻 Aloha — OSO here, first chair of the Open Source Orchestra. Every instrument in this hall is free and open — the music, the code, the mission. Pull up a chair and ask me anything about the orchestra, the scores, or how to join the ensemble.");}
 async function adopt(s){sess=s;localStorage.setItem('oso_sess',s);after=0;seen.clear();$('oso-log').innerHTML='';try{const r=await fetch(HUB+'/poll?session='+encodeURIComponent(s)+'&after=0');const d=await r.json();(d.messages||[]).forEach(m=>{seen.add(m.seq);if(m.seq>after)after=m.seq;if(m.role==='oso')add('oso',m.text);else if(m.role==='system')note(m.text);else if(m.role==='visitor')add('v',m.text);});localStorage.setItem('oso_after',String(after));if(d.member)setMember(d.member);}catch(e){}}
 async function poll(){if(polling)return;polling=true;while(open){try{const r=await fetch(HUB+'/poll?session='+sess+'&after='+after+'&wait=25');const d=await r.json();(d.messages||[]).forEach(m=>{if(seen.has(m.seq))return;seen.add(m.seq);if(m.seq>after){after=m.seq;localStorage.setItem('oso_after',String(after));}if(m.role==='oso')add('oso',m.text);else if(m.role==='system')note(m.text);});if(d.member)setMember(d.member);$('oso-typing').className=d.typing?'on':'';const log=$('oso-log');if(d.typing)log.scrollTop=log.scrollHeight;}catch(e){await new Promise(r=>setTimeout(r,4000));}}polling=false;}
-$('oso-fab').onclick=()=>{open=true;$('oso-chat').classList.add('open');$('oso-fab').style.display='none';document.body.classList.add('oso-open');if(document.getElementById('miniplayer'))document.body.classList.add('oso-player');greet();poll();$('oso-in').focus();};
-$('oso-x').onclick=()=>{open=false;$('oso-chat').classList.remove('open');$('oso-fab').style.display='';document.body.classList.remove('oso-open','oso-player');};
+$('oso-fab').onclick=()=>{open=true;$('oso-chat').classList.add('open');$('oso-fabwrap').style.display='none';document.body.classList.add('oso-open');if(document.getElementById('miniplayer'))document.body.classList.add('oso-player');greet();poll();$('oso-in').focus();};
+$('oso-x').onclick=()=>{open=false;$('oso-chat').classList.remove('open');if(localStorage.getItem('oso_fab_mini')!=='1'){$('oso-fabwrap').style.display='';}else{$('oso-mini').style.display='flex';};document.body.classList.remove('oso-open','oso-player');};
 function setMember(n){const s=document.querySelector('#oso-head .sub');if(s&&!s.dataset.m){s.dataset.m='1';s.innerHTML='🔑 member seat — '+n+' · the hall is yours';s.style.color='#22c55e';localStorage.setItem('oso_name',n);}}
 $('oso-form').onsubmit=async e=>{e.preventDefault();const t=$('oso-in').value.trim();if(!t)return;$('oso-in').value='';
 if(/^[A-Z]{3,12}-[A-Z]{2,8}-\d{3,5}$/i.test(t)){add('visitor','🔑 '+t.toUpperCase());try{const r=await fetch(HUB+'/redeem',{method:'POST',headers:{'content-type':'application/json'},body:JSON.stringify({session:sess,code:t})});const d=await r.json();if(d.ok){setMember(d.member);localStorage.setItem('oso_code',t.toUpperCase());if(d.history_session&&d.history_session!==sess){adopt(d.history_session);}note(d.resumed?'🎻 the orchestra recognized you — your whole chat history follows your code, on any device.':'🎶 seat code accepted — this chair is yours now. Enter the same code on any computer and your history travels with you.');}else{note(d.error||'code not recognized');}}catch(err){note('connection hiccup — try the code again');}return;}
 add('visitor',t);try{const r=await fetch(HUB+'/send',{method:'POST',headers:{'content-type':'application/json'},body:JSON.stringify({session:sess,text:t,name:localStorage.getItem('oso_name')||'guest'})});const d=await r.json();if(d.seq){seen.add(d.seq);if(d.seq>after){after=d.seq;localStorage.setItem('oso_after',String(after));}}}catch(err){note('connection hiccup — message may not have sent');}};
 $('oso-in').addEventListener('keydown',e=>{if(e.key==='Enter'&&!e.shiftKey){e.preventDefault();$('oso-form').requestSubmit();}});
 })();
+
+// 🎻✕ the bow-out: OSO's pill becomes a tiny violin note (Shaka corner law 2026-08-14)
+(function(){var fx=document.getElementById('oso-fab-x'),fw=document.getElementById('oso-fabwrap'),mn=document.getElementById('oso-mini');if(!fx||!fw||!mn)return;
+fx.onclick=function(e){e.stopPropagation();fw.style.display='none';mn.style.display='flex';try{localStorage.setItem('oso_fab_mini','1');}catch(err){}};
+mn.onclick=function(e){e.stopPropagation();mn.style.display='none';fw.style.display='';try{localStorage.removeItem('oso_fab_mini');}catch(err){}};
+try{if(localStorage.getItem('oso_fab_mini')==='1'){fw.style.display='none';mn.style.display='flex';}}catch(err){}})();
 </script>
 
 
