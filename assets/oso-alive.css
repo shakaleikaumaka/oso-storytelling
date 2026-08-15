@@ -1,0 +1,50 @@
+/* 🎼 oso-alive v1 — the hall breathing · Open Source Orchestra design language
+   Palette: night #0b0612 · cream #f7ecd9 · gold #f0c464 · coral #ff8a5c
+   Rules: transform/opacity animations only · few elements · pointer-events none
+   · fully disabled under prefers-reduced-motion. A concert hall breathing,
+   not a screensaver. CC0 🌺 */
+
+/* floating note glyphs — embers rising from the pit */
+.oso-alive{position:fixed;inset:0;z-index:0;pointer-events:none;overflow:hidden}
+.oso-alive span{
+  position:absolute;bottom:-3.5rem;
+  color:rgba(240,196,100,.35);
+  font-size:var(--sz,1.4rem);
+  opacity:0;will-change:transform,opacity;
+  animation:oso-drift var(--dur,32s) linear infinite;
+  animation-delay:var(--delay,0s);
+}
+@keyframes oso-drift{
+  0%{transform:translateY(0) translateX(0) rotate(0deg);opacity:0}
+  8%{opacity:.5}
+  50%{transform:translateY(-55vh) translateX(2.5vw) rotate(13deg);opacity:.35}
+  92%{opacity:.18}
+  100%{transform:translateY(-112vh) translateX(-2vw) rotate(-9deg);opacity:0}
+}
+
+/* the bow of light — a soft golden glow gliding along staff lines */
+.oso-staff{
+  position:relative;height:2.4rem;margin:2.6rem auto 0;max-width:40rem;
+  opacity:.45;overflow:hidden;
+  background:repeating-linear-gradient(180deg,transparent 0 .45rem,rgba(247,236,217,.4) .45rem calc(.45rem + 1px));
+  mask-image:linear-gradient(90deg,transparent,#000 18%,#000 82%,transparent);
+  -webkit-mask-image:linear-gradient(90deg,transparent,#000 18%,#000 82%,transparent);
+}
+.oso-bow{position:relative;overflow:hidden}
+.oso-staff::after,.oso-bow::after{
+  content:"";position:absolute;top:0;bottom:0;left:0;width:30%;
+  background:linear-gradient(90deg,transparent,rgba(240,196,100,.5),transparent);
+  filter:blur(5px);will-change:transform;
+  animation:oso-bow 9s ease-in-out infinite alternate;
+}
+@keyframes oso-bow{from{transform:translateX(-80%)}to{transform:translateX(340%)}}
+
+/* gentle breathing for veils/stars (opt-in via .oso-breathe) */
+.oso-breathe{animation:oso-breathe 9s ease-in-out infinite}
+@keyframes oso-breathe{0%,100%{opacity:1}50%{opacity:.55}}
+
+@media (prefers-reduced-motion:reduce){
+  .oso-alive{display:none}
+  .oso-breathe{animation:none}
+  .oso-staff::after,.oso-bow::after{animation:none;opacity:0}
+}

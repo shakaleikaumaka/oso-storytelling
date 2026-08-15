@@ -17,7 +17,10 @@
 *{box-sizing:border-box;margin:0;padding:0}
 html{scroll-behavior:smooth}
 body{background:var(--night);color:var(--cream);font-family:var(--serif);line-height:1.65;
-  background-image:radial-gradient(ellipse 90% 60% at 50% -10%,rgba(61,28,66,.55),transparent 70%)}
+  background-image:
+    radial-gradient(ellipse 120% 50% at 50% 112%,rgba(255,138,92,.13),transparent 60%),
+    radial-gradient(ellipse 90% 45% at 50% 108%,rgba(240,196,100,.10),transparent 55%),
+    radial-gradient(ellipse 90% 60% at 50% -10%,rgba(61,28,66,.55),transparent 70%)}
 h1,h2,h3{font-weight:600;line-height:1.15}
 a{color:var(--gold-bright)}
 .wrap{max-width:880px;margin:0 auto;padding:0 20px}
@@ -85,9 +88,23 @@ footer a{color:var(--gold)}
 .songbook-cta:hover{background:rgba(240,196,100,.07)}
 .songbook-cta b{color:var(--gold-bright)}
 .songbook-cta span{display:block;font-family:var(--sans);font-size:.74rem;color:var(--cream-dim);margin-top:4px}
+.wrap,header.hero,footer{position:relative;z-index:1}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}*,*::before,*::after{animation:none!important;transition:none!important}}
 </style>
+<!-- 🎼 musically alive wave 2026-08-15 -->
+<link rel="stylesheet" href="/assets/oso-alive.css?v=1">
 </head>
 <body>
+<div class="oso-alive" aria-hidden="true">
+  <span style="left:7%;--dur:31s;--delay:0s">♪</span>
+  <span style="left:21%;--dur:37s;--delay:8s">♫</span>
+  <span style="left:36%;--dur:29s;--delay:15s">♩</span>
+  <span style="left:52%;--dur:41s;--delay:4s;font-size:2rem">𝄞</span>
+  <span style="left:68%;--dur:33s;--delay:12s">♫</span>
+  <span style="left:84%;--dur:39s;--delay:19s">♪</span>
+  <span style="left:94%;--dur:35s;--delay:24s;font-size:1.1rem">♬</span>
+  <span style="left:44%;--dur:46s;--delay:28s;font-size:1.8rem">𝄢</span>
+</div>
 
 <header class="hero">
   <p class="kicker">Open Source Orchestra · Devcon 8 Mumbai</p>
@@ -356,8 +373,10 @@ footer a{color:var(--gold)}
 
 </div>
 
+<div class="oso-staff" aria-hidden="true"></div>
 <footer>
   <div class="wrap">
+    <p style="margin-bottom:10px">🛠️ <a href="https://orchestrator.opensourceorchestra.org">The Open Source Orchestrator</a> — songbooks for every artist, built in the open · <a href="https://github.com/ShakaLei/open-source-orchestrator">fork &amp; contribute</a></p>
     Nodes · Open Source Orchestra · Devcon 8 Mumbai, Nov 3–6 2026 · CC0 🌺 fork the format — <a href="https://github.com/shakaleikaumaka/oso-storytelling">github</a>
   </div>
 </footer>

@@ -350,10 +350,12 @@
 <!-- thumbnail wave 2026-08-10 -->
 <link rel="icon" href="/favicon.ico" sizes="48x48">
 <link rel="icon" type="image/png" href="/favicon-96.png" sizes="96x96">
+<!-- 🎼 musically alive wave 2026-08-15 -->
+<link rel="stylesheet" href="/assets/oso-alive.css?v=1">
 </head>
 <body>
 <div class="sky" aria-hidden="true"></div>
-<div class="stars" aria-hidden="true"></div>
+<div class="stars oso-breathe" aria-hidden="true"></div>
 <div class="notes" aria-hidden="true">
   <span style="left:8%;--dur:30s;--delay:0s">♪</span>
   <span style="left:22%;--dur:36s;--delay:7s">♫</span>
@@ -362,6 +364,10 @@
   <span style="left:70%;--dur:31s;--delay:11s">♫</span>
   <span style="left:86%;--dur:38s;--delay:18s">♩</span>
   <span style="left:47%;--dur:40s;--delay:22s">♪</span>
+  <span style="left:15%;--dur:44s;--delay:26s;font-size:2.2rem">𝄞</span>
+  <span style="left:63%;--dur:42s;--delay:9s;font-size:1.1rem">♬</span>
+  <span style="left:93%;--dur:35s;--delay:16s;font-size:1.2rem">♪</span>
+  <span style="left:30%;--dur:48s;--delay:31s;font-size:1.9rem">𝄢</span>
 </div>
 
 <a class="skip" href="#overture-end">Skip to the story</a>
@@ -388,7 +394,7 @@
           <h2 id="m1-title">The <em>Invitation</em></h2>
         </div>
       </div>
-      <div class="staff reveal" aria-hidden="true"></div>
+      <div class="staff reveal oso-bow" aria-hidden="true"></div>
       <div class="prose">
         <p class="drop reveal">There are no auditions here. No gatekeepers tuning the door. No guest list, no wrong instrument, no one waiting to tell you that you aren't ready. If you feel the pull toward the music — you already have a seat in the orchestra.</p>
         <p class="reveal">Radical inclusion is not a policy we wrote down. It is the opening chord. The person who has played for thirty years and the person who has only ever hummed in the shower — the orchestra needs both, exactly as they are.</p>
@@ -409,7 +415,7 @@
           <h2 id="m2-title">The <em>Oldest Protocol</em></h2>
         </div>
       </div>
-      <div class="staff reveal" aria-hidden="true"></div>
+      <div class="staff reveal oso-bow" aria-hidden="true"></div>
       <div class="prose">
         <p class="drop reveal">Long before blockchains, mankind forked the original protocol: a gathering — often in a circle, in a city square or an open field — of chanted, rhythmic melodies dancing to the harmonies of instruments of all kinds. That ancient tradition is the simple inspiration for the Open Source Orchestra.</p>
         <p class="reveal">No one owns the podium. Stewards tend the space like gardeners — steering, never conducting. No hierarchy deciding whose part matters. We listen to one another — and we all conduct this space together. Everyone who shows up is a contributor. Not an audience. Contributors.</p>
@@ -432,7 +438,7 @@
           <h2 id="m3-title">The Values <em>We Play</em></h2>
         </div>
       </div>
-      <div class="staff reveal" aria-hidden="true"></div>
+      <div class="staff reveal oso-bow" aria-hidden="true"></div>
       <div class="prose">
         <p class="reveal">The Open Source Orchestra is Ethereum's values, expressed not in a whitepaper but in a room full of people making sound together. This is the manifesto of the <a class="devconlink" href="https://devcon.org/en/">Devcon</a> 8 Music Stage — carried exactly as it was written:</p>
       </div>
@@ -468,7 +474,7 @@
           <h2 id="m4-title">Mumbai, <em>We're Coming</em></h2>
         </div>
       </div>
-      <div class="staff reveal" aria-hidden="true"></div>
+      <div class="staff reveal oso-bow" aria-hidden="true"></div>
       <ul class="facts reveal">
         <li><b>When</b><span>November 3–6, 2026</span></li>
         <li><b>Where</b><span>JIO World Convention Centre, Mumbai</span></li>
@@ -509,7 +515,7 @@
           <h2 id="m5-title">Answer <em>the Call</em></h2>
         </div>
       </div>
-      <div class="staff reveal" aria-hidden="true"></div>
+      <div class="staff reveal oso-bow" aria-hidden="true"></div>
       <div class="prose">
         <p class="drop reveal">Participation in the <a class="devconlink" href="https://devcon.org/en/">Devcon</a> Music Space begins with an open call for musicians, DJs, and volunteers. Applications are reviewed by the Music Space Committee, which curates the program and assigns performance slots across the four days of <a class="devconlink" href="https://devcon.org/en/">Devcon</a>. Volunteers help operate the space and contribute to creating a welcoming, collaborative environment.</p>
       </div>
@@ -553,7 +559,7 @@
           <h2 id="interlude-title">Find <em>Your Seat</em></h2>
         </div>
       </div>
-      <div class="staff reveal" aria-hidden="true"></div>
+      <div class="staff reveal oso-bow" aria-hidden="true"></div>
       <div class="prose">
         <p class="reveal">Solo artists and bands, DJs and live coders, vocalists and dancers, VJs and live painters — every contributor sounds different, and the orchestra is richer for it. There is no small part — only parts that make the whole possible. Which one is yours?</p>
       </div>
@@ -588,6 +594,19 @@
     </div>
   </section>
 </main>
+
+<!-- ============ THE ORCHESTRATOR ============ -->
+<section id="orchestrator" aria-labelledby="orch-title" style="padding:0 0 5.5rem">
+  <div class="wrap">
+    <div class="gather reveal" style="text-align:center">
+      <h3 id="orch-title">🛠️ The Open Source Orchestrator</h3>
+      <p style="color:var(--cream-dim);max-width:34rem;margin:0 auto">Songbooks for every artist, built in the open — chords above the exact words, charts for every instrument, gifted the way the music is.</p>
+      <a class="dip" href="https://orchestrator.opensourceorchestra.org">Open the Orchestrator</a>
+      <p style="margin-top:1.1rem;font-family:var(--sans);font-size:.8rem;color:var(--cream-faint)"><a class="devconlink" href="https://github.com/ShakaLei/open-source-orchestrator">fork &amp; contribute on github</a> — the tool is as open as the orchestra</p>
+    </div>
+    <div class="oso-staff" aria-hidden="true"></div>
+  </div>
+</section>
 
 <footer>
   <div class="wrap">
