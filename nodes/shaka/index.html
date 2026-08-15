@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Node 003 · Shaka Lei Kaumaka 🌺🤙 — Open Source Orchestra</title>
+<meta name="description" content="Node 003 — Shaka Lei Kaumaka, the Ethereum Bard. The first full profile node of the Open Source Orchestra: songs, stages, karaoke, chord charts. CC0, blessed item by item.">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<style>
+:root{
+  --night:#0b0612; --deep:#150b22; --violet:#2a1740; --plum:#3d1c42;
+  --cream:#f7ecd9; --cream-dim:rgba(247,236,217,.72); --cream-faint:rgba(247,236,217,.45);
+  --gold:#f0c464; --gold-bright:#ffd97a; --gold-soft:rgba(240,196,100,.35);
+  --coral:#ff8a5c; --rose:#e86a92; --teal:#2dd4bf;
+  --serif:'Iowan Old Style','Palatino Linotype',Palatino,'Book Antiqua',Georgia,'Times New Roman',serif;
+  --sans:ui-sans-serif,system-ui,-apple-system,'Segoe UI',Roboto,Helvetica,Arial,sans-serif;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{background:var(--night);color:var(--cream);font-family:var(--serif);line-height:1.65;
+  background-image:
+    radial-gradient(ellipse 120% 50% at 50% 112%,rgba(255,138,92,.13),transparent 60%),
+    radial-gradient(ellipse 90% 45% at 50% 108%,rgba(240,196,100,.10),transparent 55%),
+    radial-gradient(ellipse 90% 60% at 50% -10%,rgba(61,28,66,.55),transparent 70%)}
+h1,h2,h3{font-weight:600;line-height:1.15}
+a{color:var(--gold-bright)}
+.wrap{max-width:880px;margin:0 auto;padding:0 20px}
+
+.hero{position:relative;text-align:center;padding:70px 20px 30px}
+.kicker{font-family:var(--sans);font-size:.72rem;letter-spacing:.34em;text-transform:uppercase;color:var(--gold)}
+.hero h1{font-size:clamp(2.2rem,6vw,3.4rem);margin:.5rem 0 .3rem}
+.hero h1 em{color:var(--gold);font-style:italic}
+.hero .sub{font-family:var(--sans);font-size:.95rem;color:var(--cream-dim)}
+.hero .vibe{margin-top:1.1rem;font-style:italic;color:var(--gold-bright);font-size:clamp(1rem,2.2vw,1.15rem)}
+.avatar{font-size:3.2rem;line-height:1;margin-bottom:.4rem}
+
+section{padding:26px 0}
+.sec-head{display:flex;align-items:baseline;gap:14px;border-bottom:1px solid var(--gold-soft);padding-bottom:10px;margin-bottom:18px}
+.sec-head .num{font-family:var(--sans);font-size:.7rem;letter-spacing:.3em;text-transform:uppercase;color:var(--gold)}
+.sec-head h2{font-size:clamp(1.3rem,3.4vw,1.8rem)}
+.sec-head h2 em{color:var(--gold);font-style:italic}
+
+.card{background:rgba(21,11,34,.66);border:1px solid rgba(240,196,100,.18);border-radius:14px;padding:22px 24px;margin-bottom:16px}
+.card h3{color:var(--gold-bright);margin-bottom:.6rem;font-size:1.08rem}
+.card p{margin-bottom:.8rem;color:var(--cream-dim)}
+.card p:last-child{margin-bottom:0}
+.badge{display:inline-block;font-family:var(--sans);font-size:.66rem;letter-spacing:.14em;text-transform:uppercase;
+  border-radius:999px;padding:.3em .9em;margin-left:.4em;vertical-align:middle}
+.badge.blessed{background:rgba(45,212,191,.14);color:var(--teal);border:1px solid rgba(45,212,191,.4)}
+.badge.draft{background:rgba(240,196,100,.12);color:var(--gold);border:1px solid var(--gold-soft)}
+.chords{font-family:var(--sans);font-size:.9rem;color:var(--gold-bright);letter-spacing:.06em;margin:.3rem 0 .8rem}
+video,audio{width:100%;border-radius:10px;background:#000}
+audio{background:transparent}
+.dl{display:flex;flex-wrap:wrap;gap:10px;margin-top:12px}
+.dl a{font-family:var(--sans);font-size:.78rem;letter-spacing:.06em;text-decoration:none;color:var(--cream-dim);
+  border:1px solid var(--gold-soft);border-radius:999px;padding:.45em 1.1em;background:rgba(21,11,34,.6)}
+.dl a:hover{border-color:var(--gold-bright);color:var(--gold-bright)}
+
+.yt-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:16px}
+.yt{position:relative;aspect-ratio:16/9;border-radius:12px;overflow:hidden;border:1px solid rgba(240,196,100,.18);cursor:pointer;background:#000}
+.yt img{width:100%;height:100%;object-fit:cover;opacity:.85}
+.yt .play{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font-size:3rem;
+  text-shadow:0 2px 14px rgba(0,0,0,.8);transition:transform .15s}
+.yt:hover .play{transform:scale(1.15)}
+.yt .cap{position:absolute;left:0;right:0;bottom:0;padding:24px 12px 8px;font-family:var(--sans);font-size:.75rem;
+  color:var(--cream);background:linear-gradient(transparent,rgba(0,0,0,.85))}
+.yt iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
+
+.words details{margin-bottom:10px;border:1px solid rgba(240,196,100,.16);border-radius:10px;background:rgba(11,6,18,.5)}
+.words summary{cursor:pointer;padding:12px 16px;color:var(--gold-bright);font-family:var(--sans);font-size:.9rem}
+.words .ly{padding:4px 20px 16px;color:var(--cream-dim);font-size:.95rem}
+.words .ly strong{color:var(--cream)}
+.st{font-size:.66rem;letter-spacing:.14em;text-transform:uppercase;border-radius:999px;padding:.25em .8em;margin-left:.5em}
+.st.off{background:rgba(45,212,191,.14);color:var(--teal);border:1px solid rgba(45,212,191,.4)}
+
+.linkrow{display:flex;flex-wrap:wrap;gap:10px;justify-content:center;margin:18px 0}
+.linkrow a{font-family:var(--sans);font-size:.78rem;letter-spacing:.06em;text-decoration:none;color:var(--cream-dim);
+  border:1px solid var(--gold-soft);border-radius:999px;padding:.5em 1.2em;background:rgba(21,11,34,.6)}
+.linkrow a:hover{border-color:var(--gold-bright);color:var(--gold-bright)}
+.dedication{font-style:italic;color:var(--gold-bright);text-align:center;margin:.6rem 0}
+.back{font-family:var(--sans);font-size:.8rem;color:var(--cream-faint);text-decoration:none}
+.back:hover{color:var(--gold-bright)}
+.buildyour{border:1px dashed var(--gold-soft);border-radius:14px;padding:22px 24px;text-align:center;background:rgba(21,11,34,.4)}
+footer{padding:36px 0 46px;text-align:center;font-family:var(--sans);font-size:.75rem;color:var(--cream-faint)}
+footer a{color:var(--cream-dim)}
+</style>
+</head>
+<body>
+
+<div class="hero">
+  <div class="avatar">🌺🤙</div>
+  <p class="kicker">Open Source Orchestra · Node 003 · full profile</p>
+  <h1>Shaka <em>Lei Kaumaka</em></h1>
+  <p class="sub">THE ETHEREUM BARD · conductor &amp; co-founder of the Open Source Orchestra</p>
+  <p class="vibe">"We should only wage war with butterflies and love."</p>
+  <div class="linkrow">
+    <a href="https://shakaleikaumaka.com">the front door 🌺</a>
+    <a href="https://www.youtube.com/@shakaleikaumaka">YouTube 📺</a>
+    <a href="https://x.com/shakaleikaumaka">@shakaleikaumaka</a>
+    <a href="https://www.instagram.com/shakaleikaumaka/">Instagram</a>
+    <a href="/nodes/">← all nodes</a>
+  </div>
+</div>
+
+<div class="wrap">
+
+<section id="featured">
+  <div class="sec-head"><span class="num">Featured</span><h2>Todo Es <em>Posible</em> 🍂 <span class="badge blessed">artist-blessed ✓</span></h2></div>
+  <div class="card">
+    <p class="chords">key C major · C → Cmaj7 → F → F · ~81 bpm</p>
+    <p>Everything is possible. Sung with the Devcon Scholars, blessed by the bard's own ear — the machine drew the draft, Shaka corrected the truth, and the chart below carries it. Sing along with the karaoke:</p>
+    <video controls preload="metadata" src="https://kprot-drop.shakaverse.workers.dev/ready/todo-es-posible-karaoke.mp4"></video>
+    <div class="dl">
+      <a href="https://kprot-drop.shakaverse.workers.dev/ready/todo-es-posible-karaoke.pdf">⬇ chord chart PDF</a>
+      <a href="https://kprot-drop.shakaverse.workers.dev/ready/todo-es-posible-instrumental.mp3">⬇ instrumental</a>
+      <a href="https://kprot-drop.shakaverse.workers.dev/ready/todo-es-posible-karaoke.html">🎤 live sing-along page</a>
+    </div>
+  </div>
+  <div class="card">
+    <h3>Sung by the Devcon Scholars 🍂</h3>
+    <p>The song traveling without its author — the Devcon Scholars edition, captured by Albert Cervera:</p>
+    <div class="yt-grid">
+      <div class="yt" data-id="s2UR3L5DpKY"><img loading="lazy" src="https://i.ytimg.com/vi/s2UR3L5DpKY/hqdefault.jpg" alt="Todo Es Posible — Devcon Scholars Edition"><div class="play">▶️</div><div class="cap">TODO ES POSIBLE — Devcon Scholars Edition 🍂 · via Albert Cervera</div></div>
+    </div>
+  </div>
+</section>
+
+<section id="songbook">
+  <div class="sec-head"><span class="num">Song collection</span><h2>The <em>songbook</em> 📖</h2></div>
+
+  <div class="card">
+    <h3>🦋 Butterflies and Love <span class="badge blessed">✓ official words</span> <span class="badge draft">chart in progress</span></h3>
+    <p class="chords">canon progression G – Em – C – D</p>
+    <p>Written with Ethereum Singapore — for Aya Miyaguchi and every builder who chooses butterflies over war.</p>
+    <audio controls preload="metadata" src="https://shakaleikaumaka.com/radio-assets/i-open-sourced-my-whole-universe.mp3"></audio>
+    <div class="words" style="margin-top:12px">
+      <details><summary>🦋 the words <span class="st off">✓ official</span></summary><div class="ly">
+<p><strong>Hey Solana</strong><br>We can be your (blockchain)<br>(soy boy) big brother<br>We don't need to fight a war<br>for users and developers<br>We build apps that bridge us all together<br>Competition can be over<br>Because Ethereum<br>Is a positive Sum<br>Built by and for everyone</p>
+<p><strong>Hey Bitcoin</strong><br>Lucky you were never called a shitcoin (altcoin)<br>you were the first to inspire<br>Our Ethereum co-creator<br>His magazine wasn't<br>just an ordinary page turner<br>Even though we don't<br>Know your founder<br>Vitalik found inspiration<br>From your magical ledger</p>
+<p><strong>We should only wage war<br>with butterflies and love<br>The infinite garden isn't just a place for fun<br>Decentralized<br>Permission-less<br>and open-sourced<br>Even with the layer one as our shield,<br>and the layer two as our sword<br>All we need to wage in a war<br>Is butterflies and love</strong><br>Because Ethereum is a positive sum<br>Built by and for everyone</p>
+<p><strong>Hey Ethereum</strong><br>I still love you most of all<br>You are the world computer<br>Built by all my brothers and sisters<br>Together we don't have to fight a war<br>All we need is butterflies and love<br>To pollinate the infinite-garden<br>Which grows strong and tall<br>And make us all look small<br>In the infinite garden</p>
+<p><strong>Hey Aya 🌸</strong><br>Don't let the arrows pointed at ya<br>Ever pierce your lovely heart<br>From the start<br>you were the heart beat<br>Of the ethereum foundation<br>You taught us the power of subtraction<br>and your very first reaction<br>Was that you didn't want a title<br>That's why we have such fertile soil<br>For us all to grow equal<br>In the infinite garden</p>
+      </div></details>
+    </div>
+  </div>
+
+  <div class="card">
+    <h3>🌍 A Planet We Share As One <span class="badge blessed">✓ official words</span> <span class="badge draft">chart in progress</span></h3>
+    <p class="chords">key D major (mixolydian) · D – C – G · ~129 bpm</p>
+    <p>A frustration sung into a prayer — protection of creation as a collaboration of every nation.</p>
+    <audio controls preload="metadata" src="https://shakaleikaumaka.com/radio-assets/a-planet-we-share-as-one.mp3"></audio>
+    <p style="margin-top:10px">Sing it karaoke-style:</p>
+    <video controls preload="metadata" src="https://kprot-drop.shakaverse.workers.dev/ready/a-planet-we-share-as-one-karaoke.mp4"></video>
+    <div class="dl">
+      <a href="https://kprot-drop.shakaverse.workers.dev/ready/a-planet-we-share-as-one-karaoke.pdf">⬇ chord chart PDF</a>
+      <a href="https://kprot-drop.shakaverse.workers.dev/ready/a-planet-we-share-as-one-instrumental.mp3">⬇ instrumental</a>
+      <a href="https://kprot-drop.shakaverse.workers.dev/ready/a-planet-we-share-as-one-karaoke.html">🎤 live sing-along page</a>
+    </div>
+    <div class="words" style="margin-top:12px">
+      <details><summary>🌍 the words <span class="st off">✓ official</span></summary><div class="ly">
+<p><strong>You know I had a frustration</strong><br>That I come from the nation<br>That dropped an atomic bomb<br><strong>On a planet we share as one</strong></p>
+<p><strong>And I have a frustration</strong><br>They also tested those fucking bombs<br>In our ocean<br>And now you see with all the plastic<br>It's choking our reefs, you see<br><strong>Protection of creation<br>Must be a collaboration<br>Of every nation<br>For a planet we share as one</strong></p>
+<p><strong>You know I had a frustration</strong><br>That two bordering nations<br>Have to fight for the greed<br>Of one fucking man's manipulations<br>Why does war have to be a typical situation<br>Can't we see a better resolution<br><strong>For a planet we share as one</strong></p>
+<p><strong>It doesn't matter if you count up<br>To Web 1, 2 or 3</strong><br>We all can evolve<br>Like we evolve our technology<br>And now we see — like an experiment<br>With a Zuzalu pop-up city<br>We can build and dogfood<br>Our own technology<br>So we can see<br><strong>How we can be free</strong></p>
+<p><strong>We can build it up like a layer one</strong><br>The world computer called Ethereum<br><strong>For a planet we share as one 🌍</strong></p>
+      </div></details>
+    </div>
+  </div>
+
+  <div class="card">
+    <p>🛠️ All three songs are being charted into the <a href="https://orchestrator.opensourceorchestra.org">Open Source Orchestrator</a> — chords above the words, shapes for guitar, ukulele, piano, bass, mandolin and banjo. The second songbook of the catalog, after Matteo's thirteen.</p>
+  </div>
+</section>
+
+<section id="stages">
+  <div class="sec-head"><span class="num">Stages &amp; stories</span><h2>The <em>journey</em> through the ETHer 📺</h2></div>
+  <div class="yt-grid">
+    <div class="yt" data-id="vf3ZitSmXDw"><img loading="lazy" src="https://i.ytimg.com/vi/vf3ZitSmXDw/hqdefault.jpg" alt="Devcon 6 Chiva Chillout Lounge, Bogotá"><div class="play">▶️</div><div class="cap">DEVCON 6 · CHIVA CHILLOUT LOUNGE · Bogotá 🇨🇴 2022</div></div>
+    <div class="yt" data-id="hyWmLBrLcow"><img loading="lazy" src="https://i.ytimg.com/vi/hyWmLBrLcow/hqdefault.jpg" alt="The Uke NFT 4 Devcon 2022"><div class="play">▶️</div><div class="cap">THE UKE NFT 4 DEVCON 2022 🎸</div></div>
+    <div class="yt" data-id="1QXzKjXwIbc"><img loading="lazy" src="https://i.ytimg.com/vi/1QXzKjXwIbc/hqdefault.jpg" alt="Ethereum Bard songs and OSO jam at CMU, ETH ChiangMai"><div class="play">▶️</div><div class="cap">ETHEREUM BARD SONGS &amp; OSO JAM · CMU · ETH CHIANGMAI 🇹🇭</div></div>
+  </div>
+  <p style="margin-top:14px;text-align:center;font-family:var(--sans);font-size:.85rem;color:var(--cream-faint)">📷 photo wall coming — the profile grows as the journey does.</p>
+</section>
+
+<section id="build-your-node">
+  <div class="buildyour">
+    <h3 style="color:var(--gold-bright);margin-bottom:.6rem">🎻 Build your own node</h3>
+    <p style="color:var(--cream-dim);margin-bottom:.8rem">This page is the first full <b>profile node</b> of the Open Source Orchestra — a musician's home they own. Your songs, your videos, your words. You choose what's open-sourced, item by item; what you don't bless stays yours. No feed, no ads, no gate.</p>
+    <p style="font-family:var(--sans);font-size:.85rem"><a href="/nodes/node-spec.md">read the node spec 📄</a> &nbsp;·&nbsp; <a href="mailto:contribute@opensourceorchestra.org">contribute@opensourceorchestra.org 📮</a> &nbsp;·&nbsp; <a href="https://github.com/shakaleikaumaka/oso-storytelling">fork the format</a></p>
+  </div>
+</section>
+
+<p style="text-align:center;margin:10px 0 30px"><a class="back" href="/nodes/">← back to the nodes</a> &nbsp;&nbsp; <a class="back" href="/">← the orchestra</a></p>
+
+</div>
+
+<footer>
+  <div class="wrap">
+    Node 003 · Open Source Orchestra · Devcon 8 Mumbai, Nov 3–6 2026 · CC0, blessed item by item 🌺 · <a href="/nodes/shaka/node.json">node.json</a>
+  </div>
+</footer>
+
+<script>
+document.querySelectorAll('.yt').forEach(function(el){
+  el.addEventListener('click', function(){
+    var id = el.getAttribute('data-id');
+    var f = document.createElement('iframe');
+    f.src = 'https://www.youtube-nocookie.com/embed/' + id + '?autoplay=1';
+    f.allow = 'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share';
+    f.allowFullscreen = true;
+    el.innerHTML = ''; el.appendChild(f);
+  }, { once:true });
+});
+</script>
+<script src="https://shakaleikaumaka.com/assets/bl-player.js?v=7.7"></script>
+</body>
+</html>
