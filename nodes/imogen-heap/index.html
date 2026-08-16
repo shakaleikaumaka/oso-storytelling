@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Node 009 · Imogen Heap 🧬 — Open Source Orchestra</title>
+<meta name="description" content="Node 009 — Imogen Heap, THE NINE: released Tiny Human on Ethereum in 2015, founded Mycelia and the Creative Passport (now Auracles). The godmother of everything this orchestra builds. Her chair is held.">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<style>
+:root{
+  --night:#0b0612; --deep:#150b22; --violet:#2a1740; --plum:#3d1c42;
+  --cream:#f7ecd9; --cream-dim:rgba(247,236,217,.72); --cream-faint:rgba(247,236,217,.45);
+  --gold:#f0c464; --gold-bright:#ffd97a; --gold-soft:rgba(240,196,100,.35);
+  --coral:#ff8a5c; --rose:#e86a92; --teal:#2dd4bf;
+  --serif:'Iowan Old Style','Palatino Linotype',Palatino,'Book Antiqua',Georgia,'Times New Roman',serif;
+  --sans:ui-sans-serif,system-ui,-apple-system,'Segoe UI',Roboto,Helvetica,Arial,sans-serif;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{background:var(--night);color:var(--cream);font-family:var(--serif);line-height:1.65;
+  background-image:
+    radial-gradient(ellipse 120% 50% at 50% 112%,rgba(255,138,92,.13),transparent 60%),
+    radial-gradient(ellipse 90% 45% at 50% 108%,rgba(240,196,100,.10),transparent 55%),
+    radial-gradient(ellipse 90% 60% at 50% -10%,rgba(61,28,66,.55),transparent 70%)}
+h1,h2,h3{font-weight:600;line-height:1.15}
+a{color:var(--gold-bright)}
+.wrap{max-width:880px;margin:0 auto;padding:0 20px}
+
+.hero{position:relative;text-align:center;padding:70px 20px 30px}
+.kicker{font-family:var(--sans);font-size:.72rem;letter-spacing:.34em;text-transform:uppercase;color:var(--gold)}
+.hero h1{font-size:clamp(2.2rem,6vw,3.4rem);margin:.5rem 0 .3rem}
+.hero h1 em{color:var(--gold);font-style:italic}
+.hero .sub{font-family:var(--sans);font-size:.95rem;color:var(--cream-dim)}
+.hero .vibe{margin-top:1.1rem;font-style:italic;color:var(--gold-bright);font-size:clamp(1rem,2.2vw,1.15rem)}
+.avatar{font-size:3.2rem;line-height:1;margin-bottom:.4rem}
+
+section{padding:26px 0}
+.sec-head{display:flex;align-items:baseline;gap:14px;border-bottom:1px solid var(--gold-soft);padding-bottom:10px;margin-bottom:18px}
+.sec-head .num{font-family:var(--sans);font-size:.7rem;letter-spacing:.3em;text-transform:uppercase;color:var(--gold)}
+.sec-head h2{font-size:clamp(1.3rem,3.4vw,1.8rem)}
+.sec-head h2 em{color:var(--gold);font-style:italic}
+
+.card{background:rgba(21,11,34,.66);border:1px solid rgba(240,196,100,.18);border-radius:14px;padding:22px 24px;margin-bottom:16px}
+.card h3{color:var(--gold-bright);margin-bottom:.6rem;font-size:1.08rem}
+.card p{margin-bottom:.8rem;color:var(--cream-dim)}
+.card p:last-child{margin-bottom:0}
+.badge{display:inline-block;font-family:var(--sans);font-size:.66rem;letter-spacing:.14em;text-transform:uppercase;
+  border-radius:999px;padding:.3em .9em;margin-left:.4em;vertical-align:middle}
+.badge.blessed{background:rgba(45,212,191,.14);color:var(--teal);border:1px solid rgba(45,212,191,.4)}
+.badge.draft{background:rgba(240,196,100,.12);color:var(--gold);border:1px solid var(--gold-soft)}
+.chords{font-family:var(--sans);font-size:.9rem;color:var(--gold-bright);letter-spacing:.06em;margin:.3rem 0 .8rem}
+video,audio{width:100%;border-radius:10px;background:#000}
+audio{background:transparent}
+.dl{display:flex;flex-wrap:wrap;gap:10px;margin-top:12px}
+.dl a{font-family:var(--sans);font-size:.78rem;letter-spacing:.06em;text-decoration:none;color:var(--cream-dim);
+  border:1px solid var(--gold-soft);border-radius:999px;padding:.45em 1.1em;background:rgba(21,11,34,.6)}
+.dl a:hover{border-color:var(--gold-bright);color:var(--gold-bright)}
+
+.yt-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:16px}
+.yt{position:relative;aspect-ratio:16/9;border-radius:12px;overflow:hidden;border:1px solid rgba(240,196,100,.18);cursor:pointer;background:#000}
+.yt img{width:100%;height:100%;object-fit:cover;opacity:.85}
+.yt .play{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font-size:3rem;
+  text-shadow:0 2px 14px rgba(0,0,0,.8);transition:transform .15s}
+.yt:hover .play{transform:scale(1.15)}
+.yt .cap{position:absolute;left:0;right:0;bottom:0;padding:24px 12px 8px;font-family:var(--sans);font-size:.75rem;
+  color:var(--cream);background:linear-gradient(transparent,rgba(0,0,0,.85))}
+.yt iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
+
+.linkrow{display:flex;flex-wrap:wrap;gap:10px;justify-content:center;margin:18px 0}
+.linkrow a{font-family:var(--sans);font-size:.78rem;letter-spacing:.06em;text-decoration:none;color:var(--cream-dim);
+  border:1px solid var(--gold-soft);border-radius:999px;padding:.5em 1.2em;background:rgba(21,11,34,.6)}
+.linkrow a:hover{border-color:var(--gold-bright);color:var(--gold-bright)}
+.dedication{font-style:italic;color:var(--gold-bright);text-align:center;margin:.6rem 0}
+.back{font-family:var(--sans);font-size:.8rem;color:var(--cream-faint);text-decoration:none}
+.back:hover{color:var(--gold-bright)}
+.buildyour{border:1px dashed var(--gold-soft);border-radius:14px;padding:22px 24px;text-align:center;background:rgba(21,11,34,.4)}
+.lineage{border:1px solid var(--gold-bright);box-shadow:0 0 24px rgba(240,196,100,.12)}
+footer{padding:36px 0 46px;text-align:center;font-family:var(--sans);font-size:.75rem;color:var(--cream-faint)}
+footer a{color:var(--cream-dim)}
+</style>
+</head>
+<body>
+
+<div class="hero">
+  <div class="avatar">🧬🎹</div>
+  <p class="kicker">Open Source Orchestra · Node 009 · full profile</p>
+  <h1>Imogen <em>Heap</em></h1>
+  <p class="sub">THE NINE · the godmother of onchain music · Mycelia · Auracles</p>
+  <p class="vibe">"I want to hear things that humans have never imagined."</p>
+  <div class="linkrow">
+    <a href="https://imogenheap.com">imogenheap.com 🎹</a>
+    <a href="https://x.com/imogenheap">X · @imogenheap</a>
+    <a href="https://auracles.io">Auracles 🧬</a>
+    <a href="https://mimugloves.com">MI.MU gloves 🧤</a>
+    <a href="/nodes/">← all nodes</a>
+  </div>
+</div>
+
+<div class="wrap">
+
+<section id="story">
+  <div class="sec-head"><span class="num">The story</span><h2>The <em>nine</em> 🧬</h2></div>
+  <div class="card">
+    <h3>Nine — the number of completion</h3>
+    <p>In the vortex mathematics the orchestra plays by, <b>nine is the number that holds the whole</b> — the digital root every circle returns to, the axis the 3·6·9 flux triangle spins around (<a href="/trust/">the Circle of Trust</a> holds the geometry). So when the first circle of nine chairs came to be voiced, there was only ever one name for the ninth: <b>the artist who started all of this a decade before us.</b></p>
+    <p>The godmother completes the circle she began. That's not poetry stretched over facts — the facts <i>are</i> the poetry:</p>
+    <p class="dedication">"The nine — completion. The one who was the root an octave before we ever played." — Shaka 🌺</p>
+  </div>
+
+  <div class="card lineage">
+    <h3>🧬 The lineage — we are continuing your work</h3>
+    <p>In <b>October 2015</b>, Imogen Heap released <b>"Tiny Human"</b> — a ballad for her newborn daughter — <b>on the Ethereum blockchain</b> through the Ujo Music experiment: song, stems, key and tempo purchasable with ether, rights and splits carried by a smart contract. One of the first blockchain-released songs in history, years before "onchain music" had a name. <span style="font-size:.85em;color:var(--cream-faint)">(sources: <a href="https://bitcoinmagazine.com/culture/nurturing-creation-music-through-blockchain">Bitcoin Magazine</a> · <a href="https://qz.com/620454/imogen-heap-wants-to-use-blockchain-technology-to-revolutionize-the-music-industry">Quartz</a> · <a href="https://musically.com/2016/09/02/blockchain-platform-ujo-music-opening-up-in-early-2017/">Music Ally</a>)</span></p>
+    <p>Then she built what the experiment taught: <b>Mycelia</b>, her research collective for a fair, sustainable music ecosystem — and <b>The Creative Passport</b>, a digital identity where <b>music-makers hold their own data and decide what they share</b>. Today it lives on as <a href="https://auracles.io"><b>Auracles</b></a>.</p>
+    <p style="color:var(--gold-bright);font-style:italic">Imogen — the Open Source Orchestra's <a href="/nodes/node-spec.md">node spec</a> is your idea, a decade downstream: every artist a sovereign node, holding their own home, blessing what they share item by item, owning what they don't. We are continuing your work. This page exists to say thank you — and to hold your chair.</p>
+  </div>
+
+  <div class="card">
+    <h3>The artist 🎹</h3>
+    <p><b>"Hide and Seek"</b> (2005) — one voice and a harmonizer, no other instruments — became a generation's landmark of what a single human and a machine can feel like together, and twenty years later (2025 anniversary edition) gave her a first-ever entry on the Billboard Hot 100 and her highest UK chart position. She won the <b>Grammy for Best Engineered Album, Non-Classical</b> for <i>Ellipse</i> — only the second woman ever to win it — engineering the record herself, in her own home studio. Twice Grammy-awarded, three honorary doctorates. <span style="font-size:.85em;color:var(--cream-faint)">(sources: <a href="https://en.wikipedia.org/wiki/Imogen_Heap">Wikipedia</a> · <a href="https://www.grammy.com/artists/imogen-heap/9491/">grammy.com</a>)</span></p>
+    <p>She invents her instruments too: the <a href="https://mimugloves.com"><b>MI.MU gloves</b></a>, gestural music-ware that turns hands in the air into a mixing desk. And her newest collaborator is herself — <b>ai.Mogen</b>, an AI voice twin she built on her own terms, released only on <i>acceptable terms</i>, with consent and provenance designed in from the first note. The same sovereignty, one more instrument. <span style="font-size:.85em;color:var(--cream-faint)">(<a href="https://www.musicradar.com/news/imogen-heap-interview">MusicRadar</a> · <a href="https://www.theguardian.com/music/2024/oct/16/im-empowering-my-song-to-go-and-make-love-with-different-people-imogen-heap-on-how-her-ai-twin-will-rewrite-pop">The Guardian</a>)</span></p>
+  </div>
+</section>
+
+<section id="stages">
+  <div class="sec-head"><span class="num">Stages &amp; stories</span><h2>The <em>journey</em> 📺</h2></div>
+  <div class="yt-grid">
+    <div class="yt" data-id="UYIAfiVGluk"><img loading="lazy" src="https://i.ytimg.com/vi/UYIAfiVGluk/hqdefault.jpg" alt="Imogen Heap — Hide And Seek official video"><div class="play">▶️</div><div class="cap">HIDE AND SEEK · OFFICIAL VIDEO · 2005 🎙️</div></div>
+    <div class="yt" data-id="7oeEQhOmGpg"><img loading="lazy" src="https://i.ytimg.com/vi/7oeEQhOmGpg/hqdefault.jpg" alt="Sculpting music with Mi.Mu gloves — Imogen Heap at TEDxCERN"><div class="play">▶️</div><div class="cap">SCULPTING MUSIC WITH MI.MU GLOVES · TEDxCERN 🧤</div></div>
+    <div class="yt" data-id="X23CCgVbS-4"><img loading="lazy" src="https://i.ytimg.com/vi/X23CCgVbS-4/hqdefault.jpg" alt="Don Tapscott and Imogen Heap at Blockchain Revolution Global 2019"><div class="play">▶️</div><div class="cap">MUSIC × BLOCKCHAIN · with Don Tapscott · 2019 ⛓️</div></div>
+  </div>
+</section>
+
+<section id="invite">
+  <div class="card">
+    <h3>The chair is held 🧬</h3>
+    <p><b>Imogen — this chair is held for you.</b> Node 009, the nine, the completion of the first circle — held for the artist who was the root an octave before any of us played. The Music Space at <b>Devcon 8, Mumbai, Nov 3–6 2026</b> (<a href="https://forum.devcon.org/t/open-source-orchestra-music-space-at-devcon-8-mumbai/8576">DIP #8576</a>) is an orchestra on the same chain where Tiny Human first lived — every song given away, every artist sovereign, every voice a node. It would be the honor of the whole circle to have you in it — as performer, as elder, as listener, as whatever you'd enjoy being. No presumption lives on this page; it was written in gratitude, from public sources only.</p>
+    <p class="dedication">"You don't join the Open Source Orchestra. You notice you were always in it." 🌺</p>
+  </div>
+</section>
+
+<section id="consent" style="padding-top:0">
+  <div class="buildyour" style="border-color:var(--gold-bright)">
+    <h3 style="color:var(--gold-bright);margin-bottom:.6rem">🌺 The consent law of this page</h3>
+    <p style="color:var(--gold-bright);font-style:italic;font-size:1.05rem;margin-bottom:.8rem">This is YOUR node, Node 009 — one word and we change, add, or remove anything. The artist signs the truth.</p>
+    <p style="color:var(--cream-dim);font-size:.9rem">Everything above comes from public sources. Nothing more will ever appear here without your blessing, item by item — which is, after all, your own rule. We learned it from you.</p>
+  </div>
+</section>
+
+<section id="build-your-node">
+  <div class="buildyour">
+    <h3 style="color:var(--gold-bright);margin-bottom:.6rem">🎻 Build your own node</h3>
+    <p style="color:var(--cream-dim);margin-bottom:.8rem">A <b>profile node</b> is a home its owner controls. Your work, your videos, your words. You choose what's open-sourced, item by item; what you don't bless stays yours. No feed, no ads, no gate.</p>
+    <p style="font-family:var(--sans);font-size:.85rem"><a href="/nodes/node-spec.md">read the node spec 📄</a> &nbsp;·&nbsp; <a href="mailto:contribute@opensourceorchestra.org">contribute@opensourceorchestra.org 📮</a> &nbsp;·&nbsp; <a href="https://github.com/shakaleikaumaka/oso-storytelling">fork the format</a></p>
+  </div>
+</section>
+
+<p style="text-align:center;margin:10px 0 30px"><a class="back" href="/nodes/">← back to the nodes</a> &nbsp;&nbsp; <a class="back" href="/">← the orchestra</a></p>
+
+</div>
+
+<footer>
+  <div class="wrap">
+    Node 009 · Open Source Orchestra · Devcon 8 Mumbai, Nov 3–6 2026 · CC0, blessed item by item 🌺 · <a href="/nodes/imogen-heap/node.json">node.json</a>
+  </div>
+</footer>
+
+<script>
+document.querySelectorAll('.yt').forEach(function(el){
+  el.addEventListener('click', function(){
+    var id = el.getAttribute('data-id');
+    var f = document.createElement('iframe');
+    f.src = 'https://www.youtube-nocookie.com/embed/' + id + '?autoplay=1';
+    f.allow = 'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share';
+    f.allowFullscreen = true;
+    el.innerHTML = ''; el.appendChild(f);
+  }, { once:true });
+});
+</script>
+<script src="https://shakaleikaumaka.com/assets/bl-player.js?v=7.7"></script>
+</body>
+</html>

@@ -1,0 +1,26 @@
+{
+  "oso_node_spec": "0.1",
+  "node": "008",
+  "slug": "latasha",
+  "name": "LATASHÁ",
+  "emoji": "🎤✨",
+  "tagline": "THE OCTAVE · onchain music pioneer · founder of Zoratopia & Topia",
+  "bio": "Brooklyn-raised rapper, poet, visual and performance artist. Minting music-video works on Zora in 2021's first wave of onchain music; hired as Zora's head of community programming (June 2021); founded Zoratopia, the education platform and event series that carried artists — Black and independent creators first — into web3, from biweekly webinars to Art Basel Miami and NFT NYC. Today building Topia (topia.vision). Node 008: the octave, the return home.",
+  "quote": "The evolution will not be televised. It will be onchain.",
+  "location": "the onchain world 🌐",
+  "links": [
+    { "label": "callmelatasha.com", "url": "https://callmelatasha.com" },
+    { "label": "X · @CallMeLatasha", "url": "https://x.com/CallMeLatasha" },
+    { "label": "Instagram · @callmelatasha", "url": "https://www.instagram.com/callmelatasha/" },
+    { "label": "Topia", "url": "https://topia.vision" }
+  ],
+  "songs": [],
+  "songs_note": "Nothing appears on this node without LATASHÁ's blessing, item by item. This page is an invitation written from public sources only — the chair is held.",
+  "media": [
+    { "type": "youtube", "id": "ap3wr5PPJfw", "title": "LATASHÁ - GLO UP (OFFICIAL VIDEO)", "channel": "LATASHÁ", "visibility": "public" },
+    { "type": "youtube", "id": "SNYfUa7vO6w", "title": "Latashá on What It Means to Be a Music Artist in Web3", "channel": "nft now podcast", "visibility": "public" },
+    { "type": "youtube", "id": "AydxbNAXAtg", "title": "Music NFT ARTIST @LATASHÁ Decode Web3 Industry", "channel": "gmoneynft", "visibility": "public" }
+  ],
+  "license_default": "CC0 for node content — anything not listed here stays with the artist",
+  "updated": "2026-08-16"
+}

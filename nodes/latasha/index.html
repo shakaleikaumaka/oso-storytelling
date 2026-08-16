@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Node 008 · LATASHÁ 🎤 — Open Source Orchestra</title>
+<meta name="description" content="Node 008 — LATASHÁ, THE OCTAVE: onchain music pioneer, founder of Zoratopia and Topia, the voice that brings the circle home. Her chair in the Open Source Orchestra is held.">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<style>
+:root{
+  --night:#0b0612; --deep:#150b22; --violet:#2a1740; --plum:#3d1c42;
+  --cream:#f7ecd9; --cream-dim:rgba(247,236,217,.72); --cream-faint:rgba(247,236,217,.45);
+  --gold:#f0c464; --gold-bright:#ffd97a; --gold-soft:rgba(240,196,100,.35);
+  --coral:#ff8a5c; --rose:#e86a92; --teal:#2dd4bf;
+  --serif:'Iowan Old Style','Palatino Linotype',Palatino,'Book Antiqua',Georgia,'Times New Roman',serif;
+  --sans:ui-sans-serif,system-ui,-apple-system,'Segoe UI',Roboto,Helvetica,Arial,sans-serif;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{background:var(--night);color:var(--cream);font-family:var(--serif);line-height:1.65;
+  background-image:
+    radial-gradient(ellipse 120% 50% at 50% 112%,rgba(255,138,92,.13),transparent 60%),
+    radial-gradient(ellipse 90% 45% at 50% 108%,rgba(240,196,100,.10),transparent 55%),
+    radial-gradient(ellipse 90% 60% at 50% -10%,rgba(61,28,66,.55),transparent 70%)}
+h1,h2,h3{font-weight:600;line-height:1.15}
+a{color:var(--gold-bright)}
+.wrap{max-width:880px;margin:0 auto;padding:0 20px}
+
+.hero{position:relative;text-align:center;padding:70px 20px 30px}
+.kicker{font-family:var(--sans);font-size:.72rem;letter-spacing:.34em;text-transform:uppercase;color:var(--gold)}
+.hero h1{font-size:clamp(2.2rem,6vw,3.4rem);margin:.5rem 0 .3rem}
+.hero h1 em{color:var(--gold);font-style:italic}
+.hero .sub{font-family:var(--sans);font-size:.95rem;color:var(--cream-dim)}
+.hero .vibe{margin-top:1.1rem;font-style:italic;color:var(--gold-bright);font-size:clamp(1rem,2.2vw,1.15rem)}
+.avatar{font-size:3.2rem;line-height:1;margin-bottom:.4rem}
+
+section{padding:26px 0}
+.sec-head{display:flex;align-items:baseline;gap:14px;border-bottom:1px solid var(--gold-soft);padding-bottom:10px;margin-bottom:18px}
+.sec-head .num{font-family:var(--sans);font-size:.7rem;letter-spacing:.3em;text-transform:uppercase;color:var(--gold)}
+.sec-head h2{font-size:clamp(1.3rem,3.4vw,1.8rem)}
+.sec-head h2 em{color:var(--gold);font-style:italic}
+
+.card{background:rgba(21,11,34,.66);border:1px solid rgba(240,196,100,.18);border-radius:14px;padding:22px 24px;margin-bottom:16px}
+.card h3{color:var(--gold-bright);margin-bottom:.6rem;font-size:1.08rem}
+.card p{margin-bottom:.8rem;color:var(--cream-dim)}
+.card p:last-child{margin-bottom:0}
+.badge{display:inline-block;font-family:var(--sans);font-size:.66rem;letter-spacing:.14em;text-transform:uppercase;
+  border-radius:999px;padding:.3em .9em;margin-left:.4em;vertical-align:middle}
+.badge.blessed{background:rgba(45,212,191,.14);color:var(--teal);border:1px solid rgba(45,212,191,.4)}
+.badge.draft{background:rgba(240,196,100,.12);color:var(--gold);border:1px solid var(--gold-soft)}
+.chords{font-family:var(--sans);font-size:.9rem;color:var(--gold-bright);letter-spacing:.06em;margin:.3rem 0 .8rem}
+video,audio{width:100%;border-radius:10px;background:#000}
+audio{background:transparent}
+.dl{display:flex;flex-wrap:wrap;gap:10px;margin-top:12px}
+.dl a{font-family:var(--sans);font-size:.78rem;letter-spacing:.06em;text-decoration:none;color:var(--cream-dim);
+  border:1px solid var(--gold-soft);border-radius:999px;padding:.45em 1.1em;background:rgba(21,11,34,.6)}
+.dl a:hover{border-color:var(--gold-bright);color:var(--gold-bright)}
+
+.yt-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:16px}
+.yt{position:relative;aspect-ratio:16/9;border-radius:12px;overflow:hidden;border:1px solid rgba(240,196,100,.18);cursor:pointer;background:#000}
+.yt img{width:100%;height:100%;object-fit:cover;opacity:.85}
+.yt .play{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font-size:3rem;
+  text-shadow:0 2px 14px rgba(0,0,0,.8);transition:transform .15s}
+.yt:hover .play{transform:scale(1.15)}
+.yt .cap{position:absolute;left:0;right:0;bottom:0;padding:24px 12px 8px;font-family:var(--sans);font-size:.75rem;
+  color:var(--cream);background:linear-gradient(transparent,rgba(0,0,0,.85))}
+.yt iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
+
+.linkrow{display:flex;flex-wrap:wrap;gap:10px;justify-content:center;margin:18px 0}
+.linkrow a{font-family:var(--sans);font-size:.78rem;letter-spacing:.06em;text-decoration:none;color:var(--cream-dim);
+  border:1px solid var(--gold-soft);border-radius:999px;padding:.5em 1.2em;background:rgba(21,11,34,.6)}
+.linkrow a:hover{border-color:var(--gold-bright);color:var(--gold-bright)}
+.dedication{font-style:italic;color:var(--gold-bright);text-align:center;margin:.6rem 0}
+.back{font-family:var(--sans);font-size:.8rem;color:var(--cream-faint);text-decoration:none}
+.back:hover{color:var(--gold-bright)}
+.buildyour{border:1px dashed var(--gold-soft);border-radius:14px;padding:22px 24px;text-align:center;background:rgba(21,11,34,.4)}
+footer{padding:36px 0 46px;text-align:center;font-family:var(--sans);font-size:.75rem;color:var(--cream-faint)}
+footer a{color:var(--cream-dim)}
+</style>
+</head>
+<body>
+
+<div class="hero">
+  <div class="avatar">🎤✨</div>
+  <p class="kicker">Open Source Orchestra · Node 008 · full profile</p>
+  <h1>LATASH<em>Á</em></h1>
+  <p class="sub">THE OCTAVE · onchain music pioneer · founder of Zoratopia &amp; Topia</p>
+  <p class="vibe">"The evolution will not be televised. It will be onchain."</p>
+  <div class="linkrow">
+    <a href="https://callmelatasha.com">callmelatasha.com 🎤</a>
+    <a href="https://x.com/CallMeLatasha">X · @CallMeLatasha</a>
+    <a href="https://www.instagram.com/callmelatasha/">Instagram · @callmelatasha</a>
+    <a href="https://topia.vision">Topia 🌐</a>
+    <a href="/nodes/">← all nodes</a>
+  </div>
+</div>
+
+<div class="wrap">
+
+<section id="story">
+  <div class="sec-head"><span class="num">The story</span><h2>The <em>octave</em> 🎤</h2></div>
+  <div class="card">
+    <h3>The eighth note is the root — come home</h3>
+    <p>Climb a scale: after seven steps the eighth note isn't a new note at all. It's the <b>root again, an octave up</b> — the same home, higher, brighter, carrying everything the scale learned on the way. That's the eighth chair of the Open Source Orchestra, and Shaka's word is that it belongs to LATASHÁ: the artist whose whole lane has been <b>bringing music home to the people</b> — off the label conveyor belt, back into the hands of the ones who make it and the communities who love it.</p>
+    <p>With her voiced, the first <b>circle of nine</b> begins to close — the orchestra grows in rings of nine, seeds at 3 · 6 · 9 (<a href="/trust/">the Circle of Trust</a> holds the geometry). The octave is the promise that the circle returns to its root.</p>
+    <p class="dedication">"The octave — the return home. The voice that brings the circle back to its root." — Shaka 🌺</p>
+  </div>
+  <div class="card">
+    <h3>The pioneer 🏛️</h3>
+    <p>Brooklyn-raised rapper, poet, visual and performance artist — LATASHÁ was minting music-video works on <b>Zora</b> back in 2021, in the first wave of onchain music, with one of the earliest artist sites streaming onchain videos and tracks. That work spoke so loudly that Zora hired her as <b>head of community programming (June 2021)</b> — and instead of gatekeeping, she built a door: <b>Zoratopia</b>, her education platform and event series that traveled from every-other-Wednesday webinars to Art Basel Miami and NFT NYC, putting tools in the hands of artists — with special care that Black and independent creators got there first, not last. <span style="font-size:.85em;color:var(--cream-faint)">(sources: <a href="https://techcrunch.com/podcast/latasha-web3-crypto-musician-rapper-artist-creator-education-zora-zoratopia/">TechCrunch</a> · <a href="https://www.coindesk.com/layer2/2021/12/13/rapper-latasha-on-nfts-and-inclusivity-in-tech">CoinDesk</a> · <a href="https://nftnow.com/features/nft100-spotlight-latasha-on-championing-web3-music/">nft now · NFT100</a> · <a href="https://www.huffpost.com/entry/latasha-indie-artist-nft-cryptocurrency_n_62548388e4b0723f800fd92d">HuffPost</a>)</span></p>
+    <p>Today the evolution continues as <b>Topia</b> (<a href="https://topia.vision">topia.vision</a>) — her own world-building vision for onchain culture — while the artist keeps performing, minting and proving, in her own words to BET, that in this space you can be <i>all</i> the things at once and still thrive. The orchestra recognizes its own creed in hers: <b>community first, artists sovereign, everyone counted in.</b></p>
+  </div>
+</section>
+
+<section id="stages">
+  <div class="sec-head"><span class="num">Stages &amp; stories</span><h2>The <em>journey</em> 📺</h2></div>
+  <div class="yt-grid">
+    <div class="yt" data-id="ap3wr5PPJfw"><img loading="lazy" src="https://i.ytimg.com/vi/ap3wr5PPJfw/hqdefault.jpg" alt="LATASHÁ — GLO UP official video"><div class="play">▶️</div><div class="cap">GLO UP · OFFICIAL VIDEO · LATASHÁ 🎤</div></div>
+    <div class="yt" data-id="SNYfUa7vO6w"><img loading="lazy" src="https://i.ytimg.com/vi/SNYfUa7vO6w/hqdefault.jpg" alt="Latashá on What It Means to Be a Music Artist in Web3 — nft now podcast"><div class="play">▶️</div><div class="cap">WHAT IT MEANS TO BE A MUSIC ARTIST IN WEB3 · nft now 🌐</div></div>
+    <div class="yt" data-id="AydxbNAXAtg"><img loading="lazy" src="https://i.ytimg.com/vi/AydxbNAXAtg/hqdefault.jpg" alt="LATASHÁ decodes the web3 industry — with gmoney"><div class="play">▶️</div><div class="cap">DECODING THE WEB3 INDUSTRY · with gmoney 🏛️</div></div>
+  </div>
+</section>
+
+<section id="invite">
+  <div class="card">
+    <h3>The chair is held 🎤</h3>
+    <p><b>LATASHÁ — this chair is held for you.</b> Node 008, the octave, the return home. The Music Space at <b>Devcon 8, Mumbai, Nov 3–6 2026</b> (<a href="https://forum.devcon.org/t/open-source-orchestra-music-space-at-devcon-8-mumbai/8576">DIP #8576</a>) is the biggest circle yet — an open-source orchestra where every song is given away and every voice is a node. You built the rooms this culture learned in; the orchestra would be honored to have you in this one — as performer, as builder, as listener, as whatever you'd enjoy being. No presumption lives on this page; it was written in gratitude, from public sources only.</p>
+    <p class="dedication">"You don't join the Open Source Orchestra. You notice you were always in it." 🌺</p>
+  </div>
+</section>
+
+<section id="consent" style="padding-top:0">
+  <div class="buildyour" style="border-color:var(--gold-bright)">
+    <h3 style="color:var(--gold-bright);margin-bottom:.6rem">🌺 The consent law of this page</h3>
+    <p style="color:var(--gold-bright);font-style:italic;font-size:1.05rem;margin-bottom:.8rem">This is YOUR node, Node 008 — one word and we change, add, or remove anything. The artist signs the truth.</p>
+    <p style="color:var(--cream-dim);font-size:.9rem">Everything above comes from public sources. Nothing more will ever appear here without your blessing, item by item.</p>
+  </div>
+</section>
+
+<section id="build-your-node">
+  <div class="buildyour">
+    <h3 style="color:var(--gold-bright);margin-bottom:.6rem">🎻 Build your own node</h3>
+    <p style="color:var(--cream-dim);margin-bottom:.8rem">A <b>profile node</b> is a home its owner controls. Your work, your videos, your words. You choose what's open-sourced, item by item; what you don't bless stays yours. No feed, no ads, no gate.</p>
+    <p style="font-family:var(--sans);font-size:.85rem"><a href="/nodes/node-spec.md">read the node spec 📄</a> &nbsp;·&nbsp; <a href="mailto:contribute@opensourceorchestra.org">contribute@opensourceorchestra.org 📮</a> &nbsp;·&nbsp; <a href="https://github.com/shakaleikaumaka/oso-storytelling">fork the format</a></p>
+  </div>
+</section>
+
+<p style="text-align:center;margin:10px 0 30px"><a class="back" href="/nodes/">← back to the nodes</a> &nbsp;&nbsp; <a class="back" href="/">← the orchestra</a></p>
+
+</div>
+
+<footer>
+  <div class="wrap">
+    Node 008 · Open Source Orchestra · Devcon 8 Mumbai, Nov 3–6 2026 · CC0, blessed item by item 🌺 · <a href="/nodes/latasha/node.json">node.json</a>
+  </div>
+</footer>
+
+<script>
+document.querySelectorAll('.yt').forEach(function(el){
+  el.addEventListener('click', function(){
+    var id = el.getAttribute('data-id');
+    var f = document.createElement('iframe');
+    f.src = 'https://www.youtube-nocookie.com/embed/' + id + '?autoplay=1';
+    f.allow = 'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share';
+    f.allowFullscreen = true;
+    el.innerHTML = ''; el.appendChild(f);
+  }, { once:true });
+});
+</script>
+<script src="https://shakaleikaumaka.com/assets/bl-player.js?v=7.7"></script>
+</body>
+</html>

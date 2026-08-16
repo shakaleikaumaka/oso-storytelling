@@ -1,0 +1,26 @@
+{
+  "oso_node_spec": "0.1",
+  "node": "009",
+  "slug": "imogen-heap",
+  "name": "Imogen Heap",
+  "emoji": "🧬🎹",
+  "tagline": "THE NINE · the godmother of onchain music · Mycelia · Auracles",
+  "bio": "Released 'Tiny Human' on the Ethereum blockchain in October 2015 via the Ujo Music experiment — one of the first blockchain-released songs in history. Founded Mycelia and The Creative Passport (now Auracles.io): music-makers holding their own data, deciding what they share — the node-spec vision a decade early. Grammy winner (Best Engineered Album, Non-Classical, for Ellipse — the second woman ever to win it), creator of 'Hide and Seek', inventor of the MI.MU gloves, builder of the consent-first AI twin ai.Mogen. Node 009: the nine, completion — the godmother completes the circle she began.",
+  "quote": "I want to hear things that humans have never imagined.",
+  "location": "London, UK 🇬🇧",
+  "links": [
+    { "label": "imogenheap.com", "url": "https://imogenheap.com" },
+    { "label": "X · @imogenheap", "url": "https://x.com/imogenheap" },
+    { "label": "Auracles (the Creative Passport, continued)", "url": "https://auracles.io" },
+    { "label": "MI.MU gloves", "url": "https://mimugloves.com" }
+  ],
+  "songs": [],
+  "songs_note": "Nothing appears on this node without Imogen's blessing, item by item — a rule the orchestra learned from her own Creative Passport. This page is an invitation written from public sources only — the chair is held.",
+  "media": [
+    { "type": "youtube", "id": "UYIAfiVGluk", "title": "Imogen Heap - Hide And Seek (Official Video)", "channel": "ImogenHeapVEVO", "visibility": "public" },
+    { "type": "youtube", "id": "7oeEQhOmGpg", "title": "Sculpting music with Mi.Mu gloves | Imogen Heap | TEDxCERN", "channel": "TEDx Talks", "visibility": "public" },
+    { "type": "youtube", "id": "X23CCgVbS-4", "title": "Don Tapscott & Imogen Heap at Blockchain Revolution Global 2019", "channel": "Blockchain Revolution Global", "visibility": "public" }
+  ],
+  "license_default": "CC0 for node content — anything not listed here stays with the artist",
+  "updated": "2026-08-16"
+}
