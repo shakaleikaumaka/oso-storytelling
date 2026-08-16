@@ -75,13 +75,13 @@ footer a{color:var(--cream-dim)}
   <p class="kicker">Open Source Orchestra × trustgraphs · building in the open</p>
   <h1>The <em>Circle of Trust</em> 🕸️🎻</h1>
   <p class="sub">Every jam is a vouch. Trust flows outward from the founding circle, provable by anyone, ownable by no one. A living sketch of <a href="https://github.com/JakeHartnell/trustgraphs">Jake Hartnell's trustgraphs</a> playing the Open Source Orchestra.</p>
-  <p class="vibe">"The artist signs the truth; the community proves the trust."</p>
+  <p class="vibe">"The artist signs the truth; the community proves the trust — and the circle grows in thirds." 3·6·9</p>
 </div>
 
 <div class="stage">
   <canvas id="graph" width="960" height="640" aria-label="Living trust graph of the orchestra"></canvas>
   <div class="controls">
-    <button class="primary" id="btn-jam">🎶 jam! (two musicians vouch)</button>
+    <button class="primary" id="btn-jam">🔺 triad jam! (three voices vouch)</button>
     <button id="btn-join">🌱 a musician joins</button>
     <button id="btn-bots">🤖 spawn a bot ring</button>
     <button id="btn-reset">↺ reset the circle</button>
@@ -96,6 +96,14 @@ footer a{color:var(--cream-dim)}
 </div>
 
 <div class="wrap">
+
+<section>
+  <div class="sec-head"><span class="num">Built off thirds</span><h2>Vortex mathematics, <em>with humans</em> 🔺</h2></div>
+  <div class="card">
+    <p>The circle is built off <b>THIRDS</b> — in every sense the orchestra knows. <b>Three seeds</b> hold the 3·6·9 flux triangle at the center: Shaka at 3, Matteo at 6, Manu at 9. The next six chairs sit on the <b>doubling circuit 1→2→4→8→7→5</b> — the melody path that never touches 3, 6 or 9, circling them forever like a song around its chord. Outer rings grow <b>nine at a time</b>.</p>
+    <p>And a <b>jam is a triad</b>: three musicians, three vouches, a triangle — because a chord is stacked thirds, and a triangle is the smallest circle of trust. Digital roots always return to 9: however large the orchestra grows, the circle stays whole. 3️⃣6️⃣9️⃣</p>
+  </div>
+</section>
 
 <section>
   <div class="sec-head"><span class="num">How it plays</span><h2>Vouch → Score → <em>Prove</em> → Use</h2></div>
@@ -191,17 +199,30 @@ function seedGraph(){
 }
 
 // ---- layout: seeds inner circle, humans ring, bots exiled corner ----
-function layout(){
+// vortex position: digit d (1..9) on a circle of radius r — 9 at top, clockwise
+function vpos(d, r){
   var cx=W/2, cy=H*0.47;
+  var a=-Math.PI/2 + (d%9)*2*Math.PI/9; // 9→top, 1,2,3... clockwise
+  return {x:cx+Math.cos(a)*r, y:cy+Math.sin(a)*r};
+}
+var DOUBLING=[1,2,4,8,7,5]; // the vortex doubling circuit — the melody path
+function layout(){
+  var R1=Math.min(W,H)*0.21, R2=Math.min(W,H)*0.36, RSTEP=Math.min(W,H)*0.10;
   var seeds=nodes.filter(function(n){return n.kind==='seed';});
   var humans=nodes.filter(function(n){return n.kind==='human';});
   var bots=nodes.filter(function(n){return n.kind==='bot';});
-  seeds.forEach(function(n,i){ var a=-Math.PI/2 + i*2*Math.PI/seeds.length;
-    n.tx=cx+Math.cos(a)*Math.min(W,H)*0.13; n.ty=cy+Math.sin(a)*Math.min(W,H)*0.13; });
-  humans.forEach(function(n,i){ var a=-Math.PI/2 + (i+0.5)*2*Math.PI/Math.max(1,humans.length);
-    n.tx=cx+Math.cos(a)*Math.min(W,H)*0.34; n.ty=cy+Math.sin(a)*Math.min(W,H)*0.34; });
+  // the 3·6·9 flux triangle holds the seeds
+  [3,6,9].forEach(function(d,i){ if(seeds[i]){ var p=vpos(d,R1); seeds[i].tx=p.x; seeds[i].ty=p.y; seeds[i].vd=d; } });
+  // humans flow along the doubling circuit 1-2-4-8-7-5, then outer rings of 9
+  humans.forEach(function(n,i){
+    if(i<6){ var d=DOUBLING[i], p=vpos(d,R1); n.tx=p.x; n.ty=p.y; n.vd=d; }
+    else {
+      var ring=Math.floor((i-6)/9), slot=(i-6)%9, d2=slot+1;
+      var p2=vpos(d2, R2+ring*RSTEP); n.tx=p2.x; n.ty=p2.y; n.vd=d2;
+    }
+  });
   bots.forEach(function(n,i){ var a=i*2*Math.PI/Math.max(1,bots.length);
-    n.tx=W*0.86+Math.cos(a)*Math.min(W,H)*0.09; n.ty=H*0.82+Math.sin(a)*Math.min(W,H)*0.09; });
+    n.tx=W*0.87+Math.cos(a)*Math.min(W,H)*0.08; n.ty=H*0.84+Math.sin(a)*Math.min(W,H)*0.08; });
 }
 
 // ---- trust-aware pagerank (personalized to seeds) ----
@@ -244,10 +265,16 @@ function join(silent){
 }
 function jam(){
   var pool=nodes.filter(function(n){return n.kind!=='bot';});
-  if(pool.length<2) return;
-  var a=pool[Math.floor(Math.random()*pool.length)], b;
-  do{ b=pool[Math.floor(Math.random()*pool.length)]; }while(b===a);
-  vouch(a,b);
+  if(pool.length<3) return;
+  var tri=[], guard=0;
+  while(tri.length<3 && guard++<99){
+    var c=pool[Math.floor(Math.random()*pool.length)];
+    if(tri.indexOf(c)<0) tri.push(c);
+  }
+  addEdge(tri[0],tri[1],1); addEdge(tri[1],tri[2],1); addEdge(tri[2],tri[0],1);
+  pulse(tri[0],tri[1]); pulse(tri[1],tri[2]); pulse(tri[2],tri[0]);
+  computeScores();
+  say('🔺 TRIAD JAM — '+tri.map(function(n){return n.name;}).join(' · ')+' — three voices, stacked thirds, a triangle of trust (3·6·9)');
 }
 function vouch(a,b){
   addEdge(a,b,1); pulse(a,b); pulse(b,a);
@@ -287,8 +314,36 @@ function colorFor(n,glow){
   return s>0.28 ? '#2dd4bf' : '#e86a92';
 }
 var notes=['♩','♪','♫','♬'];
+function drawVortex(now){
+  var R1=Math.min(W,H)*0.21;
+  // faint circle of nine
+  ctx.strokeStyle='rgba(240,196,100,.10)'; ctx.lineWidth=1;
+  ctx.beginPath(); ctx.arc(W/2,H*0.47,R1,0,7); ctx.stroke();
+  // digits 1..9 around
+  ctx.font='11px system-ui,sans-serif'; ctx.textAlign='center';
+  for(var d=1;d<=9;d++){
+    var p=vpos(d,R1+22);
+    ctx.fillStyle=(d%3===0)?'rgba(255,217,122,.5)':'rgba(247,236,217,.22)';
+    ctx.fillText(String(d),p.x,p.y+4);
+  }
+  // the 3·6·9 flux triangle
+  var p3=vpos(3,R1),p6=vpos(6,R1),p9=vpos(9,R1);
+  ctx.strokeStyle='rgba(255,217,122,'+(0.12+0.06*Math.sin(now/900))+')'; ctx.lineWidth=1.6;
+  ctx.beginPath(); ctx.moveTo(p3.x,p3.y); ctx.lineTo(p6.x,p6.y); ctx.lineTo(p9.x,p9.y); ctx.closePath(); ctx.stroke();
+  // the doubling circuit 1-2-4-8-7-5 — the melody path
+  ctx.strokeStyle='rgba(255,138,92,.14)'; ctx.lineWidth=1.2;
+  ctx.beginPath();
+  DOUBLING.forEach(function(d,i){ var p=vpos(d,R1); if(i===0)ctx.moveTo(p.x,p.y); else ctx.lineTo(p.x,p.y); });
+  ctx.closePath(); ctx.stroke();
+  // a spark riding the doubling circuit
+  var t=(now/4200)%1, seg=Math.floor(t*6), f=t*6-seg;
+  var pa=vpos(DOUBLING[seg],R1), pb=vpos(DOUBLING[(seg+1)%6],R1);
+  ctx.fillStyle='rgba(255,138,92,.55)';
+  ctx.beginPath(); ctx.arc(pa.x+(pb.x-pa.x)*f, pa.y+(pb.y-pa.y)*f, 2.4, 0, 7); ctx.fill();
+}
 function draw(now){
   ctx.clearRect(0,0,W,H);
+  drawVortex(now);
   // ambient drifting notes
   for(var i=0;i<14;i++){
     var t=(now/9000+i*0.37)%1, nx=(i*137.5%W), ny=H-t*H;
