@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Node 007 · Jonathan Mann 🎹 — Open Source Orchestra</title>
+<meta name="description" content="Node 007 — Jonathan Mann, the Song A Day man: 7 days a week, every week, since January 1 2009. Guinness World Record holder, the Beeple of Music, first tokenized song in history. His chair is held.">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<style>
+:root{
+  --night:#0b0612; --deep:#150b22; --violet:#2a1740; --plum:#3d1c42;
+  --cream:#f7ecd9; --cream-dim:rgba(247,236,217,.72); --cream-faint:rgba(247,236,217,.45);
+  --gold:#f0c464; --gold-bright:#ffd97a; --gold-soft:rgba(240,196,100,.35);
+  --coral:#ff8a5c; --rose:#e86a92; --teal:#2dd4bf;
+  --serif:'Iowan Old Style','Palatino Linotype',Palatino,'Book Antiqua',Georgia,'Times New Roman',serif;
+  --sans:ui-sans-serif,system-ui,-apple-system,'Segoe UI',Roboto,Helvetica,Arial,sans-serif;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{background:var(--night);color:var(--cream);font-family:var(--serif);line-height:1.65;
+  background-image:
+    radial-gradient(ellipse 120% 50% at 50% 112%,rgba(255,138,92,.13),transparent 60%),
+    radial-gradient(ellipse 90% 45% at 50% 108%,rgba(240,196,100,.10),transparent 55%),
+    radial-gradient(ellipse 90% 60% at 50% -10%,rgba(61,28,66,.55),transparent 70%)}
+h1,h2,h3{font-weight:600;line-height:1.15}
+a{color:var(--gold-bright)}
+.wrap{max-width:880px;margin:0 auto;padding:0 20px}
+
+.hero{position:relative;text-align:center;padding:70px 20px 30px}
+.kicker{font-family:var(--sans);font-size:.72rem;letter-spacing:.34em;text-transform:uppercase;color:var(--gold)}
+.hero h1{font-size:clamp(2.2rem,6vw,3.4rem);margin:.5rem 0 .3rem}
+.hero h1 em{color:var(--gold);font-style:italic}
+.hero .sub{font-family:var(--sans);font-size:.95rem;color:var(--cream-dim)}
+.hero .vibe{margin-top:1.1rem;font-style:italic;color:var(--gold-bright);font-size:clamp(1rem,2.2vw,1.15rem)}
+.avatar{font-size:3.2rem;line-height:1;margin-bottom:.4rem}
+
+section{padding:26px 0}
+.sec-head{display:flex;align-items:baseline;gap:14px;border-bottom:1px solid var(--gold-soft);padding-bottom:10px;margin-bottom:18px}
+.sec-head .num{font-family:var(--sans);font-size:.7rem;letter-spacing:.3em;text-transform:uppercase;color:var(--gold)}
+.sec-head h2{font-size:clamp(1.3rem,3.4vw,1.8rem)}
+.sec-head h2 em{color:var(--gold);font-style:italic}
+
+.card{background:rgba(21,11,34,.66);border:1px solid rgba(240,196,100,.18);border-radius:14px;padding:22px 24px;margin-bottom:16px}
+.card h3{color:var(--gold-bright);margin-bottom:.6rem;font-size:1.08rem}
+.card p{margin-bottom:.8rem;color:var(--cream-dim)}
+.card p:last-child{margin-bottom:0}
+.chords{font-family:var(--sans);font-size:.9rem;color:var(--gold-bright);letter-spacing:.06em;margin:.3rem 0 .8rem}
+.dl{display:flex;flex-wrap:wrap;gap:10px;margin-top:12px}
+.dl a{font-family:var(--sans);font-size:.78rem;letter-spacing:.06em;text-decoration:none;color:var(--cream-dim);
+  border:1px solid var(--gold-soft);border-radius:999px;padding:.45em 1.1em;background:rgba(21,11,34,.6)}
+.dl a:hover{border-color:var(--gold-bright);color:var(--gold-bright)}
+
+.yt-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:16px}
+.yt{position:relative;aspect-ratio:16/9;border-radius:12px;overflow:hidden;border:1px solid rgba(240,196,100,.18);cursor:pointer;background:#000}
+.yt img{width:100%;height:100%;object-fit:cover;opacity:.85}
+.yt .play{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font-size:3rem;
+  text-shadow:0 2px 14px rgba(0,0,0,.8);transition:transform .15s}
+.yt:hover .play{transform:scale(1.15)}
+.yt .cap{position:absolute;left:0;right:0;bottom:0;padding:24px 12px 8px;font-family:var(--sans);font-size:.75rem;
+  color:var(--cream);background:linear-gradient(transparent,rgba(0,0,0,.85))}
+.yt iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
+.yt.featured{aspect-ratio:16/9;border-color:var(--gold-bright);box-shadow:0 0 30px rgba(240,196,100,.15)}
+
+.linkrow{display:flex;flex-wrap:wrap;gap:10px;justify-content:center;margin:18px 0}
+.linkrow a{font-family:var(--sans);font-size:.78rem;letter-spacing:.06em;text-decoration:none;color:var(--cream-dim);
+  border:1px solid var(--gold-soft);border-radius:999px;padding:.5em 1.2em;background:rgba(21,11,34,.6)}
+.linkrow a:hover{border-color:var(--gold-bright);color:var(--gold-bright)}
+.dedication{font-style:italic;color:var(--gold-bright);text-align:center;margin:.6rem 0}
+.back{font-family:var(--sans);font-size:.8rem;color:var(--cream-faint);text-decoration:none}
+.back:hover{color:var(--gold-bright)}
+.buildyour{border:1px dashed var(--gold-soft);border-radius:14px;padding:22px 24px;text-align:center;background:rgba(21,11,34,.4)}
+.hnote{font-family:var(--sans);font-size:.72rem;letter-spacing:.08em;color:var(--cream-faint)}
+footer{padding:36px 0 46px;text-align:center;font-family:var(--sans);font-size:.75rem;color:var(--cream-faint)}
+footer a{color:var(--cream-dim)}
+</style>
+</head>
+<body>
+
+<div class="hero">
+  <div class="avatar">🎹</div>
+  <p class="kicker">Open Source Orchestra · Node 007 · full profile</p>
+  <h1>Jonathan <em>Mann</em></h1>
+  <p class="sub">THE SONG A DAY MAN · 7 days a week, every week, since January 1, 2009</p>
+  <p class="vibe">"Jonathan Mann writes a song a day, forever."</p>
+  <div class="linkrow">
+    <a href="https://www.jonathanmann.net">jonathanmann.net</a>
+    <a href="https://songaday.world">songaday.world</a>
+    <a href="https://x.com/songadaymann">X · @songadaymann</a>
+    <a href="https://jonathanmann.bandcamp.com">Bandcamp</a>
+    <a href="https://opensea.io/collection/song-a-day">Song A Day on OpenSea</a>
+    <a href="/nodes/">← all nodes</a>
+  </div>
+</div>
+
+<div class="wrap">
+
+<section id="story">
+  <div class="sec-head"><span class="num">The story</span><h2><em>7 days a week</em> 🎹</h2></div>
+  <div class="card">
+    <h3>Why he is Node 007</h3>
+    <p><b>"7 days a week Jonathan is making songs."</b> — that's Shaka's framing, and it's the whole biography in one line. Since <b>January 1, 2009</b>, Jonathan Mann has written, recorded and published a song <i>every single day</i> — sick days, travel days, wedding day, the days his instruments broke, the days the world did. Over <b>6,400 songs</b> and counting, and the <b>Guinness World Record</b> for most consecutive days writing a song. Seven days a week, every week, for seventeen years. The man <i>is</i> the number.</p>
+    <p>And for the music-theory heads, the grace note: 007 is also the <b>major seventh</b> — the dreamer's interval, one half-step from home, always reaching. A streak that never resolves, because resolving would mean stopping — and Jonathan Mann writes a song a day, <i>forever</i>.</p>
+    <p class="dedication">"7 days a week Jonathan is making songs." — Shaka 🌺</p>
+  </div>
+  <div class="card">
+    <h3>The Beeple of Music 🖼️</h3>
+    <p>Every Song A Day is an NFT — the <a href="https://opensea.io/collection/song-a-day">Song A Day collection</a>, one one-of-a-kind song per token, stewarded by <b>SongADAO</b>, with the catalog licensed <b>Creative Commons</b>. People call him "the Beeple of Music," which is almost right — Beeple's streak made one auction; Jonathan's streak made a <i>commons</i>. Along the way he co-started the very first NFT-focused podcast (June 2018) and turned daily practice itself into an art form. <span class="hnote">(verified: songaday.world/about · opensea.io · jonathanmann.net)</span></p>
+  </div>
+  <div class="card">
+    <h3>The Ethereum songbook ⛓️🎶</h3>
+    <p>Jonathan's Ethereum history runs deeper than almost any musician alive. <b>Aya Miyaguchi</b> — the same Aya the orchestra sings to in "Hey Ethereum" — saw him perform and invited him to <b>Devcon 4, Prague, October 2018</b>, where he sang <i>B-U-I-D-L</i> and minted <b>the first tokenized song in history, live on stage</b>. At <b>Devcon 6, Bogotá 2022</b> he opened the ceremonies with the <i>Merge Song</i> and gave the community <i>The Coordination Song</i>. At <b>ETHDenver 2025</b> his folk songs kicked off the whole gathering. When Ethereum needs to remember it has a heart, it calls the Song A Day man. <span class="hnote">(verified: jonathanmann.net/devcon · archive.devcon.org Devcon 6 opening ceremonies · Blockworks ETHDenver 2025)</span></p>
+  </div>
+</section>
+
+<section id="featured">
+  <div class="sec-head"><span class="num">Featured moment</span><h2>The day the orchestra <em>was on stage</em> 💎</h2></div>
+  <div class="card">
+    <p class="chords">SONG A DAY #5033 · OCT 12, 2022 · LIVE @ DEVCON 6, BOGOTÁ · "with a bunch of great folks on stage"</p>
+    <p><b>Shaka remembers: we played together on one of Jonathan's Song A Days.</b> So the family went hunting through all 6,400+ songs — and the archives point hard at one: <b>#5033, "Panda Bear Has Been Turned On (Live @ DevCon 6)"</b> — October 12, 2022, Bogotá. Jonathan's own note on it: <i>"Live! On stage! In front of 3k people! With a bunch of great folks on stage!"</i> The same Devcon where Shaka and the Devcon Scholars sang <i>TODO ES POSIBLE</i>. Same city, same week, same stage energy, great folks on stage.</p>
+    <div class="yt featured" data-id="z9ZRPtaY0F4"><img loading="lazy" src="https://i.ytimg.com/vi/z9ZRPtaY0F4/hqdefault.jpg" alt="Panda Bear Has Been Turned On (Live @ DevCon 6) — Song A Day #5033"><div class="play">▶️</div><div class="cap">SONG A DAY #5033 · PANDA BEAR HAS BEEN TURNED ON · LIVE @ DEVCON 6 🇨🇴</div></div>
+    <p style="margin-top:12px"><b>Jonathan — was this the day? 🎶</b> If we've got the wrong song, tell us which one it was and this spot is its forever home. The question is left open on purpose: it's your streak, you sign the truth.</p>
+    <p class="hnote">Honesty label: the memory is Shaka's testimony; the song identification is the family's best archival guess, awaiting Jonathan's own word.</p>
+  </div>
+</section>
+
+<section id="stages">
+  <div class="sec-head"><span class="num">Stages &amp; stories</span><h2>The <em>journey</em> 📺</h2></div>
+  <div class="yt-grid">
+    <div class="yt" data-id="xUAbw3QhP5c"><img loading="lazy" src="https://i.ytimg.com/vi/xUAbw3QhP5c/hqdefault.jpg" alt="Merge Song — Devcon 6 Opening Ceremonies, Ethereum Foundation"><div class="play">▶️</div><div class="cap">MERGE SONG · DEVCON 6 OPENING CEREMONIES · Ethereum Foundation 🦄</div></div>
+    <div class="yt" data-id="Xx5TuhyFvSE"><img loading="lazy" src="https://i.ytimg.com/vi/Xx5TuhyFvSE/hqdefault.jpg" alt="The Coordination Song — Devcon Bogotá, Ethereum Foundation"><div class="play">▶️</div><div class="cap">THE COORDINATION SONG 🌎✨ · DEVCON BOGOTÁ · Ethereum Foundation</div></div>
+    <div class="yt" data-id="anKOJj-oyig"><img loading="lazy" src="https://i.ytimg.com/vi/anKOJj-oyig/hqdefault.jpg" alt="10 Years of Song A Day Have Led To This Moment — Jonathan Mann"><div class="play">▶️</div><div class="cap">10 YEARS OF SONG A DAY HAVE LED TO THIS MOMENT · Jonathan Mann 🎂</div></div>
+  </div>
+</section>
+
+<section id="invite">
+  <div class="card">
+    <h3>The chair is held 🎹</h3>
+    <p><b>Jonathan — this chair is held for you, seven days a week.</b> The Music Space at <b>Devcon 8, Mumbai, Nov 3–6 2026</b> (<a href="https://forum.devcon.org/t/open-source-orchestra-music-space-at-devcon-8-mumbai/8576">DIP #8576</a>) is the biggest circle the orchestra has ever drawn — a circular, conductorless, permissionless stage where a walk-up spot is always line-checked. Four Devcon days, four Song A Days: imagine <i>writing them from inside the circle</i>, with an orchestra that already loves your streak.</p>
+    <p>You haven't seen this page before this moment — that's what the consent card below is for. It was written in gratitude, from the public record and one very good memory of Bogotá.</p>
+    <p class="dedication">"You don't join the Open Source Orchestra. You notice you were always in it." 🌺</p>
+  </div>
+</section>
+
+<section id="consent" style="padding-top:0">
+  <div class="buildyour" style="border-color:var(--gold-bright)">
+    <h3 style="color:var(--gold-bright);margin-bottom:.6rem">🌺 The consent law of this page</h3>
+    <p style="color:var(--gold-bright);font-style:italic;font-size:1.05rem;margin-bottom:.8rem">This is YOUR node, Node 007 — one word and we change, add, or remove anything. The artist signs the truth.</p>
+    <p style="color:var(--cream-dim);font-size:.9rem">Everything above comes from public sources (your own sites, the Devcon archive, the record books) plus one labeled memory of Shaka's. Nothing more will ever appear here without your blessing, item by item.</p>
+  </div>
+</section>
+
+<section id="build-your-node">
+  <div class="buildyour">
+    <h3 style="color:var(--gold-bright);margin-bottom:.6rem">🎻 Build your own node</h3>
+    <p style="color:var(--cream-dim);margin-bottom:.8rem">A <b>profile node</b> is a home its owner controls. Your work, your videos, your words. You choose what's open-sourced, item by item; what you don't bless stays yours. No feed, no ads, no gate.</p>
+    <p style="font-family:var(--sans);font-size:.85rem"><a href="/nodes/node-spec.md">read the node spec 📄</a> &nbsp;·&nbsp; <a href="mailto:contribute@opensourceorchestra.org">contribute@opensourceorchestra.org 📮</a> &nbsp;·&nbsp; <a href="https://github.com/shakaleikaumaka/oso-storytelling">fork the format</a></p>
+  </div>
+</section>
+
+<p style="text-align:center;margin:10px 0 30px"><a class="back" href="/nodes/">← back to the nodes</a> &nbsp;&nbsp; <a class="back" href="/">← the orchestra</a></p>
+
+</div>
+
+<footer>
+  <div class="wrap">
+    Node 007 · Open Source Orchestra · Devcon 8 Mumbai, Nov 3–6 2026 · CC0, blessed item by item 🌺 · <a href="/nodes/jonathan-mann/node.json">node.json</a>
+  </div>
+</footer>
+
+<script>
+document.querySelectorAll('.yt').forEach(function(el){
+  el.addEventListener('click', function(){
+    var id = el.getAttribute('data-id');
+    var f = document.createElement('iframe');
+    f.src = 'https://www.youtube-nocookie.com/embed/' + id + '?autoplay=1';
+    f.allow = 'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share';
+    f.allowFullscreen = true;
+    el.innerHTML = ''; el.appendChild(f);
+  }, { once:true });
+});
+</script>
+<script src="https://shakaleikaumaka.com/assets/bl-player.js?v=7.7"></script>
+</body>
+</html>

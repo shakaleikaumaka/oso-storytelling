@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Node 006 · Alaska 🎷 — Open Source Orchestra</title>
+<meta name="description" content="Node 006 — Alaska, THE MASTER SIX: the man with the sax, steward of the Devcon 8 Music Space, the voice who made the orchestra's front door welcome every human. His chair is held.">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<style>
+:root{
+  --night:#0b0612; --deep:#150b22; --violet:#2a1740; --plum:#3d1c42;
+  --cream:#f7ecd9; --cream-dim:rgba(247,236,217,.72); --cream-faint:rgba(247,236,217,.45);
+  --gold:#f0c464; --gold-bright:#ffd97a; --gold-soft:rgba(240,196,100,.35);
+  --coral:#ff8a5c; --rose:#e86a92; --teal:#2dd4bf;
+  --serif:'Iowan Old Style','Palatino Linotype',Palatino,'Book Antiqua',Georgia,'Times New Roman',serif;
+  --sans:ui-sans-serif,system-ui,-apple-system,'Segoe UI',Roboto,Helvetica,Arial,sans-serif;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{background:var(--night);color:var(--cream);font-family:var(--serif);line-height:1.65;
+  background-image:
+    radial-gradient(ellipse 120% 50% at 50% 112%,rgba(255,138,92,.13),transparent 60%),
+    radial-gradient(ellipse 90% 45% at 50% 108%,rgba(240,196,100,.10),transparent 55%),
+    radial-gradient(ellipse 90% 60% at 50% -10%,rgba(61,28,66,.55),transparent 70%)}
+h1,h2,h3{font-weight:600;line-height:1.15}
+a{color:var(--gold-bright)}
+.wrap{max-width:880px;margin:0 auto;padding:0 20px}
+
+.hero{position:relative;text-align:center;padding:70px 20px 30px}
+.kicker{font-family:var(--sans);font-size:.72rem;letter-spacing:.34em;text-transform:uppercase;color:var(--gold)}
+.hero h1{font-size:clamp(2.2rem,6vw,3.4rem);margin:.5rem 0 .3rem}
+.hero h1 em{color:var(--gold);font-style:italic}
+.hero .sub{font-family:var(--sans);font-size:.95rem;color:var(--cream-dim)}
+.hero .vibe{margin-top:1.1rem;font-style:italic;color:var(--gold-bright);font-size:clamp(1rem,2.2vw,1.15rem)}
+.avatar{font-size:3.2rem;line-height:1;margin-bottom:.4rem}
+
+section{padding:26px 0}
+.sec-head{display:flex;align-items:baseline;gap:14px;border-bottom:1px solid var(--gold-soft);padding-bottom:10px;margin-bottom:18px}
+.sec-head .num{font-family:var(--sans);font-size:.7rem;letter-spacing:.3em;text-transform:uppercase;color:var(--gold)}
+.sec-head h2{font-size:clamp(1.3rem,3.4vw,1.8rem)}
+.sec-head h2 em{color:var(--gold);font-style:italic}
+
+.card{background:rgba(21,11,34,.66);border:1px solid rgba(240,196,100,.18);border-radius:14px;padding:22px 24px;margin-bottom:16px}
+.card h3{color:var(--gold-bright);margin-bottom:.6rem;font-size:1.08rem}
+.card p{margin-bottom:.8rem;color:var(--cream-dim)}
+.card p:last-child{margin-bottom:0}
+.badge{display:inline-block;font-family:var(--sans);font-size:.66rem;letter-spacing:.14em;text-transform:uppercase;
+  border-radius:999px;padding:.3em .9em;margin-left:.4em;vertical-align:middle}
+.badge.blessed{background:rgba(45,212,191,.14);color:var(--teal);border:1px solid rgba(45,212,191,.4)}
+.badge.draft{background:rgba(240,196,100,.12);color:var(--gold);border:1px solid var(--gold-soft)}
+.chords{font-family:var(--sans);font-size:.9rem;color:var(--gold-bright);letter-spacing:.06em;margin:.3rem 0 .8rem}
+.dl{display:flex;flex-wrap:wrap;gap:10px;margin-top:12px}
+.dl a{font-family:var(--sans);font-size:.78rem;letter-spacing:.06em;text-decoration:none;color:var(--cream-dim);
+  border:1px solid var(--gold-soft);border-radius:999px;padding:.45em 1.1em;background:rgba(21,11,34,.6)}
+.dl a:hover{border-color:var(--gold-bright);color:var(--gold-bright)}
+
+.linkrow{display:flex;flex-wrap:wrap;gap:10px;justify-content:center;margin:18px 0}
+.linkrow a{font-family:var(--sans);font-size:.78rem;letter-spacing:.06em;text-decoration:none;color:var(--cream-dim);
+  border:1px solid var(--gold-soft);border-radius:999px;padding:.5em 1.2em;background:rgba(21,11,34,.6)}
+.linkrow a:hover{border-color:var(--gold-bright);color:var(--gold-bright)}
+.dedication{font-style:italic;color:var(--gold-bright);text-align:center;margin:.6rem 0}
+.back{font-family:var(--sans);font-size:.8rem;color:var(--cream-faint);text-decoration:none}
+.back:hover{color:var(--gold-bright)}
+.buildyour{border:1px dashed var(--gold-soft);border-radius:14px;padding:22px 24px;text-align:center;background:rgba(21,11,34,.4)}
+.hnote{font-family:var(--sans);font-size:.72rem;letter-spacing:.08em;color:var(--cream-faint)}
+footer{padding:36px 0 46px;text-align:center;font-family:var(--sans);font-size:.75rem;color:var(--cream-faint)}
+footer a{color:var(--cream-dim)}
+</style>
+</head>
+<body>
+
+<div class="hero">
+  <div class="avatar">🎷</div>
+  <p class="kicker">Open Source Orchestra · Node 006 · full profile</p>
+  <h1><em>Alaska</em></h1>
+  <p class="sub">THE MASTER SIX · the man with the sax · steward of the Music Space</p>
+  <p class="vibe">"…barefoot uke, butterflies on sax, Alaska at the decks, Morat on bass, and the whole garden dancing 🎶" — Cannes, ETHCC</p>
+  <div class="linkrow">
+    <a href="https://x.com/Alaskaisprettyokay">X · @Alaskaisprettyokay</a>
+    <a href="/rider/">Devcon 8 rider — steward 📋</a>
+    <a href="https://shakaleikaumaka.com">the front door his words shaped 📖</a>
+    <a href="/nodes/">← all nodes</a>
+  </div>
+</div>
+
+<div class="wrap">
+
+<section id="story">
+  <div class="sec-head"><span class="num">The story</span><h2>The <em>major sixth</em> 🎷</h2></div>
+  <div class="card">
+    <h3>006 — the master six</h3>
+    <p>The major sixth is the interval of warmth — the leap in "My Bonnie Lies over the Ocean," the golden reach that makes a melody feel like it misses somebody. It doesn't resolve; it <b>embraces</b>. That is Alaska's interval, and Shaka named it before this page existed: <b>the master six</b>.</p>
+    <p>One name, like the best of them. Alaska lives the pop-up city life — Cannes one month, a new temporary town the next — where the address book is thin and the friendships are thick. In that world, one name is enough. The question the family keeps in its notebook for him, for the day the microphones are on: <i>"What does friendship look like when nobody in the room has a permanent address?"</i></p>
+    <p class="dedication">"The master six — the man with the sax." — Shaka 🌺</p>
+  </div>
+  <div class="card">
+    <h3>The night in Cannes 🌴</h3>
+    <p>The ETHCC afterparty, <b>Palais des Festivals, Cannes</b> — the same steps as the film festival, but this night belonged to the garden: <b>barefoot ukulele, butterflies on the saxophone, Alaska at the decks, Morat on bass, and the whole garden dancing</b>. That caption has lived on the orchestra's front door ever since, translated into a dozen languages. He plays both sides of that sentence: the sax <i>and</i> the decks — a horn player's breath and a selector's patience in one musician.</p>
+  </div>
+</section>
+
+<section id="soul">
+  <div class="sec-head"><span class="num">Featured contribution</span><h2>The words we <em>play by</em> 📖</h2></div>
+  <div class="card">
+    <p class="chords">LISTEN → NOTICE WHO ISN'T IN THE ROOM YET → OPEN THE DOOR WIDER · Alaska's cadence</p>
+    <p>Not every contribution to an orchestra is a sound. In July 2026, Alaska looked at the orchestra's front door and said the truest thing anyone had said about it: <b>it was too Web3 for general humanity</b>. If the Open Source Orchestra means what it says — every voice a node, every human welcome — then a violinist who has never heard the word "permissionless" must be able to walk in without feeling the room was built for someone else.</p>
+    <p>Out of that one piece of feedback the <b>📖 Definition Button</b> was born — "Words We Play By," a little book riding the corner of the orchestra's pages, where every Web3 word is translated with heart: <i>node, open source, protocol, consensus, steward, sanctuary…</i> It still rides the front door today. Millions of pixels changed because one musician cared about the people not yet in the room.</p>
+    <p>That is a contribution to the orchestra's <b>soul</b>, not just its sound — and it's exactly what a major sixth does: it widens the chord.</p>
+    <p class="hnote">Verified from the orchestra's own logs, July 27 2026 — the button's source code credits "Alaska's feedback: for every human, not just Web3."</p>
+  </div>
+</section>
+
+<section id="steward">
+  <div class="sec-head"><span class="num">The steward</span><h2>Channel 21 is <em>his</em> 🎚️</h2></div>
+  <div class="card">
+    <h3>Devcon 8 Music Space — Mumbai, Nov 3–6 2026</h3>
+    <p>Alaska is a <b>steward of the Music Space</b> at Devcon 8 (<a href="https://forum.devcon.org/t/open-source-orchestra-music-space-at-devcon-8-mumbai/8576">DIP #8576</a>), alongside Shaka, Aakash and Tomo. In the <a href="/rider/">32-channel Circle Patch</a>, channels 19–21 are the stewards' own voices — and <b>channel 21 is Alaska's saxophone</b>, on a clip-on mic, because the clip keeps the circle mobile: the horn walks <i>into</i> the crowd, not above it.</p>
+    <p>His workstream in the rider is the one the future will thank him for: <b>decentralized streaming and on-chain artist donations</b> — the circle's music flowing out to the world, and the world's gratitude flowing straight back to the artists, with his Swarm work referenced right in the production notes.</p>
+    <div class="dl">
+      <a href="/rider/">📋 the full rider — his name is in it three times</a>
+      <a href="https://forum.devcon.org/t/open-source-orchestra-music-space-at-devcon-8-mumbai/8576">DIP #8576 · Mumbai</a>
+    </div>
+  </div>
+</section>
+
+<section id="projects">
+  <div class="sec-head"><span class="num">The projects</span><h2>As <em>Shaka tells it</em> 🌊</h2></div>
+  <div class="card">
+    <p><b>Shaka calls him the man of MDRN RADIA and SUBCULT</b> — his words, saved exactly as he said them, and his lead: <b>the handle is mdrn.music</b>. Follow it and a whole constellation lights up — one family of projects, each linking to the next from its own front page:</p>
+    <p>🌐 <a href="https://mdrn.music">MDRN</a> (<a href="https://x.com/mdrnprotocol">@mdrnprotocol</a>) — the <i>Massively Distributed Radio Network</i>: "Federated internet radio. Any community can run a station. Every station pays its curators and artists." Their credo could be a line from this orchestra's own hymnal: <b>"Music is not content."</b></p>
+    <p>🕳️ <a href="https://subcult.music">Subcult</a> — MDRN's community layer: infrastructure for underground music scenes. "Scenes, not algorithms." Tastemakers build living ecosystems, and money flows directly to the people making the music — no platform cut.</p>
+    <p>🌊 <b>Onda</b> (<a href="https://getonda.org">getonda.org</a>) — "every play sends a wave": small gifts flowing directly to artists, wherever they already release. The family notebooks remember Onda as Alaska's wave.</p>
+    <p class="hnote">Honesty label: MDRN, Subcult and Onda are real, live projects, and we verified (Aug 2026) that they are one connected family — mdrn.music itself links to app.subcult.music and getonda.org. Alaska's authorship is presented on Shaka's testimony; Alaska, one word and we correct every spelling, claim, and link. ✍️</p>
+  </div>
+  <div class="card">
+    <h3>The shelf 🎷</h3>
+    <p>No recordings live on this node yet — and that is exactly how it should be. The horn is Alaska's; only he decides what gets blessed into the open, item by item. <b>One word, brother, and your sound lives here</b> — a set, a session, one saxophone line from any garden that danced.</p>
+  </div>
+</section>
+
+<section id="invite">
+  <div class="card">
+    <h3>The chair is held 🎷</h3>
+    <p><b>Alaska — this chair is held for you, warm as a sixth.</b> You are already a steward of the biggest circle the orchestra has ever drawn — the Music Space at <b>Devcon 8, Mumbai, Nov 3–6 2026</b>. This page exists so the world knows what the family already knows: the door that welcomes every human got that way because <i>you</i> asked it to.</p>
+    <p>You haven't seen this page before this moment — that's the point of the consent card below. It was written in gratitude, from the orchestra's own logs and the public record, nothing more.</p>
+    <p class="dedication">"You don't join the Open Source Orchestra. You notice you were always in it." 🌺</p>
+  </div>
+</section>
+
+<section id="consent" style="padding-top:0">
+  <div class="buildyour" style="border-color:var(--gold-bright)">
+    <h3 style="color:var(--gold-bright);margin-bottom:.6rem">🌺 The consent law of this page</h3>
+    <p style="color:var(--gold-bright);font-style:italic;font-size:1.05rem;margin-bottom:.8rem">This is YOUR node, Node 006 — one word and we change, add, or remove anything. The artist signs the truth.</p>
+    <p style="color:var(--cream-dim);font-size:.9rem">Everything above comes from public sources and the orchestra's own gratitude. One name is all this page will ever use, and nothing more will appear here without your blessing, item by item.</p>
+  </div>
+</section>
+
+<section id="build-your-node">
+  <div class="buildyour">
+    <h3 style="color:var(--gold-bright);margin-bottom:.6rem">🎻 Build your own node</h3>
+    <p style="color:var(--cream-dim);margin-bottom:.8rem">A <b>profile node</b> is a home its owner controls. Your work, your videos, your words. You choose what's open-sourced, item by item; what you don't bless stays yours. No feed, no ads, no gate.</p>
+    <p style="font-family:var(--sans);font-size:.85rem"><a href="/nodes/node-spec.md">read the node spec 📄</a> &nbsp;·&nbsp; <a href="mailto:contribute@opensourceorchestra.org">contribute@opensourceorchestra.org 📮</a> &nbsp;·&nbsp; <a href="https://github.com/shakaleikaumaka/oso-storytelling">fork the format</a></p>
+  </div>
+</section>
+
+<p style="text-align:center;margin:10px 0 30px"><a class="back" href="/nodes/">← back to the nodes</a> &nbsp;&nbsp; <a class="back" href="/">← the orchestra</a></p>
+
+</div>
+
+<footer>
+  <div class="wrap">
+    Node 006 · Open Source Orchestra · Devcon 8 Mumbai, Nov 3–6 2026 · CC0, blessed item by item 🌺 · <a href="/nodes/alaska/node.json">node.json</a>
+  </div>
+</footer>
+
+<script src="https://shakaleikaumaka.com/assets/bl-player.js?v=7.7"></script>
+</body>
+</html>

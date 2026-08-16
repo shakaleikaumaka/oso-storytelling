@@ -1,0 +1,29 @@
+{
+  "oso_node_spec": "0.1",
+  "node": "007",
+  "slug": "jonathan-mann",
+  "name": "Jonathan Mann",
+  "emoji": "🎹",
+  "tagline": "THE SONG A DAY MAN · 7 days a week, every week, since January 1, 2009",
+  "bio": "Writes, records and publishes a song every single day since Jan 1, 2009 — 6,400+ songs, Guinness World Record for most consecutive days writing a song. 'The Beeple of Music': every song an NFT in the Song A Day collection, stewarded by SongADAO, catalog Creative Commons. Ethereum history: invited by Aya Miyaguchi to Devcon 4 Prague 2018, where he minted the first tokenized song in history live on stage (B-U-I-D-L); Merge Song at Devcon 6 Bogotá opening ceremonies; The Coordination Song; ETHDenver 2025 kickoff. Node 007 because — in Shaka's words — '7 days a week Jonathan is making songs.'",
+  "quote": "Jonathan Mann writes a song a day, forever.",
+  "location": "the streak 📅",
+  "links": [
+    { "label": "jonathanmann.net", "url": "https://www.jonathanmann.net" },
+    { "label": "songaday.world", "url": "https://songaday.world" },
+    { "label": "X · @songadaymann", "url": "https://x.com/songadaymann" },
+    { "label": "Bandcamp", "url": "https://jonathanmann.bandcamp.com" },
+    { "label": "Song A Day on OpenSea", "url": "https://opensea.io/collection/song-a-day" }
+  ],
+  "songs": [],
+  "songs_note": "His songs live where they have always lived — the streak, the DAO, the Creative Commons catalog. Nothing is rehosted here without his blessing.",
+  "media": [
+    { "type": "youtube", "id": "z9ZRPtaY0F4", "title": "Panda Bear Has Been Turned On (Live @ DevCon 6) — Song A Day #5033, Oct 12 2022, Bogotá", "channel": "Jonathan Mann", "visibility": "public", "note": "Featured moment — family's best archival guess for the Song A Day Shaka played on; awaiting Jonathan's own word." },
+    { "type": "youtube", "id": "xUAbw3QhP5c", "title": "Merge Song — Devcon 6 Opening Ceremonies", "channel": "Ethereum Foundation", "visibility": "public" },
+    { "type": "youtube", "id": "Xx5TuhyFvSE", "title": "The Coordination Song — Devcon Bogotá", "channel": "Ethereum Foundation", "visibility": "public" },
+    { "type": "youtube", "id": "anKOJj-oyig", "title": "10 Years of Song A Day Have Led To THIS MOMENT", "channel": "Jonathan Mann", "visibility": "public" }
+  ],
+  "honesty": "All facts from public sources (jonathanmann.net, songaday.world, archive.devcon.org, opensea.io, Blockworks). The Shaka×Jonathan featured moment is Shaka's testimony + archival inference (#5033), labeled as an open question to Jonathan.",
+  "license_default": "CC0 for node content — Jonathan's catalog remains under his own Creative Commons licensing",
+  "updated": "2026-08-16"
+}

@@ -1,0 +1,24 @@
+{
+  "oso_node_spec": "0.1",
+  "node": "006",
+  "slug": "alaska",
+  "name": "Alaska",
+  "emoji": "🎷",
+  "tagline": "THE MASTER SIX · the man with the sax · steward of the Music Space",
+  "bio": "Saxophonist and selector of the pop-up cities — sax AND decks in one musician. Steward of the Devcon 8 Music Space (DIP #8576) alongside Shaka, Aakash and Tomo; channel 21 of the Circle Patch is his saxophone, clip-miced so the horn can walk into the crowd. His July 2026 feedback — 'too Web3 for general humanity' — birthed the orchestra's 📖 Definition Button ('Words We Play By'): a contribution to the orchestra's soul, not just its sound. His rider workstream: decentralized streaming + on-chain artist donations. Mononym by design — in the pop-up cities one name is enough.",
+  "quote": "…barefoot uke, butterflies on sax, Alaska at the decks, Morat on bass, and the whole garden dancing 🎶 — Cannes, ETHCC afterparty, Palais des Festivals",
+  "location": "the pop-up cities 🌍",
+  "links": [
+    { "label": "X · @Alaskaisprettyokay", "url": "https://x.com/Alaskaisprettyokay" },
+    { "label": "MDRN — mdrn.music (per Shaka; awaiting Alaska's word)", "url": "https://mdrn.music" },
+    { "label": "Subcult (MDRN family)", "url": "https://subcult.music" },
+    { "label": "Onda — getonda.org (MDRN family)", "url": "https://getonda.org" },
+    { "label": "Devcon 8 rider — steward", "url": "https://opensourceorchestra.org/rider/" }
+  ],
+  "songs": [],
+  "songs_note": "No recordings hosted by design — the horn is Alaska's; he blesses what goes open, item by item.",
+  "media": [],
+  "honesty": "MDRN/Subcult/Onda verified as one connected project family (mdrn.music links to both, Aug 2026); Alaska's authorship presented on Shaka's testimony, awaiting Alaska's own correction. 'MDRN RADIA and SUBCULT' preserved verbatim as Shaka's spoken words.",
+  "license_default": "CC0 for node content — anything not listed here stays with the artist",
+  "updated": "2026-08-16"
+}
