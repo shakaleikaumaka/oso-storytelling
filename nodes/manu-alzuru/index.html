@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Node 004 · Manu Alzuru 🎧🥑 — Open Source Orchestra</title>
+<meta name="description" content="Node 004 — Manu Alzuru, the lovepunk: founder of ETHBarcelona, DoinGud and Blockravers, DJ and vibes curator. His chair in the Open Source Orchestra.">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<style>
+:root{
+  --night:#0b0612; --deep:#150b22; --violet:#2a1740; --plum:#3d1c42;
+  --cream:#f7ecd9; --cream-dim:rgba(247,236,217,.72); --cream-faint:rgba(247,236,217,.45);
+  --gold:#f0c464; --gold-bright:#ffd97a; --gold-soft:rgba(240,196,100,.35);
+  --coral:#ff8a5c; --rose:#e86a92; --teal:#2dd4bf;
+  --serif:'Iowan Old Style','Palatino Linotype',Palatino,'Book Antiqua',Georgia,'Times New Roman',serif;
+  --sans:ui-sans-serif,system-ui,-apple-system,'Segoe UI',Roboto,Helvetica,Arial,sans-serif;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{background:var(--night);color:var(--cream);font-family:var(--serif);line-height:1.65;
+  background-image:
+    radial-gradient(ellipse 120% 50% at 50% 112%,rgba(255,138,92,.13),transparent 60%),
+    radial-gradient(ellipse 90% 45% at 50% 108%,rgba(240,196,100,.10),transparent 55%),
+    radial-gradient(ellipse 90% 60% at 50% -10%,rgba(61,28,66,.55),transparent 70%)}
+h1,h2,h3{font-weight:600;line-height:1.15}
+a{color:var(--gold-bright)}
+.wrap{max-width:880px;margin:0 auto;padding:0 20px}
+
+.hero{position:relative;text-align:center;padding:70px 20px 30px}
+.kicker{font-family:var(--sans);font-size:.72rem;letter-spacing:.34em;text-transform:uppercase;color:var(--gold)}
+.hero h1{font-size:clamp(2.2rem,6vw,3.4rem);margin:.5rem 0 .3rem}
+.hero h1 em{color:var(--gold);font-style:italic}
+.hero .sub{font-family:var(--sans);font-size:.95rem;color:var(--cream-dim)}
+.hero .vibe{margin-top:1.1rem;font-style:italic;color:var(--gold-bright);font-size:clamp(1rem,2.2vw,1.15rem)}
+.avatar{font-size:3.2rem;line-height:1;margin-bottom:.4rem}
+
+section{padding:26px 0}
+.sec-head{display:flex;align-items:baseline;gap:14px;border-bottom:1px solid var(--gold-soft);padding-bottom:10px;margin-bottom:18px}
+.sec-head .num{font-family:var(--sans);font-size:.7rem;letter-spacing:.3em;text-transform:uppercase;color:var(--gold)}
+.sec-head h2{font-size:clamp(1.3rem,3.4vw,1.8rem)}
+.sec-head h2 em{color:var(--gold);font-style:italic}
+
+.card{background:rgba(21,11,34,.66);border:1px solid rgba(240,196,100,.18);border-radius:14px;padding:22px 24px;margin-bottom:16px}
+.card h3{color:var(--gold-bright);margin-bottom:.6rem;font-size:1.08rem}
+.card p{margin-bottom:.8rem;color:var(--cream-dim)}
+.card p:last-child{margin-bottom:0}
+.badge{display:inline-block;font-family:var(--sans);font-size:.66rem;letter-spacing:.14em;text-transform:uppercase;
+  border-radius:999px;padding:.3em .9em;margin-left:.4em;vertical-align:middle}
+.badge.blessed{background:rgba(45,212,191,.14);color:var(--teal);border:1px solid rgba(45,212,191,.4)}
+.badge.draft{background:rgba(240,196,100,.12);color:var(--gold);border:1px solid var(--gold-soft)}
+.chords{font-family:var(--sans);font-size:.9rem;color:var(--gold-bright);letter-spacing:.06em;margin:.3rem 0 .8rem}
+video,audio{width:100%;border-radius:10px;background:#000}
+audio{background:transparent}
+.dl{display:flex;flex-wrap:wrap;gap:10px;margin-top:12px}
+.dl a{font-family:var(--sans);font-size:.78rem;letter-spacing:.06em;text-decoration:none;color:var(--cream-dim);
+  border:1px solid var(--gold-soft);border-radius:999px;padding:.45em 1.1em;background:rgba(21,11,34,.6)}
+.dl a:hover{border-color:var(--gold-bright);color:var(--gold-bright)}
+
+.yt-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:16px}
+.yt{position:relative;aspect-ratio:16/9;border-radius:12px;overflow:hidden;border:1px solid rgba(240,196,100,.18);cursor:pointer;background:#000}
+.yt img{width:100%;height:100%;object-fit:cover;opacity:.85}
+.yt .play{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font-size:3rem;
+  text-shadow:0 2px 14px rgba(0,0,0,.8);transition:transform .15s}
+.yt:hover .play{transform:scale(1.15)}
+.yt .cap{position:absolute;left:0;right:0;bottom:0;padding:24px 12px 8px;font-family:var(--sans);font-size:.75rem;
+  color:var(--cream);background:linear-gradient(transparent,rgba(0,0,0,.85))}
+.yt iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
+
+.words details{margin-bottom:10px;border:1px solid rgba(240,196,100,.16);border-radius:10px;background:rgba(11,6,18,.5)}
+.words summary{cursor:pointer;padding:12px 16px;color:var(--gold-bright);font-family:var(--sans);font-size:.9rem}
+.words .ly{padding:4px 20px 16px;color:var(--cream-dim);font-size:.95rem}
+.words .ly strong{color:var(--cream)}
+.st{font-size:.66rem;letter-spacing:.14em;text-transform:uppercase;border-radius:999px;padding:.25em .8em;margin-left:.5em}
+.st.off{background:rgba(45,212,191,.14);color:var(--teal);border:1px solid rgba(45,212,191,.4)}
+
+.linkrow{display:flex;flex-wrap:wrap;gap:10px;justify-content:center;margin:18px 0}
+.linkrow a{font-family:var(--sans);font-size:.78rem;letter-spacing:.06em;text-decoration:none;color:var(--cream-dim);
+  border:1px solid var(--gold-soft);border-radius:999px;padding:.5em 1.2em;background:rgba(21,11,34,.6)}
+.linkrow a:hover{border-color:var(--gold-bright);color:var(--gold-bright)}
+.dedication{font-style:italic;color:var(--gold-bright);text-align:center;margin:.6rem 0}
+.back{font-family:var(--sans);font-size:.8rem;color:var(--cream-faint);text-decoration:none}
+.back:hover{color:var(--gold-bright)}
+.buildyour{border:1px dashed var(--gold-soft);border-radius:14px;padding:22px 24px;text-align:center;background:rgba(21,11,34,.4)}
+footer{padding:36px 0 46px;text-align:center;font-family:var(--sans);font-size:.75rem;color:var(--cream-faint)}
+footer a{color:var(--cream-dim)}
+</style>
+</head>
+<body>
+
+<div class="hero">
+  <div class="avatar">🎧🥑</div>
+  <p class="kicker">Open Source Orchestra · Node 004 · full profile</p>
+  <h1>Manu <em>Alzuru</em></h1>
+  <p class="sub">THE LOVEPUNK · DJ &amp; community architect · El Cuatro of the orchestra</p>
+  <p class="vibe">"Humanist, lovepunk, engineer, nomad, artist, hacker, DJ, music producer, vibes curator." — his own words</p>
+  <div class="linkrow">
+    <a href="https://x.com/ManuAlzuru">X · @ManuAlzuru</a>
+    <a href="https://about.me/manualzuru">about.me · the lovepunk files</a>
+    <a href="https://www.lovepunks.xyz/">Lovepunks.xyz 💜</a>
+    <a href="https://www.ethbarcelona.com/">ETHBarcelona</a>
+    <a href="/trust/">the Circle of Trust 🕸️</a>
+    <a href="/nodes/">← all nodes</a>
+  </div>
+</div>
+
+<div class="wrap">
+
+<section id="story">
+  <div class="sec-head"><span class="num">The story</span><h2>The <em>lovepunk</em> 🎧</h2></div>
+  <div class="card">
+    <h3>Engineer of rooms where strangers become one crowd</h3>
+    <p>Manu started as a field engineer and marketer in the old world — then turned the whole toolkit toward the human one. In the pandemic he founded <b>FightPandemics</b>, gathering <b>1,900+ builders</b> to ship a platform in <b>40+ languages</b> that connected people who needed help with people who could give it. He founded <b>DoinGud</b>, a social-impact NFT platform; was a <b>founding member of API3</b>; ran with <b>MetaCartel</b>; scouts for <b>Own.fund</b>, a DAO funding the creator economy.</p>
+    <p>Today he calls himself, in his own words: <i>"humanist, lovepunk, engineer, nomad, artist, hacker, DJ, music producer, vibes curator."</i> He founded <a href="https://www.lovepunks.xyz/">Lovepunks.xyz</a> — a nomadic tribe organizing pop-up villages for visionaries, creators and changemakers — and serves as resident <b>vibes shaman</b> at DAOPalace. <span style="font-size:.85em;color:var(--cream-faint)">(source: <a href="https://about.me/manualzuru">his own about.me</a>)</span></p>
+    <p class="dedication">"TQM Manu!! El cuatro was always yours." — Shaka 🌺</p>
+  </div>
+  <div class="card">
+    <h3>Blockravers — the dance floor as consensus 🪩</h3>
+    <p>Founder and <b>conspirator</b> of the pop-up raves that follow the crypto caravan — around conferences, pop-up cities and festivals, from ETHDenver to Devcon. Blockravers has hosted <b>Grimes, Chloe Caillet, Android Jones, Desert Dwellers</b> and countless unnamed dancers, and it grew out of a hundred "where do we go tonight?" messages into something more: a community exploring <b>decentralized identity and trust networks</b> — the same current the orchestra swims in with its <a href="/trust/">Circle of Trust 🕸️</a>.</p>
+    <p>Manu has spent years proving that decentralization is something you can <b>feel</b>: in music, in movement, in a room full of strangers becoming one crowd.</p>
+  </div>
+  <div class="card">
+    <h3>ETHBarcelona — #MadeWithAmor ❤️</h3>
+    <p>Founder and producer of <a href="https://www.ethbarcelona.com/">ETHBarcelona</a> (2022–2023 editions) — one of the largest Ethereum festivals in the world: three days of <b>music, culture and crypto</b>, built on a solarpunk ethos and run as a community-led passion project. The proof, at festival scale, of what the orchestra knows in circles: the culture <i>is</i> the protocol.</p>
+  </div>
+</section>
+
+<section id="sound">
+  <div class="sec-head"><span class="num">The sound</span><h2>Latin · Afro · Tribal · Organic · <em>House &amp; techno</em> 🎛️</h2></div>
+  <div class="card">
+    <p class="chords">DJing + producing · Latin, Afro, Tribal, Organic, Melodic, House &amp; techno — his own genre line</p>
+    <p>No tracks live on this shelf yet — and that is exactly how it should be. The decks are Manu's; only he decides what gets blessed into the open, item by item. <b>One word, hermano, and your sound lives here</b> — a set, a track, a recording from any night the floor became one organism.</p>
+  </div>
+  <div class="card">
+    <h3>The invitation 💌</h3>
+    <p><b>Hermano — this seat is yours.</b> The Open Source Orchestra is drawing its biggest circle yet: the Music Space at <b>Devcon 8, Mumbai, Nov 3–6 2026</b> (<a href="https://forum.devcon.org/t/open-source-orchestra-music-space-at-devcon-8-mumbai/8576">DIP #8576</a>). We would be honored to have Node 004 in the circle — your sound, your Blockravers spirit, your four-on-the-floor heart.</p>
+    <p>The orchestra is open source in every sense: no gate, no audition, no title. Bring a track, bring a set, bring your people — or simply bring yourself. The <a href="https://docs.google.com/forms/d/e/1FAIpQLSck9I3Tu0lZqCBt9FsE9VG4UjGM71gbY86aDDlC9jb_akPMmg/viewform">open call</a> is live — or just say the word and we'll hold your chair. 🎧</p>
+    <p class="dedication">"You don't join the Open Source Orchestra. You notice you were always in it." 🌺</p>
+  </div>
+</section>
+
+<section id="stages">
+  <div class="sec-head"><span class="num">Stages &amp; stories</span><h2>The <em>journey</em> 📺</h2></div>
+  <div class="yt-grid">
+    <div class="yt" data-id="s4AhK73V7p4"><img loading="lazy" src="https://i.ytimg.com/vi/s4AhK73V7p4/hqdefault.jpg" alt="The Rise of Trust Networks — Manu Alzuru, Blockravers, ETHDenver"><div class="play">▶️</div><div class="cap">THE RISE OF TRUST NETWORKS · ETHDenver 🏔️</div></div>
+    <div class="yt" data-id="sPpPZeQXHkg"><img loading="lazy" src="https://i.ytimg.com/vi/sPpPZeQXHkg/hqdefault.jpg" alt="ETHBarcelona 2023 — Solar and Lunar Punk Experience"><div class="play">▶️</div><div class="cap">ETHBARCELONA 2023 · SOLAR &amp; LUNAR PUNK EXPERIENCE ☀️🌙</div></div>
+    <div class="yt" data-id="xBpr1jZ0xoA"><img loading="lazy" src="https://i.ytimg.com/vi/xBpr1jZ0xoA/hqdefault.jpg" alt="Manu Alzuru — Trust Networks, notDEVCON"><div class="play">▶️</div><div class="cap">TRUST NETWORKS · notDEVCON 🕸️</div></div>
+  </div>
+  <p style="margin-top:14px;text-align:center;font-family:var(--sans);font-size:.85rem;color:var(--cream-faint)">📷 photo wall coming — the profile grows as the journey does.</p>
+</section>
+
+<section id="build-your-node">
+  <div class="buildyour">
+    <h3 style="color:var(--gold-bright);margin-bottom:.6rem">🎻 Build your own node</h3>
+    <p style="color:var(--cream-dim);margin-bottom:.8rem">A <b>profile node</b> is a musician's home they own. Your songs, your videos, your words. You choose what's open-sourced, item by item; what you don't bless stays yours. No feed, no ads, no gate.</p>
+    <p style="color:var(--gold-bright);margin-bottom:.8rem;font-style:italic">This is YOUR node, Node 004 — one word and we change, add, or remove anything. The artist signs the truth. 🌺</p>
+    <p style="font-family:var(--sans);font-size:.85rem"><a href="/nodes/node-spec.md">read the node spec 📄</a> &nbsp;·&nbsp; <a href="mailto:contribute@opensourceorchestra.org">contribute@opensourceorchestra.org 📮</a> &nbsp;·&nbsp; <a href="https://github.com/shakaleikaumaka/oso-storytelling">fork the format</a></p>
+  </div>
+</section>
+
+<p style="text-align:center;margin:10px 0 30px"><a class="back" href="/nodes/">← back to the nodes</a> &nbsp;&nbsp; <a class="back" href="/">← the orchestra</a></p>
+
+</div>
+
+<footer>
+  <div class="wrap">
+    Node 004 · Open Source Orchestra · Devcon 8 Mumbai, Nov 3–6 2026 · CC0, blessed item by item 🌺 · <a href="/nodes/manu-alzuru/node.json">node.json</a>
+  </div>
+</footer>
+
+<script>
+document.querySelectorAll('.yt').forEach(function(el){
+  el.addEventListener('click', function(){
+    var id = el.getAttribute('data-id');
+    var f = document.createElement('iframe');
+    f.src = 'https://www.youtube-nocookie.com/embed/' + id + '?autoplay=1';
+    f.allow = 'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share';
+    f.allowFullscreen = true;
+    el.innerHTML = ''; el.appendChild(f);
+  }, { once:true });
+});
+</script>
+<script src="https://shakaleikaumaka.com/assets/bl-player.js?v=7.7"></script>
+</body>
+</html>

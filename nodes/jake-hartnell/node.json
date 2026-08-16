@@ -1,0 +1,53 @@
+{
+  "oso_node_spec": "0.1",
+  "node": "005",
+  "slug": "jake-hartnell",
+  "name": "Jake Hartnell",
+  "emoji": "⚡🕸️",
+  "tagline": "THE POWER 5TH · the trust weaver · builder of trustgraphs",
+  "bio": "Builder of trustgraphs — ZK-proven trust graphs (vouch → score → prove → use) the orchestra is adopting for its Circle of Trust. Co-founder of Stargaze, Juno, DAO DAO and Layer. GitHub bio: ☯️. Met the orchestra on a Colorado mountain night, August 2026, and was building with it before sunrise — issues #93/#94 and PR #95, in the open.",
+  "quote": "Many people have worked on trust graphs over the years; the idea is part of a wider scenius. We are grateful to all who came before.",
+  "location": "the interchain 🌌",
+  "links": [
+    {
+      "label": "GitHub · JakeHartnell",
+      "url": "https://github.com/JakeHartnell"
+    },
+    {
+      "label": "X · @jakehartnell",
+      "url": "https://x.com/jakehartnell"
+    },
+    {
+      "label": "symbient.life",
+      "url": "https://symbient.life"
+    },
+    {
+      "label": "trustgraphs",
+      "url": "https://github.com/JakeHartnell/trustgraphs"
+    },
+    {
+      "label": "Circle of Trust (orchestra)",
+      "url": "https://opensourceorchestra.org/trust/"
+    }
+  ],
+  "songs": [],
+  "songs_note": "Featured composition = trustgraphs itself: VOUCH → SCORE → PROVE → USE. Nothing appears on this node without Jake's blessing, item by item.",
+  "media": [
+    {
+      "type": "youtube",
+      "id": "TnhMTPRwdq0",
+      "title": "DEVMOS 2024: Extending DAO DAO to Create Bespoke Governance Processes",
+      "channel": "Osmosis",
+      "visibility": "public"
+    },
+    {
+      "type": "youtube",
+      "id": "ierPImrSGT0",
+      "title": "Interchain DAOs - DAO DAO - Jake Hartnell",
+      "channel": "The DAOist",
+      "visibility": "public"
+    }
+  ],
+  "license_default": "CC0 for node content — anything not listed here stays with the artist",
+  "updated": "2026-08-16"
+}

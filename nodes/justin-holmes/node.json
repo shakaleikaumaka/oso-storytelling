@@ -1,0 +1,64 @@
+{
+  "oso_node_spec": "0.1",
+  "node": "002",
+  "slug": "justin-holmes",
+  "name": "Justin Holmes",
+  "emoji": "🪕⛓️",
+  "tagline": "CRYPTOGRASS · and the Immutable String Band · Ashland, Oregon",
+  "bio": "Leader of Justin Holmes and the Immutable String Band — 'songs of a peaceful internet age, video game traditionals, and dirty old bluegrass' (their words). Namer of cryptograss: bluegrass and blockchains as one tradition of preserving and remixing music outside the IP system. Vowel Sounds (2023, Stargel Studios Nashville, with Cory Walker and Harry Clark) was revealed on-chain via Revealer on Threshold. Formerly building privacy tech at NuCypher; ETHDenver workshop & talk veteran. Releases CC BY-SA.",
+  "quote": "Blockchains are bluegrass.",
+  "location": "Ashland, Oregon, USA",
+  "links": [
+    {
+      "label": "justinholmes.com",
+      "url": "https://justinholmes.com"
+    },
+    {
+      "label": "Bandcamp",
+      "url": "https://justinholmes.bandcamp.com"
+    },
+    {
+      "label": "X · @llamasinthecode",
+      "url": "https://x.com/llamasinthecode"
+    },
+    {
+      "label": "X · @immutablestring",
+      "url": "https://x.com/immutablestring"
+    },
+    {
+      "label": "GitHub · jMyles",
+      "url": "https://github.com/jMyles"
+    },
+    {
+      "label": "cryptograss org",
+      "url": "https://github.com/cryptograss"
+    }
+  ],
+  "songs": [],
+  "songs_note": "Nothing hosted without the artist's word — his music lives at his own doors under CC BY-SA. This shelf waits for what Justin blesses into the orchestra.",
+  "media": [
+    {
+      "type": "youtube",
+      "id": "SMdqujKHzOQ",
+      "title": "Justin Holmes - Vowel Sounds. Live @ ETHBarcelona 2022",
+      "channel": "Threshold Network",
+      "visibility": "public"
+    },
+    {
+      "type": "youtube",
+      "id": "ahJZ6A-JW_c",
+      "title": "Privacy and Tunes with Justin Myles Holmes - ETHDenver 2020",
+      "channel": "NuCypher",
+      "visibility": "public"
+    },
+    {
+      "type": "youtube",
+      "id": "om0tew-Z4gE",
+      "title": "Justin Myles Holmes hosts a workshop with NuCypher - ETHDenver 2019",
+      "channel": "NuCypher",
+      "visibility": "public"
+    }
+  ],
+  "license_default": "CC0 for node content — the artist's own releases carry his CC BY-SA; anything not listed here stays with the artist",
+  "updated": "2026-08-16"
+}

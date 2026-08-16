@@ -1,0 +1,56 @@
+{
+  "oso_node_spec": "0.1",
+  "node": "004",
+  "slug": "manu-alzuru",
+  "name": "Manu Alzuru",
+  "emoji": "🎧🥑",
+  "tagline": "THE LOVEPUNK · DJ & community architect · El Cuatro of the orchestra",
+  "bio": "Humanist, lovepunk, engineer, nomad, artist, hacker, DJ, music producer, vibes curator (his own words). Founder of ETHBarcelona (2022–2023), DoinGud, Blockravers and Lovepunks.xyz; founding member of API3; MetaCartel; Own.fund scout; founder of FightPandemics (1,900+ builders, 40+ languages). DJ sets: Latin, Afro, Tribal, Organic, Melodic, House & techno.",
+  "quote": "Humanist, lovepunk, engineer, nomad, artist, hacker, DJ, music producer, vibes curator.",
+  "location": "Planet Earth 🌎 (his own words)",
+  "links": [
+    {
+      "label": "X · @ManuAlzuru",
+      "url": "https://x.com/ManuAlzuru"
+    },
+    {
+      "label": "about.me",
+      "url": "https://about.me/manualzuru"
+    },
+    {
+      "label": "Lovepunks.xyz",
+      "url": "https://www.lovepunks.xyz/"
+    },
+    {
+      "label": "ETHBarcelona",
+      "url": "https://www.ethbarcelona.com/"
+    }
+  ],
+  "songs": [],
+  "songs_note": "No tracks hosted yet by design — the decks are Manu's; he blesses what goes open, item by item.",
+  "media": [
+    {
+      "type": "youtube",
+      "id": "s4AhK73V7p4",
+      "title": "The Rise of Trust Networks | Manu Alzuru - Blockravers",
+      "channel": "ETHDenver",
+      "visibility": "public"
+    },
+    {
+      "type": "youtube",
+      "id": "sPpPZeQXHkg",
+      "title": "ETH Barcelona 2023 - Solar and Lunar Punk Experience",
+      "channel": "ETHBarcelona",
+      "visibility": "public"
+    },
+    {
+      "type": "youtube",
+      "id": "xBpr1jZ0xoA",
+      "title": "Manu Alzuru - Trust Networks | notDEVCON",
+      "channel": "ITU Blockchain",
+      "visibility": "public"
+    }
+  ],
+  "license_default": "CC0 — blessed item by item; anything not listed here stays with the artist",
+  "updated": "2026-08-16"
+}

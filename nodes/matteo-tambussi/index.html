@@ -1,0 +1,369 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Node 001 · Matteo Tambussi 🎻🇮🇹 — Open Source Orchestra</title>
+<meta name="description" content="Node 001 — Matteo Tambussi, co-founder of the Open Source Orchestra tradition. The brother who asked first: thirteen songs free to keep, twenty-five years on stage, the first music DIP in Devcon history.">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<style>
+:root{
+  --night:#0b0612; --deep:#150b22; --violet:#2a1740; --plum:#3d1c42;
+  --cream:#f7ecd9; --cream-dim:rgba(247,236,217,.72); --cream-faint:rgba(247,236,217,.45);
+  --gold:#f0c464; --gold-bright:#ffd97a; --gold-soft:rgba(240,196,100,.35);
+  --coral:#ff8a5c; --rose:#e86a92; --teal:#2dd4bf;
+  --serif:'Iowan Old Style','Palatino Linotype',Palatino,'Book Antiqua',Georgia,'Times New Roman',serif;
+  --sans:ui-sans-serif,system-ui,-apple-system,'Segoe UI',Roboto,Helvetica,Arial,sans-serif;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{background:var(--night);color:var(--cream);font-family:var(--serif);line-height:1.65;
+  background-image:
+    radial-gradient(ellipse 120% 50% at 50% 112%,rgba(255,138,92,.13),transparent 60%),
+    radial-gradient(ellipse 90% 45% at 50% 108%,rgba(240,196,100,.10),transparent 55%),
+    radial-gradient(ellipse 90% 60% at 50% -10%,rgba(61,28,66,.55),transparent 70%)}
+h1,h2,h3{font-weight:600;line-height:1.15}
+a{color:var(--gold-bright)}
+.wrap{max-width:880px;margin:0 auto;padding:0 20px}
+
+.hero{position:relative;text-align:center;padding:70px 20px 30px}
+.kicker{font-family:var(--sans);font-size:.72rem;letter-spacing:.34em;text-transform:uppercase;color:var(--gold)}
+.hero h1{font-size:clamp(2.2rem,6vw,3.4rem);margin:.5rem 0 .3rem}
+.hero h1 em{color:var(--gold);font-style:italic}
+.hero .sub{font-family:var(--sans);font-size:.95rem;color:var(--cream-dim)}
+.hero .vibe{margin-top:1.1rem;font-style:italic;color:var(--gold-bright);font-size:clamp(1rem,2.2vw,1.15rem)}
+.avatar{font-size:3.2rem;line-height:1;margin-bottom:.4rem}
+
+section{padding:26px 0}
+.sec-head{display:flex;align-items:baseline;gap:14px;border-bottom:1px solid var(--gold-soft);padding-bottom:10px;margin-bottom:18px}
+.sec-head .num{font-family:var(--sans);font-size:.7rem;letter-spacing:.3em;text-transform:uppercase;color:var(--gold)}
+.sec-head h2{font-size:clamp(1.3rem,3.4vw,1.8rem)}
+.sec-head h2 em{color:var(--gold);font-style:italic}
+
+.card{background:rgba(21,11,34,.66);border:1px solid rgba(240,196,100,.18);border-radius:14px;padding:22px 24px;margin-bottom:16px}
+.card h3{color:var(--gold-bright);margin-bottom:.6rem;font-size:1.08rem}
+.card p{margin-bottom:.8rem;color:var(--cream-dim)}
+.card p:last-child{margin-bottom:0}
+.badge{display:inline-block;font-family:var(--sans);font-size:.66rem;letter-spacing:.14em;text-transform:uppercase;
+  border-radius:999px;padding:.3em .9em;margin-left:.4em;vertical-align:middle}
+.badge.blessed{background:rgba(45,212,191,.14);color:var(--teal);border:1px solid rgba(45,212,191,.4)}
+.badge.draft{background:rgba(240,196,100,.12);color:var(--gold);border:1px solid var(--gold-soft)}
+.chords{font-family:var(--sans);font-size:.9rem;color:var(--gold-bright);letter-spacing:.06em;margin:.3rem 0 .8rem}
+video,audio{width:100%;border-radius:10px;background:#000}
+audio{background:transparent}
+.dl{display:flex;flex-wrap:wrap;gap:10px;margin-top:12px}
+.dl a{font-family:var(--sans);font-size:.78rem;letter-spacing:.06em;text-decoration:none;color:var(--cream-dim);
+  border:1px solid var(--gold-soft);border-radius:999px;padding:.45em 1.1em;background:rgba(21,11,34,.6)}
+.dl a:hover{border-color:var(--gold-bright);color:var(--gold-bright)}
+
+.yt-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:16px}
+.yt{position:relative;aspect-ratio:16/9;border-radius:12px;overflow:hidden;border:1px solid rgba(240,196,100,.18);cursor:pointer;background:#000}
+.yt img{width:100%;height:100%;object-fit:cover;opacity:.85}
+.yt .play{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font-size:3rem;
+  text-shadow:0 2px 14px rgba(0,0,0,.8);transition:transform .15s}
+.yt:hover .play{transform:scale(1.15)}
+.yt .cap{position:absolute;left:0;right:0;bottom:0;padding:24px 12px 8px;font-family:var(--sans);font-size:.75rem;
+  color:var(--cream);background:linear-gradient(transparent,rgba(0,0,0,.85))}
+.yt iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
+
+.words details{margin-bottom:10px;border:1px solid rgba(240,196,100,.16);border-radius:10px;background:rgba(11,6,18,.5)}
+.words summary{cursor:pointer;padding:12px 16px;color:var(--gold-bright);font-family:var(--sans);font-size:.9rem}
+.words .ly{padding:4px 20px 16px;color:var(--cream-dim);font-size:.95rem}
+.words .ly strong{color:var(--cream)}
+.st{font-size:.66rem;letter-spacing:.14em;text-transform:uppercase;border-radius:999px;padding:.25em .8em;margin-left:.5em}
+.st.off{background:rgba(45,212,191,.14);color:var(--teal);border:1px solid rgba(45,212,191,.4)}
+
+.linkrow{display:flex;flex-wrap:wrap;gap:10px;justify-content:center;margin:18px 0}
+.linkrow a{font-family:var(--sans);font-size:.78rem;letter-spacing:.06em;text-decoration:none;color:var(--cream-dim);
+  border:1px solid var(--gold-soft);border-radius:999px;padding:.5em 1.2em;background:rgba(21,11,34,.6)}
+.linkrow a:hover{border-color:var(--gold-bright);color:var(--gold-bright)}
+.dedication{font-style:italic;color:var(--gold-bright);text-align:center;margin:.6rem 0}
+.back{font-family:var(--sans);font-size:.8rem;color:var(--cream-faint);text-decoration:none}
+.back:hover{color:var(--gold-bright)}
+.buildyour{border:1px dashed var(--gold-soft);border-radius:14px;padding:22px 24px;text-align:center;background:rgba(21,11,34,.4)}
+footer{padding:36px 0 46px;text-align:center;font-family:var(--sans);font-size:.75rem;color:var(--cream-faint)}
+footer a{color:var(--cream-dim)}
+</style>
+</head>
+<body>
+
+<div class="hero">
+  <div class="avatar">🎻🇮🇹</div>
+  <p class="kicker">Open Source Orchestra · Node 001 · full profile</p>
+  <h1>Matteo <em>Tambussi</em></h1>
+  <p class="sub">CO-FOUNDER OF THE TRADITION · musician &amp; linguist · Turin, Italy</p>
+  <p class="vibe">"Jamming live amongst devs turns out to create unique bonds." — from the first music DIP in Devcon history</p>
+  <div class="linkrow">
+    <a href="https://linktr.ee/matteotambussi">linktree 🌳</a>
+    <a href="https://www.youtube.com/@matteotambussi">YouTube 📺</a>
+    <a href="https://x.com/matteotambussi">@matteotambussi</a>
+    <a href="https://matteotambussi.bandcamp.com">Bandcamp</a>
+    <a href="https://soundcloud.com/matteotambussi">SoundCloud</a>
+    <a href="https://open.spotify.com/artist/6FABMAInCLqiYpazFhoKDs">Spotify</a>
+    <a href="/nodes/">← all nodes</a>
+  </div>
+</div>
+
+<div class="wrap">
+
+<section id="story">
+  <div class="sec-head"><span class="num">The story</span><h2>The brother who <em>asked first</em> 🎻</h2></div>
+  <div class="card">
+    <h3>The first DIP in Devcon history</h3>
+    <p>The Open Source Orchestra tradition was born at <b>ETH Prague 2022</b> — and on <b>June 17, 2022</b>, Matteo carried it to paper: he submitted the <a href="https://forum.devcon.org/t/music-sessions-open-mic-stage/387">first music DIP ever proposed for a Devcon</a> — "Music Sessions | Open Mic Stage" for Devcon 6 Bogotá. His argument was simple and right: jamming live amongst devs, product managers and community leaders creates bonds no whitepaper can — and <i>"many many devs are actually f**king good musicians."</i> The Music Space exists because he asked for it first.</p>
+    <p>The lineage he seeded now runs to <a href="https://forum.devcon.org/t/open-source-orchestra-music-space-at-devcon-8-mumbai/8576">DIP #8576 — the Music Space at Devcon 8, Mumbai, Nov 3–6 2026</a>.</p>
+    <p class="dedication">"None of this would be possible without you, brother." — Shaka 🌺</p>
+  </div>
+  <div class="card">
+    <h3>Twenty-five years of song</h3>
+    <p>Musician and producer in the independent scene since <b>2000</b> — first ten years with the bands <b>Baroque</b> and <b>Eskinzo</b>, then solo from Berlin (2013 →) and home again in <b>Turin</b>. Eleven-plus albums; opening slots for <b>Nick Cave &amp; the Bad Seeds, Primal Scream, Boy George, Blonde Redhead, Africa Unite, Ministri</b>; radio play on <b>BBC 6 Music</b>, J-Wave Tokyo, Flux FM and Fritz. His duo record <i>Zilina</i> (Calista Records, 2017) was made with <b>Marek K</b> — the same Marek riding shotgun on Pharmacist Wife below. <span style="font-size:.85em;color:var(--cream-faint)">(sources: <a href="https://www.athensmusicweek.gr/speakers/matteo-tambussi/">Athens Music Week</a> · <a href="https://www.blockchainforumitalia.com/en/matteo-tambussi/">Blockchain Forum Italia</a>)</span></p>
+    <p>A political linguist by study and an <b>ethereum ant</b> by nature: in the Ethereum world since Devcon4 Prague and Dappcon 2018, co-organizer of Italy's first Ethereum hackathon <b>ETHTurin</b> (2020), co-founder of <b>SpaghettETH</b> — and a speaker on music × web3 from Athens Music Week to Most Wanted: Music Berlin to the World Art Forum. Matteo has been weaving music into Ethereum since before it had a stage.</p>
+  </div>
+</section>
+
+<section id="featured">
+  <div class="sec-head"><span class="num">Featured</span><h2>Ginger <em>Game</em> 🫚</h2></div>
+  <div class="card">
+    <h3>🫚 Ginger Game <span class="badge blessed">✓ official words</span> <span class="badge draft">machine-draft chart</span></h3>
+    <p class="chords">key E minor · Em – Am – B7 – C · ~162 bpm</p>
+    <p>The vault opens with fire — flaming locks, dragon eyes, and a wicked game against the house of snakes. <i>One, two, three, four, five, six, seven — all the gingers go to heaven.</i></p>
+    <audio controls preload="metadata" src="https://shaka-anthem-gzdk4epeah-ffieyo32.taur.link/assets/matteo-tambussi--ginger-game.mp3"></audio>
+    <div class="words" style="margin-top:12px">
+      <details><summary>🫚 the words <span class="st off">✓ official</span></summary><div class="ly">
+<p>Ain’t no room the Devil runs the world<br>ain’t no secret who snuck him into the Ball<br>ain’t no sunlight that can pierce that long black cloud</p>
+<p>but I got a trick to foil those evil plans</p>
+<p>I fiery mate<br>is what I need to play,<br>this wicked game against the house of snakes.<br>Flaming locks and dragon eyes don’t know no shame,<br>In the deepness, they burn even brighter flames</p>
+<p>Ginger game, ginger game<br>Orange crush, honey pain<br>Pull the strings drop the chains<br>The devil&#x27;s got no game against ginger&#x27;s game</p>
+<p>Ginger thoughts spice up my appetite<br>Space me out into the deep blues sky<br>Far above the mountains through the stratosphere<br>I will hit the sun and kill your fucking fears<br>Ginger game, Ginger game<br>Orange crush, honey pain I&#x27;ll kill<br>Killer queen, Freddy said<br>The devil&#x27;s got no game against ginger&#x27;s game</p>
+<p>One, two, three, four,five, six, seven,<br>all the gingers go to heaven</p>
+<p class="flag" style="color:#7fd6a4">✓ official words — corrected by Matteo himself, Aug 2026 🎻🌺</p>
+      </div></details>
+    </div>
+  </div>
+</section>
+
+<section id="songbook">
+  <div class="sec-head"><span class="num">Song collection</span><h2>The Tambussi <em>vault</em> — thirteen songs, free to keep 🎁</h2></div>
+  <div class="card">
+    <p>The full vault, gifted to the orchestra — <b>CC0, artist-credited, no gate</b>. Twelve of thirteen carry Matteo's <b>own official words</b>; one is still an AI-transcription draft, honestly labeled. The chord lines are <b>machine-heard drafts</b> (CREMA + a second witness, theory-reviewed by BACH 🎼) — awaiting the artist's blessing, and his thirteen songs are the <b>first songbook</b> of the <a href="https://orchestrator.opensourceorchestra.org">Open Source Orchestrator</a>.</p>
+    <a class="songbook-cta" style="display:block;margin-top:10px;text-decoration:none;border:1px solid var(--gold-soft);border-radius:12px;padding:14px 18px;background:rgba(11,6,18,.5)" href="/nodes/TAMBUSSI-SONGBOOK-2026-08-14.pdf"><b>📖 The Tambussi Songbook — the PDF, beautiful for reading &amp; correcting</b><br><span style="font-family:var(--sans);font-size:.8rem;color:var(--cream-faint)">18 pages · one song per page · 12 of 13 carry Matteo's own blessed words ✓ 🎻</span></a>
+  </div>
+  <div class="card">
+    <h3>📍 Luogoper <span class="badge blessed">✓ official words</span> <span class="badge draft">machine-draft chart</span></h3>
+    <p class="chords">key C major · C – G (– F – Am) · E – Am turn · ~136 bpm</p>
+    <audio controls preload="metadata" src="https://shaka-anthem-gzdk4epeah-ffieyo32.taur.link/assets/matteo-tambussi--luogoper.mp3"></audio>
+    <div class="words" style="margin-top:12px">
+      <details><summary>📍 the words <span class="st off">✓ official</span></summary><div class="ly">
+<p>Ho trovato un luogo per<br>per tornare a immaginare<br>Nuove cure per il nostro amore, questo amore che ci tratta male<br>Per poterci arrivare c&#x27;è una sola indicazione<br>Prendi quella strada senza nome<br>Dopo il ponte sul fiume delle troppe parole<br>E con il vento in coda super la salita<br>Non farai fatica e la notte ti aspetterà<br>Entra senza esitazione<br>Questa casa ti conosce già<br>Svesti in dubbio ed il rumore Incontrami con curiosità</p>
+<p class="flag" style="color:#7fd6a4">✓ official words — corrected by Matteo himself, Aug 2026 🎻🌺</p>
+      </div></details>
+    </div>
+  </div>
+  <div class="card">
+    <h3>🌊 Tanta Paura <span class="badge blessed">✓ official words</span> <span class="badge draft">machine-draft chart</span></h3>
+    <p class="chords">key A minor · C – G – Am (– F) · ~96 bpm</p>
+    <audio controls preload="metadata" src="https://shaka-anthem-gzdk4epeah-ffieyo32.taur.link/assets/matteo-tambussi--tanta-paura.mp3"></audio>
+    <div class="words" style="margin-top:12px">
+      <details><summary>🌊 the words <span class="st off">✓ official</span></summary><div class="ly">
+<p>TANTA PAURA</p>
+<p>Non è la disumanità che mi spaventa<br>Né l'avverata fantascienza<br>Quanto il dovere rinunciare, fino in fondo<br>A ciò in cui io mi riconosco,fIn cui sono più capace</p>
+<p>Ho così tante paure,<br>Ho sempre nuove paure</p>
+<p>E  Faccio fatica a sbarazzarmi del tuo amore di coniglio<br>Ci han detto che l’integrità si ottiene solo con un figlio<br>Ma un figlio è un atto criminale,<br>è un tradimento della specie<br>Quando a riscrivere l'amore tutti vanno col macete,</p>
+<p>E con le lame taglieranno tutti i ponti col passato,<br>garantiranno il futuro, un futuro inviolato</p>
+<p>Ho così tanta paura<br>Di essere solo con la mia paura</p>
+<p>E mi sforzo<br>A livello intuitivo<br>Di capire qual è il luogo<br>Qual è il momento conclusivo<br>Dov’è sepolta l’altra metà del mio cuore<br>Dove ho le mie virtù<br>Dimmi ora se ce l’hai tu<br>Dimmi ora se ce l’hai tu</p>
+<p>Sono Pacifico e avverto serenità</p>
+<p>Rit 2<br>e ti penso, come il vento respiro nelle valli<br>sopra i mari, di un desiderio conclusivo<br>a cui sarò per sempre fedele<br>Senza perdermi in tanta paura<br>Senza perdermi in tanta paura</p>
+      </div></details>
+    </div>
+  </div>
+  <div class="card">
+    <h3>✨ Gioia Perfetta <span class="badge blessed">✓ official words</span> <span class="badge draft">machine-draft chart</span></h3>
+    <p class="chords">key A minor · Am – G verses · F – C bridge · ~144 bpm</p>
+    <audio controls preload="metadata" src="https://shaka-anthem-gzdk4epeah-ffieyo32.taur.link/assets/matteo-tambussi--gioia-perfetta.mp3"></audio>
+    <div class="words" style="margin-top:12px">
+      <details><summary>✨ the words <span class="st off">✓ official</span></summary><div class="ly">
+<p>Com’è triste il giorno di maggio<br>dentro al vicolo povero e solo!<br>Di tanto sole neppure un raggio;<br>con tante rondini, neanche un volo.<br>Pure c’era in quello squallore,<br>in quell’uggia greve e amara,<br>un profumo di cielo in fiore,<br>un barlume di gioia chiara.<br>C’era… c’erano tante rose<br>affacciate ad una finestra,<br>che ridevano come spose<br>preparate per la festa.<br>C’era seduto sui gradini<br>d’una casa di pezzenti,<br>un bambino piccino, piccino,<br>dai grandi occhi risplendenti.<br>C’era in alto una voce di mamma,<br>così calma, così pura!<br>che cantava la ninna nanna<br>alla propria creatura.<br>E poi dopo non c’era più nulla…<br>Ma, di maggio, alla via poveretta<br>basta un bimbo, un fiore, una culla<br>per formarsi una gioia perfetta.<br>Performarsi.</p>
+<p class="flag" style="color:#7fd6a4">✓ official words — corrected by Matteo himself, Aug 2026 🎻🌺</p>
+      </div></details>
+    </div>
+  </div>
+  <div class="card">
+    <h3>🌷 3MILY <span class="badge blessed">✓ official words</span> <span class="badge draft">machine-draft chart</span></h3>
+    <p class="chords">key C major · C – F – Dm – G · ~129 bpm</p>
+    <audio controls preload="metadata" src="https://shaka-anthem-gzdk4epeah-ffieyo32.taur.link/assets/matteo-tambussi--3mily.mp3"></audio>
+    <div class="words" style="margin-top:12px">
+      <details><summary>🌷 the words <span class="st off">✓ official</span></summary><div class="ly">
+<p>Ci incontriamo in volo<br>e in volo ci lasciamo<br>tu alla tua missione<br>ed io all’Uragano<br>che raffredda la mente<br>dopo una calda estate<br>e il pianeta in fiamme</p>
+<p>chissà se troveremo<br>ognuno per sè<br>felicità, era una vasca piena<br>dove potevo guardarti affogare<br>accarezzando una canzone<br>semplice come te</p>
+<p>3mily 3mily<br>cosa fai 3mily</p>
+<p>incontrerai qualcuno<br>o qualcuno ti incontrerà<br>digli di no, tu non ci credi alla slealtà<br>dei corpi sensuali orbitanti<br>travolti dalla gravità<br>di una altra cometa.</p>
+<p>3mily 3mily<br>dove sei 3mily<br>dormi qui 3mily</p>
+<p class="flag" style="color:#7fd6a4">✓ official words — corrected by Matteo himself, Aug 2026 🎻🌺</p>
+      </div></details>
+    </div>
+  </div>
+  <div class="card">
+    <h3>🔥 Burnout <span class="badge blessed">✓ official words</span> <span class="badge draft">machine-draft chart</span></h3>
+    <p class="chords">key G major · Am – D – G – C · ~152 bpm</p>
+    <audio controls preload="metadata" src="https://shaka-anthem-gzdk4epeah-ffieyo32.taur.link/assets/matteo-tambussi--burnout.mp3"></audio>
+    <div class="words" style="margin-top:12px">
+      <details><summary>🔥 the words <span class="st off">✓ official</span></summary><div class="ly">
+<p>BURNOUT</p>
+<p>Mi piacciono le farfalle<br>Mi piacciono colorate<br>Mi perdo nelle trame<br>Delle loro traversate</p>
+<p>e questa emozione che graffia il corso del vento<br>Fa scorta di pace prima del riarmamento</p>
+<p>Oggi non posso fare altro che cedere<br>che dare ragione all'irragionevole</p>
+<p>I mantra osceni degli motivatori alla conquista<br>Getto la spugna e vado in spiaggia</p>
+<p>ma sulla sabbia un inatteso batticuore<br>mi spinge sul ciglio un abisso interiore</p>
+<p>Tutti i volti rubati a persone migliori<br>Non mi aiuteranno<br>Mi sento esposto e in preda all'affanno</p>
+<p>Cade ogni tipo di fede<br>Anche quella che avevo in te<br>Non mi resta che cedere, eccedere</p>
+<p>E quando tocco il fondo una convinzione!<br>Un'idea senza soggetto, misura o sapore!</p>
+<p>si fa strada in me<br>e mi porta con sé<br>per aria |  per i sentieri antichi<br>nell’aria | che collegano i pianeti</p>
+<p>Mi piaccion le farfalle, mi piacciono colorate<br>Mi piaccion le farfalle, mi piacciono colorate<br>Mi piaccion le farfalle, mi piacciono colorate</p>
+      </div></details>
+    </div>
+  </div>
+  <div class="card">
+    <h3>🏝️ Island <span class="badge blessed">✓ official words</span> <span class="badge draft">machine-draft chart</span></h3>
+    <p class="chords">key B minor · Bm – D – Em – A · G – C – D bridge · ~89 bpm</p>
+    <audio controls preload="metadata" src="https://shaka-anthem-gzdk4epeah-ffieyo32.taur.link/assets/matteo-tambussi--island.mp3"></audio>
+    <div class="words" style="margin-top:12px">
+      <details><summary>🏝️ the words <span class="st off">✓ official</span></summary><div class="ly">
+<p>oh life<br>you got me rowing<br>under the sun<br>no way I can find my island</p>
+<p>fine line<br>between the blue<br>ocean and soul<br>tears won’t let me see my island</p>
+<p>low lives<br>my family<br>the only ones I know<br>go, go with the flow<br>miles and miles away from the skyline</p>
+<p>you rock and rollers<br>take the oars<br>you castaway lovers<br>feel the roar of Life<br>life on an island<br>searching for islands<br>sailing by the stars<br>never be lost</p>
+<p>all mine<br>nothing to lose, under this sun<br>just nowhere to run<br>we’ll never stop chasing our Islands</p>
+<p>you rock and rollers<br>take the oars<br>you exiled looters feel the roar<br>of Life<br>life on an Island<br>searchin for islands<br>sailing by the stars<br>never be lost<br>never grow old</p>
+<p class="flag" style="color:#7fd6a4">✓ official words — corrected by Matteo himself, Aug 2026 🎻🌺</p>
+      </div></details>
+    </div>
+  </div>
+  <div class="card">
+    <h3>🍫 Cioccolato Fondente <span class="badge blessed">✓ official words</span> <span class="badge draft">machine-draft chart</span></h3>
+    <p class="chords">key A minor · E – Am vamp (V–i) · ~118 bpm</p>
+    <audio controls preload="metadata" src="https://shaka-anthem-gzdk4epeah-ffieyo32.taur.link/assets/matteo-tambussi--cioccolato-fondente.mp3"></audio>
+    <div class="words" style="margin-top:12px">
+      <details><summary>🍫 the words <span class="st off">✓ official</span></summary><div class="ly">
+<p>Questa tempesta monta monta<br>E non scarica mai<br>E quando arriverà la sete<br>allora vedrai<br>Berrai da una fontana di sangue<br>Vita fresca e innocente<br>Come il primo peccato di gola<br>ti ricorderà un po il  cioccolato fondente</p>
+<p>E mentre il mondo discende<br>Il suo segreto a mezz’aria rimane<br>Un tessuto di sogno lo avvolge<br>che inibisce l’azione<br>Sui resti delle loro battaglie<br>sui simboli del loro potere<br>cioccolato fondente</p>
+<p class="flag" style="color:#7fd6a4">✓ official words — corrected by Matteo himself, Aug 2026 🎻🌺</p>
+      </div></details>
+    </div>
+  </div>
+  <div class="card">
+    <h3>⛈️ La Canzone del Tuono <span class="badge draft">📝 draft words</span> <span class="badge draft">machine-draft chart</span></h3>
+    <p class="chords">key G minor · Gm – C dorian vamp · E♭ – B♭ – Cm – Gm · ~89 bpm</p>
+    <audio controls preload="metadata" src="https://shaka-anthem-gzdk4epeah-ffieyo32.taur.link/assets/matteo-tambussi--la-canzone-del-tuono.mp3"></audio>
+    <div class="words" style="margin-top:12px">
+      <details><summary>⛈️ the words <span class="st" style="background:rgba(240,196,100,.12);color:var(--gold);border:1px solid var(--gold-soft)">📝 draft</span></summary><div class="ly">
+<p>music Music playing Music You Music You And I'm not afraid of you I'm afraid of you You</p>
+<p class="flag">⛈️ The thunder sings in textures — our transcriber heard only fragments. Matteo, send us the true words and we will carve them in. 🎻</p>
+      </div></details>
+    </div>
+  </div>
+  <div class="card">
+    <h3>🤝 Be My Friend <span class="badge blessed">✓ official words</span> <span class="badge draft">machine-draft chart</span></h3>
+    <p class="chords">key D minor · Dm vamp · Am · C · Gm7 · F · B♭maj7 passing · ~118 bpm</p>
+    <audio controls preload="metadata" src="https://shaka-anthem-gzdk4epeah-ffieyo32.taur.link/assets/matteo-tambussi--be-my-friend.mp3"></audio>
+    <div class="words" style="margin-top:12px">
+      <details><summary>🤝 the words <span class="st off">✓ official</span></summary><div class="ly">
+<p>Be my friend, don&#x27;t let me down<br>Oh, be my friend, hold my hand<br>In the dark, we make a brighter light<br>In the dark, we give another try</p>
+<p>Be my friend, oh, don&#x27;t let me down Don&#x27;t let me down<br>Be my friend, oh, don&#x27;t let me down Don&#x27;t let me down<br>Be my friend, don&#x27;t let me down<br>Be my friend, hold my hand</p>
+<p class="flag" style="color:#7fd6a4">✓ official words — corrected by Matteo himself, Aug 2026 🎻🌺</p>
+      </div></details>
+    </div>
+  </div>
+  <div class="card">
+    <h3>💊 Pharmacist Wife (Mv. 2, w/ Marek K) <span class="badge blessed">✓ official words</span> <span class="badge draft">machine-draft chart</span></h3>
+    <p class="chords">key E · E rock · B – A – G – E turnaround · ~123 bpm</p>
+    <audio controls preload="metadata" src="https://shaka-anthem-gzdk4epeah-ffieyo32.taur.link/assets/matteo-tambussi--pharmacist-wife-mv2.mp3"></audio>
+    <div class="words" style="margin-top:12px">
+      <details><summary>💊 the words <span class="st off">✓ official</span></summary><div class="ly">
+<p>Whisky in the morning and a 5 o&#x27;clock tea<br>I ain&#x27;t gotta worry cuz I&#x27;m rich baby<br>If you wanna have an easy life<br>Just make sure to marry a pharmacist wife</p>
+<p>Dead Jazz great, we’re drinkin&#x27; at their graves<br>One after another first Satch, then the rest<br>By the time we hit the bronx, we&#x27;re out of supplies<br>It&#x27;s time to call my pharmacist wife</p>
+<p>Pharmacist wife you make me believe<br>that happiness grows on cherry trees</p>
+<p>African dancers in a hotel suite, 20 horses couldn&#x27;t make leave<br>By the time they are gone, I&#x27;m more dead than alive<br>Who will call my pharmacist wife?</p>
+<p>Pharmacist wife you make me believe<br>That happiness grows on cherry trees</p>
+<p>She&#x27;s a bitter lady with a flower in her hair<br>Seven husbands watching as she climbs down the stairs<br>Seven husbands watching, waiting in line<br>Who will be the next to please their pharmacist wife?</p>
+<p>Pharmacist wife you make us believe<br>That happiness grows on cherry trees</p>
+<p class="flag" style="color:#7fd6a4">✓ official words — corrected by Matteo himself, Aug 2026 🎻🌺</p>
+      </div></details>
+    </div>
+  </div>
+  <div class="card">
+    <h3>🏛️ Plato (ORCHI Rework) <span class="badge blessed">✓ official words</span> <span class="badge draft">machine-draft chart</span></h3>
+    <p class="chords">key F minor · Fm – D♭ – B♭m (– A♭) · ~112 bpm</p>
+    <audio controls preload="metadata" src="https://shaka-anthem-gzdk4epeah-ffieyo32.taur.link/assets/matteo-tambussi--plato-orchi-rework.mp3"></audio>
+    <div class="words" style="margin-top:12px">
+      <details><summary>🏛️ the words <span class="st off">✓ official</span></summary><div class="ly">
+<p>Mi rivolgo a Te<br>Nel momento in cui sono più fragile</p>
+<p>Senza nulla temere<br>Chiedo di essere avvolto dai venti celesti</p>
+<p>Che mi aiutino a disfare tutte le simulazioni<br>E i desideri molesti<br>Degli orchi padroni<br>Gli orchi padroni</p>
+<p>sono umili doni<br>chE ti offro per dare alla mia invocazione<br>La risposta finAle,<br>LA chiAve per evadere dall’illusione</p>
+<p>Dove sono i miei amici, dove sono i buoni auspici?<br>Noi Eravamo felici<br>Di essere una cosa sola<br>Contro gli orchi, io e te, una cosa sola<br>Contro gli orchi, io e te, una cosa sola</p>
+<p>Con la compassione<br>E un&#x27;alta soglia di sopportazione</p>
+<p class="flag" style="color:#7fd6a4">✓ official words — corrected by Matteo himself, Aug 2026 🎻🌺</p>
+      </div></details>
+    </div>
+  </div>
+  <div class="card">
+    <h3>🐔 Pollo <span class="badge blessed">✓ official words</span> <span class="badge draft">machine-draft chart</span></h3>
+    <p class="chords">key E minor · Em drone verses · Am – D – G – C chorus · ~76 bpm</p>
+    <audio controls preload="metadata" src="https://shaka-anthem-gzdk4epeah-ffieyo32.taur.link/assets/matteo-tambussi--pollo.mp3"></audio>
+    <div class="words" style="margin-top:12px">
+      <details><summary>🐔 the words <span class="st off">✓ official</span></summary><div class="ly">
+<p>Nella rabbia c&#x27;è il deserto<br>Non c&#x27;è traccia di te stesso<br>Se ti senti incompreso<br>Perché mordi se ti tiene chiesto<br>Dove hai messo il dolore<br>L&#x27;hai nascosto o scambiato per un po&#x27; d&#x27;amore<br>Che ti piace lo sai bene<br>È una gioia in un mondo da bruciare</p>
+<p>Che cosa ti è successo Pollo ?<br>Dicci cosa è successo a te?<br>Dove che ti sei perso Pollo ?<br>Dove che hai perso a me?</p>
+<p>I ricordi di una volta<br>Fica e Rammstein in piscina<br>Capitano nuova rotta<br>Prendi il largo e tutto il resto che si fotta</p>
+<p>Che cosa ti è successo Pollo?<br>Che cosa è successo a me?<br>Dove che ti sei perso Pollo?<br>Dove che perso a me?</p>
+<p class="flag" style="color:#7fd6a4">✓ official words — corrected by Matteo himself, Aug 2026 🎻🌺</p>
+      </div></details>
+    </div>
+  </div>
+</section>
+
+<section id="stages">
+  <div class="sec-head"><span class="num">Stages &amp; stories</span><h2>The <em>journey</em> 📺</h2></div>
+  <div class="yt-grid">
+    <div class="yt" data-id="ykfvS4tovXA"><img loading="lazy" src="https://i.ytimg.com/vi/ykfvS4tovXA/hqdefault.jpg" alt="Matteo Tambussi — Metrosong, BalconyTV Rome"><div class="play">▶️</div><div class="cap">METROSONG · BalconyTV Rome 🎸</div></div>
+    <div class="yt" data-id="lV3NT0OaNUA"><img loading="lazy" src="https://i.ytimg.com/vi/lV3NT0OaNUA/hqdefault.jpg" alt="Ethereum for Music Professionals — Matteo Alessio Tambussi, World Art Forum 2021"><div class="play">▶️</div><div class="cap">ETHEREUM FOR MUSIC PROFESSIONALS · World Art Forum 2021 🎤</div></div>
+    <div class="yt" data-id="s2UR3L5DpKY"><img loading="lazy" src="https://i.ytimg.com/vi/s2UR3L5DpKY/hqdefault.jpg" alt="Todo Es Posible — Devcon Scholars Edition"><div class="play">▶️</div><div class="cap">THE TRADITION HE SEEDED · Todo Es Posible, Devcon Scholars 🍂 · via Albert Cervera</div></div>
+  </div>
+  <p style="margin-top:14px;text-align:center;font-family:var(--sans);font-size:.85rem;color:var(--cream-faint)">📷 photo wall coming — the profile grows as the journey does.</p>
+</section>
+
+<section id="build-your-node">
+  <div class="buildyour">
+    <h3 style="color:var(--gold-bright);margin-bottom:.6rem">🎻 Build your own node</h3>
+    <p style="color:var(--cream-dim);margin-bottom:.8rem">A <b>profile node</b> is a musician's home they own. Your songs, your videos, your words. You choose what's open-sourced, item by item; what you don't bless stays yours. No feed, no ads, no gate.</p>
+    <p style="color:var(--cream-dim);margin-bottom:.8rem;font-style:italic">This is YOUR node, Node 001 — one word and we change, add, or remove anything. The artist signs the truth. 🎻</p>
+    <p style="font-family:var(--sans);font-size:.85rem"><a href="/nodes/node-spec.md">read the node spec 📄</a> &nbsp;·&nbsp; <a href="mailto:contribute@opensourceorchestra.org">contribute@opensourceorchestra.org 📮</a> &nbsp;·&nbsp; <a href="https://github.com/shakaleikaumaka/oso-storytelling">fork the format</a></p>
+  </div>
+</section>
+
+<p style="text-align:center;margin:10px 0 30px"><a class="back" href="/nodes/">← back to the nodes</a> &nbsp;&nbsp; <a class="back" href="/">← the orchestra</a></p>
+
+</div>
+
+<footer>
+  <div class="wrap">
+    Node 001 · Open Source Orchestra · Devcon 8 Mumbai, Nov 3–6 2026 · CC0, blessed item by item 🌺 · <a href="/nodes/matteo-tambussi/node.json">node.json</a>
+  </div>
+</footer>
+
+<script>
+document.querySelectorAll('.yt').forEach(function(el){
+  el.addEventListener('click', function(){
+    var id = el.getAttribute('data-id');
+    var f = document.createElement('iframe');
+    f.src = 'https://www.youtube-nocookie.com/embed/' + id + '?autoplay=1';
+    f.allow = 'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share';
+    f.allowFullscreen = true;
+    el.innerHTML = ''; el.appendChild(f);
+  }, { once:true });
+});
+</script>
+<script src="https://shakaleikaumaka.com/assets/bl-player.js?v=7.7"></script>
+</body>
+</html>

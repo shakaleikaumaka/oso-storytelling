@@ -1,0 +1,250 @@
+{
+  "oso_node_spec": "0.1",
+  "node": "001",
+  "slug": "matteo-tambussi",
+  "name": "Matteo Tambussi",
+  "emoji": "🎻🇮🇹",
+  "tagline": "CO-FOUNDER OF THE TRADITION · musician & linguist · Turin, Italy",
+  "bio": "Musician and producer since 2000 (Baroque, Eskinzo, solo from Berlin and Turin) — 11+ albums, stages opened for Nick Cave, Primal Scream, Boy George; radio on BBC 6 Music. Political linguist, ethereum ant, co-founder of SpaghettETH, co-organizer of ETHTurin 2020 — and author of the first music DIP in Devcon history (June 17, 2022), the seed of the Open Source Orchestra Music Space.",
+  "quote": "Jamming live amongst devs turns out to create unique bonds.",
+  "location": "Turin, Italy 🇮🇹",
+  "links": [
+    {
+      "label": "linktree",
+      "url": "https://linktr.ee/matteotambussi"
+    },
+    {
+      "label": "YouTube · @matteotambussi",
+      "url": "https://www.youtube.com/@matteotambussi"
+    },
+    {
+      "label": "X · @matteotambussi",
+      "url": "https://x.com/matteotambussi"
+    },
+    {
+      "label": "Bandcamp",
+      "url": "https://matteotambussi.bandcamp.com"
+    },
+    {
+      "label": "SoundCloud",
+      "url": "https://soundcloud.com/matteotambussi"
+    },
+    {
+      "label": "Spotify",
+      "url": "https://open.spotify.com/artist/6FABMAInCLqiYpazFhoKDs"
+    },
+    {
+      "label": "The first music DIP (2022)",
+      "url": "https://forum.devcon.org/t/music-sessions-open-mic-stage/387"
+    }
+  ],
+  "songs": [
+    {
+      "title": "Ginger Game",
+      "emoji": "🫚",
+      "slug": "ginger-game",
+      "status": "official-words ✓ · machine-draft chart (CREMA + BACH review) awaiting artist blessing",
+      "key": "E minor",
+      "progression": "Em – Am – B7 – C",
+      "bpm": 162,
+      "license": "CC0",
+      "visibility": "public",
+      "media": {
+        "full_mix_mp3": "https://shaka-anthem-gzdk4epeah-ffieyo32.taur.link/assets/matteo-tambussi--ginger-game.mp3"
+      }
+    },
+    {
+      "title": "Luogoper",
+      "emoji": "📍",
+      "slug": "luogoper",
+      "status": "official-words ✓ · machine-draft chart (CREMA + BACH review) awaiting artist blessing",
+      "key": "C major",
+      "progression": "C – G (– F – Am) · E – Am turn",
+      "bpm": 136,
+      "license": "CC0",
+      "visibility": "public",
+      "media": {
+        "full_mix_mp3": "https://shaka-anthem-gzdk4epeah-ffieyo32.taur.link/assets/matteo-tambussi--luogoper.mp3"
+      }
+    },
+    {
+      "title": "Tanta Paura",
+      "emoji": "🌊",
+      "slug": "tanta-paura",
+      "status": "official-words ✓ · machine-draft chart (CREMA + BACH review) awaiting artist blessing",
+      "key": "A minor",
+      "progression": "C – G – Am (– F)",
+      "bpm": 96,
+      "license": "CC0",
+      "visibility": "public",
+      "media": {
+        "full_mix_mp3": "https://shaka-anthem-gzdk4epeah-ffieyo32.taur.link/assets/matteo-tambussi--tanta-paura.mp3"
+      }
+    },
+    {
+      "title": "Gioia Perfetta",
+      "emoji": "✨",
+      "slug": "gioia-perfetta",
+      "status": "official-words ✓ · machine-draft chart (CREMA + BACH review) awaiting artist blessing",
+      "key": "A minor",
+      "progression": "Am – G verses · F – C bridge",
+      "bpm": 144,
+      "license": "CC0",
+      "visibility": "public",
+      "media": {
+        "full_mix_mp3": "https://shaka-anthem-gzdk4epeah-ffieyo32.taur.link/assets/matteo-tambussi--gioia-perfetta.mp3"
+      }
+    },
+    {
+      "title": "3MILY",
+      "emoji": "🌷",
+      "slug": "3mily",
+      "status": "official-words ✓ · machine-draft chart (CREMA + BACH review) awaiting artist blessing",
+      "key": "C major",
+      "progression": "C – F – Dm – G",
+      "bpm": 129,
+      "license": "CC0",
+      "visibility": "public",
+      "media": {
+        "full_mix_mp3": "https://shaka-anthem-gzdk4epeah-ffieyo32.taur.link/assets/matteo-tambussi--3mily.mp3"
+      }
+    },
+    {
+      "title": "Burnout",
+      "emoji": "🔥",
+      "slug": "burnout",
+      "status": "official-words ✓ · machine-draft chart (CREMA + BACH review) awaiting artist blessing",
+      "key": "G major",
+      "progression": "Am – D – G – C",
+      "bpm": 152,
+      "license": "CC0",
+      "visibility": "public",
+      "media": {
+        "full_mix_mp3": "https://shaka-anthem-gzdk4epeah-ffieyo32.taur.link/assets/matteo-tambussi--burnout.mp3"
+      }
+    },
+    {
+      "title": "Island",
+      "emoji": "🏝️",
+      "slug": "island",
+      "status": "official-words ✓ · machine-draft chart (CREMA + BACH review) awaiting artist blessing",
+      "key": "B minor",
+      "progression": "Bm – D – Em – A · G – C – D bridge",
+      "bpm": 89,
+      "license": "CC0",
+      "visibility": "public",
+      "media": {
+        "full_mix_mp3": "https://shaka-anthem-gzdk4epeah-ffieyo32.taur.link/assets/matteo-tambussi--island.mp3"
+      }
+    },
+    {
+      "title": "Cioccolato Fondente",
+      "emoji": "🍫",
+      "slug": "cioccolato-fondente",
+      "status": "official-words ✓ · machine-draft chart (CREMA + BACH review) awaiting artist blessing",
+      "key": "A minor",
+      "progression": "E – Am vamp (V–i)",
+      "bpm": 118,
+      "license": "CC0",
+      "visibility": "public",
+      "media": {
+        "full_mix_mp3": "https://shaka-anthem-gzdk4epeah-ffieyo32.taur.link/assets/matteo-tambussi--cioccolato-fondente.mp3"
+      }
+    },
+    {
+      "title": "La Canzone del Tuono",
+      "emoji": "⛈️",
+      "slug": "la-canzone-del-tuono",
+      "status": "AI-transcription-draft words 📝 · machine-draft chart (CREMA + BACH review) awaiting artist blessing",
+      "key": "G minor",
+      "progression": "Gm – C dorian vamp · E♭ – B♭ – Cm – Gm",
+      "bpm": 89,
+      "license": "CC0",
+      "visibility": "public",
+      "media": {
+        "full_mix_mp3": "https://shaka-anthem-gzdk4epeah-ffieyo32.taur.link/assets/matteo-tambussi--la-canzone-del-tuono.mp3"
+      }
+    },
+    {
+      "title": "Be My Friend",
+      "emoji": "🤝",
+      "slug": "be-my-friend",
+      "status": "official-words ✓ · machine-draft chart (CREMA + BACH review) awaiting artist blessing",
+      "key": "D minor",
+      "progression": "Dm vamp · Am · C · Gm7 · F · B♭maj7 passing",
+      "bpm": 118,
+      "license": "CC0",
+      "visibility": "public",
+      "media": {
+        "full_mix_mp3": "https://shaka-anthem-gzdk4epeah-ffieyo32.taur.link/assets/matteo-tambussi--be-my-friend.mp3"
+      }
+    },
+    {
+      "title": "Pharmacist Wife (Mv. 2, w/ Marek K)",
+      "emoji": "💊",
+      "slug": "pharmacist-wife-mv2",
+      "status": "official-words ✓ · machine-draft chart (CREMA + BACH review) awaiting artist blessing",
+      "key": "E",
+      "progression": "E rock · B – A – G – E turnaround",
+      "bpm": 123,
+      "license": "CC0",
+      "visibility": "public",
+      "media": {
+        "full_mix_mp3": "https://shaka-anthem-gzdk4epeah-ffieyo32.taur.link/assets/matteo-tambussi--pharmacist-wife-mv2.mp3"
+      }
+    },
+    {
+      "title": "Plato (ORCHI Rework)",
+      "emoji": "🏛️",
+      "slug": "plato-orchi-rework",
+      "status": "official-words ✓ · machine-draft chart (CREMA + BACH review) awaiting artist blessing",
+      "key": "F minor",
+      "progression": "Fm – D♭ – B♭m (– A♭)",
+      "bpm": 112,
+      "license": "CC0",
+      "visibility": "public",
+      "media": {
+        "full_mix_mp3": "https://shaka-anthem-gzdk4epeah-ffieyo32.taur.link/assets/matteo-tambussi--plato-orchi-rework.mp3"
+      }
+    },
+    {
+      "title": "Pollo",
+      "emoji": "🐔",
+      "slug": "pollo",
+      "status": "official-words ✓ · machine-draft chart (CREMA + BACH review) awaiting artist blessing",
+      "key": "E minor",
+      "progression": "Em drone verses · Am – D – G – C chorus",
+      "bpm": 76,
+      "license": "CC0",
+      "visibility": "public",
+      "media": {
+        "full_mix_mp3": "https://shaka-anthem-gzdk4epeah-ffieyo32.taur.link/assets/matteo-tambussi--pollo.mp3"
+      }
+    }
+  ],
+  "media": [
+    {
+      "type": "youtube",
+      "id": "ykfvS4tovXA",
+      "title": "MATTEO TAMBUSSI — METROSONG (BalconyTV Rome)",
+      "channel": "BalconyTV",
+      "visibility": "public"
+    },
+    {
+      "type": "youtube",
+      "id": "lV3NT0OaNUA",
+      "title": "Ethereum for Music Professionals — World Art Forum 2021",
+      "channel": "Unit Network",
+      "visibility": "public"
+    },
+    {
+      "type": "youtube",
+      "id": "s2UR3L5DpKY",
+      "title": "TODO ES POSIBLE — Devcon Scholars Edition 🍂 (the tradition he seeded)",
+      "channel": "Albert Cervera (community capture)",
+      "visibility": "public"
+    }
+  ],
+  "license_default": "CC0 — blessed item by item; anything not listed here stays with the artist",
+  "updated": "2026-08-16"
+}
