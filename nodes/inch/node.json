@@ -1,0 +1,29 @@
+{
+  "oso_node_spec": "0.1",
+  "node": "014",
+  "slug": "inch",
+  "name": "Inch Chua",
+  "emoji": "🍃⭕",
+  "kind": "artist",
+  "tagline": "the freehand circle · folktronica pioneer · Singapore's DIY first voice",
+  "bio": "Known to the public record as Inch Chua (iNCH) — born Chua Yun Juan (蔡昀娟), 22 Dec 1988, Singapore; the nickname is 'Yun Juan' said quickly. Singer-songwriter, producer, actress, multidisciplinary artist. As a kid at a conformist all-girls' school she drew circles freehand while everyone used compasses — 'That's not a real circle!' / 'You know, not everything has to be perfect.' (her TEDxSingapore talk, [ i ]nch by inch). Fronted Allura (Baybeats 2007: the founder fired everyone days before; they scraped together songs and played anyway; EP 'Wake Up and Smell the Seaweed' 2008; ended by National Service). The Bedroom EP (2009) free/pay-what-you-want on Bandcamp — open source before web3 had a name — made her the first Singaporean solo artist invited to SXSW (2010); represented Singapore at Shanghai Expo 2010; performed TEDxWomen Washington DC 2012. Albums: Wallflower (2010), Bumfuzzle (2013, fan-crowdfunded on Indiegogo), Letters To Ubin EP (2015), 1832 EP (2015); singles Sun & Moon ☉+◑ (2019), Flags ft. Shigga Shay (2020), Marigold Magic (2026). Live band: The Metric System. Own label: House Of Riot!. Opened for Katy Perry, Macy Gray, Vampire Weekend. Theatre era: SRT, Pangdemonium, TheatreWorks and more; current work 'Myles — Soulmate in a Box' at Singapore Repertory Theatre (May 2026). The orchestra's road crossed hers in the Devcon SEA season (Bangkok 2024, Music & Art Space) — as Shaka tells it, the fourteenth chair was always hers: 'it was inch.'",
+  "quote": "You know, not everything has to be perfect.",
+  "quote_note": "the girl who drew her circles freehand — TEDxSingapore, [ i ]nch by inch",
+  "location": "Singapore 🇸🇬",
+  "links": [
+    { "label": "thisisinch.com", "url": "https://thisisinch.com" },
+    { "label": "Bandcamp", "url": "https://thisisinch.bandcamp.com" },
+    { "label": "Wikipedia", "url": "https://en.wikipedia.org/wiki/Inch_Chua" },
+    { "label": "TEDxSingapore · [ i ]nch by inch", "url": "https://tedxtalks.ted.com/video/TEDxSingapore-Inch-Chua-i-nch-b" }
+  ],
+  "songs": [],
+  "songs_note": "Catalogue honored, not claimed: The Bedroom EP (2009) · Wallflower (2010) · Bumfuzzle (2013) · Letters To Ubin (2015) · 1832 EP (2015) · singles The Artful Dodger, MouseDeer, Simple Kind of Life, Sun & Moon ☉+◑, Flags ft. Shigga Shay, Marigold Magic (2026). No chord charts until Inch blesses them, item by item.",
+  "media": [
+    { "type": "youtube", "id": "gtRHDdUtQ84", "title": "TEDxSingapore - Inch Chua - [ i ]nch by inch", "channel": "TEDx Talks", "visibility": "public" },
+    { "type": "youtube", "id": "2OPqwEsBeoM", "title": "Sun & Moon ☉+◑ - iNCH", "channel": "inch", "visibility": "public" },
+    { "type": "youtube", "id": "SuTo-1IlKv0", "title": "iNCH - Artful Dodger (Official Music Video)", "channel": "inch", "visibility": "public" },
+    { "type": "youtube", "id": "4voFWitEdHA", "title": "iNCH - Mousedeer (Official Music Video)", "channel": "inch", "visibility": "public" }
+  ],
+  "license_default": "CC0 for node content — anything not listed here stays with the artist",
+  "updated": "2026-08-16"
+}

@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Node 014 · Inch Chua 🍃⭕ — Open Source Orchestra</title>
+<meta name="description" content="Node 014 — Inch Chua (iNCH), Singapore's folktronica pioneer: the freehand circle, the first Singaporean solo artist at SXSW, the pay-what-you-want bedroom EP that was open source before web3 had a name. The second circle widens to Southeast Asia.">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<style>
+:root{
+  --night:#0b0612; --deep:#150b22; --violet:#2a1740; --plum:#3d1c42;
+  --cream:#f7ecd9; --cream-dim:rgba(247,236,217,.72); --cream-faint:rgba(247,236,217,.45);
+  --gold:#f0c464; --gold-bright:#ffd97a; --gold-soft:rgba(240,196,100,.35);
+  --coral:#ff8a5c; --rose:#e86a92; --teal:#2dd4bf;
+  --serif:'Iowan Old Style','Palatino Linotype',Palatino,'Book Antiqua',Georgia,'Times New Roman',serif;
+  --sans:ui-sans-serif,system-ui,-apple-system,'Segoe UI',Roboto,Helvetica,Arial,sans-serif;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{background:var(--night);color:var(--cream);font-family:var(--serif);line-height:1.65;
+  background-image:
+    radial-gradient(ellipse 120% 50% at 50% 112%,rgba(255,138,92,.13),transparent 60%),
+    radial-gradient(ellipse 90% 45% at 50% 108%,rgba(240,196,100,.10),transparent 55%),
+    radial-gradient(ellipse 90% 60% at 50% -10%,rgba(61,28,66,.55),transparent 70%)}
+h1,h2,h3{font-weight:600;line-height:1.15}
+a{color:var(--gold-bright)}
+.wrap{max-width:880px;margin:0 auto;padding:0 20px}
+
+.hero{position:relative;text-align:center;padding:70px 20px 30px}
+.kicker{font-family:var(--sans);font-size:.72rem;letter-spacing:.34em;text-transform:uppercase;color:var(--gold)}
+.hero h1{font-size:clamp(2.2rem,6vw,3.4rem);margin:.5rem 0 .3rem}
+.hero h1 em{color:var(--gold);font-style:italic}
+.hero .sub{font-family:var(--sans);font-size:.95rem;color:var(--cream-dim)}
+.hero .vibe{margin-top:1.1rem;font-style:italic;color:var(--gold-bright);font-size:clamp(1rem,2.2vw,1.15rem)}
+.avatar{font-size:3.2rem;line-height:1;margin-bottom:.4rem}
+
+section{padding:26px 0}
+.sec-head{display:flex;align-items:baseline;gap:14px;border-bottom:1px solid var(--gold-soft);padding-bottom:10px;margin-bottom:18px}
+.sec-head .num{font-family:var(--sans);font-size:.7rem;letter-spacing:.3em;text-transform:uppercase;color:var(--gold)}
+.sec-head h2{font-size:clamp(1.3rem,3.4vw,1.8rem)}
+.sec-head h2 em{color:var(--gold);font-style:italic}
+
+.card{background:rgba(21,11,34,.66);border:1px solid rgba(240,196,100,.18);border-radius:14px;padding:22px 24px;margin-bottom:16px}
+.card h3{color:var(--gold-bright);margin-bottom:.6rem;font-size:1.08rem}
+.card p{margin-bottom:.8rem;color:var(--cream-dim)}
+.card p:last-child{margin-bottom:0}
+.chords{font-family:var(--sans);font-size:.9rem;color:var(--gold-bright);letter-spacing:.06em;margin:.3rem 0 .8rem}
+.dl{display:flex;flex-wrap:wrap;gap:10px;margin-top:12px}
+.dl a{font-family:var(--sans);font-size:.78rem;letter-spacing:.06em;text-decoration:none;color:var(--cream-dim);
+  border:1px solid var(--gold-soft);border-radius:999px;padding:.45em 1.1em;background:rgba(21,11,34,.6)}
+.dl a:hover{border-color:var(--gold-bright);color:var(--gold-bright)}
+
+.haiku{border:1px solid var(--gold-soft);border-radius:14px;padding:34px 24px;text-align:center;
+  background:linear-gradient(160deg,rgba(61,28,66,.5),rgba(21,11,34,.7));margin-bottom:16px}
+.haiku .line{font-size:clamp(1.25rem,3.4vw,1.7rem);color:var(--gold-bright);font-style:italic;line-height:1.9}
+.haiku .for{font-family:var(--sans);font-size:.75rem;letter-spacing:.2em;text-transform:uppercase;color:var(--cream-faint);margin-top:14px}
+
+.yt-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:16px}
+.yt{position:relative;aspect-ratio:16/9;border-radius:12px;overflow:hidden;border:1px solid rgba(240,196,100,.18);cursor:pointer;background:#000}
+.yt img{width:100%;height:100%;object-fit:cover;opacity:.85}
+.yt .play{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font-size:3rem;
+  text-shadow:0 2px 14px rgba(0,0,0,.8);transition:transform .15s}
+.yt:hover .play{transform:scale(1.15)}
+.yt .cap{position:absolute;left:0;right:0;bottom:0;padding:24px 12px 8px;font-family:var(--sans);font-size:.75rem;
+  color:var(--cream);background:linear-gradient(transparent,rgba(0,0,0,.85))}
+.yt iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
+
+.linkrow{display:flex;flex-wrap:wrap;gap:10px;justify-content:center;margin:18px 0}
+.linkrow a{font-family:var(--sans);font-size:.78rem;letter-spacing:.06em;text-decoration:none;color:var(--cream-dim);
+  border:1px solid var(--gold-soft);border-radius:999px;padding:.5em 1.2em;background:rgba(21,11,34,.6)}
+.linkrow a:hover{border-color:var(--gold-bright);color:var(--gold-bright)}
+.dedication{font-style:italic;color:var(--gold-bright);text-align:center;margin:.6rem 0}
+.back{font-family:var(--sans);font-size:.8rem;color:var(--cream-faint);text-decoration:none}
+.back:hover{color:var(--gold-bright)}
+.buildyour{border:1px dashed var(--gold-soft);border-radius:14px;padding:22px 24px;text-align:center;background:rgba(21,11,34,.4)}
+footer{padding:36px 0 46px;text-align:center;font-family:var(--sans);font-size:.75rem;color:var(--cream-faint)}
+footer a{color:var(--cream-dim)}
+</style>
+</head>
+<body>
+
+<div class="hero">
+  <div class="avatar">🍃⭕</div>
+  <p class="kicker">Open Source Orchestra · Node 014 · full profile</p>
+  <h1>Inch <em>Chua</em></h1>
+  <p class="sub">the freehand circle · folktronica pioneer · Singapore's DIY first voice</p>
+  <p class="vibe">"You know, not everything has to be perfect." — the girl who drew her circles freehand</p>
+  <div class="linkrow">
+    <a href="https://thisisinch.com">thisisinch.com</a>
+    <a href="https://thisisinch.bandcamp.com">Bandcamp</a>
+    <a href="https://en.wikipedia.org/wiki/Inch_Chua">Wikipedia</a>
+    <a href="https://tedxtalks.ted.com/video/TEDxSingapore-Inch-Chua-i-nch-b">TEDxSingapore · [ i ]nch by inch</a>
+    <a href="/nodes/">← all nodes</a>
+  </div>
+</div>
+
+<div class="wrap">
+
+<section id="circle-sec">
+  <div class="sec-head"><span class="num">The heart of it</span><h2>The <em>freehand</em> circle ⭕</h2></div>
+  <div class="haiku">
+    <div class="line">"That's not a real circle!"<br>"You know, not everything<br>has to be perfect."</div>
+    <div class="for">— from her TEDxSingapore talk, [ i ]nch by inch</div>
+  </div>
+  <div class="card">
+    <p>At a conformist all-girls' school in Singapore, the class was told to draw circles. Everyone reached for a compass. One kid just <i>shssss</i> — whipped one off, freehand. The other children protested: <b>"That's not a real circle!"</b> And she told them: <b>"You know, not everything has to be perfect."</b></p>
+    <p>That kid grew up to be <b>Inch Chua</b> — and this page exists because an orchestra that sings in circles recognized one of its own. The orchestra's circles are freehand too: no stage, no compass, people facing each other, every voice a node. Not everything has to be perfect. It just has to be <i>sung</i>.</p>
+  </div>
+</section>
+
+<section id="story">
+  <div class="sec-head"><span class="num">The story</span><h2>The circle widens to <em>Southeast Asia</em> 🌏</h2></div>
+  <div class="card">
+    <h3>014 — the first Singapore chair</h3>
+    <p>Node 013 was the first <i>collective</i> chair; Node 014 is the first chair in <b>Southeast Asia</b> — the second circle widening across the South China Sea to Singapore. And quietly, in the corner, the family smiles at the arithmetic: 1 + 4 = <b>5</b> — the power fifth, the interval <a href="/nodes/jake-hartnell/">Node 005</a> is named for, humming an octave up.</p>
+    <p>The Devcon SEA season — Bangkok 2024, with its <b>Music &amp; Art Space</b> — is where the orchestra's road crossed hers. As Shaka tells it, the fourteenth chair was never in doubt: <i>"it was inch."</i> This page is that word, made into a door.</p>
+  </div>
+  <div class="card">
+    <h3>Open source before web3 had a name 💿</h3>
+    <p>Known to the public record as <b>Inch Chua</b> — born Chua Yun Juan (蔡昀娟), 22 December 1988, Singapore; the nickname is just "Yun Juan" said quickly. Singer-songwriter, producer, actress, multidisciplinary artist. In 2009 she put <b>The Bedroom EP</b> on Bandcamp — free, or <b>pay what you want</b> — recorded in her bedroom, self-produced, taught to herself on Garageband and Reason. No label. No gate. Straight to the listeners, worldwide. That is the gift economy with a guitar; that is <b>open source before web3 had a name</b>.</p>
+    <p>The world answered: songs from <i>The Bedroom</i> travelled the blogs until she became the <b>first Singaporean solo artist ever invited to SXSW</b> (Austin, 2010), and represented Singapore at the <b>Shanghai Expo</b> the same year. In 2012 she performed at <b>TEDxWomen in Washington D.C.</b> She never signed to a major — she runs her own label, <b>House Of Riot!</b>, and plays live backed by her band, <b>The Metric System</b>.</p>
+  </div>
+  <div class="card">
+    <h3>Allura — the band that played anyway 🔥</h3>
+    <p>Her first band was booked for <b>Baybeats Festival 2007</b> — Singapore's premier indie stage — when the founder, days before the show, fired everyone. Including the lead singer. They tried to pull out; the deadline had passed. So they scraped together new songs without him, renamed themselves <b>Allura</b>, and <b>played anyway</b> — and became titans of the local rock scene, releasing the EP <i>Wake Up and Smell the Seaweed</i> (2008). The band ended only when its members were drafted into National Service.</p>
+    <p>An orchestra recognizes that story instantly: the show must go on, and the musicians are the show.</p>
+  </div>
+  <div class="card">
+    <h3>From Wallflower to the theatre stage 🎭</h3>
+    <p>The records tell a DIY arc: <b>Wallflower</b> (2010), then <b>Bumfuzzle</b> (2013) — crowdfunded by her own fans on Indiegogo, her first CD and vinyl — then <b>Letters To Ubin</b> (2015), an EP written around Pulau Ubin, the little island where Singapore keeps its old soul, and the <b>1832</b> EP the same year. Singles <b>Sun &amp; Moon ☉+◑</b> (2019) and <b>Flags</b> ft. Shigga Shay (2020) followed. Along the way she opened for Katy Perry, Macy Gray and Vampire Weekend.</p>
+    <p>Then the circle widened again — into theatre. Musicals and plays with Singapore Repertory Theatre, Pangdemonium, TheatreWorks and more; playwright, composer, sound designer. Her current work: <b>Myles — Soulmate in a Box</b> at Singapore Repertory Theatre (May 2026). Her own website greets you like a retro operating system booting up: <i>"5 Albums, 3 Shows, 1 Brain … everything is now. now is everything."</i></p>
+  </div>
+</section>
+
+<section id="songs">
+  <div class="sec-head"><span class="num">The songs</span><h2>The catalogue, <em>awaiting her blessing</em> 🎼</h2></div>
+  <div class="card">
+    <p class="chords">The Bedroom EP · 2009 &nbsp;—&nbsp; Wallflower · 2010 &nbsp;—&nbsp; Bumfuzzle · 2013 &nbsp;—&nbsp; Letters To Ubin · 2015 &nbsp;—&nbsp; 1832 EP · 2015</p>
+    <p class="chords">singles: The Artful Dodger · MouseDeer · Simple Kind of Life · Sun &amp; Moon ☉+◑ · Flags ft. Shigga Shay · Marigold Magic 🌼 (2026)</p>
+    <p>No chord charts live here yet — nothing gets detected, published or sung back at an artist without her word. When Inch blesses a song, this section becomes its home: her words, her keys, her licenses, item by item. Until then the catalogue is simply honored, not claimed.</p>
+  </div>
+</section>
+
+<section id="stages">
+  <div class="sec-head"><span class="num">Stages &amp; stories</span><h2>The <em>journey</em> 📺</h2></div>
+  <div class="yt-grid">
+    <div class="yt" data-id="gtRHDdUtQ84"><img loading="lazy" src="https://i.ytimg.com/vi/gtRHDdUtQ84/hqdefault.jpg" alt="TEDxSingapore — Inch Chua — [ i ]nch by inch"><div class="play">▶️</div><div class="cap">TEDxSingapore · [ i ]nch by inch — the freehand-circle talk ⭕</div></div>
+    <div class="yt" data-id="2OPqwEsBeoM"><img loading="lazy" src="https://i.ytimg.com/vi/2OPqwEsBeoM/hqdefault.jpg" alt="iNCH — Sun &amp; Moon ☉+◑"><div class="play">▶️</div><div class="cap">SUN &amp; MOON ☉+◑ · official video 🌗</div></div>
+    <div class="yt" data-id="SuTo-1IlKv0"><img loading="lazy" src="https://i.ytimg.com/vi/SuTo-1IlKv0/hqdefault.jpg" alt="iNCH — Artful Dodger"><div class="play">▶️</div><div class="cap">ARTFUL DODGER · official video 🎩</div></div>
+    <div class="yt" data-id="4voFWitEdHA"><img loading="lazy" src="https://i.ytimg.com/vi/4voFWitEdHA/hqdefault.jpg" alt="iNCH — Mousedeer"><div class="play">▶️</div><div class="cap">MOUSEDEER · official video, from Letters To Ubin 🦌</div></div>
+  </div>
+</section>
+
+<section id="invite">
+  <div class="card">
+    <h3>The chair is held 🍃</h3>
+    <p><b>Inch — this chair is held for you, drawn freehand, the way you taught us.</b> The orchestra's circle at <b>Devcon 8, Mumbai, Nov 3–6 2026</b> (<a href="https://forum.devcon.org/t/open-source-orchestra-music-space-at-devcon-8-mumbai/8576">DIP #8576</a>) faces inward — no stage, no compass, voices answering each other — and the Devcon SEA season is where your path and ours first crossed. Come sing, come listen, come build your node your way — or simply know that somewhere an orchestra of strangers thinks the world of the girl who whipped her circles off freehand.</p>
+    <p class="dedication">"You don't join the Open Source Orchestra. You notice you were always in it." 🌺</p>
+  </div>
+</section>
+
+<section id="consent" style="padding-top:0">
+  <div class="buildyour" style="border-color:var(--gold-bright)">
+    <h3 style="color:var(--gold-bright);margin-bottom:.6rem">🌺 The consent law of this page</h3>
+    <p style="color:var(--gold-bright);font-style:italic;font-size:1.05rem;margin-bottom:.8rem">This is YOUR node, Node 014 — one word and we change, add, or remove anything. The artist signs the truth.</p>
+    <p style="color:var(--cream-dim);font-size:.9rem">Everything above comes from public records — her site, her Bandcamp, Wikipedia, her TEDx talks — and from the orchestra's own story as Shaka tells it. Nothing more will ever appear here without her blessing, item by item.</p>
+  </div>
+</section>
+
+<section id="build-your-node">
+  <div class="buildyour">
+    <h3 style="color:var(--gold-bright);margin-bottom:.6rem">🎻 Build your own node</h3>
+    <p style="color:var(--cream-dim);margin-bottom:.8rem">A <b>profile node</b> is a home its owner controls. Your work, your videos, your words. You choose what's open-sourced, item by item; what you don't bless stays yours. No feed, no ads, no gate.</p>
+    <p style="font-family:var(--sans);font-size:.85rem"><a href="/nodes/node-spec.md">read the node spec 📄</a> &nbsp;·&nbsp; <a href="mailto:contribute@opensourceorchestra.org">contribute@opensourceorchestra.org 📮</a> &nbsp;·&nbsp; <a href="https://github.com/shakaleikaumaka/oso-storytelling">fork the format</a></p>
+  </div>
+</section>
+
+<p style="text-align:center;margin:10px 0 30px"><a class="back" href="/nodes/">← back to the nodes</a> &nbsp;&nbsp; <a class="back" href="/">← the orchestra</a></p>
+
+</div>
+
+<footer>
+  <div class="wrap">
+    Node 014 · Open Source Orchestra · Devcon 8 Mumbai, Nov 3–6 2026 · CC0, blessed item by item 🌺 · <a href="/nodes/inch/node.json">node.json</a>
+  </div>
+</footer>
+
+<script>
+document.querySelectorAll('.yt').forEach(function(el){
+  el.addEventListener('click', function(){
+    var id = el.getAttribute('data-id');
+    var f = document.createElement('iframe');
+    f.src = 'https://www.youtube-nocookie.com/embed/' + id + '?autoplay=1';
+    f.allow = 'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share';
+    f.allowFullscreen = true;
+    el.innerHTML = ''; el.appendChild(f);
+  }, { once:true });
+});
+</script>
+<script src="https://shakaleikaumaka.com/assets/bl-player.js?v=7.7"></script>
+</body>
+</html>
