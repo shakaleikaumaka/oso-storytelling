@@ -1,0 +1,32 @@
+{
+  "oso_node_spec": "0.1",
+  "node": "015",
+  "slug": "ix-shells",
+  "name": "IX Shells",
+  "emoji": "🐚💻",
+  "kind": "artist",
+  "tagline": "the Caribbean glitch · code as canvas, code as song · the Tor Project's 500-ETH artist",
+  "bio": "Known to the public record as Itzel Yard (b. 1990, Panama, where she lives and works), aka IX Shells — the self-described 'caribbean glitch'. Afro-Panamanian generative artist and self-taught coder (learned via YouTube; discovered code through childhood video games). Studied architectural technology in Toronto (five tumultuous, formative years); fuses patterns in nature with Brutalist architecture; 'my home is in my head — a digital door into self-reflection'; every work a context-based portrait written in lines of code. DREAMING AT DUSK (May 2021): collaboration with The Tor Project — the first .onion artwork, derived from the private key of the first onion service — sold on Foundation to PleasrDAO for 500 ETH (over $2M), making her then the highest-selling female NFT artist in the world (Fortune NFTy 50 the same year); proceeds supported Tor and privacy — open-source values to the bone. ARTXCODE: 'specializing in sound, generative art and the creative space between the two' — a sonic artist and live coder; her medium is code performed. Christie's: '¿Cómo Respirar?' in the Proof of Sovereignty sale curated by Lady Pheonix. Collaborations with Fingacode and Avant Arte. Louisiana Channel film 'Ix Shells: A Future Preserving the Past' (art as preservation; her SMK Denmark arc honoring unrecognized 19th-century women artists). A pioneer precedent for girls and women in computer science, in the lineage of Lillian Schwartz and Vera Molnár. The Ethereum thread: the public record carries her on the Devcon VI speaker rolls (Bogotá 2022); as the family tells it she live-coded there, Aya Miyaguchi has named her one of her favorite artists, and she appears in 'Vitalik: An Ethereum Story' (2024). As Shaka tells it, the fifteenth chair was never in doubt: 'that was 15.'",
+  "quote": "My home is in my head — a digital door into self-reflection.",
+  "quote_note": "Itzel Yard, on where her worlds live",
+  "location": "Panama 🇵🇦",
+  "links": [
+    { "label": "Unit London — artist page", "url": "https://unitlondon.com/artists/ix-shells/" },
+    { "label": "ARTXCODE", "url": "https://www.artxcode.io/artists/ix-shells" },
+    { "label": "@ix_shells on X", "url": "https://x.com/ix_shells" },
+    { "label": "Foundation", "url": "https://foundation.app/@ixshells" },
+    { "label": "Tor Project — Dreaming at Dusk", "url": "https://blog.torproject.org/dreaming-at-dusk/" },
+    { "label": "Forbes — highest-selling female NFT artist", "url": "https://www.forbes.com/sites/rashishrivastava/2021/06/18/lost-in-the-metaverse-meet-itzel-yard-aka-ix_shells-the-highest-selling-female-nft-artist/" },
+    { "label": "Louisiana Channel — A Future Preserving the Past", "url": "https://channel.louisiana.dk/video/ix-shells-a-future-preserving-the-past" },
+    { "label": "rightclicksave — When IX Shells Met Fingacode", "url": "https://www.rightclicksave.com/article/interview-when-ix-shells-met-fingacode" }
+  ],
+  "songs": [],
+  "songs_note": "Catalogue honored, not claimed: Dreaming at Dusk (2021, with The Tor Project) · ¿Cómo Respirar? (2021, Christie's Proof of Sovereignty) · collaborations with Fingacode & Avant Arte · a living practice of code, sound and the space between. No files hosted until she blesses them, item by item.",
+  "media": [
+    { "type": "youtube", "id": "2KPUfcfCsGs", "title": "How IX Shells Became the Highest-Selling Female NFT Artist", "channel": "nft now podcast", "visibility": "public" },
+    { "type": "youtube", "id": "71DtEk1cFdg", "title": "\"Vitalik: An Ethereum Story\" // Official Trailer", "channel": "Optimist", "visibility": "public" },
+    { "type": "youtube", "id": "T4QiSilstV0", "title": "Vitalik: An Ethereum Story // Full Film", "channel": "Optimist", "visibility": "public" }
+  ],
+  "license_default": "CC0 for node content — anything not listed here stays with the artist",
+  "updated": "2026-08-16"
+}

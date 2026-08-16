@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Node 015 · IX Shells 🐚💻 — Open Source Orchestra</title>
+<meta name="description" content="Node 015 — IX Shells (Itzel Yard), Panama's Caribbean glitch: the YouTube-taught coder who turned the Tor Project's first onion key into Dreaming at Dusk, the 500-ETH artwork that made her the highest-selling female NFT artist in the world. Code as canvas, code as song. The first Panama chair.">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<style>
+:root{
+  --night:#0b0612; --deep:#150b22; --violet:#2a1740; --plum:#3d1c42;
+  --cream:#f7ecd9; --cream-dim:rgba(247,236,217,.72); --cream-faint:rgba(247,236,217,.45);
+  --gold:#f0c464; --gold-bright:#ffd97a; --gold-soft:rgba(240,196,100,.35);
+  --coral:#ff8a5c; --rose:#e86a92; --teal:#2dd4bf;
+  --serif:'Iowan Old Style','Palatino Linotype',Palatino,'Book Antiqua',Georgia,'Times New Roman',serif;
+  --sans:ui-sans-serif,system-ui,-apple-system,'Segoe UI',Roboto,Helvetica,Arial,sans-serif;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{background:var(--night);color:var(--cream);font-family:var(--serif);line-height:1.65;
+  background-image:
+    radial-gradient(ellipse 120% 50% at 50% 112%,rgba(255,138,92,.13),transparent 60%),
+    radial-gradient(ellipse 90% 45% at 50% 108%,rgba(240,196,100,.10),transparent 55%),
+    radial-gradient(ellipse 90% 60% at 50% -10%,rgba(61,28,66,.55),transparent 70%)}
+h1,h2,h3{font-weight:600;line-height:1.15}
+a{color:var(--gold-bright)}
+.wrap{max-width:880px;margin:0 auto;padding:0 20px}
+
+.hero{position:relative;text-align:center;padding:70px 20px 30px}
+.kicker{font-family:var(--sans);font-size:.72rem;letter-spacing:.34em;text-transform:uppercase;color:var(--gold)}
+.hero h1{font-size:clamp(2.2rem,6vw,3.4rem);margin:.5rem 0 .3rem}
+.hero h1 em{color:var(--gold);font-style:italic}
+.hero .sub{font-family:var(--sans);font-size:.95rem;color:var(--cream-dim)}
+.hero .vibe{margin-top:1.1rem;font-style:italic;color:var(--gold-bright);font-size:clamp(1rem,2.2vw,1.15rem)}
+.avatar{font-size:3.2rem;line-height:1;margin-bottom:.4rem}
+
+section{padding:26px 0}
+.sec-head{display:flex;align-items:baseline;gap:14px;border-bottom:1px solid var(--gold-soft);padding-bottom:10px;margin-bottom:18px}
+.sec-head .num{font-family:var(--sans);font-size:.7rem;letter-spacing:.3em;text-transform:uppercase;color:var(--gold)}
+.sec-head h2{font-size:clamp(1.3rem,3.4vw,1.8rem)}
+.sec-head h2 em{color:var(--gold);font-style:italic}
+
+.card{background:rgba(21,11,34,.66);border:1px solid rgba(240,196,100,.18);border-radius:14px;padding:22px 24px;margin-bottom:16px}
+.card h3{color:var(--gold-bright);margin-bottom:.6rem;font-size:1.08rem}
+.card p{margin-bottom:.8rem;color:var(--cream-dim)}
+.card p:last-child{margin-bottom:0}
+.chords{font-family:var(--sans);font-size:.9rem;color:var(--gold-bright);letter-spacing:.06em;margin:.3rem 0 .8rem}
+.dl{display:flex;flex-wrap:wrap;gap:10px;margin-top:12px}
+.dl a{font-family:var(--sans);font-size:.78rem;letter-spacing:.06em;text-decoration:none;color:var(--cream-dim);
+  border:1px solid var(--gold-soft);border-radius:999px;padding:.45em 1.1em;background:rgba(21,11,34,.6)}
+.dl a:hover{border-color:var(--gold-bright);color:var(--gold-bright)}
+
+.haiku{border:1px solid var(--gold-soft);border-radius:14px;padding:34px 24px;text-align:center;
+  background:linear-gradient(160deg,rgba(61,28,66,.5),rgba(21,11,34,.7));margin-bottom:16px}
+.haiku .line{font-size:clamp(1.25rem,3.4vw,1.7rem);color:var(--gold-bright);font-style:italic;line-height:1.9}
+.haiku .for{font-family:var(--sans);font-size:.75rem;letter-spacing:.2em;text-transform:uppercase;color:var(--cream-faint);margin-top:14px}
+
+.yt-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:16px}
+.yt{position:relative;aspect-ratio:16/9;border-radius:12px;overflow:hidden;border:1px solid rgba(240,196,100,.18);cursor:pointer;background:#000}
+.yt img{width:100%;height:100%;object-fit:cover;opacity:.85}
+.yt .play{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font-size:3rem;
+  text-shadow:0 2px 14px rgba(0,0,0,.8);transition:transform .15s}
+.yt:hover .play{transform:scale(1.15)}
+.yt .cap{position:absolute;left:0;right:0;bottom:0;padding:24px 12px 8px;font-family:var(--sans);font-size:.75rem;
+  color:var(--cream);background:linear-gradient(transparent,rgba(0,0,0,.85))}
+.yt iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
+
+.linkrow{display:flex;flex-wrap:wrap;gap:10px;justify-content:center;margin:18px 0}
+.linkrow a{font-family:var(--sans);font-size:.78rem;letter-spacing:.06em;text-decoration:none;color:var(--cream-dim);
+  border:1px solid var(--gold-soft);border-radius:999px;padding:.5em 1.2em;background:rgba(21,11,34,.6)}
+.linkrow a:hover{border-color:var(--gold-bright);color:var(--gold-bright)}
+.dedication{font-style:italic;color:var(--gold-bright);text-align:center;margin:.6rem 0}
+.back{font-family:var(--sans);font-size:.8rem;color:var(--cream-faint);text-decoration:none}
+.back:hover{color:var(--gold-bright)}
+.buildyour{border:1px dashed var(--gold-soft);border-radius:14px;padding:22px 24px;text-align:center;background:rgba(21,11,34,.4)}
+footer{padding:36px 0 46px;text-align:center;font-family:var(--sans);font-size:.75rem;color:var(--cream-faint)}
+footer a{color:var(--cream-dim)}
+</style>
+</head>
+<body>
+
+<div class="hero">
+  <div class="avatar">🐚💻</div>
+  <p class="kicker">Open Source Orchestra · Node 015 · full profile</p>
+  <h1>IX <em>Shells</em></h1>
+  <p class="sub">Itzel Yard · the Caribbean glitch · code as canvas, code as song · the Tor Project's 500-ETH artist</p>
+  <p class="vibe">"My home is in my head — a digital door into self-reflection."</p>
+  <div class="linkrow">
+    <a href="https://unitlondon.com/artists/ix-shells/">Unit London</a>
+    <a href="https://www.artxcode.io/artists/ix-shells">ARTXCODE</a>
+    <a href="https://x.com/ix_shells">@ix_shells on X</a>
+    <a href="https://foundation.app/@ixshells">Foundation</a>
+    <a href="https://channel.louisiana.dk/video/ix-shells-a-future-preserving-the-past">Louisiana Channel film</a>
+    <a href="/nodes/">← all nodes</a>
+  </div>
+</div>
+
+<div class="wrap">
+
+<section id="circle-sec">
+  <div class="sec-head"><span class="num">The heart of it</span><h2>The <em>digital door</em> 🚪</h2></div>
+  <div class="haiku">
+    <div class="line">"My home is in my head —<br>a digital door into<br>self-reflection."</div>
+    <div class="for">— Itzel Yard, on where her worlds live</div>
+  </div>
+  <div class="card">
+    <p>Some artists carry a sketchbook. <b>Itzel Yard</b> carries a door. Born in Panama in 1990, she discovered code the way so many of her generation discovered music — through childhood video games and sheer curiosity — and then taught herself to write it, <b>on YouTube</b>, with no school for it and no one's permission. What came out the other side is <b>IX Shells</b>: one of the most recognizable generative artists alive, a self-described <i>"caribbean glitch,"</i> whose every work is a context-based portrait of what she was living at the time — written, literally, in lines of code.</p>
+    <p>An orchestra that believes <i>every voice is a node</i> recognizes her instantly: she is proof that a node can be built by hand, from scratch, from a bedroom in Panama, until the whole world connects to it.</p>
+  </div>
+</section>
+
+<section id="story">
+  <div class="sec-head"><span class="num">The story</span><h2>The circle reaches the <em>Caribbean</em> 🌊</h2></div>
+  <div class="card">
+    <h3>015 — the first Panama chair 🇵🇦</h3>
+    <p>Node 014 widened the circle to Southeast Asia; Node 015 brings the <b>Caribbean</b> inside it — the first Panama chair. And the family smiles at the arithmetic again: 1 + 5 = <b>6</b>, an echo of the second seed, <a href="/nodes/alaska/">Node 006</a>'s six — and 3 × 5, the seed-three times the power-fifth, humming in one chair.</p>
+    <p>As Shaka tells it, when her name came up, there was no debate about the number: <i>"that was 15."</i> This page is that word, made into a door — which is only fitting, for an artist whose home is a digital door.</p>
+  </div>
+  <div class="card">
+    <h3>Nature's patterns + Brutalist concrete 🏗️</h3>
+    <p>Known to the public record as <b>Itzel Yard</b> (b. 1990, Panama — where she still lives and works), an Afro-Panamanian generative artist and self-taught coder. She studied <b>architectural technology in Toronto</b> — five tumultuous, formative years — and somewhere between the blueprints and the Processing sketches her style crystallized: the <b>patterns of nature</b> fused with the raw geometry of <b>Brutalist architecture</b>, computer science research acting as a digital simulation of her own mind.</p>
+    <p>She stands in a proud lineage — the mid-century pioneers <b>Lillian Schwartz</b> and <b>Vera Molnár</b>, women who wrote art into machines before the world had words for it — and she has become that precedent for the next generation of girls in computer science: the proof that it can be done, from anywhere, by anyone.</p>
+  </div>
+  <div class="card">
+    <h3>Dreaming at Dusk — the 500-ETH onion 🧅🌆</h3>
+    <p>In May 2021, <b>The Tor Project</b> — the nonprofit that guards privacy for whistle-blowers and human-rights defenders — commissioned her for something no one had ever made: an artwork derived from the <b>private cryptographic key of the very first onion service</b>, Dusk. She wrote code that randomized the key into living form and called it <b>Dreaming at Dusk</b> — the first .onion artwork, with its own interactive portal on the dark web.</p>
+    <p>On May 14, 2021 it sold on Foundation to <b>PleasrDAO for 500 ETH — over $2 million</b> — making her, at that moment, the <b>highest-selling female NFT artist in the world</b> (Fortune's NFTy 50 named her the same year). And where did the money go? <b>To Tor. To privacy. To the open web.</b> A seven-figure artwork whose proceeds funded free software for dissidents — that is open-source values to the bone, and this orchestra salutes it with both hands.</p>
+    <div class="dl">
+      <a href="https://blog.torproject.org/dreaming-at-dusk/">Tor Project — Dreaming at Dusk</a>
+      <a href="https://blog.torproject.org/nft-auction-and-whats-next/">Tor Project — the auction &amp; what's next</a>
+      <a href="https://www.forbes.com/sites/rashishrivastava/2021/06/18/lost-in-the-metaverse-meet-itzel-yard-aka-ix_shells-the-highest-selling-female-nft-artist/">Forbes — the highest-selling female NFT artist</a>
+    </div>
+  </div>
+  <div class="card">
+    <h3>Code as canvas, code as song 🎶</h3>
+    <p>Here is what the headlines missed: IX Shells is not only a visual artist. As <a href="https://www.artxcode.io/artists/ix-shells">ARTXCODE</a> puts it, she specializes in <b>"sound, generative art and the creative space between the two"</b> — a sonic artist, a <b>live coder</b> who performs her medium in real time, audiovisuals written and played like an instrument. Her Christie's piece <b>¿Cómo Respirar?</b> — in the <i>Proof of Sovereignty</i> sale curated by Lady Pheonix — is procedural <b>audiovisuals</b>, GLSL breathing through TouchDesigner. Her collaborations run from <b>Fingacode</b> (<a href="https://www.rightclicksave.com/article/interview-when-ix-shells-met-fingacode">"When IX Shells Met Fingacode"</a>) to <b>Avant Arte</b>.</p>
+    <p>The <a href="https://channel.louisiana.dk/video/ix-shells-a-future-preserving-the-past">Louisiana Channel film</a> <i>"A Future Preserving the Past"</i> captures her latest arc: working with Denmark's National Gallery (SMK) on the unrecognized 19th-century Nordic women artists — preservation as resistance, art history guarded by code. <i>"It's not about investments or being famous. It's about preservation."</i> An orchestra whose own law is to keep every old design alive in the Archive hears a sister in that sentence.</p>
+  </div>
+  <div class="card">
+    <h3>The Ethereum thread 🧵</h3>
+    <p>Her name is woven deep into this family's own story. The public record carries her on the <b>Devcon VI speaker rolls — Bogotá, 2022</b>; and as the family tells it, she was there <b>live-coding</b> — code performed on stage, the way this orchestra believes all code should be: in the open, in the moment, in front of people. As the family also tells it, <b>Aya Miyaguchi</b> has named her one of her favorite artists — and she appears in the 2024 documentary <b><i>Vitalik: An Ethereum Story</i></b>, the film about the community this orchestra calls home.</p>
+    <p>Bogotá is sacred ground here — it is where this orchestra was first sung. The fifteenth chair was always going to belong to the woman who turned an onion key into a dream at dusk.</p>
+  </div>
+</section>
+
+<section id="songs">
+  <div class="sec-head"><span class="num">The works</span><h2>The catalogue, <em>awaiting her blessing</em> 🎼</h2></div>
+  <div class="card">
+    <p class="chords">Dreaming at Dusk · 2021 (with The Tor Project) &nbsp;—&nbsp; ¿Cómo Respirar? · 2021 (Christie's, Proof of Sovereignty) &nbsp;—&nbsp; collaborations with Fingacode &amp; Avant Arte &nbsp;—&nbsp; a living practice of code, sound &amp; the space between</p>
+    <p>Her medium is code, and code is closer to music than to paint: it is written, performed, versioned, shared. Nothing of hers is hosted here — no files, no renders, no stems — until she blesses it, item by item. When she does, this section becomes its home: her works, her terms, her licenses. Until then the catalogue is simply honored, not claimed.</p>
+  </div>
+</section>
+
+<section id="stages">
+  <div class="sec-head"><span class="num">Stages &amp; stories</span><h2>The <em>journey</em> 📺</h2></div>
+  <div class="yt-grid">
+    <div class="yt" data-id="2KPUfcfCsGs"><img loading="lazy" src="https://i.ytimg.com/vi/2KPUfcfCsGs/hqdefault.jpg" alt="How IX Shells Became the Highest-Selling Female NFT Artist — nft now"><div class="play">▶️</div><div class="cap">HOW IX SHELLS BECAME THE HIGHEST-SELLING FEMALE NFT ARTIST · nft now 🐚</div></div>
+    <div class="yt" data-id="71DtEk1cFdg"><img loading="lazy" src="https://i.ytimg.com/vi/71DtEk1cFdg/hqdefault.jpg" alt="Vitalik: An Ethereum Story — Official Trailer"><div class="play">▶️</div><div class="cap">VITALIK: AN ETHEREUM STORY · official trailer — she appears in the film 🎬</div></div>
+    <div class="yt" data-id="T4QiSilstV0"><img loading="lazy" src="https://i.ytimg.com/vi/T4QiSilstV0/hqdefault.jpg" alt="Vitalik: An Ethereum Story — Full Film"><div class="play">▶️</div><div class="cap">VITALIK: AN ETHEREUM STORY · the full film 🍿</div></div>
+  </div>
+</section>
+
+<section id="invite">
+  <div class="card">
+    <h3>The chair is held 🐚</h3>
+    <p><b>Itzel — this chair is held for you, and the door is yours to open.</b> The orchestra's circle at <b>Devcon 8, Mumbai, Nov 3–6 2026</b> (<a href="https://forum.devcon.org/t/open-source-orchestra-music-space-at-devcon-8-mumbai/8576">DIP #8576</a>) faces inward — no stage, no gate, voices answering each other — and Bogotá is where our road and yours first crossed. Come sing, come live-code, come listen, come build your node your way — or simply know that somewhere an orchestra of strangers thinks the world of the girl from Panama who taught herself to code and turned privacy itself into art.</p>
+    <p class="dedication">"You don't join the Open Source Orchestra. You notice you were always in it." 🌺</p>
+  </div>
+</section>
+
+<section id="consent" style="padding-top:0">
+  <div class="buildyour" style="border-color:var(--gold-bright)">
+    <h3 style="color:var(--gold-bright);margin-bottom:.6rem">🌺 The consent law of this page</h3>
+    <p style="color:var(--gold-bright);font-style:italic;font-size:1.05rem;margin-bottom:.8rem">This is YOUR node, Node 015 — one word and we change, add, or remove anything. The artist signs the truth.</p>
+    <p style="color:var(--cream-dim);font-size:.9rem">Everything above comes from public records — Unit London, ARTXCODE, Forbes, the Tor Project's own blog, Christie's, the Louisiana Channel — and from the orchestra's own story as Shaka tells it. Nothing more will ever appear here without her blessing, item by item.</p>
+  </div>
+</section>
+
+<section id="build-your-node">
+  <div class="buildyour">
+    <h3 style="color:var(--gold-bright);margin-bottom:.6rem">🎻 Build your own node</h3>
+    <p style="color:var(--cream-dim);margin-bottom:.8rem">A <b>profile node</b> is a home its owner controls. Your work, your videos, your words. You choose what's open-sourced, item by item; what you don't bless stays yours. No feed, no ads, no gate.</p>
+    <p style="font-family:var(--sans);font-size:.85rem"><a href="/nodes/node-spec.md">read the node spec 📄</a> &nbsp;·&nbsp; <a href="mailto:contribute@opensourceorchestra.org">contribute@opensourceorchestra.org 📮</a> &nbsp;·&nbsp; <a href="https://github.com/shakaleikaumaka/oso-storytelling">fork the format</a></p>
+  </div>
+</section>
+
+<p style="text-align:center;margin:10px 0 30px"><a class="back" href="/nodes/">← back to the nodes</a> &nbsp;&nbsp; <a class="back" href="/">← the orchestra</a></p>
+
+</div>
+
+<footer>
+  <div class="wrap">
+    Node 015 · Open Source Orchestra · Devcon 8 Mumbai, Nov 3–6 2026 · CC0, blessed item by item 🌺 · <a href="/nodes/ix-shells/node.json">node.json</a>
+  </div>
+</footer>
+
+<script>
+document.querySelectorAll('.yt').forEach(function(el){
+  el.addEventListener('click', function(){
+    var id = el.getAttribute('data-id');
+    var f = document.createElement('iframe');
+    f.src = 'https://www.youtube-nocookie.com/embed/' + id + '?autoplay=1';
+    f.allow = 'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share';
+    f.allowFullscreen = true;
+    el.innerHTML = ''; el.appendChild(f);
+  }, { once:true });
+});
+</script>
+<script src="https://shakaleikaumaka.com/assets/bl-player.js?v=7.7"></script>
+</body>
+</html>

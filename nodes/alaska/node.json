@@ -10,7 +10,7 @@
   "location": "the pop-up cities 🌍",
   "links": [
     { "label": "X · @Alaskaisprettyokay", "url": "https://x.com/Alaskaisprettyokay" },
-    { "label": "MDRN — mdrn.music (per Shaka; awaiting Alaska's word)", "url": "https://mdrn.music" },
+    { "label": "MDRN — mdrn.music (awaiting Alaska's word)", "url": "https://mdrn.music" },
     { "label": "Subcult (MDRN family)", "url": "https://subcult.music" },
     { "label": "Onda — getonda.org (MDRN family)", "url": "https://getonda.org" },
     { "label": "Devcon 8 rider — steward", "url": "https://opensourceorchestra.org/rider/" }
@@ -18,7 +18,7 @@
   "songs": [],
   "songs_note": "No recordings hosted by design — the horn is Alaska's; he blesses what goes open, item by item.",
   "media": [],
-  "honesty": "MDRN/Subcult/Onda verified as one connected project family (mdrn.music links to both, Aug 2026); Alaska's authorship presented on Shaka's testimony, awaiting Alaska's own correction. 'MDRN RADIA and SUBCULT' preserved verbatim as Shaka's spoken words.",
+  "honesty": "MDRN/Subcult/Onda verified as one connected project family (mdrn.music links to both, Aug 2026); Alaska's authorship presented as the family remembers it, awaiting Alaska's own correction.",
   "license_default": "CC0 for node content — anything not listed here stays with the artist",
   "updated": "2026-08-16"
 }
