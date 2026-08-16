@@ -1,0 +1,362 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>The Circle of Trust 🕸️🎻 — Open Source Orchestra × trustgraphs</title>
+<meta name="description" content="A living trust graph for the Open Source Orchestra — every jam is a vouch, trust flows from the founding circle, and bots stay islands. Built in the open with Jake Hartnell's trustgraphs.">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<style>
+:root{
+  --night:#0b0612; --deep:#150b22; --violet:#2a1740; --plum:#3d1c42;
+  --cream:#f7ecd9; --cream-dim:rgba(247,236,217,.72); --cream-faint:rgba(247,236,217,.45);
+  --gold:#f0c464; --gold-bright:#ffd97a; --gold-soft:rgba(240,196,100,.35);
+  --coral:#ff8a5c; --rose:#e86a92; --teal:#2dd4bf;
+  --serif:'Iowan Old Style','Palatino Linotype',Palatino,'Book Antiqua',Georgia,'Times New Roman',serif;
+  --sans:ui-sans-serif,system-ui,-apple-system,'Segoe UI',Roboto,Helvetica,Arial,sans-serif;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{background:var(--night);color:var(--cream);font-family:var(--serif);line-height:1.65;
+  background-image:
+    radial-gradient(ellipse 120% 50% at 50% 112%,rgba(255,138,92,.13),transparent 60%),
+    radial-gradient(ellipse 90% 45% at 50% 108%,rgba(240,196,100,.10),transparent 55%),
+    radial-gradient(ellipse 90% 60% at 50% -10%,rgba(61,28,66,.55),transparent 70%)}
+a{color:var(--gold-bright)}
+.wrap{max-width:960px;margin:0 auto;padding:0 20px}
+.hero{text-align:center;padding:60px 20px 24px}
+.kicker{font-family:var(--sans);font-size:.72rem;letter-spacing:.34em;text-transform:uppercase;color:var(--gold)}
+.hero h1{font-size:clamp(2rem,5.6vw,3.2rem);margin:.5rem 0 .3rem;line-height:1.12}
+.hero h1 em{color:var(--gold);font-style:italic}
+.hero .sub{font-family:var(--sans);font-size:.95rem;color:var(--cream-dim);max-width:640px;margin:0 auto}
+.hero .vibe{margin-top:1rem;font-style:italic;color:var(--gold-bright);font-size:clamp(1rem,2.2vw,1.15rem)}
+
+.stage{position:relative;margin:26px auto 8px;max-width:960px;padding:0 12px}
+#graph{display:block;width:100%;border-radius:16px;border:1px solid rgba(240,196,100,.22);
+  background:radial-gradient(ellipse 70% 60% at 50% 42%,rgba(61,28,66,.5),rgba(11,6,18,.9));cursor:pointer;touch-action:manipulation}
+.controls{display:flex;flex-wrap:wrap;gap:10px;justify-content:center;margin:14px 0 4px}
+.controls button{font-family:var(--sans);font-size:.82rem;letter-spacing:.05em;cursor:pointer;
+  color:var(--cream);border:1px solid var(--gold-soft);border-radius:999px;padding:.55em 1.25em;
+  background:rgba(21,11,34,.75)}
+.controls button:hover{border-color:var(--gold-bright);color:var(--gold-bright)}
+.controls button.primary{background:var(--gold);color:#1a1206;font-weight:700;border-color:var(--gold)}
+.controls button.primary:hover{color:#1a1206;filter:brightness(1.08)}
+.hint{text-align:center;font-family:var(--sans);font-size:.78rem;color:var(--cream-faint);min-height:1.4em;margin-bottom:6px}
+.legend{display:flex;flex-wrap:wrap;gap:14px;justify-content:center;font-family:var(--sans);font-size:.74rem;color:var(--cream-dim);margin:4px 0 10px}
+.legend span{display:inline-flex;align-items:center;gap:6px}
+.dot{width:11px;height:11px;border-radius:50%;display:inline-block}
+
+section{padding:26px 0}
+.sec-head{display:flex;align-items:baseline;gap:14px;border-bottom:1px solid var(--gold-soft);padding-bottom:10px;margin-bottom:18px}
+.sec-head .num{font-family:var(--sans);font-size:.7rem;letter-spacing:.3em;text-transform:uppercase;color:var(--gold)}
+.sec-head h2{font-size:clamp(1.25rem,3.2vw,1.7rem)}
+.sec-head h2 em{color:var(--gold);font-style:italic}
+.card{background:rgba(21,11,34,.66);border:1px solid rgba(240,196,100,.18);border-radius:14px;padding:22px 24px;margin-bottom:16px}
+.card h3{color:var(--gold-bright);margin-bottom:.6rem;font-size:1.05rem}
+.card p{margin-bottom:.8rem;color:var(--cream-dim)}
+.card p:last-child{margin-bottom:0}
+.grid2{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:16px}
+.flow{display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:12px}
+.flow .step{background:rgba(11,6,18,.55);border:1px solid rgba(240,196,100,.16);border-radius:12px;padding:16px 16px}
+.flow .step b{color:var(--gold-bright);font-family:var(--sans);font-size:.8rem;letter-spacing:.16em;text-transform:uppercase;display:block;margin-bottom:.4rem}
+.flow .step p{font-size:.9rem;color:var(--cream-dim)}
+.dedication{font-style:italic;color:var(--gold-bright);text-align:center;margin:1rem 0}
+.linkrow{display:flex;flex-wrap:wrap;gap:10px;justify-content:center;margin:18px 0}
+.linkrow a{font-family:var(--sans);font-size:.78rem;letter-spacing:.06em;text-decoration:none;color:var(--cream-dim);
+  border:1px solid var(--gold-soft);border-radius:999px;padding:.5em 1.2em;background:rgba(21,11,34,.6)}
+.linkrow a:hover{border-color:var(--gold-bright);color:var(--gold-bright)}
+footer{padding:36px 0 46px;text-align:center;font-family:var(--sans);font-size:.75rem;color:var(--cream-faint)}
+footer a{color:var(--cream-dim)}
+</style>
+</head>
+<body>
+
+<div class="hero">
+  <p class="kicker">Open Source Orchestra × trustgraphs · building in the open</p>
+  <h1>The <em>Circle of Trust</em> 🕸️🎻</h1>
+  <p class="sub">Every jam is a vouch. Trust flows outward from the founding circle, provable by anyone, ownable by no one. A living sketch of <a href="https://github.com/JakeHartnell/trustgraphs">Jake Hartnell's trustgraphs</a> playing the Open Source Orchestra.</p>
+  <p class="vibe">"The artist signs the truth; the community proves the trust."</p>
+</div>
+
+<div class="stage">
+  <canvas id="graph" width="960" height="640" aria-label="Living trust graph of the orchestra"></canvas>
+  <div class="controls">
+    <button class="primary" id="btn-jam">🎶 jam! (two musicians vouch)</button>
+    <button id="btn-join">🌱 a musician joins</button>
+    <button id="btn-bots">🤖 spawn a bot ring</button>
+    <button id="btn-reset">↺ reset the circle</button>
+  </div>
+  <p class="hint" id="hint">tap two musicians to make them vouch for each other — watch the trust flow 🌊</p>
+  <div class="legend">
+    <span><span class="dot" style="background:#ffd97a;box-shadow:0 0 8px #f0c464"></span> founding seed</span>
+    <span><span class="dot" style="background:#2dd4bf"></span> trusted musician (glow = score)</span>
+    <span><span class="dot" style="background:#e86a92"></span> newcomer (trust grows with jams)</span>
+    <span><span class="dot" style="background:#555;border:1px solid #777"></span> bot island (no seed path → no glow)</span>
+  </div>
+</div>
+
+<div class="wrap">
+
+<section>
+  <div class="sec-head"><span class="num">How it plays</span><h2>Vouch → Score → <em>Prove</em> → Use</h2></div>
+  <div class="flow">
+    <div class="step"><b>1 · Vouch 🎶</b><p>After a jam, musicians vouch on-chain: "I played with this human — they showed up, they listened." Each vouch is a public attestation (EAS) — an edge in the graph above.</p></div>
+    <div class="step"><b>2 · Score 🌊</b><p>Trust-Aware PageRank lets trust flow outward from the founding seeds. The more real, trusted paths reach you, the brighter you glow. This page runs the real algorithm live.</p></div>
+    <div class="step"><b>3 · Prove ⚡</b><p>No operator computes the scores. Anyone can — and a zero-knowledge proof (SP1) convinces the chain the computation used <i>every</i> vouch, exactly. Correct scores, or no proof at all.</p></div>
+    <div class="step"><b>4 · Use 🎻</b><p>The proven scores suggest superfan chairs in the songbook, weight community decisions, and could someday rotate the orchestra's keys — all without a gatekeeper.</p></div>
+  </div>
+</section>
+
+<section>
+  <div class="sec-head"><span class="num">Why it fits</span><h2>The two halves of <em>one instrument</em></h2></div>
+  <div class="grid2">
+    <div class="card">
+      <h3>🎼 The Web3 Songbook — authority granted</h3>
+      <p>Each artist appoints up to 96 ranked superfans (golden-ratio weights) to correct machine-drafted charts. <b>The artist signs the truth</b> — always, cryptographically, forever.</p>
+      <p style="font-family:var(--sans);font-size:.8rem">Spec by Matteo Tambussi 🎻🇮🇹 · <a href="https://github.com/shakaleikaumaka/oso-storytelling/pull/1">the build</a></p>
+    </div>
+    <div class="card">
+      <h3>🕸️ trustgraphs — trust proven</h3>
+      <p>The community's own vouches reveal who has actually earned trust — Sybil-resistant, operator-free, verifiable by anyone. <b>The community proves the trust.</b></p>
+      <p style="font-family:var(--sans);font-size:.8rem">By Jake Hartnell &amp; friends · <a href="https://github.com/JakeHartnell/trustgraphs">the repo</a> · <a href="https://github.com/JakeHartnell/trustgraphs/issues/93">our aloha 🌺</a></p>
+    </div>
+  </div>
+  <div class="card">
+    <h3>🪑 Together: trust proposes, the artist disposes</h3>
+    <p>Trust scores <i>suggest</i> who has earned a superfan chair; the artist still appoints every one. Community wisdom flows in, artist sovereignty stays sacred — invariant untouched. And because seeds anchor the graph, an open orchestra can stay radically open: a thousand bots vouching for each other are just a dark island no real edge reaches.</p>
+  </div>
+</section>
+
+<section>
+  <div class="sec-head"><span class="num">The ceremony</span><h2>Devcon 8 Mumbai — the <em>first vouching</em> 🇮🇳</h2></div>
+  <div class="card">
+    <p>The orchestra's trust graph won't be minted in a boardroom. It gets minted <b>on stage</b> — at the <a href="https://forum.devcon.org/t/open-source-orchestra-music-space-at-devcon-8-mumbai/8576">Music Space at Devcon 8, Mumbai, Nov 3–6 2026</a>. Every session ends the way every session already ends — people who just made music together — and now that moment becomes an edge in the founding graph. Play, then vouch. The circle grows one jam at a time.</p>
+    <p class="dedication">"You don't join the Open Source Orchestra. You notice you were always in it — and now you can prove it." 🌺</p>
+  </div>
+</section>
+
+<div class="linkrow">
+  <a href="/trust/OSO-CIRCLE-OF-TRUST.pdf">⬇ the PDF — circle of trust one-pager</a>
+  <a href="https://github.com/JakeHartnell/trustgraphs">trustgraphs on GitHub</a>
+  <a href="/nodes/">the nodes 🎻</a>
+  <a href="/">← the orchestra</a>
+</div>
+
+</div>
+
+<footer>
+  <div class="wrap">
+    The Circle of Trust · Open Source Orchestra · built in the open with <a href="https://github.com/JakeHartnell/trustgraphs">trustgraphs</a> · CC0 🌺 — <a href="https://github.com/shakaleikaumaka/oso-storytelling">fork the format</a>
+  </div>
+</footer>
+
+<script>
+(function(){
+"use strict";
+var cv = document.getElementById('graph'), ctx = cv.getContext('2d');
+var hint = document.getElementById('hint');
+var W = 960, H = 640, DPR = Math.min(2, window.devicePixelRatio||1);
+function fit(){
+  var w = cv.parentElement.clientWidth - 0; W = Math.max(320, Math.min(960, w)); H = Math.round(W*0.6667);
+  cv.width = W*DPR; cv.height = H*DPR; cv.style.height = H+'px'; ctx.setTransform(DPR,0,0,DPR,0,0);
+}
+window.addEventListener('resize', function(){ fit(); layout(); });
+
+// ---- graph model ----
+var FOUNDERS = [
+  {id:'shaka',  name:'Shaka 🌺',  seed:true},
+  {id:'matteo', name:'Matteo 🎻', seed:true},
+  {id:'manu',   name:'Manu 🎧',   seed:true}
+];
+var CAST = ['Aya 🌸','Justin 🎸','Lin 🥁','Marek 🎹','Sol 🎺','Kai 🪕','Noor 🎤','Rio 🪘','Hana 🎶','Bruno 🎷','Leia 🌊','Owo 🟢'];
+var nodes = [], edges = [], pulses = [], nextCast = 0, botCount = 0;
+var selected = null, scores = {};
+
+function addNode(name, kind){ // kind: seed|human|bot
+  var n = { id:'n'+nodes.length+'-'+Math.random().toString(36).slice(2,6), name:name, kind:kind,
+            x:W/2+(Math.random()-0.5)*60, y:H/2+(Math.random()-0.5)*60, tx:0, ty:0, born:performance.now() };
+  nodes.push(n); return n;
+}
+function addEdge(a, b, w){
+  for (var i=0;i<edges.length;i++){ var e=edges[i];
+    if ((e.a===a&&e.b===b)||(e.a===b&&e.b===a)){ e.w=Math.min(5,e.w+(w||1)); return e; } }
+  var e={a:a,b:b,w:w||1,born:performance.now()}; edges.push(e); return e;
+}
+function seedGraph(){
+  nodes=[]; edges=[]; pulses=[]; nextCast=0; botCount=0; selected=null;
+  var f = FOUNDERS.map(function(s){ return addNode(s.name,'seed'); });
+  addEdge(f[0],f[1],3); addEdge(f[1],f[2],2); addEdge(f[0],f[2],2);
+  for (var i=0;i<4;i++) join(true);
+  layout(); computeScores();
+}
+
+// ---- layout: seeds inner circle, humans ring, bots exiled corner ----
+function layout(){
+  var cx=W/2, cy=H*0.47;
+  var seeds=nodes.filter(function(n){return n.kind==='seed';});
+  var humans=nodes.filter(function(n){return n.kind==='human';});
+  var bots=nodes.filter(function(n){return n.kind==='bot';});
+  seeds.forEach(function(n,i){ var a=-Math.PI/2 + i*2*Math.PI/seeds.length;
+    n.tx=cx+Math.cos(a)*Math.min(W,H)*0.13; n.ty=cy+Math.sin(a)*Math.min(W,H)*0.13; });
+  humans.forEach(function(n,i){ var a=-Math.PI/2 + (i+0.5)*2*Math.PI/Math.max(1,humans.length);
+    n.tx=cx+Math.cos(a)*Math.min(W,H)*0.34; n.ty=cy+Math.sin(a)*Math.min(W,H)*0.34; });
+  bots.forEach(function(n,i){ var a=i*2*Math.PI/Math.max(1,bots.length);
+    n.tx=W*0.86+Math.cos(a)*Math.min(W,H)*0.09; n.ty=H*0.82+Math.sin(a)*Math.min(W,H)*0.09; });
+}
+
+// ---- trust-aware pagerank (personalized to seeds) ----
+function computeScores(){
+  var N=nodes.length; if(!N) return;
+  var idx={}; nodes.forEach(function(n,i){idx[n.id]=i;});
+  var out=new Array(N).fill(0), adj=[];
+  for(var i=0;i<N;i++) adj.push([]);
+  edges.forEach(function(e){
+    var a=idx[e.a.id], b=idx[e.b.id];
+    adj[a].push({j:b,w:e.w}); adj[b].push({j:a,w:e.w});
+    out[a]+=e.w; out[b]+=e.w;
+  });
+  var seedIdx=nodes.map(function(n,i){return n.kind==='seed'?i:-1;}).filter(function(i){return i>=0;});
+  var tele=new Array(N).fill(0); seedIdx.forEach(function(i){ tele[i]=1/seedIdx.length; });
+  var r=tele.slice(), d=0.85;
+  for(var it=0; it<60; it++){
+    var nr=new Array(N).fill(0);
+    for(var a2=0;a2<N;a2++){
+      if(!adj[a2].length || !r[a2]) continue;
+      adj[a2].forEach(function(l){ nr[l.j]+=d*r[a2]*(l.w/out[a2]); });
+    }
+    var loss=1-nr.reduce(function(s,v){return s+v;},0);
+    for(var k=0;k<N;k++) nr[k]+=loss*tele[k];
+    r=nr;
+  }
+  var mx=Math.max.apply(null,r)||1;
+  scores={}; nodes.forEach(function(n,i){ scores[n.id]=r[i]/mx; });
+}
+
+// ---- actions ----
+function join(silent){
+  var name = nextCast<CAST.length ? CAST[nextCast++] : 'Musician '+(++nextCast);
+  var n=addNode(name,'human');
+  var seeds=nodes.filter(function(x){return x.kind==='seed';});
+  var host=seeds[Math.floor(Math.random()*seeds.length)];
+  addEdge(host,n,1); pulse(host,n);
+  layout(); computeScores();
+  if(!silent) say(name+' joined the circle — a founder jammed with them 🌱');
+}
+function jam(){
+  var pool=nodes.filter(function(n){return n.kind!=='bot';});
+  if(pool.length<2) return;
+  var a=pool[Math.floor(Math.random()*pool.length)], b;
+  do{ b=pool[Math.floor(Math.random()*pool.length)]; }while(b===a);
+  vouch(a,b);
+}
+function vouch(a,b){
+  addEdge(a,b,1); pulse(a,b); pulse(b,a);
+  computeScores();
+  say(a.name+' and '+b.name+' played together — both vouched 🎶 trust flows');
+}
+function bots(){
+  botCount++;
+  var ring=[]; for(var i=0;i<5;i++) ring.push(addNode('bot'+botCount+'·'+(i+1),'bot'));
+  for(var j=0;j<ring.length;j++) addEdge(ring[j],ring[(j+1)%ring.length],3);
+  addEdge(ring[0],ring[2],3); addEdge(ring[1],ring[3],3);
+  layout(); computeScores();
+  say('a bot ring appeared, vouching furiously for itself — but no real edge reaches it. it stays dark. 🤖🏝️');
+}
+function pulse(a,b){ pulses.push({a:a,b:b,t:0}); }
+function say(t){ hint.textContent=t; }
+
+// ---- interaction: tap two nodes to vouch ----
+cv.addEventListener('click', function(ev){
+  var r=cv.getBoundingClientRect();
+  var x=(ev.clientX-r.left)*(W/r.width), y=(ev.clientY-r.top)*(H/r.height);
+  var hit=null;
+  nodes.forEach(function(n){ var dx=n.x-x, dy=n.y-y;
+    if(Math.sqrt(dx*dx+dy*dy) < nodeR(n)+12) hit=n; });
+  if(!hit){ selected=null; return; }
+  if(hit.kind==='bot'){ say('that’s a bot — the circle vouches for humans it has played with 🤖'); selected=null; return; }
+  if(selected && selected!==hit){ vouch(selected,hit); selected=null; }
+  else { selected=hit; say(hit.name+' selected — now tap who they jammed with 🎶'); }
+});
+
+// ---- render ----
+function nodeR(n){ var s=scores[n.id]||0; return (n.kind==='bot'?9:12)+s*16; }
+function colorFor(n,glow){
+  if(n.kind==='seed') return glow? 'rgba(255,217,122,'+glow+')' : '#ffd97a';
+  if(n.kind==='bot')  return '#585858';
+  var s=scores[n.id]||0;
+  return s>0.28 ? '#2dd4bf' : '#e86a92';
+}
+var notes=['♩','♪','♫','♬'];
+function draw(now){
+  ctx.clearRect(0,0,W,H);
+  // ambient drifting notes
+  for(var i=0;i<14;i++){
+    var t=(now/9000+i*0.37)%1, nx=(i*137.5%W), ny=H-t*H;
+    ctx.globalAlpha=0.05+0.05*Math.sin(now/700+i);
+    ctx.fillStyle='#f0c464'; ctx.font='16px serif';
+    ctx.fillText(notes[i%4], nx+Math.sin(now/1200+i)*18, ny);
+  }
+  ctx.globalAlpha=1;
+  // relax positions
+  nodes.forEach(function(n){ n.x+= (n.tx-n.x)*0.08; n.y+=(n.ty-n.y)*0.08; });
+  // edges
+  edges.forEach(function(e){
+    var s=Math.min(scores[e.a.id]||0, scores[e.b.id]||0);
+    var isBot = e.a.kind==='bot'||e.b.kind==='bot';
+    ctx.strokeStyle = isBot ? 'rgba(120,120,120,.35)' : 'rgba(240,196,100,'+(0.16+s*0.5)+')';
+    ctx.lineWidth = 0.8+e.w*0.55;
+    ctx.beginPath(); ctx.moveTo(e.a.x,e.a.y); ctx.lineTo(e.b.x,e.b.y); ctx.stroke();
+  });
+  // trust pulses along seed-connected edges (ambient) + action pulses
+  edges.forEach(function(e,i){
+    if(e.a.kind==='bot'||e.b.kind==='bot') return;
+    var t=(now/2600 + i*0.19)%1;
+    var from = (scores[e.a.id]||0) >= (scores[e.b.id]||0) ? e.a : e.b;
+    var to = from===e.a? e.b : e.a;
+    var px=from.x+(to.x-from.x)*t, py=from.y+(to.y-from.y)*t;
+    ctx.fillStyle='rgba(255,217,122,'+(0.5*(1-t))+')';
+    ctx.beginPath(); ctx.arc(px,py,2.2,0,7); ctx.fill();
+  });
+  pulses = pulses.filter(function(p){ return p.t<1; });
+  pulses.forEach(function(p){
+    p.t+=0.03;
+    var px=p.a.x+(p.b.x-p.a.x)*p.t, py=p.a.y+(p.b.y-p.a.y)*p.t;
+    ctx.fillStyle='rgba(45,212,191,'+(1-p.t)+')';
+    ctx.beginPath(); ctx.arc(px,py,4.5,0,7); ctx.fill();
+  });
+  // nodes
+  nodes.forEach(function(n){
+    var s=scores[n.id]||0, R=nodeR(n);
+    var glowR = R + 6 + s*26;
+    if(n.kind!=='bot' && s>0.02){
+      var g=ctx.createRadialGradient(n.x,n.y,R*0.4,n.x,n.y,glowR);
+      var gc = n.kind==='seed' ? '255,217,122' : (s>0.28?'45,212,191':'232,106,146');
+      g.addColorStop(0,'rgba('+gc+','+(0.28+s*0.4)+')'); g.addColorStop(1,'rgba('+gc+',0)');
+      ctx.fillStyle=g; ctx.beginPath(); ctx.arc(n.x,n.y,glowR,0,7); ctx.fill();
+    }
+    ctx.fillStyle=colorFor(n);
+    ctx.beginPath(); ctx.arc(n.x,n.y,R,0,7); ctx.fill();
+    if(selected===n){ ctx.strokeStyle='#fff'; ctx.lineWidth=2; ctx.beginPath(); ctx.arc(n.x,n.y,R+4,0,7); ctx.stroke(); }
+    ctx.fillStyle = n.kind==='bot' ? 'rgba(200,200,200,.75)' : '#f7ecd9';
+    ctx.font='600 '+(n.kind==='bot'?10:12)+'px '+'system-ui,sans-serif';
+    ctx.textAlign='center';
+    ctx.fillText(n.name, n.x, n.y+R+15);
+    if(n.kind!=='bot'){
+      ctx.fillStyle='rgba(247,236,217,.55)'; ctx.font='10px system-ui,sans-serif';
+      ctx.fillText((s*100).toFixed(0)+'✦', n.x, n.y+R+27);
+    }
+  });
+  requestAnimationFrame(draw);
+}
+
+document.getElementById('btn-jam').addEventListener('click', jam);
+document.getElementById('btn-join').addEventListener('click', function(){ join(false); });
+document.getElementById('btn-bots').addEventListener('click', bots);
+document.getElementById('btn-reset').addEventListener('click', function(){ seedGraph(); say('the circle is reborn — three founders, one song 🌺'); });
+
+fit(); seedGraph(); requestAnimationFrame(draw);
+})();
+</script>
+<script src="https://shakaleikaumaka.com/assets/bl-player.js?v=7.7"></script>
+</body>
+</html>
