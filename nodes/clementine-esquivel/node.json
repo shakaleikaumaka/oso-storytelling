@@ -1,0 +1,38 @@
+{
+  "oso_node_spec": "0.1",
+  "node": "011",
+  "slug": "clementine-esquivel",
+  "name": "Clementine Esquivel",
+  "emoji": "🎙️🌙",
+  "kind": "artist",
+  "tagline": "voz, palmas, percu y bombo · one half of Dúo Dø デュオ・ドー · Buenos Aires → Japan",
+  "bio": "Singer, percussionist, composer, producer and educator from Buenos Aires — one half of Dúo Dø (est. 2015), the genre-free, in-motion project weaving Argentine roots with Japan. Her record credit: 'Voz, palmas, percu y bombo.' Led the SongCamp Challenge Latam EP presented on The Creator Economy stage during Devconnect Argentina; artist-in-residence at Kismet Casa during FarCon Rome 2026 (the film 'Mi Amor Por Ti' — Shaka among its Executive Producers); shown with the Infinite Garden Artist Cohort. Japan Tour 2026: Sep 19 – Dec 15.",
+  "quote": "Cantar en Dúo Dø es como un ritual; es el espacio donde mi voz deja de ser mía para volverse un puente hacia los demás.",
+  "location": "Buenos Aires → Japan 🌏",
+  "numbers_note": "chair numbers 010/011 assigned by the order duodomusica.com presents the duo (Santiago first) — numbers per Shaka; swap on your word",
+  "duo": {
+    "name": "Dúo Dø",
+    "other_half": "santiago-reos",
+    "other_half_node": "010"
+  },
+  "links": [
+    { "label": "duodomusica.com", "url": "https://duodomusica.com" },
+    { "label": "YouTube · @duodomusica", "url": "https://www.youtube.com/@duodomusica" },
+    { "label": "Instagram", "url": "https://www.instagram.com/duodomusica/" },
+    { "label": "X · @duodomusica", "url": "https://x.com/duodomusica" },
+    { "label": "Bandcamp", "url": "https://duodomusica.bandcamp.com" },
+    { "label": "sound.xyz", "url": "https://www.sound.xyz/duodomusica" },
+    { "label": "Farcaster · @duodo", "url": "https://warpcast.com/duodo" },
+    { "label": "objkt", "url": "https://objkt.com/@duodomusica" },
+    { "label": "drip.haus store", "url": "https://drip.haus/duodomusica/store" }
+  ],
+  "songs": [],
+  "songs_note": "Releases per duodomusica.com: Yama (ft. Dig.Dug, 2026), Piano Works 1 (EP, 2025), Nostalgia (2025); plus Todo Cambia ft. Hiroe Morikawa and Torii on Bandcamp. Nothing appears on this node without the artists' blessing, item by item.",
+  "media": [
+    { "type": "youtube", "id": "X02aZRssR_M", "title": "Mi Amor Por Ti - ft Matt Lee", "channel": "Dúo Dø", "visibility": "public" },
+    { "type": "youtube", "id": "iNKvopxMUn8", "title": "DUO DØ - We Own the Timeline", "channel": "myco wtf", "visibility": "public" },
+    { "type": "youtube", "id": "RePuXx-tOH4", "title": "めちゃヤバイ!", "channel": "Dúo Dø", "visibility": "public" }
+  ],
+  "license_default": "CC0 for node content — anything not listed here stays with the artist",
+  "updated": "2026-08-16"
+}

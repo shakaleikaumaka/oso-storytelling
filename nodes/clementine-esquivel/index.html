@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Node 011 · Clementine Esquivel 🎙️🌙 — Open Source Orchestra</title>
+<meta name="description" content="Node 011 — Clementine Esquivel, the voice of Dúo Dø: singer, percussionist, one half of the Argentina↔Japan duo. Two ones side by side — a duo standing together.">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<style>
+:root{
+  --night:#0b0612; --deep:#150b22; --violet:#2a1740; --plum:#3d1c42;
+  --cream:#f7ecd9; --cream-dim:rgba(247,236,217,.72); --cream-faint:rgba(247,236,217,.45);
+  --gold:#f0c464; --gold-bright:#ffd97a; --gold-soft:rgba(240,196,100,.35);
+  --coral:#ff8a5c; --rose:#e86a92; --teal:#2dd4bf;
+  --serif:'Iowan Old Style','Palatino Linotype',Palatino,'Book Antiqua',Georgia,'Times New Roman',serif;
+  --sans:ui-sans-serif,system-ui,-apple-system,'Segoe UI',Roboto,Helvetica,Arial,sans-serif;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{background:var(--night);color:var(--cream);font-family:var(--serif);line-height:1.65;
+  background-image:
+    radial-gradient(ellipse 120% 50% at 50% 112%,rgba(255,138,92,.13),transparent 60%),
+    radial-gradient(ellipse 90% 45% at 50% 108%,rgba(240,196,100,.10),transparent 55%),
+    radial-gradient(ellipse 90% 60% at 50% -10%,rgba(61,28,66,.55),transparent 70%)}
+h1,h2,h3{font-weight:600;line-height:1.15}
+a{color:var(--gold-bright)}
+.wrap{max-width:880px;margin:0 auto;padding:0 20px}
+
+.hero{position:relative;text-align:center;padding:70px 20px 30px}
+.kicker{font-family:var(--sans);font-size:.72rem;letter-spacing:.34em;text-transform:uppercase;color:var(--gold)}
+.hero h1{font-size:clamp(2.2rem,6vw,3.4rem);margin:.5rem 0 .3rem}
+.hero h1 em{color:var(--gold);font-style:italic}
+.hero .sub{font-family:var(--sans);font-size:.95rem;color:var(--cream-dim)}
+.hero .vibe{margin-top:1.1rem;font-style:italic;color:var(--gold-bright);font-size:clamp(1rem,2.2vw,1.15rem)}
+.avatar{font-size:3.2rem;line-height:1;margin-bottom:.4rem}
+
+section{padding:26px 0}
+.sec-head{display:flex;align-items:baseline;gap:14px;border-bottom:1px solid var(--gold-soft);padding-bottom:10px;margin-bottom:18px}
+.sec-head .num{font-family:var(--sans);font-size:.7rem;letter-spacing:.3em;text-transform:uppercase;color:var(--gold)}
+.sec-head h2{font-size:clamp(1.3rem,3.4vw,1.8rem)}
+.sec-head h2 em{color:var(--gold);font-style:italic}
+
+.card{background:rgba(21,11,34,.66);border:1px solid rgba(240,196,100,.18);border-radius:14px;padding:22px 24px;margin-bottom:16px}
+.card h3{color:var(--gold-bright);margin-bottom:.6rem;font-size:1.08rem}
+.card p{margin-bottom:.8rem;color:var(--cream-dim)}
+.card p:last-child{margin-bottom:0}
+.chords{font-family:var(--sans);font-size:.9rem;color:var(--gold-bright);letter-spacing:.06em;margin:.3rem 0 .8rem}
+.dl{display:flex;flex-wrap:wrap;gap:10px;margin-top:12px}
+.dl a{font-family:var(--sans);font-size:.78rem;letter-spacing:.06em;text-decoration:none;color:var(--cream-dim);
+  border:1px solid var(--gold-soft);border-radius:999px;padding:.45em 1.1em;background:rgba(21,11,34,.6)}
+.dl a:hover{border-color:var(--gold-bright);color:var(--gold-bright)}
+
+.yt-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:16px}
+.yt{position:relative;aspect-ratio:16/9;border-radius:12px;overflow:hidden;border:1px solid rgba(240,196,100,.18);cursor:pointer;background:#000}
+.yt img{width:100%;height:100%;object-fit:cover;opacity:.85}
+.yt .play{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font-size:3rem;
+  text-shadow:0 2px 14px rgba(0,0,0,.8);transition:transform .15s}
+.yt:hover .play{transform:scale(1.15)}
+.yt .cap{position:absolute;left:0;right:0;bottom:0;padding:24px 12px 8px;font-family:var(--sans);font-size:.75rem;
+  color:var(--cream);background:linear-gradient(transparent,rgba(0,0,0,.85))}
+.yt iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
+
+.linkrow{display:flex;flex-wrap:wrap;gap:10px;justify-content:center;margin:18px 0}
+.linkrow a{font-family:var(--sans);font-size:.78rem;letter-spacing:.06em;text-decoration:none;color:var(--cream-dim);
+  border:1px solid var(--gold-soft);border-radius:999px;padding:.5em 1.2em;background:rgba(21,11,34,.6)}
+.linkrow a:hover{border-color:var(--gold-bright);color:var(--gold-bright)}
+.dedication{font-style:italic;color:var(--gold-bright);text-align:center;margin:.6rem 0}
+.back{font-family:var(--sans);font-size:.8rem;color:var(--cream-faint);text-decoration:none}
+.back:hover{color:var(--gold-bright)}
+.buildyour{border:1px dashed var(--gold-soft);border-radius:14px;padding:22px 24px;text-align:center;background:rgba(21,11,34,.4)}
+.duo-cross{border:1px solid rgba(232,106,146,.35);border-radius:14px;padding:16px 20px;text-align:center;background:rgba(61,28,66,.35);margin-bottom:16px}
+.duo-cross a{font-size:1rem}
+footer{padding:36px 0 46px;text-align:center;font-family:var(--sans);font-size:.75rem;color:var(--cream-faint)}
+footer a{color:var(--cream-dim)}
+</style>
+</head>
+<body>
+
+<div class="hero">
+  <div class="avatar">🎙️🌙</div>
+  <p class="kicker">Open Source Orchestra · Node 011 · full profile</p>
+  <h1>Clementine <em>Esquivel</em></h1>
+  <p class="sub">voz, palmas, percu y bombo · one half of Dúo Dø デュオ・ドー · Buenos Aires → Japan</p>
+  <p class="vibe">"Cantar en Dúo Dø es como un ritual; es el espacio donde mi voz deja de ser mía para volverse un puente hacia los demás." — Clementine, in her own words</p>
+  <div class="linkrow">
+    <a href="https://duodomusica.com">duodomusica.com</a>
+    <a href="https://www.youtube.com/@duodomusica">YouTube · @duodomusica</a>
+    <a href="https://www.instagram.com/duodomusica/">Instagram</a>
+    <a href="https://x.com/duodomusica">X · @duodomusica</a>
+    <a href="https://duodomusica.bandcamp.com">Bandcamp</a>
+    <a href="https://www.sound.xyz/duodomusica">sound.xyz</a>
+    <a href="https://warpcast.com/duodo">Farcaster · @duodo</a>
+    <a href="/nodes/santiago-reos/">the other half → Node 010 🎸</a>
+    <a href="/nodes/">← all nodes</a>
+  </div>
+</div>
+
+<div class="wrap">
+
+<section id="story">
+  <div class="sec-head"><span class="num">The story</span><h2>Two ones, <em>side by side</em> 👥</h2></div>
+  <div class="card">
+    <h3>011 — the pair</h3>
+    <p>Look at the number: <b>011</b> — two ones standing next to each other. A duo, written in digits. The first nine chairs closed the orchestra's first circle; the second circle opens with a pair — because after the root returns (<a href="/nodes/santiago-reos/">Node 010</a>), the very next thing music learns is <b>harmony</b>: a second voice that chooses to stand beside the first.</p>
+    <p>Her own words say it better than any number: singing as a ritual, a voice that stops being hers and becomes <b>a bridge to everyone else</b>. That is what an orchestra is.</p>
+    <p class="dedication">One and one, side by side — not two. A duo. 🌙</p>
+  </div>
+  <div class="card">
+    <h3>The voice 🎙️</h3>
+    <p><b>Clementine Esquivel</b> — singer, percussionist, composer, producer and educator from Buenos Aires, more than a decade in both the professional circuit and the academic field <span style="font-size:.85em;color:var(--cream-faint)">(per the <a href="https://infinitegarden.art/">Infinite Garden Artist Cohort</a> exhibition, where Dúo Dø's work was shown)</span>. On the duo's records her credit sings its whole rhythm section in one line: <i>"Voz, palmas, percu y bombo — Clementine Esquivel"</i> <span style="font-size:.85em;color:var(--cream-faint)">(from <a href="https://duodomusica.bandcamp.com/track/todo-cambia-ft-hiroe-morikawa">Todo Cambia ft. Hiroe Morikawa</a>, recorded in Kobe, Japan)</span> — voice, handclaps, percussion and the bombo, the deep Argentine drum.</p>
+  </div>
+</section>
+
+<section id="duo">
+  <div class="sec-head"><span class="num">One duo, two sovereign homes</span><h2>Dúo <em>Dø</em> デュオ・ドー 🌙</h2></div>
+  <div class="duo-cross">
+    <p style="color:var(--cream-dim);margin-bottom:.4rem">Two chairs, one chord — like a voice and the guitar underneath it.</p>
+    <p><a href="/nodes/santiago-reos/"><b>The other half of Dúo Dø → Node 010 · Santiago Reos 🎸⛩️</b></a></p>
+  </div>
+  <div class="card">
+    <h3>Genre-free and in motion</h3>
+    <p>Born in <b>Buenos Aires, 2015</b> — in their words, more than a band: "un espacio de experimentación constante entre dos compañeros de vida" — a constant experiment between two companions in life <span style="font-size:.85em;color:var(--cream-faint)">(their words, from <a href="https://duodomusica.com">duodomusica.com</a>)</span>. Argentine roots in dialogue with Japan: <i>Todo Cambia</i> with koto master Hiroe Morikawa, the lo-fi samurai single <i>Torii</i>, and now a life lived on the road between the two worlds. Releases include <b>Yama</b> (ft. Dig.Dug, 2026), <b>Piano Works 1</b> (EP, 2025) and <b>Nostalgia</b> (2025).</p>
+    <p><b>Japan Tour 2026:</b> September 19 → December 15 — 15 confirmed shows across Tokyo, Kobuchizawa, Kesennuma, Kawamata (Cosquín Japón), Osaka and Kyoto, plus a masterclass at the <b>Osaka College of Music</b>.</p>
+  </div>
+  <div class="card">
+    <h3>The Ethereum thread 🌺</h3>
+    <p class="chords">Devconnect Buenos Aires → SongCamp Latam → Kismet Casa, Rome → the Infinite Garden</p>
+    <p>In 2025 Dúo Dø was invited to <b>lead the SongCamp Challenge Latam</b> — three artists, one week, one question: what is Latin American identity? The EP was <b>presented on The Creator Economy stage during Devconnect Argentina</b> <span style="font-size:.85em;color:var(--cream-faint)">(their own site's telling — the same Devconnect Buenos Aires where the orchestra's Music Space lived at La Rural, Nov 2025)</span>.</p>
+    <p>In 2026 they were artists-in-residence at <b>Kismet Casa during FarCon Rome</b>, and the residency became a film: <b>Mi Amor Por Ti (ft. Matt Lee)</b> — "some songs are written; ours was lived within a community." In its final credits, among the Executive Producers who made it real, one name the orchestra knows well: <b>Shaka</b> 🌺 <span style="font-size:.85em;color:var(--cream-faint)">(verified in the film's published credits)</span>. Their work has also been shown with the <a href="https://infinitegarden.art/">Infinite Garden Artist Cohort</a> — the Ethereum Foundation's own garden of artists.</p>
+    <div class="dl">
+      <a href="https://www.sound.xyz/duodomusica">sound.xyz · onchain songs</a>
+      <a href="https://objkt.com/@duodomusica">objkt · art</a>
+      <a href="https://drip.haus/duodomusica/store">drip.haus · store</a>
+      <a href="https://duodomusica.bandcamp.com">bandcamp · the records</a>
+    </div>
+  </div>
+  <div class="card">
+    <h3>Kindred movement 🇦🇷🌐</h3>
+    <p>The Argentina Dúo Dø comes from is also home to <a href="https://www.musicaw3.com/">MUSICA W3</a> — an international community of <b>150+ independent web3 artists</b> and 2k+ collectors, born from Argentina, whose free education program is literally titled <i>"Hacia la Soberanía de los Creadores Onchain"</i> — toward the sovereignty of onchain creators. That is the orchestra's <a href="/nodes/node-spec.md">node gospel</a>, sung in Spanish. Same song, kindred circle: <a href="/nodes/musica-w3/"><b>Node 013 · MUSICA W3 — the orchestra's first collective chair</b></a>.</p>
+  </div>
+</section>
+
+<section id="stages">
+  <div class="sec-head"><span class="num">Stages &amp; stories</span><h2>The <em>journey</em> 📺</h2></div>
+  <div class="yt-grid">
+    <div class="yt" data-id="X02aZRssR_M"><img loading="lazy" src="https://i.ytimg.com/vi/X02aZRssR_M/hqdefault.jpg" alt="Mi Amor Por Ti ft Matt Lee — Dúo Dø, the Kismet Casa film"><div class="play">▶️</div><div class="cap">MI AMOR POR TI ft. MATT LEE · the Rome film — Shaka in the credits 🌺</div></div>
+    <div class="yt" data-id="iNKvopxMUn8"><img loading="lazy" src="https://i.ytimg.com/vi/iNKvopxMUn8/hqdefault.jpg" alt="DUO DØ - We Own the Timeline — documentary by myco wtf"><div class="play">▶️</div><div class="cap">WE OWN THE TIMELINE · the documentary, made by their top supporter 🎬</div></div>
+    <div class="yt" data-id="RePuXx-tOH4"><img loading="lazy" src="https://i.ytimg.com/vi/RePuXx-tOH4/hqdefault.jpg" alt="めちゃヤバイ! — Dúo Dø"><div class="play">▶️</div><div class="cap">めちゃヤバイ! · the Japan side 🇯🇵</div></div>
+  </div>
+</section>
+
+<section id="invite">
+  <div class="card">
+    <h3>The chair is held 🎙️</h3>
+    <p><b>Clementine — this chair is held for you, and the bombo travels free.</b> From The Creator Economy stage at Devconnect Buenos Aires to the Music Space at <b>Devcon 8, Mumbai, Nov 3–6 2026</b> (<a href="https://forum.devcon.org/t/open-source-orchestra-music-space-at-devcon-8-mumbai/8576">DIP #8576</a>) is one road, and the orchestra would love the voice that becomes a bridge on it — between Japan tour dates, in spirit, or however the camino bends. Nothing is asked; everything is offered.</p>
+    <p class="dedication">"You don't join the Open Source Orchestra. You notice you were always in it." 🌺</p>
+  </div>
+</section>
+
+<section id="consent" style="padding-top:0">
+  <div class="buildyour" style="border-color:var(--gold-bright)">
+    <h3 style="color:var(--gold-bright);margin-bottom:.6rem">🌺 The consent law of this page</h3>
+    <p style="color:var(--gold-bright);font-style:italic;font-size:1.05rem;margin-bottom:.8rem">This is YOUR node, Node 011 — one word and we change, add, or remove anything. The artist signs the truth.</p>
+    <p style="color:var(--cream-dim);font-size:.9rem">Everything above comes from what Dúo Dø publishes publicly (duodomusica.com, their channels, published credits). Chair numbers 010/011 follow the order your own site presents you — say the word and we swap. Nothing more will ever appear here without your blessing, item by item.</p>
+  </div>
+</section>
+
+<section id="build-your-node">
+  <div class="buildyour">
+    <h3 style="color:var(--gold-bright);margin-bottom:.6rem">🎻 Build your own node</h3>
+    <p style="color:var(--cream-dim);margin-bottom:.8rem">A <b>profile node</b> is a home its owner controls. Your work, your videos, your words. You choose what's open-sourced, item by item; what you don't bless stays yours. No feed, no ads, no gate.</p>
+    <p style="font-family:var(--sans);font-size:.85rem"><a href="/nodes/node-spec.md">read the node spec 📄</a> &nbsp;·&nbsp; <a href="mailto:contribute@opensourceorchestra.org">contribute@opensourceorchestra.org 📮</a> &nbsp;·&nbsp; <a href="https://github.com/shakaleikaumaka/oso-storytelling">fork the format</a></p>
+  </div>
+</section>
+
+<p style="text-align:center;margin:10px 0 30px"><a class="back" href="/nodes/">← back to the nodes</a> &nbsp;&nbsp; <a class="back" href="/">← the orchestra</a></p>
+
+</div>
+
+<footer>
+  <div class="wrap">
+    Node 011 · Open Source Orchestra · Devcon 8 Mumbai, Nov 3–6 2026 · CC0, blessed item by item 🌺 · <a href="/nodes/clementine-esquivel/node.json">node.json</a>
+  </div>
+</footer>
+
+<script>
+document.querySelectorAll('.yt').forEach(function(el){
+  el.addEventListener('click', function(){
+    var id = el.getAttribute('data-id');
+    var f = document.createElement('iframe');
+    f.src = 'https://www.youtube-nocookie.com/embed/' + id + '?autoplay=1';
+    f.allow = 'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share';
+    f.allowFullscreen = true;
+    el.innerHTML = ''; el.appendChild(f);
+  }, { once:true });
+});
+</script>
+<script src="https://shakaleikaumaka.com/assets/bl-player.js?v=7.7"></script>
+</body>
+</html>

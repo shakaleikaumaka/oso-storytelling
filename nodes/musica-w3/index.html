@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Node 013 · MUSICA W3 🇦🇷🌐 — Open Source Orchestra</title>
+<meta name="description" content="Node 013 — MUSICA W3, the orchestra's first COLLECTIVE chair: 150+ independent web3 artists born from Argentina. Hacia la soberanía de los creadores onchain — the node gospel, in Spanish.">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<style>
+:root{
+  --night:#0b0612; --deep:#150b22; --violet:#2a1740; --plum:#3d1c42;
+  --cream:#f7ecd9; --cream-dim:rgba(247,236,217,.72); --cream-faint:rgba(247,236,217,.45);
+  --gold:#f0c464; --gold-bright:#ffd97a; --gold-soft:rgba(240,196,100,.35);
+  --coral:#ff8a5c; --rose:#e86a92; --teal:#2dd4bf;
+  --serif:'Iowan Old Style','Palatino Linotype',Palatino,'Book Antiqua',Georgia,'Times New Roman',serif;
+  --sans:ui-sans-serif,system-ui,-apple-system,'Segoe UI',Roboto,Helvetica,Arial,sans-serif;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{background:var(--night);color:var(--cream);font-family:var(--serif);line-height:1.65;
+  background-image:
+    radial-gradient(ellipse 120% 50% at 50% 112%,rgba(255,138,92,.13),transparent 60%),
+    radial-gradient(ellipse 90% 45% at 50% 108%,rgba(240,196,100,.10),transparent 55%),
+    radial-gradient(ellipse 90% 60% at 50% -10%,rgba(61,28,66,.55),transparent 70%)}
+h1,h2,h3{font-weight:600;line-height:1.15}
+a{color:var(--gold-bright)}
+.wrap{max-width:880px;margin:0 auto;padding:0 20px}
+
+.hero{position:relative;text-align:center;padding:70px 20px 30px}
+.kicker{font-family:var(--sans);font-size:.72rem;letter-spacing:.34em;text-transform:uppercase;color:var(--gold)}
+.hero h1{font-size:clamp(2.2rem,6vw,3.4rem);margin:.5rem 0 .3rem}
+.hero h1 em{color:var(--gold);font-style:italic}
+.hero .sub{font-family:var(--sans);font-size:.95rem;color:var(--cream-dim)}
+.hero .vibe{margin-top:1.1rem;font-style:italic;color:var(--gold-bright);font-size:clamp(1rem,2.2vw,1.15rem)}
+.avatar{font-size:3.2rem;line-height:1;margin-bottom:.4rem}
+
+section{padding:26px 0}
+.sec-head{display:flex;align-items:baseline;gap:14px;border-bottom:1px solid var(--gold-soft);padding-bottom:10px;margin-bottom:18px}
+.sec-head .num{font-family:var(--sans);font-size:.7rem;letter-spacing:.3em;text-transform:uppercase;color:var(--gold)}
+.sec-head h2{font-size:clamp(1.3rem,3.4vw,1.8rem)}
+.sec-head h2 em{color:var(--gold);font-style:italic}
+
+.card{background:rgba(21,11,34,.66);border:1px solid rgba(240,196,100,.18);border-radius:14px;padding:22px 24px;margin-bottom:16px}
+.card h3{color:var(--gold-bright);margin-bottom:.6rem;font-size:1.08rem}
+.card p{margin-bottom:.8rem;color:var(--cream-dim)}
+.card p:last-child{margin-bottom:0}
+.chords{font-family:var(--sans);font-size:.9rem;color:var(--gold-bright);letter-spacing:.06em;margin:.3rem 0 .8rem}
+.dl{display:flex;flex-wrap:wrap;gap:10px;margin-top:12px}
+.dl a{font-family:var(--sans);font-size:.78rem;letter-spacing:.06em;text-decoration:none;color:var(--cream-dim);
+  border:1px solid var(--gold-soft);border-radius:999px;padding:.45em 1.1em;background:rgba(21,11,34,.6)}
+.dl a:hover{border-color:var(--gold-bright);color:var(--gold-bright)}
+
+.stats{display:flex;flex-wrap:wrap;gap:14px;justify-content:center;margin:8px 0 16px}
+.stat{border:1px solid var(--gold-soft);border-radius:14px;padding:16px 26px;text-align:center;background:rgba(21,11,34,.55);min-width:140px}
+.stat .n{font-size:1.9rem;color:var(--gold-bright)}
+.stat .l{font-family:var(--sans);font-size:.72rem;letter-spacing:.18em;text-transform:uppercase;color:var(--cream-faint)}
+
+.linkrow{display:flex;flex-wrap:wrap;gap:10px;justify-content:center;margin:18px 0}
+.linkrow a{font-family:var(--sans);font-size:.78rem;letter-spacing:.06em;text-decoration:none;color:var(--cream-dim);
+  border:1px solid var(--gold-soft);border-radius:999px;padding:.5em 1.2em;background:rgba(21,11,34,.6)}
+.linkrow a:hover{border-color:var(--gold-bright);color:var(--gold-bright)}
+.dedication{font-style:italic;color:var(--gold-bright);text-align:center;margin:.6rem 0}
+.back{font-family:var(--sans);font-size:.8rem;color:var(--cream-faint);text-decoration:none}
+.back:hover{color:var(--gold-bright)}
+.buildyour{border:1px dashed var(--gold-soft);border-radius:14px;padding:22px 24px;text-align:center;background:rgba(21,11,34,.4)}
+footer{padding:36px 0 46px;text-align:center;font-family:var(--sans);font-size:.75rem;color:var(--cream-faint)}
+footer a{color:var(--cream-dim)}
+</style>
+</head>
+<body>
+
+<div class="hero">
+  <div class="avatar">🇦🇷🌐</div>
+  <p class="kicker">Open Source Orchestra · Node 013 · the first collective chair</p>
+  <h1>MUSICA <em>W3</em></h1>
+  <p class="sub">comunidad internacional de artistas independientes · born from Argentina · 150+ artistas, one voice</p>
+  <p class="vibe">"Hacia la soberanía de los creadores onchain." — toward the sovereignty of onchain creators: their course title, and the orchestra's whole gospel</p>
+  <div class="linkrow">
+    <a href="https://www.musicaw3.com/">musicaw3.com</a>
+    <a href="https://x.com/Musica_W3">X · @Musica_W3</a>
+    <a href="https://www.instagram.com/musica_w3/">Instagram</a>
+    <a href="https://warpcast.com/musicaw3">Farcaster · @musicaw3</a>
+    <a href="https://www.youtube.com/channel/UCVCLZ0QHA4HksKi42VqeElg">YouTube</a>
+    <a href="https://drip.haus/musicaw3/set/7418cdbc-e982-4426-bd33-c086bf4acbac">drip.haus</a>
+    <a href="/nodes/">← all nodes</a>
+  </div>
+</div>
+
+<div class="wrap">
+
+<section id="story">
+  <div class="sec-head"><span class="num">La historia · the story</span><h2>Una silla para <em>toda una comunidad</em> 🪑</h2></div>
+  <div class="card">
+    <h3>013 — the builder's number, and a whole community in one chair</h3>
+    <p><b>This node is a first:</b> every chair before it belongs to one person. Node 013 belongs to a <b>collective</b> — because sometimes the voice that joins the orchestra is a hundred and fifty voices that already learned to sing as one. The digital root of 13 is <b>4</b>: the builder's number, four corners, foundations — right for the node that turns "a chair for an artist" into "a chair for a movement." <span style="font-size:.85em;color:var(--cream-faint)">(And the orchestra smiles at the echo: the founding songbook of Node 001 held exactly 13 songs.)</span></p>
+  </div>
+  <div class="card">
+    <h3>Quiénes son · who they are</h3>
+    <p>In their own words: <i>"MusicaW3 es una comunidad internacional de artistas independientes y un club social dedicado al desarrollo de carreras de artistas independientes de distintas partes del mundo"</i> — an international community of independent artists, focused on creating opportunities and strong bonds between everyone who believes <b>collective construction is the main engine</b> <span style="font-size:.85em;color:var(--cream-faint)">(from <a href="https://www.musicaw3.com/">musicaw3.com</a>)</span>. Born from Argentina; founded by <b>0xGonzalo, NENX and Sol Siete</b> (their site's FOUNDERS section).</p>
+    <div class="stats">
+      <div class="stat"><div class="n">+150</div><div class="l">artistas</div></div>
+      <div class="stat"><div class="n">+2k</div><div class="l">collectors</div></div>
+      <div class="stat"><div class="n">+2k</div><div class="l">comunidad</div></div>
+    </div>
+    <p>What they do: monthly <b>collective drops</b> pairing established web3 artists with new talents; <b>WOW! Festival de Arte y Tecnología</b> — live music, interactive installations, talks, and "cultura al servicio de la comunidad" — culture in service of community; and their own tools for distributing digital art. In partnership with <b>Fundación Blockchain</b>, <b>Oasis</b> and <b>Arbitrum</b>.</p>
+  </div>
+  <div class="card">
+    <h3>La escuela de la soberanía 🎓</h3>
+    <p class="chords">100% gratuito · principiantes → avanzados · toward the sovereignty of onchain creators</p>
+    <p>Their education program is free for everyone and titled like a manifesto: <b>"Hacia la Soberanía de los Creadores Onchain."</b> That is the same song the orchestra's <a href="/nodes/node-spec.md">node spec</a> sings — the artist owns the work, the data, the door — in Spanish, taught to hundreds, for free.</p>
+    <div class="dl">
+      <a href="https://www.youtube.com/watch?v=apOk-QepQVY&amp;list=PL8aLO5KNFLv2O1cS7OjPOt9YDN7drf1jf">🎓 Ir al curso · the full course playlist</a>
+      <a href="https://www.musicaw3.com/">🌐 musicaw3.com</a>
+    </div>
+  </div>
+</section>
+
+<section id="invite">
+  <div class="card">
+    <h3>La silla está reservada 🇦🇷 — for all of you</h3>
+    <p><b>MusicaW3 — esta silla es de ustedes.</b> This chair holds 150 artists — <b>and each of you is a future node of your own</b>. The Music Space at <b>Devcon 8, Mumbai, Nov 3–6 2026</b> (<a href="https://forum.devcon.org/t/open-source-orchestra-music-space-at-devcon-8-mumbai/8576">DIP #8576</a>) is the biggest circle the orchestra has drawn, and a community that already fills festivals with "cultura al servicio de la comunidad" belongs inside it. Come as a delegation, come as a drop, come as one song carried across the ocean — nothing is asked, everything is offered. Two of the roads between us are already walked: Argentina gave the orchestra its Devconnect Music Space, and gave the world <a href="/nodes/santiago-reos/">Dúo Dø (Nodes 010 &amp; 011)</a>.</p>
+    <p class="dedication">"You don't join the Open Source Orchestra. You notice you were always in it." — y eso vale para comunidades enteras. 🌺</p>
+  </div>
+</section>
+
+<section id="consent" style="padding-top:0">
+  <div class="buildyour" style="border-color:var(--gold-bright)">
+    <h3 style="color:var(--gold-bright);margin-bottom:.6rem">🌺 The consent law of this page · la ley de consentimiento</h3>
+    <p style="color:var(--gold-bright);font-style:italic;font-size:1.05rem;margin-bottom:.8rem">This is YOUR node, Node 013 — 0xGonzalo, NENX, Sol Siete, and the whole community: one word and we change, add, or remove anything. The collective signs the truth.</p>
+    <p style="color:var(--cream-dim);font-size:.9rem">Everything above is quoted or translated from what MusicaW3 publishes on musicaw3.com. Nothing more will ever appear here without your blessing, item by item.</p>
+  </div>
+</section>
+
+<section id="build-your-node">
+  <div class="buildyour">
+    <h3 style="color:var(--gold-bright);margin-bottom:.6rem">🎻 Build your own node — los 150 son bienvenidos</h3>
+    <p style="color:var(--cream-dim);margin-bottom:.8rem">A <b>profile node</b> is a home its owner controls — and with Node 013, a node can now be a <b>person or a collective</b>. Every artist of MusicaW3 is invited to a chair of their own: your work, your videos, your words, blessed item by item. No feed, no ads, no gate.</p>
+    <p style="font-family:var(--sans);font-size:.85rem"><a href="/nodes/node-spec.md">read the node spec 📄</a> &nbsp;·&nbsp; <a href="mailto:contribute@opensourceorchestra.org">contribute@opensourceorchestra.org 📮</a> &nbsp;·&nbsp; <a href="https://github.com/shakaleikaumaka/oso-storytelling">fork the format</a></p>
+  </div>
+</section>
+
+<p style="text-align:center;margin:10px 0 30px"><a class="back" href="/nodes/">← back to the nodes</a> &nbsp;&nbsp; <a class="back" href="/">← the orchestra</a></p>
+
+</div>
+
+<footer>
+  <div class="wrap">
+    Node 013 · Open Source Orchestra · Devcon 8 Mumbai, Nov 3–6 2026 · CC0, blessed item by item 🌺 · <a href="/nodes/musica-w3/node.json">node.json</a>
+  </div>
+</footer>
+
+<script src="https://shakaleikaumaka.com/assets/bl-player.js?v=7.7"></script>
+</body>
+</html>

@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Node 012 · Tomo 🫂🌱 — Open Source Orchestra</title>
+<meta name="description" content="Node 012 — Tomo, the Devcon team's inward-circle visionary, designer of the Infinite Garden's world. Twelve chairs: the chromatic scale is complete. Shaka's haiku lives on this page.">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<style>
+:root{
+  --night:#0b0612; --deep:#150b22; --violet:#2a1740; --plum:#3d1c42;
+  --cream:#f7ecd9; --cream-dim:rgba(247,236,217,.72); --cream-faint:rgba(247,236,217,.45);
+  --gold:#f0c464; --gold-bright:#ffd97a; --gold-soft:rgba(240,196,100,.35);
+  --coral:#ff8a5c; --rose:#e86a92; --teal:#2dd4bf;
+  --serif:'Iowan Old Style','Palatino Linotype',Palatino,'Book Antiqua',Georgia,'Times New Roman',serif;
+  --sans:ui-sans-serif,system-ui,-apple-system,'Segoe UI',Roboto,Helvetica,Arial,sans-serif;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{background:var(--night);color:var(--cream);font-family:var(--serif);line-height:1.65;
+  background-image:
+    radial-gradient(ellipse 120% 50% at 50% 112%,rgba(255,138,92,.13),transparent 60%),
+    radial-gradient(ellipse 90% 45% at 50% 108%,rgba(240,196,100,.10),transparent 55%),
+    radial-gradient(ellipse 90% 60% at 50% -10%,rgba(61,28,66,.55),transparent 70%)}
+h1,h2,h3{font-weight:600;line-height:1.15}
+a{color:var(--gold-bright)}
+.wrap{max-width:880px;margin:0 auto;padding:0 20px}
+
+.hero{position:relative;text-align:center;padding:70px 20px 30px}
+.kicker{font-family:var(--sans);font-size:.72rem;letter-spacing:.34em;text-transform:uppercase;color:var(--gold)}
+.hero h1{font-size:clamp(2.2rem,6vw,3.4rem);margin:.5rem 0 .3rem}
+.hero h1 em{color:var(--gold);font-style:italic}
+.hero .sub{font-family:var(--sans);font-size:.95rem;color:var(--cream-dim)}
+.hero .vibe{margin-top:1.1rem;font-style:italic;color:var(--gold-bright);font-size:clamp(1rem,2.2vw,1.15rem)}
+.avatar{font-size:3.2rem;line-height:1;margin-bottom:.4rem}
+
+section{padding:26px 0}
+.sec-head{display:flex;align-items:baseline;gap:14px;border-bottom:1px solid var(--gold-soft);padding-bottom:10px;margin-bottom:18px}
+.sec-head .num{font-family:var(--sans);font-size:.7rem;letter-spacing:.3em;text-transform:uppercase;color:var(--gold)}
+.sec-head h2{font-size:clamp(1.3rem,3.4vw,1.8rem)}
+.sec-head h2 em{color:var(--gold);font-style:italic}
+
+.card{background:rgba(21,11,34,.66);border:1px solid rgba(240,196,100,.18);border-radius:14px;padding:22px 24px;margin-bottom:16px}
+.card h3{color:var(--gold-bright);margin-bottom:.6rem;font-size:1.08rem}
+.card p{margin-bottom:.8rem;color:var(--cream-dim)}
+.card p:last-child{margin-bottom:0}
+.chords{font-family:var(--sans);font-size:.9rem;color:var(--gold-bright);letter-spacing:.06em;margin:.3rem 0 .8rem}
+.dl{display:flex;flex-wrap:wrap;gap:10px;margin-top:12px}
+.dl a{font-family:var(--sans);font-size:.78rem;letter-spacing:.06em;text-decoration:none;color:var(--cream-dim);
+  border:1px solid var(--gold-soft);border-radius:999px;padding:.45em 1.1em;background:rgba(21,11,34,.6)}
+.dl a:hover{border-color:var(--gold-bright);color:var(--gold-bright)}
+
+.haiku{border:1px solid var(--gold-soft);border-radius:14px;padding:34px 24px;text-align:center;
+  background:linear-gradient(160deg,rgba(61,28,66,.5),rgba(21,11,34,.7));margin-bottom:16px}
+.haiku .line{font-size:clamp(1.25rem,3.4vw,1.7rem);color:var(--gold-bright);font-style:italic;line-height:1.9}
+.haiku .for{font-family:var(--sans);font-size:.75rem;letter-spacing:.2em;text-transform:uppercase;color:var(--cream-faint);margin-top:14px}
+
+.yt-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:16px}
+.yt{position:relative;aspect-ratio:16/9;border-radius:12px;overflow:hidden;border:1px solid rgba(240,196,100,.18);cursor:pointer;background:#000}
+.yt img{width:100%;height:100%;object-fit:cover;opacity:.85}
+.yt .play{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font-size:3rem;
+  text-shadow:0 2px 14px rgba(0,0,0,.8);transition:transform .15s}
+.yt:hover .play{transform:scale(1.15)}
+.yt .cap{position:absolute;left:0;right:0;bottom:0;padding:24px 12px 8px;font-family:var(--sans);font-size:.75rem;
+  color:var(--cream);background:linear-gradient(transparent,rgba(0,0,0,.85))}
+.yt iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
+
+.linkrow{display:flex;flex-wrap:wrap;gap:10px;justify-content:center;margin:18px 0}
+.linkrow a{font-family:var(--sans);font-size:.78rem;letter-spacing:.06em;text-decoration:none;color:var(--cream-dim);
+  border:1px solid var(--gold-soft);border-radius:999px;padding:.5em 1.2em;background:rgba(21,11,34,.6)}
+.linkrow a:hover{border-color:var(--gold-bright);color:var(--gold-bright)}
+.dedication{font-style:italic;color:var(--gold-bright);text-align:center;margin:.6rem 0}
+.back{font-family:var(--sans);font-size:.8rem;color:var(--cream-faint);text-decoration:none}
+.back:hover{color:var(--gold-bright)}
+.buildyour{border:1px dashed var(--gold-soft);border-radius:14px;padding:22px 24px;text-align:center;background:rgba(21,11,34,.4)}
+footer{padding:36px 0 46px;text-align:center;font-family:var(--sans);font-size:.75rem;color:var(--cream-faint)}
+footer a{color:var(--cream-dim)}
+</style>
+</head>
+<body>
+
+<div class="hero">
+  <div class="avatar">🫂🌱</div>
+  <p class="kicker">Open Source Orchestra · Node 012 · full profile</p>
+  <h1>To<em>mo</em></h1>
+  <p class="sub">the inward-circle visionary · Devcon team · designer of the Infinite Garden's world</p>
+  <p class="vibe">"When did a circle of strangers first sing back at you?" — the question the orchestra keeps warm for him</p>
+  <div class="linkrow">
+    <a href="https://app.devcon.org/speakers/R3UWTJ">Devcon · speaker page</a>
+    <a href="https://archive.devcon.org/">Devcon Archive</a>
+    <a href="https://devcon.org">devcon.org</a>
+    <a href="/trust/">the Circle of Trust</a>
+    <a href="/nodes/">← all nodes</a>
+  </div>
+</div>
+
+<div class="wrap">
+
+<section id="haiku-sec">
+  <div class="sec-head"><span class="num">The gift</span><h2>A haiku, written <em>for him</em> 🌸</h2></div>
+  <div class="haiku">
+    <div class="line">Open source music,<br>every voice is a node,<br>sounds of consensus.</div>
+    <div class="for">— Shaka's haiku, written for Aya &amp; Tomo · July 2026</div>
+  </div>
+  <div class="card">
+    <p>Some nodes get a story first. This one gets a poem — because the poem came first. When Shaka wanted to tell the Ethereum Foundation what the orchestra <i>is</i>, he didn't write a deck. He wrote seventeen syllables for two people: <b>Aya Miyaguchi and Tomo</b>. The whole nodes project you are reading right now is that middle line, unfolded.</p>
+  </div>
+</section>
+
+<section id="story">
+  <div class="sec-head"><span class="num">The story</span><h2>The chromatic scale, <em>complete</em> 🎹</h2></div>
+  <div class="card">
+    <h3>012 — twelve notes, the full octave of chairs</h3>
+    <p>Western music has exactly <b>twelve notes</b> before the scale comes home. With Node 012, the orchestra's chairs reach their first full chromatic octave — every semitone seated, nothing skipped. And the digital root of 12 is <b>3</b>: the first seed number of the <a href="/trust/">3·6·9 vortex</a> returning at a higher turn. New circle, same trinity.</p>
+    <p>It is right that the twelfth chair belongs to a designer — the person whose craft is making the whole feel like one thing.</p>
+    <p class="dedication">Twelve chairs. One octave. The scale is whole — and ready to begin again. 🌀</p>
+  </div>
+  <div class="card">
+    <h3>The gardener of the Infinite Garden 🌱</h3>
+    <p>The public record knows him as <b>Tomo Saito</b> — "a designer at the Ethereum Foundation. Creating the world of the Infinite Garden and more!" <span style="font-size:.85em;color:var(--cream-faint)">(his own bio on the <a href="https://app.devcon.org/speakers/R3UWTJ">Devcon speaker page</a>)</span>. For years his name has run through the <a href="https://archive.devcon.org/">Devcon Archive</a>'s credits as <b>Creative Direction</b> — the look and feel of Ethereum's biggest gathering, the Infinite Garden made visible. At Devcon SEA he told that whole story from the stage: <i>Ethereum Culture Expanding in the Infinite Garden</i>.</p>
+    <p style="font-size:.9em;color:var(--cream-faint)">(The same archive credits also carry a music line — "Music: Tomo aka MONKEYBASE." If that's you too, Tomo, the orchestra grins and holds a second instrument ready. Honesty label: identification here follows public Devcon records; one word and we adjust anything.)</p>
+  </div>
+  <div class="card">
+    <h3>The Music Space embrace 🫂</h3>
+    <p>The orchestra's own books remember it simply: <b>"Tomo, Carlota &amp; the Devcon team embraced the Music Space as team activation"</b> — 2026, the year the circles got a home of their own on the road to Mumbai. The chair on this page was earned before it was built.</p>
+  </div>
+</section>
+
+<section id="featured">
+  <div class="sec-head"><span class="num">Featured composition</span><h2>The circle that faces <em>inward</em> 🔄</h2></div>
+  <div class="card">
+    <p class="chords">stage → circle · audience → voices · performance → consensus</p>
+    <p>Tomo's vision, as Shaka carries it: the Devcon music circle should face <b>inward</b> — no stage and crowd, just people looking at each other, singing. And there is a reason the vision points at India: in the orchestra's whole travelled life, <b>India is the only country where a circle spontaneously became hundreds of people singing together — and it happened twice</b> <span style="font-size:.85em;color:var(--cream-faint)">(as Shaka tells it)</span>. Devcon 8 is in Mumbai. The country that already knows how to do this is hosting the orchestra's biggest circle yet.</p>
+    <p>That is a composition the way <a href="/nodes/jake-hartnell/">trustgraphs</a> is a composition: not notes on a page, but a shape that makes music happen. The season of the <i>Every Voice a Node</i> conversations is planned to close on exactly this — the inward-facing circle, live at Devcon 8, audience singing, recorded, archived, forked — the way the haiku promised.</p>
+  </div>
+</section>
+
+<section id="stages">
+  <div class="sec-head"><span class="num">Stages &amp; stories</span><h2>The <em>journey</em> 📺</h2></div>
+  <div class="yt-grid">
+    <div class="yt" data-id="gFBfP7utPI0"><img loading="lazy" src="https://i.ytimg.com/vi/gFBfP7utPI0/hqdefault.jpg" alt="Ethereum Culture Expanding in the Infinite Garden by Tomo Saito — Devcon SEA"><div class="play">▶️</div><div class="cap">ETHEREUM CULTURE EXPANDING IN THE INFINITE GARDEN · Devcon SEA 🌱</div></div>
+  </div>
+</section>
+
+<section id="invite">
+  <div class="card">
+    <h3>The chair is held 🫂</h3>
+    <p><b>Tomo — this chair is held for you, facing inward like everything you asked for.</b> The Music Space at <b>Devcon 8, Mumbai, Nov 3–6 2026</b> (<a href="https://forum.devcon.org/t/open-source-orchestra-music-space-at-devcon-8-mumbai/8576">DIP #8576</a>) exists in no small part because the Devcon team embraced it — and the orchestra wants the person who dreamed the inward circle sitting inside it when it closes. As designer, as singer, as listener, as whatever you'd enjoy being. And the question is still warm: <i>when did a circle of strangers first sing back at you?</i></p>
+    <p class="dedication">"You don't join the Open Source Orchestra. You notice you were always in it." 🌺</p>
+  </div>
+</section>
+
+<section id="consent" style="padding-top:0">
+  <div class="buildyour" style="border-color:var(--gold-bright)">
+    <h3 style="color:var(--gold-bright);margin-bottom:.6rem">🌺 The consent law of this page</h3>
+    <p style="color:var(--gold-bright);font-style:italic;font-size:1.05rem;margin-bottom:.8rem">This is YOUR node, Node 012 — one word and we change, add, or remove anything. The artist signs the truth.</p>
+    <p style="color:var(--cream-dim);font-size:.9rem">Everything above comes from public Devcon records, and from the orchestra's own story as Shaka tells it. Nothing more will ever appear here without your blessing, item by item.</p>
+  </div>
+</section>
+
+<section id="build-your-node">
+  <div class="buildyour">
+    <h3 style="color:var(--gold-bright);margin-bottom:.6rem">🎻 Build your own node</h3>
+    <p style="color:var(--cream-dim);margin-bottom:.8rem">A <b>profile node</b> is a home its owner controls. Your work, your videos, your words. You choose what's open-sourced, item by item; what you don't bless stays yours. No feed, no ads, no gate.</p>
+    <p style="font-family:var(--sans);font-size:.85rem"><a href="/nodes/node-spec.md">read the node spec 📄</a> &nbsp;·&nbsp; <a href="mailto:contribute@opensourceorchestra.org">contribute@opensourceorchestra.org 📮</a> &nbsp;·&nbsp; <a href="https://github.com/shakaleikaumaka/oso-storytelling">fork the format</a></p>
+  </div>
+</section>
+
+<p style="text-align:center;margin:10px 0 30px"><a class="back" href="/nodes/">← back to the nodes</a> &nbsp;&nbsp; <a class="back" href="/">← the orchestra</a></p>
+
+</div>
+
+<footer>
+  <div class="wrap">
+    Node 012 · Open Source Orchestra · Devcon 8 Mumbai, Nov 3–6 2026 · CC0, blessed item by item 🌺 · <a href="/nodes/tomo/node.json">node.json</a>
+  </div>
+</footer>
+
+<script>
+document.querySelectorAll('.yt').forEach(function(el){
+  el.addEventListener('click', function(){
+    var id = el.getAttribute('data-id');
+    var f = document.createElement('iframe');
+    f.src = 'https://www.youtube-nocookie.com/embed/' + id + '?autoplay=1';
+    f.allow = 'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share';
+    f.allowFullscreen = true;
+    el.innerHTML = ''; el.appendChild(f);
+  }, { once:true });
+});
+</script>
+<script src="https://shakaleikaumaka.com/assets/bl-player.js?v=7.7"></script>
+</body>
+</html>

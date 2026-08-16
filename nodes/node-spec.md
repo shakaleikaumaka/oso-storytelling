@@ -19,6 +19,9 @@ The first full profile node is live: [Node 003 — Shaka Lei Kaumaka](/nodes/sha
    Anonymity is welcome. "No" is honored forever.
 4. **No feed, no ads, no gate.** Profiles connect through music, not metrics.
    The orchestra never monetizes the nodes.
+5. **A node can be a person or a collective.** [Node 013 — MUSICA W3](/nodes/musica-w3/)
+   is the first collective chair (`"kind": "collective"` in `node.json`; individual
+   nodes are `"kind": "artist"`, implicit when omitted).
 
 ## v0 — today (folder nodes)
 

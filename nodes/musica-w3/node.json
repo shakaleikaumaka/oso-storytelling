@@ -1,0 +1,27 @@
+{
+  "oso_node_spec": "0.1",
+  "node": "013",
+  "slug": "musica-w3",
+  "name": "MUSICA W3",
+  "emoji": "🇦🇷🌐",
+  "kind": "collective",
+  "kind_note": "the orchestra's FIRST collective chair — a node can be a person or a collective (spec evolution noted in node-spec.md)",
+  "tagline": "comunidad internacional de artistas independientes · born from Argentina · 150+ artistas, one voice",
+  "bio": "In their own words: 'MusicaW3 es una comunidad internacional de artistas independientes y un club social dedicado al desarrollo de carreras de artistas independientes de distintas partes del mundo.' 150+ artists, 2k+ collectors. Monthly collective drops; WOW! Festival de Arte y Tecnología ('cultura al servicio de la comunidad'); free education program 'Hacia la Soberanía de los Creadores Onchain.' Founders: 0xGonzalo, NENX, Sol Siete. In partnership with Fundación Blockchain, Oasis and Arbitrum.",
+  "quote": "Hacia la soberanía de los creadores onchain.",
+  "location": "Argentina → the world 🇦🇷🌐",
+  "links": [
+    { "label": "musicaw3.com", "url": "https://www.musicaw3.com/" },
+    { "label": "X · @Musica_W3", "url": "https://x.com/Musica_W3" },
+    { "label": "Instagram · @musica_w3", "url": "https://www.instagram.com/musica_w3/" },
+    { "label": "Farcaster · @musicaw3", "url": "https://warpcast.com/musicaw3" },
+    { "label": "YouTube", "url": "https://www.youtube.com/channel/UCVCLZ0QHA4HksKi42VqeElg" },
+    { "label": "Curso: Hacia la Soberanía de los Creadores Onchain", "url": "https://www.youtube.com/watch?v=apOk-QepQVY&list=PL8aLO5KNFLv2O1cS7OjPOt9YDN7drf1jf" },
+    { "label": "drip.haus", "url": "https://drip.haus/musicaw3/set/7418cdbc-e982-4426-bd33-c086bf4acbac" }
+  ],
+  "songs": [],
+  "songs_note": "Monthly collective drops live on their own channels. Nothing appears on this node without the community's blessing, item by item.",
+  "media": [],
+  "license_default": "CC0 for node content — anything not listed here stays with the collective and its artists",
+  "updated": "2026-08-16"
+}

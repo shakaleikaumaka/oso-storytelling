@@ -1,0 +1,25 @@
+{
+  "oso_node_spec": "0.1",
+  "node": "012",
+  "slug": "tomo",
+  "name": "Tomo",
+  "emoji": "🫂🌱",
+  "kind": "artist",
+  "tagline": "the inward-circle visionary · Devcon team · designer of the Infinite Garden's world",
+  "bio": "Known to the public record as Tomo Saito — 'a designer at the Ethereum Foundation. Creating the world of the Infinite Garden and more!' (Devcon speaker page). Creative Direction across the Devcon Archive; Devcon SEA talk 'Ethereum Culture Expanding in the Infinite Garden.' In the orchestra's books: Tomo, Carlota & the Devcon team embraced the Music Space as team activation (2026), and Tomo's vision is the Devcon music circle facing INWARD. Shaka's haiku — 'Open source music, every voice is a node, sounds of consensus' — was written for Aya & Tomo.",
+  "quote": "When did a circle of strangers first sing back at you?",
+  "quote_note": "the question the orchestra keeps warm for him (Every Voice a Node season plan)",
+  "location": "the Infinite Garden 🌱",
+  "links": [
+    { "label": "Devcon speaker page", "url": "https://app.devcon.org/speakers/R3UWTJ" },
+    { "label": "Devcon Archive", "url": "https://archive.devcon.org/" },
+    { "label": "devcon.org", "url": "https://devcon.org" }
+  ],
+  "songs": [],
+  "songs_note": "Featured composition = the inward-facing circle itself: stage → circle, audience → voices, performance → consensus. Nothing appears on this node without Tomo's blessing, item by item.",
+  "media": [
+    { "type": "youtube", "id": "gFBfP7utPI0", "title": "Ethereum Culture Expanding in the Infinite Garden by Tomo Saito | Devcon SEA", "channel": "Ethereum Foundation", "visibility": "public" }
+  ],
+  "license_default": "CC0 for node content — anything not listed here stays with the artist",
+  "updated": "2026-08-16"
+}
