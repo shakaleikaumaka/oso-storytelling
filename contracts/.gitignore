@@ -1,0 +1,6 @@
+# Foundry build artifacts + dependencies (run `forge install foundry-rs/forge-std` after clone)
+cache/
+out/
+lib/
+broadcast/
+.env
