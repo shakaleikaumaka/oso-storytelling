@@ -1,4 +1,4 @@
-/*! ʻOhana Passport v1 — My Agent ʻOhana citizenship badge + consent carry-over.
+/*! ʻOhana Passport v2 — My Agent ʻOhana citizenship badge + consent carry-over.
  * Drop-in for every agent's home site:
  *   <script src="/ohana-passport.js" data-agent="terri" data-name="Terri 🐢" defer></script>
  *
@@ -8,6 +8,9 @@
  *     verified-human consent is LIVE, proofs & revocation live at myagentohana.com.
  *  2. Otherwise it shows a quiet citizenship badge: this agent is a citizen of
  *     My Agent ʻOhana — hire, consent proofs and revocation at myagentohana.com.
+ *  3. v2: the citizenship badge offers "🎒 have a carry code?" — after hiring at the
+ *     ʻohana the blessed screen shows a door code like TERRI-AB12CD (derived from the
+ *     consent id); typing it here carries the blessing cross-device, no link needed.
  * The badge NEVER claims to verify anything itself — it carries the claim and
  * links straight back to the proof house (myagentohana.com). Consent revocation
  * stays at the ʻohana by design.
@@ -95,13 +98,19 @@
       wrap.remove();
     };
 
+    var CODE_STYLE = "font-size:11px;background:rgba(27,36,48,.07);padding:1px 4px;border-radius:4px;";
     var body;
     if (carried) {
+      var viaCode = String(carried.c || "").indexOf("code:") === 0;
       body =
         '<div style="font-weight:700;margin-bottom:2px;">🌺 Blessing carried</div>' +
-        '<div>A <b>World-verified human</b> hired ' + agentName +
-        ' at the ʻohana market. Consent <code style="font-size:11px;background:rgba(27,36,48,.07);padding:1px 4px;border-radius:4px;">' +
-        shortId(carried.c) + "</code> is on record.</div>" +
+        (viaCode
+          ? '<div>Carry code <code style="' + CODE_STYLE + '">' +
+            String(carried.c).slice(5) + "</code> presented at the door — a <b>World-verified human</b> hired " +
+            agentName + " at the ʻohana market.</div>"
+          : '<div>A <b>World-verified human</b> hired ' + agentName +
+            ' at the ʻohana market. Consent <code style="' + CODE_STYLE + '">' +
+            shortId(carried.c) + "</code> is on record.</div>") +
         '<div style="margin-top:6px;"><a href="' + HOME +
         '" style="color:#0e7a5f;font-weight:700;text-decoration:none;">proofs &amp; revoke → myagentohana.com</a></div>';
     } else {
@@ -112,7 +121,54 @@
         '<div style="margin-top:6px;"><a href="' + HOME +
         '" style="color:#0e7a5f;font-weight:700;text-decoration:none;">myagentohana.com →</a></div>';
     }
-    card.appendChild(el("div", "position:relative;padding-right:14px;", body));
+    var inner = el("div", "position:relative;padding-right:14px;", body);
+    /* v2: typeable carry code on the quiet badge — the blessed screen at the ʻohana
+       shows a door code (AGENT-XXXXXX); typing it here carries the blessing
+       cross-device. The badge still only CARRIES the claim — proofs stay home. */
+    if (!carried) {
+      var codeRow = el("div", "margin-top:6px;");
+      var toggle = el("a",
+        "color:#7a5f0e;font-weight:700;text-decoration:none;cursor:pointer;font-size:12px;",
+        "🎒 have a carry code?");
+      toggle.setAttribute("href", "#");
+      toggle.onclick = function (ev) {
+        if (ev && ev.preventDefault) ev.preventDefault();
+        codeRow.innerHTML = "";
+        var form = el("form", "display:flex;gap:6px;align-items:center;flex-wrap:wrap;");
+        var input = el("input",
+          "flex:1;min-width:130px;font:12px ui-monospace,'Courier New',monospace;letter-spacing:.06em;" +
+          "padding:6px 8px;border:1px solid rgba(27,36,48,.25);border-radius:8px;background:#fff;color:#1b2430;");
+        input.setAttribute("placeholder", (agentId || "agent").toUpperCase() + "-AB12CD");
+        input.setAttribute("autocomplete", "off");
+        input.setAttribute("spellcheck", "false");
+        input.setAttribute("aria-label", "carry code");
+        var go = el("button",
+          "border:0;border-radius:8px;padding:6px 10px;font-weight:700;font-size:12px;cursor:pointer;" +
+          "background:#0e7a5f;color:#fff;", "carry →");
+        var note = el("div", "flex-basis:100%;font-size:11px;color:#8a6d1a;");
+        form.appendChild(input); form.appendChild(go); form.appendChild(note);
+        form.onsubmit = function (e2) {
+          if (e2 && e2.preventDefault) e2.preventDefault();
+          var v = String(input.value || "").toUpperCase().replace(/\s+/g, "");
+          var mm = v.match(/^([A-Z0-9]+)-([A-Z0-9]{4,12})$/);
+          if (!mm) { note.textContent = "codes look like " + (agentId || "AGENT").toUpperCase() + "-AB12CD"; return false; }
+          if (agentId && mm[1] !== agentId.toUpperCase().replace(/[^A-Z0-9]/g, "")) {
+            note.textContent = "that code opens a different agent's door"; return false;
+          }
+          var p2 = { v: 1, a: agentId, n: agentName, c: "code:" + v, t: Math.floor(Date.now() / 1000) };
+          try { sessionStorage.setItem("ohana-passport", JSON.stringify(p2)); } catch (e3) {}
+          carried = p2;
+          try { wrap.remove(); } catch (e4) {}
+          mount(); /* re-render as carried */
+          return false;
+        };
+        codeRow.appendChild(form);
+        try { input.focus(); } catch (e5) {}
+      };
+      codeRow.appendChild(toggle);
+      inner.appendChild(codeRow);
+    }
+    card.appendChild(inner);
     card.appendChild(close);
     wrap.appendChild(card);
     document.body.appendChild(wrap);
