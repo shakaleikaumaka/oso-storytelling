@@ -1,4 +1,4 @@
-/*! ʻOhana Passport v2 — My Agent ʻOhana citizenship badge + consent carry-over.
+/*! ʻOhana Passport v3 — My Agent ʻOhana citizenship badge + consent carry-over.
  * Drop-in for every agent's home site:
  *   <script src="/ohana-passport.js" data-agent="terri" data-name="Terri 🐢" defer></script>
  *
@@ -11,6 +11,9 @@
  *  3. v2: the citizenship badge offers "🎒 have a carry code?" — after hiring at the
  *     ʻohana the blessed screen shows a door code like TERRI-AB12CD (derived from the
  *     consent id); typing it here carries the blessing cross-device, no link needed.
+ *  4. v3: COMMONS agents (shaka-twin, oso, crops) don't run the hire/bless lane, so
+ *     their doors never mint a door code — the carry-code input is hidden for them.
+ *     Override per-door with data-carry="on" / data-carry="off" if a tier changes.
  * The badge NEVER claims to verify anything itself — it carries the claim and
  * links straight back to the proof house (myagentohana.com). Consent revocation
  * stays at the ʻohana by design.
@@ -26,6 +29,10 @@
   var ds = (me && me.dataset) || {};
   var agentId = ds.agent || "";
   var agentName = ds.name || agentId || "this agent";
+  /* v3: commons-tier agents are not hireable at the ʻohana — no door codes exist
+     for them, so their badges never ask for one. data-carry overrides. */
+  var COMMONS = { "shaka-twin": 1, "oso": 1, "crops": 1 };
+  var carryEnabled = ds.carry === "on" ? true : (ds.carry === "off" ? false : !COMMONS[agentId]);
 
   /* ── 1. catch a carried blessing in the hash ───────────────────── */
   function b64uDecode(s) {
@@ -125,7 +132,7 @@
     /* v2: typeable carry code on the quiet badge — the blessed screen at the ʻohana
        shows a door code (AGENT-XXXXXX); typing it here carries the blessing
        cross-device. The badge still only CARRIES the claim — proofs stay home. */
-    if (!carried) {
+    if (!carried && carryEnabled) {
       var codeRow = el("div", "margin-top:6px;");
       var toggle = el("a",
         "color:#7a5f0e;font-weight:700;text-decoration:none;cursor:pointer;font-size:12px;",
