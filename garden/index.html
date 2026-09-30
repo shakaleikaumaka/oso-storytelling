@@ -255,6 +255,27 @@ footer .flower{color:var(--lotus)}
 const DB = JSON.parse(document.getElementById('data').textContent);
 const PII = false;
 const ART = DB.artists;
+/* The three DJ ʻOHANA form submissions (#7/#8/#9) are ONE act — the Open Source
+   Orchestra, who jams every evening and hosts the Nov 6 closing party.
+   Fold #8/#9 into #7 so the garden shows a single OSO card.
+   (the mock schedule keeps all three as its daily jam anchors — untouched) */
+(function mergeOSO() {
+  const oso = ART.find(a => a.n === 7);
+  if (!oso || !ART.some(a => a.n === 8) || !ART.some(a => a.n === 9)) return;
+  oso.minutes = 180; // three 60-min form sessions on one card
+  oso.dayLabel = 'Nov 3 · 4 · 5';
+  oso.minLabel = '60 min × 3 evenings';
+  oso.note = (oso.note ? oso.note + ' · ' : '') + 'jams every evening + hosts the Nov 6 closing party 🎉';
+  DB.artists = ART.filter(a => a.n !== 8 && a.n !== 9);
+  ART.length = 0; ART.push(...DB.artists);
+  // recompute display stats from the merged roster (hours stay 21h — the
+  // orchestra's 180 form-minutes still live on the one card)
+  DB.stats.total = ART.length;
+  DB.stats.volunteers = ART.filter(a => a.volunteer).length;
+  const fmt = {};
+  ART.forEach(a => fmt[a.format] = (fmt[a.format] || 0) + 1);
+  DB.stats.formats = Object.entries(fmt).sort((x, y) => y[1] - x[1]);
+})();
 const DAY_ORDER = ['November 3','November 4','November 5','November 6'];
 const FMT_META = {DJ:{e:'🎧',l:'DJ Sets'},Live:{e:'🎤',l:'Live Musicians'},Hybrid:{e:'⚡',l:'Hybrid Acts'},Special:{e:'✨',l:'Special & Beyond'}};
 const STATUSES = ['New','Reviewing','Shortlist','Booked','Pass'];
@@ -377,8 +398,8 @@ function cardHTML(a) {
     </div>
     <div class="badges">
       <span class="b fmt-${a.format}">${FMT_META[a.format].e} ${a.format === 'DJ' ? 'DJ Set' : a.format === 'Live' ? 'Live' : a.format === 'Hybrid' ? 'DJ + Live' : 'Special'}</span>
-      <span class="b day">🗓 ${esc(a.day.replace('November ','Nov '))}</span>
-      <span class="b dur">⏱ ${a.minutes} min</span>
+      <span class="b day">🗓 ${esc(a.dayLabel || a.day.replace('November ','Nov '))}</span>
+      <span class="b dur">⏱ ${esc(a.minLabel || a.minutes + ' min')}</span>
       ${a.volunteer ? '<span class="b vol">💜 volunteers</span>' : ''}
       ${a.dupes > 1 ? `<span class="b dupe">×${a.dupes} applications</span>` : ''}
     </div>
@@ -458,7 +479,7 @@ function renderDay(list) {
     const items = list.filter(a => a.day === d);
     const mins = items.reduce((s,a) => s + a.minutes, 0);
     html += `<div class="daycol"><h3>${d.replace('November ','Nov ')} <span class="mins">${items.length} acts · ${Math.floor(mins/60)}h${mins%60?mins%60+'m':''}</span></h3>` +
-      items.map(a => `<div class="dc" data-n="${a.n}"><div class="t">${FMT_META[a.format].e} ${esc(nameOf(a))}</div><div class="m">${a.minutes} min · ${genresOf(a).map(g=>g.name).join(', ')}</div></div>`).join('') +
+      items.map(a => `<div class="dc" data-n="${a.n}"><div class="t">${FMT_META[a.format].e} ${esc(nameOf(a))}</div><div class="m">${esc(a.minLabel || a.minutes + ' min')} · ${genresOf(a).map(g=>g.name).join(', ')}</div></div>`).join('') +
       (items.length ? '' : '<div class="m" style="color:var(--faint);margin-top:8px">quiet day — room to breathe</div>') + `</div>`;
   }
   return html + '</div>';
@@ -469,7 +490,7 @@ function renderBoard(list) {
   for (const s of STATUSES) {
     const items = list.filter(a => pick(a.n).status === s);
     html += `<div class="bcol h-${s}" data-status="${s}"><h3>${ST_EMOJI[s]} ${s} · ${items.length}</h3>` +
-      items.map(a => `<div class="bcard" draggable="true" data-n="${a.n}">${'★'.repeat(pick(a.n).stars)} ${FMT_META[a.format].e} <b>${esc(nameOf(a))}</b><div class="m">${a.day.replace('November ','Nov ')} · ${a.minutes} min · ${genresOf(a).map(g=>g.name).join(', ')}</div></div>`).join('') +
+      items.map(a => `<div class="bcard" draggable="true" data-n="${a.n}">${'★'.repeat(pick(a.n).stars)} ${FMT_META[a.format].e} <b>${esc(nameOf(a))}</b><div class="m">${esc(a.dayLabel || a.day.replace('November ','Nov '))} · ${esc(a.minLabel || a.minutes + ' min')} · ${genresOf(a).map(g=>g.name).join(', ')}</div></div>`).join('') +
       `</div>`;
   }
   return html + '</div>';
