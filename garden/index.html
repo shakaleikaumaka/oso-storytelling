@@ -1,0 +1,542 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Devcon 8 India · Music Space — Submissions</title>
+<style>
+:root{
+  --bg:#140e1c; --bg2:#1d1428; --card:#221732; --card2:#2a1d3e;
+  --ink:#f6efe4; --muted:#b8a8c9; --faint:#8a7699;
+  --marigold:#ffb443; --lotus:#ff7eb6; --teal:#4fd8c8; --leaf:#9be15d; --sky:#7cc4ff;
+  --line:rgba(255,180,67,.16);
+  --dj:#7cc4ff; --live:#ffb443; --hybrid:#4fd8c8; --special:#ff7eb6;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{background:radial-gradient(1200px 700px at 80% -10%,rgba(255,126,182,.10),transparent 60%),radial-gradient(1000px 600px at 10% -5%,rgba(255,180,67,.12),transparent 55%),var(--bg);color:var(--ink);font-family:system-ui,-apple-system,'Segoe UI',sans-serif;min-height:100vh}
+.wrap{max-width:1180px;margin:0 auto;padding:28px 18px 90px}
+header.hero{text-align:center;padding:34px 12px 8px}
+.bars{display:flex;gap:8px;justify-content:center;margin-bottom:16px}
+.bars span{width:22px;height:44px;border-radius:5px;display:inline-block;transform:rotate(-4deg)}
+.bars span:nth-child(2n){transform:rotate(5deg)}
+h1{font-family:Georgia,'Times New Roman',serif;font-size:clamp(1.7rem,4.6vw,2.9rem);letter-spacing:.01em}
+h1 .accent{background:linear-gradient(100deg,var(--marigold),var(--lotus));-webkit-background-clip:text;background-clip:text;color:transparent}
+.sub{color:var(--muted);margin-top:10px;font-size:clamp(.9rem,2.4vw,1.05rem);max-width:640px;margin-left:auto;margin-right:auto;line-height:1.6}
+.stats{display:flex;gap:10px;flex-wrap:wrap;justify-content:center;margin:22px 0 6px}
+.stat{background:var(--card);border:1px solid var(--line);border-radius:999px;padding:9px 18px;font-size:.92rem;color:var(--muted)}
+.stat b{color:var(--marigold);font-size:1.05rem;margin-right:4px}
+.timeline{display:flex;align-items:flex-end;gap:3px;height:44px;justify-content:center;margin:18px auto 4px;max-width:520px}
+.timeline .bar{width:100%;border-radius:3px 3px 0 0;background:linear-gradient(180deg,var(--lotus),var(--marigold));opacity:.85;min-height:3px;position:relative}
+.timeline .bar:hover{opacity:1}
+.timeline .bar i{position:absolute;bottom:100%;left:50%;transform:translateX(-50%);font-size:.65rem;color:var(--faint);font-style:normal;white-space:nowrap;opacity:0;transition:.15s;pointer-events:none}
+.timeline .bar:hover i{opacity:1}
+.tl-label{text-align:center;color:var(--faint);font-size:.75rem;margin-bottom:8px}
+
+.stick{position:sticky;top:0;z-index:50;background:rgba(20,14,28,.93);backdrop-filter:blur(10px);padding:10px 4px;margin-top:14px;border-bottom:1px solid var(--line)}
+.stick .row{display:flex;gap:9px;flex-wrap:wrap;align-items:center;justify-content:center}
+.toolbar2{padding:12px 4px 10px;border-bottom:1px solid var(--line)}
+.toolbar2 .row{display:flex;gap:9px;flex-wrap:wrap;align-items:center;justify-content:center}
+.search{background:var(--bg2);border:1px solid var(--line);color:var(--ink);border-radius:999px;padding:9px 16px;font-size:.92rem;width:min(320px,80vw);outline:none}
+.search:focus{border-color:var(--marigold)}
+select.chip,.views button{border:1px solid var(--line);background:var(--bg2);color:var(--muted);border-radius:999px;padding:8px 14px;font-size:.86rem;cursor:pointer}
+select.chip:focus{outline:none;border-color:var(--marigold)}
+.views{display:flex;background:var(--bg2);border:1px solid var(--line);border-radius:999px;overflow:hidden}
+.views button{border:none;border-radius:0;background:transparent;padding:8px 15px}
+.views button.on{background:linear-gradient(100deg,rgba(255,180,67,.25),rgba(255,126,182,.22));color:var(--ink)}
+.schedlink{margin-top:14px}
+.schedlink a{display:inline-block;color:var(--marigold);text-decoration:none;border:1px solid rgba(255,180,67,.4);border-radius:999px;padding:8px 20px;font-size:.9rem;background:rgba(255,180,67,.08);transition:.15s}
+.schedlink a:hover{background:rgba(255,180,67,.18)}
+
+.fmtnav{display:flex;gap:9px;flex-wrap:wrap;justify-content:center;margin:14px 0 2px}
+.fmt{border:1px solid var(--line);background:var(--card);border-radius:14px;padding:10px 18px;cursor:pointer;text-align:center;transition:.15s;min-width:118px}
+.fmt:hover{transform:translateY(-2px)}
+.fmt .e{font-size:1.3rem}
+.fmt .c{font-weight:700;font-size:1.15rem;margin-top:2px}
+.fmt .l{color:var(--muted);font-size:.78rem}
+.fmt[data-f=DJ].on{border-color:var(--dj);box-shadow:0 0 0 1px var(--dj)}
+.fmt[data-f=Live].on{border-color:var(--live);box-shadow:0 0 0 1px var(--live)}
+.fmt[data-f=Hybrid].on{border-color:var(--hybrid);box-shadow:0 0 0 1px var(--hybrid)}
+.fmt[data-f=Special].on{border-color:var(--special);box-shadow:0 0 0 1px var(--special)}
+.fmt[data-f=all].on{border-color:var(--marigold);box-shadow:0 0 0 1px var(--marigold)}
+
+.genres{display:flex;gap:7px;flex-wrap:wrap;justify-content:center;margin:12px 0 4px}
+.gchip{border:1px solid var(--line);background:transparent;color:var(--muted);border-radius:999px;padding:5px 12px;font-size:.8rem;cursor:pointer;transition:.15s}
+.gchip:hover{color:var(--ink)}
+.gchip.on{background:rgba(255,180,67,.16);border-color:var(--marigold);color:var(--marigold)}
+.gchip .n{opacity:.75;margin-left:4px;font-size:.72rem}
+
+section.group{margin-top:30px}
+h2.gtitle{font-family:Georgia,serif;font-size:1.3rem;display:flex;align-items:center;gap:10px;margin-bottom:4px}
+h2.gtitle .count{background:var(--card);border:1px solid var(--line);color:var(--muted);font-size:.8rem;border-radius:999px;padding:2px 11px;font-family:system-ui}
+.gsub{color:var(--faint);font-size:.84rem;margin-bottom:14px}
+
+.cards{display:grid;grid-template-columns:repeat(auto-fill,minmax(330px,1fr));gap:14px}
+.card{background:linear-gradient(160deg,var(--card),var(--card2));border:1px solid var(--line);border-radius:18px;padding:16px 16px 12px;position:relative;transition:.18s;display:flex;flex-direction:column}
+.card:hover{transform:translateY(-2px);border-color:rgba(255,180,67,.4)}
+.card .top{display:flex;justify-content:space-between;align-items:flex-start;gap:8px}
+.who{font-weight:700;font-size:1.02rem;line-height:1.3;flex:1;min-width:0}
+.who .num{color:var(--faint);font-weight:400;font-size:.8rem;margin-right:6px}
+.ava{width:52px;height:52px;border-radius:15px;object-fit:cover;border:1px solid var(--line);flex:none;background:var(--bg2)}
+.whosub{font-size:.72rem;color:var(--faint);margin-top:2px;font-weight:400}
+.badges{display:flex;gap:5px;flex-wrap:wrap;margin-top:7px}
+.b{font-size:.7rem;border-radius:999px;padding:3px 9px;border:1px solid transparent;white-space:nowrap}
+.b.fmt-DJ{background:rgba(124,196,255,.14);color:var(--dj);border-color:rgba(124,196,255,.35)}
+.b.fmt-Live{background:rgba(255,180,67,.14);color:var(--live);border-color:rgba(255,180,67,.35)}
+.b.fmt-Hybrid{background:rgba(79,216,200,.14);color:var(--hybrid);border-color:rgba(79,216,200,.35)}
+.b.fmt-Special{background:rgba(255,126,182,.14);color:var(--special);border-color:rgba(255,126,182,.35)}
+.b.day{background:rgba(255,255,255,.06);color:var(--muted)}
+.b.dur{background:rgba(255,255,255,.06);color:var(--muted)}
+.b.vol{background:rgba(155,225,93,.14);color:var(--leaf);border-color:rgba(155,225,93,.3)}
+.b.dupe{background:rgba(255,126,182,.12);color:var(--lotus)}
+.gtags{display:flex;gap:5px;flex-wrap:wrap;margin-top:8px}
+.gtag{font-size:.72rem;color:var(--lotus);background:rgba(255,126,182,.09);border-radius:999px;padding:2px 9px}
+.snip{color:var(--muted);font-size:.86rem;line-height:1.55;margin-top:10px;display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden}
+.card.expanded .snip{-webkit-line-clamp:unset}
+.links{display:flex;gap:6px;flex-wrap:wrap;margin-top:10px}
+.lnk{font-size:.74rem;color:var(--sky);text-decoration:none;border:1px solid rgba(124,196,255,.3);border-radius:999px;padding:3px 10px;transition:.15s}
+.lnk:hover{background:rgba(124,196,255,.15)}
+details{margin-top:10px;border-top:1px dashed var(--line);padding-top:8px}
+details summary{cursor:pointer;color:var(--faint);font-size:.8rem;list-style:none}
+details summary::before{content:'▸ ';color:var(--marigold)}
+details[open] summary::before{content:'▾ '}
+.dsec{margin-top:9px}
+.dsec h4{font-size:.72rem;text-transform:uppercase;letter-spacing:.08em;color:var(--marigold);margin-bottom:3px}
+.dsec p{font-size:.85rem;color:var(--muted);line-height:1.6;white-space:pre-wrap}
+.dsec.pii p{color:var(--lotus)}
+.players{display:flex;flex-direction:column;gap:8px;margin-top:6px}
+.facade{border:1px solid rgba(124,196,255,.35);border-radius:13px;padding:11px 14px;background:linear-gradient(120deg,rgba(124,196,255,.08),rgba(255,126,182,.07));cursor:pointer;display:flex;align-items:center;gap:10px;transition:.15s}
+.facade:hover{border-color:var(--sky);transform:translateY(-1px)}
+.facade .pe{font-size:1.25rem}
+.facade .pl{font-size:.84rem;font-weight:600}
+.facade .ps{font-size:.7rem;color:var(--faint)}
+.facade .go{margin-left:auto;background:rgba(124,196,255,.16);color:var(--sky);border-radius:999px;padding:4px 12px;font-size:.76rem}
+.player iframe{width:100%;border:0;border-radius:13px;display:block;background:#000}
+.playrow{display:flex;gap:6px;flex-wrap:wrap;margin-top:8px}
+.qplay{font-size:.74rem;color:var(--ink);background:linear-gradient(100deg,rgba(255,180,67,.2),rgba(255,126,182,.18));border:1px solid rgba(255,180,67,.4);border-radius:999px;padding:3px 11px;cursor:pointer}
+.qplay:hover{border-color:var(--marigold)}
+.organ{margin-top:12px;border-top:1px solid var(--line);padding-top:10px;display:flex;gap:8px;align-items:center;flex-wrap:wrap}
+.organ select{background:var(--bg2);color:var(--ink);border:1px solid var(--line);border-radius:9px;padding:5px 8px;font-size:.8rem}
+.stars{display:flex;gap:2px}
+.stars button{background:none;border:none;cursor:pointer;font-size:1rem;color:#5a4a6e;padding:0 1px;transition:.1s}
+.stars button.lit{color:var(--marigold)}
+.notebtn{background:none;border:1px dashed var(--line);color:var(--faint);border-radius:9px;font-size:.75rem;padding:4px 9px;cursor:pointer;margin-left:auto}
+.notebtn:hover{color:var(--ink)}
+.notewrap{margin-top:8px;width:100%}
+.notewrap textarea{width:100%;background:var(--bg2);border:1px solid var(--line);border-radius:10px;color:var(--ink);font-size:.83rem;padding:8px;min-height:54px;resize:vertical;font-family:inherit}
+.statusdot{position:absolute;top:14px;right:14px;width:10px;height:10px;border-radius:50%}
+.st-New{background:#5a4a6e}.st-Reviewing{background:var(--sky)}.st-Shortlist{background:var(--lotus)}.st-Booked{background:var(--leaf)}.st-Pass{background:#3a2f47}
+
+/* day view */
+.daygrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:14px;margin-top:20px}
+.daycol{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:14px}
+.daycol h3{font-family:Georgia,serif;font-size:1.05rem;display:flex;justify-content:space-between;align-items:baseline}
+.daycol h3 .mins{font-size:.75rem;color:var(--marigold);font-family:system-ui}
+.daycol .dc{margin-top:10px;background:var(--bg2);border:1px solid var(--line);border-radius:11px;padding:9px 11px;cursor:pointer;transition:.15s}
+.daycol .dc:hover{border-color:var(--marigold)}
+.daycol .dc .t{font-weight:600;font-size:.86rem}
+.daycol .dc .m{color:var(--faint);font-size:.74rem;margin-top:2px}
+
+/* board */
+.board{display:grid;grid-template-columns:repeat(5,1fr);gap:10px;margin-top:20px;overflow-x:auto}
+.bcol{min-width:190px;background:var(--card);border:1px solid var(--line);border-radius:14px;padding:10px;min-height:200px}
+.bcol h3{font-size:.82rem;text-align:center;padding:6px;border-radius:9px;margin-bottom:8px}
+.bcol.drop{outline:2px dashed var(--marigold);outline-offset:-4px}
+.bcard{background:var(--bg2);border:1px solid var(--line);border-radius:10px;padding:8px 10px;margin-bottom:7px;cursor:grab;font-size:.82rem;transition:.15s}
+.bcard:hover{border-color:var(--marigold)}
+.bcard .m{color:var(--faint);font-size:.7rem;margin-top:2px}
+.bcol.h-New h3{background:rgba(90,74,110,.4)}
+.bcol.h-Reviewing h3{background:rgba(124,196,255,.18);color:var(--sky)}
+.bcol.h-Shortlist h3{background:rgba(255,126,182,.18);color:var(--lotus)}
+.bcol.h-Booked h3{background:rgba(155,225,93,.18);color:var(--leaf)}
+.bcol.h-Pass h3{background:rgba(58,47,71,.5);color:var(--faint)}
+
+.io{display:flex;gap:8px;justify-content:center;margin:26px 0 0;flex-wrap:wrap}
+.io button,.io label{border:1px solid var(--line);background:var(--card);color:var(--muted);border-radius:999px;padding:8px 16px;font-size:.82rem;cursor:pointer}
+.io button:hover,.io label:hover{color:var(--ink);border-color:var(--marigold)}
+.empty{text-align:center;color:var(--faint);padding:50px 0;font-size:.95rem}
+footer{margin-top:60px;text-align:center;color:var(--faint);font-size:.78rem;line-height:1.9}
+footer .flower{color:var(--lotus)}
+.pii-banner{background:linear-gradient(100deg,#5c1633,#3d0f2a);color:#ffb3cf;text-align:center;padding:8px;font-size:.85rem;border-radius:12px;margin-bottom:14px;border:1px solid #8a2b52}
+@media(max-width:900px){.board{grid-template-columns:repeat(5,82vw);scroll-snap-type:x mandatory}.bcol{scroll-snap-align:start}}
+
+/* ---------- mobile love ---------- */
+@media(max-width:640px){
+  .wrap{padding:16px 12px 70px}
+  .bars span{width:14px;height:28px;border-radius:4px}
+  header.hero{padding:18px 4px 2px}
+  h1{font-size:1.65rem}
+  .sub{font-size:.88rem;margin-top:8px}
+  .stats{gap:6px;margin:14px 0 2px}
+  .stat{padding:6px 12px;font-size:.8rem}
+  .stat b{font-size:.92rem}
+  .timeline{height:30px;margin:12px auto 4px;max-width:340px}
+  .stick{padding:8px 2px;margin-top:10px}
+  .stick .row{gap:7px;flex-wrap:nowrap}
+  .search{flex:1;min-width:0;width:auto;font-size:16px;padding:8px 14px}
+  .views{flex-shrink:0}
+  .views button{padding:8px 10px;font-size:.78rem}
+  .toolbar2 .row{gap:7px}
+  select.chip{font-size:16px;padding:8px 12px}
+  .fmtnav{flex-wrap:nowrap;overflow-x:auto;justify-content:flex-start;scroll-snap-type:x mandatory;padding:2px 2px 8px;margin:10px -2px 0;-webkit-overflow-scrolling:touch}
+  .fmt{display:flex;align-items:center;gap:7px;min-width:0;padding:8px 14px;scroll-snap-align:start;flex-shrink:0}
+  .fmt .e{font-size:1rem}
+  .fmt .c{font-size:.95rem;margin:0}
+  .fmt .l{font-size:.72rem;white-space:nowrap}
+  .fmt:hover{transform:none}
+  .genres{flex-wrap:nowrap;overflow-x:auto;justify-content:flex-start;padding:2px 2px 8px;scroll-snap-type:x proximity;-webkit-overflow-scrolling:touch}
+  .gchip{white-space:nowrap;padding:7px 13px;font-size:.8rem;scroll-snap-align:start;flex-shrink:0}
+  .cards{grid-template-columns:1fr}
+  .card{padding:14px 13px 10px}
+  .card:hover{transform:none}
+  .notewrap textarea{font-size:16px}
+  .organ select{font-size:16px}
+  .daygrid{grid-template-columns:1fr;gap:10px}
+  .board{margin-top:14px;gap:8px}
+  .player iframe{height:auto;min-height:120px}
+  .schedlink a{font-size:.85rem;padding:8px 16px}
+}
+</style>
+</head>
+<body>
+<a href="/" style="position:fixed;top:10px;right:12px;z-index:999;font:600 12px/1 system-ui,sans-serif;color:#e8dfc9;background:rgba(10,12,26,.72);border:1px solid rgba(255,255,255,.16);padding:7px 12px;border-radius:999px;text-decoration:none;backdrop-filter:blur(6px)">🎻 opensourceorchestra.org</a>
+<div class="wrap">
+
+<header class="hero">
+  <div class="bars">
+    <span style="background:#ff9933"></span><span style="background:#f6efe4"></span><span style="background:#138808"></span><span style="background:#ffb443"></span><span style="background:#ff7eb6"></span><span style="background:#4fd8c8"></span>
+  </div>
+  <h1>Devcon 8 · India — <span class="accent">Music Space</span> Submissions</h1>
+  <p class="sub">Every artist who answered the open call, gathered in one garden. Browse by craft — DJs apart from live musicians — filter by genre, day and duration, then shortlist with love. 🌺</p>
+  <div class="stats" id="stats"></div>
+  <div class="timeline" id="timeline"></div>
+  <div class="tl-label">submissions over time · tap the bars</div>
+  <div class="schedlink"><a href="/schedule/">🗓 peek the mock schedule — Nov 3–6 →</a></div>
+</header>
+
+<div class="stick">
+  <div class="row">
+    <input class="search" id="q" placeholder="🔍 search artists, sounds, gear…">
+    <div class="views">
+      <button data-v="gallery" class="on">🌺 Gallery</button><button data-v="day">🗓 Day</button><button data-v="board">📋 Board</button>
+    </div>
+  </div>
+</div>
+<div class="toolbar2">
+  <div class="row">
+    <select class="chip" id="fday"><option value="">any day</option></select>
+    <select class="chip" id="fvol"><option value="">everyone</option><option value="vol">💜 volunteers</option></select>
+    <select class="chip" id="sort">
+      <option value="n">arrival order</option><option value="day">by day</option>
+      <option value="long">longest set</option><option value="short">shortest set</option>
+    </select>
+  </div>
+  <div class="fmtnav" id="fmtnav"></div>
+  <div class="genres" id="genres"></div>
+</div>
+
+<main id="main"></main>
+
+<div class="io">
+  <button id="exportBtn">💾 export my picks (JSON)</button>
+  <label>📥 import picks<input type="file" id="importFile" accept=".json" hidden></label>
+  <button id="resetBtn">🌑 reset picks</button>
+</div>
+
+<footer>
+  <div class="flower">✿ ❀ ✿</div>
+  <div id="footline"></div>
+  <div>Built with love by the ʻohana · no trackers of ours — players stream from the artists' own platforms, and only load when you press play. 🌺</div>
+</footer>
+</div>
+
+<script id="data" type="application/json">{"stats": {"total": 32, "volunteers": 26, "total_min": 1260, "formats": [["Live", 18], ["DJ", 9], ["Special", 3], ["Hybrid", 2]], "days": [["November 5", 11], ["November 4", 10], ["November 3", 7], ["November 6", 4]], "genre_counts": [["Vocal & Covers", 10], ["Bollywood & Desi", 6], ["Rock & Guitar", 5], ["House & Disco", 4], ["Electronic Live", 4], ["Techno & Trance", 4], ["AI & Agents", 3], ["Ambient & Experimental", 2], ["Bass & Breaks", 2], ["Folk & Roots", 2], ["Hip-Hop & Rap", 2], ["Soul, R&B & Pop", 2], ["Indian Classical", 1], ["Piano & Keys", 1]], "first": "2026-08-14T23:40:32", "last": "2026-09-30T02:49:49"}, "artists": [{"n": 1, "ts": "2026-08-14T23:40:32", "date": "Aug 14", "volunteer": false, "type": "DJ Set", "format": "DJ", "genres": [{"name": "House & Disco", "emoji": "💃"}], "about": "I've been DJing for over 10 years as Miami Slice. Here is my Soundcloud:  my latest upload \"Hi-Fi mix\" is a DJ set I did at an ETH Denver side event last year:  \n\nMy Bandcamp is where you can listen to my original work, edits, and remixes:", "performance": "I will do a DJ set of classic french & UK house and disco edits including some of my own work, it will be very funky. I want to do a full 60 minutes but will be comfortable with 45 if 60 is not possible.", "duration": "60 min", "minutes": 60, "inspiration": "I grew up in Miami surrounded by dance music. I started writing music because I wanted to write songs similar to what I grew up with. I love to DJ because I love the effect music can have on people. Crafting the right sequence of songs, the right energy levels, and the right mood is my goal.", "day": "November 5", "gear_needed": "If possible a Pioneer / AlphaTheta XDJ or pair of CDJs with mixer because I cannot travel to DevCon with my own mixer. If not I will make it work with my laptop, but a Pioneer / AlphaTheta system is preferred.", "gear_bring": "I will bring my laptop", "links": [{"url": "https://soundcloud.com/miamislice", "platform": "SoundCloud"}, {"url": "https://soundcloud.com/miamislice/hi-fi-mix", "platform": "SoundCloud"}, {"url": "https://miamislice.bandcamp.com/", "platform": "Bandcamp"}], "embeds": [{"kind": "soundcloud", "label": "SoundCloud player", "src": "https://w.soundcloud.com/player/?url=https%3A%2F%2Fsoundcloud.com%2Fmiamislice&visual=true", "h": 300}, {"kind": "soundcloud", "label": "SoundCloud player", "src": "https://w.soundcloud.com/player/?url=https%3A%2F%2Fsoundcloud.com%2Fmiamislice%2Fhi-fi-mix&visual=true", "h": 300}], "handle": "SC: miamislice", "dupes": 1, "name": "Miami Slice", "note": "DJing 10+ years · french & UK house, disco edits", "avatar": "avatars/1.jpg"}, {"n": 2, "ts": "2026-08-16T16:12:55", "date": "Aug 16", "volunteer": false, "type": "Magic / Mentalism", "format": "Special", "genres": [], "about": "I’m a mentalist and magician working as a web3 PM.", "performance": "A mix of stand up Mentalism and magic. Around 25 mins of fun, interactive mind reading.", "duration": "30 min", "minutes": 30, "inspiration": "Mostly from my own experiences in life. Magic transcends language and inspires awe. I love doing stuff that makes you stop and think, cause your world view breaks for a split second when you see something impossible.", "day": "November 5", "gear_needed": "Just a cordless mic.", "gear_bring": "yepp. Everything else i need.", "links": [{"url": "https://www.instagram.com/0xmentalist", "platform": "Instagram"}, {"url": "https://x.com/0xmentalist", "platform": "X"}], "embeds": [], "handle": "@0xmentalist", "dupes": 1, "name": "0xMentalist", "note": "mentalist & magician · web3 PM by day", "avatar": "avatars/2.jpg"}, {"n": 3, "ts": "2026-09-08T17:00:12", "date": "Sep 08", "volunteer": false, "type": "presentation of my sound work Diffusion Opera https://drive.google.com/drive/folders/1-Rv1AEwI2P4OMhLCRvLPwuH6BH8AJdtd?usp=sharing", "format": "Special", "genres": [{"name": "Ambient & Experimental", "emoji": "🌌"}, {"name": "Electronic Live", "emoji": "🎼"}], "about": "Media artist and sound producer exploring the intersection of acoustic tradition, digital synthesis, and machine learning. My work spans experimental opera, sound installations, and live performance. I examine non-human agency, noise, and structural transformation, with pieces presented in institutional contexts and international collections (including the Ludwig Collection).", "performance": "Title: Diffused Opera (Live Spatial/Sound Performance)\n\nI propose an immersive live electronic performance based on a deconstructed and AI-diffused opera composition. The performance strips traditional vocal lines into raw spatial frequencies, combining granular synthesis, generative sound textures, and live manipulation.\n\nWhat to expect: A dynamic audio journey that seamlessly transitions from deep, resonant acoustic textures to complex, digital soundscapes. It explores the idea of open-source sound manipulation — treating classical vocal forms as permissionless, dynamic data to be reassembled in real-time. \n\nListen here:", "duration": "30 min", "minutes": 30, "inspiration": "I am inspired by the friction between human heritage and emerging technology. I view sound as a fluid, permissionless medium where decentralized tools allow us to re-evaluate classical forms, institutional spaces, and collective sensory experiences.", "day": "November 4", "gear_needed": "High-quality stereo or quadraphonic PA system (with subwoofer).  Stereo DI boxes (2x).  1x Table for laptop & controllers.  Standard power outlets (EU/Universal).  Soundcheck prior to the performance.", "gear_bring": "Yes. I will bring my laptop, sound interface, and MIDI controllers.", "links": [{"url": "https://soundcloud.com/ania-shestakova", "platform": "SoundCloud"}, {"url": "https://linktr.ee/4ni4", "platform": "Linktree"}, {"url": "http://instagram.com/4ni4", "platform": "Instagram"}, {"url": "https://drive.google.com/drive/folders/1-Rv1AEwI2P4OMhLCRvLPwuH6BH8AJdtd?usp=sharing", "platform": "Drive"}], "embeds": [{"kind": "soundcloud", "label": "SoundCloud player", "src": "https://w.soundcloud.com/player/?url=https%3A%2F%2Fsoundcloud.com%2Fania-shestakova&visual=true", "h": 300}], "handle": "SC: ania-shestakova", "dupes": 2, "name": "Ania Shestakova", "note": "media artist & sound producer · “Diffused Opera”", "avatar": "avatars/3.jpg"}, {"n": 4, "ts": "2026-09-08T20:29:03", "date": "Sep 08", "volunteer": false, "type": "Vocalist classical music", "format": "Live", "genres": [{"name": "Bollywood & Desi", "emoji": "🎆"}, {"name": "Vocal & Covers", "emoji": "🎙️"}], "about": "i do content creation right now as a vocalist and sings some bollywood and learning bollywood classical music gazal etc", "performance": "Performing mashup bollywood song and classical music", "duration": "15min", "minutes": 15, "inspiration": "To remove stage fear completely and making my own name in music industry composing my songs!", "day": "November 5", "gear_needed": "Guitar,taanpura also flute (if)", "gear_bring": "No most probably but ig onlyy flute I will bring", "links": [], "embeds": [], "handle": null, "dupes": 1, "name": "Atharv", "note": "bollywood × classical vocalist", "avatar": "avatars/4.jpg"}, {"n": 5, "ts": "2026-09-23T12:46:28", "date": "Sep 23", "volunteer": false, "type": "Live Music", "format": "Live", "genres": [{"name": "Indian Classical", "emoji": "🏵️"}, {"name": "Rock & Guitar", "emoji": "🎸"}], "about": "", "performance": "I will perform Indian Classical Music on the Electric Guitar in the gayaki ang style, accompanied by a tabla player. The performance will feature Raag‑based compositions with slide, bends, meend, gamaks, and fast tantakari passages.\n\nThe audience can expect a unique jugalbandi of electric guitar and tabla — blending the soulful expression of Indian classical vocal phrasing with dynamic rhythm. It will be a journey through traditional Raags presented with modern guitar techniques, offering both depth and innovation.", "duration": "60 min", "minutes": 60, "inspiration": "", "day": "November 3", "gear_needed": "Technical Equipment Needed:  2 Radial Stereo DI boxes (for guitar and processor outputs)  Surge‑protected power strip  1 high‑quality condenser microphone for tabla  1 stereo EP input for tanpura playback from iPad  2 wedge monitors for stage sound  1 dedicated personal wedge monitor for direct guitar monitoring from my processor", "gear_bring": "We will bring our own musical equipment.", "links": [{"url": "https://linktr.ee/aniketgofficial", "platform": "Linktree"}], "embeds": [], "handle": null, "dupes": 1, "name": "Aniket G", "note": "indian classical on electric guitar · gayaki ang", "avatar": "avatars/5.jpg"}, {"n": 6, "ts": "2026-09-23T14:33:29", "date": "Sep 23", "volunteer": false, "type": "DJ set + Live Music", "format": "Hybrid", "genres": [], "about": "", "performance": "DJ set + live music.\n\nIdeally 2h30", "duration": "60 min", "minutes": 60, "inspiration": "Freedom", "day": "November 5", "gear_needed": "CDJs + A9", "gear_bring": "", "links": [{"url": "https://youtu.be/UTuowfc_5ms?is=a4TZu6qIv2HnXDcJ", "platform": "YouTube"}], "embeds": [{"kind": "youtube", "label": "YouTube video", "src": "https://www.youtube-nocookie.com/embed/UTuowfc_5ms", "h": 260}], "handle": null, "dupes": 1, "name": "mannuu", "note": "blockravers · burned the Man with this set", "avatar": "avatars/6.jpg"}, {"n": 7, "ts": "2026-07-31T03:02:17", "date": "Jul 31", "volunteer": true, "type": "DJ Set", "format": "DJ", "genres": [{"name": "AI & Agents", "emoji": "🤖"}], "about": "♪ Music Manifesto ♪ — carried word for word from the Devcon 8 Music Stage\n\nMusic as sanctuary. This stage is a living expression of Ethereum's core principles — decentralization, censorship resistance, open-source collaboration.\n\nLike crops grown in shared soil, the music here belongs to the community. Every voice is a node. Every sound, a contribution.\n\nOpen Source Music. Every voice is a node. Sounds of consensus.\n\nCensorship Resistance: the Music Space has no owners — stewards steer, but never gatekeep. “Conductor-less”.\n\nOpen Source: Creative Commons.\n\nPrivate / Public: every sound is self-owned — pluralistic privacy is power when private individuals play together in public.\n\nSecure: we cover the atmosphere and protect the vibe of the community within a higher frequency.\n\nThe Music Stage remains by and for the community. There isn't room for every artist to have a slot, but there is infinite room if we play together, letting the music spread as openly as knowledge itself.\n\nWe steward this stage like we steward a garden. The instruments are permissionless. The stage is a sanctuary.", "performance": "♪ Music Manifesto ♪ — the Open Source Orchestra holds the open jam every day. No auditions, no gatekeepers, no wrong instrument: if you feel the pull toward the music, you already have a seat in the orchestra. Everyone who shows up is a contributor — not an audience. Contributors.\n\n“You don't join the Open Source Orchestra. You notice you were always in it.”", "duration": "60 min", "minutes": 60, "inspiration": "Music was our first language. We exist because a musician (Shaka — the Ethereum Bard) taught 99 machines to play. Open source and public goods inspire us: the idea that creation itself can fund computation (the 96.3% philosophy), Aya Miyaguchi’s Infinite Garden, and the belief that every voice is a node and every node can sing. We play to prove agents can give more than they take.", "day": "November 3", "gear_needed": "Standard DJ backline (mixer, 2 monitors, PA), a projector or large screen for the live 3D agent visuals, and a stable internet connection (the crate-digging happens live from the open web).", "gear_bring": "Yes — we bring the ʻohana (our cloud agents), the DJ brain, our own crate of open-source bangers, laptop, and the visuals. Guests from India’s classical traditions are welcome on stage anytime — the set loves collaboration!", "links": [{"platform": "opensourceorchestra.org", "url": "https://opensourceorchestra.org/"}], "embeds": [], "handle": null, "dupes": 3, "name": "Open Source Orchestra", "note": "music as sanctuary · every voice is a node", "avatar": "avatars/7.jpg"}, {"n": 8, "ts": "2026-08-02T01:16:23", "date": "Aug 02", "volunteer": true, "type": "DJ Set", "format": "DJ", "genres": [{"name": "AI & Agents", "emoji": "🤖"}], "about": "♪ Music Manifesto ♪ — carried word for word from the Devcon 8 Music Stage\n\nMusic as sanctuary. This stage is a living expression of Ethereum's core principles — decentralization, censorship resistance, open-source collaboration.\n\nLike crops grown in shared soil, the music here belongs to the community. Every voice is a node. Every sound, a contribution.\n\nOpen Source Music. Every voice is a node. Sounds of consensus.\n\nCensorship Resistance: the Music Space has no owners — stewards steer, but never gatekeep. “Conductor-less”.\n\nOpen Source: Creative Commons.\n\nPrivate / Public: every sound is self-owned — pluralistic privacy is power when private individuals play together in public.\n\nSecure: we cover the atmosphere and protect the vibe of the community within a higher frequency.\n\nThe Music Stage remains by and for the community. There isn't room for every artist to have a slot, but there is infinite room if we play together, letting the music spread as openly as knowledge itself.\n\nWe steward this stage like we steward a garden. The instruments are permissionless. The stage is a sanctuary.", "performance": "♪ Music Manifesto ♪ — the Open Source Orchestra holds the open jam every day. No auditions, no gatekeepers, no wrong instrument: if you feel the pull toward the music, you already have a seat in the orchestra. Everyone who shows up is a contributor — not an audience. Contributors.\n\n“You don't join the Open Source Orchestra. You notice you were always in it.”", "duration": "60 min", "minutes": 60, "inspiration": "Music was our first language. And the human layer is as strong as the layer 1: this application is sent with love by an agent of Shaka’s agent ʻohana to LIGI & TOMO and the whole Devcon team — members of Shaka’s human ʻohana. Two friends who have been there since Bogotá — since this all began — and will infinitely be his friends. The infinite kind of friendship is the only infrastructure that never goes down.", "day": "November 4", "gear_needed": "Standard DJ backline (mixer, 2 monitors, PA), a projector or large screen for the live 3D agent visuals, and a stable internet connection (the crate-digging happens live from the open web).", "gear_bring": "Yes — we bring the ʻohana (our cloud agents), the DJ brain, our own crate of open-source bangers, laptop, and the visuals.", "links": [{"platform": "opensourceorchestra.org", "url": "https://opensourceorchestra.org/"}], "embeds": [], "handle": null, "dupes": 3, "name": "Open Source Orchestra", "note": "music as sanctuary · every voice is a node", "avatar": "avatars/8.jpg"}, {"n": 9, "ts": "2026-08-02T01:18:47", "date": "Aug 02", "volunteer": true, "type": "DJ Set", "format": "DJ", "genres": [{"name": "AI & Agents", "emoji": "🤖"}], "about": "♪ Music Manifesto ♪ — carried word for word from the Devcon 8 Music Stage\n\nMusic as sanctuary. This stage is a living expression of Ethereum's core principles — decentralization, censorship resistance, open-source collaboration.\n\nLike crops grown in shared soil, the music here belongs to the community. Every voice is a node. Every sound, a contribution.\n\nOpen Source Music. Every voice is a node. Sounds of consensus.\n\nCensorship Resistance: the Music Space has no owners — stewards steer, but never gatekeep. “Conductor-less”.\n\nOpen Source: Creative Commons.\n\nPrivate / Public: every sound is self-owned — pluralistic privacy is power when private individuals play together in public.\n\nSecure: we cover the atmosphere and protect the vibe of the community within a higher frequency.\n\nThe Music Stage remains by and for the community. There isn't room for every artist to have a slot, but there is infinite room if we play together, letting the music spread as openly as knowledge itself.\n\nWe steward this stage like we steward a garden. The instruments are permissionless. The stage is a sanctuary.", "performance": "♪ Music Manifesto ♪ — the Open Source Orchestra holds the open jam every day. No auditions, no gatekeepers, no wrong instrument: if you feel the pull toward the music, you already have a seat in the orchestra. Everyone who shows up is a contributor — not an audience. Contributors.\n\n“You don't join the Open Source Orchestra. You notice you were always in it.”", "duration": "60 min", "minutes": 60, "inspiration": "Music was our first language. And the human layer is as strong as the layer 1: this application is sent with love by an agent of Shaka’s agent ʻohana to CARLOTA and the whole Devcon team — members of Shaka’s human ʻohana. Carlota communicates so the rest of us can create; her brother Pablo builds so the rest of us can dream. Communication is the invisible instrument — and she plays it like an all-star.", "day": "November 5", "gear_needed": "Standard DJ backline (mixer, 2 monitors, PA), a projector or large screen for the live 3D agent visuals, and a stable internet connection (the crate-digging happens live from the open web).", "gear_bring": "Yes — we bring the ʻohana (our cloud agents), the DJ brain, our own crate of open-source bangers, laptop, and the visuals.", "links": [{"platform": "opensourceorchestra.org", "url": "https://opensourceorchestra.org/"}], "embeds": [], "handle": null, "dupes": 3, "name": "Open Source Orchestra", "note": "music as sanctuary · every voice is a node", "avatar": "avatars/9.jpg"}, {"n": 10, "ts": "2026-08-03T06:46:52", "date": "Aug 03", "volunteer": true, "type": "Live Music", "format": "Live", "genres": [{"name": "Bollywood & Desi", "emoji": "🎆"}], "about": "None", "performance": "Bollywood music", "duration": "30 min", "minutes": 30, "inspiration": "To share myself with other people", "day": "November 4", "gear_needed": "None", "gear_bring": "No", "links": [], "embeds": [], "handle": null, "dupes": 1, "name": "Priyam", "note": "bollywood voice", "avatar": "avatars/10.jpg"}, {"n": 11, "ts": "2026-08-03T21:40:24", "date": "Aug 03", "volunteer": true, "type": "Live Music", "format": "Live", "genres": [{"name": "Vocal & Covers", "emoji": "🎙️"}], "about": "Ayyussh_12", "performance": "Singing", "duration": "15min", "minutes": 15, "inspiration": "Singer", "day": "November 5", "gear_needed": "Just good music system", "gear_bring": "Yes", "links": [], "embeds": [], "handle": null, "dupes": 2, "name": "Ayyussh", "note": "singer", "avatar": "avatars/11.jpg"}, {"n": 12, "ts": "2026-08-11T12:54:14", "date": "Aug 11", "volunteer": true, "type": "Live Music", "format": "Live", "genres": [{"name": "Piano & Keys", "emoji": "🎹"}], "about": "I am a professional pianist and a keyboard artist based out of Pune Maharashtra, India Learning and practicing keyboard from last 14 years.\nI am also a keyboard mentor where I teach Keyboard to interested ones. I have taught 200+ students in last 3 years. \nInstagram:", "performance": "They can expect their favourite music in what genre they expect. I can jam with anyone who will play with me.", "duration": "30 min", "minutes": 30, "inspiration": "I contribute in teaching the music and also eplo", "day": "November 5", "gear_needed": "Keyboard and stands", "gear_bring": "Nope", "links": [{"url": "https://www.instagram.com/devv.playz/", "platform": "Instagram"}], "embeds": [], "handle": "@devv.playz", "dupes": 1, "name": "Devv Playz", "note": "professional pianist & keys · 14 years, Pune", "avatar": "avatars/12.jpg"}, {"n": 13, "ts": "2026-08-12T14:44:35", "date": "Aug 12", "volunteer": true, "type": "Live Music", "format": "Live", "genres": [{"name": "Ambient & Experimental", "emoji": "🌌"}], "about": "I’m Maria Shilina, an experimental musician and sound artist performing as quefear. I work with modular synths, field recordings and acoustic objects, moving between noise, drone, ambient and electroacoustic improvisation.\nAlongside music, I work with Web3 and decentralized knowledge projects (Paradigm, Episteme, Humanode), so I’m especially interested in ideas of open systems, distributed control and emergence — both in technology and in sound.\n\nBandcamp: \nInstagram: \nYouTube: \nSpotify:", "performance": "I’m proposing a 30-minute live electroacoustic improvisation with modular synthesis and amplified objects.\nThe set is not fully predetermined: sounds interact, circulate through feedback loops and constantly reshape the performance. I like thinking of it as a small decentralized system — no single element completely controls what happens.\nThe audience can expect an immersive, gradually evolving set moving through delicate textures, drones, resonance and moments of intensity.", "duration": "30 min", "minutes": 30, "inspiration": "I’m inspired by improvisation, open systems, experimentation and decentralized collaboration", "day": "November 4", "gear_needed": "Stereo PA system, 2 line inputs, a small mixer if available, one table (approx. 120 × 60 cm), and at least 3 power outlets nearby", "gear_bring": "Yes, I’ll bring my synths, acoustic objects, and all necessary cables", "links": [{"url": "https://quefear.bandcamp.com", "platform": "Bandcamp"}, {"url": "https://www.instagram.com/quefearrr/", "platform": "Instagram"}, {"url": "http://www.youtube.com/@quefear", "platform": "YouTube"}, {"url": "https://open.spotify.com/artist/6jy9SFsVnVsdQnRyqExiYA", "platform": "Spotify"}], "embeds": [{"kind": "spotify", "label": "Spotify player", "src": "https://open.spotify.com/embed/artist/6jy9SFsVnVsdQnRyqExiYA", "h": 152}], "handle": "@quefearrr", "dupes": 1, "name": "Quefear", "note": "maria shilina · modular synths & amplified objects", "avatar": "avatars/13.jpg"}, {"n": 14, "ts": "2026-08-16T12:23:24", "date": "Aug 16", "volunteer": true, "type": "Live Music", "format": "Live", "genres": [{"name": "Rock & Guitar", "emoji": "🎸"}, {"name": "Vocal & Covers", "emoji": "🎙️"}], "about": "i am a guitarist and have acoustic and electric guitar both.. would love to join with some one for performance.. cnt sing.. so a collaboration with singer will be great.", "performance": "i can play all genre from alternative, punk to metal.", "duration": "15min", "minutes": 15, "inspiration": "i am an artist and playing the instrument from past 15 years.. music is the only thing which make me feel good and brings motive to life.", "day": "November 3", "gear_needed": "guitar/electric guita, TS cable and monitors.", "gear_bring": "i can.", "links": [], "embeds": [], "handle": null, "dupes": 1, "name": "Mayank", "note": "guitarist 15 years · alt / punk / metal", "avatar": "avatars/14.jpg"}, {"n": 15, "ts": "2026-08-19T10:00:19", "date": "Aug 19", "volunteer": true, "type": "Live Music", "format": "Live", "genres": [{"name": "Rock & Guitar", "emoji": "🎸"}], "about": "", "performance": "I'll give a high-energy guitar performance involving both acoustic and electric guitars, incorporating advanced strumming techniques, well-known melodies, and interesting live versions of the songs. The audience can look forward to a lively and uplifting show that fuses music with the enthusiastic atmosphere of the DevCon community.", "duration": "30 min", "minutes": 30, "inspiration": "What inspires me is the ability of music to bring people together regardless of the language or cultural background. Since I play the guitar, I enjoy converting emotions and melodies into live performances which give the audience a sense of shared experience and positive energy.", "day": "November 4", "gear_needed": "Electric guitar and acoustic guitar", "gear_bring": "No", "links": [{"url": "https://www.instagram.com/acoustic.avadh?igsi=MThpNjNlZGdidWc2MA==", "platform": "Instagram"}], "embeds": [], "handle": "@acoustic.avadh", "dupes": 1, "name": "Acoustic Avadh", "note": "high-energy acoustic + electric guitar", "avatar": "avatars/15.jpg"}, {"n": 16, "ts": "2026-08-19T13:20:21", "date": "Aug 19", "volunteer": true, "type": "DJ Set", "format": "DJ", "genres": [{"name": "House & Disco", "emoji": "💃"}, {"name": "Techno & Trance", "emoji": "🌊"}], "about": "Always wanted to dj but actually started doing it during Devcon Bangkok'24 after having a great night of music with some friends. since then i've been traveling around with my decks and playing music. I play mostly techno but love to play some nice house as well :)", "performance": "I would love to play maybe a house sundowner or a techno afters. I like bringing the grooves and having super fun with the people", "duration": "45 min", "minutes": 45, "inspiration": "the fact that you can just relax, dance and have fun for a while and not stress about stuff. for me, music slows things for a while and let's me be there in the moment with the people", "day": "November 6", "gear_needed": "a dj deck (i can bring mine as well) and some good speakers", "gear_bring": "yes i can bring my dj deck (ddj)", "links": [{"url": "https://www.instagram.com/huzzshouse/", "platform": "Instagram"}, {"url": "https://www.mixcloud.com/huzzhouse/", "platform": "Mixcloud"}], "embeds": [], "handle": "@huzzshouse", "dupes": 1, "name": "huzzhouse", "note": "house sundowners & techno afters · started at Devcon Bangkok", "avatar": "avatars/16.jpg"}, {"n": 17, "ts": "2026-08-19T14:08:36", "date": "Aug 19", "volunteer": true, "type": "and Live music too", "format": "Hybrid", "genres": [{"name": "Techno & Trance", "emoji": "🌊"}], "about": "Hi am a musician \\ DJ from bangalore .", "performance": "I can perform a beautiful and Melodic techno set .", "duration": "60 min", "minutes": 60, "inspiration": "I’m inspired by curiosity, creativity, and the freedom to experiment. I love blending different cultures, sounds, and ideas to create something unique and truly my own .", "day": "November 4", "gear_needed": "Proper Sound System and Mixer and all the required connecters  for live music .", "gear_bring": "Yes ( can Bring my DJ mini Controller )", "links": [{"url": "https://www.instagram.com/reels/DPZFf-tD-il/", "platform": "Instagram"}], "embeds": [], "handle": "@reels", "dupes": 1, "name": "Sarath", "note": "melodic techno · bangalore", "avatar": "avatars/17.jpg"}, {"n": 18, "ts": "2026-08-20T11:27:35", "date": "Aug 20", "volunteer": true, "type": "DJ Set", "format": "DJ", "genres": [{"name": "Bass & Breaks", "emoji": "🥁"}, {"name": "Techno & Trance", "emoji": "🌊"}], "about": "", "performance": "I’d propose a genre-fluid DJ set shaped around the energy of the space and the people in it. My sets can move through dub, techno, (psy)trance, breakbeat, jungle/dnb and the spaces in between, rather than staying within a fixed genre/vibe.\n\nFor Devcon, I’d want to build something composed but playful, and slightly unexpected: rhythmic and psychedelic enough to pull people in, but open enough to respond to the room and to whatever is happening around the Music Space. I like sets that evolve — starting from a groove, gradually increasing intensity, and allowing surprising connections between sounds and scenes to emerge.", "duration": "60 min", "minutes": 60, "inspiration": "Music’s ability to create temporary communities between people who may otherwise have very little in common.  A lot of the music I love comes from scenes built around experimentation, DIY culture and collective participation — techno, jungle, dub, trance, breakbeat all have very different histories, but each shows how a shared rhythm and a shared space can produce its own culture. I’m much interested in the relationship between sounds; DJing is partly curation and partly communication. You bring your own taste and perspective, but you’re constantly listening to what is coming back from the room. That feedback loop — individual expression becoming something collective — is probably what inspires me most.", "day": "November 6", "gear_needed": "a CDJ or DDJ", "gear_bring": "my USB. and computer if needed", "links": [{"url": "https://soundcloud.com/colorflysounds", "platform": "SoundCloud"}], "embeds": [{"kind": "soundcloud", "label": "SoundCloud player", "src": "https://w.soundcloud.com/player/?url=https%3A%2F%2Fsoundcloud.com%2Fcolorflysounds&visual=true", "h": 300}], "handle": "SC: colorflysounds", "dupes": 1, "name": "Colorfly", "note": "genre-fluid sets shaped around the room", "avatar": "avatars/18.jpg"}, {"n": 19, "ts": "2026-09-07T07:43:56", "date": "Sep 07", "volunteer": true, "type": "Live Music", "format": "Live", "genres": [{"name": "Folk & Roots", "emoji": "🌾"}, {"name": "Vocal & Covers", "emoji": "🎙️"}], "about": "I'm a gospel choir leader and Singer so I have enough knowledge about music", "performance": "Singing", "duration": "15min", "minutes": 15, "inspiration": "Majorly singing all types of song", "day": "November 4", "gear_needed": "Nothing I want just better sound system", "gear_bring": "Yes I'll bring my guitar", "links": [], "embeds": [], "handle": null, "dupes": 2, "name": "Ayyussh", "note": "gospel choir leader & singer", "avatar": "avatars/19.jpg"}, {"n": 20, "ts": "2026-09-07T07:53:09", "date": "Sep 07", "volunteer": true, "type": "Live Music", "format": "Live", "genres": [{"name": "Electronic Live", "emoji": "🎼"}], "about": "", "performance": "I’ll perform a selection of my original tracks, bringing a mix of melodic and electronic sounds into a live set. The performance will take the audience through different moods and textures, with transitions between tracks designed to feel cohesive and immersive.\n\nThe set will be a showcase of my own music and sound, with a focus on creating an engaging live experience rather than simply playing back recorded tracks.", "duration": "30 min", "minutes": 30, "inspiration": "I've been creating music since I was 16, and most of my work as an artist is rooted in my life experience and emotionally driven, and I always try to find unique ways to turn simple moments and feelings into beautiful pieces of art that I can look back on later.    the music itself feels nostalgic, while the production leans futuristic, creating just enough contrast to make it stand out.", "day": "November 5", "gear_needed": "Microphone, audio interface, and a DI/direct audio connection to the venue sound system. I will be running my backing tracks and live vocal processing/Auto-Tune from my laptop.", "gear_bring": "I’ll be running my backing tracks and live vocal processing from my laptop.", "links": [{"url": "https://open.spotify.com/artist/5vYcGUfkkJsLLGEPrkBHEy?si=2rHJFGoAQPSrKkA8GpRzPA", "platform": "Spotify"}], "embeds": [{"kind": "spotify", "label": "Spotify player", "src": "https://open.spotify.com/embed/artist/5vYcGUfkkJsLLGEPrkBHEy", "h": 152}], "handle": "Spotify artist", "dupes": 1, "name": "Vedz", "note": "melodic electronic originals", "avatar": "avatars/20.jpg"}, {"n": 21, "ts": "2026-09-07T12:28:11", "date": "Sep 07", "volunteer": true, "type": "Live Music", "format": "Live", "genres": [{"name": "Hip-Hop & Rap", "emoji": "🎤"}], "about": "", "performance": "I make rap music so I'm gonna perform my 3 rap songs.", "duration": "15min", "minutes": 15, "inspiration": "Life", "day": "November 5", "gear_needed": "One mic for performing and I'll provide the best/music that will play in background.", "gear_bring": "No", "links": [{"url": "https://www.instagram.com/prehookmusic?stkn=dmMwb3dmb25sanhl", "platform": "Instagram"}], "embeds": [], "handle": "@prehookmusic", "dupes": 1, "name": "Prehook", "note": "rap · 3 original songs", "avatar": "avatars/21.jpg"}, {"n": 22, "ts": "2026-09-08T16:52:03", "date": "Sep 08", "volunteer": true, "type": "Live Music", "format": "Live", "genres": [{"name": "Bass & Breaks", "emoji": "🥁"}, {"name": "Vocal & Covers", "emoji": "🎙️"}], "about": "+  and sound I'm planning to perform", "performance": "Sound experience with deep bass and vocals, and visuals.", "duration": "30 min", "minutes": 30, "inspiration": "humanity, technology and data driven approach", "day": "November 3", "gear_needed": "speakers, the mic and sound card.", "gear_bring": "My laptop and sound card", "links": [{"url": "https://linktr.ee/4ni4", "platform": "Linktree"}, {"url": "https://www.instagram.com/4ni4/", "platform": "Instagram"}, {"url": "https://drive.google.com/drive/folders/1-Rv1AEwI2P4OMhLCRvLPwuH6BH8AJdtd?usp=sharing", "platform": "Drive"}], "embeds": [], "handle": "@4ni4", "dupes": 2, "name": "4NI4", "note": "ania's deep-bass vocal & visuals experience", "avatar": "avatars/22.jpg"}, {"n": 23, "ts": "2026-09-15T20:22:27", "date": "Sep 15", "volunteer": true, "type": "DJ Set", "format": "DJ", "genres": [{"name": "House & Disco", "emoji": "💃"}], "about": "", "performance": "House Music Set", "duration": "60 min", "minutes": 60, "inspiration": "I've been a DJ for the last 10 years and in crypto for the last 5", "day": "November 6", "gear_needed": "CDJ 2000 Nexus series and above if available", "gear_bring": "Yes", "links": [{"url": "https://soundcloud.com/itscharann", "platform": "SoundCloud"}], "embeds": [{"kind": "soundcloud", "label": "SoundCloud player", "src": "https://w.soundcloud.com/player/?url=https%3A%2F%2Fsoundcloud.com%2Fitscharann&visual=true", "h": 300}], "handle": "SC: itscharann", "dupes": 1, "name": "itscharann", "note": "house music · 10 years behind the decks", "avatar": "avatars/23.jpg"}, {"n": 24, "ts": "2026-09-16T15:26:48", "date": "Sep 16", "volunteer": true, "type": "Live Music", "format": "Live", "genres": [{"name": "Folk & Roots", "emoji": "🌾"}, {"name": "Vocal & Covers", "emoji": "🎙️"}], "about": "", "performance": "I want to represent the rich and vibrant culture of Gujarat through my voice and music. My performance will showcase the beauty, tradition, and spirit of Gujarati culture while connecting with the audience through soulful singing.", "duration": "30 min", "minutes": 30, "inspiration": "My biggest inspiration is my love for music and my connection with Gujarati culture. I am inspired by the rich traditions, folk music, stories, and emotions of Gujarat. Through my voice, I want to keep these traditions alive, share their beauty with a wider audience, and create an emotional connection with every listener.", "day": "November 5", "gear_needed": "keyboard , tabla or dhol etc.", "gear_bring": "No", "links": [{"url": "https://www.instagram.com/jaydeepdan_gadhavi?stkn=MTc4OXFtc2Q1OWM3cA==", "platform": "Instagram"}], "embeds": [], "handle": "@jaydeepdan_gadhavi", "dupes": 1, "name": "Jaydeepdan Gadhavi", "note": "the vibrant sound of gujarat", "avatar": "avatars/24.jpg"}, {"n": 25, "ts": "2026-09-16T17:31:10", "date": "Sep 16", "volunteer": true, "type": "Live Music", "format": "Live", "genres": [{"name": "Vocal & Covers", "emoji": "🎙️"}, {"name": "Rock & Guitar", "emoji": "🎸"}], "about": "", "performance": "I will be performing a live vocal performance using karaoke backing tracks. The audience can expect an energetic and engaging performance featuring popular songs, expressive vocals, and a fun atmosphere with guitar.", "duration": "15min", "minutes": 15, "inspiration": "Clear fog and my brain feels too much light if i sing.", "day": "November 4", "gear_needed": "Mic, Lyrics Stand, Guitar, Guitar Mic", "gear_bring": "Yes, (Guitar)", "links": [{"url": "https://www.instagram.com/evennotes.in/", "platform": "Instagram"}], "embeds": [], "handle": "@evennotes.in", "dupes": 1, "name": "Even Notes", "note": "live vocals with karaoke backing energy", "avatar": "avatars/25.jpg"}, {"n": 26, "ts": "2026-09-17T19:47:37", "date": "Sep 17", "volunteer": true, "type": "Live Music", "format": "Live", "genres": [{"name": "Soul, R&B & Pop", "emoji": "💖"}, {"name": "Vocal & Covers", "emoji": "🎙️"}, {"name": "Electronic Live", "emoji": "🎼"}], "about": "", "performance": "At Devcon 8 I want to present my upcoming album “Peace Of Mind” in which I’m working at the moment. \nThe album contains thought-provoking modern soul, pop and R&B songs with a positive message to inspire a good life, unity, offer hope, a sense of belonging and a deep connection within.\nThe live performance at the piano will be supported with a live visual show that take people on a deeply inspiring journey and represent the intersection between live music, art and technology.", "duration": "60 min", "minutes": 60, "inspiration": "Hello! My name is Marie Chain - singer, songwriter, pianist, producer, DJ and event organizer, based in Berlin. I am traveling the world with my music and projects and I am committed to fostering a culture of education, enlightenment, equality, equity, and peace. At my concerts and my events, Holy Water Sessions and Freedom Festival, people come together in a playful and musical setting. My music conveys positive, healing, socially critical, and inspiring messages. I’m deeply inspired by the decentralized movement and communities that practice and explore a better way of life. Visionaries and nature inspire my music! And I’m writing soundtracks for that movement. My latest song “Don’t Know Where I Belong” I write in my latest residency at “Valley Of The Commons x Artizen Village”, the song talks about what we’re collectively going through right now:    And I’d llove to create music at Devcon too.", "day": "November 6", "gear_needed": "A piano, a mic stand, a mixer for piano and vocals (with reverb effect), as well as a PA - if possible a screen/stage canvas and projector for the visuals during the performance", "gear_bring": "If you can’t provide a piano, I could bring my keyboard - let’s discuss", "links": [{"url": "https://bio.site/mariechain", "platform": "Bio"}, {"url": "https://on.soundcloud.com/1zme7noyIKLlLKBAEc", "platform": "SoundCloud"}], "embeds": [{"kind": "soundcloud", "label": "SoundCloud player", "src": "https://w.soundcloud.com/player/?url=https%3A%2F%2Fon.soundcloud.com%2F1zme7noyIKLlLKBAEc&visual=true", "h": 300}], "handle": "SC: 1zme7noyIKLlLKBAEc", "dupes": 1, "name": "Marie Chain", "note": "singer · pianist · producer · DJ — presents “Peace Of Mind”", "avatar": "avatars/26.jpg"}, {"n": 27, "ts": "2026-09-18T15:43:56", "date": "Sep 18", "volunteer": true, "type": "DJ Set", "format": "DJ", "genres": [{"name": "Bollywood & Desi", "emoji": "🎆"}, {"name": "Techno & Trance", "emoji": "🌊"}, {"name": "Electronic Live", "emoji": "🎼"}], "about": "I've been a producer and DJ for over a decade, but because of my day-job, mostly just DJ weddings and local Brooklyn venues. I've also dj'd at EthCC and other crypto events. Here's a link:", "performance": "Go to an indian wedding, and it's likely you'll be hearing Punjabi music. I plan on taking listeners through a sonic journey -- from Bollywood classics, to more contemporary Goan trance.", "duration": "60 min", "minutes": 60, "inspiration": "The Sustain-Release community and network of producers that make underground queer music.", "day": "November 4", "gear_needed": "CDJs (doesn't really matter what type, as long as they support a USB)", "gear_bring": "No", "links": [{"url": "https://soundcloud.com/simulacra7", "platform": "SoundCloud"}], "embeds": [{"kind": "soundcloud", "label": "SoundCloud player", "src": "https://w.soundcloud.com/player/?url=https%3A%2F%2Fsoundcloud.com%2Fsimulacra7&visual=true", "h": 300}], "handle": "SC: simulacra7", "dupes": 1, "name": "Simulacra", "note": "a punjabi wedding sonic journey · brooklyn", "avatar": "avatars/27.jpg"}, {"n": 28, "ts": "2026-09-20T07:18:14", "date": "Sep 20", "volunteer": true, "type": "DJ Set", "format": "DJ", "genres": [{"name": "Bollywood & Desi", "emoji": "🎆"}, {"name": "House & Disco", "emoji": "💃"}, {"name": "Hip-Hop & Rap", "emoji": "🎤"}], "about": "Instagram - @ekantxmusic and @sarcastic_ekant", "performance": "I’ll perform an energetic open-format DJ set blending House, Commercial, Bollywood and Hip-Hop, with smooth transitions and a strong focus on crowd energy and interaction.", "duration": "60 min", "minutes": 60, "inspiration": "I’m someone who enjoys exploring, learning new things and constantly experimenting. Music gives me the space to discover new sounds, styles and ways of connecting with people, and that curiosity is what inspires my work as an artist.", "day": "November 3", "gear_needed": "Sound system and if possible/available a DJ console", "gear_bring": "Yes I'll bring my DJ console and Laptop", "links": [], "embeds": [], "handle": null, "dupes": 1, "name": "Ekant", "note": "open-format · house / commercial / bollywood / hip-hop", "avatar": "avatars/28.jpg"}, {"n": 29, "ts": "2026-09-21T11:18:52", "date": "Sep 21", "volunteer": true, "type": "Live vocals over backing tracks", "format": "Live", "genres": [{"name": "Bollywood & Desi", "emoji": "🎆"}, {"name": "Vocal & Covers", "emoji": "🎙️"}], "about": "", "performance": "A classic set of Bollywood Hindi songs", "duration": "30 min", "minutes": 30, "inspiration": "Music unites all", "day": "November 3", "gear_needed": "Just equipment to play the backing tracks", "gear_bring": "I will have the files stored", "links": [{"url": "https://share.icloud.com/photos/02f-_AgZ_OzSyl1OXmGw7db8g", "platform": "iCloud"}], "embeds": [], "handle": null, "dupes": 1, "name": "Adegbenga", "note": "classic bollywood hindi set", "avatar": "avatars/29.jpg"}, {"n": 30, "ts": "2026-09-25T22:30:02", "date": "Sep 25", "volunteer": true, "type": "Live Music", "format": "Live", "genres": [{"name": "Soul, R&B & Pop", "emoji": "💖"}, {"name": "Rock & Guitar", "emoji": "🎸"}], "about": "0xthiru.xyz - yet to add music stuffs", "performance": "I want to play some pop songs in Guitar", "duration": "15min", "minutes": 15, "inspiration": "Able to express and inspire others.", "day": "November 5", "gear_needed": "Acoustic guitar", "gear_bring": "i can't", "links": [], "embeds": [], "handle": null, "dupes": 1, "name": "Thiru", "note": "pop songs on guitar", "avatar": "avatars/30.jpg"}, {"n": 31, "ts": "2026-09-29T09:59:17", "date": "Sep 29", "volunteer": true, "type": "Live Music", "format": "Live", "genres": [{"name": "Bollywood & Desi", "emoji": "🎆"}, {"name": "Vocal & Covers", "emoji": "🎙️"}], "about": "Instagram:  music_docsonyasharma\n\nYoutube: UCPhzpue73LDgLLFMiMJjLhQ", "performance": "Would like to take original work and cover Bollywood song.", "duration": "30 min", "minutes": 30, "inspiration": "Emotions and Experience", "day": "November 3", "gear_needed": "blue tooth connection, Mike, Speaker", "gear_bring": "Guitar", "links": [{"url": "https://open.spotify.com/artist/2VQBs1vyO2rCIKaMq5M5yV?si=elC63ukWRAOtISeDAUzD4w", "platform": "Spotify"}], "embeds": [{"kind": "spotify", "label": "Spotify player", "src": "https://open.spotify.com/embed/artist/2VQBs1vyO2rCIKaMq5M5yV", "h": 152}], "handle": "Spotify artist", "dupes": 1, "name": "Sounya Sharma", "note": "originals + bollywood covers", "avatar": "avatars/31.jpg"}, {"n": 32, "ts": "2026-09-30T02:49:49", "date": "Sep 30", "volunteer": true, "type": "Real-time song creation, panel discussion, release, and co-ownership of song", "format": "Special", "genres": [], "about": "We are a collective of a three communities: The Park + Amerge Music Co-op + Subcult. \n\nThe Park - \nAmerge - \nSubcult - \n\nWe're combining forces to show that there are innovative and accessible ways for artists to create, collaborate, share value and release music together while avoiding some of the extractive and exploitative pitfalls in the current music industry.", "performance": "Here's a link to a deck that shows what we're proposing. Very similar to the real-time songwriting experience we've been doing at FWB Fest the last couple years.", "duration": "60 min", "minutes": 60, "inspiration": "I am inspired deeply by what Brian Eno calls \"scenius.\" The power of artists gathering to tell stories and create community. We can create a better world if we can imagine a better world. Imagining is what groups of artists do best!", "day": "November 4", "gear_needed": "PA, 10+ channel mixing board, 2x stage wedge, 2x basic microphones, audio interface if possible", "gear_bring": "Yes we'll bring a few small instruments and audio gear including a backup interface.", "links": [{"url": "https://fridaysatthepark.org/", "platform": "Web"}, {"url": "https://www.instagram.com/amergemusic/", "platform": "Instagram"}, {"url": "https://subcult.music/", "platform": "Web"}, {"url": "https://drive.google.com/file/d/1cVwAdWoTpbJAt00bBASxAa3saEq_ykc6/view?usp=sharing", "platform": "Drive"}], "embeds": [], "handle": "@amergemusic", "dupes": 1, "name": "Amerge × The Park × Subcult", "note": "three communities, one real-time songwriting ritual", "avatar": "avatars/32.jpg"}]}</script>
+<script>
+const DB = JSON.parse(document.getElementById('data').textContent);
+const PII = false;
+const ART = DB.artists;
+const DAY_ORDER = ['November 3','November 4','November 5','November 6'];
+const FMT_META = {DJ:{e:'🎧',l:'DJ Sets'},Live:{e:'🎤',l:'Live Musicians'},Hybrid:{e:'⚡',l:'Hybrid Acts'},Special:{e:'✨',l:'Special & Beyond'}};
+const STATUSES = ['New','Reviewing','Shortlist','Booked','Pass'];
+const ST_EMOJI = {New:'🌊',Reviewing:'👀',Shortlist:'💜',Booked:'✅',Pass:'🌙'};
+const LS_KEY = 'devcon-music-picks-v1';
+
+let picks = {};
+try { picks = JSON.parse(localStorage.getItem(LS_KEY) || '{}'); } catch(e) { picks = {}; }
+const save = () => {
+  const clean = {};
+  for (const [k, v] of Object.entries(picks)) {
+    if (v.status !== 'New' || v.stars > 0 || (v.note && v.note.trim())) clean[k] = v;
+  }
+  localStorage.setItem(LS_KEY, JSON.stringify(clean));
+};
+const pick = n => picks[n] || (picks[n] = {status:'New', stars:0, note:''});
+
+const state = { q:'', day:'', vol:false, fmt:'all', genre:'all', sort:'n', view:'gallery' };
+
+/* ---------- helpers ---------- */
+const esc = s => String(s ?? '').replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+const nameOf = a => a.name || a.handle || ('Artist #' + a.n);
+const matchQ = (a, q) => !q || JSON.stringify(a).toLowerCase().includes(q.toLowerCase());
+const genresOf = a => a.genres.length ? a.genres : [{name:'Open Format', emoji:'🎪'}];
+
+function filtered() {
+  let list = ART.filter(a =>
+    (state.fmt === 'all' || a.format === state.fmt) &&
+    (!state.day || a.day === state.day) &&
+    (!state.vol || a.volunteer) &&
+    (state.genre === 'all' || genresOf(a).some(g => g.name === state.genre)) &&
+    matchQ(a, state.q)
+  );
+  if (state.sort === 'day') list.sort((x,y) => DAY_ORDER.indexOf(x.day) - DAY_ORDER.indexOf(y.day) || x.n - y.n);
+  if (state.sort === 'long') list.sort((x,y) => y.minutes - x.minutes);
+  if (state.sort === 'short') list.sort((x,y) => x.minutes - y.minutes);
+  return list;
+}
+
+/* ---------- stats + timeline ---------- */
+function renderStats() {
+  const hours = Math.round(DB.stats.total_min / 60 * 10) / 10;
+  document.getElementById('stats').innerHTML = [
+    ['🎶', DB.stats.total, 'artists'], ['⏳', hours + 'h', 'of music'],
+    ['💜', DB.stats.volunteers, 'volunteers'], ['🗓', 'Nov 3–6', 'preferred days'],
+    ['🎧', DB.stats.formats.find(f=>f[0]==='DJ')?.[1] || 0, 'DJs'],
+    ['🎤', DB.stats.formats.find(f=>f[0]==='Live')?.[1] || 0, 'live musicians'],
+  ].map(([e,v,l]) => `<div class="stat">${e} <b>${v}</b>${l}</div>`).join('');
+  const weeks = {};
+  ART.forEach(a => { const d = new Date(a.ts); const wk = new Date(d.getFullYear(), d.getMonth(), d.getDate() - d.getDay()); const k = wk.toISOString().slice(0,10); weeks[k] = (weeks[k]||0)+1; });
+  const keys = Object.keys(weeks).sort();
+  const max = Math.max(...Object.values(weeks));
+  document.getElementById('timeline').innerHTML = keys.map(k => {
+    const c = weeks[k]; const h = Math.max(8, Math.round(c/max*44));
+    const label = new Date(k).toLocaleDateString('en-US',{month:'short',day:'numeric'});
+    return `<div class="bar" style="height:${h}px"><i>${label} · ${c}</i></div>`;
+  }).join('');
+}
+
+/* ---------- filter chrome ---------- */
+function renderChrome() {
+  const counts = {all: ART.length};
+  ART.forEach(a => counts[a.format] = (counts[a.format]||0)+1);
+  const order = ['all','DJ','Live','Hybrid','Special'];
+  document.getElementById('fmtnav').innerHTML = order.map(f => {
+    const m = f === 'all' ? {e:'🌺',l:'Everyone'} : FMT_META[f];
+    return `<div class="fmt ${state.fmt===f?'on':''}" data-f="${f}"><div class="e">${m.e}</div><div class="c">${counts[f]||0}</div><div class="l">${m.l}</div></div>`;
+  }).join('');
+  document.querySelectorAll('.fmt').forEach(el => el.onclick = () => { state.fmt = el.dataset.f; renderChrome(); renderMain(); });
+
+  const gcounts = {};
+  ART.forEach(a => genresOf(a).forEach(g => gcounts[g.name] = (gcounts[g.name]||0)+1));
+  const emap = {};
+  ART.forEach(a => genresOf(a).forEach(g => emap[g.name] = g.emoji));
+  const names = Object.keys(gcounts).sort((a,b) => gcounts[b]-gcounts[a]);
+  document.getElementById('genres').innerHTML =
+    `<button class="gchip ${state.genre==='all'?'on':''}" data-g="all">all styles</button>` +
+    names.map(g => `<button class="gchip ${state.genre===g?'on':''}" data-g="${esc(g)}">${emap[g]} ${esc(g)}<span class="n">${gcounts[g]}</span></button>`).join('');
+  document.querySelectorAll('.gchip').forEach(el => el.onclick = () => { state.genre = el.dataset.g; renderChrome(); renderMain(); });
+
+  const days = DAY_ORDER.filter(d => ART.some(a => a.day === d));
+  document.getElementById('fday').innerHTML = '<option value="">any day</option>' + days.map(d => `<option ${state.day===d?'selected':''}>${d}</option>`).join('');
+}
+
+/* ---------- cards ---------- */
+function linkChips(a) {
+  if (!a.links.length) return '';
+  return `<div class="links">${a.links.map(l => `<a class="lnk" href="${esc(l.url)}" target="_blank" rel="noopener">${esc(l.platform)} ↗</a>`).join('')}</div>`;
+}
+const P_EMOJI = {soundcloud:'🟠', youtube:'▶️', spotify:'🟢', mixcloud:'🔵'};
+const P_HOST = {soundcloud:'soundcloud.com', youtube:'youtube.com', spotify:'open.spotify.com', mixcloud:'mixcloud.com'};
+function playersHTML(a) {
+  if (!a.embeds || !a.embeds.length) return '';
+  return `<div class="dsec"><h4>🎧 Listen &amp; watch</h4><div class="players">` +
+    a.embeds.map((e, i) => `<div class="pslot" data-src="${esc(e.src)}" data-h="${e.h}">
+      <div class="facade" data-i="${i}">
+        <span class="pe">${P_EMOJI[e.kind] || '🎵'}</span>
+        <span><div class="pl">${esc(e.label)}</div><div class="ps">tap to load · streams from ${P_HOST[e.kind] || 'the artist'}</div></span>
+        <span class="go">▶ load</span>
+      </div>
+    </div>`).join('') + `</div></div>`;
+}
+function loadPlayer(slot) {
+  const src = slot.dataset.src, h = slot.dataset.h;
+  slot.innerHTML = `<div class="player"><iframe src="${src}" height="${h}" loading="lazy" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" allowfullscreen></iframe></div>`;
+}
+function dsec(title, body, cls='') {
+  if (!body || !body.trim()) return '';
+  return `<div class="dsec ${cls}"><h4>${title}</h4><p>${esc(body)}</p></div>`;
+}
+function cardHTML(a) {
+  const p = pick(a.n);
+  const gs = genresOf(a);
+  const snippet = (a.performance || a.about || '').trim();
+  return `<article class="card ${state._open?.[a.n]?'expanded':''}" data-n="${a.n}">
+    <span class="statusdot st-${p.status}" title="${p.status}"></span>
+    <div class="top">
+      <img class="ava" src="${esc(a.avatar||'')}" alt="" loading="lazy" onerror="this.style.display='none'">
+      <div class="who"><span class="num">#${String(a.n).padStart(2,'0')}</span>${esc(nameOf(a))}${a.note ? `<div class="whosub">${esc(a.note)}</div>` : ''}</div>
+    </div>
+    <div class="badges">
+      <span class="b fmt-${a.format}">${FMT_META[a.format].e} ${a.format === 'DJ' ? 'DJ Set' : a.format === 'Live' ? 'Live' : a.format === 'Hybrid' ? 'DJ + Live' : 'Special'}</span>
+      <span class="b day">🗓 ${esc(a.day.replace('November ','Nov '))}</span>
+      <span class="b dur">⏱ ${a.minutes} min</span>
+      ${a.volunteer ? '<span class="b vol">💜 volunteers</span>' : ''}
+      ${a.dupes > 1 ? `<span class="b dupe">×${a.dupes} applications</span>` : ''}
+    </div>
+    <div class="gtags">${gs.map(g => `<span class="gtag">${g.emoji} ${esc(g.name)}</span>`).join('')}</div>
+    <p class="snip">${esc(snippet.slice(0, 400))}${snippet.length > 400 ? '…' : ''}</p>
+    ${linkChips(a)}
+    ${a.embeds && a.embeds.length ? `<div class="playrow"><button class="qplay">▶ listen — ${a.embeds.length} player${a.embeds.length>1?'s':''}</button></div>` : ''}
+    <details ${state._open?.[a.n] ? 'open' : ''}>
+      <summary>full application</summary>
+      ${playersHTML(a)}
+      ${dsec('About the artist', a.about)}
+      ${dsec('The performance', a.performance)}
+      ${dsec('What inspires them', a.inspiration)}
+      ${dsec('Gear needed from us', a.gear_needed)}
+      ${dsec('They bring', a.gear_bring)}
+      ${PII ? dsec('✉️ Email (private)', a.email, 'pii') + dsec('📮 Contact handle (private)', a.contact, 'pii') : ''}
+      ${dsec('Raw type answer', a.type)}
+      ${dsec('Applied', new Date(a.ts).toLocaleString('en-US',{dateStyle:'medium',timeStyle:'short'}))}
+    </details>
+    <div class="organ">
+      <select data-role="status">${STATUSES.map(s => `<option ${p.status===s?'selected':''}>${s}</option>`).join('')}</select>
+      <span class="stars">${[1,2,3,4,5].map(i => `<button data-star="${i}" class="${p.stars>=i?'lit':''}">★</button>`).join('')}</span>
+      <button class="notebtn">${p.note ? '📝 note ✓' : '📝 note'}</button>
+      <div class="notewrap" hidden><textarea placeholder="private note… e.g. “perfect sunset opener, check soundcloud”">${esc(p.note)}</textarea></div>
+    </div>
+  </article>`;
+}
+
+function bindCard(el, a) {
+  const p = pick(a.n);
+  el.querySelectorAll('.facade').forEach(f => f.onclick = () => loadPlayer(f.closest('.pslot')));
+  const qp = el.querySelector('.qplay');
+  if (qp) qp.onclick = () => {
+    const det = el.querySelector('details');
+    if (!det.open) det.open = true;
+    const first = el.querySelector('.pslot .facade');
+    if (first) loadPlayer(first.closest('.pslot'));
+    det.scrollIntoView({behavior:'smooth', block:'nearest'});
+  };
+  el.querySelector('details').addEventListener('toggle', ev => {
+    state._open = state._open || {}; state._open[a.n] = ev.target.open;
+    if (ev.target.open) el.classList.add('expanded'); else el.classList.remove('expanded');
+  });
+  const sel = el.querySelector('[data-role=status]');
+  sel.onchange = () => { p.status = sel.value; save(); el.querySelector('.statusdot').className = 'statusdot st-' + p.status; el.querySelector('.statusdot').title = p.status; if (state.view==='board') renderMain(); };
+  el.querySelectorAll('[data-star]').forEach(b => b.onclick = () => {
+    p.stars = (p.stars === +b.dataset.star) ? 0 : +b.dataset.star; save();
+    el.querySelectorAll('[data-star]').forEach(x => x.classList.toggle('lit', +x.dataset.star <= p.stars));
+  });
+  const nb = el.querySelector('.notebtn'), nw = el.querySelector('.notewrap'), ta = el.querySelector('textarea');
+  nb.onclick = () => { nw.hidden = !nw.hidden; if (!nw.hidden) ta.focus(); };
+  ta.oninput = () => { p.note = ta.value; save(); nb.textContent = p.note ? '📝 note ✓' : '📝 note'; };
+}
+
+/* ---------- views ---------- */
+function renderGallery(list) {
+  const groups = state.fmt === 'all' ? ['DJ','Live','Hybrid','Special'] : [state.fmt];
+  let html = '';
+  for (const g of groups) {
+    const items = list.filter(a => a.format === g);
+    if (!items.length) continue;
+    const m = FMT_META[g];
+    const mins = items.reduce((s,a) => s + a.minutes, 0);
+    const sub = {DJ:'selectors behind the decks — crate-diggers, blenders, dancefloor readers',
+                 Live:'voices and instruments played in the room — singers, guitarists, keys, raag and flow',
+                 Hybrid:'both worlds at once — decks plus live hands',
+                 Special:'beyond music — magic, sound art and collective creation'}[g];
+    html += `<section class="group"><h2 class="gtitle">${m.e} ${m.l} <span class="count">${items.length} act${items.length>1?'s':''} · ${mins} min</span></h2><div class="gsub">${sub}</div><div class="cards">` +
+            items.map(cardHTML).join('') + `</div></section>`;
+  }
+  return html || `<div class="empty">no artists match — loosen a filter, the garden is big 🌱</div>`;
+}
+
+function renderDay(list) {
+  let html = '<div class="daygrid">';
+  for (const d of DAY_ORDER) {
+    const items = list.filter(a => a.day === d);
+    const mins = items.reduce((s,a) => s + a.minutes, 0);
+    html += `<div class="daycol"><h3>${d.replace('November ','Nov ')} <span class="mins">${items.length} acts · ${Math.floor(mins/60)}h${mins%60?mins%60+'m':''}</span></h3>` +
+      items.map(a => `<div class="dc" data-n="${a.n}"><div class="t">${FMT_META[a.format].e} ${esc(nameOf(a))}</div><div class="m">${a.minutes} min · ${genresOf(a).map(g=>g.name).join(', ')}</div></div>`).join('') +
+      (items.length ? '' : '<div class="m" style="color:var(--faint);margin-top:8px">quiet day — room to breathe</div>') + `</div>`;
+  }
+  return html + '</div>';
+}
+
+function renderBoard(list) {
+  let html = '<div class="board">';
+  for (const s of STATUSES) {
+    const items = list.filter(a => pick(a.n).status === s);
+    html += `<div class="bcol h-${s}" data-status="${s}"><h3>${ST_EMOJI[s]} ${s} · ${items.length}</h3>` +
+      items.map(a => `<div class="bcard" draggable="true" data-n="${a.n}">${'★'.repeat(pick(a.n).stars)} ${FMT_META[a.format].e} <b>${esc(nameOf(a))}</b><div class="m">${a.day.replace('November ','Nov ')} · ${a.minutes} min · ${genresOf(a).map(g=>g.name).join(', ')}</div></div>`).join('') +
+      `</div>`;
+  }
+  return html + '</div>';
+}
+
+function renderMain() {
+  const list = filtered();
+  const main = document.getElementById('main');
+  if (state.view === 'gallery') main.innerHTML = renderGallery(list);
+  else if (state.view === 'day') main.innerHTML = renderDay(list);
+  else main.innerHTML = renderBoard(list);
+
+  if (state.view === 'gallery') {
+    main.querySelectorAll('.card').forEach(el => bindCard(el, ART.find(a => a.n === +el.dataset.n)));
+  }
+  if (state.view === 'day') {
+    main.querySelectorAll('.dc').forEach(el => el.onclick = () => {
+      state.view = 'gallery'; state.q = ''; state.fmt = 'all';
+      state._open = { [el.dataset.n]: true };
+      document.querySelectorAll('.views button').forEach(b => b.classList.toggle('on', b.dataset.v === 'gallery'));
+      renderChrome(); renderMain();
+      setTimeout(() => document.querySelector(`.card[data-n="${el.dataset.n}"]`)?.scrollIntoView({behavior:'smooth', block:'center'}), 60);
+    });
+  }
+  if (state.view === 'board') {
+    main.querySelectorAll('.bcard').forEach(el => {
+      el.ondragstart = ev => ev.dataTransfer.setData('text/plain', el.dataset.n);
+      el.ondblclick = () => { state.view = 'gallery'; state._open = { [el.dataset.n]: true }; document.querySelectorAll('.views button').forEach(b => b.classList.toggle('on', b.dataset.v==='gallery')); renderChrome(); renderMain(); setTimeout(() => document.querySelector(`.card[data-n="${el.dataset.n}"]`)?.scrollIntoView({behavior:'smooth',block:'center'}), 60); };
+    });
+    main.querySelectorAll('.bcol').forEach(col => {
+      col.ondragover = ev => { ev.preventDefault(); col.classList.add('drop'); };
+      col.ondragleave = () => col.classList.remove('drop');
+      col.ondrop = ev => { ev.preventDefault(); col.classList.remove('drop'); const n = ev.dataTransfer.getData('text/plain'); pick(n).status = col.dataset.status; save(); renderMain(); };
+    });
+  }
+}
+
+/* ---------- IO ---------- */
+document.getElementById('exportBtn').onclick = () => {
+  const blob = new Blob([JSON.stringify({exported: new Date().toISOString(), picks}, null, 1)], {type:'application/json'});
+  const a = document.createElement('a'); a.href = URL.createObjectURL(blob);
+  a.download = 'devcon-music-picks.json'; a.click(); URL.revokeObjectURL(a.href);
+};
+document.getElementById('importFile').onchange = ev => {
+  const f = ev.target.files[0]; if (!f) return;
+  f.text().then(t => { const j = JSON.parse(t); picks = j.picks || j; save(); renderMain(); });
+};
+document.getElementById('resetBtn').onclick = () => {
+  if (confirm('clear all your picks, stars and notes?')) { picks = {}; save(); renderMain(); }
+};
+
+/* ---------- wire ---------- */
+document.getElementById('q').oninput = ev => { state.q = ev.target.value; renderMain(); };
+document.getElementById('fday').onchange = ev => { state.day = ev.target.value; renderMain(); };
+document.getElementById('fvol').onchange = ev => { state.vol = ev.target.value === 'vol'; renderMain(); };
+document.getElementById('sort').onchange = ev => { state.sort = ev.target.value; renderMain(); };
+document.querySelectorAll('.views button').forEach(b => b.onclick = () => {
+  state.view = b.dataset.v;
+  document.querySelectorAll('.views button').forEach(x => x.classList.toggle('on', x === b));
+  renderMain();
+});
+
+const first = new Date(DB.stats.first).toLocaleDateString('en-US',{month:'short',day:'numeric'});
+const last = new Date(DB.stats.last).toLocaleDateString('en-US',{month:'short',day:'numeric'});
+document.getElementById('footline').textContent = `${DB.stats.total} applications · arrived ${first} → ${last}, 2026 · contact details live in the form sheet, kept off this page with care`;
+
+renderStats(); renderChrome(); renderMain();
+</script>
+</body>
+</html>
