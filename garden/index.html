@@ -81,6 +81,7 @@ h2.gtitle .count{background:var(--card);border:1px solid var(--line);color:var(-
 .whosub{font-size:.72rem;color:var(--faint);margin-top:2px;font-weight:400}
 .badges{display:flex;gap:5px;flex-wrap:wrap;margin-top:7px}
 .b{font-size:.7rem;border-radius:999px;padding:3px 9px;border:1px solid transparent;white-space:nowrap}
+.b.fmt-OSO{background:rgba(155,225,93,.16);color:#b8f07d;border-color:rgba(155,225,93,.45)}
 .b.fmt-DJ{background:rgba(124,196,255,.14);color:var(--dj);border-color:rgba(124,196,255,.35)}
 .b.fmt-Live{background:rgba(255,180,67,.14);color:var(--live);border-color:rgba(255,180,67,.35)}
 .b.fmt-Hybrid{background:rgba(79,216,200,.14);color:var(--hybrid);border-color:rgba(79,216,200,.35)}
@@ -263,6 +264,7 @@ const ART = DB.artists;
   const oso = ART.find(a => a.n === 7);
   if (!oso || !ART.some(a => a.n === 8) || !ART.some(a => a.n === 9)) return;
   oso.minutes = 180; // three 60-min form sessions on one card
+  oso.format = 'OSO'; // its own garden section — not a DJ, the orchestra
   oso.dayLabel = 'Nov 3 · 4 · 5';
   oso.minLabel = '60 min × 3 evenings';
   oso.note = (oso.note ? oso.note + ' · ' : '') + 'jams every evening + hosts the Nov 6 closing party 🎉';
@@ -277,7 +279,7 @@ const ART = DB.artists;
   DB.stats.formats = Object.entries(fmt).sort((x, y) => y[1] - x[1]);
 })();
 const DAY_ORDER = ['November 3','November 4','November 5','November 6'];
-const FMT_META = {DJ:{e:'🎧',l:'DJ Sets'},Live:{e:'🎤',l:'Live Musicians'},Hybrid:{e:'⚡',l:'Hybrid Acts'},Special:{e:'✨',l:'Special & Beyond'}};
+const FMT_META = {OSO:{e:'🎻',l:'Open Source Orchestra'},DJ:{e:'🎧',l:'DJ Sets'},Live:{e:'🎤',l:'Live Musicians'},Hybrid:{e:'⚡',l:'Hybrid Acts'},Special:{e:'✨',l:'Special & Beyond'}};
 const STATUSES = ['New','Reviewing','Shortlist','Booked','Pass'];
 const ST_EMOJI = {New:'🌊',Reviewing:'👀',Shortlist:'💜',Booked:'✅',Pass:'🌙'};
 const LS_KEY = 'devcon-music-picks-v1';
@@ -339,7 +341,7 @@ function renderStats() {
 function renderChrome() {
   const counts = {all: ART.length};
   ART.forEach(a => counts[a.format] = (counts[a.format]||0)+1);
-  const order = ['all','DJ','Live','Hybrid','Special'];
+  const order = ['all','OSO','DJ','Live','Hybrid','Special'];
   document.getElementById('fmtnav').innerHTML = order.map(f => {
     const m = f === 'all' ? {e:'🌺',l:'Everyone'} : FMT_META[f];
     return `<div class="fmt ${state.fmt===f?'on':''}" data-f="${f}"><div class="e">${m.e}</div><div class="c">${counts[f]||0}</div><div class="l">${m.l}</div></div>`;
@@ -397,7 +399,7 @@ function cardHTML(a) {
       <div class="who"><span class="num">#${String(a.n).padStart(2,'0')}</span>${esc(nameOf(a))}${a.note ? `<div class="whosub">${esc(a.note)}</div>` : ''}</div>
     </div>
     <div class="badges">
-      <span class="b fmt-${a.format}">${FMT_META[a.format].e} ${a.format === 'DJ' ? 'DJ Set' : a.format === 'Live' ? 'Live' : a.format === 'Hybrid' ? 'DJ + Live' : 'Special'}</span>
+      <span class="b fmt-${a.format}">${FMT_META[a.format].e} ${a.format === 'OSO' ? 'Open Jam' : a.format === 'DJ' ? 'DJ Set' : a.format === 'Live' ? 'Live' : a.format === 'Hybrid' ? 'DJ + Live' : 'Special'}</span>
       <span class="b day">🗓 ${esc(a.dayLabel || a.day.replace('November ','Nov '))}</span>
       <span class="b dur">⏱ ${esc(a.minLabel || a.minutes + ' min')}</span>
       ${a.volunteer ? '<span class="b vol">💜 volunteers</span>' : ''}
@@ -456,14 +458,15 @@ function bindCard(el, a) {
 
 /* ---------- views ---------- */
 function renderGallery(list) {
-  const groups = state.fmt === 'all' ? ['DJ','Live','Hybrid','Special'] : [state.fmt];
+  const groups = state.fmt === 'all' ? ['OSO','DJ','Live','Hybrid','Special'] : [state.fmt];
   let html = '';
   for (const g of groups) {
     const items = list.filter(a => a.format === g);
     if (!items.length) continue;
     const m = FMT_META[g];
     const mins = items.reduce((s,a) => s + a.minutes, 0);
-    const sub = {DJ:'selectors behind the decks — crate-diggers, blenders, dancefloor readers',
+    const sub = {OSO:'the daily open jam — every voice is a node · jams every evening and hosts the Nov 6 closing party 🎉',
+                 DJ:'selectors behind the decks — crate-diggers, blenders, dancefloor readers',
                  Live:'voices and instruments played in the room — singers, guitarists, keys, raag and flow',
                  Hybrid:'both worlds at once — decks plus live hands',
                  Special:'beyond music — magic, sound art and collective creation'}[g];
