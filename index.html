@@ -669,6 +669,12 @@
 <div class="gt">+90 more ↓ <span id="google_translate_element"></span><br><span style="font-size:10px">music was our first language 🎵</span></div>
 </div>
 <a id="oviol" href="https://docs.google.com/forms/d/e/1FAIpQLSck9I3Tu0lZqCBt9FsE9VG4UjGM71gbY86aDDlC9jb_akPMmg/viewform" target="_blank" rel="noopener" title="🎻 answer the call — sign up to perform at the Devcon 8 Music Space, Mumbai Nov 3–6">🎻</a>
+<nav id="onav" aria-label="Music Space quick links">
+<a href="/garden/" title="🌱 the garden — every artist who answered the call">🌱</a>
+<a href="/committee/" title="🤝 the Music Space Committee — stewards &amp; Devcon team">🤝</a>
+<a href="/garden/flowers/" title="🌷 the confirmed — artists who answered the next-steps call">🌷</a>
+<a href="/schedule/" title="🗓️ the schedule — Nov 3–6, Mumbai">🗓️</a>
+</nav>
 
 <style>
 /* 🎻✨ ohana corner v4 — ALIVE: bigger, breathing, bubble-tips, heart-glow · "we shine a light in the dark with our heart" */
@@ -678,6 +684,10 @@
 #olang{top:74px!important}
 #olangp{top:202px!important}
 #oviol{position:fixed;top:74px;right:10px;z-index:9999;border-radius:50%;background:rgba(20,18,45,.85);border:1px solid rgba(251,226,160,.55);display:flex;align-items:center;justify-content:center;cursor:pointer;user-select:none;text-decoration:none;transition:opacity .3s}
+#onav{position:fixed;top:140px;right:10px;z-index:9999;display:flex;flex-direction:column;gap:10px}
+#onav a{width:46px;height:46px;border-radius:50%;background:rgba(20,18,45,.85);border:1px solid rgba(251,226,160,.4);display:flex;align-items:center;justify-content:center;font-size:21px;line-height:1;text-decoration:none;opacity:.72;transition:opacity .3s,transform .3s}
+#onav a:hover{opacity:1;transform:translateY(-2px)}
+@media (prefers-reduced-motion:reduce){#onav a{transition:none}}
 @keyframes oSway{0%,100%{transform:rotate(-6deg)}50%{transform:rotate(6deg)}}
 @keyframes oBob{0%,100%{transform:translateY(0)}50%{transform:translateY(-4px)}}
 @keyframes oWig{0%,86%,100%{transform:rotate(0)}89%{transform:rotate(-14deg)}93%{transform:rotate(12deg)}97%{transform:rotate(-6deg)}}
@@ -901,6 +911,5 @@ fx.onclick=function(e){e.stopPropagation();fw.style.display='none';mn.style.disp
 mn.onclick=function(e){e.stopPropagation();mn.style.display='none';fw.style.display='';try{localStorage.removeItem('oso_fab_mini');}catch(err){}};
 try{if(localStorage.getItem('oso_fab_mini')==='1'){fw.style.display='none';mn.style.display='flex';}}catch(err){}})();
 </script>
-<script src="ohana-passport.js?v=3" data-agent="oso" data-name="OSO 🎻" defer></script>
 </body>
 </html>
