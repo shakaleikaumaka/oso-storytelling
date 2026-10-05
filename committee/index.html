@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Music Space Committee · Devcon 8 Mumbai — Open Source Orchestra</title>
+<meta name="description" content="The nine stewards of the Devcon 8 Music Space, Mumbai · Nov 3–6 2026 — together with the Devcon team.">
+<link rel="icon" href="../favicon.svg" type="image/svg+xml">
+<style>
+:root{--bg:#140e1c;--bg2:#1d1428;--card:#221732;--card2:#2a1d3e;--ink:#f6efe4;--muted:#b8a8c9;--faint:#8a7699;--marigold:#ffb443;--lotus:#ff7eb6;--leaf:#9be15d;--sky:#7cc4ff;--teal:#4fd8c8;--line:rgba(255,180,67,.16);--flap:1.15s}
+*{margin:0;padding:0;box-sizing:border-box}
+body{background:radial-gradient(1200px 700px at 80% -10%,rgba(255,126,182,.10),transparent 60%),radial-gradient(1000px 600px at 10% -5%,rgba(255,180,67,.12),transparent 55%),var(--bg);color:var(--ink);font-family:Georgia,'Times New Roman',serif;line-height:1.6;min-height:100vh}
+.wrap{max-width:1060px;margin:0 auto;padding:0 20px 90px}
+.ribbon{position:fixed;top:14px;right:16px;z-index:50;font-family:system-ui,sans-serif;font-size:12.5px;letter-spacing:.04em}
+.ribbon a{color:var(--marigold);text-decoration:none;background:rgba(20,14,28,.93);border:1px solid var(--line);border-radius:999px;padding:7px 14px}
+.ribbon a:hover{color:var(--lotus)}
+header{text-align:center;padding:84px 0 30px}
+.kicker{font-family:system-ui,sans-serif;font-size:12px;letter-spacing:.34em;text-transform:uppercase;color:var(--marigold)}
+h1{font-size:clamp(34px,6vw,58px);font-weight:400;font-style:italic;margin:14px 0 10px;background:linear-gradient(100deg,var(--marigold),var(--lotus));-webkit-background-clip:text;background-clip:text;color:transparent}
+.sub{color:var(--muted);font-size:17px;max-width:640px;margin:0 auto}
+.sub b{color:var(--ink);font-weight:400}
+.vows{text-align:center;color:var(--faint);font-style:italic;margin:26px auto 0;max-width:560px;font-size:15px}
+section{margin-top:64px}
+h2{font-weight:400;font-size:15px;font-family:system-ui,sans-serif;letter-spacing:.26em;text-transform:uppercase;color:var(--marigold);text-align:center}
+h2 span{color:var(--faint);letter-spacing:.06em;text-transform:none;display:block;margin-top:6px;font-size:13px;font-style:italic;font-family:Georgia,serif}
+.grid{display:grid;gap:18px;margin-top:28px;grid-template-columns:repeat(auto-fit,minmax(280px,1fr))}
+.grid.founding{max-width:920px;margin-left:auto;margin-right:auto}
+.card{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:24px 22px;text-align:center;position:relative;transition:transform .25s,border-color .25s}
+.card:hover{transform:translateY(-4px);border-color:rgba(255,180,67,.4)}
+.card.new::after{content:"new steward 🌱";position:absolute;top:12px;right:12px;font-family:system-ui,sans-serif;font-size:10.5px;letter-spacing:.06em;color:var(--leaf);background:rgba(155,225,93,.1);border:1px solid rgba(155,225,93,.25);border-radius:999px;padding:3px 9px}
+.ava{width:88px;height:88px;border-radius:50%;object-fit:cover;border:2px solid var(--line);display:block;margin:0 auto 14px;background:var(--card2)}
+.mono{width:88px;height:88px;border-radius:50%;display:flex;align-items:center;justify-content:center;margin:0 auto 14px;font-size:34px;font-style:italic;color:var(--bg);border:2px solid var(--line)}
+.nm{font-size:21px;letter-spacing:.01em}
+.aka{color:var(--lotus);font-style:italic;font-size:14.5px;margin-top:2px}
+.role{font-family:system-ui,sans-serif;font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--marigold);margin-top:10px}
+.bio{color:var(--muted);font-size:14.5px;margin-top:10px;min-height:0}
+.links{margin-top:14px;display:flex;flex-wrap:wrap;gap:8px;justify-content:center;font-family:system-ui,sans-serif;font-size:12px}
+.links a{color:var(--sky);text-decoration:none;border:1px solid rgba(124,196,255,.25);border-radius:999px;padding:4px 11px}
+.links a:hover{color:var(--teal);border-color:rgba(79,216,200,.45)}
+.efband{max-width:760px;margin:28px auto 0;display:grid;gap:18px;grid-template-columns:repeat(auto-fit,minmax(280px,1fr))}
+.ef .role{color:var(--sky)}
+footer{text-align:center;margin-top:90px;color:var(--faint);font-style:italic;font-size:14.5px}
+footer a{color:var(--marigold);text-decoration:none}
+@media(max-width:600px){header{padding-top:72px}.ribbon{top:10px;right:10px}}
+</style>
+</head>
+<body>
+<div class="ribbon"><a href="https://opensourceorchestra.org/">🎻 opensourceorchestra.org ↗</a></div>
+<div class="wrap">
+
+<header>
+  <div class="kicker">Devcon 8 · Mumbai · Nov 3–6 2026</div>
+  <h1>The Music Space Committee</h1>
+  <p class="sub">Nine stewards hold the Music Space — musicians, builders and community weavers — working hand in hand with the <b>Devcon team</b>. Every voice is a node.</p>
+  <p class="vows">music as sanctuary · the circle opens where the talks end</p>
+</header>
+
+<section>
+  <h2>Founding Circle<span>the three who began it</span></h2>
+  <div class="grid founding">
+    <div class="card">
+      <div class="mono" style="background:linear-gradient(135deg,var(--marigold),var(--lotus))">S</div>
+      <div class="nm">Shaka Lei Kaumaka</div>
+      <div class="role">Founder · Open Source Orchestra</div>
+      <div class="bio">Carries the aloha — from Hawaiʻi to the playa to Mumbai, building stages where every voice is a node.</div>
+      <div class="links"><a href="https://shakaleikaumaka.com" rel="noopener">shakaleikaumaka.com</a><a href="https://x.com/Shakaleikaumaka" rel="noopener">@Shakaleikaumaka</a></div>
+    </div>
+    <div class="card">
+      <div class="mono" style="background:linear-gradient(135deg,var(--teal),var(--sky))">A</div>
+      <div class="nm">Alaska</div>
+      <div class="role">Subcult</div>
+      <div class="bio">Keeper of the underground current — weaving the Subcult community into the orchestra.</div>
+      <div class="links"><a href="https://subcult.music" rel="noopener">subcult.music</a></div>
+    </div>
+    <div class="card">
+      <div class="mono" style="background:linear-gradient(135deg,var(--leaf),var(--teal))">A</div>
+      <div class="nm">Akash</div>
+      <div class="role">Committee</div>
+      <div class="bio">The steady hand on the ground — holding the space together from the Mumbai side.</div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <h2>The Six New Stewards<span>welcomed October 2026 — they arrive Nov 1–2 to build the space with us</span></h2>
+  <div class="grid">
+    <div class="card new">
+      <img class="ava" src="../garden/avatars/13.jpg" alt="quefear">
+      <div class="nm">Maria Shilina</div>
+      <div class="aka">quefear</div>
+      <div class="role">Sound &amp; Listening</div>
+      <div class="bio">Electroacoustic improvisation, modular synthesis, contact mics — sound emerging between people, instruments and space. Holds sound checks and technical care.</div>
+      <div class="links"><a href="https://quefear.bandcamp.com" rel="noopener">Bandcamp</a><a href="https://www.instagram.com/quefearrr/" rel="noopener">Instagram</a><a href="https://open.spotify.com/artist/6jy9SFsVnVsdQnRyqExiYA" rel="noopener">Spotify</a></div>
+    </div>
+    <div class="card new">
+      <img class="ava" src="../garden/avatars/3.jpg" alt="4ni4">
+      <div class="nm">Ania Shestakova</div>
+      <div class="aka">4ni4</div>
+      <div class="role">Operations &amp; Curation</div>
+      <div class="bio">Composer of the synth opera <i>DIFFUSION</i> and Web3 builder — the human voice reclaimed inside algorithmic systems. Stewards setup, ops and open-jam curation.</div>
+      <div class="links"><a href="https://linktr.ee/4ni4" rel="noopener">Linktree</a><a href="https://soundcloud.com/ania-shestakova" rel="noopener">SoundCloud</a><a href="http://instagram.com/4ni4" rel="noopener">Instagram</a></div>
+    </div>
+    <div class="card new">
+      <img class="ava" src="../garden/avatars/18.jpg" alt="Colorfly">
+      <div class="nm">Colorfly</div>
+      <div class="aka">genre-fluid · shaped around the room</div>
+      <div class="role">Flow &amp; Energy</div>
+      <div class="bio">Reads the room like a score — sets that bend genre to the moment. Bonded with the ʻohana since ETH Tokyo; keeper of the dancefloor's pulse.</div>
+      <div class="links"><a href="https://soundcloud.com/colorflysounds" rel="noopener">SoundCloud</a><a href="https://x.com/irohasattva" rel="noopener">@irohasattva</a></div>
+    </div>
+    <div class="card new">
+      <img class="ava" src="../garden/avatars/32.jpg" alt="Levi — Amerge × The Park × Subcult">
+      <div class="nm">Levi Downey</div>
+      <div class="aka">Amerge × The Park × Subcult</div>
+      <div class="role">Collectives &amp; Collaboration</div>
+      <div class="bio">Three communities combining forces — showing how artists create, share value and release music together without the extractive pitfalls of the old industry.</div>
+      <div class="links"><a href="https://www.instagram.com/amergemusic/" rel="noopener">@amergemusic</a><a href="https://subcult.music" rel="noopener">Subcult</a></div>
+    </div>
+    <div class="card new">
+      <img class="ava" src="../garden/avatars/12.jpg" alt="devv.playz">
+      <div class="nm">Devang Gandhi</div>
+      <div class="aka">devv.playz</div>
+      <div class="role">Musicianship &amp; Jams</div>
+      <div class="bio">Fourteen years of piano and harmonium, teacher of two hundred students — and a Solidity developer. The bridge between the builders and the band.</div>
+      <div class="links"><a href="https://www.instagram.com/devv.playz/" rel="noopener">Instagram</a></div>
+    </div>
+    <div class="card new">
+      <img class="ava" src="../garden/avatars/24.jpg" alt="Jaydeep Gadhavi">
+      <div class="nm">Jaydeep Gadhavi</div>
+      <div class="aka">Gujarati folk · Garba</div>
+      <div class="role">Culture &amp; Roots</div>
+      <div class="bio">Brings the folk fire of Gujarat into the space — Garba circles where every culture is invited to dance. The local root of the orchestra.</div>
+      <div class="links"><a href="https://instagram.com/jaydeepdan_gadhavi" rel="noopener">Instagram</a></div>
+    </div>
+  </div>
+</section>
+
+<section class="ef">
+  <h2>The Devcon Team<span>holding the doors open at the Ethereum Foundation</span></h2>
+  <div class="efband">
+    <div class="card">
+      <div class="mono" style="background:linear-gradient(135deg,var(--sky),var(--lotus))">C</div>
+      <div class="nm">Carlota Voorvaart</div>
+      <div class="role">Devcon/nect · Operations</div>
+      <div class="bio">The bridge between the Music Space and Devcon — every artist letter passed through her hands.</div>
+    </div>
+    <div class="card">
+      <div class="mono" style="background:linear-gradient(135deg,var(--lotus),var(--sky))">T</div>
+      <div class="nm">Tomo Saito</div>
+      <div class="role">Ethereum Foundation</div>
+      <div class="bio">Guiding the space inside the greater Devcon flow.</div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  mahalo nui loa — see you in Mumbai 🌺<br>
+  <a href="https://opensourceorchestra.org/">Open Source Orchestra</a> · music as sanctuary
+</footer>
+
+</div>
+<!-- 🦋🌸 garden ambient layer — swaying flowers + pollinating butterflies (zero-dep, sits behind content at z-index:-1, pointer-events:none, reduced-motion aware) -->
+<style>
+#gambient{position:fixed;inset:0;z-index:-1;pointer-events:none;overflow:hidden}
+#gambient .gfl{position:absolute;transform-origin:50% 100%;animation:gsway var(--d,8s) ease-in-out infinite;opacity:var(--o,.45)}
+#gambient .gfl:nth-child(2n){animation-delay:-2.7s}
+#gambient .gfl:nth-child(3n){animation-delay:-5.1s}
+#gambient .gfl:nth-child(5n){animation-delay:-1.3s}
+@keyframes gsway{0%,100%{transform:rotate(-4.5deg)}50%{transform:rotate(4.5deg)}}
+#gambient .gbf{position:absolute;top:0;left:0;width:32px;height:26px;will-change:transform;opacity:.9}
+#gambient .gbf .wl,#gambient .gbf .wr{transform-origin:16px 13px;animation:gflap var(--flap,.34s) ease-in-out infinite alternate}
+#gambient .gbf.feeding{--flap:1.15s}
+@keyframes gflap{from{transform:scaleX(1)}to{transform:scaleX(.28)}}
+@media (prefers-reduced-motion:reduce){
+  #gambient .gfl,#gambient .gbf .wl,#gambient .gbf .wr{animation:none!important}
+}
+</style>
+<div id="gambient" aria-hidden="true"></div>
+<script>
+(function(){
+  var host=document.getElementById('gambient');
+  if(!host)return;
+  var REDUCE=window.matchMedia&&matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var PETALS=['#e8a0bf','#d4698f','#e9c46a','#f4a261','#a7c957','#f6bd60','#ce93d8'];
+  var BCOLORS=[['#e8a0bf','#d4698f'],['#e9c46a','#f4a261'],['#a7c957','#7fb069'],['#ce93d8','#9c6dd3']];
+  var flowers=[],butterflies=[],raf=null,lastTs=0;
+
+  function flowerSVG(color,s){
+    var p='';
+    for(var i=0;i<6;i++){p+='<ellipse cx="30" cy="15" rx="7.5" ry="14" fill="'+color+'" opacity=".92" transform="rotate('+(i*60)+' 30 30)"/>';}
+    return '<svg width="'+s+'" height="'+Math.round(s*1.9)+'" viewBox="0 0 60 114">'+
+      '<path d="M30 114 C 27 92, 33 74, 30 52" stroke="#4a7c59" stroke-width="3.4" fill="none" stroke-linecap="round"/>'+
+      '<path d="M30 86 C 22 82, 16 84, 12 78 C 20 76, 26 78, 30 86 Z" fill="#4a7c59"/>'+
+      '<path d="M30 70 C 38 66, 44 68, 48 62 C 40 60, 34 62, 30 70 Z" fill="#5a8a67"/>'+
+      p+'<circle cx="30" cy="30" r="8.5" fill="#e9c46a" stroke="#faf3e3" stroke-width="2"/></svg>';
+  }
+  function butterflySVG(c1,c2){
+    return '<svg viewBox="0 0 32 26" width="32" height="26">'+
+      '<g class="wl"><path d="M15 13 C 8 2, 1 4, 3 10 C 4.6 14, 10 14.5, 15 13 Z" fill="'+c1+'"/>'+
+      '<path d="M15 13 C 10 14, 6 17, 9 20.5 C 12 22.5, 14.5 16, 15 13 Z" fill="'+c2+'"/></g>'+
+      '<g class="wr"><path d="M17 13 C 24 2, 31 4, 29 10 C 27.4 14, 22 14.5, 17 13 Z" fill="'+c1+'"/>'+
+      '<path d="M17 13 C 22 14, 26 17, 23 20.5 C 20 22.5, 17.5 16, 17 13 Z" fill="'+c2+'"/></g>'+
+      '<ellipse cx="16" cy="13" rx="1.6" ry="6" fill="#3a2c1a"/>'+
+      '<path d="M14.5 7.5 C 13.5 5.5, 12.5 4.5, 11 4 M17.5 7.5 C 18.5 5.5, 19.5 4.5, 21 4" stroke="#3a2c1a" stroke-width=".9" fill="none" stroke-linecap="round"/></svg>';
+  }
+  function head(f){ return { x:f.left+f.s/2, y:f.top+f.s*0.5 }; }
+
+  function build(){
+    if(raf){cancelAnimationFrame(raf);raf=null;}
+    host.innerHTML='';flowers=[];butterflies=[];
+    var W=window.innerWidth,H=window.innerHeight;
+    var NF=W<640?5:(W<1100?7:9);
+    for(var i=0;i<NF;i++){
+      var s=Math.round(34+Math.random()*(W<640?22:34));
+      var left=Math.round((i+0.15+Math.random()*0.7)*(W/(NF))-s/2);
+      left=Math.max(-10,Math.min(W-s+10,left));
+      var top=Math.round(H-s*1.9-(Math.random()<0.35?-14-Math.random()*30:2));
+      var el=document.createElement('div');
+      el.className='gfl';
+      el.style.left=left+'px';el.style.top=top+'px';
+      el.style.setProperty('--d',(6.5+Math.random()*4).toFixed(2)+'s');
+      el.style.setProperty('--o',(0.3+Math.random()*0.22).toFixed(2));
+      el.innerHTML=flowerSVG(PETALS[i%PETALS.length],s);
+      host.appendChild(el);
+      flowers.push({left:left,top:top,s:s});
+    }
+    if(REDUCE)return; // static flowers only
+    var NB=W<640?2:3;
+    for(var b=0;b<NB;b++){
+      var cols=BCOLORS[b%BCOLORS.length];
+      var bel=document.createElement('div');
+      bel.className='gbf';
+      bel.innerHTML=butterflySVG(cols[0],cols[1]);
+      host.appendChild(bel);
+      var fi=Math.floor(Math.random()*flowers.length);
+      var h=head(flowers[fi]);
+      butterflies.push({el:bel,fi:fi,x:h.x,y:h.y-6,ang:-90,mode:'feed',t:0,dur:1+Math.random()*2,path:null,len:0,dist:0});
+      bel.classList.add('feeding');
+    }
+    lastTs=0;
+    raf=requestAnimationFrame(tick);
+  }
+
+  function newLeg(bf){
+    var W=window.innerWidth;
+    var from={x:bf.x,y:bf.y};
+    var fi;do{fi=Math.floor(Math.random()*flowers.length);}while(fi===bf.fi&&flowers.length>1);
+    bf.fi=fi;
+    var to=head(flowers[fi]);to.y-=6;
+    var mx=(from.x+to.x)/2+(Math.random()*120-60);
+    var my=Math.min(from.y,to.y)-(70+Math.random()*160);
+    my=Math.max(40,my);
+    var ns=document.createElementNS('http://www.w3.org/2000/svg','svg');
+    var p=document.createElementNS('http://www.w3.org/2000/svg','path');
+    p.setAttribute('d','M '+from.x.toFixed(1)+' '+from.y.toFixed(1)+' Q '+mx.toFixed(1)+' '+my.toFixed(1)+' '+to.x.toFixed(1)+' '+to.y.toFixed(1));
+    ns.appendChild(p);
+    bf.path=p;bf.len=p.getTotalLength();bf.dist=0;
+    bf.dur=Math.max(3.2,Math.min(9,bf.len/115));
+    bf.mode='fly';bf.t=0;
+    bf.el.classList.remove('feeding');
+  }
+  function ease(t){return t<0.5?4*t*t*t:1-Math.pow(-2*t+2,3)/2;}
+
+  function tick(ts){
+    if(document.hidden){raf=null;lastTs=0;return;}
+    if(!lastTs)lastTs=ts;
+    var dt=Math.min(0.05,(ts-lastTs)/1000);lastTs=ts;
+    for(var i=0;i<butterflies.length;i++){
+      var bf=butterflies[i];
+      bf.t+=dt;
+      if(bf.mode==='fly'){
+        var k=ease(Math.min(1,bf.t/bf.dur));
+        bf.dist=k*bf.len;
+        var pt=bf.path.getPointAtLength(bf.dist);
+        var pt2=bf.path.getPointAtLength(Math.min(bf.len,bf.dist+1.5));
+        var dx=pt2.x-pt.x,dy=pt2.y-pt.y;
+        if(dx||dy)bf.ang=Math.atan2(dy,dx)*180/Math.PI+90;
+        bf.x=pt.x;bf.y=pt.y;
+        if(bf.t>=bf.dur){bf.mode='feed';bf.t=0;bf.dur=2.2+Math.random()*2.6;bf.el.classList.add('feeding');}
+      }else{
+        // feeding: gentle bob over the bloom
+        bf.x+=Math.sin(bf.t*2.1+i)*0.25;
+        bf.y+=Math.cos(bf.t*1.7+i*2)*0.22;
+        bf.ang+=Math.sin(bf.t*1.3)*0.4;
+        if(bf.t>=bf.dur)newLeg(bf);
+      }
+      bf.el.style.transform='translate('+(bf.x-16).toFixed(1)+'px,'+(bf.y-13).toFixed(1)+'px) rotate('+bf.ang.toFixed(1)+'deg)';
+    }
+    raf=requestAnimationFrame(tick);
+  }
+  document.addEventListener('visibilitychange',function(){if(!document.hidden&&!raf){lastTs=0;raf=requestAnimationFrame(tick);}});
+  var rto=null;
+  window.addEventListener('resize',function(){clearTimeout(rto);rto=setTimeout(build,350);});
+  build();
+})();
+</script>
+
+</body>
+</html>
