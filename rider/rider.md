@@ -7,7 +7,8 @@
 
 > *Sanctuary Tech: a circular, non-directional, conductorless stage. The instruments are permissionless. The music stage is a sanctuary.*
 
-**Rider version:** v1.3-draft · 2026-07-27 · prepared by the AI ʻohana (RIDEOSO 📋🎻) for the Music Space Committee · merged with OSO v0 [*The Instruments of the Circle*](https://oso-circle-instruments-fj6nprlstc-3imj3mvr.taur.link/) (see Annex A)
+**Rider version:** v1.5 · 2026-10-06 — ✅ **BACKLINE APPROVED** (see § 7.0) · 🥽 walk the room: <https://opensourceorchestra.org/rider/sanctuary/>
+**Previous:** v1.3-draft · 2026-07-27 · prepared by the AI ʻohana (RIDEOSO 📋🎻) for the Music Space Committee · merged with OSO v0 [*The Instruments of the Circle*](https://oso-circle-instruments-fj6nprlstc-3imj3mvr.taur.link/) (see Annex A)
 **License:** CC0 — public domain. Fork this rider like crazy. 🍴
 
 ---
@@ -145,7 +146,57 @@ The DIP asks for a full production sound system; the exact rig is not yet specif
 - 20+ XLR cables · 10+ ¼" instrument cables — 🔵 PROPOSED
 - 🟠 TBD (RIDEOSO adds): +6 spare XLR, +4 spare ¼", 2× 3.5mm→dual-¼" walk-up adapters, gaffer + board tape at every station, spare strings/sticks/reeds basket.
 
+## 7.0 · THE APPROVED BACKLINE ✅ (confirmed 2026-10-06)
+
+This is no longer an ask. On **6 October 2026** the Music Space backline was **approved** — 25 line items,
+standing in a circle at the JIO World Convention Centre for **November 3–6, 2026**.
+
+🥽 **Walk into it:** <https://opensourceorchestra.org/rider/sanctuary/> — a 3D model of this rider
+(circular stage, four PA tops aimed outward, floor-seating cushions, booth opposite the entrance) with
+**all 25 items playable** in any browser or VR headset. No install, no samples, no trackers. CC0.
+
+| # | Line item | Spec as approved | Status |
+|---|---|---|---|
+| 1 | Electric drum kit | e-kit — resolves §7's open question: the room takes an *electric* kit | ✅ CONFIRMED |
+| 2 | Electric guitar | Fender American Ultra II HSS Strat + amp | ✅ CONFIRMED |
+| 3 | Guitar amp | Fender Twin Reverb '65 | ✅ CONFIRMED |
+| 4 | Acoustic guitar | Taylor 214ce Deluxe Black | ✅ CONFIRMED |
+| 5 | Bass guitar + rig | Markbass 800 head + 104 cab | ✅ CONFIRMED |
+| 6 | Electric piano | Yamaha CLP-785 | ✅ CONFIRMED |
+| 7 | Synthesizer | Yamaha Montage M6 | ✅ CONFIRMED |
+| 8 | MIDI controller | Novation Impulse | ✅ CONFIRMED |
+| 9 | Drum machine | BOSS | ✅ CONFIRMED |
+| 10 | Djembe | Remo 12" | ✅ CONFIRMED |
+| 11 | Cajon | Pearl · 1 | ✅ CONFIRMED |
+| 12 | Congas | LP Matador set | ✅ CONFIRMED |
+| 13 | Shakers / tambourine | Meinl tambourine | ✅ CONFIRMED |
+| 14 | Kartal | hand cymbals / clappers | ✅ CONFIRMED · 🟠 qty TBC |
+| 15 | Manjira | small cymbals | ✅ CONFIRMED · 🟠 qty TBC |
+| 16 | Shruti box | drone box | ✅ CONFIRMED · 🟠 qty TBC |
+| 17 | Harmonium ★ | Dutta & Co · scale-change | ✅ CONFIRMED |
+| 18 | Tabla ★ | set of 2 — dayan + bayan | ✅ CONFIRMED |
+| 19 | Bansuri ★ | F bass scale | ✅ CONFIRMED |
+| 20 | Dhol | Punjabi bhangra · mango wood | ✅ CONFIRMED |
+| 21 | Kanjira | South Indian frame drum | ✅ CONFIRMED |
+| 22 | Dholak | folk barrel drum | ✅ CONFIRMED |
+| 23 | DJ system | CDJ-3000 ×2 + DJM-A9 | ✅ CONFIRMED |
+| 24 | DJ booth | LED console table | ✅ CONFIRMED |
+| 25 | Cables, signals & accessories | the line item that makes the other 24 real | ✅ CONFIRMED |
+
+★ = Aakash's bare minimum (harmonium · tabla · bansuri). **All three are in.**
+
+**Still open, honestly:**
+1. Quantities for the basket items (kartal · manjira · shruti box) — §7 asked for 12 / 8 / 4 so the circle can
+   hand an instrument to anyone who walks in; the approval lists them as line items, not counts.
+2. PA, monitors, mics & FOH are **not** covered by this approval — §§2–6 stay with Devcon production.
+3. Room allocation & overnight storage (§1) still 🟠 TBD.
+4. Sitar remains bring-your-own.
+
+---
+
 ## 7 · Backline / instruments (rental ask per DIP)
+
+> ✅ **Superseded, happily:** this ask became § 7.0 above on 2026-10-06. Kept unedited — a rider should show what was asked for, not only what was granted.
 
 | Item | Qty | Status |
 |---|---|---|

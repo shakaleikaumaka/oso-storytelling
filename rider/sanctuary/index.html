@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>The Virtual Sanctuary — Open Source Orchestra · Devcon 8 Mumbai 🎼🥽</title>
+<meta name="description" content="Walk into the Devcon 8 Music Space before it exists: the approved backline, every instrument playable, in your browser or in VR. Open Source Orchestra · JIO World Convention Centre, Mumbai, Nov 3–6 2026. CC0.">
+<link rel="canonical" href="https://opensourceorchestra.org/rider/sanctuary/">
+<meta property="og:title" content="The Virtual Sanctuary — play the approved Devcon 8 backline">
+<meta property="og:description" content="A circular stage with no front, 25 approved instruments, every one of them playable. Browser or VR.">
+<meta property="og:type" content="website">
+<style>
+:root{
+  --night:#0b0612; --deep:#150b22; --violet:#2a1740;
+  --cream:#f7ecd9; --cream-dim:rgba(247,236,217,.72); --cream-faint:rgba(247,236,217,.45);
+  --gold:#f0c464; --gold-bright:#ffd97a; --gold-soft:rgba(240,196,100,.35);
+  --coral:#ff8a5c; --rose:#e86a92; --teal:#2dd4bf;
+  --sans:ui-sans-serif,system-ui,-apple-system,'Segoe UI',Roboto,Helvetica,Arial,sans-serif;
+  --serif:'Iowan Old Style','Palatino Linotype',Palatino,'Book Antiqua',Georgia,serif;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{height:100%;overflow:hidden;background:var(--night);color:var(--cream);font-family:var(--sans)}
+#stage{position:fixed;inset:0}
+canvas{display:block;touch-action:none;cursor:grab}
+.hud{position:fixed;z-index:10;pointer-events:none}
+.hud>*{pointer-events:auto}
+button{font-family:var(--sans);cursor:pointer;border:0;background:none;color:inherit}
+
+/* top bar */
+#top{top:0;left:0;right:0;display:flex;gap:10px;align-items:center;padding:12px 14px;
+  background:linear-gradient(180deg,rgba(11,6,18,.92),rgba(11,6,18,0));}
+#top .brand{font-family:var(--serif);font-size:1rem;letter-spacing:.02em;white-space:nowrap}
+#top .brand b{color:var(--gold-bright);font-weight:600}
+#top .sep{flex:1}
+.pill{font-size:.66rem;letter-spacing:.14em;text-transform:uppercase;border:1px solid var(--gold-soft);
+  border-radius:999px;padding:.42em 1em;color:var(--cream-dim);background:rgba(21,11,34,.72);
+  backdrop-filter:blur(8px);white-space:nowrap;text-decoration:none;display:inline-block}
+.pill:hover{color:var(--gold-bright);border-color:var(--gold)}
+.pill.on{background:var(--gold);color:#1a1206;border-color:var(--gold);font-weight:700}
+.pill.live{background:var(--teal);color:#06231f;border-color:var(--teal);font-weight:700}
+.approved{background:rgba(45,212,191,.16);border-color:rgba(45,212,191,.5);color:#8ff1e2}
+
+/* left list */
+#list{top:58px;left:12px;bottom:92px;width:286px;overflow-y:auto;scrollbar-width:thin;
+  background:rgba(11,6,18,.8);backdrop-filter:blur(12px);border:1px solid rgba(240,196,100,.22);
+  border-radius:18px;padding:10px 8px 14px;transition:transform .28s ease,opacity .28s ease}
+#list.hidden{transform:translateX(-120%);opacity:0}
+#list h3{font-size:.62rem;letter-spacing:.24em;text-transform:uppercase;color:var(--gold);
+  padding:12px 10px 6px;font-weight:600}
+#list h3:first-child{padding-top:4px}
+.row{display:flex;gap:9px;align-items:center;width:100%;text-align:left;padding:7px 10px;border-radius:12px;
+  color:var(--cream-dim);font-size:.82rem;line-height:1.25}
+.row:hover{background:rgba(240,196,100,.11);color:var(--cream)}
+.row .num{font-size:.6rem;color:var(--cream-faint);width:17px;flex:0 0 auto;text-align:right}
+.row .em{font-size:1rem;flex:0 0 auto}
+.row .nm{flex:1;min-width:0}
+.row .nm small{display:block;color:var(--cream-faint);font-size:.66rem;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.row.playing{background:rgba(45,212,191,.16);color:#bff6ed}
+.row.playing .num::after{content:" ●";color:var(--teal)}
+
+/* bottom bar */
+#bottom{left:0;right:0;bottom:0;display:flex;gap:8px;align-items:center;justify-content:center;
+  flex-wrap:wrap;padding:12px 14px calc(12px + env(safe-area-inset-bottom));
+  background:linear-gradient(0deg,rgba(11,6,18,.94),rgba(11,6,18,0))}
+#vrslot .vrbtn{position:static!important;width:auto!important;font-family:var(--sans)!important;
+  font-size:.66rem!important;letter-spacing:.14em!important;text-transform:uppercase!important;
+  border-radius:999px!important;padding:.42em 1em!important;background:rgba(21,11,34,.72)!important;
+  border:1px solid var(--gold-soft)!important;color:var(--cream-dim)!important;opacity:1!important}
+
+/* toast */
+#toast{left:50%;transform:translateX(-50%);bottom:84px;max-width:min(560px,92vw);
+  background:rgba(11,6,18,.9);border:1px solid rgba(240,196,100,.4);border-radius:16px;
+  padding:11px 18px;text-align:center;opacity:0;transition:opacity .25s;backdrop-filter:blur(10px)}
+#toast.show{opacity:1}
+#toast b{color:var(--gold-bright);font-weight:600}
+#toast span{display:block;font-size:.76rem;color:var(--cream-dim);margin-top:3px}
+#toast i{display:block;font-size:.74rem;color:var(--teal);margin-top:5px;font-style:normal}
+
+/* d-pad (touch) */
+#pad{right:14px;bottom:86px;display:none;grid-template-columns:repeat(3,46px);grid-template-rows:repeat(2,46px);gap:5px}
+#pad button{background:rgba(11,6,18,.72);border:1px solid rgba(240,196,100,.3);border-radius:12px;
+  color:var(--cream-dim);font-size:1rem}
+#pad .up{grid-column:2}
+@media (pointer:coarse){#pad{display:grid}}
+@media (max-width:760px){
+  #top{flex-wrap:wrap;gap:6px;padding:10px}
+  #top .brand{font-size:.84rem}
+  #top .sep{display:none}
+  .pill{font-size:.6rem;padding:.4em .85em}
+  #list{top:50px;bottom:146px;width:min(76vw,262px)}
+  #bottom{gap:6px;padding-bottom:calc(10px + env(safe-area-inset-bottom))}
+  #toast{bottom:150px}
+  #pad{bottom:140px}
+}
+
+/* overlays */
+.sheet{position:fixed;inset:0;z-index:30;display:grid;place-items:center;padding:24px;
+  background:radial-gradient(ellipse 80% 60% at 50% 40%,rgba(42,23,64,.96),rgba(11,6,18,.98))}
+.sheet .card{max-width:620px;text-align:center}
+.sheet h1{font-family:var(--serif);font-size:clamp(1.7rem,5vw,2.7rem);font-weight:600;line-height:1.14}
+.sheet h1 em{color:var(--gold);font-style:italic}
+.sheet p{color:var(--cream-dim);font-size:.95rem;margin:14px auto 0;max-width:52ch;line-height:1.6}
+.sheet .kicker{font-size:.68rem;letter-spacing:.34em;text-transform:uppercase;color:var(--gold);margin-bottom:12px}
+.big{margin-top:26px;background:var(--gold);color:#1a1206;font-weight:700;font-size:.82rem;
+  letter-spacing:.18em;text-transform:uppercase;border-radius:999px;padding:1em 2.4em;
+  box-shadow:0 10px 40px rgba(240,196,100,.25)}
+.big:hover{background:var(--gold-bright)}
+.sheet .fine{font-size:.72rem;color:var(--cream-faint);margin-top:18px}
+.sheet .fine a{color:var(--gold)}
+#help{display:none;text-align:left}
+#help .card{background:rgba(11,6,18,.9);border:1px solid rgba(240,196,100,.3);border-radius:20px;padding:24px 26px}
+#help h2{font-family:var(--serif);font-size:1.3rem;margin-bottom:10px;color:var(--gold-bright)}
+#help ul{list-style:none;font-size:.86rem;color:var(--cream-dim);line-height:1.9}
+#help kbd{background:rgba(240,196,100,.14);border:1px solid var(--gold-soft);border-radius:6px;
+  padding:.1em .5em;font-size:.76rem;color:var(--gold-bright);font-family:var(--sans)}
+#loading .card p{min-height:3em}
+.spin{display:inline-block;animation:sp 1.6s linear infinite}
+@keyframes sp{to{transform:rotate(360deg)}}
+</style>
+</head>
+<body>
+<div id="stage"></div>
+
+<div class="hud" id="top">
+  <div class="brand">🎼 <b>The Virtual Sanctuary</b> — Devcon 8 · Mumbai</div>
+  <div class="sep"></div>
+  <span class="pill approved">✅ Rider approved</span>
+  <a class="pill" href="../">← the rider</a>
+</div>
+
+<nav class="hud" id="list" aria-label="Approved backline"></nav>
+
+<div class="hud" id="toast"></div>
+
+<div class="hud" id="pad">
+  <button class="up" data-code="KeyW" aria-label="forward">▲</button>
+  <button data-code="KeyA" aria-label="left">◀</button>
+  <button data-code="KeyS" aria-label="back">▼</button>
+  <button data-code="KeyD" aria-label="right">▶</button>
+</div>
+
+<div class="hud" id="bottom">
+  <button class="pill" id="btn-list" data-short="☰">☰ Backline</button>
+  <button class="pill" id="btn-jam" data-short="🎶">🎶 Jam</button>
+  <button class="pill" id="btn-tour" data-short="▶ Tour">▶ Tour the backline</button>
+  <button class="pill" id="btn-stop" data-short="⏹">⏹ Stop all</button>
+  <button class="pill" id="btn-mute" data-short="🔊">🔊 Sound on</button>
+  <span id="vrslot"></span>
+  <button class="pill" id="btn-help">❓ Controls</button>
+</div>
+
+<div class="sheet" id="loading">
+  <div class="card">
+    <div class="kicker">Open Source Orchestra · Devcon 8 · Mumbai</div>
+    <h1>Step into the <em>sanctuary</em><br>before it exists.</h1>
+    <p>The rider is approved. This is the room it describes: a circular stage with no front,
+       at the JIO World Convention Centre, and all <b>25 approved backline items</b> — the Strat, the dhol,
+       the tabla, the CDJs, the harmonium — standing where they'll stand on <b>November 3–6, 2026</b>.</p>
+    <p><b style="color:var(--gold-bright)">Every single one of them plays.</b> Click an instrument, or open the
+       backline list and walk to it. Put on a headset and the circle is life-size.</p>
+    <button class="big" id="enter"><span id="enter-label">Enter the sanctuary</span></button>
+    <div class="fine" id="fine">Sound synthesised live in your browser — no samples, no trackers, nothing to install. CC0.</div>
+  </div>
+</div>
+
+<div class="sheet" id="help">
+  <div class="card">
+    <h2>How to be in the circle</h2>
+    <ul>
+      <li>🖱️ <b>Drag</b> to look around · <kbd>W</kbd><kbd>A</kbd><kbd>S</kbd><kbd>D</kbd> or arrows to walk · <kbd>Shift</kbd> to hurry</li>
+      <li>👆 <b>Click an instrument</b> to play it · <kbd>Space</kbd> plays whatever is in the centre of your view</li>
+      <li>⏱️ <b>Press and hold</b> an instrument with a second voice: tabla → theka, dhol → bhangra, CDJs → deck B, harmonium → drone</li>
+      <li>☰ <b>Backline</b> list: tap any line item to walk to it and hear it</li>
+      <li>🎶 <b>Jam</b> starts the room breathing: drum machine, shruti drone, deck A, and hands joining in</li>
+      <li>🥽 <b>Enter VR</b> on a headset (Quest: open this page in the browser) — trigger plays what you point at, left stick walks</li>
+      <li>⎋ <kbd>Esc</kbd> stops everything</li>
+    </ul>
+    <p style="margin-top:14px;color:var(--cream-faint);font-size:.78rem">
+      The layout follows the rider: four PA tops aimed outward from the circle, floor-seating cushions on the
+      classical side, the DJ booth opposite the entrance, lockable overnight storage and the stage-management
+      corner where the rider asks for them. Nothing here is decorative.</p>
+    <button class="pill" id="help-close" style="margin-top:18px">Back to the circle</button>
+  </div>
+</div>
+
+<script type="module">
+import { ITEMS, EXTRA } from './items.js';
+import * as A from './audio.js';
+
+const ZONES = [
+  ['dj', '💿 the booth'],
+  ['amped', '⚡ the amped quadrant'],
+  ['hands', '🪘 hands & skins'],
+  ['floor', '🪷 floor seating · the classical side'],
+  ['ops', '🔌 ops'],
+];
+const listEl = document.getElementById('list');
+const rowFor = {};
+ZONES.forEach(([z, title]) => {
+  const items = ITEMS.filter(i => i.zone === z);
+  if (!items.length) return;
+  const h = document.createElement('h3'); h.textContent = title; listEl.appendChild(h);
+  items.forEach(it => {
+    const b = document.createElement('button');
+    b.className = 'row';
+    b.innerHTML = `<span class="num">${it.n}</span><span class="em">${it.emoji}</span>
+      <span class="nm">${it.name}<small>${it.spec}</small></span>`;
+    b.onclick = () => { api.flyToItem(it.id); setTimeout(() => api.trigger(api.stations.find(s => s.item.id === it.id)), 520); };
+    listEl.appendChild(b);
+    rowFor[it.id] = b;
+  });
+});
+
+// small screens: the room first, the lists second
+const narrow = innerWidth < 760;
+if (narrow) {
+  listEl.classList.add('hidden');
+  document.querySelectorAll('#bottom .pill[data-short]').forEach(b => { b.dataset.long = b.textContent; b.textContent = b.dataset.short; });
+}
+
+const toast = document.getElementById('toast');
+let toastT = null;
+function say(html, ms = 3400) {
+  toast.innerHTML = html; toast.classList.add('show');
+  clearTimeout(toastT); toastT = setTimeout(() => toast.classList.remove('show'), ms);
+}
+addEventListener('oso-played', e => {
+  const { item, running, toggled } = e.detail;
+  const row = rowFor[item.id];
+  if (row && toggled) row.classList.toggle('playing', running);
+  say(`<b>${item.emoji} ${item.name}</b><span>${item.spec}</span>${item.note ? `<i>${item.note}</i>` : (toggled ? `<i>${running ? 'playing — click again to stop' : 'stopped'}</i>` : '')}`);
+});
+addEventListener('oso-stopped', () => { Object.values(rowFor).forEach(r => r.classList.remove('playing')); });
+
+const $ = id => document.getElementById(id);
+let api = null;
+
+$('enter').onclick = async () => {
+  $('enter-label').innerHTML = '<span class="spin">◍</span> opening the doors…';
+  A.init();
+  const m = await import('./sanctuary.js');
+  const pad = [...document.querySelectorAll('#pad button')].map(b => [b, b.dataset.code]);
+  api = m.start({ pad });
+  window.OSO = api; window.OSOA = A;   // the circle is open — poke it from the console if you like
+  $('loading').style.display = 'none';
+  say('<b>🎻 Welcome to the circle.</b><span>Drag to look · WASD to walk · click any instrument to play it</span>', 5200);
+};
+
+$('btn-tour').onclick = (e) => {
+  const btn = e.currentTarget;                     // currentTarget is null inside async callbacks
+  const on = api?.startTour((item, n, total) => {
+    if (!item) { btn.classList.remove('live'); btn.textContent = narrow ? '▶ Tour' : '▶ Tour the backline'; return; }
+    btn.textContent = narrow ? `⏹ ${n}/${total}` : `⏹ Tour ${n}/${total}`;
+  });
+  btn.classList.toggle('live', !!on);
+  if (!on) btn.textContent = narrow ? '▶ Tour' : '▶ Tour the backline';
+  else say('<b>▶ Walking the backline.</b><span>Every approved line item, in rider order. Touch anything to take the wheel back.</span>');
+};
+$('btn-list').onclick = () => listEl.classList.toggle('hidden');
+$('btn-help').onclick = () => { $('help').style.display = 'grid'; };
+$('help-close').onclick = () => { $('help').style.display = 'none'; };
+$('btn-stop').onclick = () => { api?.panicStop(); $('btn-jam').classList.remove('live'); };
+$('btn-jam').onclick = (e) => {
+  const on = api?.toggleJam();
+  e.currentTarget.classList.toggle('live', !!on);
+  if (on) say('<b>🎶 The room is breathing.</b><span>Walk in. Add your hands. The jam never stops for a soundcheck.</span>');
+};
+$('btn-mute').onclick = (e) => {
+  const m = !A.state.muted; A.setMuted(m);
+  e.currentTarget.textContent = m ? (narrow ? '🔇' : '🔇 Muted') : (narrow ? '🔊' : '🔊 Sound on');
+  e.currentTarget.classList.toggle('on', m);
+};
+addEventListener('keydown', e => { if (e.code === 'Escape') { $('help').style.display = 'none'; $('btn-jam').classList.remove('live'); } });
+</script>
+</body>
+</html>
