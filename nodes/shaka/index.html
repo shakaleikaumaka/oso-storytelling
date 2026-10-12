@@ -87,7 +87,7 @@ footer a{color:var(--cream-dim)}
 </head>
 <body>
 
-<div class="hero">
+<div class="hero" data-oso-item="bio" data-oso-label="Shaka Lei Kaumaka 🌺🤙 — bio">
   <div class="avatar">🌺🤙</div>
   <p class="kicker">Open Source Orchestra · Node 003 · full profile</p>
   <h1>Shaka <em>Lei Kaumaka</em></h1>
@@ -106,7 +106,7 @@ footer a{color:var(--cream-dim)}
 
 <section id="featured">
   <div class="sec-head"><span class="num">Featured</span><h2>Todo Es <em>Posible</em> 🍂 <span class="badge blessed">artist-blessed ✓</span></h2></div>
-  <div class="card">
+  <div class="card" data-oso-item="song:todo-es-posible:songbook" data-oso-label="Todo Es Posible 🍂 — songbook">
     <p class="chords">key C major · C → Cmaj7 → F → F · ~81 bpm</p>
     <p>Everything is possible. Sung with the Devcon Scholars, blessed by the bard's own ear — the machine drew the draft, Shaka corrected the truth, and the chart below carries it. Sing along with the karaoke:</p>
     <video controls preload="metadata" src="https://kprot-drop.shakaverse.workers.dev/ready/todo-es-posible-karaoke.mp4"></video>
@@ -128,7 +128,7 @@ footer a{color:var(--cream-dim)}
 <section id="songbook">
   <div class="sec-head"><span class="num">Song collection</span><h2>The <em>songbook</em> 📖</h2></div>
 
-  <div class="card">
+  <div class="card" data-oso-item="song:butterflies-and-love:songbook" data-oso-label="Butterflies and Love 🦋 — songbook">
     <h3>🦋 Butterflies and Love <span class="badge blessed">✓ official words</span> <span class="badge draft">chart in progress</span></h3>
     <p class="chords">canon progression G – Em – C – D</p>
     <p>Written with Ethereum Singapore — for Aya Miyaguchi and every builder who chooses butterflies over war.</p>
@@ -144,7 +144,7 @@ footer a{color:var(--cream-dim)}
     </div>
   </div>
 
-  <div class="card">
+  <div class="card" data-oso-item="song:a-planet-we-share-as-one:songbook" data-oso-label="A Planet We Share As One 🌍 — songbook">
     <h3>🌍 A Planet We Share As One <span class="badge blessed">✓ official words</span> <span class="badge draft">chart in progress</span></h3>
     <p class="chords">key D major (mixolydian) · D – C – G · ~129 bpm</p>
     <p>A frustration sung into a prayer — protection of creation as a collaboration of every nation.</p>
@@ -213,5 +213,26 @@ document.querySelectorAll('.yt').forEach(function(el){
 });
 </script>
 <script src="https://shakaleikaumaka.com/assets/bl-player.js?v=7.7"></script>
+<script type="module">
+// 🪶 OSO Web3 Songbook — provenance + editor layer.
+// Public browsing is untouched: with no configured contract (or no wallet)
+// this adds nothing visible; edit affordances appear only after a wallet
+// connects AND the contract confirms the role. node.json = legacy seed (§27).
+import { initNodeWeb3 } from '/songbook/node-web3.js';
+const seeds = {};
+try {
+  const node = await (await fetch('/nodes/shaka/node.json')).json();
+  seeds['bio'] = `# ${node.name} ${node.emoji}\n\n${node.tagline}\n\n${node.bio}\n\n> ${node.quote}\n`;
+  for (const s of node.songs || []) {
+    const slug = s.title.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '');
+    seeds[`song:${slug}:songbook`] =
+      `# ${s.title} ${s.emoji || ''}\n\n` +
+      (s.key ? `key ${s.key}` : '') + (s.bpm ? ` · ~${s.bpm} bpm` : '') + '\n\n' +
+      (s.progression ? '```\n| ' + s.progression.replace(/\s*(→|–|-)\s*/g, ' | ') + ' |\n```\n\n' : '') +
+      `*status: ${s.status} — AI/legacy seed, not yet notarized on-chain*\n`;
+  }
+} catch (e) { console.warn('node.json seed unavailable', e); }
+initNodeWeb3({ artistSlug: 'shaka', seeds });
+</script>
 </body>
 </html>
