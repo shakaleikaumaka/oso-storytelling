@@ -368,6 +368,31 @@ function tixTxt(a) {
   if (a.ticket === 'yes') return '🎫 ticket confirmed · locked';
   return '🎟 no ticket confirmed · not locked';
 }
+
+/* Every gap in the day is an Open Source Orchestra session — and each one has its own vibe. */
+const VIBES = {
+  'November 3': {
+    warmup: ['🌄 OSO — doors jam', 'first sound of the week · acoustic, slow, unhurried · every voice welcome'],
+    quiet:  ['🎻 OSO — the long table', 'raga, strings, loops & voices · the orchestra plays through the afternoon'],
+    tail:   ['🔊 OSO — open decks', 'boiler-room hour · bring a USB, bring a friend'],
+  },
+  'November 4': {
+    warmup: ['🌄 OSO — doors jam', 'gentle start · acoustic & ambient'],
+    quiet:  ['🧪 OSO — the lab', 'live coding, modular, machine duets · humans and agents on the same stage'],
+    tail:   ['🔊 OSO — open decks', 'the floor is open · last glow'],
+  },
+  'November 5': {
+    warmup: ['🌄 OSO — doors jam', 'gentle start · acoustic & ambient'],
+    quiet:  ['🎤 OSO — the songwriters\' circle', 'open mic hours · bring a song, bring a verse, bring nothing'],
+    tail:   ['🕺 OSO — dancefloor till the last note', 'open decks · the orchestra plays the room down'],
+  },
+  'November 6': {
+    warmup: ['🌄 OSO — doors jam', 'last morning · soft and slow'],
+    quiet:  ['🌺 OSO — the long goodbye', 'sunroom jam · every voice that showed up this week, one more time'],
+    tail:   ['🎉 OSO — party jam-out', 'open decks · one last dance together'],
+  },
+};
+const vibe = (d, kind, fallback) => (VIBES[d] && VIBES[d][kind]) || fallback;
 function jamHTML(t, mins, label, sub) {
   const oso = BY_N[7] || {};
   return `<div class="slot jam"><span class="time">${fmtTime(t)}</span>
@@ -433,7 +458,7 @@ function render() {
     leading.forEach((a, i) => {
       if (q && !quietDone && t < q.to && t + a.minutes > q.from) {       // this set would play over it
         const gap = q.from - t;
-        if (gap >= 20) slots += jamHTML(t, gap, 'Open Source Orchestra — open jam', 'warm-up hour · every voice welcome');
+        if (gap >= 20) { const v = vibe(d, 'warmup', ['Open Source Orchestra — open jam', 'warm-up hour · every voice welcome']); slots += jamHTML(t, gap, v[0], v[1]); }
         slots += quietHTML(q);
         t = q.to; quietDone = true;
       }
@@ -442,11 +467,22 @@ function render() {
       if (i < leading.length - 1) { slots += `<div class="gap">↑ ${cC}m changeover</div>`; t += cC; }
     });
 
-    if (q && !quietDone) { slots += quietHTML(q); quietDone = true; }
     // the real clock after the leading acts (a quiet window or a warm-up jam may have moved it)
     const jamStart = t + (leading.length ? cC : 0);
     const jamShow = Math.max(0, (LIFT - endSpan) - jamStart);
-    if (jamShow >= 20) slots += jamHTML(jamStart, jamShow, 'Open Source Orchestra — quiet-hours open jam', 'grassroots jam-session energy · acoustic &amp; instrumental · every voice welcome');
+    const vq = vibe(d, 'quiet', ['Open Source Orchestra — quiet-hours open jam', 'grassroots jam-session energy · every voice welcome']);
+    if (q && !quietDone && jamShow >= 20 && jamStart < q.from) {
+      // the jam runs into the ceremony hour: split it, so the page never claims we're playing through it
+      const pre = q.from - jamStart;
+      const vw = vibe(d, 'warmup', vq);
+      if (pre >= 20) slots += jamHTML(jamStart, pre, vw[0], vw[1]);
+      slots += quietHTML(q); quietDone = true;
+      const post = (LIFT - endSpan) - q.to;
+      if (post >= 20) slots += jamHTML(q.to, post, vq[0], vq[1]);
+    } else if (jamShow >= 20) {
+      slots += jamHTML(jamStart, jamShow, vq[0], vq[1]);
+    }
+    if (q && !quietDone) { slots += quietHTML(q); quietDone = true; }
     t = LIFT - endSpan;
     anchored.forEach((a, i) => {
       slots += slotHTML(a, t, 'chill');
@@ -464,8 +500,8 @@ function render() {
       if (i < energyActs.length - 1) { slots += `<div class="gap">↑ ${cE}m changeover</div>`; t += cE; }
     });
     if (hand) { /* the 4p window belongs to the Devcon team — nothing of ours goes in it */ }
-    else if (tailMin >= 15) slots += jamHTML(endE, tailMin, isLast ? 'Open Source Orchestra — party jam-out' : 'Open Source Orchestra — evening jam-out', 'open decks · the orchestra plays the room down · last glow');
-    else if (!energyActs.length && !isLast) slots += jamHTML(LIFT, CLOSE - LIFT, 'Open Source Orchestra — open decks all evening', 'the floor is open · bring a USB, bring a friend');
+    else if (tailMin >= 15) { const v = vibe(d, 'tail', ['Open Source Orchestra — evening jam-out', 'open decks · last glow']); slots += jamHTML(endE, tailMin, v[0], v[1]); }
+    else if (!energyActs.length && !hand) { const v = vibe(d, 'tail', ['Open Source Orchestra — open decks all evening', 'the floor is open · bring a USB, bring a friend']); slots += jamHTML(LIFT, CLOSE - LIFT, v[0], v[1]); }
 
     const nActs = chillActs.length + energyActs.length;
     const allActs = chillActs.concat(energyActs);
