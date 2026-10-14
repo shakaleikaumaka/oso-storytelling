@@ -205,9 +205,9 @@ const OSO = new Set([7, 8, 9]); // the three DJ ʻOHANA submissions = the Open S
    whole 4:00p window to them and schedule none of our artists into it. */
 const HANDOVER = new Set(['November 6']);
 const QUIET = {   // no music of ours while the main stage opens the conference
-  'November 3': { from: 10*60, to: 11*60,
+  'November 3': { from: 10*60, to: 11*60 + 50,
     label: '🤫 DEVCON OPENING CEREMONY — our room stays quiet',
-    sub: 'main-stage opening + keynotes · exact time still TBC with the Devcon team (held on last year\'s 10:00 start)' },
+    sub: 'main-stage opening + keynotes · runs 10:00–11:50 (per the Devcon team, 14 Oct) · the OSO jams are the elastic that absorbs this' },
 };
 const quietHTML = q => `<div class="quietmark"><span class="time">${fmtTime(q.from)}</span>
   <div class="liftline"><b>${q.label}</b><br><span class="dim">${q.sub} · we play again at ${fmtTime(q.to)}</span></div></div>`;
