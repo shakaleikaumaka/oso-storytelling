@@ -162,10 +162,10 @@ footer a{color:var(--marigold);text-decoration:none}
   </div>
   <h1>🗓 Schedule v1 — <span class="accent">Nov 3–6</span></h1>
   <p class="sub"><b>Set times go to the artists with a confirmed Devcon ticket</b> 🎫 <b>and to the artists who told us they will be there as soon as the \$99 artist code reaches them</b> 🎟 (their time is <b>held, not locked</b>, and they are named in their own list at the bottom so the Devcon team can see whose code is outstanding). Everyone else is listed below with their day and their set — <b>held, not dropped</b> — and their time goes up the moment we hear from them. The stage sits next to the talk spaces, so we stay gentle till four, then we open it up. 🌺</p>
-  <div class="honest">💛 <b>The volume windows (from the committee):</b> <b>9:00–16:00</b> = ambient, chill & peaceful — ideally acoustic & instrumental, grassroots jam-session energy, lower volume · <b>16:00–18:30</b> = louder, energetic sets welcome — DJs go mid-floor for a boiler-room vibe.<br>🖐 <b>Make it yours:</b> drag the ⋮⋮ handles to rearrange anyone, even across days. Your arrangement saves in this browser and travels in the link — share it and we find the consensus we all want. Nothing is booked yet. 🌱</div>
+  <div class="honest">💛 <b>The volume windows (from the committee):</b> <b>9:00–16:00</b> = ambient, chill & peaceful — ideally acoustic & instrumental, grassroots jam-session energy, lower volume · <b>16:00–18:30</b> = louder, energetic sets welcome — DJs go mid-floor for a boiler-room vibe. <b>Venue doors are 9:30</b> — the day starts when the room opens, and the doors jam is the first sound.<br>🖐 <b>Make it yours:</b> drag the ⋮⋮ handles to rearrange anyone, even across days. Your arrangement saves in this browser and travels in the link — share it and we find the consensus we all want. Nothing is booked yet. 🌱</div>
   <div class="honest tixlaw">🎫 <b>The ticket lock law:</b> a set time <b>locks</b> once the artist confirms a Devcon ticket — and a time is <b>held</b> for everyone who has told us <b>they are coming as soon as the $99 artist code reaches them</b> (their own list sits at the bottom of this page). <span class="tix ok">🎫 ticket confirmed — locked &amp; ready</span> <span class="tix com">🎟 confirmed they&#39;ll come — waiting on the $99 code · held, not locked</span> <span class="tix no">🎟 no ticket confirmed yet — time not locked</span></div>
   <div class="controls">
-    <label>doors <select id="start"><option selected>9:00</option><option>10:00</option><option>11:00</option></select></label>
+    <label>doors <select id="start"><option selected>9:30</option><option>10:00</option><option>11:00</option></select></label>
     <label>changeover <select id="chg"><option value="5">5 min</option><option value="10" selected>10 min</option><option value="15">15 min</option></select></label>
     <button class="ctlbtn" id="sharebtn">🔗 share this arrangement</button>
     <button class="ctlbtn" id="resetbtn">↺ reset to proposed flow</button>
@@ -416,7 +416,8 @@ const partyheadHTML = `<div class="partyhead"><div class="plh"><b>🎉 CLOSING P
 
 /* ---------- render ---------- */
 function render() {
-  const doors = +document.getElementById('start').value.split(':')[0] * 60;
+  const _dv = document.getElementById('start').value.split(':');
+  const doors = (+_dv[0]) * 60 + (+_dv[1] || 0);   // 2026-10-14: minute-aware — venue doors are 9:30
   const chgWant = +document.getElementById('chg').value;
   let html = '';
   for (const d of DAYS) {
@@ -441,7 +442,7 @@ function render() {
     const quietMin = QUIET[d] ? (QUIET[d].to - QUIET[d].from) : 0;
     const jamMin = Math.max(0, LIFT - (doors + chillSpan) - quietMin);
     if (overflowChill > 0) notes.push(`⚠ the quiet block overflows the 4p lift by ${overflowChill}m — drag an act to the loud hours or another day`);
-    else if (jamMin > 0 && jamMin < 180 && !QUIET[d]) notes.push(`🎼 OSO afternoon jam trimmed to ${minsTxt(jamMin)} — 9:00a doors gives the full 3h+`);
+    else if (jamMin > 0 && jamMin < 180 && !QUIET[d]) notes.push(`🎼 OSO afternoon jam trimmed to ${minsTxt(jamMin)} — the jam is what absorbs the 9:30 doors`);
 
     /* loud block: 16:00 fixed → 18:30 close */
     const cE = fitChg(energyActs.length, mE, LIFT, CLOSE, chgWant);
@@ -456,7 +457,7 @@ function render() {
     const leading = chillActs.filter(a => !a.anchor_end);
     const endSpan = anchored.reduce((s2, a) => s2 + a.minutes, 0) + Math.max(0, anchored.length - 1) * cC;
     const leadSpan = leading.reduce((s2, a) => s2 + a.minutes, 0) + Math.max(0, leading.length - 1) * cC;
-    let slots = `<div class="qhead">🌅 <b>QUIET HOURS 9:00–4:00</b> · talks &amp; discussions run next door — ambient, chill &amp; peaceful · ideally acoustic &amp; instrumental · grassroots jam-session energy · lower volume</div>`;
+    let slots = `<div class="qhead">🌅 <b>QUIET HOURS ${fmtTime(doors)}–4:00</b> · talks &amp; discussions run next door — ambient, chill &amp; peaceful · ideally acoustic &amp; instrumental · grassroots jam-session energy · lower volume</div>`;
     let t = doors;
     const q = QUIET[d];
     let quietDone = false;
@@ -661,7 +662,8 @@ function legacyCopy(text) {
 }
 function copyDay(b) {
   const d = b.dataset.day;
-  const doors = +document.getElementById('start').value.split(':')[0] * 60;
+  const _dv = document.getElementById('start').value.split(':');
+  const doors = (+_dv[0]) * 60 + (+_dv[1] || 0);   // 2026-10-14: minute-aware — venue doors are 9:30
   const chgWant = +document.getElementById('chg').value;
   const arr = ARR[d];
   const chillActs = arr.chill.map(n => BY_N[n]);
@@ -832,7 +834,7 @@ document.getElementById('resetbtn').onclick = () => {
 };
 document.getElementById('customnote').hidden = JSON.stringify(ARR) === JSON.stringify(DEFAULT_ARR);
 document.getElementById('footstats').textContent =
-  `22 confirmed artists · 17h of music · 10 waiting to hear back · 19 volunteers · 🌅 quiet 9–4 (talks next door) · 🔊 loud 4–6:30 boiler-room · 🎼 the Open Source Orchestra jams every day · drag the ⋮⋮ handles to rearrange — your arrangement travels in the link`;
+  `22 confirmed artists · 17h of music · 10 waiting to hear back · 19 volunteers · 🌅 doors 9:30 · quiet till 4 (talks next door) · 🔊 loud 4–6:30 boiler-room · 🎼 the Open Source Orchestra jams every day · drag the ⋮⋮ handles to rearrange — your arrangement travels in the link`;
 render();
 </script>
 <!-- 🦋🌸 garden ambient layer — swaying flowers + pollinating butterflies (zero-dep, sits behind content at z-index:-1, pointer-events:none, reduced-motion aware) -->
