@@ -232,16 +232,40 @@ function validArr(arr) {
   }
   return true;
 }
+/* A saved arrangement is a snapshot of the lineup as it was. When an act is ADDED or REMOVED
+   afterwards, a strict all-or-nothing validator keeps showing the stale lineup — so a returning
+   visitor (or anyone opening a shared #a= link) never sees a new act. Reconcile instead: keep the
+   person's own order, drop acts that no longer exist, splice new acts in at their default spot. */
+function reconcileArr(arr) {
+  if (!arr || typeof arr !== 'object') return null;
+  for (const d of DAYS) if (!arr[d] || !Array.isArray(arr[d].chill) || !Array.isArray(arr[d].energy)) return null;
+  const out = {}, seen = new Set();
+  for (const d of DAYS) {
+    out[d] = { chill: [], energy: [] };
+    for (const s of ['chill', 'energy']) for (const n of arr[d][s]) {
+      if (!BY_N[n] || OSO.has(n) || seen.has(n)) continue;   // act removed from the lineup, or a duplicate
+      seen.add(n); out[d][s].push(n);
+    }
+  }
+  for (const d of DAYS) for (const s of ['chill', 'energy']) {
+    DEFAULT_ARR[d][s].forEach((n, i) => {
+      if (seen.has(n)) return;
+      seen.add(n);
+      out[d][s].splice(Math.min(i, out[d][s].length), 0, n);
+    });
+  }
+  return out;
+}
 function loadArr() {
   if (location.hash.startsWith('#a=')) {
     try {
-      const arr = JSON.parse(decodeURIComponent(escape(atob(location.hash.slice(3)))));
-      if (validArr(arr)) return arr;
+      const arr = reconcileArr(JSON.parse(decodeURIComponent(escape(atob(location.hash.slice(3))))));
+      if (arr) return arr;
     } catch (e) {}
   }
   try {
-    const arr = JSON.parse(localStorage.getItem(LS_ARR));
-    if (validArr(arr)) return arr;
+    const arr = reconcileArr(JSON.parse(localStorage.getItem(LS_ARR)));
+    if (arr) return arr;
   } catch (e) {}
   return null;
 }
