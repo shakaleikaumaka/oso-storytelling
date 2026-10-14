@@ -134,6 +134,8 @@ footer a{color:var(--marigold);text-decoration:none}
 .pendrow img{width:34px;height:34px;border-radius:9px;object-fit:cover;flex:0 0 auto}
 .pendrow .pn{font-weight:700;font-size:.92rem}
 .pendrow .pd{color:var(--muted);font-size:.76rem}
+.quietmark{display:flex;gap:10px;align-items:flex-start;background:rgba(124,196,255,.10);border:1px dashed rgba(124,196,255,.45);border-radius:12px;padding:9px 11px;margin:8px 0;font-size:.78rem;line-height:1.5}
+.quietmark .time{color:var(--sky);font-weight:700;white-space:nowrap}
 .flagline{margin-top:6px;font-size:.75rem;line-height:1.5;color:#1b1222;background:linear-gradient(90deg,var(--marigold),var(--lotus));border-radius:9px;padding:6px 9px;font-weight:700}
 .addbtn{margin-left:auto;background:none;border:1px solid var(--marigold);color:var(--marigold);border-radius:999px;padding:5px 12px;font-size:.74rem;cursor:pointer}
 .addbtn:hover{background:var(--marigold);color:#1b1222}
@@ -198,6 +200,13 @@ const OSO = new Set([7, 8, 9]); // the three DJ ʻOHANA submissions = the Open S
 /* 2026-10-14 (Shaka): the Nov 6 closing party is the Devcon team's to programme. We leave the
    whole 4:00p window to them and schedule none of our artists into it. */
 const HANDOVER = new Set(['November 6']);
+const QUIET = {   // no music of ours while the main stage opens the conference
+  'November 3': { from: 10*60, to: 11*60,
+    label: '🤫 DEVCON OPENING CEREMONY — our room stays quiet',
+    sub: 'main-stage opening + keynotes · exact time still TBC with the Devcon team (held on last year\'s 10:00 start)' },
+};
+const quietHTML = q => `<div class="quietmark"><span class="time">${fmtTime(q.from)}</span>
+  <div class="liftline"><b>${q.label}</b><br><span class="dim">${q.sub} · we play again at ${fmtTime(q.to)}</span></div></div>`;
 const LIFT = 16*60;        // 4:00p — the volume lifts (committee window)
 const CLOSE = 18*60 + 30;  // 6:30p — last note (committee window)
 const energyOf = a => a.energy || ((a.format === 'DJ' || a.format === 'Hybrid' || genresOf(a).some(g => DANCE.has(g))) ? 'energy' : 'chill');
@@ -399,9 +408,10 @@ function render() {
       if (doors + chillSpan > LIFT) overflowChill = doors + chillSpan - LIFT;
     }
     if (chillActs.length > 1 && cC < chgWant) notes.push(`⏱ quiet-hours changeovers auto-tightened to ${cC}m to protect the afternoon jam`);
-    const jamMin = Math.max(0, LIFT - (doors + chillSpan));
+    const quietMin = QUIET[d] ? (QUIET[d].to - QUIET[d].from) : 0;
+    const jamMin = Math.max(0, LIFT - (doors + chillSpan) - quietMin);
     if (overflowChill > 0) notes.push(`⚠ the quiet block overflows the 4p lift by ${overflowChill}m — drag an act to the loud hours or another day`);
-    else if (jamMin > 0 && jamMin < 180) notes.push(`🎼 OSO afternoon jam trimmed to ${minsTxt(jamMin)} — 9:00a doors gives the full 3h+`);
+    else if (jamMin > 0 && jamMin < 180 && !QUIET[d]) notes.push(`🎼 OSO afternoon jam trimmed to ${minsTxt(jamMin)} — 9:00a doors gives the full 3h+`);
 
     /* loud block: 16:00 fixed → 18:30 close */
     const cE = fitChg(energyActs.length, mE, LIFT, CLOSE, chgWant);
@@ -418,13 +428,24 @@ function render() {
     const leadSpan = leading.reduce((s2, a) => s2 + a.minutes, 0) + Math.max(0, leading.length - 1) * cC;
     let slots = `<div class="qhead">🌅 <b>QUIET HOURS 9:00–4:00</b> · talks &amp; discussions run next door — ambient, chill &amp; peaceful · ideally acoustic &amp; instrumental · grassroots jam-session energy · lower volume</div>`;
     let t = doors;
+    const q = QUIET[d];
+    let quietDone = false;
     leading.forEach((a, i) => {
+      if (q && !quietDone && t < q.to && t + a.minutes > q.from) {       // this set would play over it
+        const gap = q.from - t;
+        if (gap >= 20) slots += jamHTML(t, gap, 'Open Source Orchestra — open jam', 'warm-up hour · every voice welcome');
+        slots += quietHTML(q);
+        t = q.to; quietDone = true;
+      }
       slots += slotHTML(a, t, 'chill');
       t += a.minutes;
       if (i < leading.length - 1) { slots += `<div class="gap">↑ ${cC}m changeover</div>`; t += cC; }
     });
-    const jamStart = anchored.length ? doors + leadSpan : LIFT - jamMin;
-    if (jamMin >= 20) slots += jamHTML(jamStart, jamMin, 'Open Source Orchestra — quiet-hours open jam', 'grassroots jam-session energy · acoustic &amp; instrumental · every voice welcome');
+    if (q && !quietDone) { slots += quietHTML(q); quietDone = true; }
+    // the real clock after the leading acts (a quiet window or a warm-up jam may have moved it)
+    const jamStart = t + (leading.length ? cC : 0);
+    const jamShow = Math.max(0, (LIFT - endSpan) - jamStart);
+    if (jamShow >= 20) slots += jamHTML(jamStart, jamShow, 'Open Source Orchestra — quiet-hours open jam', 'grassroots jam-session energy · acoustic &amp; instrumental · every voice welcome');
     t = LIFT - endSpan;
     anchored.forEach((a, i) => {
       slots += slotHTML(a, t, 'chill');
@@ -592,6 +613,7 @@ function copyDay(b) {
   });
   if (jamMin >= 20) lines.push(`${fmtTime(LIFT - jamMin)}  🎼 OPEN SOURCE ORCHESTRA — quiet-hours open jam · ${minsTxt(jamMin)} · grassroots jam energy, every voice welcome · 🎵 https://opensourceorchestra.org`);
   lines.push(`4:00p  🔊 THE VOLUME LIFTS — DJ booth rolls mid-floor · boiler-room time`);
+  if (QUIET[d]) lines.push(`${fmtTime(QUIET[d].from)}  ${QUIET[d].label} — no music from us until ${fmtTime(QUIET[d].to)} (${QUIET[d].sub})`);
   if (HANDOVER.has(d)) lines.push(`4:00p  🎉 CLOSING PARTY — hosted by the Devcon team · the Music Space hands the room over · no artists scheduled by us`);
   else if (isLast) lines.push(`       🎉 CLOSING PARTY hosted by OPEN SOURCE ORCHESTRA — the whole loud window is the party`);
   t = LIFT;
