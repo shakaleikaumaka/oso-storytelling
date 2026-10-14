@@ -490,9 +490,9 @@ function render() {
     const marks = (SESSIONS[d] || []).slice().sort((x, y) => x.at - y.at);
     const emitMarks = upto => { while (marks.length && marks[0].at <= upto) slots += sessionHTML(marks.shift()); };
     pinned.forEach(p2 => {
-      emitMarks(p2.start_at);
       const g = p2.start_at - cursor;
       if (g >= 20) slots += jamHTML(cursor, g, vq[0], vq[1]);
+      emitMarks(p2.start_at);            // mark after the jam that leads into it, right before the pinned act
       slots += slotHTML(p2, p2.start_at, 'chill');
       cursor = p2.start_at + p2.minutes + cC;
     });
