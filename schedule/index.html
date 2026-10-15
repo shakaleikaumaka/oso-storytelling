@@ -611,7 +611,9 @@ function render() {
     </section>`;
   }
   document.getElementById('days').innerHTML = html;
-  document.getElementById('pending').innerHTML = codeHTML() + (BENCH_UI ? benchHTML() : pendingHTML());
+  // 2026-10-15 (Shaka): the "Not locked in yet" waiting list leaves the public schedule entirely —
+  // it lives in its own reference doc now. The $99-code box (artists with times held) STAYS.
+  document.getElementById('pending').innerHTML = codeHTML();
   wire();
 }
 
@@ -940,7 +942,7 @@ document.getElementById('resetbtn').onclick = () => {
 };
 document.getElementById('customnote').hidden = JSON.stringify(ARR) === JSON.stringify(DEFAULT_ARR);
 document.getElementById('footstats').textContent =
-  `20 confirmed artists · 16h of music · 10 waiting to hear back · 18 volunteers · 🌅 doors 9:30 · quiet till 4 (talks next door) · 🔊 loud 4–6 · last note 6:00p sharp · 🎼 the Open Source Orchestra jams every day · drag the ⋮⋮ handles to rearrange — your arrangement travels in the link`;
+  `20 confirmed artists · 16h of music · 18 volunteers · 🌅 doors 9:30 · quiet till 4 (talks next door) · 🔊 loud 4–6 · last note 6:00p sharp · 🎼 the Open Source Orchestra jams every day · drag the ⋮⋮ handles to rearrange — your arrangement travels in the link`;
 render();
 </script>
 <!-- 🦋🌸 garden ambient layer — swaying flowers + pollinating butterflies (zero-dep, sits behind content at z-index:-1, pointer-events:none, reduced-motion aware) -->
