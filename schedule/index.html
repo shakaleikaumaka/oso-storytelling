@@ -164,7 +164,7 @@ footer a{color:var(--marigold);text-decoration:none}
   </div>
   <h1>🗓 Schedule v1 — <span class="accent">Nov 3–6</span></h1>
   <p class="sub"><b>Set times go to the artists with a confirmed Devcon ticket</b> 🎫 <b>and to the artists who told us they will be there as soon as the \$99 artist code reaches them</b> 🎟 (their time is <b>held, not locked</b>, and they are named in their own list at the bottom so the Devcon team can see whose code is outstanding). Everyone else is listed below with their day and their set — <b>held, not dropped</b> — and their time goes up the moment we hear from them. The stage sits next to the talk spaces, so we stay gentle till four, then we open it up. 🌺</p>
-  <div class="honest">💛 <b>The volume windows (from the committee):</b> <b>9:00–16:00</b> = ambient, chill & peaceful — ideally acoustic & instrumental, grassroots jam-session energy, lower volume · <b>16:00–18:30</b> = louder, energetic sets welcome — DJs go mid-floor for a boiler-room vibe. <b>Venue doors are 9:30</b> — the day starts when the room opens, and the doors jam is the first sound.<br>🖐 <b>Make it yours:</b> drag the ⋮⋮ handles to rearrange anyone, even across days. Your arrangement saves in this browser and travels in the link — share it and we find the consensus we all want. Nothing is booked yet. 🌱</div>
+  <div class="honest">💛 <b>The volume windows (from the committee):</b> <b>9:00–16:00</b> = ambient, chill & peaceful — ideally acoustic & instrumental, grassroots jam-session energy, lower volume · <b>16:00–18:00</b> = louder, energetic sets welcome — DJs go mid-floor for a boiler-room vibe. <b>Programming ends 6:00p sharp</b> (the Devcon team's new rule — every day but the closing) · each day lands a <b>15-min OSO closing jam</b>, and loud sets ease toward 55 min where needed to fit. <b>Venue doors are 9:30</b> — the day starts when the room opens, and the doors jam is the first sound.<br>🖐 <b>Make it yours:</b> drag the ⋮⋮ handles to rearrange anyone, even across days. Your arrangement saves in this browser and travels in the link — share it and we find the consensus we all want. Nothing is booked yet. 🌱</div>
   <div class="honest tixlaw">🎫 <b>The ticket lock law:</b> a set time <b>locks</b> once the artist confirms a Devcon ticket — and a time is <b>held</b> for everyone who has told us <b>they are coming as soon as the $99 artist code reaches them</b> (their own list sits at the bottom of this page). <span class="tix ok">🎫 ticket confirmed — locked &amp; ready</span> <span class="tix com">🎟 confirmed they&#39;ll come — waiting on the $99 code · held, not locked</span> <span class="tix no">🎟 no ticket confirmed yet — time not locked</span></div>
   <div class="controls">
     <label>doors <select id="start"><option selected>9:30</option><option>10:00</option><option>11:00</option></select></label>
@@ -220,7 +220,8 @@ const SESSIONS = {
 const sessionHTML = m2 => `<div class="quietmark session"><span class="time">${fmtTime(m2.at)}</span>
   <div class="liftline"><b>${m2.label}</b><br><span class="dim">${m2.sub}</span></div></div>`;
 const LIFT = 16*60;        // 4:00p — the volume lifts (committee window)
-const CLOSE = 18*60 + 30;  // 6:30p — last note (committee window)
+const CLOSE = 18*60;       // 6:00p — last note SHARP (Devcon team rule, 15 Oct — every day but the closing)
+const TAIL = 15;           // every day ends with exactly 15 min of OSO closing jam, 5:45–6:00p (Shaka, 15 Oct)
 const energyOf = a => a.energy || ((a.format === 'DJ' || a.format === 'Hybrid' || genresOf(a).some(g => DANCE.has(g))) ? 'energy' : 'chill');
 
 function flow(a) {
@@ -243,6 +244,25 @@ function fitChg(n, music, startMin, endMin, want) {
   const room = endMin - startMin - music;
   const c = Math.min(want, Math.floor(room / (n - 1) / 5) * 5);
   return c < 5 ? 5 : c;
+}
+/* 2026-10-15 (Devcon team rule via Shaka): loud acts must land by CLOSE-TAIL (5:45p) so the day
+   ends with exactly 15 min of OSO closing jam and a 6:00p sharp last note. Fit order:
+   1) original set lengths, changeovers auto-tighten · 2) shrink the sets toward 55 min
+   (then 50, then 45 — 5-min steps, nobody below 45) · 3) report any real overflow honestly. */
+function fitLoud(acts, startMin, endMin, chgWant) {
+  const n = acts.length, room = endMin - startMin;
+  const mins0 = acts.map(a => a.minutes);
+  const span = (mm, c) => mm.reduce((s, m) => s + m, 0) + Math.max(0, n - 1) * c;
+  if (!n) return { mins: [], chg: chgWant, shrunk: 0, overflow: 0 };
+  let c = fitChg(n, mins0.reduce((s, m) => s + m, 0), startMin, endMin, chgWant);
+  if (span(mins0, c) <= room) return { mins: mins0, chg: c, shrunk: 0, overflow: 0 };
+  for (let cap = 55; cap >= 45; cap -= 5) {
+    const mm = mins0.map(m => Math.min(m, cap));
+    c = fitChg(n, mm.reduce((s, m) => s + m, 0), startMin, endMin, chgWant);
+    if (span(mm, c) <= room) return { mins: mm, chg: c, shrunk: cap, overflow: 0 };
+  }
+  const mm = mins0.map(m => Math.min(m, 45));
+  return { mins: mm, chg: 5, shrunk: 45, overflow: span(mm, 5) - room };
 }
 function fmtTime(mins) {
   const h = Math.floor(mins / 60), m = mins % 60;
@@ -361,7 +381,7 @@ function slotHTML(a, t, side) {
       <div class="whohead"><img class="ava" src="${esc(a.avatar || '')}" alt="" loading="lazy" onerror="this.style.display='none'">
       <div class="who"><span class="fmt-ico">${FMT[a.format]}</span>${esc(nameOf(a))} ${ohana ? '<span class="ohana">🌺</span>' : ''} ${a.dupes > 1 ? '<span class="dupe">×' + a.dupes + ' apps</span>' : ''}
       ${subline ? `<div class="whosub">${esc(subline)}</div>` : ''}</div></div>
-      <div class="tags"><span class="dim">${FMT_LABEL[a.format]} ·</span> ${minsTxt(a.minutes)} <span class="dim">·</span> ${esc(genresOf(a).join(', '))}${a.volunteer ? ' <span class="vol">· 💜 volunteers</span>' : ''}</div>
+      <div class="tags"><span class="dim">${FMT_LABEL[a.format]} ·</span> ${minsTxt(a._eff || a.minutes)}${a._eff && a._eff < a.minutes ? ` <span class="dim">(from ${minsTxt(a.minutes)} · 6p close)</span>` : ''} <span class="dim">·</span> ${esc(genresOf(a).join(', '))}${a.volunteer ? ' <span class="vol">· 💜 volunteers</span>' : ''}</div>
       ${tix}
       ${a.flag ? `<div class="flagline">${esc(a.flag)}</div>` : ''}
       ${vwarn}
@@ -389,17 +409,20 @@ const VIBES = {
   'November 3': {
     warmup: ['🌄 OSO — doors jam', 'first sound of the week · acoustic, slow, unhurried · every voice welcome'],
     quiet:  ['🎻 OSO — the long table', 'raga, strings, loops & voices · the orchestra plays through the afternoon'],
-    tail:   ['🔊 OSO — open decks', 'boiler-room hour · bring a USB, bring a friend'],
+    tail:   ['🔊 OSO — open decks', 'the boiler room warms up · bring a USB, bring a friend'],
+    close:  ['🌆 OSO — the closing jam', 'the last 15 minutes · one more tune together · last note 6:00p sharp'],
   },
   'November 4': {
     warmup: ['🌄 OSO — doors jam', 'gentle start · acoustic & ambient'],
     quiet:  ['🎷☕ OSO — the coffee lounge', 'ambient, jazz & chill — coffee-house jams while the talks run next door'],
-    tail:   ['🔊 OSO — open decks', 'the floor is open · last glow'],
+    tail:   ['🔊 OSO — open decks', 'the floor is open · the boiler room warms up'],
+    close:  ['🌆 OSO — the closing jam', 'the last 15 minutes · one more tune together · last note 6:00p sharp'],
   },
   'November 5': {
     warmup: ['🌄 OSO — doors jam', 'gentle start · acoustic & ambient'],
     quiet:  ['🎤 OSO — the songwriters\' circle', 'open mic hours · bring a song, bring a verse, bring nothing'],
-    tail:   ['🕺 OSO — dancefloor till the last note', 'open decks · the orchestra plays the room down'],
+    tail:   ['🕺 OSO — open decks', 'the dancefloor warms up · bring a USB, bring a friend'],
+    close:  ['🕺 OSO — the last dance', 'the last 15 minutes · the orchestra plays the room down · last note 6:00p sharp'],
   },
   'November 6': {
     warmup: ['🌄 OSO — doors jam', 'last morning · soft and slow'],
@@ -455,14 +478,21 @@ function render() {
     if (overflowChill > 0) notes.push(`⚠ the quiet block overflows the 4p lift by ${overflowChill}m — drag an act to the loud hours or another day`);
     else if (jamMin > 0 && jamMin < 180 && !QUIET[d]) notes.push(`🎼 OSO afternoon jam trimmed to ${minsTxt(jamMin)} — the jam is what absorbs the 9:30 doors`);
 
-    /* loud block: 16:00 fixed → 18:30 close */
-    const cE = fitChg(energyActs.length, mE, LIFT, CLOSE, chgWant);
-    const energySpan = mE + Math.max(0, energyActs.length - 1) * cE;
-    const endE = LIFT + energySpan;
-    const overflowE = Math.max(0, endE - CLOSE);
-    if (energyActs.length > 1 && cE < chgWant) notes.push(`⏱ loud-hours changeovers auto-tightened to ${cE}m to land 6:30p sharp`);
-    if (overflowE > 0) notes.push(`⚠ the loud block overruns 6:30p by ${overflowE}m — drag an act to the quiet hours or another day`);
-    const tailMin = overflowE ? 0 : CLOSE - endE;
+    /* loud block: 16:00 fixed → acts land by 5:45p → exactly 15 min of OSO closing jam → 6:00p SHARP
+       (Devcon team rule, 15 Oct — every day but the closing). Sets ease toward 55 min if needed. */
+    const loudEnd = CLOSE - TAIL;
+    const fitL = fitLoud(energyActs, LIFT, loudEnd, chgWant);
+    energyActs.forEach((a, i) => { a._eff = fitL.mins[i]; });   // effective minutes after any trim (display + totals)
+    const cE = fitL.chg;
+    const energySpan = fitL.mins.reduce((s, m) => s + m, 0) + Math.max(0, energyActs.length - 1) * cE;
+    const slackE = Math.max(0, loudEnd - (LIFT + energySpan));
+    const frontJam = (energyActs.length && slackE >= 20) ? slackE : 0;   // the elastic: open decks after the lift, then the acts play INTO the closing jam
+    const startE = LIFT + frontJam;
+    const endE = startE + energySpan;
+    const overflowE = fitL.overflow || 0;
+    if (fitL.shrunk) notes.push(`⏱ loud sets trimmed to ${fitL.shrunk} min each so the last note lands 6:00p sharp (the Devcon team's new rule) — the 15-min OSO closing jam is held`);
+    else if (energyActs.length > 1 && cE < chgWant) notes.push(`⏱ loud-hours changeovers auto-tightened to ${cE}m to land 6:00p sharp`);
+    if (overflowE > 0) notes.push(`⚠ the loud block overruns the 6:00p close by ${overflowE}m — drag an act to the quiet hours or another day`);
 
     const anchored = chillActs.filter(a => a.anchor_end);
     const pinned = chillActs.filter(a => a.start_at).sort((x, y) => x.start_at - y.start_at);
@@ -527,22 +557,30 @@ function render() {
     if (!hand) slots += liftHTML;
     if (hand) slots += handoverHTML;
     else if (isLast) slots += partyheadHTML;
-    t = LIFT;
-    energyActs.forEach((a, i) => {
-      slots += slotHTML(a, t, 'energy');
-      t += a.minutes;
-      if (i < energyActs.length - 1) { slots += `<div class="gap">↑ ${cE}m changeover</div>`; t += cE; }
-    });
-    if (hand) { /* the 4p window belongs to the Devcon team — nothing of ours goes in it */ }
-    else if (tailMin >= 15) { const v = vibe(d, 'tail', ['Open Source Orchestra — evening jam-out', 'open decks · last glow']); slots += jamHTML(endE, tailMin, v[0], v[1]); }
-    else if (!energyActs.length && !hand) { const v = vibe(d, 'tail', ['Open Source Orchestra — open decks all evening', 'the floor is open · bring a USB, bring a friend']); slots += jamHTML(LIFT, CLOSE - LIFT, v[0], v[1]); }
+    if (!hand) {
+      const vc = vibe(d, 'close', ['🌆 OSO — the closing jam', 'the last 15 minutes · one more tune together · last note 6:00p sharp']);
+      if (!energyActs.length) {
+        const v = vibe(d, 'tail', ['Open Source Orchestra — open decks all evening', 'the floor is open · bring a USB, bring a friend']);
+        slots += jamHTML(LIFT, loudEnd - LIFT, v[0], v[1]);
+      } else {
+        if (frontJam) { const v = vibe(d, 'tail', ['Open Source Orchestra — open decks', 'the floor is open · bring a USB, bring a friend']); slots += jamHTML(LIFT, frontJam, v[0], v[1]); }
+        t = startE;
+        energyActs.forEach((a, i) => {
+          slots += slotHTML(a, t, 'energy');
+          t += a._eff || a.minutes;
+          if (i < energyActs.length - 1) { slots += `<div class="gap">↑ ${cE}m changeover</div>`; t += cE; }
+        });
+      }
+      slots += jamHTML(loudEnd, TAIL, vc[0], vc[1]);   // the law: exactly 15 min, the last note lands 6:00p sharp
+    }
 
     const nActs = chillActs.length + energyActs.length;
     const allActs = chillActs.concat(energyActs);
     const nTix = allActs.filter(a => a.ticket === 'yes').length;
     const nCode = allActs.filter(a => !(a.ticket === 'yes') && a.needs_code).length;
     const tixcount = `<span class="tixcount">🎫 ${nTix}/${nActs} ticket-confirmed${nCode ? ` · 🎟 ${nCode} waiting on the $99 code` : ''}</span>`;
-    const musicTotal = mC + mE + (jamMin >= 20 ? jamMin : 0) + (tailMin >= 15 ? tailMin : 0);
+    const mEff = energyActs.reduce((s, a) => s + (a._eff || a.minutes), 0);
+    const musicTotal = mC + mEff + (jamMin >= 20 ? jamMin : 0) + frontJam + (hand ? 0 : TAIL);
     const fit = notes.map(n => `<div class="fitnote${n.startsWith('⚠') ? ' warn' : ''}">${n}</div>`).join('');
     html += `<section class="day" data-day="${d}">
       <h2>${d.replace('November ', 'Nov ')} <span class="meta">${nActs} acts · ${Math.floor(musicTotal/60)}h${musicTotal%60 ? musicTotal%60+'m' : ''} music</span>${tixcount}</h2>
@@ -694,37 +732,60 @@ function copyDay(b) {
   const doors = (+_dv[0]) * 60 + (+_dv[1] || 0);   // 2026-10-14: minute-aware — venue doors are 9:30
   const chgWant = +document.getElementById('chg').value;
   const arr = ARR[d];
-  const chillActs = arr.chill.map(n => BY_N[n]);
-  const energyActs = arr.energy.map(n => BY_N[n]);
+  const hand = HANDOVER.has(d);
+  const chillActs = (hand ? arr.chill.concat(arr.energy) : arr.chill).map(n => BY_N[n]);
+  const energyActs = (hand ? [] : arr.energy).map(n => BY_N[n]);
   const mC = chillActs.reduce((s, a) => s + a.minutes, 0);
-  const mE = energyActs.reduce((s, a) => s + a.minutes, 0);
   let cC = fitChg(chillActs.length, mC, doors, LIFT - 180, chgWant);
   if (doors + mC + Math.max(0, chillActs.length - 1) * cC > LIFT) cC = fitChg(chillActs.length, mC, doors, LIFT, chgWant);
-  const jamMin = Math.max(0, LIFT - (doors + mC + Math.max(0, chillActs.length - 1) * cC));
-  const cE = fitChg(energyActs.length, mE, LIFT, CLOSE, chgWant);
-  const endE = LIFT + mE + Math.max(0, energyActs.length - 1) * cE;
-  const tailMin = endE > CLOSE ? 0 : CLOSE - endE;
   const isLast = d === 'November 6';
-  const lines = [`${d.toUpperCase()} — Devcon 8 Music Space (MOCK draft) · doors ${fmtTime(doors)} · 🌅 quiet till 4:00p (talks next door) · 🔊 loud 4:00–6:30p boiler-room · last note ${fmtTime(CLOSE)}`];
+  const loudEnd = CLOSE - TAIL;
+  const fitL = fitLoud(energyActs, LIFT, loudEnd, chgWant);
+  const energySpan = fitL.mins.reduce((s, m) => s + m, 0) + Math.max(0, energyActs.length - 1) * fitL.chg;
+  const slackE = Math.max(0, loudEnd - (LIFT + energySpan));
+  const frontJam = (energyActs.length && slackE >= 20) ? slackE : 0;
+  const startE = LIFT + frontJam;
+  const lines = [hand
+    ? `${d.toUpperCase()} — Devcon 8 Music Space (MOCK draft) · doors ${fmtTime(doors)} · 🌅 quiet till 4:00p (talks next door) · 🎉 4:00p our programme hands the room to the Devcon team — the closing party runs its own clock`
+    : `${d.toUpperCase()} — Devcon 8 Music Space (MOCK draft) · doors ${fmtTime(doors)} · 🌅 quiet till 4:00p (talks next door) · 🔊 loud 4:00–6:00p boiler-room · last note ${fmtTime(CLOSE)} sharp`];
+  const actLine = (a, tt, eff) => {
+    const link = a.links.length ? ' · 🎵 ' + a.links[0].url : '';
+    const trim = eff && eff < a.minutes ? ` (trimmed from ${a.minutes} · 6p close)` : '';
+    lines.push(`${fmtTime(tt)}  ${FMT[a.format]} ${nameOf(a)} — ${eff || a.minutes} min${trim} · ${genresOf(a).join(', ')} · ${tixTxt(a)}${link}`);
+  };
+  const jamLine = (tt, mins, label) => lines.push(`${fmtTime(tt)}  🎼 OPEN SOURCE ORCHESTRA — ${label} · ${minsTxt(mins)} · grassroots jam energy, every voice welcome · 🎵 https://opensourceorchestra.org`);
+  /* chill side — mirrors render() exactly: ceremony silence, pinned acts, the OSO jams, anchored closers
+     (2026-10-15: previously this printed raw door-times — wrong on ceremony + pinned days. Fixed.) */
+  const anchored = chillActs.filter(a => a.anchor_end);
+  const pinned = chillActs.filter(a => a.start_at).sort((x, y) => x.start_at - y.start_at);
+  const leading = chillActs.filter(a => !a.anchor_end && !a.start_at);
+  const endSpan = anchored.reduce((s2, a) => s2 + a.minutes, 0) + Math.max(0, anchored.length - 1) * cC;
+  const q = QUIET[d];
   let t = doors;
-  chillActs.forEach((a, i) => {
-    const link = a.links.length ? ' · 🎵 ' + a.links[0].url : '';
-    lines.push(`${fmtTime(t)}  ${FMT[a.format]} ${nameOf(a)} — ${a.minutes} min · ${genresOf(a).join(', ')} · ${tixTxt(a)}${link}`);
-    t += a.minutes + (i < chillActs.length - 1 ? cC : 0);
+  if (q) { lines.push(`${fmtTime(q.from)}  ${q.label} — no music from us until ${fmtTime(q.to)} (${q.sub})`); t = q.to; }
+  leading.forEach((a, i) => { actLine(a, t); t += a.minutes + (i < leading.length - 1 ? cC : 0); });
+  let cursor = t + (leading.length ? cC : 0);
+  pinned.forEach(p2 => {
+    const g = p2.start_at - cursor;
+    if (g >= 20) jamLine(cursor, g, 'quiet-hours open jam');
+    actLine(p2, p2.start_at);
+    cursor = p2.start_at + p2.minutes + cC;
   });
-  if (jamMin >= 20) lines.push(`${fmtTime(LIFT - jamMin)}  🎼 OPEN SOURCE ORCHESTRA — quiet-hours open jam · ${minsTxt(jamMin)} · grassroots jam energy, every voice welcome · 🎵 https://opensourceorchestra.org`);
+  const jamShow = Math.max(0, (LIFT - endSpan) - cursor);
+  if (jamShow >= 20) jamLine(cursor, jamShow, 'quiet-hours open jam');
+  t = LIFT - endSpan;
+  anchored.forEach((a, i) => { actLine(a, t); t += a.minutes + (i < anchored.length - 1 ? cC : 0); });
   lines.push(`4:00p  🔊 THE VOLUME LIFTS — DJ booth rolls mid-floor · boiler-room time`);
-  if (QUIET[d]) lines.push(`${fmtTime(QUIET[d].from)}  ${QUIET[d].label} — no music from us until ${fmtTime(QUIET[d].to)} (${QUIET[d].sub})`);
-  if (HANDOVER.has(d)) lines.push(`4:00p  🎉 CLOSING PARTY — hosted by the Devcon team · feat. 🎧 DJ AMOGH (India · Devcon crew, keeps the wifi alive) — Bollywood closing set · the Music Space hands the room over`);
+  if (hand) lines.push(`4:00p  🎉 CLOSING PARTY — hosted by the Devcon team · feat. 🎧 DJ AMOGH (India · Devcon crew, keeps the wifi alive) — Bollywood closing set · the Music Space hands the room over`);
   else if (isLast) lines.push(`       🎉 CLOSING PARTY hosted by OPEN SOURCE ORCHESTRA — the whole loud window is the party`);
-  t = LIFT;
-  energyActs.forEach((a, i) => {
-    const link = a.links.length ? ' · 🎵 ' + a.links[0].url : '';
-    lines.push(`${fmtTime(t)}  ${FMT[a.format]} ${nameOf(a)} — ${a.minutes} min · ${genresOf(a).join(', ')} · ${tixTxt(a)}${link}`);
-    t += a.minutes + (i < energyActs.length - 1 ? cE : 0);
-  });
-  if (tailMin >= 15) lines.push(`${fmtTime(endE)}  🎼 OPEN SOURCE ORCHESTRA — ${isLast ? 'party jam-out' : 'evening jam-out'} · ${minsTxt(tailMin)} · open decks until ${fmtTime(CLOSE)}`);
-  lines.push(`(days + lengths = artists' own answers · times = proposed flow · volume windows from the committee: quiet 9–4, loud 4–6:30 · 🎫 lock law: a time LOCKS once the artist confirms a Devcon ticket · 🎟 held = they confirmed they are coming and are waiting on the $99 artist code)`);
+  if (!hand) {
+    if (frontJam) lines.push(`4:00p  🎼 OPEN SOURCE ORCHESTRA — open decks · ${minsTxt(frontJam)} · the floor warms up · 🎵 https://opensourceorchestra.org`);
+    if (!energyActs.length) lines.push(`4:00p  🎼 OPEN SOURCE ORCHESTRA — open decks · ${minsTxt(loudEnd - LIFT)} · the floor is open all evening · 🎵 https://opensourceorchestra.org`);
+    t = startE;
+    energyActs.forEach((a, i) => { actLine(a, t, fitL.mins[i]); t += fitL.mins[i] + (i < energyActs.length - 1 ? fitL.chg : 0); });
+    lines.push(`${fmtTime(loudEnd)}  🎼 OPEN SOURCE ORCHESTRA — the closing jam · 15 min · one more tune together · last note ${fmtTime(CLOSE)} sharp · 🎵 https://opensourceorchestra.org`);
+  }
+  lines.push(`(days + lengths = artists' own answers · times = proposed flow · volume windows from the committee + the Devcon team: quiet 9–4, loud 4–6, last note 6:00p SHARP every day but the closing — each day ends with a 15-min OSO closing jam · 🎫 lock law: a time LOCKS once the artist confirms a Devcon ticket · 🎟 held = they confirmed they are coming and are waiting on the $99 artist code)`);
   clipWrite(lines.join('\n')).then(() => {
     b.textContent = '✓ copied'; b.classList.add('done');
     setTimeout(() => { b.textContent = '📋 copy as text'; b.classList.remove('done'); }, 1600);
@@ -862,7 +923,7 @@ document.getElementById('resetbtn').onclick = () => {
 };
 document.getElementById('customnote').hidden = JSON.stringify(ARR) === JSON.stringify(DEFAULT_ARR);
 document.getElementById('footstats').textContent =
-  `20 confirmed artists · 16h of music · 10 waiting to hear back · 18 volunteers · 🌅 doors 9:30 · quiet till 4 (talks next door) · 🔊 loud 4–6:30 boiler-room · 🎼 the Open Source Orchestra jams every day · drag the ⋮⋮ handles to rearrange — your arrangement travels in the link`;
+  `20 confirmed artists · 16h of music · 10 waiting to hear back · 18 volunteers · 🌅 doors 9:30 · quiet till 4 (talks next door) · 🔊 loud 4–6 · last note 6:00p sharp · 🎼 the Open Source Orchestra jams every day · drag the ⋮⋮ handles to rearrange — your arrangement travels in the link`;
 render();
 </script>
 <!-- 🦋🌸 garden ambient layer — swaying flowers + pollinating butterflies (zero-dep, sits behind content at z-index:-1, pointer-events:none, reduced-motion aware) -->
