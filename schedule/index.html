@@ -396,7 +396,7 @@ function slotHTML(a, t, side) {
   if (side === 'chill' && en === 'flex') vwarn = '<span class="vwarn soft">🤝 flexible — can play soft here or lift after 4p</span>';
   const tix = tixHTML(a);
   const rm = BENCH_UI ? `<button class="rmbtn" data-n="${a.n}" title="take off the schedule">✕</button>` : '';
-  return `<div class="slot ${side === 'energy' ? 'loud' : ''} ${isDJ ? 'dj' : ''}" data-n="${a.n}">${rm}
+  return `<div class="slot ${side === 'energy' ? 'loud' : ''} ${isDJ ? 'dj' : ''}" data-n="${a.n}" id="act-${a.n}" style="scroll-margin-top:70px">${rm}
     <span class="time">${fmtTime(t)}</span>
     <div class="body">
       <span class="grip" title="drag to rearrange — even across days">⋮⋮</span>
