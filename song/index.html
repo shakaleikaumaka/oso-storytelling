@@ -1,0 +1,155 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>山海坞 — stage card</title>
+<style>
+:root{
+  --bg:#07090f; --ink:#f6efe2; --gold:#f2c14e; --teal:#45d3c0; --rose:#ff8a9b; --dim:#8b93a7;
+  --fs: clamp(19px, 5.1vw, 30px);
+}
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+html,body{margin:0;height:100%;background:var(--bg);color:var(--ink);
+  font-family:ui-rounded,-apple-system,"Segoe UI",system-ui,sans-serif;overscroll-behavior:none}
+body{display:flex;flex-direction:column}
+
+/* pinned chord loop */
+header{flex:0 0 auto;padding:max(8px,env(safe-area-inset-top)) 12px 8px;text-align:center;
+  background:linear-gradient(180deg,#0d1220,#07090f);border-bottom:1px solid #1d2435}
+header .loop{font-weight:800;letter-spacing:.14em;font-size:clamp(17px,4.6vw,24px);color:var(--gold)}
+header .sub{font-size:11px;letter-spacing:.18em;color:var(--dim);margin-top:2px}
+
+main{flex:1 1 auto;overflow-y:auto;scroll-snap-type:y mandatory;scroll-behavior:smooth}
+section{min-height:100%;scroll-snap-align:start;padding:14px 16px calc(74px + env(safe-area-inset-bottom));
+  display:flex;flex-direction:column;justify-content:center;gap:10px}
+h2{margin:0;font-size:13px;letter-spacing:.22em;text-transform:uppercase;color:var(--teal);font-weight:800}
+.line{font-size:var(--fs);line-height:1.34;font-weight:650}
+.ch{color:var(--gold);font-weight:800;font-size:.72em;letter-spacing:.06em}
+.cn{color:var(--rose);font-weight:800}
+.say{color:var(--dim);font-size:clamp(15px,3.9vw,19px);line-height:1.4;font-style:italic}
+.big{font-size:clamp(26px,8vw,46px);line-height:1.18;font-weight:900}
+.note{font-size:clamp(13px,3.4vw,16px);color:var(--dim);line-height:1.45}
+.pill{display:inline-block;background:#141b2c;border:1px solid #27304a;border-radius:999px;
+  padding:5px 11px;font-size:13px;color:var(--ink);margin:3px 4px 0 0}
+ul{margin:4px 0 0 0;padding-left:18px}li{font-size:clamp(14px,3.7vw,18px);line-height:1.5;margin:3px 0}
+
+/* bottom nav */
+nav{position:fixed;left:0;right:0;bottom:0;display:flex;gap:6px;justify-content:center;
+  padding:9px 8px calc(9px + env(safe-area-inset-bottom));background:rgba(7,9,15,.93);
+  border-top:1px solid #1d2435;backdrop-filter:blur(8px);z-index:9}
+nav button{flex:1 1 0;min-width:0;background:#121a2b;color:var(--ink);border:1px solid #27304a;
+  border-radius:11px;padding:11px 2px;font-size:12px;font-weight:800;letter-spacing:.04em}
+nav button.on{background:var(--gold);color:#0b0d14;border-color:var(--gold)}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="loop">C &nbsp;· &nbsp;G &nbsp;· &nbsp;Am &nbsp;· &nbsp;F</div>
+  <div class="sub">FOUR CHORDS · FOREVER · 4 BEATS EACH</div>
+</header>
+
+<main id="m">
+
+  <section id="s0">
+    <h2>🔑 if you forget everything</h2>
+    <div class="big"><span class="cn">山海坞!</span></div>
+    <div class="note">shahn · high · woo &nbsp;— shout it, mic at the room</div>
+    <div class="big" style="font-size:clamp(21px,6.2vw,34px)"><span class="cn">来了就是一家人</span></div>
+    <div class="note">lie-luh &nbsp;jyoh-shrr &nbsp;ee-jyah-ren → “once you’ve come, you’re family”<br>(their Shenzhen slogan — they WILL shout it back)</div>
+    <div class="line" style="margin-top:6px">“mountain to the sea,<br>the door is never closed”</div>
+  </section>
+
+  <section id="s1">
+    <h2>intro · just talk over the vamp</h2>
+    <div class="say">“I came a long way to this room.<br>Mountain people, sea people — <span class="cn">山海坞</span>.<br>You don’t need the words.<br>You already know the feeling.<br>Sing the part you know.”</div>
+  </section>
+
+  <section id="s2">
+    <h2>verse 1 · thumb &amp; brush only</h2>
+    <div class="line"><span class="ch">C</span> We came in strangers with a bag and a dream</div>
+    <div class="line"><span class="ch">Am</span> Mountain in the throat, salt water in the seam</div>
+    <div class="line"><span class="ch">C</span> Nobody asked us for a name or a key</div>
+    <div class="line"><span class="ch">Am</span> The door was just open — <span class="cn">山海坞</span></div>
+    <div class="note">(G lands on “dream” / “seam” / “key” — just keep the loop turning)</div>
+  </section>
+
+  <section id="s3">
+    <h2>pre · half-time, push</h2>
+    <div class="line"><span class="ch">F</span> Build it in the open,</div>
+    <div class="line"><span class="ch">G</span> break it in the light</div>
+    <div class="line"><span class="ch">Am</span> Everything we make tonight —</div>
+  </section>
+
+  <section id="s4">
+    <h2>🔥 chorus · give it away</h2>
+    <div class="big"><span class="cn">山海坞!</span><br>Mountain to the sea</div>
+    <div class="line">The door is never closed,<br>the fire’s always free</div>
+    <div class="line"><span class="cn">来了就是一家人</span></div>
+    <div class="line">Once you’ve walked in,<br>you were always home</div>
+    <div class="note">2nd time: drop out on the Chinese line — let them carry it.</div>
+  </section>
+
+  <section id="s5">
+    <h2>verse 2 · the <span class="cn">女娲</span> verse</h2>
+    <div class="line"><span class="ch">C</span> <span class="cn">女娲</span> took the sky when the sky was tore</div>
+    <div class="line"><span class="ch">Am</span> Five colored stones, she patched it to the core</div>
+    <div class="line"><span class="ch">C</span> Seventy-two hours and a soldering gun</div>
+    <div class="line"><span class="ch">Am</span> <span class="cn">给世界打个补丁</span> — we patch this one</div>
+    <div class="note">gay-shr-jyeh · dah-guh · boo-ding = “put a patch on the world” — their own hackathon line</div>
+  </section>
+
+  <section id="s6">
+    <h2>bridge · whisper it · point at people</h2>
+    <div class="line"><span class="ch">Am</span> Somebody here is building a hand</div>
+    <div class="line"><span class="ch">C</span> Somebody here is teaching a machine to sing</div>
+    <div class="line"><span class="ch">Am</span> Somebody left home so the work could begin</div>
+    <div class="line"><span class="ch">C</span> And nobody — nobody — built it alone</div>
+    <div class="note">say their real names, their real projects. this is the part that lands.</div>
+  </section>
+
+  <section id="s7">
+    <h2>last chorus → tag → closer</h2>
+    <div class="line">a cappella: <span class="cn">山海坞!</span> … then everything in</div>
+    <div class="big" style="font-size:clamp(20px,5.6vw,30px);color:var(--gold)">“You don’t join the orchestra —<br>you notice you were always in it”</div>
+    <div class="note">hum it until it belongs to the room → straight into <b>Aloha ʻOe</b>, one verse, slow, no explanation. Bow. 🌺</div>
+  </section>
+
+  <section id="s8">
+    <h2>improv kit</h2>
+    <div class="note"><b>Melody:</b> verse low (do-re-mi) · chorus jumps to <b>sol</b> on 山海坞, falls home.</div>
+    <div class="note"><b>Rhymes:</b> sea free we key 坞 · sky try high why · home roam alone · hand land stand</div>
+    <div class="note"><b>Drop-in lines:</b></div>
+    <ul>
+      <li>“Shenzhen built the thing that built the thing”</li>
+      <li>“Half of us don’t share a language and we still agree”</li>
+      <li>“I flew in Friday and I’m family by Monday”</li>
+      <li>“This isn’t a conference — it’s a village with a soldering iron”</li>
+    </ul>
+    <div style="margin-top:6px">
+      <span class="pill">quiet room → teach the chorus first, 30 sec</span>
+      <span class="pill">loud room → bridge, then chorus ×2</span>
+      <span class="pill">90 sec → talk · chorus · 女娲 · chorus · tag</span>
+    </div>
+  </section>
+
+</main>
+
+<nav id="nav"></nav>
+<script>
+const labels=['🔑','intro','V1','pre','🔥','女娲','bridge','end','improv'];
+const nav=document.getElementById('nav'), m=document.getElementById('m');
+labels.forEach((t,i)=>{const b=document.createElement('button');b.textContent=t;
+  b.onclick=()=>document.getElementById('s'+i).scrollIntoView();nav.appendChild(b);});
+const secs=[...document.querySelectorAll('section')];
+const io=new IntersectionObserver(es=>{es.forEach(e=>{if(e.isIntersecting){
+  const i=secs.indexOf(e.target);[...nav.children].forEach((b,j)=>b.classList.toggle('on',j===i));}});},
+  {root:m,threshold:.6});
+secs.forEach(s=>io.observe(s));
+// keep the screen awake while he plays
+if('wakeLock' in navigator){const g=()=>navigator.wakeLock.request('screen').catch(()=>{});g();
+  document.addEventListener('visibilitychange',()=>{if(document.visibilityState==='visible')g();});}
+</script>
+</body>
+</html>
