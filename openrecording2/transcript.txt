@@ -1,0 +1,2134 @@
+# MUSIC STAGE — weekly meeting #2 · Devcon 8 Music Space (all participants)
+# Fireflies.ai transcript (recorded by Naman Bajpai's Fireflies notetaker; Google Meet xwc-vyhq-wgx) · [number removed]:06 UTC · 104 min · 1428 captions
+# Speakers as labeled by Fireflies: Aakash, Devang Gandhi, Levi Downey, Nidhi Harihar, Shaka Lei Kaumaka, Sonya Sharma, jaydeep Gadhavi (speaker 7 'Aakash' per Fireflies; IDs 0 and 5 both = Shaka)
+
+
+[00:00:10] Shaka Lei Kaumaka:
+All right, for those of y' all who are here, I am going to be recording.
+Hope that is all right.
+
+[00:00:22] jaydeep Gadhavi:
+Let's see.
+
+[00:00:23] Shaka Lei Kaumaka:
+Tools on mobile.
+
+[00:00:33] Levi Downey:
+All right.
+
+[00:00:34] Shaka Lei Kaumaka:
+I will do the recording when I get on my computer.
+But anyways, how is everyone?
+Can you hear me all right?
+
+[00:00:42] Nidhi Harihar:
+Yeah.
+
+[00:00:43] jaydeep Gadhavi:
+Yeah.
+
+[00:00:44] Nidhi Harihar:
+Hello.
+
+[00:00:46] Devang Gandhi:
+Great.
+
+[00:00:46] Shaka Lei Kaumaka:
+Well, I'd love to show y' all where I am really quick because I got a really cool, fun, inspiring view.
+
+[00:00:52] jaydeep Gadhavi:
+See?
+
+[00:00:58] Shaka Lei Kaumaka:
+Flip the camera for me.
+There we go.
+Susan, Library.
+
+[00:01:05] Nidhi Harihar:
+I was there last week.
+
+[00:01:08] Shaka Lei Kaumaka:
+Last week?
+
+[00:01:09] Nidhi Harihar:
+Yeah.
+We were in Chiang Mai there.
+It's such a good place, right?
+
+[00:01:15] Shaka Lei Kaumaka:
+And then,.
+Well, something that wasn't there last week.
+Let me show you what wasn't there last week.
+We just got finished setting up for a really nice music performance.
+Here's four Cs for JD and Devang.
+If you've never been here before, we have Eth Chiang Mai.
+You can always tell that it's alive because there's lots of shoes outside.
+And we're gonna have tomorrow a nomad market.
+
+[00:01:48] Nidhi Harihar:
+Oh, wow.
+That's amazing.
+Sheesha missed out, but I will tell people I know who are there.
+
+[00:01:58] Shaka Lei Kaumaka:
+And then we got.
+
+[00:02:05] Nidhi Harihar:
+W.
+
+[00:02:09] Sonya Sharma:
+All right, that's amazing.
+
+[00:02:12] Nidhi Harihar:
+Now we know Shaka is there.
+
+[00:02:17] jaydeep Gadhavi:
+Is this Mumbai's view?
+
+[00:02:19] Shaka Lei Kaumaka:
+We are in Chiang Mai at the moment, but I will be in Mumbai very soon.
+Let me just switch here.
+All right.
+Well, jd, how you doing, brother?
+Devang.
+Thanks for being here.
+Mary, welcome.
+
+[00:02:53] Sonya Sharma:
+Hi.
+
+[00:02:53] jaydeep Gadhavi:
+Hi.
+
+[00:02:54] Shaka Lei Kaumaka:
+How are you?
+I'm doing great.
+And then.
+Hello, Vetant and Fireflies AI notes.
+Thank you for taking good notes in your digital tokenized time.
+That I also am very happy to have my AI deployed and running all the time and apologize if there's been sometimes changes or too much information.
+My agents have a lot of context and also hope all of you are happy with the fact that we have bots in the ohana in the orchestra.
+So.
+And they also are very.
+As much as they are contextualized, they are also consensualized.
+So if like, anytime you feel like your consent's broken or there's too much information being shared, like I showed.
+I shared a MOG's email via the bot on a little bit unintentionally in the Telegram meet group yesterday.
+So let's actually that.
+And you can actually see that that devcon Music Sanctuary group is a private chat.
+I don't have the public one.
+Someone must have sniped it.
+I hope the defcon team.
+But Telegram doesn't that that group twitch chat with 30 artists?
+You know, like, let's Be respectful and consensual with everyone.
+And that's also why I added the streaming chat to that group.
+I don't know if you guys realize but Alaska and then as well as another group called Patio D FM and whoever else wants to maybe be voluntarily helping out and being there can help us stream.
+I know Levi also is very talented in that nature.
+Thank you for being here.
+Levi.
+
+[00:04:28] Devang Gandhi:
+Welcome.
+
+[00:04:30] Shaka Lei Kaumaka:
+And Alaska just joined.
+And still trying to refresh, but.
+
+[00:04:43] Aakash:
+I think that.
+
+[00:04:46] Shaka Lei Kaumaka:
+Oh, Alaska, Alaska.
+We got.
+This is four Cs we got ready for a big concert tomorrow.
+Let me introduce you to some of the fourth.
+
+[00:04:55] Sonya Sharma:
+He's team.
+
+[00:04:57] Shaka Lei Kaumaka:
+They're working so hard getting ready for bracelets.
+Say hi.
+
+[00:05:00] Levi Downey:
+Hi.
+
+[00:05:02] Shaka Lei Kaumaka:
+Yeah, so it's a dream here how the team keeps growing and the seeds keeps soiling plants like an Ethereum.
+This is from Ethereum Singapore two years ago.
+And then actually there's all kinds of things that have been growing colorfully here since 2024 when like Alaska was here, Nidhi was and there was a whole archipelago here.
+So that can happen again if you all want to come after devcon and then when we're at devcon.
+Yeah, it's going to be lights turned on.
+I'm excited.
+So anyone else want to step in and we can maybe do some introductions?
+How about Nidhi, let's hear from you.
+
+[00:05:45] Nidhi Harihar:
+Hello.
+And so nice to see Chaka.
+I mean I've known Shaka now for like, I don't know, two years or more.
+I. I don't know.
+But yeah, just the fact that I've lost count of that.
+I'm very happy to be here.
+I was working in the Ethereum space until I went for a Vipassana meditation earlier this year and that sort of like jolted me back to like believing that I should pursue music full time and more seriously.
+Like I was learning music since I was like 5 years old from my grandmother first and family of musicians and all that.
+But the pasta gave me like the courage to sort of get over the fear of singing in front of people.
+And so here I am and what better way?
+But you know, like it all comes back full circle somehow at devcon.
+So and with all of you guys.
+So I'm.
+I feel it's like a safe space, you know, so I'm very, very excited.
+
+[00:06:40] Aakash:
+Great.
+
+[00:06:40] Shaka Lei Kaumaka:
+How about we start over if you want nitty.
+And this time I'll hit record.
+So if you all have consent, I'll hit record now that I'm on my computer.
+
+[00:06:50] Sonya Sharma:
+Yeah.
+
+[00:06:51] Shaka Lei Kaumaka:
+All right.
+
+[00:06:53] jaydeep Gadhavi:
+All right.
+
+[00:06:54] Shaka Lei Kaumaka:
+Welcome everyone.
+We are here for the first recorded.
+Oh.
+So open chat where we will send it so everyone knows where we are at and then the agents also can transcribe this and have it into the database.
+And yeah, we're all going to share our lovely faces only if we want to.
+So jdeep and devong, I hope you can hear us well and thank you for being here as well as Fireflies, Notetaker and Vedant's meeting notes.
+So even though Vedant's not here, he smartly sent his AI to take notes.
+
+[00:07:22] jaydeep Gadhavi:
+Yeah.
+
+[00:07:23] Shaka Lei Kaumaka:
+And we already had a great introduction from Nidhi, but now let's do it again now that we're recording.
+
+[00:07:28] Levi Downey:
+So.
+
+[00:07:28] Shaka Lei Kaumaka:
+Hi Nidhi, thank you for being here.
+
+[00:07:30] Nidhi Harihar:
+Hello.
+
+[00:07:30] Sonya Sharma:
+Hello.
+
+[00:07:31] Nidhi Harihar:
+Thank you for having me in part of this beautiful garden.
+I love that metaphor of the garden and like Shaka's like energy infused in it and everyone else's very.
+To be here and create some good music.
+I was working in the Ethereum space before until I decided to like go see music full time this year.
+I've been learning like Hindustani classical music since I was 5 years old from my grandmom.
+Like it started with my grandma, my first goal and obviously like life.
+Then the practice sort of like weaned off kind of connection to music has always been there.
+So now I'm very happy that it's all coming back full circle for me in one way at defcon and performing with you, with all of you and creating good music with all of you.
+Very, very excited.
+
+[00:08:24] Shaka Lei Kaumaka:
+How about you, Mary?
+
+[00:08:26] jaydeep Gadhavi:
+Welcome.
+
+[00:08:26] Shaka Lei Kaumaka:
+Bottom left on my screen, but cornerstone I think is definitely going to be these female alto and sopranos.
+So let's hear it from Mary.
+
+[00:08:37] Nidhi Harihar:
+Hi.
+
+[00:08:37] jaydeep Gadhavi:
+Hi everyone.
+
+[00:08:39] Nidhi Harihar:
+I'm Mary.
+I'm a sound artist and also improv.
+I like to create ambient and drone music.
+Sometimes I make noise music.
+I'm really happy to be a part of this and I'm really looking forward to see you live.
+
+[00:09:03] Shaka Lei Kaumaka:
+And how about you, Levi?
+Thank you for being here, brother.
+
+[00:09:07] Levi Downey:
+Hello.
+Yeah, thanks for having me.
+It's great to see you, Shaka and great to meet y'.
+All.
+See a few familiar names from the group chat and yeah, I'm Levi Downey, a music producer, songwriter based in Los Angeles, California, US and yeah, I was invited into this space.
+I've been hearing about open source orchestra for like three plus years now through Alaska and so I'm really excited to actually get to witness the magic happening in real time and be a part of the experience at devcon.
+I'm really, really looking forward to that.
+So thanks for having having me and I'm really excited to kind of contribute everything I can and I know a lot about like sound equipment and, and like live shows.
+I do a bunch of live shows in LA and would be happy to, yeah, help any way I can and, and I'm just super excited to see what music everyone's making too.
+So.
+I think you're muted still, Shaka.
+
+[00:10:12] Shaka Lei Kaumaka:
+So thank you.
+The most beautiful thing about Open source in general is that it's like an ocean where we can all throw all these beautiful inspirations and notions in.
+So Levi, you are such a big blessing and I'm so glad to hear you.
+And obviously Alaska is the one that shared the inspiration because Alaska is as much of an inspirer and motivation for what's happening here.
+It's been going for four years now where we've been openly playing music together at devcon and literally the way I've always dreamed of it and seen it is that the open source orchestra is already all of ours because it's.
+It really, there's like a really beautiful balance between ownership because no one owns this open source orchestra, I guess.
+I, I now currently own the domains which is really cool that like those have really fallen on me.
+Actually there was someone else who used to have open sourceorchestra.org when I first entered Ethereum and there's like an orchestra somewhere else out in.
+I think it was actually like Ireland, but luck of the Irish, that domain actually just opened up this year.
+So we just.
+This year and so opensourceorchestra.org where we're hosting all the schedule is actually I believe already all of ours and I'm giving that to the community and we'll probably hopefully figure out even ways where it can be more interactive with the ability for you guys to change it or it's not just fully kept through me.
+So I would love to learn more with my own technology skills to figure out how we can do this as an org more than just one boy and a bunch of agents.
+Which I think once we throw all of our agents in the pool, it's going to be a big buz like buzz.
+So anyways, Devang or JD or Alaska or Akash, who wants to step in the fire and inspire us?
+
+[00:12:14] Devang Gandhi:
+Okay, so hey.
+Hey guys.
+I'm Devang, keyboard artist and I'm professional pianist practicing keyboard and piano from last 14 years and by profession I am software developer and by passion I'm a keyboard artist.
+So yeah, really excited to play with Shaka and all you, all of you.
+I and Shaka actually jammed at East Mumbai Hackathon and from there we got to know each other.
+And also thanks Akash for giving me this opportunity to enter as a committee member in defcon.
+Of course.
+Excited, really very much excited to jam with you all and yeah, thank you.
+
+[00:12:54] Shaka Lei Kaumaka:
+Let's go.
+
+[00:12:59] Aakash:
+And yeah, like being a part of the committee, learning a lot of stuff from your, growing myself, growing the community with help of Shaka and all the people who are meeting amazing folks within India as well as.
+Yeah, what Devang said.
+Previously jammed with Shaka, Devang and all of the people at East Mumbai conference and looking forward to jam with a wider audience.
+Why the musicians and artists all coming to DEFCON this year.
+Really, really excited to host you guys in India.
+And yeah, let's catch up soon.
+
+[00:13:38] Shaka Lei Kaumaka:
+Namaste.
+Let's go.
+Can you hear us, Jaydeep?
+Love to hear your brother.
+
+[00:13:44] jaydeep Gadhavi:
+Hello all of you.
+Hello.
+Hello.
+My name is Adeep and I'm very excited to join with us and I am seeing like Gujarati folk song in this hall.
+I'm very excited for join us with jamming and this all in Mumbai.
+See you soon in Mumbai.
+
+[00:14:03] Shaka Lei Kaumaka:
+All right.
+So I can't wait not to see jd And I also would love to like make this big announcement that I was kind of like, have always wanted to keep a.
+A loose schedule.
+So like, I hope no one is like frustrated that it has very been loosey goosey a little bit for the last month now.
+We've been talking about it for a long time.
+So like, I never want to paint too much expectation early because what ends up happening is that like, it just needs to kind of have like this continuation that's really built upon all of us having a contribution.
+Right?
+That's why it's like many stewards, not just one steward.
+That's why there's going to be tons of instruments, not just one guitar.
+That's why it's a circle and not not a stage.
+And it's on the floor because it's meant for everybody.
+Right?
+Like, we can always include everybody in this and like any moment can become so much more than we expect it to be because it's open to everybody.
+So that's actually really exciting.
+And so like, that's like where there's like a beautiful balance of like what's owned and what's not owned.
+Like, you own your own time, you own your own devcon and you can have your own experience at devcon.
+You can like go to Vitalik's talk And then you can come back to the circle and then you can go here, you know, maybe Danny Ryan shows up and then we try and hope Danny Ryan shows up and plays bass in the circle and you know, and then you want to go hear about privacy and like you need to make sure that you like accomplish everything that you want to accomplish during DEF con.
+And no one is telling you to be at the music circle.
+It's a sanctuary.
+So like you, you'll, you'll know when you're supposed to go to the sanctuary.
+Oftentimes it'll be when you need it, you know, so like it's a healing place and like, so that's.
+I hope I'm not in your face too much because I just like being in that place.
+I'm like, so I will want to be there early in the morning after breakfast.
+I want to be there right at Doors open.
+That's when I want to be there.
+And like Mary, I know you're like an ambient artist.
+So like I thought you would be really great that one morning right from the get go because that's like an ambient morning already.
+Right?
+And then I thought the best way to start it off is with Nidhi and Jay Deep and there's another girl named Sonia.
+So like all the Hindi voices who have their own music, as we already found that we need to follow license ship and censorship of some sort of nature.
+But there's no censorship on what comes from here.
+We actually need to respect the CCO of what's out there, right?
+Give credit and have permission.
+That's what actually I think is really beautiful about what we can do with Ethereum is that we can give permission to the world permissionlessly.
+Right?
+It's permissionless.
+These instruments are permissionless.
+That's a transaction already.
+But that people can just enter the space.
+Unfortunately copyright rules have permissions.
+It's not permissionless.
+So obviously we just don't play cover music unless we know we can do it.
+But that's why I really want to put Nidhi and JD and then like Sonya in those first couple hours right after opening ceremony.
+And then the people that are opening the ceremony is Ronnie Cat, who because of Unity, I met him on the Hindi New Year.
+I got to go see a Living room concert with Anikat and, and Davia, his like amazing tabla who's like got a master's degree in tabla on the Hindi New Year.
+That's when I met these guys.
+So then.
+And that was my experience in Mumbai after jamming with Devang and Like then you, then you real.
+Then these guys step in to join all of us and then it's like this open circle right off the get go that's led by those who are hosting us.
+The beautiful culturally, like brilliant and wonderful Hindi people that have welcomed me, you know, over four times.
+So this will be like my fifth or fourth time.
+I feel like I can't, I've lost count, you know and like I have a five year visa so it's you.
+They, they have a saying in India that they, they treat their guests like the gods.
+So like Levi, don't be afraid.
+You know the customs.
+I hope I didn't scare you that like we've got to just like be honest, you know, that we're tourists.
+And also like the most honest part is that we're not working, we're not making money in this.
+Like we are giving this as a gift and we're just showing up as tourists who just hold music at our heart.
+Those of us who are traveling in because no one owns this orchestra, Open source orchestra doesn't even have any corporate standing anywhere in the world.
+It's just everyone's in their heart.
+And now it's got a dot org and the dot com go straight to the dot org and it's more of a thing where I would hope even someday that like you're doing it in LA and Akash you've already been doing it at the road to devcon and like this is my last road to DEFCON tomorrow and then we fly there so like it can happen anywhere because it's just like an open source protocol that people have been doing since like island people in like all the countries where they didn't even have electricity but they had a fire and way to make noise.
+So that's how old this protocol is.
+But Ethereum is pretty cool too and it's quite young and new so we get to be something beautifully involved in like a teenage protocol compared to like an ancient protocol.
+And then yeah, Alaska is amazing.
+He's as technically talented as he is musically talented and he's a computer developer so he'll be all over the place as well, teaching on the stage, different stages in different areas and streaming multiple things.
+I'm really excited to also help out with Zoo Zone which is a place where there's going to be a lot of talks for Zuzalu nodes.
+Four Cs is a Zuzalu node.
+This co working Space is open 24 hours as you can see.
+And yeah like I'd love to hear from everybody.
+Popcorn.
+Levi, I would love to hear more about your idea of how you feel like you can really encourage lots of songwriters.
+And what I actually think, what I dream about as far as like distribution in the future is you can actually meet infinite platforms with one thing.
+So like not beyond Spotify, beyond Facebook, beyond Apple Music, beyond all the different distribution things that you're very aware and executing well on.
+Yeah.
+What are your.
+What ideas do you have for this space?
+
+[00:21:11] Levi Downey:
+Yeah, thanks.
+Thanks.
+I mean I feel like I need to.
+I want to, you know, get to know the space a little bit more honestly, like before, like I feel like I know what ideas would make sense to bring, but I am really experimenting myself in this idea of collective ownership and trying to find an interface between this difficult copyright world that we have to exist in if we want money to be related to what we're doing.
+And then, you know, what is actually the practice of what we do as musicians is very different.
+Right.
+From the structures we have to plug into as you're describing.
+Like the protocol of gathering and making music together is like so fluid.
+But when money gets involved, if we want to receive financial value for the cultural value we create, like that's when it gets really difficult and we have to fit into these boxes that have been predefined.
+And so I'm really experimenting with Emerge and what it looks like to co own the intellectual property and centralize the IP of what's made so that we can create more liquid and fluid financial value and plug into the existing copyright system.
+I'm experimenting in that with music licensing right now for film, TV and ads.
+We just did a big songwriting camp where we made music for some TV shows and some ad campaigns.
+And normally that involves assigning the right to receive revenue from like an agency who pitches the music.
+But in our situation, what we decided to do is create a co op and co own all the intellectual property together and then license directly to the shows and campaigns and cut out the intermediaries.
+So anyways, it's a little bit in the weeds I guess on the music licensing space is kind of where my expertise is in.
+
+[00:23:14] jaydeep Gadhavi:
+But.
+
+[00:23:16] Levi Downey:
+Yeah, definitely excited to see if there's some way that like the technology that we're like leaning on really is just like a split contract, you know, on.
+On a layer two to really distribute the revenue in a transparent, fair way and then use some legal technology of cooperatives at least to California U.S. based Cooperative Legal stack to co own all the music together rather than having people own their individual pieces.
+So yeah, I mean, that's like, you know, I feel like a lot of people are experimenting in that and have experimented in that in the past.
+I'm sure you all have run into some of these things before, but.
+Yeah, so I wouldn't really know what, what ideas to bring to the open source orchestra really until I feel like I had a better understanding of like, what music people make.
+Is any of it recorded?
+Is it, you know, is there any interface right now into the existing, like, music industry, quote unquote, you know, or is it in its own space?
+Like, those would be like, questions I'd have to like, you know, to try to.
+That's why I'm excited about being here is like, to try to see how things.
+Things currently work too, because, I don't know, I'm working in my own little world here of like, music sync licensing, so.
+Yeah,.
+
+[00:24:46] Shaka Lei Kaumaka:
+Well, I'm smiling a lot while I'm listening to you talk that whole time because one, we're capturing all these notes down.
+So, like, we're going to be able to like, really like, start this conversation now, which is epic.
+And it's going to be in writing and there's a lot of like, I feel like learning that many of us have to do.
+But like, guys, guys who really have already felt this struggle for a long time, like you and I in Alaska, like, we already have really good ideas in our mind that we need to start putting on the table together.
+And this place where we are with like defcon, it's.
+It doesn't matter if it's in the weeds or if it's in the crops.
+Either way, you've got to like, harvest it and you got to take what you don't want and what you want and like, kind of like leave what's there to be beautifully stewarded, right?
+
+[00:25:35] Devang Gandhi:
+That's right.
+
+[00:25:36] Shaka Lei Kaumaka:
+We're doing in the garden.
+We're stewarding the garden.
+We're making sure it looks beautiful.
+If it goes crazy, then there's too much weeds.
+But, like, actually the weeds are really actually there to help the crop succeed.
+
+[00:25:47] Aakash:
+Right?
+
+[00:25:47] Shaka Lei Kaumaka:
+So you have to really just like, get rid of the weeds that the crops can succeed and.
+But at the end of the day, they both keep growing, you know, so like, why don't we just cut all the weed and smoke it and then we can have the crops left there so it can just be nicely prepared.
+And then pretty much like everything you said there is really important.
+And I actually know how this space kind of already has to work because we have the licensing, we have the we as tourists cannot be making money or doing anything.
+And I've been doing this now for four years around the world because everything I do is an offering, right?
+And like, so it's a sanctuary and everything that we're doing is an offering.
+And I've been going around the world with this offering of, hey, I can set up your AV table or I can help move the chairs, or I can just be there and like, literally, like, it's an offering and everything that's come back to me is also an offering.
+And Niddy and her husband devonsh are very, very, very smart when it comes to public good funding.
+And so what we just have to realize is that what we're doing is a public good.
+It's an offering, it's a gift.
+And up on the forefront, like, we put that out there where there's no expectation, there's no transactional for something.
+It's just not transactional at the beginning.
+But once it's received, then it's a complete transaction, right?
+Because if, if it's.
+It's.
+It can't be transactional until it's received.
+So, like, pretty much like what we can have that sh.
+Everything that you know.
+And what I would love for you to like, even like, maybe help us pioneer this structure for what we need to create for all of us, is that when the transaction is complete, when we are ready to receive, when, like, we've done the harvesting of devcon, which every November is the harvest season anyway, so, like, it's the time to harvest the crops, we got to cut the weeds and we got to be ready to see leave what's there to succeed for next year, right?
+Because, like, you just like, prepare yourself for next year because you're harvesting.
+So, like, that's what we're doing at devcon every year.
+And like, what this is, is an offering.
+It always has been.
+And that's the only reason why it's still here.
+It's an offering.
+So because it's an offering, when people want to offer back to the open source orchestra.
+Yeah, I would love it to be openly shared and everyone receives that sense of gift backwards.
+So that's a different type of licensing that could be written.
+I think it's actually already written.
+Like, there's one license of Italic loves that.
+Like, it forces people to also open source the music.
+So, like, that's the type of license that we should have.
+Like, it's on Vitalik's most recent blog.
+I can't.
+I even asked them what the license was Called and I already forgot because I'm bad with names, but I know the license.
+So the license that like you are forced to.
+To then open source whatever you're taking from that.
+So that's be on top of this music.
+Like if someone else wants to like sample it, do whatever with it.
+It's not copyrighted, it's open source.
+But they have to credit that it came from Devcon 8 in Mumbai at the World Geocenter.
+
+[00:28:53] Levi Downey:
+Right, right.
+I remember reading that too.
+Yeah, it wasn't CC0.
+It's like CCX or something.
+
+[00:28:59] Shaka Lei Kaumaka:
+Yeah,.
+
+[00:29:07] Levi Downey:
+Yeah, because CC0 gives you the authority.
+Oh, copy left.
+
+[00:29:13] Shaka Lei Kaumaka:
+Copy left.
+Movement.
+
+[00:29:15] Levi Downey:
+Yeah, Copy left.
+Yeah, I remember hearing about this.
+Yeah, that's an interesting idea.
+Really?
+Yeah.
+I mean, it's.
+It's hard because, like, the way that I.
+The way that I survive and pay bills is by monetizing my music.
+And so the way that I do that is by mainly working with like, larger companies that buy my music.
+Right.
+And yeah.
+So, like, I feel like in order to like, pay bills, people need either.
+There's got to be a money faucet somewhere.
+And so, yeah, I feel like I would much rather have that money be coming from like a huge collective of people who just like exchange value, you know, so that's cool.
+
+[00:30:11] Shaka Lei Kaumaka:
+Well, I think you've got a great music, music legal, music licensing and knowledgeability already.
+And we are a bunch of nerds in Ethereum that already have some cool abilities to put the code together.
+Open Source Orchestra Pit was an idea that won most creative prize of ENS in Eve Delhi, so that idea could come back to India.
+And I saw Alaska win this beautiful idea with Onda where every time you listen to an artist a certain amount of time, it automatically tips them a penny.
+Apparently I am the first human artist to integrate x402 payments on their website and have an agent pay me.
+
+[00:30:51] Levi Downey:
+Wow.
+
+[00:30:52] Shaka Lei Kaumaka:
+If you'd like to fork me, we can set.
+I'd love to help set you up as fast as possible so that you can be in the top 10.
+
+[00:30:58] Aakash:
+That's so cool.
+
+[00:30:59] Levi Downey:
+Yeah.
+
+[00:30:59] Shaka Lei Kaumaka:
+And also.
+Yeah, so we could just.
+We can all be teaching each other all these things and then like, maybe we should even like try and put the code together so that it's.
+It's.
+It's a blessing pool, it's a receiving pool.
+And then everyone that was really cool and helped steward the space and also made music.
+Um, and it can even be bit by bit.
+Right.
+Like, it can be whoever's in the circle at any moment.
+Right.
+We can even just like, that could be maybe like what we as stewards do is we just track who's in the circle so that we're making sure that every minute, you know, is distributed equal.
+And that probably like, inspire all of us to want to be there all the time.
+What we can't come to find is that they rented all these instruments because they don't want DJs playing all the time.
+Thank goodness, you know, DJs after four.
+And hopefully, I think the DJs that we already know know that it's like instruments on the floor and like, it's so much more when DJs play together with the instruments.
+So like DJs after four and like, the only way that we're going to have continual beautiful music that never stops at DEFCON is that we all play it together.
+And the really, the mentality of the schedule is that that's the person who's showing up to really steward the.
+The vibe of the music the most in that time.
+And, you know, if it really works out, Mary or JD for us to like, sing acapella or you just take a.
+Be quiet or, you know, maybe Devang just needs to like, get the.
+Get the first couple bars down on the piano.
+You know, like, let's just steward that vibration outwardly so people are like, hopping on board.
+And what we really want to avoid, which actually pretty much this happens only if people are getting bored, is like the guitar center vibe where it's just like, oh, I'm gonna show you every 10 seconds of the licks.
+I know it's awesome, but that's not what we're trying to show.
+We're trying to, like, keep this continual flow, which that's why DJs are actually perfect for the after party, perfect after four, because the DJ forces it to keep its flow until it's over when we can pull the plug.
+But, like, that's what I want to encourage, like, us live musicians to think so much more about, like, having this continual pull.
+And then like, even the transitions are.
+They're not that much of a transition.
+It's not a festival, right.
+It's a sanctuary where what comes and goes is equal.
+And then, yeah, like the, the code can come together while we're there because, like, East Global starts their hackathon before the closing party of the music space.
+So, like, we can be hacking while music's already in the same building.
+It's going to be epic.
+And it's.
+Yeah, it's like this.
+They've merged even more Youth Global Use Bangkok was right after.
+In like last year I was like dead in Argentina because it was just like so many days I could not hack in Argentina.
+Like Alaska, I think I. Alaska and I both were about to hack in Argentina and both of us were just like.
+But like at least we still got the energy of like the hackathon and the closing party or like merged now.
+So like once the hackathon starts, we honestly could like just figure out how we're gonna like do the distribution before we even do it.
+Like finish the creation and then it's.
+Everyone is able to put their consent into it saying, hey, I consent to having my address be a part of this receiving pool where then everyone is able to have consent on the complete transaction.
+You know, so like it's not a transactional thing at all until someone decides that they want to give to the pool.
+So when someone says, hey, yeah, I'm going to give to the pool, I'm gonna, I'm gonna.
+I love.
+I thought that was really cool.
+Here's something to drop in there.
+That's an offering as well.
+So like that full circle mentality legally means that we did nothing wrong while we were entering the border into India because nothing we did is transactional.
+Everything was an offering.
+A complete transaction occurs within an Ethereum transaction.
+That's a, that's a smart transaction, you know.
+So anyways, there's a idea of taking that offering and then communicating it legally, which I think actually why this recording now is also with everyone's down with it.
+Like I think we should just post this on Twitter.
+This whole conversation, you know, it's been going really well and I think it's actually important information.
+And then if we put it on Twitter, then Grocking and the baby bot Grock guy I gave to Grock and all the bots that you guys want to create to Grok just will understand this conversation really well.
+
+[00:35:40] Aakash:
+Why?
+
+[00:35:40] Shaka Lei Kaumaka:
+Because Graca Grockbot actually helped me double check the music licensing for what?
+You know, DEFCON team told us a couple days ago that we could not play covers.
+You know, so like that message with my ohana, you know, taking a couple messages in context, I said, oh, alert, alert.
+Just help me out.
+You know, I had Gro Graca researching and then I had also Fable researching and then, you know, like when Fable runs dry, then Kimmy jumps on board.
+So I literally got the whole world of LLMs thinking about these, about the open source orchestra.
+It's just like model shifting, but it's all the same context.
+So it's actually really understandable by all of us because it belongs to all of us.
+And so the strongest models, like Gemini or anything or now Grok and Kimmy being open source, will always be the top model because it's open source, because it's open to everything that wants to jump in the pool.
+Right?
+So, J.D.
+You know, like, it'd be really cool if you want to sing every single open source orchestra set.
+Mary.
+It'd be really cool if you want to do ambience all the time.
+Levi, you know, sacks it up as much as you want.
+And Akash plays the Cajon, Devang plays piano.
+Let's.
+And the.
+And the thing, I actually saw this group at Edge City that a group, a guy named, an awesome guy named Mike brought this group that would play acapella and then also get the crowd involved.
+And they kind of said the magic of what they did is that they really respect the song and the music and the ego of like, each individual kind of sits to the side that, like, it's more about keeping the.
+The song alive and like the, like the heartbeat.
+As long as we can keep the heartbeat going of the space the entire time, as long as the heartbeat just keeps going, we don't have to like, get the shock or the ambulance out there.
+If we can keep the heartbeat going and we like pass the heartbeat around and then people are singing on top of it.
+You know, that's what we want to just like keep on the ground the whole time is the heartbeat.
+And then it should be open to everybody.
+So there's a.
+You know, I would even encourage people that have their name on the schedule to still view that time openly equal.
+You know, that you're going to steward even more people that want to come and participate in your space.
+And we should have people who are around the area and we're going to put this, probably we should just put this out there now and like, even like have grock and everyone aware that, hey, if you participate in the space, we're going to record the audio.
+I don't think maybe we chord wait or we put the call out there.
+Like, hey, if we want to have video and audio dropped in the pool, even like videographers and whatever, they can be accredited equally.
+Right.
+Maybe there's a cool way that like, minute by minute we can see everything that actually made.
+Made its way into the content.
+So whether we could distribute that is through the writer.
+Right.
+I think that's also really important.
+Why the.
+Oh, sorry.
+Yeah, let's hand it over to Nitt.
+
+[00:38:56] Nidhi Harihar:
+Hey.
+Sorry I interrupted you.
+I just.
+Yeah.
+So I'm just very curious as to like what others are also have.
+Have in mind to like perform.
+I'm like very excited to see especially like Jaydeep and Devang and all of the Indians also here because we are on home turf and like you know it's.
+I'm sure we're going to do a great job welcoming this entire community that means so much to all of us.
+So just curious what others have in mind especially for the Indian music set and even, even any everyone who's here actually.
+And if, if there are ways we can even collaborate with one another.
+Like for example I'm looking for someone who can play a guitar with the guitar with me and I'm also like looking to sing like songs from every state which is some random thing.
+I started when they announced EPCON in India.
+That is a singer song from every state in every language.
+And so one of them is Gujarati actually.
+Jaydeep and Mara husband Gujarati chair.
+So the one of the songs is Gujarati.
+So I'm wondering if there is an opportunity to sing something together there or.
+And same goes with like everyone else.
+So yeah if everyone can just share what they have in mind to perform.
+
+[00:40:28] Devang Gandhi:
+Yeah it's basically I have not planned anything yet like but I can give you all kinds of background music that's possible from my side.
+Whatever you want to play as you ask for whatever you demand, I'll be able to play.
+And yeah for Gujarati for all kind of folk music.
+I am from Maharashtra, I am Gujarati and I am.
+It's kind of whatever music you want I can play with you and yeah will always be there for giving us the beat on Kahun.
+And yeah he's also Gujarati.
+
+[00:41:02] Nidhi Harihar:
+Oh you are also even I'm from Mumbai and like I'm married to Gujarati so my Gujarati is getting stronger by the day.
+Levi and Mary, Gujarat is like the state in like very close to Maharashtra where devcon is happening.
+It's on the western coast and if you've seen that dog shaped sort of thing on the Indian map on the left, that's the state of Gujarat.
+So that's where basically we just discovered that Aakash, Devang and Jaydeep and my husband are from So a lot of like Guju energy is.
+
+[00:41:40] Devang Gandhi:
+Yeah we've got the like India's best energy with you.
+
+[00:41:43] Nidhi Harihar:
+Yeah.
+
+[00:41:44] Sonya Sharma:
+Yeah.
+
+[00:41:46] Aakash:
+So yeah like while exploring, while going through various RTDs I saw that Jaideep is really very good.
+Like we collaborated together.
+I've collaborated with Diwang as well.
+And Jaideep as well.
+And like he sings really very good Gujarati songs as well as different Indian music.
+And to be honest, like me when we were jamming together.
+
+[00:42:14] jaydeep Gadhavi:
+Yeah, yeah.
+
+[00:42:18] Aakash:
+You have an echo.
+
+[00:42:19] Shaka Lei Kaumaka:
+I think since you put your headphones on or, or someone else mute yourself.
+
+[00:42:30] Aakash:
+So.
+
+[00:42:32] jaydeep Gadhavi:
+It.
+
+[00:42:32] Aakash:
+Like me, Shaka and Devang, we remember that we were hacking in Eat Mumbai and it was the time when we were frustrated and we were exhausted completely after hacking for like around two, two days, completely without any sleep.
+So me and Devang decided like, let's play some Indian music.
+And there were, there were people who are the like who are from the organizing team and from the venue itself.
+They were, they were giving us some kind of thing.
+Yeah.
+Shout out like let's play this song from 80s of Indian music.
+Play this song.
+Play this song.
+And Shaka was also jamming with us.
+Playing, playing.
+
+[00:43:09] Devang Gandhi:
+He really jammed good on Indian songs.
+
+[00:43:12] jaydeep Gadhavi:
+Yeah.
+
+[00:43:12] Devang Gandhi:
+Having no context of Indian music.
+
+[00:43:15] Aakash:
+But it was very nice.
+
+[00:43:17] Devang Gandhi:
+Yeah.
+
+[00:43:18] Aakash:
+So we, we are looking actually forward to this having some, you know, Indian classical music as well as pop as well as mixing all of that, the fusion of it.
+
+[00:43:29] Shaka Lei Kaumaka:
+Like just thinking about it from the other hand side, like it's, it's.
+
+[00:43:33] Aakash:
+It's quite gonna be amazing having core classical Indian music as well as songs from different states of India with the music from the west and like, you know, taking all the things together and making something new or Gujarati pop or some Bhangra pop, kind of a stuff, Marathi pop, if.
+If it works well as well.
+So we are looking forward to that.
+We are framing some things in mind as well.
+I'll be looking for some amazing videos which are already there through some artists in India who are making some good fusions.
+So yeah, like really very excited.
+I also sing a bit.
+Not that good, but I play guitar, I play acoustic music as well as Cajon.
+So really eager to collaborate with everyone over here.
+Maybe.
+
+[00:44:22] Nidhi Harihar:
+That's.
+That's amazing.
+Like I'm just thinking like in India we have these get togethers where families like come together festivals and all that.
+And there's always like a mehfil, which is the literal like translation of a mephile is like a gathering, I guess or like a. I'm not getting the right English translation from, but it basically is what I think the open source orchestra at DEFCON will be like.
+It's like a very informal, like like impromptu space where like an uncle is singing.
+Like uncle, like my cousin brother starts singing something and then we just follow it up.
+So it seems like that is going to like unfold and that's like a very exciting proposition.
+Just one question I had is given the whole licensing thing, like with devcon, I think the email you mentioned, I'm not sure like the songs that can be included or can be sung, I know it has to be original.
+But like for example, in classical music there are all these like songs that are like centuries.
+Like, I don't even know how all these songs are, so I don't know if.
+And they are not mine.
+I mean, it's like I've learned it from my guru, who has probably learned it from her guru and things.
+So I'm not sure where that stands.
+Or even something like songs from every state that I was trying to.
+Those are all like covers.
+Some of them are folk renditions, like Long Gavacha, you know, from the Punjabi.
+Long gavacha, which is like a very traditional.
+Or even in Gujarati, there'll be like maraveeni machar phul.
+I remember my dadi used to sing this song.
+So I don't know where all this stands and what is going to be like our collective take on what music can be sung.
+Like, because some things happen impromptu also.
+So I don't know.
+
+[00:46:17] Shaka Lei Kaumaka:
+So basically go for it along.
+Yeah.
+
+[00:46:19] Devang Gandhi:
+Okay.
+Yeah.
+So we like, we were planning about to have some calm music and stuff.
+Right.
+And morning.
+Right.
+So, yeah.
+So what we can plan is basically we'll have Nidhi as singer.
+So basically she is a classical singer.
+So in India there are basically some of the classical songs which are like very calm and very good, which she can sing.
+And there's basically some kind of classical term called as raag.
+Okay.
+Yeah.
+So from that kind of stuff she can originate some really beautiful tunes where everyone can enjoy.
+And I'll.
+I'll be giving keys to her on bj.
+So it will.
+It will be like a really good place and really good time to have those kind of classical musics when no one is performing or in between the gaps or if something happens where we can directly perform there.
+
+[00:47:19] Nidhi Harihar:
+Yeah, that makes sense because I was wondering because some of these are like bhajans, you know, like devotional songs.
+So it can get like.
+I was wondering who's gonna listen to.
+But those are very.
+It can be.
+It does pick up pace.
+But I also like to sing it a little like in a like stretched out way.
+
+[00:47:42] Aakash:
+Yeah.
+Like I was thinking same like if we can have bragas in the starting of the.
+After the opening ceremony, like ragbehavi or something, which starts it up.
+Yeah.
+Which Starts it off and we take it through you know like very general transition from Indian classical music.
+Playing it on keyboard or if we have harmonium over there through tabla adding like slide by slide we add on some percussions like bass comes in accordingly, someone playing the base accordingly and then comes the drums.
+Like when it comes to the faster pace later and then transitioning into something like I. I don't know if it makes sense but which, which like it gives you energy directly because it is something which resonates with the energy.
+So people like people unknown about it would not know that it comes from very spiritual background but gives you instant energy on the.
+On your.
+Yeah Sonya just.
+
+[00:48:40] Sonya Sharma:
+Hi.
+Hello everyone.
+Sorry I joined late.
+So you know this is something very new to me.
+You know I actually the concept basically so I'm trying to understand you know so for all the artists particularly so this in this forum.
+So we have a stage where the sequences artist is there and simultaneously the conference is going on alongside in the same hall or it's a different hall.
+So if you could just.
+Because it's bit confusing to me.
+I've attended you know my own from my background, you know I've attended other conferences so it's music, it's something you know we'd be that the.
+What I have seen is they have kept always a separate timing and you know in the evening or something like that.
+But it's like on alongside conference this will be a separate thing which will go along during, during the whole day.
+So like if you could help me imagining like what's the structure like you know if somebody's performing the stage and on the other side in the other hall or maybe in the same hall the the audience is also you know the people are also there and maybe we, we all together in the same hall and doing it.
+If you could just help me understand the concept.
+
+[00:49:59] Shaka Lei Kaumaka:
+All right, I have an idea.
+I am going to give a quick 330 second catch up and then I would love either Nitty or Akash or both of you to then say everything I'm about to say in Hindi.
+And I would also love to start this little bit by saying Sonia is joining us all the way from Delhi so thank you so much for flying in.
+And she's also a steward, she filled in for Annie and Annie did these great diffusion stuff but Annie couldn't make it unfortunately.
+So Sonia has joined the stewarding committee and she will be also catching in with the meetings and the catch up a little late because she's flying in from Delhi.
+So she should be there by the third for the opening.
+We want to have this opening time that we're dreaming up right now around like 11 o'.
+
+[00:50:48] Devang Gandhi:
+Clock.
+
+[00:50:49] Shaka Lei Kaumaka:
+We should be ready like we should all go to the opening ceremony but then like realize that we want to be at the circle right after the opening ceremony.
+And so that'll probably be around like 11:30 on the third.
+And this circle that we're creating, it's on the ground floor.
+It's, it's not a festival.
+It's.
+It's really just this open sanctuary which shared by the whole community.
+We have a whole bunch of instruments prepared.
+We'll have one person there who'll be like a sound engineer making sure that everything sounds decent.
+And even all of us are going to be welcome to.
+Who are knowledgeable and ready to like welcome people in.
+Make sure that just the space continues.
+So like you as a steward and also as a performer, it's, it's beautiful that you're there to steward because you'll actually get to sing so much more than your, your time in the schedule.
+I think that's what's also been confusing.
+You're like, when's my time to perform?
+Hey, it's, it's.
+This is the whole community space to make, make sure that the space feels warm, right?
+Like we're not there to performer.
+We're there to make it be a sanctuary where everyone can stay warm, everyone can be welcome.
+And it's offering, right?
+Predominantly it's an offering.
+That's where like the confusion about licensing and like what's this?
+And that is because it's not a paid thing.
+We're all volunteering.
+It's all gift.
+It's a public offering that we're able to just spare in this place.
+And I think for getting it out there to all of India, it'd be great to hear in Hindi now.
+So Akash, do you want to like talk all about all that in Hindi?
+
+[00:52:14] Sonya Sharma:
+Yeah, no, that.
+I totally get you what you have said.
+Shaka.
+
+[00:52:19] Shaka Lei Kaumaka:
+Oh, just for.
+Or maybe you, you if you want to translate for me.
+It's just, just that we can actually spread it for everyone in India.
+We should, we should like actually like give a under explanation of the space.
+I'll let you all take handle that right now if you want.
+
+[00:52:34] Sonya Sharma:
+No, no, that's fine.
+Akash, you could, you could please.
+Yeah, please go ahead.
+Yeah.
+
+[00:52:40] Aakash:
+Oh my God.
+It's on me again.
+Nidhi is also not here.
+Oh my God.
+So what should I say in India explaining about this entire.
+
+[00:52:54] Shaka Lei Kaumaka:
+You've been in it there.
+You've been, you've been killing it, brother.
+I mean you've been doing so good.
+Like you've, you've been like, you've been.
+You are the local.
+
+[00:53:01] jaydeep Gadhavi:
+Local.
+
+[00:53:02] Shaka Lei Kaumaka:
+You are the guy who Open source orchestra in India, like who stepped up and, and said, yes, I want to walk alongside this open source initiative that, you know, Alaska and I have gone country to country.
+But like it needs someone like you.
+Last year it was this great collective called Musical Web Trace that they stepped in and made sure that there was always music happening in the place, you know.
+So like that was a huge community already of musicians.
+And you know, JD and Devang I know are here because you've already played with them, you know, all along.
+So like, yeah, we need the Indian host.
+That's why I want you to say this in Hindi too so that like everyone that may not understand everything that's happening in this call in English can just like listen to you.
+
+[00:53:41] Levi Downey:
+Yeah.
+
+[00:53:42] Aakash:
+Like, yeah, I'll definitely do it.
+So namaste.
+
+[00:53:47] Levi Downey:
+Or.
+
+[00:53:51] Aakash:
+It's, it's amazing.
+Call Kali.
+I don't know how to say amazing, but yeah, or Namari Sad Amare Friends.
+Open source music orchestra.
+Music as a sanctuary, as an open place, as a independence.
+
+[00:54:39] Levi Downey:
+Or.
+
+[00:54:41] Aakash:
+Ethereum foundation.
+
+[00:54:58] Shaka Lei Kaumaka:
+Or.
+
+[00:55:02] Aakash:
+Independently.
+Is.
+
+[00:55:13] jaydeep Gadhavi:
+Or.
+
+[00:55:20] Aakash:
+Is music sanctuary as well as this music orchestra go.
+Or.
+I think so that's it.
+Most of the Hindi came out of me up till yet.
+And yeah, I think so Nidhi or Sonia could guide me much more better if I did well or not.
+
+[00:56:02] Sonya Sharma:
+I mean I think it's a great initiative.
+Thanks Aakash.
+But just so the same thing, you know.
+So the arrangement is on the ground floor and the conference is also on the ground for.
+I guess.
+
+[00:56:14] Aakash:
+Yeah, yeah, it's the, it's on the same floor.
+So if, if, if.
+I don't know like if previously you have been to the space or not the venue or not.
+So it's quite big.
+There are various, you know, there are various partitions in between.
+So there would be two main stages, like the main stages for the speakers, like where all the speakers.
+What happens into all of the conference.
+The speakers comes in and they.
+There were speaking sessions of them as well as on the side.
+Like there would be a second stage which would be this cultural stage of defcon in which all of the music is like with the culture music or traditional classical music or the music from the West.
+Everything we have this all, everything scheduled of how it would be working and it would be going on through that performances would be there as well as jamming would be going on.
+DJs would be playing it accordingly to the time.
+And people from there like how it happens.
+People networking, people coming to see the, you know, to keep people coming to see and to jam along with us, the locals, the Indians as well as the people traveling across the globe.
+And we would be, we would be jamming with them as well, performing our things.
+On the other hand.
+And you know, there are specific events like for example, after, you know, after us party, which would be happening just after the event ends.
+Last year's most famous, you know, the announcement of the next defcon, which happens on the last day.
+The closing ceremony, the opening ceremony, all of them.
+So it's an independent stage and it's a kind of a place which is there for complete, you know, to showcasing the culture as well as cultural side of defcon.
+That it's not only the Ethereum is not only about smart contracts or only about technology.
+It's a complete ecosystem where it contains culture, it contains music, it contains technology, it's.
+It's everything.
+So yeah, to showcase the other part, it's not.
+I think Nidhi can take it.
+
+[00:58:16] Sonya Sharma:
+Yeah, yeah.
+
+[00:58:17] Nidhi Harihar:
+Thank you.
+Yeah.
+
+[00:58:18] Sonya Sharma:
+So.
+
+[00:58:18] Nidhi Harihar:
+So I don't know if you.
+Have you attended devcon or anything before?
+
+[00:58:23] Sonya Sharma:
+This is the first time I'm attending.
+
+[00:58:24] Nidhi Harihar:
+Okay, great.
+
+[00:58:25] Sonya Sharma:
+I have, you know, from my background is from the medicine actually.
+So this is the first time.
+
+[00:58:30] Nidhi Harihar:
+Oh, wow.
+
+[00:58:31] jaydeep Gadhavi:
+Yeah.
+
+[00:58:31] Nidhi Harihar:
+Okay.
+Wow.
+And.
+And you're a singer along with the.
+
+[00:58:34] Sonya Sharma:
+Singer, composer and songwriter, so.
+
+[00:58:36] Nidhi Harihar:
+Oh, brilliant.
+
+[00:58:39] Sonya Sharma:
+And I'm looking forward because I just, you know, this is a platform which is for, for.
+For an independent artist, very hard to present their own songs.
+So if there's any platform which is.
+
+[00:58:49] Nidhi Harihar:
+Yeah.
+
+[00:58:50] Sonya Sharma:
+Asking to present originals, I guess it's an.
+Yeah.
+
+[00:58:55] jaydeep Gadhavi:
+Oh, wow.
+
+[00:58:55] Nidhi Harihar:
+That, that's amazing.
+So lucky to have you as part of this.
+
+[00:59:00] Sonya Sharma:
+It's my pleasure.
+Yeah.
+
+[00:59:02] Nidhi Harihar:
+So I like, I think I was just searching for a picture actually of Shaka.
+I had a, like a really good picture.
+Picture and video of Shaka like jamming and Eat Khan.
+Like there was the similar conference in France last year and it was such a vibe.
+Oh my God.
+And like Shaka was just so much in the zone and the entire team like it.
+They were all like in trance.
+So that was, I think like that picture would have described exactly like what it means, but I think.
+
+[00:59:29] Shaka Lei Kaumaka:
+Oh, wow.
+
+[00:59:30] Sonya Sharma:
+Okay.
+
+[00:59:30] Nidhi Harihar:
+That's really high.
+Exactly.
+Yeah, yeah, yeah.
+And.
+And sometimes it's also like to be honest, sometimes the vibe is like, you know, in when you're in New York or you're in the local train in Mumbai.
+There are like these artists like just jamming with like flute or like harmonium or something.
+Like I say Antakshari is going on, on the local train.
+Some people are listening, some people are not listening.
+But whoever's singing and playing is in their zone and happy.
+You know, I mean, I think that's a closest I can come to describing that vibe, you know, that's.
+
+[01:00:04] Sonya Sharma:
+I mean.
+Yeah.
+Like I can imagine this thing and you know when people from the musical taste or the musical harmony when they do these kind of things, it's.
+It's even more.
+I would say it's.
+Everybody enjoys that rather than you know, kind of one performing artist there.
+It's kind of.
+Everybody could enjoy these kind of jamming things and.
+And I'm really looking forward to it, you know.
+
+[01:00:29] Levi Downey:
+Yeah.
+
+[01:00:29] Aakash:
+Like honestly speaking, like we did it just six months ago, me, Devang and Shaga, we all.
+And it was something like just to give context, like we just started with Devang, gave the harmony or melody and there was from the other hand coming.
+
+[01:00:46] Devang Gandhi:
+That.
+
+[01:00:50] Aakash:
+And uncles and all started to sing together.
+And it didn't seem that it was a hackathon place at all.
+It seemed like that we are all here for jamming.
+So it would be, I think so at a bigger scale where all the Indians as well as people who know like all of the people from the west and other place of the world come together and like.
+Yeah, it would be certainly something like that.
+That people requesting this songs and be playing it and they would be singing with us together.
+
+[01:01:18] Devang Gandhi:
+Yeah.
+
+[01:01:19] Aakash:
+Like what I can think of or visualize it from your.
+
+[01:01:22] Sonya Sharma:
+Yeah.
+No, no, it's.
+It's really.
+I mean I would say it seems like it's going to be very.
+It's going to be great and.
+Yeah.
+
+[01:01:31] Nidhi Harihar:
+Yeah.
+
+[01:01:32] Sonya Sharma:
+So.
+
+[01:01:32] Nidhi Harihar:
+So that's the thing I wanted to ask now.
+Like a song like which is.
+So can that be sung by us with this licensing thing.
+
+[01:01:42] Aakash:
+That's a doubt in my head as well.
+We need to figure that out.
+Like.
+Like what's what.
+Like the problem might be if it's going on live stream or something.
+I don't know.
+But yeah, I think like these are the songs which we sing in all kind of conferences.
+But I don't know, like if, if the songs, like if we play this song might be a problem or we use the karaoke, it might be a problem.
+But we ordinarily.
+By the way.
+Bye.
+
+[01:02:18] Nidhi Harihar:
+Bye.
+Nice meeting you.
+
+[01:02:20] Aakash:
+It was nice meeting you.
+
+[01:02:23] Shaka Lei Kaumaka:
+Yeah.
+Sorry, sorry to bump in and out a little bit.
+Had to help a friend get his piano set up and we are at the top of the hour for the call was supposed to end two minutes ago.
+We were right there on top.
+Sonia, if you want to pop in for a little bit and just say a little bit more about your music, we.
+We didn't get a chance to hear from you before we drop off.
+
+[01:02:43] Devang Gandhi:
+And I'm.
+
+[01:02:43] Shaka Lei Kaumaka:
+We are going to post this video.
+I hope you guys are okay with that.
+Everyone consent to a Twitter post to just like spread the news and get this all out there.
+So yeah, let's just share this whole talk on Twitter and get it out there for our agents.
+Hello again.
+Vettin's meeting Notes Agent Vet.
+It's not here.
+But he said his agent was right on time, so.
+Agents are divine.
+I love my agents.
+They are my ohana digitally, an extension of me and my heartbeat.
+So if you are listening or talking to my digital steward, you actually are like talking to an extension of me because I give it all my context.
+I told about y' all how much I love Ethereum and Open Source orchestra and how it started and how it belongs to all of us.
+So like my agents know that and are aware of that and we'll stay true to that.
+So the digital twin stewards was inspired by digital twins that I got to learn on the research retreat with Nitty and her husband Devang and filecoin team and also a lot of other dream teams.
+So anyways, you're all welcome here at 4C's.
+Do you want to play some piano and then son?
+Yeah.
+The Open Source Orchestra.
+Welcome to the Open Source orchestra.
+Are these the people who are going to play here later?
+No, we're going to play together in India if you want to come, but then we're coming back here.
+This is Mary.
+No, what was your name?
+This is Nitty.
+Nitty was here a week ago.
+Nitty was here a week ago?
+
+[01:04:05] Nidhi Harihar:
+Yeah, I was here with.
+I can't see you today.
+
+[01:04:11] Shaka Lei Kaumaka:
+No, Nitty was here a week ago.
+
+[01:04:13] Nidhi Harihar:
+I was there a week ago.
+
+[01:04:14] Devang Gandhi:
+Yeah.
+
+[01:04:14] Shaka Lei Kaumaka:
+Okay, now I see you better, but nice meeting you.
+Nice.
+What's your name?
+I've never met you, but I heard you play.
+You're amazing.
+Oh, thank you.
+Yeah, I'm meeting him.
+No, we can't see you.
+Nice to meet you.
+Nice to meet you.
+So you guys are an orchestra?
+Yes, we're an orchestra.
+And you're also in the orchestra?
+Yes.
+
+[01:04:35] Devang Gandhi:
+What do you want me to do?
+
+[01:04:36] Shaka Lei Kaumaka:
+It's permissionless.
+These Instruments are permissionless.
+I am so out of practice with playing p piano.
+And I might play some bum notes and crazy notes and I might not know what I'm doing half of the time.
+But if I play something sublime, Then you can know it was completely by accident.
+Completely by accident that I didn't play.
+
+[01:05:32] Aakash:
+See?
+
+[01:05:41] Shaka Lei Kaumaka:
+Completely unexpected chord that I'll try to make sense of with a melody.
+Thank you very much.
+Yeah, thank you very much.
+Wow.
+Oh, my God.
+
+[01:06:06] jaydeep Gadhavi:
+Brilliant.
+
+[01:06:08] Nidhi Harihar:
+That was a happy accident.
+Accident.
+
+[01:06:10] Shaka Lei Kaumaka:
+Happy accident.
+There is lots of happy accidents in this song.
+Are there all more people that.
+Because I can't see two people.
+Yeah, we have Mary, we have devong.
+They're just hiding.
+They're listening.
+I believe they're here listening.
+Sonia, tell us about your music.
+Do you.
+
+[01:06:29] Devang Gandhi:
+Do you.
+
+[01:06:29] Shaka Lei Kaumaka:
+If anyone wants to sing on their end, they're welcome to.
+
+[01:06:34] Aakash:
+Oh, Sonia, go ahead.
+
+[01:06:36] Sonya Sharma:
+Oh, no, mine is.
+I mean it's kind of a soft.
+I would say maybe it's just the, you know, the.
+Throughout the years, what I'm like seeing what I'm doing, it's all based on that.
+And so, I mean, so it's like the original one that you want me to take so I can take one of my song which I release few two years back.
+And this is.
+This starts like this.
+Okay.
+Dinner.
+It's like this.
+Yeah.
+Thank you.
+
+[01:08:27] Shaka Lei Kaumaka:
+Wow, that was really nice.
+Devang, were you getting ready to play something?
+I saw you pop your camera on for a minute and.
+Do you.
+Would you like to come to devcon?
+Would you like to come to devcon?
+You can still get tickets if you want to come to Devcon.
+What's Defcon?
+Defcon is happening in Mumbai November 3 through 6 in the world.
+Geocenter in.
+Yeah, I said it.
+Mumbai, India.
+
+[01:08:49] Aakash:
+You know, we need to.
+We need to capture this.
+Just small window.
+I need to add this on Twitter.
+
+[01:08:58] Shaka Lei Kaumaka:
+I'll send you all the recordings so you can cut it up like crazy if you want.
+
+[01:09:02] Aakash:
+Yeah.
+
+[01:09:04] Devang Gandhi:
+I'm just not able to find my adapter for my keyboard.
+Searching for it.
+
+[01:09:10] Aakash:
+You just.
+Jaydeep, go ahead with Gujarati song.
+
+[01:09:15] Shaka Lei Kaumaka:
+Thank you for joining the open source.
+
+[01:09:22] jaydeep Gadhavi:
+Hello all of you.
+Yeah, like is a very popular song in our community in Gujarat.
+And like, I like.
+At least I listen more times and more songs, but I like these songs and I just like.
+Okay.
+
+[01:10:15] Shaka Lei Kaumaka:
+Thank you so much.
+
+[01:10:16] jaydeep Gadhavi:
+Thank you so much, guys.
+All right.
+
+[01:10:29] Shaka Lei Kaumaka:
+Echo.
+Echo.
+
+[01:10:46] Aakash:
+That was cool.
+
+[01:10:49] jaydeep Gadhavi:
+Yeah, yeah.
+
+[01:10:54] Aakash:
+Now, now we want you to sing.
+Shaka, we want you to sing.
+Yeah.
+Where is your ukulele?
+Oh my God.
+Now he's coming on big, big things.
+
+[01:11:17] Shaka Lei Kaumaka:
+So I cried today when I found out that one of the most legendary Chiang Mai musicians has come into play in four Cs to tomorrow.
+And I grabbed this guitar and that piano and that drum kit.
+Nitty should know the place from the mountain village of four Cs which is about 45 minutes outside of Chiang Mai.
+That's where there used to be this funding the Commons event which happened there during the Archipelago.
+So I hold that piano and the this guitar and made sure that there was some music stance and chords to get it all amplified and plugged in.
+And that was almost a year ago and had the dream of there being music consistently in four Cs and then I come back this morning to find out that this awesome initiative that I think her name is Jing Jing, but her and I just had dinner.
+I got to meet her and speak to her today.
+And so inspiring that there was this local music venue in Chiang Mai that this band used to play at all the time the venue shut down.
+So then Jingjin had the idea of oh, I should invite them to play at four Cs every week.
+And it's been happening and I showed up and it was already happening.
+So I just had got to help out and help, you know, get ready and we're going to play some music at the very end.
+You know, it's not even like a road to devcon event.
+It's just like something that happens and I'm just like on the road as I'm passing and this is actually really beautiful that I left my grandpa's grandma's blanket here and many other things that are still here.
+So like when the nodes become permanent, you can start leaving things there and it's actually like planting seeds in the garden.
+So.
+Oh yeah, I was.
+Let me finish tuning.
+And anyways.
+
+[01:13:16] Devang Gandhi:
+Oh,.
+
+[01:13:22] Shaka Lei Kaumaka:
+This is something we as stewards are going to probably be doing all the time.
+Just making sure the instruments are stewarded.
+I do not know how to tune a tablet.
+So thank God we got a tablet master coming on the opening day.
+You know, it's like tuning is always.
+Yeah, Sonia, go.
+
+[01:13:53] Sonya Sharma:
+Sound testing will be there.
+Is it like, you know, before for doing any.
+Any particular times is set for that or.
+
+[01:14:04] jaydeep Gadhavi:
+Oh yeah.
+
+[01:14:04] Shaka Lei Kaumaka:
+Actually I could probably give you lots of context on the sound testing.
+We have a sound check on the second, but that's probably going to be around midday maybe if we're lucky we could.
+But actually the reason for that sound check is not to like.
+Well one we'll check to make sure everything's working.
+So that's great.
+But then we're also checking to see how loud we can get and how loud we cannot get, you know, so like there's during the daytime, like, so the.
+There's like a main stage and then there's also going to be like a lot of community zones.
+So we're in the room where there's a lot of community zones.
+So it's not going to be like one conference happening next to the music stage where it's like the two main stages competing with each other.
+No, there's.
+There's a main stage and then maybe even other main stage.
+They're like isolated stages with their conference happening.
+And then the space where we're going to be making music is the community space.
+And there's like all these different zones that they're going to have their own programming and talks going on, but it's not going to be over like a huge microphone.
+We're actually going to be like kind of like trying to make sure that we're in the background but still audible that we're kind of like making it a really warm environment for this space where they know music is happening.
+But we're not distracting.
+
+[01:15:18] Aakash:
+Right.
+
+[01:15:19] Shaka Lei Kaumaka:
+We're not taking away from all the conversations that should be happening.
+But then if you walk up close enough, like you could easily gather 20 people right in front of you that will then be able to hear you really well because they walked up to the music circle.
+And then at 4 o' clock we can turn it up, you know, so it's like kind of covering the whole big will geocenter room.
+But you'll always be able to hear the music.
+We just don't want to take away from the whole community having one room together.
+
+[01:15:47] Sonya Sharma:
+Yeah.
+Okay, thanks.
+
+[01:16:01] Shaka Lei Kaumaka:
+And then it is important we get to registration stewards.
+I would say anyone in this group can be a steward now and get there registered early.
+It's just checking in to get your bracelet early.
+Right.
+And then we have a volunteer meeting.
+So that volunteer meeting is happening.
+
+[01:16:28] Devang Gandhi:
+At.
+
+[01:16:28] Shaka Lei Kaumaka:
+A certain hour, but then we're going to have a sound check at a certain hour and those things are easily going to happen.
+And if you're not there that day, then you just go to the registration at the main door and you'll.
+Because you got your code and everything, you just scan and get your bracelet and whatever merch you tried to get.
+But still not very happy with the tune of this guitar.
+
+[01:16:56] Aakash:
+Shaka tuned his entire guitar with the instructions online.
+
+[01:17:23] Shaka Lei Kaumaka:
+No, I don't care what anybody say.
+I just wanna play all day.
+No, I don't care what anybody say.
+
+[01:17:51] jaydeep Gadhavi:
+I'm still gonna pray.
+
+[01:17:58] Shaka Lei Kaumaka:
+Anyway.
+In the lines dwell them lines are gonna be My friends from Babylon Zion ain't afraid no lies.
+
+[01:18:19] jaydeep Gadhavi:
+Anywhere.
+
+[01:18:26] Shaka Lei Kaumaka:
+Cause I don't care what anybody.
+I just wanna stay in front of that def con wave before it breaks.
+Like the sun's job was to rise each day well them clouds are gonna fade away and all I wanna do is get out my sick strain and play.
+I'm excited to play all day, all day, all day.
+But.
+And nitty, you did not cut me off and nor does anyone cut me off where you're just like, like I said, pulling out the weeds so that it's like the crops that we all can succeed.
+And I will never ever stop.
+
+[01:19:25] Aakash:
+Stopping.
+
+[01:19:25] Shaka Lei Kaumaka:
+To listening because if I didn't stop and start listening.
+So like I stopped all over the world to listen to whatever was happening at devcon.
+And I learned everything that I know how to do with agents and about Ethereum in general.
+And also that's how I learned how to play music in the first place was I started listening in church and then I followed up with one to play in church.
+And then I gotta play at school and then I gotta go to college for music school and drop out.
+But then I learned that, you know, it's.
+We all get to, you know, just like, we never arrive because it's like just really cool to keep playing all day.
+So we're gonna play all day together.
+And yeah, my songs are really easy too, by the way.
+Like, I like to stick to like either the three chords and the truth type style or just like four chords that Ed Sheeran can turn into any pop song.
+And you know, you don't need more of that to like, that's for this.
+My own compositions.
+So like whenever I bust out a song, hopefully people can pick it up and you can always just like ask me and I can.
+I've gotten pretty good at just like shouting out the chords while I'm playing.
+Same as you guys.
+You know, just feel, feel like that's how you're stewarding is by kind of like spreading your, your vibration and letting.
+Letting other people like who do stop, listen and are listening because like many people will stop and start listening will want to join.
+So.
+
+[01:21:08] Aakash:
+Honestly speaking, like, this meet is exciting me a lot.
+I'm thinking about what would be happening in irl.
+Like this seems really exciting.
+What, how exciting like when we would be there together.
+
+[01:21:19] Nidhi Harihar:
+Yeah.
+Yeah.
+Actually I had not like seen anyone else.
+So I was like just a little confused.
+And also like I'm to be very honest I'm very like scared of singing in front of people which is what I want to like get over.
+But now when, just when Shaka was cleaning playing I was like wow, it's me.
+Like like one Allah will like sound.
+
+[01:21:41] Aakash:
+Like oh let's go for it.
+
+[01:21:42] Devang Gandhi:
+Let's go for it.
+
+[01:21:43] Nidhi Harihar:
+I mean I don't know.
+
+[01:21:44] Shaka Lei Kaumaka:
+Let's go for it.
+
+[01:21:45] Nidhi Harihar:
+Let's notes Now I'm into co working space.
+
+[01:21:49] Aakash:
+Something anything could go ahead from your anything.
+Let's go for any song if you like.
+
+[01:21:55] Nidhi Harihar:
+Like there's this Bandish I'm like I just recently learned in Ramaj from my guru and it like describes Krishna who's one of the 330 million gods in Hinduism.
+We have 330 million duties.
+One of them is Sri Krishna who is like known to be like an advisor.
+Also known to be a very good lover and a lot of, a lot of like very good.
+He also has like this playful side about him.
+And so the whole song like talks about him and his playful side and playing with like honey, the question of colors with his other like girlfriends.
+Another Gopi so.
+
+[01:23:30] Sonya Sharma:
+Nand.
+
+[01:23:58] Nidhi Harihar:
+Sanghir.
+That's how it will sound.
+
+[01:24:31] Aakash:
+Amazing.
+
+[01:24:32] Devang Gandhi:
+Amazing.
+
+[01:24:38] Nidhi Harihar:
+I'm a density.
+
+[01:24:41] Aakash:
+Oh that's okay.
+Amazing.
+There is a similar kind of music called as music.
+
+[01:24:51] Nidhi Harihar:
+This is, this is how well you music.
+Yeah.
+
+[01:24:53] Aakash:
+So we, me and Devang, we all are Vaishnavs.
+We belong to that postie Mark.
+So we it all like it resonates in our home every day and.
+It moves all day throughout.
+So it seems very similar and yeah really very excited like I think so.
+A lot of deep Indian cultural music is coming on and let's see how we can make a mixture of it with pop music as well.
+Amazing.
+Like really very excited about it.
+
+[01:25:28] Sonya Sharma:
+So when you said Kamal it's like that's there's this beautiful, I would say semi classical song.
+It's like I think it's in the Kamaj only and it's a very, I don't know whether you heard it or not but it's really, it's a semi classic of a some I I, I don't remember his name but it's, it's.
+
+[01:25:52] Aakash:
+Like that let's go for it song.
+
+[01:25:57] Sonya Sharma:
+Maybe we'll keep something on that day while doing the javing.
+Yeah, okay.
+But that's nice.
+Yeah.
+
+[01:26:04] Nidhi Harihar:
+This is, this is the Shaftamana.
+
+[01:26:08] Sonya Sharma:
+The same one.
+
+[01:26:08] jaydeep Gadhavi:
+One.
+
+[01:26:08] Nidhi Harihar:
+Yeah, yeah, yeah.
+
+[01:26:24] Sonya Sharma:
+It's like that.
+
+[01:26:25] Nidhi Harihar:
+Yeah, yeah, yeah.
+
+[01:26:26] Sonya Sharma:
+It's in the same.
+
+[01:26:32] Nidhi Harihar:
+Yeah, it's.
+
+[01:26:34] Sonya Sharma:
+Yeah, yeah.
+
+[01:26:35] Nidhi Harihar:
+It's a beautiful, beautiful on.
+Yeah, yeah, yeah.
+
+[01:26:39] Sonya Sharma:
+So it's very nice.
+Yeah.
+
+[01:26:41] Nidhi Harihar:
+Wow.
+Very excited.
+I'm so happy we had this call.
+
+[01:26:45] Aakash:
+Yeah, I think so.
+This call was very important today.
+Like very important call.
+We know all like we know each other now and then like over there it would be very easy now like we know what nitikin saying.
+What son?
+Like what Sonia's genre is.
+What Devang is gonna do that.
+He takes it like from next level.
+His high pitches from next level.
+When takes.
+
+[01:27:13] Nidhi Harihar:
+Yeah, that.
+
+[01:27:15] Aakash:
+That particular part is called as Chapakra or Sapakra in Gujarati.
+So he takes it like very good.
+He belongs to the community which is very famous in Gujarat, the Charan Maldari community, which is from that space.
+If you have heard amazing singers like Aditya Gadvi.
+
+[01:27:31] Nidhi Harihar:
+I know.
+I love.
+I love kids.
+
+[01:27:32] Aakash:
+Yeah.
+So he belongs from that community only.
+
+[01:27:35] Sonya Sharma:
+I thought so.
+
+[01:27:36] Aakash:
+Yeah.
+So they say that in the Gadvi community they are blessed by God for thinking so.
+
+[01:27:46] Devang Gandhi:
+Yeah.
+
+[01:27:47] Aakash:
+And I'm really very excited.
+Like I'm gonna listen everyone.
+I just know how to play Kehan the sing a little bit.
+But really very excited to see everyone.
+
+[01:27:57] jaydeep Gadhavi:
+Thank.
+Thank you so much, Adrian.
+Thank you so much.
+
+[01:28:02] Devang Gandhi:
+Hey guys.
+So let's have some keys demo.
+No, no, no, no.
+Just listen.
+Are my keys audible?
+No.
+
+[01:28:21] Aakash:
+Are they?
+
+[01:28:23] jaydeep Gadhavi:
+No.
+
+[01:28:23] Aakash:
+So like in Google Meet they have like noise cancellation.
+
+[01:28:26] Devang Gandhi:
+So that's like.
+
+[01:28:34] Aakash:
+A bit.
+A bit.
+
+[01:28:37] Devang Gandhi:
+I think you need to listen me directly on like DevCon days.
+
+[01:28:46] Shaka Lei Kaumaka:
+Everyone mute except Devang.
+This is the.
+How does your.
+You're muted now.
+Devang, in case you were wondering.
+Sorry, were you trying to play some piano?
+
+[01:29:15] Devang Gandhi:
+It's not getting audible.
+I think so.
+And just join from my mobile once and try.
+
+[01:29:20] jaydeep Gadhavi:
+Yeah.
+
+[01:29:20] Shaka Lei Kaumaka:
+Try to turn on your phone and then play it.
+Play there.
+That's a good idea.
+
+[01:29:23] Devang Gandhi:
+Yeah.
+
+[01:29:25] Shaka Lei Kaumaka:
+And Mary, if you have an ability, you could get ready to play something next.
+I'll stay on the call and keep listening.
+
+[01:29:33] Aakash:
+Yeah, I'm psyched to hear from Mary as well.
+Like I just wanna.
+I was just gonna type into the chat like love to hear your music as well.
+Mary, are you here?
+
+[01:29:46] Shaka Lei Kaumaka:
+Edge City's here in the house.
+Sending love to everyone in the Edge City co working.
+I don't know if that is playing it over the speakers, but yeah, I hope it's been going well.
+And Goa.
+I had my glasses.
+Where'd they fall down?
+I'm wearing Edge City red light glasses.
+
+[01:30:03] Aakash:
+Shocker is Taking his go and vibes from there.
+
+[01:30:05] Shaka Lei Kaumaka:
+It's a got my Edge City red light glasses, I got my east Golby globey, my calla guitar strap.
+Oh yeah.
+I think I actually might make it public.
+I will auction off some things I think for pop up cities.
+I think I'm gonna auction off my epic DEFCON jacket and I'm gonna vibe code my own way of auctioning it.
+I don't need anyone else to do anything.
+I'm radically self reliant.
+So I'm gonna build my own auction place and auction off some of my treasures.
+My Navy orbeez, this calla thing and my DEFCON jacket and I'm gonna give it to the pop up cities including Edge City, so.
+And also I kind of messed up.
+I think now's the time to say it.
+I let my ENs go to auction.
+I am such a dummy.
+Chocolate Eth is actually available for 300k due to the ENS rules of.
+Oh, Devong's almost ready.
+But starting November 3rd when Devcon goes, my ENS is now $6,000 for ENS auction and then it goes down to the swiping level.
+So we need to have someone swipe my ENs before it's available because yeah, check Chocolate Eth.
+I forgot to renew it in July because I was at a crazy Burning man experiment and had a journey of losing it, leaving everything in the playa, including my ens.
+So Shockley Eth is out there for grabs because it's in the cool rules of V2 auction place.
+But we also have other ENS's in place and Devong's in place.
+
+[01:31:37] Levi Downey:
+So.
+
+[01:31:37] Shaka Lei Kaumaka:
+Ready?
+Devang?
+Let's go.
+
+[01:31:41] Aakash:
+That's audible.
+
+[01:31:47] Shaka Lei Kaumaka:
+Still not audible.
+Can you, can you play?
+Play like you're listening in your room.
+Like, not that your headphones like play.
+Play like you're just like playing for your mom.
+
+[01:31:56] Devang Gandhi:
+Okay.
+
+[01:32:05] Nidhi Harihar:
+I heard the first kind of.
+
+[01:32:07] Shaka Lei Kaumaka:
+I heard a little piano.
+
+[01:32:08] Nidhi Harihar:
+Yeah,.
+
+[01:32:12] Aakash:
+Just keep the, you know, your mobile phone like really close to the, you know.
+
+[01:32:30] Shaka Lei Kaumaka:
+Are you using some sort of input or are you just using your phone speaker directly?
+
+[01:32:33] Devang Gandhi:
+I'm just using my phone speaker directly.
+
+[01:32:36] Shaka Lei Kaumaka:
+And you're playing the.
+You can hear the piano playing back at you.
+Yeah.
+
+[01:32:40] jaydeep Gadhavi:
+Oh yeah.
+
+[01:32:41] Shaka Lei Kaumaka:
+I could hear it there a little bit actually.
+Maybe just put the phone right next to the piano.
+Lay it on the piano.
+
+[01:32:49] Sonya Sharma:
+Yeah.
+
+[01:32:52] Shaka Lei Kaumaka:
+Oh, I know what it is.
+Go into your Google settings.
+It's cutting out the background noise.
+So you need to like clear all the.
+Cut out all the filters on the audio of Google.
+There's like a. I've done this in a Zuzalu call and like, I love Edge City, but Timor was hosting that day and he did not cut me off.
+So I played through like a broken thing the whole time.
+Yeah, you got it.
+Yeah.
+Turn off the background settings.
+There we go.
+
+[01:33:18] Devang Gandhi:
+All right, great.
+Let's go.
+Thank you, Shaka.
+Let's.
+Let's do it now.
+I'm not just playing something of my own right now, but there are some famous melodies there.
+
+[01:34:59] Shaka Lei Kaumaka:
+This is exactly how I was hoping this call would go.
+Getting to hear from everybody and everyone play.
+And this is still going to be weekly, but next time we play in the real place.
+Oh, yeah.
+Next week is the fourth and we are playing together.
+May the force be with you all.
+
+[01:35:19] Aakash:
+One more question from mine.
+When everyone is reaching to Mumbai, like, What's the date?
+
+[01:35:27] Devang Gandhi:
+2Nd November 11th.
+
+[01:35:29] Aakash:
+2Nd November 11th.
+I think Shaga is reaching on 1st.
+
+[01:35:33] Devang Gandhi:
+31St.
+
+[01:35:34] Nidhi Harihar:
+Yeah, I'm also reaching on 31st night.
+
+[01:35:37] Devang Gandhi:
+Amazing.
+
+[01:35:38] Aakash:
+I would be there on 31st morning.
+Let's.
+Let's meet together on 1st at the venue if you guys are available.
+And.
+
+[01:35:48] Sonya Sharma:
+I think I'll be on third or fourth, actually.
+Fourth morning.
+Yes, third evening, maybe.
+Like I'll be there on 30.
+
+[01:35:56] Shaka Lei Kaumaka:
+In the evening on the third.
+
+[01:35:58] Sonya Sharma:
+Yeah, I'll, I'll text you, I'll email.
+You know why?
+Because I'm just going to do the tickets.
+
+[01:36:03] jaydeep Gadhavi:
+Okay.
+
+[01:36:04] Shaka Lei Kaumaka:
+No rush either.
+And just make sure you get there safely.
+Like, don't, don't, don't ever, like, think you're late.
+You're always on time.
+All right.
+To all of us, like, even if you're like in the middle of watching something really important that Justin Drake's talking about and we all gotta, we all gotta, like, think about it really hard.
+Like, don't worry if you're a little bit late to be a steward at the sanctuary because the sanctuary is likely going to be stewarded by everybody.
+Love everybody who's here.
+From one co working space to another.
+Thank you, nitty.
+
+[01:36:40] Nidhi Harihar:
+And yeah, I'm saying hi to Devang.
+
+[01:36:43] Shaka Lei Kaumaka:
+Hi, Devang.
+Yeah, so there's, there's the researcher, awesome husband that I was talking about earlier.
+Devonsh was a contributor for the EF recently and he's.
+Are you living in Chiang Mai?
+Because you're going to be doing lots of prediction marketing?
+Yeah, yeah, yeah.
+
+[01:36:59] Aakash:
+Not any.
+Like, I keep traveling there but not often.
+Not living there yet.
+
+[01:37:04] Shaka Lei Kaumaka:
+But you're coming for Christmas?
+
+[01:37:06] jaydeep Gadhavi:
+Maybe.
+
+[01:37:06] Shaka Lei Kaumaka:
+Maybe, maybe, maybe.
+Okay, well.
+Or whenever.
+Or New Year's party.
+We're gonna have New Year's party, and then there's also the Chinese New Year, and then we should go have a Hindi New Year in Mumbai again.
+Why not?
+That's how I started the year was having the Hindi New Year in Mumbai.
+And so Anikat is gonna open up the opening ceremony.
+You can check out his music that he just made originally.
+And all our original music is totally welcome in the spot.
+I think desperately.
+Melodies are okay.
+That was really hot.
+Really love that riff.
+And I think, Yeah, I think, like, you're.
+We're able to riff on, like, little melodies that are, like, remind you of, like.
+Oh, that sounds just like.
+Imagine there's no copyright.
+
+[01:37:51] jaydeep Gadhavi:
+Maybe.
+Are you in, like,.
+
+[01:37:54] Shaka Lei Kaumaka:
+Sorry.
+
+[01:37:57] Devang Gandhi:
+For Hacker House?
+Like, what?
+
+[01:38:01] Shaka Lei Kaumaka:
+Yeah, yeah.
+
+[01:38:02] Sonya Sharma:
+No.
+So I.
+
+[01:38:06] Aakash:
+Sorry, you're not audible.
+
+[01:38:10] Nidhi Harihar:
+No, I'm here because, like, there are opportunities to, like, sing here.
+So I'm like, okay, just, like, trying to sing in public more.
+Trying to.
+There's a Bollywood night supposed to happen, but he's.
+Devansh is, like, meeting people here and everything.
+And Edge is just such a place where, like, literally, Arun, you know, Arun Phillips, like, he was playing the sitar.
+He's been playing the sitar here, and he has, like, broken both his hands right now because.
+Carrying the sitar.
+But, yeah, it's.
+It's a good, good, good vibe that way.
+
+[01:38:47] Shaka Lei Kaumaka:
+Of course it is.
+Edge City is Vibe, because the people that keep it alive shout out, Teleman.
+I love you, brother.
+Have fun at the Edge.
+Goa train.
+If you're gonna go on the train.
+
+[01:38:59] Nidhi Harihar:
+No, I'm not gonna.
+Yeah, yeah.
+But it's gonna be exciting.
+So.
+
+[01:39:04] Sonya Sharma:
+Yeah.
+
+[01:39:06] Aakash:
+The blockchain.
+
+[01:39:07] Shaka Lei Kaumaka:
+Oh, yeah.
+I just posted a.
+A thread on my Twitter of, like, all the indie events.
+The agents did it.
+They're like.
+I did the Founder's house and the.
+And, like, we had this devfolio song.
+And, like, so one song I wrote was called Bangalore Beep Beep, where I was, like, relating the communication in Web3 to being just as important as all the taxis beeping on the streets in India.
+
+[01:39:27] Sonya Sharma:
+Beep, beep.
+
+[01:39:28] Shaka Lei Kaumaka:
+You know, he's like, so that.
+That's communication that's happening all over the place so that they don't crash into each other.
+And so, like, this is so important that we're communicating.
+Yeah.
+Just, like, what the values of this space are so that things don't crash together.
+And.
+Yeah.
+So I'm excited to post this on Twitter,.
+
+[01:39:50] Levi Downey:
+But.
+
+[01:39:50] Shaka Lei Kaumaka:
+All right, let's end it there.
+
+[01:39:51] Sonya Sharma:
+That's.
+
+[01:39:51] Devang Gandhi:
+Good night.
+
+[01:39:52] Shaka Lei Kaumaka:
+Good night, everybody.
+
+[01:39:52] jaydeep Gadhavi:
+Love you.
+
+[01:39:53] Nidhi Harihar:
+Good night.
+And I just want to say, like, it was firstly very nice to like hear everyone's like normal formal introduction, but I think the more like musical introduction was just amazing, like, magical.
+Thank you everyone.
+Magical.
+
+[01:40:08] jaydeep Gadhavi:
+Yeah.
+
+[01:40:08] Sonya Sharma:
+Thank you so much.
+Thanks.
+
+[01:40:11] Aakash:
+Bye guys.
+Really very excited to meet you all at DEFCON in Mumbai.
+
+[01:40:17] Shaka Lei Kaumaka:
+Yes, defcon.
+
+[01:40:21] Aakash:
+Bye.
+Good night.
+
+[01:40:22] Nidhi Harihar:
+Good night.
+
+[01:40:23] Devang Gandhi:
+Take care.
+Bye.
+
+[01:40:24] jaydeep Gadhavi:
+Bye guys.
+
+[01:40:24] Devang Gandhi:
+Nice to meet you.
+See you soon.
+
+[01:40:27] Nidhi Harihar:
+Thanks for the great music, Devang.
+
+[01:40:29] Shaka Lei Kaumaka:
+Excited to send this transcript to my agents.
+Love you, Ohana.
+Bye bye.
+
+[01:40:34] jaydeep Gadhavi:
+It.
+
+[01:41:55] Shaka Lei Kaumaka:
+Oh, look at you faithful little agents in here taking notes.
+Well, now we are here for the encore session where I hop back in the meeting to say what's up, agents?
+Let's give some more details just for the ohana as we're going to run this through a public information transmission protocol call, which transcribes, digitizes and then makes available on one of the front doors.
+So we're going to have the devcon pit hopefully open running open source orchestra pit hopefully up and running and then also getting some nice live streams up and running with Swarm team powering Alaska's subcooled protocol.
+And then also Patio FM will be streaming on the meme pool.
+How cool is that?
+That and beyond that, I think that just sending love to the note takers.
+Love you, agents.
+I love super intelligence art, like artificially created things is what we do as artisans.
+So keep hacking builders and artists.
+How do I end this with the agents?
+Okay, one at a time audios Akasha's Fathom notes.
+Adios, firefly AI notetaker.
