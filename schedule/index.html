@@ -440,7 +440,7 @@ function slotHTML(a, t, side) {
   </div>`;
 }
 function tixHTML(a) {
-  if (PAGE_KIND !== 'mock') return '';   // 2026-10-27 (Shaka, URGENT): no ticket/code status on the public page — a set time is a set time
+  if (PAGE_KIND !== 'mock') return '';   // 2026-10-27 (Shaka, URGENT): no ticket status on the public page — a set time is a set time
   if (a.ticket === 'yes') return '<span class="tix ok">🎫 Devcon ticket confirmed — slot locked &amp; ready</span>';
   if (a.needs_code) return '<span class="tix com">🎟 confirmed they&#39;ll be there — time held</span>';
   return '<span class="tix no">🎟 no Devcon ticket confirmed yet — time not locked</span>';
@@ -738,9 +738,9 @@ function benchHTML() {
   return h + `</section>`;
 }
 
-/* 2026-10-27 (Shaka, URGENT): the $-code list is retired — no ticket codes are posted anywhere. */
+/* 2026-10-27 (Shaka, URGENT): the code list is retired — nothing about it is public. */
 function codeHTML() {
-  return '';   // retired 2026-10-27 — nothing about ticket codes goes public
+  return '';   // retired 2026-10-27
 }
 
 /* Everyone who applied but has not written to us yet: no time, still welcome, one email away. */
