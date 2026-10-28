@@ -91,9 +91,9 @@
 <script>
   const a=document.getElementById('a'),v=document.getElementById('v'),vw=document.getElementById('video'),watch=document.getElementById('watch');
   // when the Google recording lands, set VIDEO_SRC (mp4 path or Drive preview) and the video takes the lead.
-  const VIDEO_SRC='';
+  const VIDEO_SRC='https://archive.org/download/oso-weekly-call-2-2026-10-27/weekly-call-2-2026-10-27.mp4'; // archive.org, no account needed; chapters drive the audio (video starts ~6.5 min later than the Fireflies take)
   if(VIDEO_SRC){v.src=VIDEO_SRC;vw.classList.add('on');watch.href=VIDEO_SRC;watch.style.display='inline-block';}
-  document.querySelectorAll('ol.ch li').forEach(li=>li.addEventListener('click',()=>{const t=+li.dataset.t;const m=(VIDEO_SRC?v:a);m.currentTime=t;m.play();m.scrollIntoView({behavior:'smooth',block:'center'});}));
+  document.querySelectorAll('ol.ch li').forEach(li=>li.addEventListener('click',()=>{const t=+li.dataset.t;const m=a;m.currentTime=t;m.play();m.scrollIntoView({behavior:'smooth',block:'center'});}));
   if(location.hash.startsWith('#t=')){const t=+location.hash.slice(3);if(t){a.currentTime=t;}}
 </script>
 </body>
