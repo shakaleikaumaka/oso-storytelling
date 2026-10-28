@@ -239,9 +239,9 @@ const quietHTML = q => `<div class="quietmark"><span class="time">${fmtTime(q.fr
   <div class="liftline"><b>${q.label}</b><br><span class="dim">${q.sub} · we play again at ${fmtTime(q.to)}</span></div></div>`;
 /* Speaker sessions involving our own crew — shown so the room knows where to find us (2026-10-14, Shaka) */
 const SESSIONS = {
-  'November 6': [{ at: 11*60 + 40,
-    label: '🎤 ON STAGE 4 — “In the future music and culture is free”',
-    sub: 'Shaka, Alaska & Tomo speak 11:40–12:05 · our room keeps playing — huzzhouse holds the floor' }],
+  'November 6': [{ at: 12*60,   // 2026-10-28: official Devcon API slot = 12:00–12:25 Jasmine Stage 4 (W8HAES), not 11:40
+    label: '🎤 ON JASMINE STAGE 4 — “In the future music and culture is free”',
+    sub: 'Shaka, Alaska & Tomo speak 12:00–12:25 · our room keeps playing — huzzhouse holds the floor' }],
 };
 const sessionHTML = m2 => `<div class="quietmark session"><span class="time">${fmtTime(m2.at)}</span>
   <div class="liftline"><b>${m2.label}</b><br><span class="dim">${m2.sub}</span></div></div>`;
