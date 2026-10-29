@@ -49,6 +49,19 @@ export function initFinder(ctx) {
   const fab = $('#gh-fab');
   if (!panel || !fab) return;
 
+
+  // 🗝️ garden keys — an artist's own door (keys.js loads only when someone asks)
+  let keysApi = null;
+  const openKeys = async (tab) => {
+    try { keysApi = keysApi || (await import('./keys.js')).initKeys(ctx); keysApi.open(tab); }
+    catch (e) { console.error(e); const t = document.getElementById('toast'); if (t) { t.innerHTML = '<b>The garden door is stuck.</b> Please refresh and try again.'; t.classList.add('show'); } }
+  };
+  const kb = document.createElement('button'); kb.className = 'gkbtn'; kb.id = 'gh-keys'; kb.type = 'button';
+  kb.innerHTML = '🗝️ <span>I’m an artist — open my garden</span>';
+  kb.addEventListener('click', () => openKeys('garden'));
+  panel.appendChild(kb);
+  window.__gardenKeys = { open: openKeys };
+
   // ── index ──
   const idx = ARTISTS.map((a) => {
     const nameW = words(a.name);
@@ -254,6 +267,7 @@ export function initFinder(ctx) {
   // arrive: an idea for the deep link (?find=tabla)
   const f = new URLSearchParams(location.search).get('find');
   if (f) { input.value = f; state.q = f; setTimeout(open, 900); }
+  if (new URLSearchParams(location.search).has('keys')) setTimeout(() => openKeys('garden'), 1100);
   run();
   window.__greenhouse = { open, close, run };
 }

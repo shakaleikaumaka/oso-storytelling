@@ -76,3 +76,10 @@ body.ghopen #gh-fab{opacity:0;pointer-events:none}
   #gh-fab,#gh-fab .bl,#gh-garden .flw,#gh-garden .heart,#gh-garden svg.roots path{animation:none!important}
   #gh-garden .fly,#gh-garden .note,#gh-garden .burst{display:none}
 }
+
+/* garden keys: the greenhouse's door for artists + the bio on a detail card */
+.gkbtn{display:flex;gap:7px;align-items:center;width:calc(100% - 28px);margin:0 14px 12px;padding:.7em 1em;border:1px solid rgba(45,212,191,.45);border-radius:12px;color:#8ff1e2;font-size:.74rem;letter-spacing:.08em;background:rgba(45,212,191,.07);position:relative;z-index:4;justify-content:center}
+.gkbtn:hover{background:rgba(45,212,191,.16)}
+.gkbtn:focus-visible{outline:2px solid var(--gold-bright);outline-offset:2px}
+#greenhouse .gkbtn{flex:0 0 auto;margin-top:2px}
+#detail .bio{font-size:.86rem;color:var(--cream-dim);line-height:1.6;margin-top:12px;white-space:pre-wrap}

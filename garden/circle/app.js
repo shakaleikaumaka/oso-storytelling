@@ -6,6 +6,7 @@
 import * as THREE from './vendor/three.module.min.js';
 import { VRButton } from './vendor/VRButton.js';
 import { initFinder } from './finder.js';
+import { mergeEdits, applyLocal } from './overlay.js';
 
 const C = { night: 0x0b0612, gold: 0xf0c464, goldBright: 0xffd97a, teal: 0x2dd4bf, rose: 0xe86a92, coral: 0xff8a5c, violet: 0xb48cff, rug: 0x6b2340, rug2: 0x8c3a24 };
 const R_CIRCLE = 3.0;                 // Ø 6 m, per the rider — the rugs, not a riser
@@ -32,11 +33,13 @@ let qAccum = 0, qFrames = 0, qStep = 0;
 
 /* ── boot ───────────────────────────────────────────────────────────────── */
 async function boot() {
-  const [a, h] = await Promise.all([
+  const [a, h, edits] = await Promise.all([
     fetch('./data/artists.json').then(r => r.json()),
     fetch('./history/manifest.json').then(r => r.ok ? r.json() : { photos: [] }).catch(() => ({ photos: [] })),
+    fetch('./data/edits.json', { cache: 'no-cache' }).then(r => r.ok ? r.json() : null).catch(() => null),   // 🗝️ the artists' own words (garden keys) — absent = no-op
   ]);
   ARTISTS = a.artists; ARTISTS.forEach(x => (BY[x.slug] = x));
+  try { mergeEdits(BY, edits); applyLocal(BY, edits); } catch (e) { console.warn('garden edits skipped', e); }
   HISTORY = (h.photos || []).map(p => ({ ...p, url: './history/' + p.file }));
   // the full-circle order: the hosts, then every set in time order, then the garden, then the ones away this year
   const dayKey = (x) => (x.day || 9) * 10000 + t2m(x.time);
@@ -51,7 +54,7 @@ async function boot() {
   buildScene();
   buildList();
   bindHud();
-  initFinder({ ARTISTS, BY, ORDER, hueOf, initials, esc, getCircle: () => circle, pick: (s) => { if (!circle.includes(s)) setCircle([...circle, s]); select(s); } });
+  initFinder({ ARTISTS, BY, ORDER, hueOf, initials, esc, refreshArtist, getCircle: () => circle, pick: (s) => { if (!circle.includes(s)) setCircle([...circle, s]); select(s); } });
   applyUrl();
   tonightRibbon();
   $('#enter-label').textContent = 'Enter the circle';
@@ -428,11 +431,15 @@ let toastT;
 function toast(html) { const t = $('#toast'); t.innerHTML = html; t.classList.add('show'); clearTimeout(toastT); toastT = setTimeout(() => t.classList.remove('show'), 4200); }
 function tonightRibbon() { const ist = new Date(Date.now() + 5.5 * 3600e3).toISOString().slice(0, 10); $('#tonight').classList.toggle('on', ist === '2026-10-27'); }
 
-function select(s) {
+function refreshArtist(s) {            // an artist just changed their own words → repaint their card (+ the open detail panel without closing others)
+  const f = figures.get(s); if (f) refreshCard(f);
+  if (selected === s) select(s, true);
+}
+function select(s, quiet = false) {
   if (selected && figures.get(selected)) { const f = figures.get(selected); f.sel = false; refreshCard(f); }
   selected = s;
   if (!s) { $('#detail').classList.remove('open'); writeUrl(); return; }
-  const f = figures.get(s); if (f) { f.sel = true; refreshCard(f); orbit.targetYaw = Math.atan2(f.target.x, f.target.z); orbit.auto = false; orbit.lastTouch = clock.elapsedTime; }
+  const f = figures.get(s); if (f) { f.sel = true; refreshCard(f); if (!quiet) { orbit.targetYaw = Math.atan2(f.target.x, f.target.z); orbit.auto = false; orbit.lastTouch = clock.elapsedTime; } }
   const a = BY[s];
   $('#detail-title').textContent = a.name;
   const links = [];
@@ -448,13 +455,14 @@ function select(s) {
     <div class="set">${a.kind === 'placed' ? '🗓 ' + esc(a.set) + (s === 'alaska-x-subcult' ? ' · live coding' : '') : a.kind === 'host' ? '🎼 ' + esc(a.set) : a.kind === 'away' ? '🌺 in the garden this year, on the floor next time' : '🌱 OSO Open · the garden — no set time yet, a place in the circle always'}</div>
     ${a.headline ? `<div class="head">${esc(a.headline)}</div>` : ''}
     ${a.tagline ? `<div class="tag">${esc(a.tagline)}</div>` : ''}
+    ${a.bio ? `<div class="bio">${esc(a.bio)}</div>` : ''}
     <div class="links">${links.join('')}</div>
     <div class="links" style="margin-top:10px"><button class="pill rose" id="detail-remove">− take out of the circle</button><button class="pill" id="detail-share">🔗 link to this artist</button></div>
     <div class="fine">${a.kind === 'placed' && a.code ? 'The Devcon app shows the session the Devcon team entered; its time is being synced to the blessed arrangement. ' : ''}#NOONEISEVEROUT — a figure in the circle is a place held, never a promise made for anyone.</div>`;
   $('#detail-remove').addEventListener('click', () => { setCircle(circle.filter(x => x !== s)); select(null); });
   $('#detail-share').addEventListener('click', () => { const u = location.origin + location.pathname + '?who=' + circle.join(',') + '#' + s; copy(u, 'link to ' + a.name + ' copied'); });
   document.querySelectorAll('#detail [data-open]').forEach(b => b.addEventListener('click', () => openPanel(b.dataset.open)));
-  openPanel('detail'); writeUrl();
+  if (!quiet) openPanel('detail'); writeUrl();
 }
 function updateDevconLinks() {
   const codes = [...new Set(circle.flatMap(s => BY[s].codes || []))];
