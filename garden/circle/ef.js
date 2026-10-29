@@ -68,7 +68,8 @@ export async function initEF(ctx) {
     const b = e.target.closest('button[data-slug]'); if (b) { close(); pick(b.dataset.slug); }
   });
   addEventListener('keydown', (e) => { if (e.key === 'Escape' && box.classList.contains('open')) close(); });
-  if (new URLSearchParams(location.search).has('ef')) {   // /garden/circle/EF/ lands here: wait for the intro 'Enter the circle', then open the EF seats
+  let want = new URLSearchParams(location.search).has('ef'); try { if (sessionStorage.getItem('oso-ef-open')) { want = true; sessionStorage.removeItem('oso-ef-open'); } } catch (e) {}
+  if (want) {   // /garden/circle/EF/ lands here: wait for the intro 'Enter the circle', then open the EF seats
     const ent = document.getElementById('enter');
     if (ent && ent.offsetParent !== null) ent.addEventListener('click', () => setTimeout(open, 650), { once: true });
     else setTimeout(open, 600);
