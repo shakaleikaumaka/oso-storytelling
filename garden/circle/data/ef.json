@@ -1,78 +1,150 @@
 {
-  "_note": "THE EF SEATS — Ethereum Foundation friends in the circle. CONSENT-FIRST: a seat shows a name ONLY when status is 'listed' (that person said yes, or is already a public Devcon-listed speaker). 'held' seats are shown as a glowing lock with no name. To open a seat: set status to 'listed' and fill name/role. Take-down first, questions second. — by the ʻohana, Shaka's AI family · CC0",
-  "updated": "2026-10-29",
-  "_photo_note": "photo: only for status 'listed'. Tomo = his official public Devcon speaker photo (api.devcon.org/speakers/tomo-saito). Others: add \"photo\": \"img/ef/<slug>.jpg\" ONLY after they say yes AND supply/approve the photo. Never children.",
-  "block": {
-    "day": 6,
-    "date": "Fri Nov 6",
-    "from": "2:00p",
-    "to": "4:00p",
-    "title": "The EF Presents",
-    "line": "Two hours of the Ethereum Foundation's own artists on the floor — DJs, drummers, pass-the-aux — the whole community seeing how talented and brilliant its foundation is. They know the volume, so the afternoon is theirs."
+ "_note": "THE EF SEATS — Ethereum Foundation friends in the circle. CONSENT-FIRST: a seat shows a name ONLY when status is 'listed' (that person said yes, or is already a public Devcon-listed speaker). 'held' seats are shown as a glowing lock with no name. To open a seat: set status to 'listed' and fill name/role. Take-down first, questions second. — by the ʻohana, Shaka's AI family · CC0",
+ "updated": "2026-10-29",
+ "_photo_note": "photo: only for status 'listed'. Tomo = his official public Devcon speaker photo (api.devcon.org/speakers/tomo-saito). Others: add \"photo\": \"img/ef/<slug>.jpg\" ONLY after they say yes AND supply/approve the photo. Never children.",
+ "block": {
+  "day": 6,
+  "date": "Fri Nov 6",
+  "from": "2:00p",
+  "to": "4:00p",
+  "title": "The EF Presents",
+  "line": "Two hours of the Ethereum Foundation's own artists on the floor — DJs, drummers, pass-the-aux — held by the stewards of the Music Space, who are on the floor with them. The whole community sees how talented and brilliant its foundation is. They know the volume, so the afternoon is theirs."
+ },
+ "seats": [
+  {
+   "id": "tomo",
+   "status": "listed",
+   "name": "Tomo Saito",
+   "photo": "img/ef/tomo.jpg",
+   "role": "Ethereum Foundation · on the Devcon committee",
+   "note": "speaks Nov 6, 12:00 · Jasmine Stage 4, then holds the floor at 2"
   },
-  "seats": [
-    {
-      "id": "tomo",
-      "status": "listed",
-      "name": "Tomo Saito",
-      "photo": "img/ef/tomo.jpg",
-      "role": "Ethereum Foundation · on the Devcon committee",
-      "note": "speaks Nov 6, 12:00 · Jasmine Stage 4, then holds the floor at 2"
-    },
-    {
-      "id": "s2",
-      "status": "held"
-    },
-    {
-      "id": "s3",
-      "status": "held"
-    },
-    {
-      "id": "s4",
-      "status": "held"
-    },
-    {
-      "id": "s5",
-      "status": "held"
-    },
-    {
-      "id": "s6",
-      "status": "held"
-    },
-    {
-      "id": "o1",
-      "status": "open"
-    },
-    {
-      "id": "o2",
-      "status": "open"
-    }
-  ],
-  "ideas": [
-    {
-      "ico": "🎧",
-      "t": "DJs from the foundation",
-      "d": "EF people take turns on the decks — short sets, one handing the next the headphones. Names appear here only when each one says yes."
-    },
-    {
-      "ico": "🥁",
-      "t": "Drums in the circle",
-      "d": "Two EF drummers hold the pulse — live drums under the DJs, with the whole room invited to clap, stomp and shake."
-    },
-    {
-      "ico": "🎛️",
-      "t": "Pass the aux",
-      "d": "Each artist plays a little, then hands the aux to someone from the crowd — a colleague, a stranger, a speaker who just came off stage."
-    },
-    {
-      "ico": "🔊",
-      "t": "Sound check before the party",
-      "d": "DJ Amogh gets his full sound check in the final stretch, so the Devcon team's 4:00p closing party opens clean and loud."
-    },
-    {
-      "ico": "🪑",
-      "t": "Everyone to the floor",
-      "d": "It is a circle, not a stage: the front row is the floor, and the last chair is always empty on purpose. The foundation plays so the garden can rest."
-    }
-  ]
+  {
+   "id": "amogh",
+   "status": "listed",
+   "name": "Amogh",
+   "role": "Devcon team · Music Space steward",
+   "note": "DJ — sound check, then the 4:00p closing party"
+  },
+  {
+   "id": "carlota",
+   "status": "listed",
+   "name": "Carlota Voorvaart",
+   "role": "Ethereum Foundation · Devcon/nect Operations",
+   "note": "holds the doors open for the whole Music Space"
+  },
+  {
+   "id": "s2",
+   "status": "held"
+  },
+  {
+   "id": "s3",
+   "status": "held"
+  },
+  {
+   "id": "s4",
+   "status": "held"
+  },
+  {
+   "id": "s5",
+   "status": "held"
+  },
+  {
+   "id": "s6",
+   "status": "held"
+  },
+  {
+   "id": "o1",
+   "status": "open"
+  },
+  {
+   "id": "o2",
+   "status": "open"
+  }
+ ],
+ "ideas": [
+  {
+   "ico": "🎧",
+   "t": "DJs from the foundation",
+   "d": "EF people take turns on the decks — short sets, one handing the next the headphones. Names appear here only when each one says yes."
+  },
+  {
+   "ico": "🥁",
+   "t": "Drums in the circle",
+   "d": "Two EF drummers hold the pulse — live drums under the DJs, with the whole room invited to clap, stomp and shake."
+  },
+  {
+   "ico": "🎛️",
+   "t": "Pass the aux",
+   "d": "Each artist plays a little, then hands the aux to someone from the crowd — a colleague, a stranger, a speaker who just came off stage."
+  },
+  {
+   "ico": "🔊",
+   "t": "Sound check before the party",
+   "d": "DJ Amogh gets his full sound check in the final stretch, so the Devcon team's 4:00p closing party opens clean and loud."
+  },
+  {
+   "ico": "🪑",
+   "t": "Everyone to the floor",
+   "d": "It is a circle, not a stage: the front row is the floor, and the last chair is always empty on purpose. The foundation plays so the garden can rest."
+  }
+ ],
+ "stewards_title": "The stewards who hold the circle",
+ "stewards_line": "The Music Space committee — every one of them on the floor with the EF on the last afternoon. (Listed on the committee page already; tell any of us if you'd rather not be here.)",
+ "stewards": [
+  {
+   "name": "Shaka",
+   "role": "founder · Open Source Orchestra",
+   "slug": "shaka"
+  },
+  {
+   "name": "Alaska",
+   "role": "Subcult · live coding",
+   "slug": "alaska-x-subcult"
+  },
+  {
+   "name": "Aakash",
+   "role": "holds the space on the Mumbai side"
+  },
+  {
+   "name": "Manu",
+   "role": "DJ steward",
+   "slug": "mannuu"
+  },
+  {
+   "name": "Sounya Sharma",
+   "role": "steward",
+   "slug": "sounya-sharma"
+  },
+  {
+   "name": "Maria Shilina (quefear)",
+   "role": "sound & listening",
+   "slug": "quefear"
+  },
+  {
+   "name": "Colorfly",
+   "role": "flow & energy",
+   "slug": "colorfly"
+  },
+  {
+   "name": "Levi Downey",
+   "role": "collectives · Amerge × Subcult",
+   "slug": "amerge-x-subcult"
+  },
+  {
+   "name": "Devang Gandhi",
+   "role": "piano, harmonium & jams",
+   "slug": "devv-playz"
+  },
+  {
+   "name": "Jaydeep Gadhavi",
+   "role": "Gujarati folk · Garba",
+   "slug": "jaydeepdan-gadhavi"
+  },
+  {
+   "name": "Thiru",
+   "role": "steward",
+   "slug": "thiru"
+  }
+ ]
 }
