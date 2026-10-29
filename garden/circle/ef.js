@@ -1,6 +1,6 @@
 /* ── THE EF SEATS · "see the EF committee" · CC0 · by the ʻohana, Shaka's AI family ─────────────────────────
    The Ethereum Foundation's own musicians, in the circle. Big gold button → a ring of seats + the Nov 6
-   2–4pm afternoon ("The Devcon Music Committee presents: the Ethereum Foundation") + who plays around it.
+   2–4pm afternoon ("The EF Presents") + who plays around it.
    CONSENT-FIRST: data/ef.json shows a NAME only for 'listed' seats; 'held' seats are a glowing lock. ?ef=1 opens it.
    init({ ARTISTS, BY, esc, pick }) from app.js
    ----------------------------------------------------------------------------------------------------- */
@@ -12,8 +12,8 @@ export async function initEF(ctx) {
   const listed = seats.filter((s) => s.status === 'listed'), held = seats.filter((s) => s.status === 'held');
 
   const fab = document.createElement('button');
-  fab.id = 'ef-fab'; fab.type = 'button'; fab.setAttribute('aria-label', 'See the Ethereum Foundation committee in the circle');
-  fab.innerHTML = '<span class="xi">Ξ</span><span>See the EF committee<small>Nov 6 · 2–4pm · the afternoon is theirs</small></span>';
+  fab.id = 'ef-fab'; fab.type = 'button'; fab.setAttribute('aria-label', 'The EF Presents — the Ethereum Foundation in the circle');
+  fab.innerHTML = '<span class="xi">Ξ</span><span>The EF Presents<small>Nov 6 · 2–4pm · the foundation’s own artists</small></span>';
   document.body.appendChild(fab);
 
   const box = document.createElement('div');
@@ -47,7 +47,7 @@ export async function initEF(ctx) {
       <div class="col">
         <h3>Featured · ${esc(D.block.date)}</h3>
         <div class="slotbox"><div class="w">${esc(D.block.from)} – ${esc(D.block.to)} · Music Stage</div><div class="t">${esc(D.block.title)}</div>
-          <p>Hosted with the Devcon team. The EF's own artists — who know exactly how loud a room full of builders wants to be — hold the whole afternoon. At 4:00p the floor goes to the Devcon team's closing party.</p></div>
+          <p>Hosted with the Devcon team. The EF's own artists — who know exactly how loud a room full of builders wants to be — hold the whole afternoon. At 4:00p the floor goes to the Devcon team’s closing party — after DJ Amogh’s sound check.</p></div>
         <h3>How the two hours move</h3>
         <ul class="ideas">${(D.ideas || []).map((i) => `<li><span class="ico">${i.ico}</span><span><b>${esc(i.t)}.</b> ${esc(i.d)}</span></li>`).join('')}</ul>
         <h3>Around it · who plays on Nov ${day}</h3>

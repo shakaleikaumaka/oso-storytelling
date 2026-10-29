@@ -255,8 +255,8 @@ const sessionHTML = m2 => `<div class="quietmark session"><span class="time">${f
    the person has said yes (garden/circle/data/ef.json) - the public row says who is invited, not who is confirmed.
    by the ʻohana - Shaka's AI family. */
 const EFBLOCK = { 'November 6': { from: 14*60, to: 16*60,
-  label: '🏛 THE DEVCON MUSIC COMMITTEE PRESENTS — THE ETHEREUM FOUNDATION',
-  sub: 'two hours, the EF’s own musicians on the floor · <b>Tomo Saito</b> + Ethereum Foundation friends who play (names appear here the moment each one says yes) · low-to-mid volume, they know the room · pass-the-aux: everyone in the crowd is invited up · see the whole EF circle → <a href="https://opensourceorchestra.org/garden/circle/?ef=1" style="color:#ffd27a">opensourceorchestra.org/garden/circle/?ef=1</a>' } };
+  label: 'Ξ THE EF PRESENTS',
+  sub: 'two hours, the Ethereum Foundation’s own artists hold the floor — DJs, drummers, pass-the-aux · <b>Tomo Saito</b> + EF friends who play (names appear here the moment each one says yes) · DJ Amogh’s sound check lands just before the 4pm closing party · see the whole EF circle → <a href="https://opensourceorchestra.org/garden/circle/EF/" style="color:#ffd27a">opensourceorchestra.org/garden/circle/EF/</a>' } };
 const efHTML = e => `<div class="quietmark session eflot"><span class="time">${fmtTime(e.from)}</span>
   <div class="liftline"><b>${e.label}</b> <span class="dim">· ${fmtTime(e.from)}–${fmtTime(e.to)}</span><br><span class="dim">${e.sub}</span></div></div>`;
 const LIFT = 16*60;        // 4:00p — the volume lifts (committee window)
