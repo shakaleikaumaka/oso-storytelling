@@ -1120,6 +1120,27 @@
    "rider": null,
    "code": null,
    "codes": []
+  },
+  {
+   "slug": "amogh",
+   "name": "Amogh",
+   "status": "host",
+   "kind": "host",
+   "role": "Devcon Music Space steward · keeps the floor list, the riders and the vendors",
+   "set": "on the floor Nov 3–6 · the person to ask",
+   "day": null,
+   "time": "",
+   "dur": "",
+   "tagline": "The one who holds the room together so the music can happen · DJ handle @dj_amg",
+   "headline": "Every circle needs someone who knows where the cables are",
+   "photo": "img/amogh.jpg",
+   "glyph": "🎚️",
+   "seated": false,
+   "links": [],
+   "profile": null,
+   "rider": null,
+   "code": null,
+   "codes": []
   }
  ]
 }
