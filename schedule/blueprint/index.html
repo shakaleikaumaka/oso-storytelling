@@ -247,7 +247,7 @@ const quietHTML = q => `<div class="quietmark"><span class="time">${fmtTime(q.fr
 const SESSIONS = {
   'November 6': [{ at: 12*60,   // 2026-10-28: official Devcon API slot = 12:00–12:25 Jasmine Stage 4 (W8HAES), not 11:40
     label: '🎤 ON JASMINE STAGE 4 — “In the future music and culture is free”',
-    sub: 'Shaka, Alaska & Tomo speak 12:00–12:25 · our room keeps playing — huzzhouse holds the floor' }],
+    sub: 'Shaka, Alaska & Tomo speak 12:00–12:25 · our room keeps playing — the OSO circle holds the floor' }],
 };
 const sessionHTML = m2 => `<div class="quietmark session"><span class="time">${fmtTime(m2.at)}</span>
   <div class="liftline"><b>${m2.label}</b><br><span class="dim">${m2.sub}</span></div></div>`;
@@ -284,8 +284,8 @@ function fitChg(n, music, startMin, endMin, want) {
    explicit floor plan (start minutes per act) for the blessed arrangement, straight from the 28-Oct backstage
    rehearsal (vault/rehearsal/001-v3). Any other arrangement (someone dragging) gets the generic layout below. */
 const FLOOR = {
-  'November 3': { 23: 16*60, 28: 16*60, 40: 17*60, 35: 17*60 },        // itscharann + Ekant B2B hour · Perrie + DJ Chalk B2B · 5:45 closing jam
-  'November 4': { 18: 16*60, 20: 16*60, 16: 16*60 + 35, 27: 17*60 },   // Colors Still Fly umbrella · Vedz · huzzhouse · Simulacra to 6:00 (the closing jam joins at 5:45)
+  'November 3': { 23: 16*60, 28: 16*60, 16: 16*60 + 15, 40: 17*60, 35: 17*60 },  // itscharann + Ekant B2B hour · huzzhouse mixes in 4:15-5:00 (Shaka 29 Oct, #nooneiseverout) · Perrie + DJ Chalk B2B · 5:45 closing jam
+  'November 4': { 18: 16*60, 20: 16*60, 27: 17*60 },   // Colors Still Fly umbrella · Vedz · Simulacra to 6:00 (the closing jam joins at 5:45) — huzzhouse moved to Nov 3 on 29 Oct
 };
 function sharedMins(iv) { let s = 0; for (let i = 0; i < iv.length; i++) for (let j = i + 1; j < iv.length; j++) s += Math.max(0, Math.min(iv[i].e, iv[j].e) - Math.max(iv[i].s, iv[j].s)); return s; }
 function overlaps(iv) { const out = []; for (let i = 0; i < iv.length; i++) for (let j = i + 1; j < iv.length; j++) { const s = Math.max(iv[i].s, iv[j].s), e = Math.min(iv[i].e, iv[j].e); if (e > s) out.push({ a: iv[i].a, b: iv[j].a, s, e }); } return out; }
@@ -411,7 +411,7 @@ function saveArr() {
 }
 /* 2026-10-26 (Shaka): the live default IS his blessed arrangement (arrangement-live.json), reconciled
    against the computed default so acts added later still land on their day. null = computed default. */
-const BAKED_ARR = {"November 3": {"chill": [24, 39, 5], "energy": [23, 28, 40, 35]}, "November 4": {"chill": [13, 15, 32, 34, 19], "energy": [18, 20, 16, 27]}, "November 5": {"chill": [12, 29, 30, 31], "energy": [33, 6]}, "November 6": {"chill": [], "energy": []}};
+const BAKED_ARR = {"November 3": {"chill": [24, 39, 5], "energy": [23, 28, 40, 35, 16]}, "November 4": {"chill": [13, 15, 32, 34, 19], "energy": [18, 20, 27]}, "November 5": {"chill": [12, 29, 30, 31], "energy": [33, 6]}, "November 6": {"chill": [], "energy": []}};
 const COMPUTED_ARR = defaultArr();
 function reconcileWith(arr, base) {
   if (!arr || typeof arr !== 'object') return null;
