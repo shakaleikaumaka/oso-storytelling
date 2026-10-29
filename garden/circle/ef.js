@@ -19,11 +19,20 @@ export async function initEF(ctx) {
   const box = document.createElement('div');
   box.id = 'ef'; box.setAttribute('role', 'dialog'); box.setAttribute('aria-modal', 'true'); box.setAttribute('aria-label', 'The Ethereum Foundation seats');
   const n = seats.length, R = 112, CX = 160, CY = 150;
+  // photo support: only a 'listed' seat may carry s.photo (consent-first). Missing/broken image → falls back to the Ξ glyph.
+  const photoOf = (s) => (s.status === 'listed' && s.photo && /^(\.\/|\/)?img\/ef\/[\w.-]+\.(jpe?g|png|webp)$/i.test(s.photo)) ? s.photo : '';
+  const defs = [];
   const ring = seats.map((s, i) => {
     const a = (i / n) * Math.PI * 2 - Math.PI / 2, x = CX + Math.cos(a) * R, y = CY + Math.sin(a) * R;
-    const lab = s.status === 'listed' ? `<text class="n" x="${x}" y="${y + (y > CY ? 27 : -17)}">${esc(s.name)}</text>` : '';
+    const ph = photoOf(s), r = s.status === 'listed' ? (ph ? 20 : 15) : 13;
+    const lab = s.status === 'listed' ? `<text class="n" x="${x}" y="${y + (y > CY ? r + 12 : -(r + 2))}">${esc(s.name)}</text>` : '';
     const glyph = s.status === 'listed' ? 'Ξ' : s.status === 'held' ? '🔒' : '＋';
-    return `<g class="seat ${s.status}"><circle class="d" cx="${x}" cy="${y}" r="${s.status === 'listed' ? 15 : 13}"/><text class="g" x="${x}" y="${y + 4}">${glyph}</text>${lab}</g>`;
+    let img = '';
+    if (ph) {
+      defs.push(`<clipPath id="efc-${esc(s.id)}"><circle cx="${x}" cy="${y}" r="${r - 1.5}"/></clipPath>`);
+      img = `<image class="ph" href="${esc(ph)}" x="${x - r}" y="${y - r}" width="${r * 2}" height="${r * 2}" preserveAspectRatio="xMidYMid slice" clip-path="url(#efc-${esc(s.id)})" onerror="this.remove()"/><circle class="pr" cx="${x}" cy="${y}" r="${r - 1.5}"/>`;
+    }
+    return `<g class="seat ${s.status}"><circle class="d" cx="${x}" cy="${y}" r="${r}"/><text class="g" x="${x}" y="${y + 4}">${glyph}</text>${img}${lab}</g>`;
   }).join('');
   const day = D.block.day;
   const around = ARTISTS.filter((a) => a.kind === 'placed' && +a.day === +day).sort((p, q) => tm(p.time) - tm(q.time));
@@ -36,11 +45,11 @@ export async function initEF(ctx) {
     <div class="body">
       <div class="col">
         <svg class="ring" viewBox="0 0 320 300" role="img" aria-label="a circle of ${n} seats: ${listed.length} open with a name, ${held.length} held, the rest open to any EF musician">
-          <circle class="floor" cx="${CX}" cy="${CY}" r="${R}"/><circle class="floor" cx="${CX}" cy="${CY}" r="${R - 34}" style="fill:none;stroke-dasharray:2 6"/>
+          <defs>${defs.join('')}</defs><circle class="floor" cx="${CX}" cy="${CY}" r="${R}"/><circle class="floor" cx="${CX}" cy="${CY}" r="${R - 34}" style="fill:none;stroke-dasharray:2 6"/>
           <text class="mid" x="${CX}" y="${CY + 10}">Ξ</text>${ring}</svg>
         <div class="legend"><span><i class="l"></i>${listed.length} named</span><span><i class="h"></i>${held.length} held · waiting for a yes</span><span><i class="o"></i>${seats.length - listed.length - held.length} open</span></div>
         <h3>Who is in the EF circle</h3>
-        <div class="names">${listed.map((s) => `<button type="button" disabled style="cursor:default"><span class="tm">Ξ</span><span><span class="nm">${esc(s.name)}</span><small>${esc(s.role || '')}${s.note ? ' · ' + esc(s.note) : ''}</small></span></button>`).join('')}
+        <div class="names">${listed.map((s) => `<button type="button" disabled style="cursor:default">${photoOf(s) ? `<img class="av" src="${esc(photoOf(s))}" alt="" width="30" height="30" loading="lazy" onerror="this.replaceWith(Object.assign(document.createElement('span'),{className:'tm',textContent:'Ξ'}))">` : '<span class="tm">Ξ</span>'}<span><span class="nm">${esc(s.name)}</span><small>${esc(s.role || '')}${s.note ? ' · ' + esc(s.note) : ''}</small></span></button>`).join('')}
           ${held.length ? `<button type="button" disabled style="cursor:default;opacity:.8"><span class="tm">🔒 ${held.length}</span><span><span class="nm">seats held for EF musicians</span><small>each name appears the moment they say yes — never before</small></span></button>` : ''}</div>
         <div class="cta"><a class="p" href="mailto:${mail}?subject=${encodeURIComponent('EF seat in the circle')}&body=${encodeURIComponent('Aloha — I work at the Ethereum Foundation and I play. I would like a seat in the EF circle at Devcon 8.\n\nName:\nWhat I play:\nOK to list my name publicly? (yes/no):')}">I work at the EF &amp; I play → take a seat</a></div>
       </div>

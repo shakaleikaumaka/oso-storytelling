@@ -58,3 +58,7 @@ body.efopen #ef-fab{opacity:0;pointer-events:none}
 #ef .cta a.p{background:var(--gold);color:#1a1206;font-weight:800}
 #ef .fine{grid-column:1/-1;font-size:.66rem;line-height:1.55;color:var(--cream-faint);border-top:1px solid rgba(240,196,100,.15);padding-top:12px;margin-top:6px;text-align:center}
 #ef .fine b{color:var(--cream-dim)}
+
+/* photo seats — only for 'listed' people; broken image falls back to the Ξ glyph */
+#ef .ring .seat.listed circle.pr{fill:none;stroke:#fff3c8;stroke-width:1.6;pointer-events:none}
+#ef .names img.av{width:30px;height:30px;border-radius:50%;object-fit:cover;border:1.5px solid #ffd97a;flex:none;box-shadow:0 0 8px rgba(255,217,122,.45)}
