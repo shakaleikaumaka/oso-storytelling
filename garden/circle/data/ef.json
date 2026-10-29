@@ -1,0 +1,28 @@
+{
+  "_note": "THE EF SEATS — Ethereum Foundation friends in the circle. CONSENT-FIRST: a seat shows a name ONLY when status is 'listed' (that person said yes, or is already a public Devcon-listed speaker). 'held' seats are shown as a glowing lock with no name. To open a seat: set status to 'listed' and fill name/role. Take-down first, questions second. — by the ʻohana, Shaka's AI family · CC0",
+  "updated": "2026-10-29",
+  "block": {
+    "day": 6,
+    "date": "Fri Nov 6",
+    "from": "2:00p",
+    "to": "4:00p",
+    "title": "The Devcon Music Committee presents: the Ethereum Foundation",
+    "line": "Two hours of the EF's own musicians on the floor — the people who write the protocol, playing the songs. They know the volume, so the afternoon is theirs."
+  },
+  "seats": [
+    { "id": "tomo", "status": "listed", "name": "Tomo Saito", "role": "Ethereum Foundation · on the Devcon committee", "note": "speaks Nov 6, 12:00 · Jasmine Stage 4, then holds the floor at 2" },
+    { "id": "s2", "status": "held" },
+    { "id": "s3", "status": "held" },
+    { "id": "s4", "status": "held" },
+    { "id": "s5", "status": "held" },
+    { "id": "s6", "status": "held" },
+    { "id": "o1", "status": "open" },
+    { "id": "o2", "status": "open" }
+  ],
+  "ideas": [
+    { "ico": "🎛️", "t": "Pass the aux", "d": "Each EF musician plays 15 minutes, then hands the aux to someone from the crowd — a colleague, a stranger, a speaker who just came off stage." },
+    { "ico": "🎶", "t": "One song, one story", "d": "Before each set: one minute on the song they'd play if Ethereum had a soundtrack. The room listens, then joins in." },
+    { "ico": "🔔", "t": "The 3:45 bridge", "d": "The last 15 minutes lean into the Devcon team's 4pm closing party — the EF hands the floor to DJ Amogh together, with a toast." },
+    { "ico": "🪑", "t": "Everyone to the floor", "d": "It's a circle, not a stage: the front row is the floor, and the last chair is always empty on purpose." }
+  ]
+}

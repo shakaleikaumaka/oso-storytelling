@@ -6,6 +6,7 @@
 import * as THREE from './vendor/three.module.min.js';
 import { VRButton } from './vendor/VRButton.js';
 import { initFinder } from './finder.js';
+import { initEF } from './ef.js';
 import { mergeEdits, applyLocal } from './overlay.js';
 
 const C = { night: 0x0b0612, gold: 0xf0c464, goldBright: 0xffd97a, teal: 0x2dd4bf, rose: 0xe86a92, coral: 0xff8a5c, violet: 0xb48cff, rug: 0x6b2340, rug2: 0x8c3a24 };
@@ -55,6 +56,7 @@ async function boot() {
   buildList();
   bindHud();
   initFinder({ ARTISTS, BY, ORDER, hueOf, initials, esc, refreshArtist, getCircle: () => circle, pick: (s) => { if (!circle.includes(s)) setCircle([...circle, s]); select(s); } });
+  initEF({ ARTISTS, BY, esc, pick: (s2) => { if (!circle.includes(s2)) setCircle([...circle, s2]); select(s2); } });
   applyUrl();
   tonightRibbon();
   $('#enter-label').textContent = 'Enter the circle';

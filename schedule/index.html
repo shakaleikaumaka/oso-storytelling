@@ -250,6 +250,15 @@ const SESSIONS = {
 };
 const sessionHTML = m2 => `<div class="quietmark session"><span class="time">${fmtTime(m2.at)}</span>
   <div class="liftline"><b>${m2.label}</b><br><span class="dim">${m2.sub}</span></div></div>`;
+/* 2026-10-29 (Shaka, Nathan @ EF asked): Nov 6 14:00-16:00 = "the Devcon Music Committee presents: the EF".
+   The afternoon belongs to the Ethereum Foundation's own musicians (they know the volume). Names are shown ONLY when
+   the person has said yes (garden/circle/data/ef.json) - the public row says who is invited, not who is confirmed.
+   by the ʻohana - Shaka's AI family. */
+const EFBLOCK = { 'November 6': { from: 14*60, to: 16*60,
+  label: '🏛 THE DEVCON MUSIC COMMITTEE PRESENTS — THE ETHEREUM FOUNDATION',
+  sub: 'two hours, the EF’s own musicians on the floor · <b>Tomo Saito</b> + Ethereum Foundation friends who play (names appear here the moment each one says yes) · low-to-mid volume, they know the room · pass-the-aux: everyone in the crowd is invited up · see the whole EF circle → <a href="https://opensourceorchestra.org/garden/circle/?ef=1" style="color:#ffd27a">opensourceorchestra.org/garden/circle/?ef=1</a>' } };
+const efHTML = e => `<div class="quietmark session eflot"><span class="time">${fmtTime(e.from)}</span>
+  <div class="liftline"><b>${e.label}</b> <span class="dim">· ${fmtTime(e.from)}–${fmtTime(e.to)}</span><br><span class="dim">${e.sub}</span></div></div>`;
 const LIFT = 16*60;        // 4:00p — the volume lifts (committee window)
 const CLOSE = 18*60;       // 6:00p — last note SHARP (Devcon team rule, 15 Oct — every day but the closing)
 const TAIL = 15;           // every day ends with exactly 15 min of OSO closing jam, 5:45–6:00p (Shaka, 15 Oct)
@@ -681,11 +690,13 @@ function render() {
       if (g >= 20) slots += jamSplitHTML(d, cursor, g, vq[0], vq[1], ms);
       emitMarks(p2.start_at);            // mark after the jam that leads into it, right before the pinned act
       slots += slotHTML(p2, p2.start_at, 'chill');
+      emitMarks(p2.start_at + p2.minutes - 1);   // 2026-10-29: a session that starts INSIDE this set prints right after it
       cursor = p2.start_at + p2.minutes + cC;
     });
     // the real clock after the leading + pinned acts (a quiet window or a warm-up jam may have moved it)
     const jamStart = cursor;
-    const jamShow = Math.max(0, (LIFT - endSpan) - jamStart);
+    const efB = EFBLOCK[d];
+    const jamShow = Math.max(0, ((efB && efB.from > jamStart ? efB.from : LIFT - endSpan)) - jamStart);
     if (q && !quietDone && jamShow >= 20 && jamStart < q.from) {
       // the jam runs into the ceremony hour: split it, so the page never claims we're playing through it
       const pre = q.from - jamStart;
@@ -697,7 +708,8 @@ function render() {
     } else if (jamShow >= 20) {
       slots += jamSplitHTML(d, jamStart, jamShow, vq[0], vq[1], ms);
     }
-    emitMarks(24 * 60);   // 2026-10-27: session marks come AFTER the jam they sit inside (an all-OSO day used to print 11:40a above 9:30a)
+    emitMarks(efB ? efB.from : 24 * 60);   // 2026-10-27: session marks come AFTER the jam they sit inside (an all-OSO day used to print 11:40a above 9:30a)
+    if (efB) { slots += efHTML(efB); emitMarks(24 * 60); }   // 2026-10-29: the EF afternoon
     if (q && !quietDone) { slots += quietHTML(q); quietDone = true; }
     t = LIFT - endSpan;
     anchored.forEach((a, i) => {
@@ -929,8 +941,10 @@ function copyDay(b) {
     actLine(p2, p2.start_at);
     cursor = p2.start_at + p2.minutes + cC;
   });
-  const jamShow = Math.max(0, (LIFT - endSpan) - cursor);
+  const efB2 = EFBLOCK[d];
+  const jamShow = Math.max(0, ((efB2 && efB2.from > cursor ? efB2.from : LIFT - endSpan)) - cursor);
   if (jamShow >= 20) jamSplit(cursor, jamShow, 'quiet-hours open jam');
+  if (efB2) lines.push(`${fmtTime(efB2.from)}  ${efB2.label.replace(/<[^>]+>/g, '')} — ${fmtTime(efB2.from)}–${fmtTime(efB2.to)} · the EF’s own musicians on the floor (names appear when each says yes) · pass-the-aux`);
   t = LIFT - endSpan;
   anchored.forEach((a, i) => { actLine(a, t); t += a.minutes + (i < anchored.length - 1 ? cC : 0); });
   lines.push(`4:00p  🔊 THE VOLUME LIFTS — DJ booth rolls mid-floor · boiler-room time`);
