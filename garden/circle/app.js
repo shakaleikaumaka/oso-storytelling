@@ -458,7 +458,7 @@ function select(s, quiet = false) {
     ${a.bio ? `<div class="bio">${esc(a.bio)}</div>` : ''}
     <div class="links">${links.join('')}</div>
     <div class="links" style="margin-top:10px"><button class="pill rose" id="detail-remove">− take out of the circle</button><button class="pill" id="detail-share">🔗 link to this artist</button></div>
-    <div class="fine">${a.kind === 'placed' && a.code ? 'The Devcon app shows the session the Devcon team entered; its time is being synced to the blessed arrangement. ' : ''}#NOONEISEVEROUT — a figure in the circle is a place held, never a promise made for anyone.</div>`;
+  `;
   $('#detail-remove').addEventListener('click', () => { setCircle(circle.filter(x => x !== s)); select(null); });
   $('#detail-share').addEventListener('click', () => { const u = location.origin + location.pathname + '?who=' + circle.join(',') + '#' + s; copy(u, 'link to ' + a.name + ' copied'); });
   document.querySelectorAll('#detail [data-open]').forEach(b => b.addEventListener('click', () => openPanel(b.dataset.open)));
