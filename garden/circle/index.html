@@ -169,6 +169,7 @@ input[type=range]{flex:1;accent-color:var(--gold);height:22px}
   .panel{width:100vw;top:auto;height:min(78vh,640px);border-left:0;border-top:1px solid rgba(240,196,100,.22);border-radius:18px 18px 0 0;transform:translateY(104%)}
 }
 </style>
+<link rel="stylesheet" href="./finder.css">
 </head>
 <body>
 <div id="stage"></div>
@@ -283,6 +284,24 @@ input[type=range]{flex:1;accent-color:var(--gold);height:22px}
   <div class="fine">Three.js in your browser · photos from four years of the orchestra · nothing to install · CC0</div>
   <div class="fine takedown" style="margin-top:10px">📸 Your face or name here and you’d rather it wasn’t? Tell any steward on the floor, or write to the ʻohana at <a href="mailto:<!--email_off--><!--email_off-->aloha@myagentohana.com<!--/email_off--><!--/email_off-->"><!--email_off-->aloha@myagentohana.com<!--/email_off--></a> — we take it down first and ask questions second. <a href="/takedown/">how a takedown works →</a></div>
 </div></div>
+
+<button id="gh-fab" aria-label="Find an artist in the garden (press /)"><span class="bl">🌸</span> find an artist <small>/</small></button>
+
+<aside class="panel" id="greenhouse" aria-label="the greenhouse — find any artist">
+  <header><h2>🌿 The Greenhouse</h2><button class="x" id="gh-x" aria-label="close">✕</button></header>
+  <div class="gh-sub">every artist in the garden · type anything — a name, an instrument, a day, a feeling</div>
+  <div class="gh-top">
+    <div class="gh-searchwrap"><span class="ico">🔎</span><input class="search" id="gh-q" placeholder="tabla · dj · nov 4 · hindi · rap…" autocomplete="off" autocapitalize="off" spellcheck="false" aria-label="search artists"><button class="clr" id="gh-clear" aria-label="clear">✕</button></div>
+    <div class="gh-chips" id="gh-chips"></div>
+  </div>
+  <div class="gh-meta"><span><b id="gh-count">0</b> <span id="gh-of">flowers</span></span><span class="sp"></span><button id="gh-surprise">🦋 surprise me</button></div>
+  <div class="gh-scroll">
+    <div id="gh-results" role="listbox" aria-label="artists"></div>
+    <div id="gh-rail" aria-hidden="true"></div>
+    <div id="gh-bubble"></div>
+    <div id="gh-garden" aria-hidden="true"><div class="soil"></div><svg class="roots" viewBox="0 0 400 44" preserveAspectRatio="none"></svg><div class="heart">💗</div></div>
+  </div>
+</aside>
 
 <script type="module" src="./app.js"></script>
 </body>
