@@ -6,7 +6,7 @@
 import * as THREE from './vendor/three.module.min.js';
 import { VRButton } from './vendor/VRButton.js';
 import { initFinder } from './finder.js';
-import { initEF } from './ef.js';
+import { initEF } from './ef.js?v=20261029b';
 import { mergeEdits, applyLocal } from './overlay.js';
 
 const C = { night: 0x0b0612, gold: 0xf0c464, goldBright: 0xffd97a, teal: 0x2dd4bf, rose: 0xe86a92, coral: 0xff8a5c, violet: 0xb48cff, rug: 0x6b2340, rug2: 0x8c3a24 };
