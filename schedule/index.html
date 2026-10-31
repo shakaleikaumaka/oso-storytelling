@@ -616,7 +616,7 @@ const NOV6 = {
   ],
 };
 function nov6HTML(d) {
-  let h = `<div class="qhead">🌅 <b>QUIET HOURS 9:30–4:00</b> 🤫 talks next door, so it’s all downtempo &amp; low volume 🌿 · volume low, aloha high 🌺🎶`</div>`;
+  let h = `<div class="qhead">🌅 <b>QUIET HOURS 9:30–4:00</b> 🤫 talks next door, so it’s all downtempo &amp; low volume 🌿 · volume low, aloha high 🌺🎶</div>`;
   const ava = n => { const a = BY_N[n] || {}; return `<img class="ava" src="${esc(a.avatar || '')}" alt="" loading="lazy" onerror="this.style.display='none'">`; };
   for (const r of NOV6[d]) {
     if (r.kind === 'jam') h += jamHTML(r.at, r.mins, r.label, r.sub);
