@@ -270,11 +270,11 @@ function flow(a) {
   if (a.format === 'Special') s += 8;
   return s;
 }
-const ARC = {
-  'November 3': 'opening day — soft voices in the quiet hours, first boiler-room after four',
-  'November 4': 'the longest middle — ambient rooms till four, then the techno hour',
-  'November 5': 'the big one — eleven acts across the day, selectors close it loud',
-  'November 6': 'the exhale — piano & sundowners in the afternoon, then the OSO closing party',
+const ARC = {   // 2026-10-31 (Shaka): catchier, aloha-filled day intros
+  'November 3': '🌅 Tue · opening day! 🤫 the ceremony first, then Gujarat folk, Songs of India & raga on electric guitar 🎸 · after four itscharann, Ekant, huzzhouse & DJ Chalk light the first boiler room 🔊🌺',
+  'November 4': '☕ Wed · coffee-lounge Wednesday 🎷 modular synths, acoustic fire, a room that writes a song together & live code 💻 · after four Colors Still Fly opens the floor to everyone, Simulacra lands a Punjabi wedding 💃🤙',
+  'November 5': '🎤 Thu · the big one! 🧘 morning meditations → piano keys, Bollywood & the songwriters’ circle 🎶 · after four Naman streams zk-proofs through the decks & mannuu brings the burn 🔥🌺',
+  'November 6': '🌺 Fri · the long goodbye 🤙 Levi & Perrie steward the orchestra · Sounya · India’s own · Manu’s tribal downtempo · Alaska’s low-volume sundown · 3:33 Shaka + OSO glide into the Devcon closing party 🎉',
 };
 // biggest changeover (5-min steps, never above the pick, never below 5m) that fits start→end
 function fitChg(n, music, startMin, endMin, want) {
@@ -598,6 +598,45 @@ const handoverHTML = `<div class="partyhead"><div class="plh"><b>🎉 CLOSING PA
 const partyheadHTML = `<div class="partyhead"><div class="plh"><b>🎉 CLOSING PARTY — hosted by Open Source Orchestra</b><br>
   <span class="dim">the whole loud window is the party: two hours and a half of sets, open decks and jam-outs, one last dance together · all 30 artists invited back · bring your instrument, your voice, your tired happy legs 🌺</span></div></div>`;
 
+
+/* 2026-10-31 (Shaka: "bring our new additions live please"): Nov 6 is a FIXED, hand-blessed programme — every row
+   pinned, all of it downtempo / low volume before 4:00p, then the Devcon team's closing party. Rows are not draggable. */
+const NOV6 = {
+  'November 6': [
+    { at: 9*60 + 30, mins: 20, kind: 'jam', ava: 7, label: '🌺 OSO — the long goodbye', sub: 'sunroom jam · every voice that showed up this week, one more time' },
+    { at: 9*60 + 50, mins: 10, kind: 'magic' },
+    { at: 10*60, mins: 120, kind: 'row', ava: [7, 40], ico: '🎼', label: 'Open Source Orchestra — stewarded by Levi, with Perrie as co-steward', tag: 'sharing the floor', sub: 'Levi holds the circle · Perrie (co-steward) shares the floor · downtempo, low volume · every voice welcome' },
+    { at: 12*60, kind: 'session' },
+    { at: 12*60, mins: 30, kind: 'row', ava: [31], ico: '🎤', label: 'Sounya — an additional set', sub: 'originals & covers · quiet hours, low volume · our room keeps playing through the talk' },
+    { at: 12*60 + 30, mins: 60, kind: 'row', ava: [7], ico: '🇮🇳', label: 'India’s own × Open Source Orchestra', tag: 'sharing the floor', sub: 'the room’s own local musicians with the orchestra · downtempo, low volume' },
+    { at: 13*60 + 30, mins: 60, kind: 'row', ava: [6, 7], ico: '🥁', label: 'Manu Alzuru (mannuu) + Open Source Orchestra — downtempo tribal set', tag: 'sharing the floor', sub: 'downtempo tribal grooves · low volume while the talks run next door' },
+    { at: 14*60 + 30, mins: 60, kind: 'row', ava: [34], ico: '🎧', label: 'Alaska × Subcult — downtempo DJ set', sub: 'downtempo, low-volume selections · the exhale before the party' },
+    { at: 15*60 + 30, mins: 3, kind: 'jam', ava: 7, label: '🌺 OSO — the hand-off', sub: 'three breaths of the orchestra · the circle turns toward the party' },
+    { at: 15*60 + 33, mins: 27, kind: 'row', ava: [7], ico: '🌺', label: 'Shaka Lei Kaumaka + Open Source Orchestra — into the closing party', tag: 'sharing the floor', sub: 'from 3:33p · the orchestra carries the room into the Devcon team’s closing party at 4:00p' },
+  ],
+};
+function nov6HTML(d) {
+  let h = `<div class="qhead">🌅 <b>QUIET HOURS 9:30–4:00</b> 🤫 talks next door, so it’s all downtempo &amp; low volume 🌿 · volume low, aloha high 🌺🎶`</div>`;
+  const ava = n => { const a = BY_N[n] || {}; return `<img class="ava" src="${esc(a.avatar || '')}" alt="" loading="lazy" onerror="this.style.display='none'">`; };
+  for (const r of NOV6[d]) {
+    if (r.kind === 'jam') h += jamHTML(r.at, r.mins, r.label, r.sub);
+    else if (r.kind === 'magic') h += magicHTML(r.at);
+    else if (r.kind === 'session') (SESSIONS[d] || []).forEach(m2 => { h += sessionHTML(m2); });
+    else h += `<div class="slot share"><span class="time">${fmtTime(r.at)}</span>
+    <div class="body">
+      <div class="whohead">${r.ava.map(ava).join('')}
+      <div class="who"><span class="fmt-ico">${r.ico}</span>${esc(r.label)}${r.tag ? ` <span class="sharetag">${r.tag}</span>` : ''}</div></div>
+      <div class="tags"><span class="dim">${fmtTime(r.at)}–${fmtTime(r.at + r.mins)} · ${minsTxt(r.mins)} ·</span> ${esc(r.sub)}</div>
+    </div></div>`;
+  }
+  return h + handoverHTML;
+}
+function nov6Lines(d) {
+  return NOV6[d].map(r => r.kind === 'magic' ? `${fmtTime(r.at)}  🎩 0xMentalist — a trick · ${MAGIC_MINS} min · mentalism & close-up magic, not music`
+    : r.kind === 'session' ? (SESSIONS[d] || []).map(m2 => `${fmtTime(m2.at)}  ${m2.label} — ${m2.sub}`).join('\n')
+    : `${fmtTime(r.at)}  ${r.label.replace(/^[^A-Za-z]*OSO — /, '🎼 OPEN SOURCE ORCHESTRA — ')} · ${minsTxt(r.mins)} · ${r.sub}`)
+    .concat([`4:00p  🎉 CLOSING PARTY — hosted by the Devcon team · feat. 🎧 DJ AMOGH (India · Devcon crew, keeps the wifi alive) — Bollywood closing set · the Music Space hands the room over`]);
+}
 /* ---------- render ---------- */
 function render() {
   const _dv = document.getElementById('start').value.split(':');
@@ -648,7 +687,7 @@ function render() {
     if (frontJam) lay.iv.forEach(x => { x.s += frontJam; x.e += frontJam; });
     const overflowE = lay.overflow || 0;
     overlaps(lay.iv).forEach(o => { o.a._share = (o.a._share ? o.a._share + ' · ' : '') + `${nameOf(o.b)} ${fmtTime(o.s)}–${fmtTime(o.e)}`; o.b._share = (o.b._share ? o.b._share + ' · ' : '') + `${nameOf(o.a)} ${fmtTime(o.s)}–${fmtTime(o.e)}`; });
-    if (lay.shared) notes.push(`🤝 nobody is trimmed — ${minsTxt(lay.shared)} of the loud block is shared, and the grid says who is on the floor together (Shaka, 28 Oct: "we always have to work together")`);
+    if (lay.shared) notes.push(`🤝 nobody gets cut! ${minsTxt(lay.shared)} of the loud hours are shared floor — the grid shows who\u2019s jamming together 🎶🤙 “we always work together” 🌺`);
     else if (energyActs.length > 1 && cE < chgWant) notes.push(`⏱ loud-hours changeovers auto-tightened to ${cE}m to land 6:00p sharp`);
     if (overflowE > 0) notes.push(`⚠ even sharing the floor, the loud block overruns the 6:00p close by ${overflowE}m — drag an act to another day`);
 
@@ -657,7 +696,7 @@ function render() {
     const leading = chillActs.filter(a => !a.anchor_end && !a.start_at);
     const endSpan = anchored.reduce((s2, a) => s2 + a.minutes, 0) + Math.max(0, anchored.length - 1) * cC;
     const leadSpan = leading.reduce((s2, a) => s2 + a.minutes, 0) + Math.max(0, leading.length - 1) * cC;
-    let slots = `<div class="qhead">🌅 <b>QUIET HOURS ${fmtTime(doors)}–4:00</b> · talks &amp; discussions run next door — ambient, chill &amp; peaceful · ideally acoustic &amp; instrumental · grassroots jam-session energy · lower volume</div>`;
+    let slots = `<div class="qhead">🌅 <b>QUIET HOURS ${fmtTime(doors)}–4:00</b> 🤫 talks next door, so we keep it soft 🌿 acoustic, ambient &amp; jam-circle vibes · volume low, aloha high 🌺🎶</div>`;
     let t = doors;
     const q = QUIET[d];
     let quietDone = false;
@@ -738,15 +777,17 @@ function render() {
       if (onAtClose.length) slots += shareHTML(onAtClose, loudEnd, CLOSE, vc[0], vc[1]);   // the closing jam joins whoever is still on — nobody is cut
       else slots += jamSplitHTML(d, loudEnd, TAIL, vc[0], vc[1], ms);   // the law: exactly 15 min, the last note lands 6:00p sharp
     }
+    let n6 = 0;
+    if (NOV6[d]) { slots = nov6HTML(d); ms.done = true; notes.length = 0; n6 = NOV6[d].filter(r => r.kind === 'row').length; }
     if (MAGIC[d] && !ms.done) notes.push(`⚠ 🎩 0xMentalist's daily trick (${fmtTime(MAGIC[d].at)}, 10 min) has no OSO window to live in today — move an act so the floor has a break there`);
 
-    const nActs = chillActs.length + energyActs.length;
+    const nActs = n6 || (chillActs.length + energyActs.length);
     const allActs = chillActs.concat(energyActs);
     const nTix = allActs.filter(a => a.ticket === 'yes').length;
     const nCode = allActs.filter(a => !(a.ticket === 'yes') && a.needs_code).length;
     const tixcount = PAGE_KIND === 'mock' ? `<span class="tixcount">🎫 ${nTix}/${nActs} ticket-confirmed${nCode ? ` · 🎟 ${nCode} time held` : ''}</span>` : '';
     const mEff = energyActs.reduce((s, a) => s + (a._eff || a.minutes), 0);
-    const musicTotal = mC + mEff + (jamMin >= 20 ? jamMin : 0) + frontJam + openJam + (hand ? 0 : TAIL) - (ms.done ? MAGIC_MINS : 0);   // the trick is not music
+    const musicTotal = n6 ? (16*60 - 9*60 - 30 - MAGIC_MINS) : mC + mEff + (jamMin >= 20 ? jamMin : 0) + frontJam + openJam + (hand ? 0 : TAIL) - (ms.done ? MAGIC_MINS : 0);   // the trick is not music
     const fit = notes.map(n => `<div class="fitnote${n.startsWith('⚠') ? ' warn' : ''}">${n}</div>`).join('');
     html += `<section class="day" data-day="${d}">
       <h2>${d.replace('November ', 'Nov ')} <span class="meta">${nActs} acts · ${Math.floor(musicTotal/60)}h${musicTotal%60 ? musicTotal%60+'m' : ''} music</span>${tixcount}</h2>
@@ -958,6 +999,7 @@ function copyDay(b) {
     if (onAtClose.length) lines.push(`${fmtTime(loudEnd)}  🤝 ${onAtClose.join(' + ')} + OPEN SOURCE ORCHESTRA — the closing jam, SHARING THE FLOOR · 15 min · one more tune together · last note ${fmtTime(CLOSE)} sharp`);
     else jamSplit(loudEnd, TAIL, 'the closing jam', `one more tune together · last note ${fmtTime(CLOSE)} sharp`);
   }
+  if (NOV6[d]) lines.splice(1, lines.length - 1, ...nov6Lines(d));
   lines.push(`(days + lengths = artists' own answers · times = proposed flow · volume windows from the committee + the Devcon team: quiet 9–4, loud 4–6, last note 6:00p SHARP every day but the closing — each day ends with a 15-min OSO closing jam · 🎧 DJs only after 4 · 🤝 nobody is trimmed: colliding sets share the floor and the grid says who · 🎫 lock law: a time LOCKS once the artist confirms a Devcon ticket · 🎟 held = they confirmed they are coming)`);
   clipWrite(lines.join('\n')).then(() => {
     b.textContent = '✓ copied'; b.classList.add('done');
