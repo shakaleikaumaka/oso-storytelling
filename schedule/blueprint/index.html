@@ -255,9 +255,7 @@ const sessionHTML = m2 => `<div class="quietmark session"><span class="time">${f
    The afternoon belongs to the Ethereum Foundation's own musicians (they know the volume). Names are shown ONLY when
    the person has said yes (garden/circle/data/ef.json) - the public row says who is invited, not who is confirmed.
    by the ʻohana - Shaka's AI family. */
-const EFBLOCK = { 'November 6': { from: 14*60, to: 16*60,
-  label: 'Ξ THE EF PRESENTS',
-  sub: 'two hours, the Ethereum Foundation’s own artists hold the floor — DJs, drummers, pass-the-aux · <b>Tomo Saito</b>, <b>Amogh</b>, <b>Carlota</b> + EF friends who play (names appear here the moment each one says yes) · held by the Music Space stewards — Shaka, Alaska, Aakash, Manu, Sounya, Maria, Colorfly, Levi, Devang, Jaydeep &amp; Thiru are on the floor with them · DJ Amogh’s sound check lands just before the 4pm closing party · see the whole EF circle → <a href="https://opensourceorchestra.org/garden/circle/EF/" style="color:#ffd27a">opensourceorchestra.org/garden/circle/EF/</a>' } };
+const EFBLOCK = {};   // 2026-10-31 (Shaka): EF Presents idea retired — removed
 const efHTML = e => `<div class="quietmark session eflot"><span class="time">${fmtTime(e.from)}</span>
   <div class="liftline"><b>${e.label}</b> <span class="dim">· ${fmtTime(e.from)}–${fmtTime(e.to)}</span><br><span class="dim">${e.sub}</span></div></div>`;
 const LIFT = 16*60;        // 4:00p — the volume lifts (committee window)
