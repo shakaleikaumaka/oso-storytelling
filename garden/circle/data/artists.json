@@ -360,7 +360,7 @@
    "dur": "105 min",
    "tagline": "Deep house & nu-disco · venue curator · the last groove of day one",
    "headline": "Thirteen years of Bangalore nights, and he still books other people first",
-   "photo": null,
+   "photo": "img/dj-chalk.jpg",
    "glyph": "💿",
    "seated": false,
    "links": [
@@ -697,7 +697,7 @@
    "dur": "30 min",
    "tagline": "Hindustani classical since the age of five · a 30-minute journey across India · born in Mumbai",
    "headline": "Ten songs, ten languages, one country that refuses to be summarised",
-   "photo": null,
+   "photo": "img/nidhi-harihar.jpg",
    "glyph": "🎤🪷",
    "seated": true,
    "links": [
@@ -725,7 +725,7 @@
    "status": "host — the circle itself",
    "kind": "host",
    "role": "",
-   "set": "every day · Nov 3–6 · the open jam, the long table, the coffee lounge, the songwriters' circle, the long goodbye",
+   "set": "every day · Nov 3–6 · the open jam, the Open Source Orchestra welcome, the coffee lounge, the songwriters' circle, the long goodbye",
    "day": null,
    "time": "",
    "dur": "",

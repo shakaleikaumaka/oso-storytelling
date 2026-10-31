@@ -564,7 +564,7 @@ function tixTxt(a) {
 const VIBES = {
   'November 3': {
     warmup: ['🌄 OSO — doors jam', 'first sound of the week · acoustic, slow, unhurried · every voice welcome'],
-    quiet:  ['🎻 OSO — the long table', 'raga, strings, loops & voices · the orchestra plays through the afternoon'],
+    quiet:  ['🎻 Open Source Orchestra welcome!!!', 'raga, strings, loops & voices · the orchestra plays through the afternoon'],
     tail:   ['🔊 OSO — open decks', 'the boiler room warms up · bring a USB, bring a friend'],
     close:  ['🌆 OSO — the closing jam', 'the last 15 minutes · one more tune together · last note 6:00p sharp'],
   },
@@ -603,7 +603,7 @@ const openJamOf = d => (QUIET[d] ? 0 : (OPEN_JAM[d] ? OPEN_JAM[d].mins : 0));   
    blessed arrangement. It is carved out of an OSO window (the jams are the elastic), so NO artist's time
    moves and the 6:00p close is untouched. at = minutes since midnight (IST, venue local).
    Nov 3 = the ceremony day: the room holds silence till 11:50 and the morning run (Jaydeepdan → Nidhi →
-   Aniket) has no slack, so the trick opens the long table right after Aniket. Nov 4/5 = after the room's
+   Aniket) has no slack, so the trick opens the Open Source Orchestra welcome right after Aniket. Nov 4/5 = after the room's
    own opening set, right before the first artist. Nov 6 = the last morning, 20 min into the long goodbye. */
 const MAGIC = {
   'November 3': { at: 14*60 + 20 },
@@ -1196,8 +1196,21 @@ document.getElementById('resetbtn').onclick = () => {
   render();
 };
 document.getElementById('customnote').hidden = JSON.stringify(ARR) === JSON.stringify(DEFAULT_ARR);
+/* footer stats DERIVED from the live arrangement (Shaka 31 Oct): off-schedule acts (OFF_SCHED, e.g. Colors Still Fly) and the OSO jams never count */
+function footStats() {
+  const seen = new Set(); let mins = 0;
+  const add = (n, m) => { if (!BY_N[n] || OSO.has(n) || OFF_SCHED.has(n)) return; if (!seen.has(n)) seen.add(n); mins += m; };
+  for (const d of DAYS) {
+    const nov6 = (typeof NOV6 !== 'undefined') && NOV6[d];
+    if (nov6) { nov6.forEach(r => { if (r.kind === 'magic') add(2, r.mins || 10); else if (r.kind === 'row' && Array.isArray(r.ava)) { const who = r.ava.filter(n => !OSO.has(n) && !OFF_SCHED.has(n)); who.forEach((n, i) => add(n, i ? 0 : r.mins)); } }); continue; }
+    for (const s of ['chill', 'energy']) (ARR[d] && ARR[d][s] || []).forEach(n => add(n, BY_N[n] ? BY_N[n].minutes : 0));
+    add(2, 10);   // 🎩 0xMentalist's fixed daily 10-min trick
+  }
+  const vol = [...seen].filter(n => BY_N[n].volunteer).length;
+  return `${seen.size} confirmed artists · ${+(mins / 60).toFixed(2)}h of music · ${vol} volunteers`;
+}
 document.getElementById('footstats').textContent =
-  `24 confirmed artists · 18.75h of music · 21 volunteers · 🌅 doors 9:30 · quiet till 4 (talks next door) · 🔊 loud 4–6 · last note 6:00p sharp · 🎼 the Open Source Orchestra jams every day · 🎩 0xMentalist does a trick every day · 🤝 nobody is trimmed — colliding sets share the floor · drag the ⋮⋮ handles to rearrange — your arrangement travels in the link`;
+  `${footStats()} · 🌅 doors 9:30 · quiet till 4 (talks next door) · 🔊 loud 4–6 · last note 6:00p sharp · 🎼 the Open Source Orchestra jams every day · 🎩 0xMentalist does a trick every day · 🤝 nobody is trimmed — colliding sets share the floor · drag the ⋮⋮ handles to rearrange — your arrangement travels in the link`;
 render();
 </script>
 <!-- 🦋🌸 garden ambient layer — swaying flowers + pollinating butterflies (zero-dep, sits behind content at z-index:-1, pointer-events:none, reduced-motion aware) -->
