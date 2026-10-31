@@ -158,7 +158,8 @@ footer a{color:var(--marigold);text-decoration:none}
 .pendrow .pw{margin-left:auto;color:var(--faint);font-size:.72rem;text-align:right}
 @media(max-width:640px){
   .wrap{padding:14px 10px 60px}
-  .days{grid-template-columns:1fr;gap:12px}
+  .days{grid-template-columns:minmax(0,1fr);gap:12px}
+  .day{min-width:0}
   .controls select{font-size:16px}
   .slot .body{padding:9px 10px}
 }
@@ -166,7 +167,20 @@ footer a{color:var(--marigold);text-decoration:none}
 .slot.share .body{background:rgba(79,216,200,.08);box-shadow:inset 0 0 0 1px rgba(79,216,200,.55)}
 .slot.share .whohead .ava+.ava{margin-left:-10px}
 .sharetag{font-size:.7rem;color:var(--teal);border:1px solid var(--teal);border-radius:999px;padding:2px 8px;margin-left:6px;vertical-align:middle;white-space:nowrap}
-.shareline{margin-top:6px;font-size:.8rem;color:var(--teal)}
+.sharefloor{position:relative;margin:4px 0 8px 44px;padding:9px 10px 6px;border-left:2px solid var(--teal);border-radius:0 13px 13px 0;background:linear-gradient(120deg,rgba(79,216,200,.10),rgba(124,196,255,.07));box-shadow:inset 0 0 0 1px rgba(79,216,200,.35)}
+.sharefloor>.time{position:absolute;left:-52px;top:11px;width:44px;text-align:right;font-size:.72rem;color:var(--teal);font-weight:700}
+.sfhead{display:flex;gap:9px;align-items:center;font-size:.9rem;line-height:1.35;margin-bottom:6px}
+.sfavas{display:flex;flex-shrink:0}.sfavas .ava{width:30px;height:30px;border-radius:50%;object-fit:cover;border:2px solid var(--bg2)}.sfavas .ava+.ava{margin-left:-10px}
+.sfwin{display:block;font-size:.72rem;color:var(--muted)}
+.slot.sfrow{margin-left:0;border-left:0;padding:3px 0;display:block}.slot.sfrow>.sfd{width:100%}.sfhead>span:last-child{min-width:0;flex:1}.slot.sfrow::before{display:none}
+.sfd{background:var(--bg2);border:1px solid rgba(124,196,255,.3);border-radius:11px}
+.sfd>summary{list-style:none;display:flex;align-items:center;gap:8px;padding:6px 8px;cursor:pointer}.sfd>summary::-webkit-details-marker{display:none}
+.sfd>summary .grip{position:static;order:9}
+.sfd>summary .ava{width:30px;height:30px;border-radius:50%;object-fit:cover;flex-shrink:0}
+.sfwho{flex:1;min-width:0;font-size:.88rem}.sfmeta{display:block;font-size:.7rem;color:var(--muted)}
+.sfchip{color:var(--lotus);border:1px solid rgba(255,126,182,.4);border-radius:999px;padding:0 6px}.sfin{color:var(--sky);font-variant-numeric:tabular-nums;white-space:nowrap}
+.sfmore{color:var(--muted);transition:transform .15s}.sfd[open] .sfmore{transform:rotate(180deg)}
+.sfd>.body{border:0;border-top:1px solid var(--line);border-radius:0 0 11px 11px}
 </style>
 </head>
 <body>
@@ -339,6 +353,27 @@ function shareHTML(acts, s, e, label, sub) {
       <div class="tags"><span class="dim">${fmtTime(s)}–${fmtTime(e)} · ${minsTxt(e - s)} ·</span> ${label ? esc(sub) : 'together on the floor — not a stage, a circle · nobody is trimmed'}</div>
     </div></div>`;
 }
+/* 2026-10-31 (Shaka: "this looks bad … clean up how it looks for DJs sharing the floor"): acts whose sets
+   touch form ONE 🤝 shared-floor block — a header with the window, then a compact row per act (avatar, name,
+   genre chip, their own in–out) that opens to the full card. Rows keep data-n, so drag & share links still work. */
+function floorClusters(iv) {
+  const out = [];
+  iv.slice().sort((x, y) => x.s - y.s).forEach(x => {
+    const c = out[out.length - 1];
+    if (c && x.s < c.e) { c.m.push(x); c.e = Math.max(c.e, x.e); } else out.push({ s: x.s, e: x.e, m: [x] });
+  });
+  return out;
+}
+function floorHTML(c) {
+  const ava = a => `<img class="ava" src="${esc(a.avatar || '')}" alt="" loading="lazy" onerror="this.style.display='none'">`;
+  const tag = c.m.length === 2 ? 'b2b' : 'tag-team';
+  return `<div class="sharefloor"><span class="time">${fmtTime(c.s)}</span>
+    <div class="sfhead"><span class="sfavas">${c.m.map(x => ava(x.a)).join('')}</span>
+      <span><b>🤝 shared floor</b> <span class="sharetag">${c.m.length} DJs · ${tag}</span>
+      <span class="sfwin">${fmtTime(c.s)}–${fmtTime(c.e)} · they hand the decks back and forth 🎧🤙 · tap a name for the full set</span></span></div>
+    ${c.m.map(x => slotHTML(x.a, x.s, 'energy', x)).join('')}
+  </div>`;
+}
 function fmtTime(mins) {
   const h = Math.floor(mins / 60), m = mins % 60;
   return ((h - 1) % 12 + 1) + ':' + String(m).padStart(2,'0') + (h >= 12 ? 'p' : 'a');
@@ -443,7 +478,7 @@ const JUNK = /^\s*(none|n\/?a|na|-|–|\+|no|nothing|nil|\.)?\s*$/i;
 const clean = s => (s && !JUNK.test(s.trim())) ? s.trim() : '';
 const introOf = a => clean(a.about) || clean(a.performance) || clean(a.inspiration) || '';
 
-function slotHTML(a, t, side) {
+function slotHTML(a, t, side, sf) {   // sf = {s,e}: a compact, expandable row inside a 🤝 shared-floor block
   const isDJ = a.format === 'DJ' || a.format === 'Hybrid';
   const ohana = genresOf(a).includes('AI & Agents');
   const intro = introOf(a);
@@ -469,6 +504,26 @@ function slotHTML(a, t, side) {
   if (side === 'chill' && en === 'flex') vwarn = '<span class="vwarn soft">🤝 flexible — can play soft here or lift after 4p</span>';
   const tix = tixHTML(a);
   const rm = BENCH_UI ? `<button class="rmbtn" data-n="${a.n}" title="take off the schedule">✕</button>` : '';
+  if (sf) return `<div class="slot sfrow ${isDJ ? 'dj' : ''}" data-n="${a.n}" id="act-${a.n}" style="scroll-margin-top:70px">${rm}
+    <details class="sfd"><summary>
+      <span class="grip" title="drag to rearrange — even across days">⋮⋮</span>
+      <img class="ava" src="${esc(a.avatar || '')}" alt="" loading="lazy" onerror="this.style.display='none'">
+      <span class="sfwho"><b>${FMT[a.format]} ${esc(nameOf(a))}</b>${ohana ? ' <span class="ohana">🌺</span>' : ''}
+        <span class="sfmeta"><span class="sfchip">${esc(genresOf(a)[0] || FMT_LABEL[a.format])}</span> <span class="sfin">${fmtTime(sf.s)}–${fmtTime(sf.e)}</span></span></span>
+      <span class="sfmore" aria-hidden="true">▾</span></summary>
+      <div class="body">
+      ${subline ? `<div class="whosub">${esc(subline)}</div>` : ''}
+      <div class="tags"><span class="dim">${FMT_LABEL[a.format]} ·</span> ${minsTxt(a._eff || a.minutes)} <span class="dim">·</span> ${esc(genresOf(a).join(', '))}${a.volunteer ? ' <span class="vol">· 💜 volunteers</span>' : ''}</div>
+      ${tix}
+      ${a.flag ? `<div class="flagline">${esc(a.flag)}</div>` : ''}
+      ${vwarn}
+      ${intro ? `<p class="intro">${esc(intro)}</p>` : ''}
+      ${intro && intro.length > 220 ? '<button class="morebtn">read on ↓</button>' : ''}
+      ${links}
+      ${players}
+      ${full}
+      </div></details>
+  </div>`;
   return `<div class="slot ${side === 'energy' ? 'loud' : ''} ${isDJ ? 'dj' : ''}" data-n="${a.n}" id="act-${a.n}" style="scroll-margin-top:70px">${rm}
     <span class="time">${fmtTime(t)}</span>
     <div class="body">
@@ -479,7 +534,6 @@ function slotHTML(a, t, side) {
       <div class="tags"><span class="dim">${FMT_LABEL[a.format]} ·</span> ${minsTxt(a._eff || a.minutes)}${a._eff && a._eff < a.minutes ? ` <span class="dim">(from ${minsTxt(a.minutes)} · 6p close)</span>` : ''} <span class="dim">·</span> ${esc(genresOf(a).join(', '))}${a.volunteer ? ' <span class="vol">· 💜 volunteers</span>' : ''}</div>
       ${tix}
       ${a.flag ? `<div class="flagline">${esc(a.flag)}</div>` : ''}
-      ${a._share ? `<div class="shareline">🤝 sharing the floor with ${esc(a._share)}</div>` : ''}
       ${vwarn}
       ${intro ? `<p class="intro">${esc(intro)}</p>` : ''}
       ${intro && intro.length > 220 ? '<button class="morebtn">read on ↓</button>' : ''}
@@ -767,11 +821,11 @@ function render() {
         if (frontJam) { const v = vibe(d, 'tail', ['Open Source Orchestra — open decks', 'the floor is open · bring a USB, bring a friend']); slots += jamSplitHTML(d, LIFT, frontJam, v[0], v[1], ms); }
         /* 2026-10-28: one row per act (whole set, drag-safe) + a "sharing the floor" row for every overlap + changeover
            gaps where there is clear floor between two acts — all in clock order */
-        const rows = lay.iv.map(x => ({ t: x.s, k: 1, h: slotHTML(x.a, x.s, 'energy') }));
-        overlaps(lay.iv).forEach(o => rows.push({ t: o.s, k: 2, h: shareHTML([o.a, o.b], o.s, o.e) }));
-        for (let i = 1; i < lay.iv.length; i++) { const g = lay.iv[i].s - lay.iv[i - 1].e; if (g >= 5 && cE) rows.push({ t: lay.iv[i - 1].e, k: 0, h: `<div class="gap">↑ ${g}m changeover</div>` }); }
-        rows.sort((p, q2) => p.t - q2.t || p.k - q2.k);
-        slots += rows.map(r => r.h).join('');
+        const cl = floorClusters(lay.iv);
+        cl.forEach((c, i) => {
+          if (i) { const g = c.s - cl[i - 1].e; if (g >= 5 && cE) slots += `<div class="gap">↑ ${g}m changeover</div>`; }
+          slots += c.m.length > 1 ? floorHTML(c) : slotHTML(c.m[0].a, c.s, 'energy');
+        });
       }
       const onAtClose = lay.iv.filter(x => x.e > loudEnd).map(x => x.a);
       if (onAtClose.length) slots += shareHTML(onAtClose, loudEnd, CLOSE, vc[0], vc[1]);   // the closing jam joins whoever is still on — nobody is cut
@@ -992,9 +1046,11 @@ function copyDay(b) {
   if (!hand) {
     if (frontJam) jamSplit(LIFT, frontJam, 'open decks', 'the floor warms up');
     if (!energyActs.length) jamSplit(LIFT, loudEnd - LIFT, 'open decks', 'the floor is open all evening');
-    const rows = lay.iv.map(x => ({ t: x.s, k: 0, f: () => actLine(x.a, x.s) }));
-    overlaps(lay.iv).forEach(o => rows.push({ t: o.s, k: 1, f: () => lines.push(`${fmtTime(o.s)}  🤝 ${nameOf(o.a)} + ${nameOf(o.b)} — SHARING THE FLOOR · ${fmtTime(o.s)}–${fmtTime(o.e)} · ${minsTxt(o.e - o.s)} · nobody is trimmed`) }));
-    rows.sort((p, q2) => p.t - q2.t || p.k - q2.k).forEach(r => r.f());
+    floorClusters(lay.iv).forEach(c => {
+      if (c.m.length === 1) return actLine(c.m[0].a, c.s);
+      lines.push(`${fmtTime(c.s)}  🤝 SHARED FLOOR ${fmtTime(c.s)}–${fmtTime(c.e)} · ${c.m.length} DJs ${c.m.length === 2 ? 'b2b' : 'tag-team'} · nobody is trimmed`);
+      c.m.forEach(x => lines.push(`   ↳ ${fmtTime(x.s)}–${fmtTime(x.e)}  ${FMT[x.a.format]} ${nameOf(x.a)} — ${x.a.minutes} min · ${genresOf(x.a).join(', ')}${x.a.links.length ? ' · 🎵 ' + x.a.links[0].url : ''}`));
+    });
     const onAtClose = lay.iv.filter(x => x.e > loudEnd).map(x => nameOf(x.a));
     if (onAtClose.length) lines.push(`${fmtTime(loudEnd)}  🤝 ${onAtClose.join(' + ')} + OPEN SOURCE ORCHESTRA — the closing jam, SHARING THE FLOOR · 15 min · one more tune together · last note ${fmtTime(CLOSE)} sharp`);
     else jamSplit(loudEnd, TAIL, 'the closing jam', `one more tune together · last note ${fmtTime(CLOSE)} sharp`);
@@ -1056,7 +1112,7 @@ function markDrop(x, y) {
   }
   if (!best) return;
   const slotsBox = best.querySelector('.slots');
-  const kids = [...slotsBox.children].filter(el => el.classList.contains('slot') && el.dataset.n || el.classList.contains('liftmark'));
+  const kids = [...slotsBox.querySelectorAll('.slot[data-n], .liftmark')];   // 2026-10-31: shared-floor rows are nested
   let beforeEl = null;
   for (const k of kids) {
     if (+k.dataset.n === drag.n) continue;
@@ -1086,7 +1142,7 @@ function markDrop(x, y) {
   mark.dataset.day = best.dataset.day;
   mark.dataset.side = side;
   mark.dataset.idx = i2;
-  if (beforeEl) slotsBox.insertBefore(mark, beforeEl);
+  if (beforeEl) beforeEl.parentNode.insertBefore(mark, beforeEl);
   else slotsBox.appendChild(mark);
 }
 function endDrag() {
