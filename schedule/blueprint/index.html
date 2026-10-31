@@ -287,7 +287,7 @@ function flow(a) {
 }
 const ARC = {   // 2026-10-31 (Shaka): catchier, aloha-filled day intros
   'November 3': '🌅 Tue · opening day! 🤫 the ceremony first, then Gujarat folk, Songs of India & raga on electric guitar 🎸 · 4:00–5:45 itscharann, Ekant, huzzhouse & DJ Chalk tag-team the shared floor and light the first boiler room 🔊🌺',
-  'November 4': '☕ Wed · coffee-lounge Wednesday 🎷 modular synths, acoustic fire, a room that writes a song together & live code 💻 · after four Colors Still Fly opens the floor to everyone, Simulacra lands a Punjabi wedding 💃🤙',
+  'November 4': '☕ Wed · coffee-lounge Wednesday 🎷 modular synths, acoustic fire, a room that writes a song together & live code 💻 · after four Vedz opens the floor solo, Simulacra lands a Punjabi wedding 💃🤙',
   'November 5': '🎤 Thu · the big one! 🧘 morning meditations → piano keys, Bollywood & the songwriters’ circle 🎶 · after four Naman streams zk-proofs through the decks & mannuu brings the burn 🔥🌺',
   'November 6': '🌺 Fri · the long goodbye 🤙 Levi & Perrie steward the orchestra · Sounya · India’s own · Manu’s tribal downtempo · Alaska’s low-volume sundown · 3:33 Shaka + OSO glide into the Devcon closing party 🎉',
 };
@@ -306,7 +306,7 @@ function fitChg(n, music, startMin, endMin, want) {
    rehearsal (vault/rehearsal/001-v3). Any other arrangement (someone dragging) gets the generic layout below. */
 const FLOOR = {
   'November 3': { 23: [16*60, 17*60 + 45], 28: [16*60, 17*60 + 45], 16: [16*60, 17*60 + 45], 35: [16*60, 17*60 + 45] },  // 🤝 shared tag-team floor: itscharann + Ekant + huzzhouse + DJ Chalk ALL 4:00-5:45 (Shaka 31 Oct, #nooneiseverout) · 5:45 closing jam
-  'November 4': { 18: 16*60, 20: 16*60, 27: 17*60 },   // Colors Still Fly umbrella · Vedz · Simulacra to 6:00 (the closing jam joins at 5:45) — huzzhouse moved to Nov 3 on 29 Oct · Perrie = Nov 6 downtempo set during the talk (+ guest of Colors Still Fly Nov 4 if she wishes) (29 Oct)
+  'November 4': { 20: [16*60, 17*60], 27: 17*60 },   // Vedz SOLO 4:00-5:00 in the slot Colors Still Fly held (Shaka 31 Oct: Colors Still Fly off the schedule, still in the garden circle + stewards) · Simulacra 5:00-6:00 (the closing jam joins at 5:45)
 };
 function sharedMins(iv) { let s = 0; for (let i = 0; i < iv.length; i++) for (let j = i + 1; j < iv.length; j++) s += Math.max(0, Math.min(iv[i].e, iv[j].e) - Math.max(iv[i].s, iv[j].s)); return s; }
 function overlaps(iv) { const out = []; for (let i = 0; i < iv.length; i++) for (let j = i + 1; j < iv.length; j++) { const s = Math.max(iv[i].s, iv[j].s), e = Math.min(iv[i].e, iv[j].e); if (e > s) out.push({ a: iv[i].a, b: iv[j].a, s, e }); } return out; }
@@ -320,7 +320,8 @@ function layoutLoud(acts, startMin, chgWant, d) {
   if (!n) return { iv: [], chg: chgWant, shared: 0, overflow: 0, pinned: false };
   const pins = FLOOR[d];
   if (pins && acts.every(a => pins[a.n] !== undefined)) {
-    const iv = acts.map(a => { const p = pins[a.n]; return Array.isArray(p) ? { a, s: p[0], e: p[1] } : { a, s: p, e: p + a.minutes }; }).sort((x, y) => x.s - y.s || x.e - y.e);
+    const iv = acts.map(a => { const p = pins[a.n]; if (Array.isArray(p)) a.minutes = p[1] - p[0];   /* a [start, end] pin is the whole blessed set (Shaka 31 Oct) */
+      return Array.isArray(p) ? { a, s: p[0], e: p[1] } : { a, s: p, e: p + a.minutes }; }).sort((x, y) => x.s - y.s || x.e - y.e);
     return { iv, chg: 0, shared: sharedMins(iv), overflow: Math.max(0, Math.max(...iv.map(x => x.e)) - CLOSE), pinned: true };
   }
   const music = acts.reduce((s, a) => s + a.minutes, 0);
@@ -419,7 +420,7 @@ function reconcileArr(arr) {
   for (const d of DAYS) {
     out[d] = { chill: [], energy: [] };
     for (const s of ['chill', 'energy']) for (const n of arr[d][s]) {
-      if (!BY_N[n] || OSO.has(n) || seen.has(n)) continue;   // act removed from the lineup, or a duplicate
+      if (!BY_N[n] || OSO.has(n) || OFF_SCHED.has(n) || seen.has(n)) continue;   // act removed from the lineup, or a duplicate
       seen.add(n); out[d][s].push(n);
     }
   }
@@ -453,8 +454,10 @@ function saveArr() {
 }
 /* 2026-10-26 (Shaka): the live default IS his blessed arrangement (arrangement-live.json), reconciled
    against the computed default so acts added later still land on their day. null = computed default. */
-const BAKED_ARR = {"November 3": {"chill": [24, 39, 5], "energy": [23, 28, 16, 35]}, "November 4": {"chill": [13, 15, 32, 34, 19], "energy": [18, 20, 27]}, "November 5": {"chill": [12, 29, 30, 31], "energy": [33, 6]}, "November 6": {"chill": [40], "energy": []}};
-const COMPUTED_ARR = {"November 3": {"chill": [39, 5], "energy": [23, 28]}, "November 4": {"chill": [19, 13, 15, 32, 34], "energy": [18, 27]}, "November 5": {"chill": [30, 12, 20, 24, 31, 29], "energy": [33, 6, 35]}, "November 6": {"chill": [16, 40], "energy": []}};
+const BAKED_ARR = {"November 3": {"chill": [24, 39, 5], "energy": [23, 28, 16, 35]}, "November 4": {"chill": [13, 15, 32, 34, 19], "energy": [20, 27]}, "November 5": {"chill": [12, 29, 30, 31], "energy": [33, 6]}, "November 6": {"chill": [40], "energy": []}};
+const COMPUTED_ARR = {"November 3": {"chill": [39, 5], "energy": [23, 28]}, "November 4": {"chill": [19, 13, 15, 32, 34], "energy": [27]}, "November 5": {"chill": [30, 12, 20, 24, 31, 29], "energy": [33, 6, 35]}, "November 6": {"chill": [16, 40], "energy": []}};
+/* 2026-10-31 (Shaka): off the schedule (stay in the garden circle + steward lists) — 18 = Colors Still Fly */
+const OFF_SCHED = new Set([18]);
 function reconcileWith(arr, base) {
   if (!arr || typeof arr !== 'object') return null;
   for (const d of DAYS) if (!arr[d] || !Array.isArray(arr[d].chill) || !Array.isArray(arr[d].energy)) return null;
@@ -462,12 +465,12 @@ function reconcileWith(arr, base) {
   for (const d of DAYS) {
     out[d] = { chill: [], energy: [] };
     for (const s of ['chill', 'energy']) for (const n of arr[d][s]) {
-      if (!BY_N[n] || OSO.has(n) || seen.has(n)) continue;
+      if (!BY_N[n] || OSO.has(n) || OFF_SCHED.has(n) || seen.has(n)) continue;
       seen.add(n); out[d][s].push(n);
     }
   }
   for (const d of DAYS) for (const s of ['chill', 'energy']) {
-    base[d][s].forEach((n, i) => { if (seen.has(n)) return; seen.add(n); out[d][s].splice(Math.min(i, out[d][s].length), 0, n); });
+    base[d][s].forEach((n, i) => { if (seen.has(n) || OFF_SCHED.has(n)) return; seen.add(n); out[d][s].splice(Math.min(i, out[d][s].length), 0, n); });
   }
   return out;
 }
@@ -666,7 +669,6 @@ const NOV6 = {
     { at: 12*60 + 30, mins: 60, kind: 'row', ava: [7], ico: '🇮🇳', label: 'India’s own × Open Source Orchestra', tag: 'sharing the floor', sub: 'the room’s own local musicians with the orchestra · downtempo, low volume' },
     { at: 13*60 + 30, mins: 60, kind: 'row', ava: [6, 7], ico: '🥁', label: 'Manu Alzuru (mannuu) + Open Source Orchestra — downtempo tribal set', tag: 'sharing the floor', sub: 'downtempo tribal grooves · low volume while the talks run next door' },
     { at: 14*60 + 30, mins: 60, kind: 'row', ava: [34], ico: '🎧', label: 'Alaska × Subcult — downtempo DJ set', sub: 'downtempo, low-volume selections · the exhale before the party' },
-    { at: 15*60 + 30, mins: 3, kind: 'jam', ava: 7, label: '🌺 OSO — the hand-off', sub: 'three breaths of the orchestra · the circle turns toward the party' },
     { at: 15*60 + 33, mins: 27, kind: 'row', ava: [7], ico: '🌺', label: 'Shaka Lei Kaumaka + Open Source Orchestra — into the closing party', tag: 'sharing the floor', sub: 'from 3:33p · the orchestra carries the room into the Devcon team’s closing party at 4:00p' },
   ],
 };
