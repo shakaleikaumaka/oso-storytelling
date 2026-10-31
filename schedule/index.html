@@ -285,7 +285,7 @@ function flow(a) {
   return s;
 }
 const ARC = {   // 2026-10-31 (Shaka): catchier, aloha-filled day intros
-  'November 3': '🌅 Tue · opening day! 🤫 the ceremony first, then Gujarat folk, Songs of India & raga on electric guitar 🎸 · after four itscharann, Ekant, huzzhouse & DJ Chalk light the first boiler room 🔊🌺',
+  'November 3': '🌅 Tue · opening day! 🤫 the ceremony first, then Gujarat folk, Songs of India & raga on electric guitar 🎸 · 4:00–5:45 itscharann, Ekant, huzzhouse & DJ Chalk tag-team the shared floor and light the first boiler room 🔊🌺',
   'November 4': '☕ Wed · coffee-lounge Wednesday 🎷 modular synths, acoustic fire, a room that writes a song together & live code 💻 · after four Colors Still Fly opens the floor to everyone, Simulacra lands a Punjabi wedding 💃🤙',
   'November 5': '🎤 Thu · the big one! 🧘 morning meditations → piano keys, Bollywood & the songwriters’ circle 🎶 · after four Naman streams zk-proofs through the decks & mannuu brings the burn 🔥🌺',
   'November 6': '🌺 Fri · the long goodbye 🤙 Levi & Perrie steward the orchestra · Sounya · India’s own · Manu’s tribal downtempo · Alaska’s low-volume sundown · 3:33 Shaka + OSO glide into the Devcon closing party 🎉',
@@ -304,7 +304,7 @@ function fitChg(n, music, startMin, endMin, want) {
    explicit floor plan (start minutes per act) for the blessed arrangement, straight from the 28-Oct backstage
    rehearsal (vault/rehearsal/001-v3). Any other arrangement (someone dragging) gets the generic layout below. */
 const FLOOR = {
-  'November 3': { 23: 16*60, 28: 16*60, 16: 16*60 + 15, 35: 17*60 },  // itscharann + Ekant B2B hour · huzzhouse mixes in 4:15-5:00 (Shaka 29 Oct, #nooneiseverout) · DJ Chalk 5:00-5:45 · 5:45 closing jam · Perrie moved to Nov 6 talk-time chill set (Shaka 29 Oct 02:40 UTC)
+  'November 3': { 23: [16*60, 17*60 + 45], 28: [16*60, 17*60 + 45], 16: [16*60, 17*60 + 45], 35: [16*60, 17*60 + 45] },  // 🤝 shared tag-team floor: itscharann + Ekant + huzzhouse + DJ Chalk ALL 4:00-5:45 (Shaka 31 Oct, #nooneiseverout) · 5:45 closing jam · Perrie moved to Nov 6 talk-time chill set (Shaka 29 Oct 02:40 UTC)
   'November 4': { 18: 16*60, 20: 16*60, 27: 17*60 },   // Colors Still Fly umbrella · Vedz · Simulacra to 6:00 (the closing jam joins at 5:45) — huzzhouse moved to Nov 3 on 29 Oct · Perrie = Nov 6 downtempo set during the talk (+ guest of Colors Still Fly Nov 4 if she wishes) (29 Oct)
 };
 function sharedMins(iv) { let s = 0; for (let i = 0; i < iv.length; i++) for (let j = i + 1; j < iv.length; j++) s += Math.max(0, Math.min(iv[i].e, iv[j].e) - Math.max(iv[i].s, iv[j].s)); return s; }
@@ -319,7 +319,7 @@ function layoutLoud(acts, startMin, chgWant, d) {
   if (!n) return { iv: [], chg: chgWant, shared: 0, overflow: 0, pinned: false };
   const pins = FLOOR[d];
   if (pins && acts.every(a => pins[a.n] !== undefined)) {
-    const iv = acts.map(a => ({ a, s: pins[a.n], e: pins[a.n] + a.minutes })).sort((x, y) => x.s - y.s || x.e - y.e);
+    const iv = acts.map(a => { const p = pins[a.n]; return Array.isArray(p) ? { a, s: p[0], e: p[1] } : { a, s: p, e: p + a.minutes }; }).sort((x, y) => x.s - y.s || x.e - y.e);
     return { iv, chg: 0, shared: sharedMins(iv), overflow: Math.max(0, Math.max(...iv.map(x => x.e)) - CLOSE), pinned: true };
   }
   const music = acts.reduce((s, a) => s + a.minutes, 0);
