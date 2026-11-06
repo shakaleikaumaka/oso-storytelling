@@ -9,9 +9,10 @@ pre{background:#1b1838;padding:12px;border-radius:8px;overflow:auto;font-size:13
 <nav class="top" aria-label="site"><a href="/">🎻 home</a><a href="/schedule/">🗓 Schedule</a><a href="/garden/circle/">🌺 Garden Circle</a><a href="/camera/">📸 Camera</a></nav>
 <h1>🎻 Fork the First Artist</h1>
 <p><b>ETHGlobal Mumbai 2026</b> · team plan &amp; live status · Open Source Orchestra</p>
-<p class="note">Any musician makes a profile and gets an <b>ENS name</b>, an <b>x402 payment rail on Hedera</b>, and their own <b>AI steward agent on 0G</b>. The agent takes payments; the money goes straight to the artist. <b>3.69%</b> pays the agent's own compute. <b>OSO takes zero cut, zero profit, no token.</b> Shaka is the first human artist on these rails — anyone can fork him.</p>
+<p class="note"><b>Product goal:</b> give each consenting musician an <b>ENS name</b>, an <b>x402 payment rail on Hedera</b>, and their own <b>AI steward agent on 0G</b>. The intended split sends <b>96.31%</b> to the artist and <b>3.69%</b> toward agent compute. <b>OSO takes zero cut, zero profit, no token.</b></p>
+<p class="note"><b>Current reality:</b> the public artist site is a static preview and the repository contains offline-tested scaffolding. Real Hedera settlement, 0G inference, and Arkiv read/write evidence are still being verified. Nothing on this page is proof that claiming, payments, ENS issuance, or a self-funding agent already works.</p>
 
-<p>💻 Repo: <a href="https://github.com/Open-Source-Orchestra/fork-the-first-artist">github.com/Open-Source-Orchestra/fork-the-first-artist</a></p>
+<p>🌺 Artist preview: <a href="https://artist.opensourceorchestra.org/">artist.opensourceorchestra.org</a><br>💻 Repo: <a href="https://github.com/Open-Source-Orchestra/fork-the-first-artist">github.com/Open-Source-Orchestra/fork-the-first-artist</a></p>
 <h2>⏱ Status</h2>
 <p id="count">Loading…</p><div class="bar"><i id="bar" style="width:0"></i></div>
 <p><small id="upd"></small></p>
@@ -20,7 +21,7 @@ pre{background:#1b1838;padding:12px;border-radius:8px;overflow:auto;font-size:13
 <h2>👥 Team</h2>
 <table id="team"><thead><tr><th>Who</th><th>Role</th><th>Owns</th></tr></thead><tbody></tbody></table>
 
-<h2>🎬 The demo</h2>
+<h2>🎬 Target demo — not all steps are live yet</h2>
 <ol><li>Artist opens their OSO profile → name, bio, photo, <b>own payout address</b>, ✅ consent.</li>
 <li><b>Claim your name</b> → <code>artist.&lt;parent&gt;.eth</code> pointing to their Hedera account and agent.</li>
 <li>Their steward agent goes live on 0G and answers fans from what the artist shared.</li>
@@ -55,15 +56,16 @@ Claims → HCS topic (audit log)
 ENS: artist.&lt;parent&gt;.eth → Hedera account · agent URL · profile</pre>
 
 <h2>🏆 Sponsor tracks</h2>
-<ul><li><b>Hedera</b> — AI Agents That Pay: x402 on Hedera (<a href="https://docs.hedera.com/solutions/ai/x402">docs</a>)</li>
-<li><b>0G</b> — Agents That Pay for Themselves · Keep Building on 0G (continuity)</li><li><b>ENS</b> — subnames as artist identity</li></ul>
-<p><small>Verify prize rules on the ETHGlobal hacker dashboard.</small></p>
+<ul><li><b>Hedera</b> — AI Agents That Pay: x402 on Hedera; real settlement first, then HTS split/HCS bonuses (<a href="https://ethglobal.com/events/mumbai/prizes/hedera">requirements</a>)</li>
+<li><b>0G</b> — Private Computer: real inference in the main flow with request IDs and a judge-accessible app (<a href="https://ethglobal.com/events/mumbai/prizes/0g">requirements</a>)</li>
+<li><b>Arkiv</b> — Build on Arkiv (existing projects): new Continuity integration with real writes and a user-visible read (<a href="https://ethglobal.com/events/mumbai/prizes/arkiv">requirements</a>)</li></ul>
+<p><small>ENS issuance is deferred until the core slice works. 0G Keep Building is unsupported by prior 0G evidence. Agents That Pay for Themselves remains a stretch until Hedera revenue automatically becomes 0G Compute credit. Continuity status and final partner selections must be confirmed in the Hacker Dashboard.</small></p>
 
 <h2>🗓 Timeline</h2>
-<ul><li><b>Fri morning:</b> roles, repo, testnet accounts, first x402 payment.</li>
-<li><b>Fri day:</b> profile + claim + ENS + agent + split.</li>
-<li><b>Fri night:</b> full end-to-end, second-artist rehearsal, video.</li>
-<li><b>Sat 09:00 IST:</b> submit (README, tx IDs, video).</li></ul>
+<ul><li><b>Now:</b> one real Hedera payment + one real 0G answer + one real Arkiv write/read; fix critical payment/agent defects.</li>
+<li><b>Then:</b> deploy the smallest public end-to-end demo; freeze transaction/request/query evidence.</li>
+<li><b>Video:</b> one human-narrated 720p+ recording, target 2:40; no AI voiceover or sped-up footage.</li>
+<li><b>Sat 08:00 IST target:</b> submit with README, live links, proof IDs, team contacts, and old/new disclosure. Hard deadline 09:00 IST.</li></ul>
 <p><small>Team plan for ETHGlobal Mumbai · <a href="/takedown/">takedown</a></small></p>
 <script>
 const L={done:'✅ done',doing:'🔨 doing',todo:'⬜ to do',blocked:'⛔ blocked'};

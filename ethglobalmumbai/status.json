@@ -1,108 +1,103 @@
 {
-  "updated": "2026-11-06T16:35:00Z",
+  "updated": "2026-11-06T18:07:00Z",
   "deadline": "2026-11-07T03:30:00Z",
   "team": [
     {
       "name": "Shaka",
       "role": "Artist + demo lead",
-      "owns": "vision, artist consent, live fork, pitch"
+      "owns": "vision, artist consent, pitch and human demo"
     },
     {
-      "name": "Teammate",
-      "role": "Payments (Hedera)",
-      "owns": "x402 endpoint, split, HashScan proof, tests"
+      "name": "Prince Keshri",
+      "role": "Frontend + claims",
+      "owns": "artist preview, wallets, Arkiv steward persistence"
     },
     {
-      "name": "Teammate",
-      "role": "Frontend",
-      "owns": "profile page, wallet connect, claim-your-name, tip button"
+      "name": "Rajarshi Roy",
+      "role": "Payments + agent",
+      "owns": "x402 scaffolding, Hedera split, steward and spend controls"
     },
     {
-      "name": "Teammate",
-      "role": "ENS + agent",
-      "owns": "subnames, records, 0G steward agent, spend cap"
-    },
-    {
-      "name": "Teammate",
-      "role": "Pitch / video / README",
-      "owns": "≤3 min demo video, README, submission"
+      "name": "Agent ʻohana (AI assistance)",
+      "role": "Integration + verification",
+      "owns": "audit, critical fixes, testnet evidence; not a human team member"
     }
   ],
   "tasks": [
     {
       "area": "Setup",
-      "task": "Team formed, roles claimed",
+      "task": "Public repo, team chat and core contributors",
       "state": "done"
-    },
-    {
-      "area": "Setup",
-      "task": "GitHub repo + team chat",
-      "state": "done"
-    },
-    {
-      "area": "Setup",
-      "task": "Hedera testnet accounts + 0G faucet",
-      "state": "doing"
-    },
-    {
-      "area": "ENS",
-      "task": "Parent name osoartist.eth secured",
-      "state": "done"
-    },
-    {
-      "area": "Payments",
-      "task": "First x402 payment settles on Hedera testnet",
-      "state": "todo"
-    },
-    {
-      "area": "Payments",
-      "task": "96.31 / 3.69 split on-chain",
-      "state": "todo"
-    },
-    {
-      "area": "Verify",
-      "task": "Steward invite link",
-      "state": "todo"
-    },
-    {
-      "area": "Verify",
-      "task": "Wallet signature claim",
-      "state": "todo"
-    },
-    {
-      "area": "Verify",
-      "task": "Claims logged to HCS topic",
-      "state": "todo"
-    },
-    {
-      "area": "ENS",
-      "task": "Issue artist subname with Hedera + agent records",
-      "state": "todo"
-    },
-    {
-      "area": "Agent",
-      "task": "Steward agent on 0G answers fans",
-      "state": "todo"
-    },
-    {
-      "area": "Agent",
-      "task": "Agent pays own 0G compute, spend cap",
-      "state": "todo"
     },
     {
       "area": "Frontend",
-      "task": "Profile + claim + tip pages",
+      "task": "Static artist preview + transient draft deployed",
+      "state": "done"
+    },
+    {
+      "area": "Code",
+      "task": "Offline payment, agent, wallet and Arkiv scaffolding",
+      "state": "done"
+    },
+    {
+      "area": "Code",
+      "task": "Critical payment/agent correctness fixes reviewed and merged",
+      "state": "doing"
+    },
+    {
+      "area": "Setup",
+      "task": "Dedicated Hedera testnet accounts + 0G/Arkiv access",
+      "state": "doing"
+    },
+    {
+      "area": "Payments",
+      "task": "First autonomous x402 payment settles on Hedera testnet",
+      "state": "doing"
+    },
+    {
+      "area": "Agent",
+      "task": "Real 0G Private Computer answer with request ID",
+      "state": "doing"
+    },
+    {
+      "area": "Arkiv",
+      "task": "Real Rabdi invitation write/read + public proof query",
+      "state": "doing"
+    },
+    {
+      "area": "Frontend",
+      "task": "Judge-accessible public end-to-end demo + proof links (backend host needed)",
+      "state": "blocked"
+    },
+    {
+      "area": "Payments",
+      "task": "96.31 / 3.69 HTS split and real HCS spend receipt",
       "state": "todo"
     },
     {
+      "area": "Verify",
+      "task": "Two-wallet signed claim + claim HCS log + freeze enforcement",
+      "state": "todo"
+    },
+    {
+      "area": "ENS",
+      "task": "Parent osoartist.eth reported secured; issuance deferred",
+      "state": "blocked"
+    },
+    {
       "area": "Demo",
-      "task": "Second artist live fork (with consent)",
+      "task": "Second consenting artist live fork — after core slice",
       "state": "todo"
     },
     {
       "area": "Submit",
-      "task": "README + tx IDs + ≤3 min video + submit",
-      "state": "todo"
+      "task": "Continuity dashboard disclosure + three partner selections",
+      "state": "doing"
+    },
+    {
+      "area": "Submit",
+      "task": "2–4 min human video + final README/team contacts + submit by 08:00 IST target",
+      "state": "doing"
     }
   ]
 }
