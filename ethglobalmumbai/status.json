@@ -1,5 +1,5 @@
 {
-  "updated": "2026-11-06T06:15:00Z",
+  "updated": "2026-11-06T16:35:00Z",
   "deadline": "2026-11-07T03:30:00Z",
   "team": [
     {
@@ -32,7 +32,7 @@
     {
       "area": "Setup",
       "task": "Team formed, roles claimed",
-      "state": "doing"
+      "state": "done"
     },
     {
       "area": "Setup",
@@ -42,7 +42,12 @@
     {
       "area": "Setup",
       "task": "Hedera testnet accounts + 0G faucet",
-      "state": "todo"
+      "state": "doing"
+    },
+    {
+      "area": "ENS",
+      "task": "Parent name osoartist.eth secured",
+      "state": "done"
     },
     {
       "area": "Payments",
