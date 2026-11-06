@@ -1,5 +1,5 @@
 {
-  "updated": "2026-11-06T18:07:00Z",
+  "updated": "2026-11-06T18:30:00Z",
   "deadline": "2026-11-07T03:30:00Z",
   "team": [
     {
@@ -41,13 +41,13 @@
     },
     {
       "area": "Code",
-      "task": "Critical payment/agent correctness fixes reviewed and merged",
+      "task": "Critical fixes integrated in draft PR #3; human review/merge pending (168 tests + 11 browser tests pass)",
       "state": "doing"
     },
     {
       "area": "Setup",
-      "task": "Dedicated Hedera testnet accounts + 0G/Arkiv access",
-      "state": "doing"
+      "task": "Hedera accounts funded + 0G API key (official faucet/CAPTCHA/team-credit blocked)",
+      "state": "blocked"
     },
     {
       "area": "Payments",
@@ -61,7 +61,12 @@
     },
     {
       "area": "Arkiv",
-      "task": "Real Rabdi invitation write/read + public proof query",
+      "task": "Real Rabdi invitation write/read/revoke + public proof query (issue/revoke status 0x1)",
+      "state": "done"
+    },
+    {
+      "area": "Frontend",
+      "task": "Repaired circle + live Arkiv viewer in draft PR #3 (120/120 seat targets correct)",
       "state": "doing"
     },
     {
