@@ -18,6 +18,16 @@
       "owns": "x402 scaffolding, Hedera split, steward and spend controls"
     },
     {
+      "name": "Utkarsh Tiwari",
+      "role": "Hedera steward",
+      "owns": "Hedera Agent Kit steward: 96.31% forward + HCS split log; funded the testnet demo accounts"
+    },
+    {
+      "name": "Yuuki Shimizu",
+      "role": "Team member",
+      "owns": "ETHGlobal Mumbai teammate"
+    },
+    {
       "name": "Agent ʻohana (AI assistance)",
       "role": "Integration + verification",
       "owns": "audit, critical fixes, testnet evidence; not a human team member"
