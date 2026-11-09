@@ -73,15 +73,15 @@ def main():
             f'<tr class="st-{e(g["status"])}"><th scope="row">{prog}'
             + (f'<span class="proj">{proj}</span>' if proj else "")
             + (f'<span class="note">{note}</span>' if note else "")
-            + f'</th><td>{e(g.get("applied") or "—")}</td>'
-            f'<td><span class="pill">{emo} {e(lab)}</span></td>'
-            f'<td class="num">{money(g.get("ask_usd"))}</td>'
-            f'<td class="num">{money(g.get("awarded_usd")) if g["status"] == "awarded" else "—"}</td>'
-            f'<td>{link_html}</td></tr>')
+            + f'</th><td data-label="Applied">{e(g.get("applied") or "—")}</td>'
+            f'<td data-label="Status"><span class="pill">{emo} {e(lab)}</span></td>'
+            f'<td class="num" data-label="Ask">{money(g.get("ask_usd"))}</td>'
+            f'<td class="num" data-label="Awarded">{money(g.get("awarded_usd")) if g["status"] == "awarded" else "—"}</td>'
+            f'<td data-label="Link">{link_html}</td></tr>')
     if not rows:
         rows.append('<tr><td colspan="6">No applications yet.</td></tr>')
 
-    summary = " · ".join(f'{STATUS[k][1]} {counts[k]} {STATUS[k][0].lower()}' for k in STATUS if counts[k])
+    summary = " · ".join(f'{STATUS[k][1]} {counts[k]} {STATUS[k][0][0].lower() + STATUS[k][0][1:]}' for k in STATUS if counts[k])
     page = TEMPLATE.format(rows="\n".join(rows), summary=e(summary or "nothing yet"),
                            awarded=money(awarded_total) if awarded_total else "$0 so far",
                            updated=e(updated), upd_day=e(upd_day), n_label=(f"{len(grants)} application" + ("" if len(grants) == 1 else "s")))
@@ -145,6 +145,7 @@ tbody th{{font-weight:600}}
 .st-awarded .pill{{border-color:var(--gold);color:var(--gold)}}
 .small{{font-family:var(--sans);font-size:.86rem;color:var(--faint)}}
 footer{{border-top:1px solid var(--line);margin-top:2.5rem;padding:1.4rem 0 2.4rem;font-family:var(--sans);font-size:.86rem;color:var(--faint)}}
+@media (max-width:640px){{table{{min-width:0}} thead{{position:absolute;left:-9999px}} tbody tr{{display:block;border-top:1px solid var(--line);padding:.4rem 0}} tbody th,tbody td{{display:block;border:0;padding:.3rem .9rem;text-align:left}} tbody td::before{{content:attr(data-label) ": ";color:var(--faint);font-size:.8rem;text-transform:uppercase;letter-spacing:.05em}} .num{{text-align:left}} .pill{{white-space:normal}}}}
 @media (prefers-reduced-motion:reduce){{*{{transition:none!important;animation:none!important}}}}
 </style>
 </head>

@@ -1,6 +1,6 @@
 {
   "name": "Open Source Orchestra DAO — the open ledger",
-  "updated": "2026-11-09T11:15:00Z",
+  "updated": "2026-11-09T11:37:05Z",
   "url": "https://opensourceorchestra.org/dao/",
   "note": "A community ledger, not yet an on-chain DAO. Every grant is announced here first, then to the whole orchestra.",
   "recipient": "osoartist.eth",
@@ -14,7 +14,60 @@
       "applied": "2026-11-09",
       "status": "applied",
       "ask_usd": 40000,
-      "public_link": "https://gov.1inch.network/t/1inch-dao-aqua-revenue-stream-incubator-build-a-funded-revenue-sharing-strategy-on-aqua/965"
+      "public_link": "https://gov.1inch.network/t/1inch-dao-aqua-revenue-stream-incubator-build-a-funded-revenue-sharing-strategy-on-aqua/965",
+      "public_note": "Form accepted 9 Nov; 1inch's forum says new intake was paused on 17 Sep 2026, so this may wait until it reopens."
+    },
+    {
+      "id": "arbitrum-builders-intake",
+      "program": "Arbitrum — Builders form (ArbiFuel / visibility / mentorship)",
+      "ecosystem": "Arbitrum",
+      "url": "https://arbitrum.foundation/grants",
+      "project": "Fork the First Artist — USDC tips on Arbitrum One",
+      "applied": "2026-11-09",
+      "status": "applied",
+      "public_note": "Support intake (gas credits, visibility, mentorship); not a cash grant."
+    },
+    {
+      "id": "golem-ecosystem-fund",
+      "program": "Golem Ecosystem Fund (Arkiv)",
+      "ecosystem": "Golem / Arkiv",
+      "url": "https://golem.network/ecosystem",
+      "project": "Open Source Orchestra Consent Ledger on Arkiv",
+      "applied": "2026-11-09",
+      "status": "applied",
+      "ask_usd": 15000,
+      "public_note": "Production consent ledger for the orchestra's artists on Arkiv + an open kit for other creative communities."
+    },
+    {
+      "id": "sony-soneium-incubation",
+      "program": "Sony Onchain Entertainment Incubation Program (Soneium)",
+      "ecosystem": "Soneium / Sony",
+      "url": "https://onchain-entertainment.sony.com/en/incubation-program/",
+      "project": "Open Source Orchestra — Fork the First Artist (music, live performance, fan communities)",
+      "applied": "2026-11-09",
+      "status": "applied",
+      "public_link": "https://soneium.org/en/blog/sony-incubation-program/",
+      "public_note": "Incubation support (no fixed grant amount). Review may take several months."
+    },
+    {
+      "id": "hedera-ftfa-mainnet",
+      "program": "Hedera Foundation / Hashgraph Association — Fork the First Artist on Hedera mainnet",
+      "ecosystem": "Hedera",
+      "url": "https://hedera.foundation/submit-a-proposal",
+      "project": "Fork the First Artist on Hedera mainnet (x402 tips + HCS receipts)",
+      "status": "needs-shaka",
+      "ask_usd": 40000,
+      "public_note": "Written; waiting for Shaka to submit (form needs his details).",
+      "team_budget": "Any Hedera grant is budgeted for the Fork the First Artist development team."
+    },
+    {
+      "id": "octant-radar",
+      "program": "Octant — project intake (\"put your project on Octant's radar\")",
+      "ecosystem": "Octant / Golem Foundation",
+      "url": "https://octant.build/projects",
+      "project": "Open Source Orchestra — Fork the First Artist",
+      "status": "needs-shaka",
+      "public_note": "Intake form for future Octant epochs; written, waiting for a human security check."
     }
   ]
 }
