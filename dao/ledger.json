@@ -1,6 +1,6 @@
 {
   "name": "Open Source Orchestra DAO — the open ledger",
-  "updated": "2026-11-09T11:37:05Z",
+  "updated": "2026-11-09T11:48:26Z",
   "url": "https://opensourceorchestra.org/dao/",
   "note": "A community ledger, not yet an on-chain DAO. Every grant is announced here first, then to the whole orchestra.",
   "recipient": "osoartist.eth",
@@ -50,6 +50,44 @@
       "public_note": "Incubation support (no fixed grant amount). Review may take several months."
     },
     {
+      "id": "base-builder-grants",
+      "program": "Base Builder Grants — Season 2",
+      "ecosystem": "Base",
+      "url": "https://base.org",
+      "project": "Fork the First Artist — USDC tips on Base",
+      "status": "needs-shaka",
+      "ask_usd": 5000,
+      "public_note": "Written; waiting for Shaka (account/login/KYC or his decision)."
+    },
+    {
+      "id": "celo-prezenti",
+      "program": "Celo Prezenti — Frontier pool",
+      "ecosystem": "Celo",
+      "url": "https://frontier.prezenti.xyz/",
+      "status": "needs-shaka",
+      "ask_usd": 15000,
+      "public_link": "https://forum.celo.org/t/prezenti-season-3-is-open-frontier-anchor-and-boost-grants-for-celo/13714",
+      "public_note": "Written; waiting for Shaka (account/login/KYC or his decision)."
+    },
+    {
+      "id": "circle-arc",
+      "program": "Circle Developer Grants — Cohort 2 (Arc)",
+      "ecosystem": "Circle",
+      "url": "https://www.circle.com/grant",
+      "status": "needs-shaka",
+      "ask_usd": 20000,
+      "public_note": "Written; waiting for Shaka (account/login/KYC or his decision)."
+    },
+    {
+      "id": "giveth-listing",
+      "program": "Giveth — project listing (donations)",
+      "ecosystem": "Giveth",
+      "url": "https://www.giveth.io/create/project",
+      "project": "Lisbon Music Sanctuary donation page",
+      "status": "needs-shaka",
+      "public_note": "Written; waiting for Shaka (account/login/KYC or his decision)."
+    },
+    {
       "id": "hedera-ftfa-mainnet",
       "program": "Hedera Foundation / Hashgraph Association — Fork the First Artist on Hedera mainnet",
       "ecosystem": "Hedera",
@@ -59,6 +97,15 @@
       "ask_usd": 40000,
       "public_note": "Written; waiting for Shaka to submit (form needs his details).",
       "team_budget": "Any Hedera grant is budgeted for the Fork the First Artist development team."
+    },
+    {
+      "id": "ink-spark",
+      "program": "Ink Spark builder grant",
+      "ecosystem": "Ink",
+      "url": "https://docs.inkonchain.com/ink-builder-program/spark-program",
+      "status": "needs-shaka",
+      "ask_usd": 6000,
+      "public_note": "Written; waiting for Shaka (account/login/KYC or his decision)."
     },
     {
       "id": "octant-radar",
