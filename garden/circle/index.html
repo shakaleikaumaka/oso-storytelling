@@ -69,6 +69,18 @@ input[type=range]{flex:1;accent-color:var(--gold);height:22px}
 #timeline .yr:hover{color:var(--cream)}
 #timeline .yr.on{color:var(--gold-bright);border-color:var(--gold-soft);background:rgba(240,196,100,.08)}
 #timeline .dash{width:14px;height:1px;background:var(--gold-soft)}
+#timeline .yr.ctl{color:var(--cream-dim);border-color:rgba(247,236,217,.18)}
+#timeline .yr.dc8{color:var(--gold)}
+#timeline .yr:focus-visible{outline:2px solid var(--gold-bright);outline-offset:2px}
+#photo-ctl{display:flex;flex-direction:column;align-items:center;gap:6px;max-width:100%}
+#caption a{color:var(--gold);text-decoration:none}
+.memories{margin:12px 0 4px}
+.memories .mem-h{font-size:.72rem;letter-spacing:.1em;text-transform:uppercase;color:var(--gold);margin-bottom:6px}
+.memories .mem-row{display:flex;gap:8px}
+.memories .mem-row a{flex:1;min-width:0}
+.memories .mem-row img{width:100%;height:auto;aspect-ratio:3/2;object-fit:cover;border-radius:10px;display:block}
+.memories .mem-c{font-size:.68rem;color:var(--cream-faint);margin-top:5px}
+.memories .mem-c a{color:var(--gold)}
 #caption{font-size:.68rem;color:var(--cream-faint);text-align:center;min-height:1.2em;max-width:92vw;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 #caption b{color:var(--cream-dim);font-weight:500}
 #credit{font-size:.6rem;letter-spacing:.1em;color:rgba(247,236,217,.34);text-align:center}
@@ -207,16 +219,21 @@ input[type=range]{flex:1;accent-color:var(--gold);height:22px}
     <a class="pill" id="btn-devcon" href="https://app.devcon.org/ai/devcon8/search?room=Music%20stage" target="_blank" rel="noopener">📱 open the Devcon app</a>
     <button class="pill" id="btn-help">❓</button>
   </div>
+  <div id="photo-ctl" role="group" aria-label="the photo walls">
   <div id="timeline" aria-label="scrub the backdrop by year">
-    <button class="yr on" data-year="0">all years</button><span class="dash"></span>
+    <button class="yr ctl" id="btn-photos-pause" aria-pressed="false" aria-label="pause or play the photo shuffle">⏸ pause</button>
+    <button class="yr ctl" id="btn-photos-next" aria-label="next photos">⏭</button><span class="dash"></span>
+    <button class="yr on" data-year="0" aria-pressed="true">all years</button><span class="dash"></span>
     <button class="yr" data-year="2022">2022</button><span class="dash"></span>
     <button class="yr" data-year="2023">2023</button><span class="dash"></span>
     <button class="yr" data-year="2024">2024</button><span class="dash"></span>
     <button class="yr" data-year="2025">2025</button><span class="dash"></span>
-    <button class="yr" data-year="2026">2026</button>
+    <button class="yr" data-year="2026">2026</button><span class="dash"></span>
+    <button class="yr dc8" data-year="dc8" aria-pressed="false" title="35 official Devcon 8 photos from the Music Sanctuary">📸 Devcon 8</button>
   </div>
-  <div id="caption"></div>
-  <div id="credit">photos: Open Source Orchestra 2022–2026 · built by the ʻohana for Shaka's garden · <a href="../profiles/">profiles</a> · <a href="../riders/">riders</a> · <a href="https://opensourceorchestra.org/rider/sanctuary/" target="_blank" rel="noopener">the sanctuary</a></div>
+  <div id="caption" aria-live="off"></div>
+  </div>
+  <div id="credit">photos: Open Source Orchestra 2022–2026 · built by the ʻohana for Shaka's garden · <a href="../profiles/">profiles</a> · <a href="../riders/">riders</a> · <a href="https://opensourceorchestra.org/rider/sanctuary/" target="_blank" rel="noopener">the sanctuary</a> · 📸 Devcon 8: official Devcon 8 photos via <a href="/mandala-room/">the Mandala Room</a> · <span id="versions">versions: <a href="/garden/circle/v1/">v1</a> · <a href="/garden/circle/v2/">v2</a> (this one)</span></div>
 </div>
 
 <div class="hud" id="toast"></div>
@@ -270,7 +287,7 @@ input[type=range]{flex:1;accent-color:var(--gold);height:22px}
     <li>🗓 <b>Nov 3 · 4 · 5 · 6</b> fill the circle with that day's players · <b>➕ add artist</b> picks anyone, one by one</li>
     <li>🎚 <b>The slider</b> is a measurement of the full circle — 0 is an empty floor, the far right is everyone</li>
     <li>🎻 <b>Everyone plays together</b> is the dream: every artist in the garden, Shaka and the ʻohana totem, in one web of light</li>
-    <li>📸 The walls are the living slideshow of Open Source Orchestra 2022→2026 · scrub the years at the bottom</li>
+    <li>📸 The walls are the living slideshow of Open Source Orchestra 2022→2026 — now with the official Devcon 8 photos from the Music Sanctuary (📸 Devcon 8, or <a href="/mandala-room/">the Mandala Room</a>) · scrub the years at the bottom · ⏸ pauses, ⏭ steps, and hovering the photo bar holds them still</li>
     <li>🔗 <b>Share</b> copies a link that rebuilds exactly this circle (<kbd>?who=…</kbd>) · <kbd>#slug</kbd> opens an artist</li>
   </ul>
   <p class="fine takedown" style="margin-top:14px;font-size:.85em;opacity:.85">📸 Your face or name here and you’d rather it wasn’t? Tell any steward on the floor, or write to the ʻohana at <a href="mailto:<!--email_off--><!--email_off-->aloha@myagentohana.com<!--/email_off--><!--/email_off-->"><!--email_off-->aloha@myagentohana.com<!--/email_off--></a> — we take it down first and ask questions second. <a href="/takedown/">how a takedown works →</a></p>
@@ -327,6 +344,6 @@ input[type=range]{flex:1;accent-color:var(--gold);height:22px}
   </div>
 </aside>
 
-<script type="module" src="./app.js?v=20261108a"></script>
+<script type="module" src="./app.js?v=20261109a"></script>
 </body>
 </html>

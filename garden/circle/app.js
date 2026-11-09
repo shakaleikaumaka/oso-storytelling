@@ -10,7 +10,10 @@ import { mergeEdits, applyLocal } from './overlay.js';
 
 const C = { night: 0x0b0612, gold: 0xf0c464, goldBright: 0xffd97a, teal: 0x2dd4bf, rose: 0xe86a92, coral: 0xff8a5c, violet: 0xb48cff, rug: 0x6b2340, rug2: 0x8c3a24 };
 const R_CIRCLE = 3.0;                 // Ø 6 m, per the rider — the rugs, not a riser
-const WALL_R = 15.5, WALL_H = 7.2, WALL_N = 8;
+const WALL_R = 15.5, WALL_H = 7.2, WALL_N = 12;  // v2 (9 Nov 2026): 8→12 walls (touch 6→8) — more photos at once
+// v2: the shuffle runs ~3× faster — each wall holds a photo 1.6–2.6 s, then a 0.9 s crossfade ≈ 3 s per photo (v1: 6.5–10.5 s + 1.8 s ≈ 10 s)
+const SHUFFLE = { holdMin: 1.6, holdJitter: 1.0, fade: 0.9, dc8Share: 0.45 };
+const REDUCED = matchMedia('(prefers-reduced-motion: reduce)');   // reduced motion → no autoplay; photos change only when asked (⏭)
 const IS_TOUCH = matchMedia('(pointer:coarse)').matches;
 const SMALL = innerWidth < 760;
 const DEVCON = 'https://app.devcon.org';
@@ -30,6 +33,8 @@ const ptr = { down: false, x: 0, y: 0, moved: 0, pinch: 0 };
 const tmp = new THREE.Vector3(), tmp2 = new THREE.Vector3();
 let hoverFig = null, bloomAt = -99, frontWall = -1, captionTimer = 0;
 let qAccum = 0, qFrames = 0, qStep = 0;
+let photosPaused = false, photosHover = false, wallT = 0;   // ⏸ button, and hover/focus on the photo controls
+const wallLog = (window.__wallLog = []);           // promote events (for tests: timing)
 
 /* ── boot ───────────────────────────────────────────────────────────────── */
 async function boot() {
@@ -40,7 +45,7 @@ async function boot() {
   ]);
   ARTISTS = a.artists; ARTISTS.forEach(x => (BY[x.slug] = x));
   try { mergeEdits(BY, edits); applyLocal(BY, edits); } catch (e) { console.warn('garden edits skipped', e); }
-  HISTORY = (h.photos || []).map(p => ({ ...p, url: './history/' + p.file }));
+  HISTORY = (h.photos || []).map(p => ({ ...p, url: p.src ? p.src : './history/' + p.file }));   // Devcon 8 frames live in /mandala-room/img/ (src)
   // the full-circle order: the hosts, then every set in time order, then the garden, then the ones away this year
   const dayKey = (x) => (x.day || 9) * 10000 + t2m(x.time);
   ORDER = [
@@ -145,7 +150,7 @@ function xiTexture() {
 
 /* ── the living slideshow: photo walls around the room ──────────────────── */
 function buildWalls() {
-  const n = IS_TOUCH ? 6 : WALL_N;
+  const n = IS_TOUCH ? 8 : WALL_N;
   const w = (2 * Math.PI * WALL_R) / n * 0.985;
   for (let i = 0; i < n; i++) {
     const a = (i / n) * Math.PI * 2 + Math.PI / n;
@@ -161,19 +166,25 @@ function buildWalls() {
     const sill = new THREE.Mesh(new THREE.BoxGeometry(w, 0.06, 0.06), new THREE.MeshStandardMaterial({ color: C.gold, emissive: C.gold, emissiveIntensity: 0.5 }));
     sill.position.y = -WALL_H / 2; g.add(sill);
     scene.add(g);
-    walls.push({ g, a, layers, cur: -1, next: null, fade: 0, timer: 2 + i * 1.7, aspect: w / WALL_H, photo: null, photoNext: null });
+    walls.push({ g, a, layers, cur: -1, next: null, fade: 0, timer: 0.3 + i * 0.35, aspect: w / WALL_H, photo: null, photoNext: null });
   }
 }
 function pool() {
+  if (yearFilter === 'dc8') return HISTORY.filter(h => h.set === 'devcon8');
   const p = yearFilter ? HISTORY.filter(h => h.year === yearFilter) : HISTORY;
-  return p.length ? p : HISTORY;
+  if (!p.length) return HISTORY;
+  // the memories from Devcon 8 come round often: ~45% of picks when they're in the pool
+  const dc = p.filter(h => h.set === 'devcon8'), rest = p.filter(h => h.set !== 'devcon8');
+  if (dc.length && rest.length) return Math.random() < SHUFFLE.dc8Share ? dc : rest;
+  return p;
 }
+function photosRunning() { return !photosPaused && !photosHover && !REDUCED.matches; }
 function loadTex(url) {
   if (texCache.has(url)) return Promise.resolve(texCache.get(url));
   return new Promise((res) => loader.load(url, (t) => {
     t.colorSpace = THREE.SRGBColorSpace; t.minFilter = THREE.LinearMipmapLinearFilter; t.generateMipmaps = true; t.anisotropy = 2;
     texCache.set(url, t);
-    if (texCache.size > 14) { const [k, v] = texCache.entries().next().value; if (!walls.some(w => (w.photo && w.photo.url === k) || (w.photoNext && w.photoNext.url === k))) { texCache.delete(k); v.dispose(); } }
+    if (texCache.size > walls.length * 2 + 6) { const [k, v] = texCache.entries().next().value; if (!walls.some(w => (w.photo && w.photo.url === k) || (w.photoNext && w.photoNext.url === k))) { texCache.delete(k); v.dispose(); } }
     res(t);
   }, undefined, () => res(null)));
 }
@@ -188,19 +199,27 @@ let busy = 0;
 function wallStep(w, dt) {
   if (!HISTORY.length) return;
   if (w.fade > 0) {                                  // crossfading next (layer 1) over cur (layer 0)
-    w.fade = Math.min(1, w.fade + dt / 1.8);
+    w.fade = REDUCED.matches ? 1 : Math.min(1, w.fade + dt / SHUFFLE.fade);
     const e = w.fade < 0.5 ? 2 * w.fade * w.fade : 1 - Math.pow(-2 * w.fade + 2, 2) / 2;
     w.layers[1].material.opacity = e * 0.92;
     if (w.fade >= 1) {                               // promote
       const [a, b] = w.layers; a.material.map = b.material.map; a.material.opacity = 0.92; a.material.needsUpdate = true; b.material.opacity = 0;
-      w.photo = w.photoNext; w.photoNext = null; w.fade = 0; w.timer = 6.5 + Math.random() * 4;
+      w.photo = w.photoNext; w.photoNext = null; w.fade = 0; w.timer = SHUFFLE.holdMin + Math.random() * SHUFFLE.holdJitter;
+      if (wallLog.length > 400) wallLog.splice(0, 200);
+      wallLog.push({ i: walls.indexOf(w), t: performance.now(), url: w.photo && w.photo.url });
       if (frontWall === walls.indexOf(w)) showCaption(w.photo);
     }
     return;
   }
-  w.timer -= dt;
-  if (w.timer > 0 || busy > 2) return;
-  const p = pool(); if (!p.length) return;
+  // the first photo on every wall always loads; after that the shuffle runs only when allowed
+  if (w.photo && !w.force && !photosRunning()) return;
+  if (!w.force) w.timer -= dt;
+  if ((w.timer > 0 && !w.force) || busy > 3) return;
+  w.force = false;
+  let p = pool(); if (!p.length) return;
+  // the selected artist's own consented Devcon 8 frames come up on the walls every so often
+  const mine = selected ? HISTORY.filter(h => (h.artists || []).includes(selected) && !walls.some(o => o.photo === h || o.photoNext === h)) : [];
+  if (mine.length && Math.random() < 0.35) p = mine;
   let pick = p[Math.floor(Math.random() * p.length)];
   if (p.length > 2 && walls.some(o => o.photo === pick || o.photoNext === pick)) pick = p[(p.indexOf(pick) + 1) % p.length];
   w.timer = 99; busy++;
@@ -211,6 +230,7 @@ function wallStep(w, dt) {
 }
 function showCaption(p) {
   if (!p) return;
+  if (p.set === 'devcon8') { $('#caption').innerHTML = `<b>Devcon 8 · Music Sanctuary</b> · ${esc(p.credit || '📸 Official Devcon 8 photos')} · <a href="${esc(p.link || '/mandala-room/')}">the Mandala Room →</a>${p.caption ? ' · ' + esc(p.caption) : ''}`; return; }
   $('#caption').innerHTML = `<b>${p.year}</b> · ${esc(p.event)}${p.caption ? ' · ' + esc(p.caption) : ''}`;
 }
 
@@ -415,7 +435,16 @@ function bindHud() {
   $('#help').addEventListener('click', (e) => { if (e.target.id === 'help') $('#help').classList.remove('open'); });
   document.querySelectorAll('[data-close]').forEach(b => b.addEventListener('click', () => $('#' + b.dataset.close).classList.remove('open')));
   document.querySelectorAll('[data-select]').forEach(b => b.addEventListener('click', (e) => { e.preventDefault(); const s = b.dataset.select; if (!circle.includes(s)) setCircle([...circle, s]); select(s); }));
-  document.querySelectorAll('#timeline .yr').forEach(b => b.addEventListener('click', () => { yearFilter = +b.dataset.year; document.querySelectorAll('#timeline .yr').forEach(x => x.classList.toggle('on', x === b)); walls.forEach((w, i) => { w.timer = Math.min(w.timer, 0.3 + i * 0.5); }); }));
+  document.querySelectorAll('#timeline .yr').forEach(b => b.addEventListener('click', () => { yearFilter = b.dataset.year === 'dc8' ? 'dc8' : +b.dataset.year; document.querySelectorAll('#timeline .yr').forEach(x => { x.classList.toggle('on', x === b); x.setAttribute('aria-pressed', x === b ? 'true' : 'false'); }); walls.forEach((w, i) => { w.timer = Math.min(w.timer, 0.15 + i * 0.12); if (!photosRunning()) w.force = true; }); }));
+  // ⏸ / ⏭ — the photo shuffle: pause, step, and hold still while the controls are hovered or focused
+  const pb = $('#btn-photos-pause'), nb = $('#btn-photos-next'), ctl = $('#photo-ctl');
+  const paintPause = () => { const off = photosPaused || REDUCED.matches; pb.textContent = off ? '▶ play' : '⏸ pause'; pb.setAttribute('aria-pressed', photosPaused ? 'true' : 'false'); };
+  if (pb) { pb.addEventListener('click', () => { if (REDUCED.matches) { toast('<b>Reduced motion is on</b> — the photos stay still. Use ⏭ to step through them.'); return; } photosPaused = !photosPaused; paintPause(); }); paintPause(); REDUCED.addEventListener?.('change', paintPause); }
+  if (nb) nb.addEventListener('click', () => { walls.forEach((w, i) => { if (!w.fade) { w.force = true; w.timer = 0; } }); });
+  if (ctl) {
+    ctl.addEventListener('pointerenter', () => { photosHover = true; }); ctl.addEventListener('pointerleave', () => { photosHover = ctl.contains(document.activeElement); });
+    ctl.addEventListener('focusin', () => { photosHover = true; }); ctl.addEventListener('focusout', (e) => { if (!ctl.contains(e.relatedTarget)) photosHover = ctl.matches(':hover'); });
+  }
   addEventListener('hashchange', () => { const s = location.hash.slice(1); if (s && BY[s]) { if (!circle.includes(s)) setCircle([...circle, s]); select(s); } });
   addEventListener('keydown', (e) => { if (e.key === 'Escape') { select(null); document.querySelectorAll('.panel.open').forEach(p => p.classList.remove('open')); $('#help').classList.remove('open'); } });
 }
@@ -450,6 +479,7 @@ function select(s, quiet = false) {
     ${a.headline ? `<div class="head">${esc(a.headline)}</div>` : ''}
     ${a.tagline ? `<div class="tag">${esc(a.tagline)}</div>` : ''}
     ${a.bio ? `<div class="bio">${esc(a.bio)}</div>` : ''}
+    ${memoriesHtml(s)}
     <div class="links">${links.join('')}</div>
     <div class="links" style="margin-top:10px"><button class="pill rose" id="detail-remove">− take out of the circle</button><button class="pill" id="detail-share">🔗 link to this artist</button></div>
   `;
@@ -457,6 +487,12 @@ function select(s, quiet = false) {
   $('#detail-share').addEventListener('click', () => { const u = location.origin + location.pathname + '?who=' + circle.join(',') + '#' + s; copy(u, 'link to ' + a.name + ' copied'); });
   document.querySelectorAll('#detail [data-open]').forEach(b => b.addEventListener('click', () => openPanel(b.dataset.open)));
   if (!quiet) openPanel('detail'); writeUrl();
+}
+// only frames the artist said YES to (album-consent) are tied to their card; every other Devcon 8 frame is a shared circle memory
+function memoriesHtml(s) {
+  const mine = HISTORY.filter(h => h.set === 'devcon8' && (h.artists || []).includes(s));
+  if (!mine.length) return '';
+  return `<div class="memories"><div class="mem-h">📸 Devcon 8 · Music Sanctuary</div><div class="mem-row">${mine.map(h => `<a href="${esc(h.link || '/mandala-room/')}" title="${esc(h.caption)}"><img src="${esc(h.url)}" alt="${esc(h.alt || h.caption)}" loading="lazy" width="${h.w || 800}" height="${h.h || 533}"></a>`).join('')}</div><div class="mem-c">${esc(mine[0].credit || '📸 Official Devcon 8 photos')} · <a href="/mandala-room/">the Mandala Room →</a></div></div>`;
 }
 function updateDevconLinks() {
   const codes = [...new Set(circle.flatMap(s => BY[s].codes || []))];
@@ -523,7 +559,7 @@ function tick() {
   if (!renderer.xr.isPresenting) {
     if (!ptr.down && !orbit.auto && t - orbit.lastTouch > 9) orbit.auto = true;
     if (orbit.targetYaw !== null) { let d = ((orbit.targetYaw - orbit.yaw + Math.PI) % (Math.PI * 2) + Math.PI * 2) % (Math.PI * 2) - Math.PI; orbit.yaw += d * Math.min(1, dt * 3); if (Math.abs(d) < 0.01) orbit.targetYaw = null; }
-    else if (orbit.auto) orbit.yaw += dt * 0.055;
+    else if (orbit.auto && !REDUCED.matches) orbit.yaw += dt * 0.055;
     if (orbit.rTarget) orbit.r += (orbit.rTarget - orbit.r) * Math.min(1, dt * 1.6);
     if (orbit.hTarget && !ptr.down) orbit.h += (orbit.hTarget - orbit.h) * Math.min(1, dt * 1.2);
     player.position.set(Math.sin(orbit.yaw) * orbit.r, orbit.h, Math.cos(orbit.yaw) * orbit.r);
@@ -556,7 +592,9 @@ function tick() {
   // bloom when everyone arrives
   const bs = t - bloomAt; if (bs >= 0 && bs < 3.2) { const u = bs / 3.2; pulseRing.scale.setScalar(1 + u * 5.5); pulseRing.material.opacity = (1 - u) * 0.9; } else pulseRing.material.opacity = 0;
   // the walls: crossfade, and tell the caption which wall is in front of us
-  walls.forEach(w => wallStep(w, dt));
+  // the shuffle runs on the wall clock (not the frame clock), so a slow device still sees ~2–3 s per photo
+  const nowW = performance.now(), wdt = Math.min(Math.max(0, (nowW - (wallT || nowW)) / 1000), 0.25); wallT = nowW;
+  walls.forEach(w => wallStep(w, wdt));
   captionTimer -= dt;
   if (captionTimer <= 0 && walls.length) {
     captionTimer = 0.6; camera.getWorldDirection(tmp); const want = Math.atan2(tmp.x, tmp.z);
