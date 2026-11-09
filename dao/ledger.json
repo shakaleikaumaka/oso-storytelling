@@ -1,0 +1,20 @@
+{
+  "name": "Open Source Orchestra DAO — the open ledger",
+  "updated": "2026-11-09T11:15:00Z",
+  "url": "https://opensourceorchestra.org/dao/",
+  "note": "A community ledger, not yet an on-chain DAO. Every grant is announced here first, then to the whole orchestra.",
+  "recipient": "osoartist.eth",
+  "grants": [
+    {
+      "id": "1inch-aqua-incubator",
+      "program": "1inch DAO — Aqua Revenue Stream Incubator",
+      "ecosystem": "1inch",
+      "url": "https://1inch.network/aqua-incubator",
+      "project": "Patronage Liquidity — ENS-routed artist fee streams on Aqua",
+      "applied": "2026-11-09",
+      "status": "applied",
+      "ask_usd": 40000,
+      "public_link": "https://gov.1inch.network/t/1inch-dao-aqua-revenue-stream-incubator-build-a-funded-revenue-sharing-strategy-on-aqua/965"
+    }
+  ]
+}
