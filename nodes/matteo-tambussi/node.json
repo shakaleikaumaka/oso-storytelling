@@ -5,7 +5,7 @@
   "name": "Matteo Tambussi",
   "emoji": "🎻🇮🇹",
   "tagline": "CO-FOUNDER OF THE TRADITION · musician & linguist · Turin, Italy",
-  "bio": "Musician and producer since 2000 (Baroque, Eskinzo, solo from Berlin and Turin) — 11+ albums, stages opened for Nick Cave, Primal Scream, Boy George; radio on BBC 6 Music. Political linguist, ethereum ant, co-founder of SpaghettETH, co-organizer of ETHTurin 2020 — and author of the first music DIP in Devcon history (June 17, 2022), the seed of the Open Source Orchestra Music Space.",
+  "bio": "Musician and producer since 2000 (Baroque, Eskinzo, solo from Berlin and Turin) — 11+ albums, stages opened for Nick Cave, Primal Scream, Boy George; radio on BBC 6 Music. Political linguist, ethereum ant, co-founder of SpaghettETH, co-organizer of ETHTurin 2020 — and author of the 2022 proposal for a live, community-run open-mic music stage (June 17, 2022), the seed of the Open Source Orchestra Music Space. Devcon's wider music history includes the earlier 2020 Audius music DIP.",
   "quote": "Jamming live amongst devs turns out to create unique bonds.",
   "location": "Turin, Italy 🇮🇹",
   "links": [
@@ -34,7 +34,7 @@
       "url": "https://open.spotify.com/artist/6FABMAInCLqiYpazFhoKDs"
     },
     {
-      "label": "The first music DIP (2022)",
+      "label": "The live open-mic music-stage DIP (2022)",
       "url": "https://forum.devcon.org/t/music-sessions-open-mic-stage/387"
     }
   ],
