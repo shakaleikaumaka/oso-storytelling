@@ -79,4 +79,5 @@ fetch('status.json',{cache:'no-store'}).then(r=>r.json()).then(d=>{
  document.getElementById('bar').style.width=(100*n/t.length)+'%';
  document.getElementById('upd').textContent='Last updated '+new Date(d.updated).toUTCString();
 }).catch(()=>{document.getElementById('count').textContent='Status unavailable — see plan below.'});
-</script></main></body></html>
+</script></main><script src="/assets/lisbon-unicorn.js" data-lisbon-unicorn-loader defer></script>
+</body></html>

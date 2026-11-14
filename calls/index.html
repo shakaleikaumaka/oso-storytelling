@@ -97,5 +97,6 @@
   document.querySelectorAll('ol.ch li').forEach(li=>li.addEventListener('click',()=>{const t=+li.dataset.t;const m=a;m.currentTime=t;m.play();m.scrollIntoView({behavior:'smooth',block:'center'});}));
   if(location.hash.startsWith('#t=')){const t=+location.hash.slice(3);if(t){a.currentTime=t;}}
 </script>
+<script src="/assets/lisbon-unicorn.js" data-lisbon-unicorn-loader defer></script>
 </body>
 </html>
