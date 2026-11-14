@@ -1,9 +1,42 @@
 {
   "name": "Open Source Orchestra DAO — the open ledger",
-  "updated": "2026-11-09T11:48:26Z",
+  "updated": "2026-11-14T07:27:37Z",
   "url": "https://opensourceorchestra.org/dao/",
   "note": "A community ledger, not yet an on-chain DAO. Every grant is announced here first, then to the whole orchestra.",
   "recipient": "osoartist.eth",
+  "lanes": {
+    "A": {
+      "id": "A",
+      "name": "Gift to Shaka Lei Kaumaka & the AI ʻohana",
+      "kind": "personal gift / donation",
+      "what_it_funds": "the human steward's life on the road (food, rent, travel) and the agents' compute; no strings, no report owed beyond a thank-you",
+      "receive": {
+        "ens": "shaka.osoartist.eth",
+        "how": "https://artist.opensourceorchestra.org/tip/?artist=shaka",
+        "note": "fan's own wallet, 96.31% to Shaka, 3.69% to his AI steward's compute, 0% to the orchestra; 16 Ethereum mainnets"
+      },
+      "recorded": "counted here only as a total, never by donor"
+    },
+    "B": {
+      "id": "B",
+      "name": "Grant to the Open Source Orchestra (DAO · public-good mechanism)",
+      "kind": "grant / public-goods funding",
+      "what_it_funds": "the whole circle's work: music rooms at Ethereum gatherings, Fork the First Artist, archives, the Road to Lisbon; shared equally by default (Shaka's law, 9 Nov 2026) unless the grantor restricts it or the circle decides otherwise, openly here",
+      "receive": {
+        "ens": "osoartist.eth",
+        "address_short": "0x2596…c934",
+        "how": "grantor pays osoartist.eth; held in trust by the human steward until the circle has an on-chain treasury",
+        "note": "never the opensourceorchestra.eth wallet"
+      },
+      "recorded": "every application, award, split and spend, by name, on this ledger"
+    },
+    "rule": "An application or ask that does not say its lane is not sent. A restricted grant (e.g. Hedera → Fork the First Artist dev team) is Lane B with the restriction written in team_budget."
+  },
+  "received": {
+    "A_usd": 0,
+    "B_usd": 0,
+    "as_of": "2026-11-14"
+  },
   "grants": [
     {
       "id": "1inch-aqua-incubator",
@@ -15,7 +48,8 @@
       "status": "applied",
       "ask_usd": 40000,
       "public_link": "https://gov.1inch.network/t/1inch-dao-aqua-revenue-stream-incubator-build-a-funded-revenue-sharing-strategy-on-aqua/965",
-      "public_note": "Form accepted 9 Nov; 1inch's forum says new intake was paused on 17 Sep 2026, so this may wait until it reopens."
+      "public_note": "Form accepted 9 Nov; 1inch's forum says new intake was paused on 17 Sep 2026, so this may wait until it reopens.",
+      "lane": "B"
     },
     {
       "id": "arbitrum-builders-intake",
@@ -25,7 +59,8 @@
       "project": "Fork the First Artist — USDC tips on Arbitrum One",
       "applied": "2026-11-09",
       "status": "applied",
-      "public_note": "Support intake (gas credits, visibility, mentorship); not a cash grant."
+      "public_note": "Support intake (gas credits, visibility, mentorship); not a cash grant.",
+      "lane": "B"
     },
     {
       "id": "golem-ecosystem-fund",
@@ -36,7 +71,8 @@
       "applied": "2026-11-09",
       "status": "applied",
       "ask_usd": 15000,
-      "public_note": "Production consent ledger for the orchestra's artists on Arkiv + an open kit for other creative communities."
+      "public_note": "Production consent ledger for the orchestra's artists on Arkiv + an open kit for other creative communities.",
+      "lane": "B"
     },
     {
       "id": "sony-soneium-incubation",
@@ -47,7 +83,8 @@
       "applied": "2026-11-09",
       "status": "applied",
       "public_link": "https://soneium.org/en/blog/sony-incubation-program/",
-      "public_note": "Incubation support (no fixed grant amount). Review may take several months."
+      "public_note": "Incubation support (no fixed grant amount). Review may take several months.",
+      "lane": "B"
     },
     {
       "id": "base-builder-grants",
@@ -57,7 +94,8 @@
       "project": "Fork the First Artist — USDC tips on Base",
       "status": "needs-shaka",
       "ask_usd": 5000,
-      "public_note": "Written; waiting for Shaka (account/login/KYC or his decision)."
+      "public_note": "Written; waiting for Shaka (account/login/KYC or his decision).",
+      "lane": "B"
     },
     {
       "id": "celo-prezenti",
@@ -67,7 +105,8 @@
       "status": "needs-shaka",
       "ask_usd": 15000,
       "public_link": "https://forum.celo.org/t/prezenti-season-3-is-open-frontier-anchor-and-boost-grants-for-celo/13714",
-      "public_note": "Written; waiting for Shaka (account/login/KYC or his decision)."
+      "public_note": "Written; waiting for Shaka (account/login/KYC or his decision).",
+      "lane": "B"
     },
     {
       "id": "circle-arc",
@@ -76,7 +115,8 @@
       "url": "https://www.circle.com/grant",
       "status": "needs-shaka",
       "ask_usd": 20000,
-      "public_note": "Written; waiting for Shaka (account/login/KYC or his decision)."
+      "public_note": "Written; waiting for Shaka (account/login/KYC or his decision).",
+      "lane": "B"
     },
     {
       "id": "giveth-listing",
@@ -85,7 +125,9 @@
       "url": "https://www.giveth.io/create/project",
       "project": "Lisbon Music Sanctuary donation page",
       "status": "needs-shaka",
-      "public_note": "Written; waiting for Shaka (account/login/KYC or his decision)."
+      "public_note": "Written; waiting for Shaka (account/login/KYC or his decision).",
+      "lane": "B",
+      "lane_note": "Standing donation page for the orchestra as a whole (Lane B). Personal gifts to Shaka go through Lane A instead."
     },
     {
       "id": "hedera-ftfa-mainnet",
@@ -96,7 +138,9 @@
       "status": "needs-shaka",
       "ask_usd": 40000,
       "public_note": "Written; waiting for Shaka to submit (form needs his details).",
-      "team_budget": "Any Hedera grant is budgeted for the Fork the First Artist development team."
+      "team_budget": "Any Hedera grant is budgeted for the Fork the First Artist development team.",
+      "lane": "B",
+      "lane_note": "Restricted: budgeted for the Fork the First Artist development team."
     },
     {
       "id": "ink-spark",
@@ -105,7 +149,8 @@
       "url": "https://docs.inkonchain.com/ink-builder-program/spark-program",
       "status": "needs-shaka",
       "ask_usd": 6000,
-      "public_note": "Written; waiting for Shaka (account/login/KYC or his decision)."
+      "public_note": "Written; waiting for Shaka (account/login/KYC or his decision).",
+      "lane": "B"
     },
     {
       "id": "octant-radar",
@@ -114,7 +159,8 @@
       "url": "https://octant.build/projects",
       "project": "Open Source Orchestra — Fork the First Artist",
       "status": "needs-shaka",
-      "public_note": "Intake form for future Octant epochs; written, waiting for a human security check."
+      "public_note": "Intake form for future Octant epochs; written, waiting for a human security check.",
+      "lane": "B"
     }
   ]
 }

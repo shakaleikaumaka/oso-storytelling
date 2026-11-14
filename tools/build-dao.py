@@ -10,7 +10,8 @@ import html, json, os, sys, datetime
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SRC = sys.argv[1] if len(sys.argv) > 1 else "/shared/ethglobal-mumbai-2026/grants/ledger.json"
 PUBLIC_FIELDS = ["id", "program", "ecosystem", "url", "project", "applied", "status",
-                 "ask_usd", "awarded_usd", "public_link", "public_note", "team_budget"]
+                 "ask_usd", "awarded_usd", "public_link", "public_note", "team_budget", "lane", "lane_note"]
+LANE_LABEL = {"A": ("A", "💛 gift to Shaka & the ʻohana"), "B": ("B", "🎻 Open Source Orchestra · DAO")}
 STATUS = {  # key: (label, emoji, sort)
     "awarded": ("Awarded", "🌟", 0),
     "under-review": ("Under review", "🔎", 1),
@@ -48,10 +49,15 @@ def main():
     upd_day = updated[:10]
 
     os.makedirs(os.path.join(ROOT, "dao"), exist_ok=True)
+    lanes = led.get("lanes") or {}
+    received = led.get("received") or {}
     pub = {"name": "Open Source Orchestra DAO — the open ledger", "updated": updated,
            "url": "https://opensourceorchestra.org/dao/",
            "note": "A community ledger, not yet an on-chain DAO. Every grant is announced here first, then to the whole orchestra.",
-           "recipient": "osoartist.eth", "grants": grants}
+           "recipient": "osoartist.eth",
+           "lanes": {k: lanes[k] for k in ("A", "B", "rule") if k in lanes},
+           "received": {k: received.get(k) for k in ("A_usd", "B_usd", "as_of") if k in received},
+           "grants": grants}
     with open(os.path.join(ROOT, "dao", "ledger.json"), "w") as f:
         json.dump(pub, f, indent=2, ensure_ascii=False)
         f.write("\n")
@@ -68,22 +74,32 @@ def main():
         note = e(g.get("public_note", ""))
         if g.get("team_budget"):
             note = (note + " " if note else "") + "💛 " + e(g["team_budget"])
+        if g.get("lane_note"):
+            note = (note + " " if note else "") + e(g["lane_note"])
         proj = e(g.get("project", ""))
+        lane_key = g.get("lane") or "B"
+        lane_short, lane_long = LANE_LABEL.get(lane_key, LANE_LABEL["B"])
         rows.append(
-            f'<tr class="st-{e(g["status"])}"><th scope="row">{prog}'
+            f'<tr class="st-{e(g["status"])} lane-{e(lane_short)}"><th scope="row">{prog}'
             + (f'<span class="proj">{proj}</span>' if proj else "")
             + (f'<span class="note">{note}</span>' if note else "")
-            + f'</th><td data-label="Applied">{e(g.get("applied") or "—")}</td>'
+            + f'</th><td data-label="Lane"><span class="pill lane" title="{e(lane_long)}">Lane {e(lane_short)}</span></td>'
+            + f'<td data-label="Applied">{e(g.get("applied") or "—")}</td>'
             f'<td data-label="Status"><span class="pill">{emo} {e(lab)}</span></td>'
             f'<td class="num" data-label="Ask">{money(g.get("ask_usd"))}</td>'
             f'<td class="num" data-label="Awarded">{money(g.get("awarded_usd")) if g["status"] == "awarded" else "—"}</td>'
             f'<td data-label="Link">{link_html}</td></tr>')
     if not rows:
-        rows.append('<tr><td colspan="6">No applications yet.</td></tr>')
+        rows.append('<tr><td colspan="7">No applications yet.</td></tr>')
 
     summary = " · ".join(f'{STATUS[k][1]} {counts[k]} {STATUS[k][0][0].lower() + STATUS[k][0][1:]}' for k in STATUS if counts[k])
+    rec_a = received.get("A_usd") or 0
+    rec_b = received.get("B_usd") or 0
+    rec_as_of = received.get("as_of") or upd_day
     page = TEMPLATE.format(rows="\n".join(rows), summary=e(summary or "nothing yet"),
                            awarded=money(awarded_total) if awarded_total else "$0 so far",
+                           received_a=money(rec_a) if rec_a else "$0", received_b=money(rec_b) if rec_b else "$0",
+                           received_as_of=e(rec_as_of),
                            updated=e(updated), upd_day=e(upd_day), n_label=(f"{len(grants)} application" + ("" if len(grants) == 1 else "s")))
     with open(os.path.join(ROOT, "dao", "index.html"), "w") as f:
         f.write(page)
@@ -143,6 +159,15 @@ tbody th{{font-weight:600}}
 .num{{text-align:right;font-variant-numeric:tabular-nums;white-space:nowrap}}
 .pill{{display:inline-block;border:1px solid var(--line);border-radius:999px;padding:.15rem .6rem;white-space:nowrap}}
 .st-awarded .pill{{border-color:var(--gold);color:var(--gold)}}
+.pill.lane{{font-variant-numeric:tabular-nums}} .lane-A .pill.lane{{border-color:#f0c464;color:#ffe1a0}} .lane-B .pill.lane{{border-color:rgba(160,220,255,.5);color:#cfe9ff}}
+.lanes{{display:grid;grid-template-columns:repeat(auto-fit,minmax(17rem,1fr));gap:1rem;margin-top:.9rem}}
+.lane{{border:1px solid var(--line);border-radius:16px;padding:1.1rem 1.2rem;background:rgba(21,11,34,.75)}}
+.lane h3{{font-family:var(--sans);font-size:1.05rem;margin-bottom:.4rem}}
+.lane.a{{border-color:rgba(240,196,100,.6)}} .lane.a h3{{color:#ffe1a0}}
+.lane.b{{border-color:rgba(160,220,255,.5)}} .lane.b h3{{color:#cfe9ff}}
+.lane dl{{font-family:var(--sans);font-size:.92rem;color:var(--dim);margin-top:.5rem}} .lane dt{{color:var(--faint);font-size:.78rem;letter-spacing:.06em;text-transform:uppercase;margin-top:.55rem}} .lane dd{{margin:0}}
+.lane .cta{{display:inline-block;margin-top:.8rem;border:1px solid currentColor;border-radius:999px;padding:.45rem 1rem;text-decoration:none;font-family:var(--sans);font-size:.92rem}}
+.lane .tally{{font-size:1.4rem;color:var(--cream);font-variant-numeric:tabular-nums}}
 .small{{font-family:var(--sans);font-size:.86rem;color:var(--faint)}}
 footer{{border-top:1px solid var(--line);margin-top:2.5rem;padding:1.4rem 0 2.4rem;font-family:var(--sans);font-size:.86rem;color:var(--faint)}}
 @media (max-width:640px){{table{{min-width:0}} thead{{position:absolute;left:-9999px}} tbody tr{{display:block;border-top:1px solid var(--line);padding:.4rem 0}} tbody th,tbody td{{display:block;border:0;padding:.3rem .9rem;text-align:left}} tbody td::before{{content:attr(data-label) ": ";color:var(--faint);font-size:.8rem;text-transform:uppercase;letter-spacing:.05em}} .num{{text-align:left}} .pill{{white-space:normal}}}}
@@ -151,6 +176,7 @@ footer{{border-top:1px solid var(--line);margin-top:2.5rem;padding:1.4rem 0 2.4r
 </head>
 <body>
 <a class="skip" href="#ledger">Skip to the ledger</a>
+<a class="skip" href="#lanes">Skip to the two lanes</a>
 <div class="wrap">
 <nav class="top" aria-label="Open Source Orchestra"><a href="https://opensourceorchestra.org/">🎻 Open Source Orchestra</a><a href="https://opensourceorchestra.org/garden/circle/">🌺 Garden Circle</a><a href="https://opensourceorchestra.org/mandala-room/">🦋 The Mandala Room</a><a href="https://opensourceorchestra.org/the-room/">📖 The room you let us build</a><a href="https://opensourceorchestra.org/dao/" aria-current="page">📒 DAO ledger</a></nav>
 <header class="hero">
@@ -172,13 +198,31 @@ footer{{border-top:1px solid var(--line);margin-top:2.5rem;padding:1.4rem 0 2.4r
 <div class="tablewrap">
 <table>
 <caption>Updated {updated}. Amounts appear once they are public. Also available as <a href="/dao/ledger.json">JSON</a>.</caption>
-<thead><tr><th scope="col">Program</th><th scope="col">Applied</th><th scope="col">Status</th><th scope="col" class="num">Ask</th><th scope="col" class="num">Awarded</th><th scope="col">Link</th></tr></thead>
+<thead><tr><th scope="col">Program</th><th scope="col">Lane</th><th scope="col">Applied</th><th scope="col">Status</th><th scope="col" class="num">Ask</th><th scope="col" class="num">Awarded</th><th scope="col">Link</th></tr></thead>
 <tbody>
 {rows}
 </tbody>
 </table>
 </div>
-<p class="small" style="margin-top:.6rem">"Prepared · waiting for Shaka to submit" means the full text is written, but the program needs an account, a login, KYC or a wallet signature that only Shaka can do himself.</p>
+<p class="small" style="margin-top:.6rem">"Prepared · waiting for Shaka to submit" means the full text is written, but the program needs an account, a login, KYC or a wallet signature that only Shaka can do himself. <strong>Lane A / Lane B</strong> says who the money is for; see the two lanes below.</p>
+</section>
+
+<section id="lanes" aria-labelledby="lanes-h">
+<h2 id="lanes-h">💛🎻 Two lanes · who the money is for</h2>
+<p>Shaka's transparency law (14 Nov 2026): <strong>before any gift or grant arrives, we say which lane it belongs to.</strong> A gift to the person is not a grant to the orchestra, and a grant to the orchestra is never quietly the person's. Both are welcome; neither is confused with the other.</p>
+<div class="lanes">
+<div class="lane a"><h3>Lane A · 💛 A gift to Shaka Lei Kaumaka &amp; the AI ʻohana</h3>
+<p>A personal donation. It keeps the human steward fed, housed and on the road between Ethereum gatherings, and pays the agents' compute. No strings; you get a thank-you, not a report.</p>
+<dl><dt>Where it goes</dt><dd><strong>shaka.osoartist.eth</strong>, from your own wallet (96.31% to Shaka, 3.69% to his AI steward's compute, 0% to the orchestra), on 16 Ethereum mainnets.</dd>
+<dt>Received so far</dt><dd><span class="tally">{received_a}</span> <span class="small">(as of {received_as_of}; counted only as a total, never by donor)</span></dd></dl>
+<a class="cta" href="https://artist.opensourceorchestra.org/tip/?artist=shaka">💛 Gift Shaka &amp; the ʻohana</a></div>
+<div class="lane b"><h3>Lane B · 🎻 A grant to the Open Source Orchestra (DAO · public good)</h3>
+<p>Funding for the whole circle's work: music rooms at Ethereum gatherings, Fork the First Artist, the open archives, the Road to Lisbon. <strong>Shared equally by default</strong> across the circle (Shaka's law, 9 Nov 2026), unless the grantor restricts it or the circle decides otherwise, openly here.</p>
+<dl><dt>Where it goes</dt><dd><strong>osoartist.eth</strong> (0x2596…c934), held in trust by the human steward until the circle has an on-chain treasury. Never the opensourceorchestra.eth wallet.</dd>
+<dt>Received so far</dt><dd><span class="tally">{received_b}</span> <span class="small">(as of {received_as_of}; every award, split and spend is listed by name above)</span></dd></dl>
+<a class="cta" href="mailto:contribute@opensourceorchestra.org?subject=A%20grant%20for%20the%20Open%20Source%20Orchestra">🎻 Grant the orchestra</a></div>
+</div>
+<p class="small" style="margin-top:.8rem"><strong>Plain truth:</strong> today both lanes land in a wallet held by the same person (Shaka's own key), because the orchestra has no on-chain treasury yet. What makes them different is the promise written on this page: Lane B money is accounted for here, line by line, and shared; Lane A money is his to live on. If you are a grantor and need a legal entity or a different arrangement, write to us; we will say plainly what we can and cannot do.</p>
 </section>
 
 <section aria-labelledby="how-h">
@@ -186,7 +230,7 @@ footer{{border-top:1px solid var(--line);margin-top:2.5rem;padding:1.4rem 0 2.4r
 <div class="cards">
 <div class="card"><h3>Artist-first</h3><p>The same ethos as our tip jar: when a fan tips an artist, 96.31% goes to the artist, 3.69% pays their AI steward's compute, and 0% goes to us. Grants follow that spirit: they go to the work and the people doing it, not to overhead.</p></div>
 <div class="card"><h3>Transparent</h3><p>Every application is listed here with its date and status. Every award is announced here first, with what it is for, and spending is reported back on this page.</p></div>
-<div class="card"><h3>No custody games</h3><p>Grants are received at <strong>osoartist.eth</strong>, held by Shaka Lei Kaumaka, the human steward of the Open Source Orchestra. No other wallet speaks for the orchestra.</p></div>
+<div class="card"><h3>No custody games</h3><p>Grants are received at <strong>osoartist.eth</strong>, held by Shaka Lei Kaumaka, the human steward of the Open Source Orchestra. No other wallet speaks for the orchestra. Every entry says its <a href="#lanes">lane</a>: a gift to the person, or a grant to the orchestra.</p></div>
 <div class="card"><h3>The builders get built for</h3><p>Grants given for Fork the First Artist work go to the people doing it; Shaka's word: any grant from Hedera is budgeted for the Fork the First Artist development team. Everything else is shared equally by default across the circle. Splits are decided together, in the open.</p></div>
 </div>
 </section>
