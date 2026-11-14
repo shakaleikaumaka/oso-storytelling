@@ -12,6 +12,13 @@ SRC = sys.argv[1] if len(sys.argv) > 1 else "/shared/ethglobal-mumbai-2026/grant
 PUBLIC_FIELDS = ["id", "program", "ecosystem", "url", "project", "applied", "status",
                  "ask_usd", "awarded_usd", "public_link", "public_note", "team_budget", "lane", "lane_note"]
 LANE_LABEL = {"A": ("A", "💛 gift to Shaka & the ʻohana"), "B": ("B", "🎻 Open Source Orchestra · DAO")}
+RAIL_FIELDS = ["id", "lane", "status", "name", "emoji", "how", "fee", "holds", "link", "verified", "needs", "currency"]
+RAIL_STATUS = {  # key: (label, emoji, css)
+    "live": ("Live now", "🟢", "live"),
+    "needs-shaka": ("Needs Shaka to switch on", "✍️", "needs"),
+    "researching": ("Researched · circle decides", "🔎", "research"),
+    "not-eligible": ("Not eligible today", "🍂", "no"),
+}
 STATUS = {  # key: (label, emoji, sort)
     "awarded": ("Awarded", "🌟", 0),
     "under-review": ("Under review", "🔎", 1),
@@ -57,6 +64,10 @@ def main():
            "recipient": "osoartist.eth",
            "lanes": {k: lanes[k] for k in ("A", "B", "rule") if k in lanes},
            "received": {k: received.get(k) for k in ("A_usd", "B_usd", "as_of") if k in received},
+           "rails_doc": led.get("rails_doc"),
+           "rails": [{k: r.get(k) for k in RAIL_FIELDS if r.get(k) not in (None, "")} for r in (led.get("rails") or [])],
+           "gifts_log_doc": led.get("gifts_log_doc"),
+           "gifts_log": [{k: g.get(k) for k in ("month", "lane", "usd", "note") if g.get(k) not in (None, "")} for g in (led.get("gifts_log") or [])],
            "grants": grants}
     with open(os.path.join(ROOT, "dao", "ledger.json"), "w") as f:
         json.dump(pub, f, indent=2, ensure_ascii=False)
@@ -96,7 +107,46 @@ def main():
     rec_a = received.get("A_usd") or 0
     rec_b = received.get("B_usd") or 0
     rec_as_of = received.get("as_of") or upd_day
+    rails_html = []
+    rails = [r for r in (led.get("rails") or []) if not r.get("private")]
+    for lane_key in ("A", "B"):
+        lane_short, lane_long = LANE_LABEL[lane_key]
+        cards = []
+        for r in rails:
+            if (r.get("lane") or "B") != lane_key:
+                continue
+            st = r.get("status") if r.get("status") in RAIL_STATUS else "researching"
+            lab, emo, css = RAIL_STATUS[st]
+            u = safe_url(r.get("link")) or (r.get("link") if isinstance(r.get("link"), str) and r["link"].startswith("mailto:") else "")
+            title = e(r.get("name", r.get("id", "")))
+            if u:
+                title = f'<a href="{e(u)}" rel="noopener">{title}</a>'
+            dl = [f'<dt>Fee</dt><dd>{e(r["fee"])}</dd>' if r.get("fee") else "",
+                  f'<dt>Who holds the money</dt><dd>{e(r["holds"])}</dd>' if r.get("holds") else "",
+                  f'<dt>What Shaka must do</dt><dd>{e(r["needs"])}</dd>' if r.get("needs") and st != "live" else "",
+                  f'<dt>Checked</dt><dd>{e(r["verified"])}</dd>' if r.get("verified") else ""]
+            cards.append(f'<div class="rail rail-{css} lane-{e(lane_short)}"><h4>{e(r.get("emoji", ""))} {title}</h4>'
+                         f'<p class="rail-st"><span class="pill st">{emo} {e(lab)}</span> <span class="pill lane">Lane {e(lane_short)}</span></p>'
+                         + (f'<p>{e(r["how"])}</p>' if r.get("how") else "")
+                         + f'<dl>{"".join(dl)}</dl></div>')
+        if cards:
+            rails_html.append(f'<h3 class="rails-h">{e(lane_long)}</h3><div class="rails">{"".join(cards)}</div>')
+    if not rails_html:
+        rails_html.append('<p class="small">No rails listed yet.</p>')
+    n_live = sum(1 for r in rails if r.get("status") == "live")
+    n_needs = sum(1 for r in rails if r.get("status") == "needs-shaka")
+    gifts = sorted((g for g in (led.get("gifts_log") or []) if g.get("month")), key=lambda g: g["month"])
+    months = {}
+    for g in gifts:
+        m = months.setdefault(g["month"], {"A": 0, "B": 0, "note": []})
+        m[g.get("lane") or "B"] += g.get("usd") or 0
+        if g.get("note"):
+            m["note"].append(str(g["note"]))
+    grows = [f'<tr><th scope="row">{e(m)}</th><td class="num" data-label="Lane A">{money(v["A"])}</td><td class="num" data-label="Lane B">{money(v["B"])}</td><td data-label="Note">{e("; ".join(v["note"])) or "—"}</td></tr>' for m, v in months.items()]
+    if not grows:
+        grows = [f'<tr><th scope="row">Nothing yet</th><td class="num" data-label="Lane A">$0</td><td class="num" data-label="Lane B">$0</td><td data-label="Note">No donation has landed through these rails as of {e(rec_as_of)}. When one does, the month\'s total appears here — never a donor\'s name.</td></tr>']
     page = TEMPLATE.format(rows="\n".join(rows), summary=e(summary or "nothing yet"),
+                           rails="\n".join(rails_html), gifts="\n".join(grows), n_live=n_live, n_needs=n_needs,
                            awarded=money(awarded_total) if awarded_total else "$0 so far",
                            received_a=money(rec_a) if rec_a else "$0", received_b=money(rec_b) if rec_b else "$0",
                            received_as_of=e(rec_as_of),
@@ -169,6 +219,19 @@ tbody th{{font-weight:600}}
 .lane .cta{{display:inline-block;margin-top:.8rem;border:1px solid currentColor;border-radius:999px;padding:.45rem 1rem;text-decoration:none;font-family:var(--sans);font-size:.92rem}}
 .lane .tally{{font-size:1.4rem;color:var(--cream);font-variant-numeric:tabular-nums}}
 .small{{font-family:var(--sans);font-size:.86rem;color:var(--faint)}}
+.rails-h{{font-family:var(--sans);font-size:1.02rem;color:var(--gold);margin:1.1rem 0 .4rem}}
+.rails{{display:grid;grid-template-columns:repeat(auto-fit,minmax(16rem,1fr));gap:.8rem}}
+.rail{{border:1px solid var(--line);border-radius:14px;padding:.85rem .95rem;background:rgba(21,11,34,.72)}}
+.rail h4{{font-family:var(--sans);font-size:1rem;font-weight:600;color:var(--cream)}}
+.rail p{{color:var(--dim);font-size:.94rem;margin-top:.35rem}} .rail p.rail-st{{margin-top:.3rem}}
+.rail dl{{font-family:var(--sans);font-size:.84rem;color:var(--dim);margin-top:.4rem}} .rail dt{{color:var(--faint);font-size:.74rem;letter-spacing:.06em;text-transform:uppercase;margin-top:.4rem}} .rail dd{{margin:0}}
+.rail .pill.st{{font-family:var(--sans);font-size:.8rem}}
+.rail-live{{border-color:rgba(126,226,160,.55)}} .rail-live .pill.st{{border-color:rgba(126,226,160,.7);color:#bff2d2}}
+.rail-needs .pill.st{{border-color:var(--gold);color:#ffe1a0}}
+.rail-research .pill.st{{border-color:rgba(160,220,255,.5);color:#cfe9ff}}
+.rail-no{{opacity:.85}} .rail-no .pill.st{{color:var(--faint)}}
+.rail.lane-A .pill.lane{{border-color:#f0c464;color:#ffe1a0}} .rail.lane-B .pill.lane{{border-color:rgba(160,220,255,.5);color:#cfe9ff}}
+.gifts table{{min-width:0}}
 footer{{border-top:1px solid var(--line);margin-top:2.5rem;padding:1.4rem 0 2.4rem;font-family:var(--sans);font-size:.86rem;color:var(--faint)}}
 @media (max-width:640px){{table{{min-width:0}} thead{{position:absolute;left:-9999px}} tbody tr{{display:block;border-top:1px solid var(--line);padding:.4rem 0}} tbody th,tbody td{{display:block;border:0;padding:.3rem .9rem;text-align:left}} tbody td::before{{content:attr(data-label) ": ";color:var(--faint);font-size:.8rem;text-transform:uppercase;letter-spacing:.05em}} .num{{text-align:left}} .pill{{white-space:normal}}}}
 @media (prefers-reduced-motion:reduce){{*{{transition:none!important;animation:none!important}}}}
@@ -177,6 +240,7 @@ footer{{border-top:1px solid var(--line);margin-top:2.5rem;padding:1.4rem 0 2.4r
 <body>
 <a class="skip" href="#ledger">Skip to the ledger</a>
 <a class="skip" href="#lanes">Skip to the two lanes</a>
+<a class="skip" href="#give">Skip to ways to give</a>
 <div class="wrap">
 <nav class="top" aria-label="Open Source Orchestra"><a href="https://opensourceorchestra.org/">🎻 Open Source Orchestra</a><a href="https://opensourceorchestra.org/garden/circle/">🌺 Garden Circle</a><a href="https://opensourceorchestra.org/mandala-room/">🦋 The Mandala Room</a><a href="https://opensourceorchestra.org/the-room/">📖 The room you let us build</a><a href="https://opensourceorchestra.org/dao/" aria-current="page">📒 DAO ledger</a></nav>
 <header class="hero">
@@ -223,6 +287,22 @@ footer{{border-top:1px solid var(--line);margin-top:2.5rem;padding:1.4rem 0 2.4r
 <a class="cta" href="mailto:contribute@opensourceorchestra.org?subject=A%20grant%20for%20the%20Open%20Source%20Orchestra">🎻 Grant the orchestra</a></div>
 </div>
 <p class="small" style="margin-top:.8rem"><strong>Plain truth:</strong> today both lanes land in a wallet held by the same person (Shaka's own key), because the orchestra has no on-chain treasury yet. What makes them different is the promise written on this page: Lane B money is accounted for here, line by line, and shared; Lane A money is his to live on. If you are a grantor and need a legal entity or a different arrangement, write to us; we will say plainly what we can and cannot do.</p>
+</section>
+
+<section id="give" aria-labelledby="give-h">
+<h2 id="give-h">🌊 Ways to give</h2>
+<p>Every rail we know of, tagged by lane, with its fee and <strong>who actually holds the money</strong>. {n_live} are live today; {n_needs} are written up and wait only for Shaka's own login or signature. Fees are the operators' own numbers, read on the date shown; we add none. The human front door for all of this is <a href="https://blessingpool.com/">the Blessing Pool</a>.</p>
+{rails}
+<h3 class="rails-h" id="gifts-h">📅 Received through these rails, month by month</h3>
+<div class="tablewrap gifts">
+<table aria-labelledby="gifts-h">
+<caption>USD-equivalent totals per lane per month. Totals only, never a donor's name. Grants awarded by programs are listed by name in the ledger above, not here.</caption>
+<thead><tr><th scope="col">Month</th><th scope="col" class="num">Lane A 💛</th><th scope="col" class="num">Lane B 🎻</th><th scope="col">Note</th></tr></thead>
+<tbody>
+{gifts}
+</tbody>
+</table>
+</div>
 </section>
 
 <section aria-labelledby="how-h">
