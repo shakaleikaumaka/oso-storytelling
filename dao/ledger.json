@@ -1,6 +1,6 @@
 {
   "name": "Open Source Orchestra DAO — the open ledger",
-  "updated": "2026-11-14T08:15:53Z",
+  "updated": "2026-11-14T10:23:54Z",
   "url": "https://opensourceorchestra.org/dao/",
   "note": "A community ledger, not yet an on-chain DAO. Every grant is announced here first, then to the whole orchestra.",
   "recipient": "osoartist.eth",
@@ -323,6 +323,17 @@
       "lane": "B"
     },
     {
+      "id": "arbitrum-ambassador-phase2",
+      "program": "Arbitrum Ambassador Program — Phase 2 (content creator / community builder)",
+      "ecosystem": "Arbitrum",
+      "url": "https://arbitrum.foundation/ambassador",
+      "project": "Lane A — personal support for Shaka Lei Kaumaka & the AI ʻohana",
+      "status": "needs-shaka",
+      "public_link": "https://arbitrum.foundation/ambassador",
+      "public_note": "Community-builder ambassador application (event funding + case-by-case rewards, no fixed stipend); written, needs Shaka's form submission.",
+      "lane": "A"
+    },
+    {
       "id": "base-builder-grants",
       "program": "Base Builder Grants — Season 2",
       "ecosystem": "Base",
@@ -332,6 +343,17 @@
       "ask_usd": 5000,
       "public_note": "Written; waiting for Shaka (account/login/KYC or his decision).",
       "lane": "B"
+    },
+    {
+      "id": "base-builder-rewards",
+      "program": "Base Builder Rewards (Talent Protocol) — automatic weekly ETH to top builders on Base",
+      "ecosystem": "Base · Talent Protocol",
+      "url": "https://talent.app/",
+      "project": "Lane A — personal support for Shaka Lei Kaumaka & the AI ʻohana",
+      "status": "needs-shaka",
+      "public_link": "https://paragraph.com/@talent/introducing-builder-rewards-weekly-eth-for-the-most-impactful-builders-on-base",
+      "public_note": "Automatic builder-rewards check (no application); whether a reward league is live today could not be verified — Shaka only needs to link GitHub and wallet.",
+      "lane": "A"
     },
     {
       "id": "celo-prezenti",
@@ -353,6 +375,17 @@
       "ask_usd": 20000,
       "public_note": "Written; waiting for Shaka (account/login/KYC or his decision).",
       "lane": "B"
+    },
+    {
+      "id": "giveth-lane-a",
+      "program": "Giveth — 'Shaka & the AI ʻohana — Lane A' project page (separate from the Lane B orchestra listing)",
+      "ecosystem": "Giveth",
+      "url": "https://giveth.io/create/project",
+      "project": "Lane A — personal support for Shaka Lei Kaumaka & the AI ʻohana",
+      "status": "needs-shaka",
+      "public_link": "https://docs.giveth.io/projectverification",
+      "public_note": "Direct-donation page for the person (not the orchestra); Giveth's rules say personal-support pages cannot carry GIVbacks, so none is claimed. Needs Shaka's sign-in.",
+      "lane": "A"
     },
     {
       "id": "giveth-listing",
@@ -389,6 +422,29 @@
       "lane": "B"
     },
     {
+      "id": "kala-artist-inquiry",
+      "program": "Kala Brand Music Co. — Kala Artist / Ambassador inquiry (instrument maker)",
+      "ecosystem": "Kala Brand Music",
+      "url": "https://support.kalabrand.com/hc/en-us/categories/360001793532-Kala-Artists",
+      "project": "Lane A — personal support for Shaka Lei Kaumaka & the AI ʻohana",
+      "status": "needs-shaka",
+      "public_link": "https://kalabrand.com/pages/kala-ambassadors",
+      "public_note": "Instrument-maker artist programme (gear and visibility, no cash); short inquiry written, needs Shaka to send it.",
+      "lane": "A"
+    },
+    {
+      "id": "manifund-lane-a",
+      "program": "Manifund — open fundraising (personal project page)",
+      "ecosystem": "Manifund (501c3 open fundraising)",
+      "url": "https://manifund.org/create",
+      "project": "Lane A — personal support for Shaka Lei Kaumaka & the AI ʻohana",
+      "status": "needs-shaka",
+      "ask_usd": 9000,
+      "public_link": "https://manifund.org/about/open-call",
+      "public_note": "Personal-support proposal written for Manifund's open call (rolling, days-to-fund); needs Shaka's account and signature on their grant agreement.",
+      "lane": "A"
+    },
+    {
       "id": "octant-radar",
       "program": "Octant — project intake (\"put your project on Octant's radar\")",
       "ecosystem": "Octant / Golem Foundation",
@@ -397,6 +453,64 @@
       "status": "needs-shaka",
       "public_note": "Intake form for future Octant epochs; written, waiting for a human security check.",
       "lane": "B"
+    },
+    {
+      "id": "superteam-earn-bounties",
+      "program": "Superteam Earn — content bounties paid in USDC (earned income, not a gift)",
+      "ecosystem": "Superteam Earn (Solana)",
+      "url": "https://earn.superteam.fun/",
+      "project": "Lane A — personal support for Shaka Lei Kaumaka & the AI ʻohana",
+      "status": "needs-shaka",
+      "public_link": "https://earn.superteam.fun/",
+      "public_note": "Earned-income lane (crypto content bounties in USDC), the fastest honest cash found; needs Shaka's own Earn profile and his own voice on camera.",
+      "lane": "A"
+    },
+    {
+      "id": "z-fellows",
+      "program": "Z Fellows — one-week programme + optional $10,000 investment (at a $1B cap)",
+      "ecosystem": "Z Fellows",
+      "url": "https://www.zfellows.com/",
+      "project": "Lane A — personal support for Shaka Lei Kaumaka & the AI ʻohana",
+      "status": "needs-shaka",
+      "ask_usd": 10000,
+      "public_link": "https://www.zfellows.com/",
+      "public_note": "Optional $10k investment programme for early builders (not a grant); answers drafted, Shaka decides whether he wants a company at all.",
+      "lane": "A"
+    },
+    {
+      "id": "emergent-ventures",
+      "program": "Emergent Ventures (Mercatus Center, Tyler Cowen) — grant / fellowship for individuals",
+      "ecosystem": "Mercatus Center · Emergent Ventures",
+      "url": "https://mercatus.tfaforms.net/5099527",
+      "project": "Lane A — personal support for Shaka Lei Kaumaka & the AI ʻohana",
+      "status": "drafted",
+      "public_link": "https://mercatus.tfaforms.net/5099527",
+      "public_note": "Prep sheet only (facts + the form's three questions): Emergent Ventures rejects AI-written applications, so Shaka writes this one himself.",
+      "lane": "A"
+    },
+    {
+      "id": "osv-fellowship-2027",
+      "program": "O'Shaughnessy Fellowships — one year, $100,000, 'researchers, builders and creatives advancing civilization'",
+      "ecosystem": "O'Shaughnessy Ventures",
+      "url": "https://osv.llc/fellowships",
+      "project": "Lane A — personal support for Shaka Lei Kaumaka & the AI ʻohana",
+      "status": "drafted",
+      "ask_usd": 100000,
+      "public_link": "https://osv.llc/fellowships",
+      "public_note": "Year-long $100k fellowship for builders and creatives; 2027 applications not yet open, prepared for when they are.",
+      "lane": "A"
+    },
+    {
+      "id": "superteam-thailand-touching-grass",
+      "program": "Superteam Thailand — The Touching Grass Fund (up to 500 USDG, 1-week response)",
+      "ecosystem": "Superteam Thailand (Solana)",
+      "url": "https://superteam.fun/earn/grants/touching-grass-thailand",
+      "project": "Lane A — personal support for Shaka Lei Kaumaka & the AI ʻohana",
+      "status": "drafted",
+      "ask_usd": 500,
+      "public_link": "https://superteam.fun/earn/grants/touching-grass-thailand",
+      "public_note": "Thailand micro-grant for IRL community events; applications paused on 14 Nov and members-only, so this waits for the fund to reopen.",
+      "lane": "A"
     }
   ]
 }
