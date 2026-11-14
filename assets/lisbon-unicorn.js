@@ -1,4 +1,4 @@
-/* 🦄 Lisbon Unicorn · 13 Nov 2026 · dates 12–14 Oct 2027 since 14 Nov 2026 (Devcon moved them one day later from 11–13)
+/* 🦄 Lisbon Unicorn · 13 Nov 2026 · dates 12–14 Oct 2027 since 14 Nov 2026 (Devcon moved them one day later than first announced)
    One small, self-hosted door to the officially announced Devcon IX.
    No audio, storage, tracking, network calls, or third-party runtime.
    The only onward navigation is the visitor's explicit click. */
