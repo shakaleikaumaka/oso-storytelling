@@ -3,19 +3,19 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="The Open Source Orchestra — music as sanctuary. Every voice is a node; sounds of consensus. Permissionless, stewarded, community-driven. Devcon 8 Mumbai, 3–6 November 2026 ✅ · Road to Devcon 9: Lisbon, 12–14 October 2027. A movement, not a brand.">
+<meta name="description" content="The Open Source Orchestra — music as sanctuary. Every voice is a node; sounds of consensus. Permissionless, stewarded, community-driven. Devcon 8 Mumbai, 3–6 November 2026 ✅ · Road to 2027: EthCC[10] Cannes, ETHGlobal Cannes, ETHConf + ETHGlobal New York, ETHGlobal Tokyo, Devcon IX Lisbon 12–14 October 2027, ETHGlobal Lisbon. Open for forking and hosting. A movement, not a brand.">
 <link rel="canonical" href="https://opensourceorchestra.org/">
 <meta name="theme-color" content="#0b0612">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://opensourceorchestra.org/">
 <meta property="og:title" content="Open Source Orchestra — Music as Sanctuary">
-<meta property="og:description" content="Every voice is a node; sounds of consensus. Permissionless, stewarded, community-driven — the orchestra is whoever shows up. Devcon 8 Mumbai, 3–6 November 2026 ✅ · Road to Devcon 9: Lisbon, 12–14 October 2027.">
+<meta property="og:description" content="Every voice is a node; sounds of consensus. Permissionless, stewarded, community-driven — the orchestra is whoever shows up. Devcon 8 Mumbai, 3–6 November 2026 ✅ · Road to 2027, every major Ethereum gathering at heart · Devcon IX Lisbon 12–14 October 2027 · open for forking and hosting.">
 <meta property="og:image" content="https://opensourceorchestra.org/assets/devcon8-artwork.jpg">
 <meta property="og:image:width" content="1920">
 <meta property="og:image:height" content="1080">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Open Source Orchestra — Music as Sanctuary">
-<meta name="twitter:description" content="Every voice is a node; sounds of consensus. The orchestra is whoever shows up. Devcon 8 Mumbai, 3–6 November 2026 ✅ · Road to Devcon 9: Lisbon, 12–14 October 2027.">
+<meta name="twitter:description" content="Every voice is a node; sounds of consensus. The orchestra is whoever shows up. Devcon 8 Mumbai, 3–6 November 2026 ✅ · Road to 2027, every major Ethereum gathering at heart · Devcon IX Lisbon 12–14 October 2027 · open for forking and hosting.">
 <meta name="twitter:image" content="https://opensourceorchestra.org/assets/devcon8-artwork.jpg">
 <title>Open Source Orchestra — Music as Sanctuary · Every Voice Is a Node</title>
 <style>
@@ -247,6 +247,15 @@
     padding:.65rem 1.3rem;transition:background .3s,color .3s;
   }
   .gather .dip:hover{background:var(--gold);color:var(--night)}
+  .gather .dip{max-width:100%;box-sizing:border-box;overflow-wrap:anywhere}
+  /* ---- road to 2027 (organisers' dates) ---- */
+  .sr-anchor{position:relative;display:block;top:-4rem;height:0;visibility:hidden}
+  .road27{list-style:none;display:grid;gap:.55rem;margin:1.2rem 0 0;padding:0;counter-reset:none}
+  .road27 li{display:flex;gap:.9rem;align-items:baseline;padding:.55rem .8rem;border-radius:.6rem;
+    border:1px solid rgba(240,196,100,.18);background:rgba(240,196,100,.045);color:var(--cream-dim)}
+  .road27 b{flex:none;min-width:6.2rem;font-family:var(--sans);font-size:.78rem;letter-spacing:.14em;text-transform:uppercase;color:var(--gold)}
+  .road27 span{font-size:.96rem}
+  @media(max-width:400px){.road27 li{flex-direction:column;gap:.15rem}.road27 b{min-width:0}}
   /* ---- manifesto sheet ---- */
   .sheet-note{
     margin-bottom:1.4rem;font-family:var(--sans);
@@ -589,23 +598,38 @@
       </p>
     </div>
   </section>
-  <!-- ============ ENCORE · ROAD TO DEVCON 9 (14 Nov 2026, Shaka: "we are already alive on the Road to Devcon 9 in Lisbon, let's go") ============ -->
-  <section id="road-to-devcon-9" aria-labelledby="encore-title">
+  <!-- ============ ENCORE · ROAD TO 2027 (14 Nov 2026, Shaka: "Devcon 8 is over and we are pointing towards 2027 with all major Ethereum events at heart · the Open Source Orchestra is open for forking + hosting") ============ -->
+  <section id="road-to-2027" aria-labelledby="encore-title">
+    <span id="road-to-devcon-9" class="sr-anchor" aria-hidden="true"></span>
     <div class="wrap">
       <div class="movement-head reveal">
         <span class="glyph" aria-hidden="true">🦄</span>
         <div>
-          <p class="kicker">Encore · Road to Devcon 9</p>
-          <h2 id="encore-title">Lisbon, <em>12–14 October 2027</em></h2>
+          <p class="kicker">Encore · Road to 2027</p>
+          <h2 id="encore-title">Every major Ethereum gathering <em>at heart</em></h2>
         </div>
       </div>
       <div class="staff reveal oso-bow" aria-hidden="true"></div>
       <div class="gather reveal">
-        <h3>🦄 The Road to Devcon 8 is complete ✅ — and we are already alive on the Road to Devcon 9</h3>
-        <p class="prose" style="color:var(--cream-dim)">Devcon IX gathers in Lisbon at the CCL – Lisbon Congress Centre, 12–14 October 2027. The Open Source Orchestra hopes to bring a Music Sanctuary with it, and Portugal is the ukulele's road home: the little machete of Madeira sailed to Hawaiʻi in 1879. The circle is open now to anyone, musician, DJ, developer, steward, sound, translator. Every contribution is equal, one voice each; a circle of at least three stewards answers within 14 days, and open jams never need an application.</p>
-        <a class="dip" href="/join/" style="margin-right:.6rem">🤝 Join the circle for Lisbon&nbsp;→</a>
-        <a class="dip" href="https://devcon.org/lisbon/" target="_blank" rel="noopener noreferrer">Devcon IX · official site&nbsp;↗</a>
-        <p style="margin-top:1.1rem;font-family:var(--sans);font-size:.8rem;color:var(--cream-faint)">A hope and an open invitation, not an official Devcon 9 slot, stage or budget. Devcon 8 lives on in <a class="devconlink" href="/mandala-room/">the Mandala Room</a> and <a class="devconlink" href="/the-room/">the room you let us build</a>.</p>
+        <h3>🦄 The Road to Devcon 8 is complete ✅ — and the road to 2027 is already alive</h3>
+        <p class="prose" style="color:var(--cream-dim)">Devcon 8 happened in Mumbai, 3–6 November 2026. Now the Open Source Orchestra walks toward every major Ethereum gathering of 2027 with the whole circle at heart, all the way to Devcon IX in Lisbon, the ukulele's road home: the little machete of Madeira sailed to Hawaiʻi in 1879.</p>
+        <ol class="road27" aria-label="The 2027 road, organisers' announced dates">
+          <li><b>12–15 Apr</b><span><a class="devconlink" href="https://ethcc.io/" target="_blank" rel="noopener noreferrer">EthCC[10]</a> · Cannes 🇫🇷</span></li>
+          <li><b>14–16 Apr</b><span><a class="devconlink" href="https://ethglobal.com/events" target="_blank" rel="noopener noreferrer">ETHGlobal Cannes</a> · Cannes 🇫🇷</span></li>
+          <li><b>14–16 Jun</b><span><a class="devconlink" href="https://ethconf.com/" target="_blank" rel="noopener noreferrer">ETHConf</a> + <a class="devconlink" href="https://ethglobal.com/events" target="_blank" rel="noopener noreferrer">ETHGlobal New York</a> · New York 🗽</span></li>
+          <li><b>23–25 Aug</b><span><a class="devconlink" href="https://ethglobal.com/events" target="_blank" rel="noopener noreferrer">ETHGlobal Tokyo</a> · Tokyo 🇯🇵</span></li>
+          <li><b>12–14 Oct</b><span><a class="devconlink" href="https://devcon.org/lisbon/" target="_blank" rel="noopener noreferrer">Devcon IX</a> · Lisbon 🇵🇹, CCL – Lisbon Congress Centre</span></li>
+          <li><b>13–15 Oct</b><span><a class="devconlink" href="https://ethglobal.com/events" target="_blank" rel="noopener noreferrer">ETHGlobal Lisbon</a> · Lisbon 🇵🇹</span></li>
+        </ol>
+        <p style="margin-top:1.1rem;font-family:var(--sans);font-size:.8rem;color:var(--cream-faint)">These are the organisers' announced dates (as of 14 November 2026; if an organiser moves a date, their site wins). None of them is a promised Open Source Orchestra slot, stage or budget: we hope to play open circles at each of them. Devcon 8 lives on in <a class="devconlink" href="/mandala-room/">the Mandala Room</a> and <a class="devconlink" href="/the-room/">the room you let us build</a>.</p>
+      </div>
+      <div class="gather reveal" id="open-for-forking">
+        <h3>🎻 The Open Source Orchestra is open for forking and hosting.</h3>
+        <p class="prose" style="color:var(--cream-dim)">No auditions, no gatekeepers, no wrong instrument: the orchestra is whoever shows up. Send us your <strong>invitations</strong> (host a music circle at your event, hackathon, pop-up city or venue) and/or your <strong>contributions</strong> (music, code, stewarding, sound, translation, photos). Every contribution is equal, one voice each; a circle of at least three stewards answers within 14 days, and open jams never need an application.</p>
+        <a class="dip" href="/join/" style="margin-right:.6rem">🤝 Invite us · join the circle&nbsp;→</a>
+        <a class="dip" href="https://github.com/Open-Source-Orchestra" target="_blank" rel="noopener noreferrer" style="margin-right:.6rem">🍴 Fork it on GitHub&nbsp;↗</a>
+        <a class="dip" href="mailto:contribute@opensourceorchestra.org" title="contribute@opensourceorchestra.org">✉️ Write to us</a>
+        <p style="margin-top:1.1rem;font-family:var(--sans);font-size:.8rem;color:var(--cream-faint)">Write to <a class="devconlink" href="mailto:contribute@opensourceorchestra.org">contribute@opensourceorchestra.org</a>. GPL-3.0 code, CC0 words, songs and <a class="devconlink" href="/rider/">rider</a>; the <a class="devconlink" href="/dao/">open ledger</a> is a community ledger, not on-chain. Fork the whole thing and host your own circle: that is the point.</p>
       </div>
     </div>
   </section>
@@ -693,7 +717,7 @@
 <a href="/nodes/" title="💻 Nodes — the voices the music moves through" aria-label="Nodes">💻</a>
 <a href="/camera/" title="📸 Camera — photos, videos &amp; voices (▶️ Watch inside)" aria-label="Camera">📸</a>
 <a href="/mandala-room/" title="🦋 The Mandala Room — Devcon 8 in official photos" aria-label="The Mandala Room">🦋</a>
-<a href="/join/" title="🦄 Join / Lisbon — Road to Devcon 9 · 12–14 October 2027" aria-label="Join / Lisbon">🦄</a>
+<a href="/join/" title="🦄 Road to 2027 — every major Ethereum gathering at heart · Devcon IX Lisbon 12–14 October 2027 · open for forking &amp; hosting" aria-label="Road to 2027 — join">🦄</a>
 </nav>
 
 <style>
