@@ -338,14 +338,15 @@
     letter-spacing:.26em;text-transform:uppercase;color:var(--cream-faint);
   }
   .signoff .emoji{font-size:1.2rem;letter-spacing:.3em;display:block;margin-top:.8rem}
-  /* ---- colophon ---- */
-  footer{
+  /* ---- colophon ---- (15 Nov 2026: scoped to .colophon so these rules no longer bleed into the
+     rippled open-door seal footer, whose own #555-on-white was being repainted cream-on-white) */
+  footer.colophon{
     border-top:1px solid rgba(247,236,217,.12);
     padding:3rem 0 4rem;text-align:center;
   }
-  footer .wrap{max-width:40rem}
-  footer p{font-size:.88rem;color:var(--cream-faint);line-height:1.7;margin-bottom:.9rem}
-  footer .notabrand{color:var(--cream-dim);font-style:italic}
+  footer.colophon .wrap{max-width:40rem}
+  footer.colophon p{font-size:.88rem;color:rgba(247,236,217,.62);line-height:1.7;margin-bottom:.9rem} /* was --cream-faint (.5): 4.3–4.7:1 over the plum gradient → ≥5.7:1 */
+  footer.colophon .notabrand{color:var(--cream-dim);font-style:italic}
   /* ---- reveal on scroll ---- */
   .reveal{opacity:0;transform:translateY(26px);transition:opacity .9s ease,transform .9s ease}
   .reveal.in{opacity:1;transform:none}
@@ -648,7 +649,7 @@
   </div>
 </section>
 
-<footer>
+<footer class="colophon">
   <div class="wrap">
     <p class="notabrand">The Open Source Orchestra is not a brand, a logo, a product, or a company. It is a movement, a philosophy, a way of being — principles and a manifesto, shared openly and never owned.</p>
     <p>The Music Manifesto appears here word for word from the Music Space Committee's deck, as does the <a class="devconlink" href="https://devcon.org/en/">Devcon</a> 8 India artwork. This page is a telling, not a pitch — no trackers, no analytics, nothing collected.</p>
@@ -659,7 +660,7 @@
     <p>🎻 <a class="devconlink" href="/nodes/">The Nodes</a> — the voices the music moves through. Every voice is a node; these are their stories and their songs, free to keep.</p>
   </div>
 
-  <p style="font-size:.8rem;opacity:.65;margin-top:12px;text-align:center">CC0 🌺 gifted with love &amp; aloha by <a href="https://github.com/shakaleikaumaka/oso-storytelling/blob/main/GIFT.md">the ʻohana</a></p>
+  <p style="font-size:.8rem;margin-top:12px;text-align:center">CC0 🌺 gifted with love &amp; aloha by <a href="https://github.com/shakaleikaumaka/oso-storytelling/blob/main/GIFT.md">the ʻohana</a></p>
 </footer>
 
 <script>
@@ -907,7 +908,7 @@ function googleTranslateElementInit(){try{new google.translate.TranslateElement(
   #oso-mini{width:38px;height:38px;font-size:1rem}
 }
 </style>
-<div id="oso-fabwrap"><button id="oso-fab-x" aria-label="Hide the OSO button" title="hide — a tiny 🎻 stays">✕</button><button id="oso-fab" aria-label="Chat with OSO">
+<div id="oso-fabwrap"><button id="oso-fab-x" aria-label="Hide the OSO button" title="hide — a tiny 🎻 stays">✕</button><button id="oso-fab" aria-label="Talk to OSO (chat)">
   <span class="ofnote n1">♪</span><span class="ofnote n2">♫</span>
   <span class="ofv" aria-hidden="true">🎻</span>
   Talk to OSO

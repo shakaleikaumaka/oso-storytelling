@@ -93,8 +93,10 @@
   var a = document.createElement('a');
   a.id = 'devcon-float-cta';
   a.href = '/mandala-room/';
-  a.setAttribute('aria-label', 'The Mandala Room: the Devcon 8 Music Sanctuary photo album. Next stop Lisbon, Devcon 9');
-  a.innerHTML = '<strong>🦋 The Mandala Room</strong><span>Devcon 8 ✓ · next: Lisbon 🇵🇹</span>';
+  // 15 Nov 2026 · WCAG 2.5.3 Label in Name (same fix as shakaleikaumaka.com 9223100): no aria-label,
+  // so the name is the visible words; the space keeps "Room" and "Devcon" apart; the title adds context.
+  a.title = 'the Devcon 8 Music Sanctuary photo album';
+  a.innerHTML = '<strong>🦋 The Mandala Room</strong> <span>Devcon 8 ✓ · next: Lisbon 🇵🇹</span>';
 
   var tab = document.createElement('button');
   tab.id = 'devcon-defs-tab';
