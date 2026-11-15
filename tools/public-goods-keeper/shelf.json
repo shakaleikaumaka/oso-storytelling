@@ -1,7 +1,7 @@
 {
   "schema": "oso-public-goods-shelf/1",
   "about": "The shelf of public goods the Open Source Orchestra keeps openly sharing & building (https://opensourceorchestra.org/dao/#share-h). Shaka 15 Nov 2026: 'make sure these are always up to date and running super well for the public good'. keeper.py reads this file; every check is public-safe (GET/HEAD only, no posts, no keys).",
-  "license_line": "Code is copyleft: GPL-3.0 on most repositories and AGPL-3.0 on new network code like LIVE PIT (older releases stay CC0). Words, songs and the rider are CC0. Fork us like crazy.",
+  "license_line": "Code under GPL-3.0 (older releases stay CC0); words, songs and the rider CC0. New from 15 Nov 2026: copyleft with credit, code AGPL-3.0 with an attribution term and words CC BY-SA 4.0 (first: the LIVE PIT radio). Fork us like crazy.",
   "github_homes": [
     {
       "login": "shakaleikaumaka",
@@ -122,6 +122,15 @@
       "checks": [
         {
           "type": "page",
+          "url": "https://osodaomeet.opensourceorchestra.org/",
+          "must": [
+            "Open Source Orchestra"
+          ],
+          "max_ms": 5000,
+          "why": "the theater"
+        },
+        {
+          "type": "page",
           "url": "https://osodaomeet.opensourceorchestra.org/meetings/",
           "must": [
             "public media files",
@@ -153,6 +162,42 @@
           "type": "recordings",
           "url": "https://osodaomeet.opensourceorchestra.org/archive/status.json",
           "base": "https://osodaomeet.opensourceorchestra.org/"
+        }
+      ]
+    },
+    {
+      "id": "live-pit",
+      "title": "LIVE PIT radio",
+      "url": "https://live.zuchiangmai.app/",
+      "checks": [
+        {
+          "type": "page",
+          "url": "https://live.zuchiangmai.app/",
+          "must": [
+            "LIVE PIT"
+          ],
+          "max_ms": 4000
+        },
+        {
+          "type": "json",
+          "url": "https://live.zuchiangmai.app/live.json",
+          "key": "title",
+          "why": "the station's live manifest"
+        },
+        {
+          "type": "asset",
+          "url": "https://live.zuchiangmai.app/widget.js",
+          "why": "the one-line widget every door carries"
+        },
+        {
+          "type": "page",
+          "url": "https://github.com/Open-Source-Orchestra/pit-live",
+          "must": [
+            "pit-live"
+          ],
+          "max_ms": 8000,
+          "soft": true,
+          "why": "the open transmitter (AGPL-3.0 + attribution)"
         }
       ]
     },
