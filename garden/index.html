@@ -7,7 +7,7 @@
 <style>
 :root{
   --bg:#140e1c; --bg2:#1d1428; --card:#221732; --card2:#2a1d3e;
-  --ink:#f6efe4; --muted:#b8a8c9; --faint:#8a7699;
+  --ink:#f6efe4; --muted:#b8a8c9; --faint:#a090ac; /* 15 Nov 2026: was #8a7699 (3.8–4.2:1 on the cards' gradient) → ≥5.2:1, same as /schedule/ */
   --marigold:#ffb443; --lotus:#ff7eb6; --teal:#4fd8c8; --leaf:#9be15d; --sky:#7cc4ff;
   --line:rgba(255,180,67,.16);
   --dj:#7cc4ff; --live:#ffb443; --hybrid:#4fd8c8; --special:#ff7eb6;
@@ -54,6 +54,8 @@ select.chip:focus{outline:none;border-color:var(--marigold)}
 .fmt .e{font-size:1.3rem}
 .fmt .c{font-weight:700;font-size:1.15rem;margin-top:2px}
 .fmt .l{color:var(--muted);font-size:.78rem}
+button.fmt{font:inherit;color:inherit;line-height:inherit;margin:0;-webkit-appearance:none;appearance:none}
+.fmt .e,.fmt .c,.fmt .l{display:block}
 .fmt[data-f=DJ].on{border-color:var(--dj);box-shadow:0 0 0 1px var(--dj)}
 .fmt[data-f=Live].on{border-color:var(--live);box-shadow:0 0 0 1px var(--live)}
 .fmt[data-f=Hybrid].on{border-color:var(--hybrid);box-shadow:0 0 0 1px var(--hybrid)}
@@ -158,6 +160,7 @@ details[open] summary::before{content:'▾ '}
 .empty{text-align:center;color:var(--faint);padding:50px 0;font-size:.95rem}
 footer{margin-top:60px;text-align:center;color:var(--faint);font-size:.78rem;line-height:1.9}
 footer .flower{color:var(--lotus)}
+footer a{color:var(--marigold)} /* 15 Nov 2026: the footer links were browser-default blue (#0000ee) on the night sky ≈1.6:1 */
 .pii-banner{background:linear-gradient(100deg,#5c1633,#3d0f2a);color:#ffb3cf;text-align:center;padding:8px;font-size:.85rem;border-radius:12px;margin-bottom:14px;border:1px solid #8a2b52}
 @media(max-width:900px){.board{grid-template-columns:repeat(5,82vw);scroll-snap-type:x mandatory}.bcol{scroll-snap-align:start}}
 
@@ -225,15 +228,15 @@ footer .flower{color:var(--lotus)}
 </div>
 <div class="toolbar2">
   <div class="row">
-    <select class="chip" id="fday"><option value="">any day</option></select>
-    <select class="chip" id="fvol"><option value="">everyone</option><option value="vol">💜 volunteers</option></select>
-    <select class="chip" id="sort">
+    <select class="chip" id="fday" aria-label="Filter by day"><option value="">any day</option></select>
+    <select class="chip" id="fvol" aria-label="Show everyone or volunteers only"><option value="">everyone</option><option value="vol">💜 volunteers</option></select>
+    <select class="chip" id="sort" aria-label="Sort artists">
       <option value="n">arrival order</option><option value="day">by day</option>
       <option value="long">longest set</option><option value="short">shortest set</option>
     </select>
   </div>
-  <div class="fmtnav" id="fmtnav"></div>
-  <div class="genres" id="genres"></div>
+  <div class="fmtnav" id="fmtnav" role="group" aria-label="Filter by format"></div>
+  <div class="genres" id="genres" role="group" aria-label="Filter by style"></div>
 </div>
 
 <main id="main"></main>
@@ -341,12 +344,17 @@ function renderStats() {
 
 /* ---------- filter chrome ---------- */
 function renderChrome() {
+  // 15 Nov 2026: the format tiles are real toggle buttons now (keyboard + screen readers), and the
+  // pressed tile/chip keeps keyboard focus across this re-render.
+  const ae = document.activeElement;
+  const keepF = ae && ae.classList && ae.classList.contains('fmt') ? ae.dataset.f : null;
+  const keepG = ae && ae.classList && ae.classList.contains('gchip') ? ae.dataset.g : null;
   const counts = {all: ART.length};
   ART.forEach(a => counts[a.format] = (counts[a.format]||0)+1);
   const order = ['all','OSO','DJ','Live','Hybrid','Special'];
   document.getElementById('fmtnav').innerHTML = order.map(f => {
     const m = f === 'all' ? {e:'🌺',l:'Everyone'} : FMT_META[f];
-    return `<div class="fmt ${state.fmt===f?'on':''}" data-f="${f}"><div class="e">${m.e}</div><div class="c">${counts[f]||0}</div><div class="l">${m.l}</div></div>`;
+    return `<button type="button" class="fmt ${state.fmt===f?'on':''}" data-f="${f}" aria-pressed="${state.fmt===f}"><span class="e" aria-hidden="true">${m.e}</span> <span class="c">${counts[f]||0}</span> <span class="l">${m.l}</span></button>`;
   }).join('');
   document.querySelectorAll('.fmt').forEach(el => el.onclick = () => { state.fmt = el.dataset.f; renderChrome(); renderMain(); });
 
@@ -356,12 +364,16 @@ function renderChrome() {
   ART.forEach(a => genresOf(a).forEach(g => emap[g.name] = g.emoji));
   const names = Object.keys(gcounts).sort((a,b) => gcounts[b]-gcounts[a]);
   document.getElementById('genres').innerHTML =
-    `<button class="gchip ${state.genre==='all'?'on':''}" data-g="all">all styles</button>` +
-    names.map(g => `<button class="gchip ${state.genre===g?'on':''}" data-g="${esc(g)}">${emap[g]} ${esc(g)}<span class="n">${gcounts[g]}</span></button>`).join('');
+    `<button class="gchip ${state.genre==='all'?'on':''}" data-g="all" aria-pressed="${state.genre==='all'}">all styles</button>` +
+    names.map(g => `<button class="gchip ${state.genre===g?'on':''}" data-g="${esc(g)}" aria-pressed="${state.genre===g}">${emap[g]} ${esc(g)}<span class="n">${gcounts[g]}</span></button>`).join('');
   document.querySelectorAll('.gchip').forEach(el => el.onclick = () => { state.genre = el.dataset.g; renderChrome(); renderMain(); });
 
   const days = DAY_ORDER.filter(d => ART.some(a => a.day === d));
   document.getElementById('fday').innerHTML = '<option value="">any day</option>' + days.map(d => `<option ${state.day===d?'selected':''}>${d}</option>`).join('');
+
+  const back = keepF !== null ? [...document.querySelectorAll('.fmt')].find(b => b.dataset.f === keepF)
+             : keepG !== null ? [...document.querySelectorAll('.gchip')].find(b => b.dataset.g === keepG) : null;
+  if (back) back.focus({preventScroll: true});
 }
 
 /* ---------- cards ---------- */
@@ -424,7 +436,7 @@ function cardHTML(a) {
       ${dsec('Applied', new Date(a.ts).toLocaleString('en-US',{dateStyle:'medium',timeStyle:'short'}))}
     </details>
     <div class="organ">
-      <select data-role="status">${STATUSES.map(s => `<option ${p.status===s?'selected':''}>${s}</option>`).join('')}</select>
+      <select data-role="status" aria-label="Your pick status for ${esc(nameOf(a))}">${STATUSES.map(s => `<option ${p.status===s?'selected':''}>${s}</option>`).join('')}</select>
       <span class="stars">${[1,2,3,4,5].map(i => `<button data-star="${i}" class="${p.stars>=i?'lit':''}">★</button>`).join('')}</span>
       <button class="notebtn">${p.note ? '📝 note ✓' : '📝 note'}</button>
       <div class="notewrap" hidden><textarea placeholder="private note… e.g. “perfect sunset opener, check soundcloud”">${esc(p.note)}</textarea></div>
