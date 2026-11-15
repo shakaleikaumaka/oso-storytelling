@@ -371,6 +371,7 @@ footer{{border-top:1px solid var(--line);margin-top:2.5rem;padding:1.4rem 0 2.4r
 </footer>
 </div>
 <script src="/assets/lisbon-unicorn.js" data-lisbon-unicorn-loader defer></script>
+<script src="https://lang.opensourceorchestra.org/lang.js" async></script>
 </body>
 </html>
 """
