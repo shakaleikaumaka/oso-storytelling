@@ -1,0 +1,355 @@
+{
+  "schema": "oso-public-goods-shelf/1",
+  "about": "The shelf of public goods the Open Source Orchestra keeps openly sharing & building (https://opensourceorchestra.org/dao/#share-h). Shaka 15 Nov 2026: 'make sure these are always up to date and running super well for the public good'. keeper.py reads this file; every check is public-safe (GET/HEAD only, no posts, no keys).",
+  "license_line": "Code is copyleft: GPL-3.0 on most repositories and AGPL-3.0 on new network code like LIVE PIT (older releases stay CC0). Words, songs and the rider are CC0. Fork us like crazy.",
+  "github_homes": [
+    {
+      "login": "shakaleikaumaka",
+      "kind": "users",
+      "label": "shakaleikaumaka",
+      "note": "the main home"
+    },
+    {
+      "login": "ShakaLei",
+      "kind": "users",
+      "label": "ShakaLei",
+      "note": "Shaka's own account"
+    },
+    {
+      "login": "Open-Source-Orchestra",
+      "kind": "orgs",
+      "label": "Open-Source-Orchestra",
+      "note": "the orchestra's org (LIVE PIT, the theater, the DAO, ZU Chiang Mai)"
+    },
+    {
+      "login": "opensource-orchestra",
+      "kind": "orgs",
+      "label": "opensource-orchestra",
+      "note": "the founding org: the original OSO P.I.T. from ETHGlobal New Delhi 2025, built with its founding crew",
+      "founding": true
+    }
+  ],
+  "items": [
+    {
+      "id": "repos",
+      "title": "Open repositories (the Gift Board)",
+      "url": "https://shakaleikaumaka.com/#gifts",
+      "count": "repos",
+      "checks": [
+        {
+          "type": "page",
+          "url": "https://shakaleikaumaka.com/",
+          "must": [
+            "id=\"gifts\"",
+            "GIFT BOARD"
+          ],
+          "max_ms": 4000
+        }
+      ]
+    },
+    {
+      "id": "rider",
+      "title": "The CC0 rider",
+      "url": "https://opensourceorchestra.org/rider/",
+      "checks": [
+        {
+          "type": "page",
+          "url": "https://opensourceorchestra.org/rider/",
+          "must": [
+            "Rider",
+            "CC0"
+          ],
+          "max_ms": 4000
+        },
+        {
+          "type": "asset",
+          "url": "https://opensourceorchestra.org/rider/rider.md",
+          "why": "the forkable plain-text rider"
+        },
+        {
+          "type": "links",
+          "url": "https://opensourceorchestra.org/rider/",
+          "scope": "same-host"
+        }
+      ]
+    },
+    {
+      "id": "sanctuary",
+      "title": "The 3D Virtual Sanctuary",
+      "url": "https://opensourceorchestra.org/rider/sanctuary/",
+      "checks": [
+        {
+          "type": "page",
+          "url": "https://opensourceorchestra.org/rider/sanctuary/",
+          "must": [
+            "Virtual Sanctuary"
+          ],
+          "max_ms": 4000
+        },
+        {
+          "type": "links",
+          "url": "https://opensourceorchestra.org/rider/sanctuary/",
+          "scope": "same-host"
+        }
+      ]
+    },
+    {
+      "id": "schedule",
+      "title": "The public schedule",
+      "url": "https://opensourceorchestra.org/schedule/",
+      "checks": [
+        {
+          "type": "page",
+          "url": "https://opensourceorchestra.org/schedule/",
+          "must": [
+            "Music Manifesto",
+            "schedule"
+          ],
+          "max_ms": 4000
+        },
+        {
+          "type": "links",
+          "url": "https://opensourceorchestra.org/schedule/",
+          "scope": "same-host"
+        }
+      ]
+    },
+    {
+      "id": "recordings",
+      "title": "Open recordings",
+      "url": "https://osodaomeet.opensourceorchestra.org/meetings/",
+      "count": "recordings",
+      "checks": [
+        {
+          "type": "page",
+          "url": "https://osodaomeet.opensourceorchestra.org/meetings/",
+          "must": [
+            "public media files",
+            "published with consent"
+          ],
+          "max_ms": 4000
+        },
+        {
+          "type": "page",
+          "url": "https://opensourceorchestra.org/openrecording2/",
+          "must": [
+            "OPEN RECORDING #2",
+            "transcript"
+          ],
+          "max_ms": 4000
+        },
+        {
+          "type": "asset",
+          "url": "https://opensourceorchestra.org/openrecording2/transcript.txt",
+          "why": "weekly call #2 transcript"
+        },
+        {
+          "type": "asset",
+          "url": "https://archive.org/download/oso-weekly-call-2-2026-10-27/weekly-call-2-2026-10-27.mp3",
+          "why": "weekly call #2 audio on the Internet Archive",
+          "soft": true
+        },
+        {
+          "type": "recordings",
+          "url": "https://osodaomeet.opensourceorchestra.org/archive/status.json",
+          "base": "https://osodaomeet.opensourceorchestra.org/"
+        }
+      ]
+    },
+    {
+      "id": "build-library",
+      "title": "The Build Library",
+      "url": "https://build-library-zcpweo3nke-ffieyo32.taur.link/",
+      "count": "books",
+      "checks": [
+        {
+          "type": "page",
+          "url": "https://build-library-zcpweo3nke-ffieyo32.taur.link/",
+          "must": [
+            "Build Library"
+          ],
+          "max_ms": 5000
+        },
+        {
+          "type": "asset",
+          "url": "https://build-library-zcpweo3nke-ffieyo32.taur.link/library.json",
+          "why": "the library's machine-readable catalogue"
+        },
+        {
+          "type": "links",
+          "url": "https://build-library-zcpweo3nke-ffieyo32.taur.link/",
+          "scope": "family",
+          "max": 400,
+          "why": "every book's door must open"
+        }
+      ]
+    },
+    {
+      "id": "songbook",
+      "title": "The ʻohana Songbook",
+      "url": "https://shakaleikaumaka.com/songbook/",
+      "count": "chapters",
+      "checks": [
+        {
+          "type": "page",
+          "url": "https://shakaleikaumaka.com/songbook/",
+          "must": [
+            "Songbook",
+            "chapters so far"
+          ],
+          "max_ms": 4000
+        },
+        {
+          "type": "links",
+          "url": "https://shakaleikaumaka.com/songbook/",
+          "scope": "same-host",
+          "why": "every chapter page must open"
+        }
+      ]
+    },
+    {
+      "id": "garden-circle",
+      "title": "The Garden Circle",
+      "url": "https://opensourceorchestra.org/garden/circle/",
+      "checks": [
+        {
+          "type": "page",
+          "url": "https://opensourceorchestra.org/garden/circle/",
+          "must": [
+            "Circle"
+          ],
+          "max_ms": 4000
+        },
+        {
+          "type": "json",
+          "url": "https://opensourceorchestra.org/garden/circle/data/artists.json",
+          "min_items": 10,
+          "why": "the circle's artist cards"
+        }
+      ]
+    },
+    {
+      "id": "mandala-room",
+      "title": "The Mandala Room",
+      "url": "https://opensourceorchestra.org/mandala-room/",
+      "checks": [
+        {
+          "type": "page",
+          "url": "https://opensourceorchestra.org/mandala-room/",
+          "must": [
+            "Mandala Room"
+          ],
+          "max_ms": 4000
+        },
+        {
+          "type": "links",
+          "url": "https://opensourceorchestra.org/mandala-room/",
+          "scope": "same-host"
+        }
+      ]
+    },
+    {
+      "id": "the-room",
+      "title": "The Room You Let Us Build",
+      "url": "https://opensourceorchestra.org/the-room/",
+      "checks": [
+        {
+          "type": "page",
+          "url": "https://opensourceorchestra.org/the-room/",
+          "must": [
+            "The room you let us build"
+          ],
+          "max_ms": 4000
+        },
+        {
+          "type": "links",
+          "url": "https://opensourceorchestra.org/the-room/",
+          "scope": "same-host"
+        }
+      ]
+    },
+    {
+      "id": "ohana-bot",
+      "title": "The ʻohana bot front door",
+      "url": "https://myagentohana.com/ohana-bot/",
+      "checks": [
+        {
+          "type": "page",
+          "url": "https://myagentohana.com/ohana-bot/",
+          "must": [
+            "Talk to the Totem",
+            "/api/chat"
+          ],
+          "max_ms": 4000
+        },
+        {
+          "type": "json",
+          "url": "https://myagentohana.com/api/chat/poll?session=public-goods-keeper&after=0",
+          "key": "messages",
+          "why": "the chat proxy answers"
+        },
+        {
+          "type": "json",
+          "url": "https://ohana-chat.shakaverse.workers.dev/health",
+          "key": "ok",
+          "why": "the chat worker is up"
+        }
+      ]
+    },
+    {
+      "id": "doors",
+      "title": "Every door we keep open",
+      "url": "https://myagentohana.com/doors/",
+      "count": "doors",
+      "checks": [
+        {
+          "type": "page",
+          "url": "https://myagentohana.com/doors/",
+          "must": [
+            "All Doors"
+          ],
+          "max_ms": 5000
+        },
+        {
+          "type": "doors",
+          "url": "https://myagentohana.com/doors/registry.json"
+        }
+      ]
+    },
+    {
+      "id": "ancestor",
+      "title": "The Ancestor's Room: where the OSO P.I.T. was born",
+      "url": "https://osopit.com/delhi/",
+      "checks": [
+        {
+          "type": "page",
+          "url": "https://osopit.com/delhi/",
+          "must": [
+            "Ancestor"
+          ],
+          "max_ms": 4000
+        },
+        {
+          "type": "page",
+          "url": "https://github.com/opensource-orchestra/osopit",
+          "must": [
+            "osopit"
+          ],
+          "max_ms": 8000,
+          "soft": true,
+          "why": "the original code, in the founding org"
+        },
+        {
+          "type": "page",
+          "url": "https://osopit-web.vercel.app/",
+          "must": [
+            "osopit"
+          ],
+          "max_ms": 8000,
+          "soft": true,
+          "why": "the original app, still live on the founding crew's Vercel (not ours to repair: we tell them)"
+        }
+      ]
+    }
+  ]
+}

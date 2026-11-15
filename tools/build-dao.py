@@ -145,7 +145,8 @@ def main():
     grows = [f'<tr><th scope="row">{e(m)}</th><td class="num" data-label="Lane A">{money(v["A"])}</td><td class="num" data-label="Lane B">{money(v["B"])}</td><td data-label="Note">{e("; ".join(v["note"])) or "—"}</td></tr>' for m, v in months.items()]
     if not grows:
         grows = [f'<tr><th scope="row">Nothing yet</th><td class="num" data-label="Lane A">$0</td><td class="num" data-label="Lane B">$0</td><td data-label="Note">No donation has landed through these rails as of {e(rec_as_of)}. When one does, the month\'s total appears here — never a donor\'s name.</td></tr>']
-    page = TEMPLATE.format(rows="\n".join(rows), summary=e(summary or "nothing yet"),
+    pg = load_pg()
+    page = TEMPLATE.format(share=render_share(pg), rows="\n".join(rows), summary=e(summary or "nothing yet"),
                            rails="\n".join(rails_html), gifts="\n".join(grows), n_live=n_live, n_needs=n_needs,
                            awarded=money(awarded_total) if awarded_total else "$0 so far",
                            received_a=money(rec_a) if rec_a else "$0", received_b=money(rec_b) if rec_b else "$0",
@@ -154,6 +155,246 @@ def main():
     with open(os.path.join(ROOT, "dao", "index.html"), "w") as f:
         f.write(page)
     print(f"dao/: {len(grants)} grants · {summary}")
+    if pg:
+        write_health(pg)
+        print(f"dao/health/: {pg['summary']['ok']}/{pg['summary']['items']} healthy · checked {pg['checked_at']}")
+
+
+# ── 🎁 the open shelf: "What we keep openly sharing & building" (+ /dao/health/) ──────────────────
+# Data: dao/public-goods.json, written by the PUBLIC GOODS KEEPER (tools/public-goods-keeper/keeper.py,
+# run daily by the ʻohana; Shaka 15 Nov 2026: "make sure these are always up to date and running super well").
+PG_PATH = os.path.join(ROOT, "dao", "public-goods.json")
+NUM_WORD = {1: "one", 2: "two", 3: "three", 4: "four", 5: "five", 6: "six", 7: "seven"}
+MONTHS = "Jan Feb Mar Apr May Jun Jul Aug Sep Oct Nov Dec".split()
+PG_ICON = {"ok": ("✅", "Healthy"), "warn": ("🟡", "Needs care"), "fail": ("🔴", "Down")}
+KEEPER_SRC = "https://github.com/shakaleikaumaka/oso-storytelling/tree/main/tools/public-goods-keeper"
+
+
+def load_pg():
+    try:
+        d = json.load(open(PG_PATH))
+        return d if d.get("schema") == "oso-public-goods/1" else None
+    except Exception:
+        return None
+
+
+def pg_day(iso, with_time=False):
+    try:
+        y, m, d_ = int(iso[:4]), int(iso[5:7]), int(iso[8:10])
+        out = f"{d_} {MONTHS[m - 1]} {y}"
+        return out + (f" ({iso[11:16]} UTC)" if with_time and len(iso) >= 16 else "")
+    except Exception:
+        return str(iso or "")
+
+
+def render_share(pg):
+    pg = pg or {}
+    c = pg.get("counts") or {}
+    rep, ch, bk, rec, dr = (c.get(k) or {} for k in ("repos", "chapters", "books", "recordings", "doors"))
+    homes = [h for h in (pg.get("github_homes") or []) if h.get("login")]
+    lic = pg.get("license_line") or "Code under GPL-3.0 (older releases stay CC0); words, songs and the rider CC0. Fork us like crazy."
+    n = rep.get("total")
+    li = []
+    repos = f'<a href="https://shakaleikaumaka.com/#gifts">{e(n)} open repositories</a> (the Gift Board)' if n else '<a href="https://shakaleikaumaka.com/#gifts">Open repositories</a> (the Gift Board)'
+    if homes:
+        parts = []
+        for h in homes:
+            a = f'<a href="https://github.com/{e(h["login"])}">{e(h["login"])}</a>'
+            if h.get("founding"):
+                a += ", the founding org of the OSO P.I.T. (2025)"
+            parts.append(a)
+        repos += f", in {NUM_WORD.get(len(homes), len(homes))} GitHub homes: " + " · ".join(parts)
+    li.append(repos)
+    li.append('<a href="/rider/">The CC0 rider</a> and the <a href="/rider/sanctuary/">3D Virtual Sanctuary</a>')
+    nrec = rec.get("value")
+    rec_a = f'<a href="https://osodaomeet.opensourceorchestra.org/meetings/">{e(nrec)} open recordings</a>' if nrec else '<a href="https://osodaomeet.opensourceorchestra.org/meetings/">open recordings</a>'
+    li.append(f'<a href="/schedule/">The public schedule</a> · {rec_a}, each published with everyone\'s consent and playing in <a href="https://osodaomeet.opensourceorchestra.org/">the theater</a>')
+    li.append('<a href="https://build-library-zcpweo3nke-ffieyo32.taur.link/">The Build Library</a>' + (f' <span class="cnt">· {e(bk["value"])} books</span>' if bk.get("value") else ""))
+    li.append('<a href="https://shakaleikaumaka.com/songbook/">The ʻohana Songbook</a>' + (f' <span class="cnt">· {e(ch["value"])} chapters</span>' if ch.get("value") else ""))
+    li.append('<a href="/garden/circle/">The Garden Circle</a> · <a href="/mandala-room/">The Mandala Room</a> · <a href="/the-room/">The Room You Let Us Build</a>')
+    li.append('<a href="https://myagentohana.com/ohana-bot/">The ʻohana bot front door</a>')
+    li.append('<a href="https://osopit.com/delhi/">The Ancestor\'s Room</a>: the original OSO P.I.T. from ETHGlobal New Delhi 2025 (🏆 ENS, most creative use), its code kept whole for anyone to study and fork · <a href="https://github.com/opensource-orchestra/osopit">opensource-orchestra/osopit</a>')
+    doors = '<a href="https://myagentohana.com/doors/">every door we keep open</a>'
+    if dr.get("public"):
+        doors += f' <span class="cnt">· {e(dr.get("live"))} of {e(dr["public"])} live</span>'
+    li.append("And more at " + doors)
+    out = ['<section aria-labelledby="share-h" class="share">', '<h2 id="share-h">🎁 What we keep openly sharing &amp; building</h2>',
+           f"<p>{e(lic)}</p>", "<ul>"] + [f"<li>{x}</li>" for x in li] + ["</ul>"]
+    sm = pg.get("summary") or {}
+    if sm.get("items"):
+        care = [i for i in (pg.get("items") or []) if i.get("status") != "ok"]
+        if not care:
+            head = f'<strong>{e(sm["ok"])} of {e(sm["items"])} open and healthy</strong>'
+        else:
+            names = [e(i.get("title", i.get("id"))) for i in care]
+            shown = ", ".join(names[:6]) + (f" and {len(names) - 6} more" if len(names) > 6 else "")
+            head = f'<strong>{e(sm["ok"])} of {e(sm["items"])} healthy</strong>, {len(care)} being cared for ({shown})'
+        out.append(f'<p class="pg-health">🩺 {head}. Checked by the ʻohana\'s keeper on {e(pg_day(pg.get("checked_at", ""), True))}. '
+                   '<a href="/dao/health/">Health report</a> · <a href="/dao/public-goods.json">public-goods.json</a></p>')
+    out.append("</section>")
+    return "\n".join(out)
+
+
+def _check_bits(chks):
+    bits = []
+    for x in chks or []:
+        t = x.get("type")
+        if t == "page":
+            bits.append(f'page {x.get("http")}' + (f' · {x["ms"]} ms' if x.get("ms") else "") + (" · missing text" if x.get("missing") else ""))
+        elif t == "asset":
+            bits.append(f'{(x.get("why") or "file")} {x.get("http")}')
+        elif t == "json":
+            bits.append(f'{(x.get("why") or "data")} {x.get("http")}' + (f' · {x["items"]} items' if x.get("items") is not None else ""))
+        elif t == "links":
+            b = len(x.get("broken") or [])
+            n_ = x.get("checked") or 0
+            bits.append(f'{n_} link{"" if n_ == 1 else "s"} checked' + (f" · {b} broken" if b else (" · leads somewhere" if n_ == 1 else " · all lead somewhere")))
+        elif t == "recordings":
+            m = x.get("media") or []
+            bits.append(f'{sum(1 for y in m if y.get("ok"))}/{len(m)} recording files answer')
+        elif t == "doors":
+            bits.append(f'{x.get("live")}/{x.get("public")} doors live')
+    return bits
+
+
+def write_health(pg):
+    c = pg.get("counts") or {}
+    rep, ch, bk, rec, dr = (c.get(k) or {} for k in ("repos", "chapters", "books", "recordings", "doors"))
+    sm = pg.get("summary") or {}
+    rows = []
+    for i in pg.get("items") or []:
+        ic, lab = PG_ICON.get(i.get("status"), ("•", i.get("status")))
+        notes = "<br>".join(e(n) for n in (i.get("notes") or [])) or "—"
+        rows.append(f'<tr class="pg-{e(i.get("status"))}"><th scope="row"><a href="{e(safe_url(i.get("url")))}">{e(i.get("title"))}</a></th>'
+                    f'<td data-label="Status"><span class="pill">{ic} {e(lab)}</span></td>'
+                    f'<td data-label="Checked">{"<br>".join(e(b) for b in _check_bits(i.get("checks")))}</td><td data-label="Notes">{notes}</td></tr>')
+    home_note = {h.get("login"): h.get("note", "") for h in pg.get("github_homes") or []}
+    hrows = "".join(f'<tr><th scope="row"><a href="https://github.com/{e(k)}">{e(k)}</a></th><td class="num" data-label="Public repos">{e(v)}</td><td data-label="What lives there">{e(home_note.get(k, ""))}</td></tr>'
+                    for k, v in (rep.get("homes") or {}).items())
+    LIC = {"GPL-3.0": "GNU GPL v3 (copyleft)", "AGPL-3.0": "GNU AGPL v3 (copyleft, covers network use)", "CC0-1.0": "CC0 (public domain dedication)",
+           "MIT": "MIT (permissive; forks and partner code)", "NOASSERTION": "a custom license (see the repo)", "NONE": "no license file yet"}
+    lrows = "".join(f'<tr><th scope="row">{e(LIC.get(k, k))}</th><td class="num" data-label="Repos">{e(v)}</td></tr>' for k, v in (rep.get("licenses") or {}).items())
+    newest = "".join(f'<li><a href="https://github.com/{e(x["repo"])}">{e(x["repo"])}</a> · {e(x.get("created"))} · {e(x.get("license"))}</li>' for x in (rep.get("newest") or []))
+    hist = "".join(f'<tr><th scope="row">{e(pg_day(h.get("at", ""), True))}</th><td class="num" data-label="Healthy">{e((h.get("summary") or {}).get("ok"))}/{e((h.get("summary") or {}).get("items"))}</td>'
+                   f'<td class="num" data-label="Repos">{e(h.get("repos"))}</td><td class="num" data-label="Doors">{e(h.get("doors"))}</td><td data-label="Needs care">{e(", ".join(f"{k} {v}" for k, v in (h.get("bad") or {}).items()) or "—")}</td></tr>'
+                   for h in reversed((pg.get("history") or [])[-14:]))
+    ic_all = "✅" if not sm.get("warn") and not sm.get("fail") else ("🔴" if sm.get("fail") else "🟡")
+    body = f"""<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Public goods health · Open Source Orchestra</title>
+<meta name="description" content="Everything the Open Source Orchestra keeps openly sharing and building, checked by the ʻohana's keeper: is each door open, do its recordings still play, do its links still lead somewhere.">
+<link rel="canonical" href="https://opensourceorchestra.org/dao/health/">
+<meta name="theme-color" content="#0b0612">
+<link rel="alternate" type="application/json" href="/dao/public-goods.json" title="Public goods status (JSON)">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E%F0%9F%A9%BA%3C/text%3E%3C/svg%3E">
+<style>{HEALTH_CSS}</style>
+</head>
+<body>
+<a class="skip" href="#main">Skip to the report</a>
+<div class="wrap">
+<nav class="top" aria-label="Open Source Orchestra"><a href="https://opensourceorchestra.org/">🎻 Open Source Orchestra</a><a href="/dao/">📒 DAO ledger</a><a href="/dao/#share-h">🎁 The open shelf</a><a href="/dao/health/" aria-current="page">🩺 Health</a></nav>
+<header class="hero">
+<p class="kicker">Open Source Orchestra · public goods</p>
+<h1>Public goods health</h1>
+<p class="lede">Everything on <a href="/dao/#share-h">our open shelf</a>, checked by the ʻohana's keeper (an AI agent of Shaka's family) with plain public requests: is each door open, does it still say what it should, do its recordings still play, do its links still lead somewhere. Nothing private is read and nothing is posted.</p>
+<p class="stats"><span>{ic_all} {e(sm.get("ok"))} of {e(sm.get("items"))} healthy</span><span>checked {e(pg_day(pg.get("checked_at", ""), True))}</span><span>checked daily</span></p>
+</header>
+<main id="main">
+<section aria-labelledby="items-h">
+<h2 id="items-h">The shelf, item by item</h2>
+<div class="tablewrap"><table>
+<caption>✅ healthy · 🟡 needs care (still open, something small to fix) · 🔴 down. Raw data: <a href="/dao/public-goods.json">public-goods.json</a>.</caption>
+<thead><tr><th scope="col">Item</th><th scope="col">Status</th><th scope="col">What was checked</th><th scope="col">Notes</th></tr></thead>
+<tbody>
+{"".join(rows)}
+</tbody></table></div>
+</section>
+<section aria-labelledby="count-h">
+<h2 id="count-h">The numbers, counted live</h2>
+<div class="cards">
+<div class="card"><h3>📦 {e(rep.get("total"))} public repositories</h3><p>Counted from the GitHub API on {e(pg_day(rep.get("at", "")))}. {e(rep.get("originals"))} originals, {e(rep.get("forks"))} forks, {e(rep.get("archived"))} archived; {e(rep.get("pushed_last_7_days"))} touched in the last 7 days.</p></div>
+<div class="card"><h3>🎵 {e(ch.get("value"))} Songbook chapters</h3><p>Counted on <a href="https://shakaleikaumaka.com/songbook/">the Songbook</a>, which says “{e(ch.get("stated"))} chapters so far”. Every ʻohana song is CC0.</p></div>
+<div class="card"><h3>📚 {e(bk.get("value"))} Build Library books</h3><p>The library was last rebuilt on {e(pg_day(bk.get("built", "")))}: one book per public build, oldest first.</p></div>
+<div class="card"><h3>🎙️ {e(rec.get("value"))} open recordings</h3><p>Published with the consent of everyone on them, in <a href="https://osodaomeet.opensourceorchestra.org/meetings/">the theater's public media files</a>. Takedown first, questions second.</p></div>
+<div class="card"><h3>🚪 {e(dr.get("live"))} of {e(dr.get("public"))} doors live</h3><p>From <a href="https://myagentohana.com/doors/">All Doors</a>, the registry of every public door the family keeps open.</p></div>
+</div>
+<h3 class="sub">Where the code lives</h3>
+<div class="tablewrap"><table class="narrow"><thead><tr><th scope="col">GitHub home</th><th scope="col" class="num">Public repos</th><th scope="col">What lives there</th></tr></thead><tbody>{hrows}</tbody></table></div>
+<h3 class="sub">Licenses, honestly</h3>
+<p class="small">{e(pg.get("license_line"))} Every repository's own license file is what counts; this table is GitHub's reading of them.</p>
+<div class="tablewrap"><table class="narrow"><thead><tr><th scope="col">License</th><th scope="col" class="num">Repos</th></tr></thead><tbody>{lrows}</tbody></table></div>
+<h3 class="sub">Newest repositories</h3>
+<ul class="list">{newest}</ul>
+</section>
+<section aria-labelledby="hist-h">
+<h2 id="hist-h">Recent checks</h2>
+<div class="tablewrap"><table class="narrow"><thead><tr><th scope="col">When</th><th scope="col" class="num">Healthy</th><th scope="col" class="num">Repos</th><th scope="col" class="num">Doors</th><th scope="col">Needs care</th></tr></thead><tbody>{hist}</tbody></table></div>
+</section>
+<section aria-labelledby="how-h">
+<h2 id="how-h">How the keeper works</h2>
+<ul class="list">
+<li>Once a day the keeper opens every item on the shelf, reads it like a visitor would, follows its links and plays the first second of every recording.</li>
+<li>Counts (repositories, chapters, books, recordings, doors) are taken from the live sources, never typed by hand, so the shelf can't drift.</li>
+<li>Something small (a dead link, a slow page) is marked 🟡 and fixed by the family. If an item is 🔴 down on two checks in a row, Shaka is told.</li>
+<li>The keeper only makes public GET/HEAD requests. It posts nothing, signs nothing and reads nothing private.</li>
+<li>It is open source like everything here: <a href="{KEEPER_SRC}">the keeper's code and shelf list</a>. Fork it for your own public goods.</li>
+</ul>
+</section>
+</main>
+<footer><p>Open Source Orchestra · public goods health · checked {e(pg_day(pg.get("checked_at", ""), True))}. Built and run by Shaka's AI ʻohana (labelled as AI) with and for Shaka Lei Kaumaka, human steward of the Open Source Orchestra.</p></footer>
+</div>
+<script src="https://lang.opensourceorchestra.org/lang.js" async></script>
+</body>
+</html>
+"""
+    os.makedirs(os.path.join(ROOT, "dao", "health"), exist_ok=True)
+    with open(os.path.join(ROOT, "dao", "health", "index.html"), "w") as f:
+        f.write(body)
+
+
+HEALTH_CSS = """:root{--night:#0b0612;--deep:#150b22;--cream:#f7ecd9;--dim:rgba(247,236,217,.82);--faint:rgba(247,236,217,.7);--gold:#f0c464;--line:rgba(240,196,100,.28);
+--serif:'Iowan Old Style','Palatino Linotype',Palatino,'Book Antiqua',Georgia,'Times New Roman',serif;--sans:ui-sans-serif,system-ui,-apple-system,'Segoe UI',Roboto,Helvetica,Arial,sans-serif}
+*{box-sizing:border-box;margin:0;padding:0}
+html{background:var(--night)}
+body{font-family:var(--serif);color:var(--cream);line-height:1.65;font-size:1.05rem;min-height:100vh;background:radial-gradient(ellipse 90% 50% at 50% 0%,rgba(90,50,160,.30),transparent 60%),linear-gradient(180deg,#0b0612 0%,#150b22 45%,#241335 100%);background-attachment:fixed}
+a{color:var(--gold);text-underline-offset:.18em} a:hover{color:#ffe1a0}
+:focus-visible{outline:3px solid var(--gold);outline-offset:3px;border-radius:4px}
+.skip{position:absolute;left:-999px;top:0;background:var(--gold);color:#1a0f00;padding:.5rem 1rem;z-index:50} .skip:focus{left:1rem;top:1rem}
+.wrap{max-width:1080px;margin:0 auto;padding:0 1.1rem}
+nav.top{font-family:var(--sans);font-size:.88rem;padding:1rem 0;display:flex;flex-wrap:wrap;gap:.35rem 1.1rem}
+nav.top a{color:var(--dim);text-decoration:none} nav.top a:hover,nav.top a[aria-current]{color:var(--gold)}
+header.hero{text-align:center;padding:1.6rem 0 1rem}
+.kicker{font-family:var(--sans);font-size:.8rem;letter-spacing:.14em;text-transform:uppercase;color:var(--gold)}
+h1{font-weight:400;font-size:clamp(2rem,6vw,3.1rem);line-height:1.12;margin-top:.4rem}
+.lede{max-width:46rem;margin:1.1rem auto 0;color:var(--dim)}
+.stats{display:flex;flex-wrap:wrap;justify-content:center;gap:.6rem;margin-top:1.2rem;font-family:var(--sans);font-size:.92rem;color:var(--dim)}
+.stats span{border:1px solid var(--line);border-radius:999px;padding:.4rem .9rem}
+main section{margin:2.2rem 0}
+h2{font-weight:400;font-size:clamp(1.45rem,4vw,2rem);margin-bottom:.6rem}
+h3.sub{font-family:var(--sans);font-size:1.02rem;color:var(--gold);margin:1.3rem 0 .5rem}
+.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(15rem,1fr));gap:.9rem;margin-top:.8rem}
+.card{border:1px solid var(--line);border-radius:14px;padding:.9rem 1rem;background:rgba(21,11,34,.7)}
+.card h3{font-family:var(--sans);font-size:1rem;color:var(--gold);margin-bottom:.3rem}
+.card p{color:var(--dim);font-size:.96rem}
+.tablewrap{overflow-x:auto;border:1px solid var(--line);border-radius:14px;background:rgba(21,11,34,.75)}
+table{width:100%;border-collapse:collapse;font-family:var(--sans);font-size:.9rem;min-width:44rem}
+table.narrow{min-width:0}
+caption{text-align:left;padding:.8rem 1rem;color:var(--dim);font-size:.88rem}
+th,td{padding:.6rem .8rem;border-top:1px solid var(--line);text-align:left;vertical-align:top}
+thead th{color:var(--gold);font-weight:600;font-size:.8rem;letter-spacing:.06em;text-transform:uppercase;border-top:0}
+tbody th{font-weight:600}
+td{color:var(--dim)}
+.num{text-align:right;font-variant-numeric:tabular-nums;white-space:nowrap}
+.pill{display:inline-block;border:1px solid var(--line);border-radius:999px;padding:.15rem .6rem;white-space:nowrap;color:var(--cream)}
+.pg-ok .pill{border-color:rgba(126,226,160,.7);color:#bff2d2} .pg-warn .pill{border-color:var(--gold);color:#ffe1a0} .pg-fail .pill{border-color:#ff9b9b;color:#ffd0d0}
+.list{padding-left:1.2rem;color:var(--dim)} .list li+li{margin-top:.35rem}
+.small{font-family:var(--sans);font-size:.88rem;color:var(--faint)}
+footer{border-top:1px solid var(--line);margin-top:2.5rem;padding:1.4rem 0 2.4rem;font-family:var(--sans);font-size:.86rem;color:var(--faint)}
+@media (max-width:640px){table{min-width:0} thead{position:absolute;left:-9999px} tbody tr{display:block;border-top:1px solid var(--line);padding:.4rem 0} tbody th,tbody td{display:block;border:0;padding:.3rem .9rem;text-align:left} tbody td::before{content:attr(data-label) ": ";color:var(--faint);font-size:.8rem;text-transform:uppercase;letter-spacing:.05em} .num{text-align:left} .pill{white-space:normal}}
+@media (prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important}}"""
 
 
 TEMPLATE = """<!doctype html>
@@ -232,6 +473,8 @@ tbody th{{font-weight:600}}
 .rail-no{{opacity:.85}} .rail-no .pill.st{{color:var(--faint)}}
 .rail.lane-A .pill.lane{{border-color:#f0c464;color:#ffe1a0}} .rail.lane-B .pill.lane{{border-color:rgba(160,220,255,.5);color:#cfe9ff}}
 .gifts table{{min-width:0}}
+.pg-health{{font-family:var(--sans);font-size:.92rem;color:var(--dim);border:1px solid var(--line);border-radius:12px;padding:.65rem .95rem;margin-top:.9rem;background:rgba(21,11,34,.6)}} .pg-health strong{{color:var(--cream)}}
+.share li+li{{margin-top:.3rem}} .share ul{{padding-left:1.2rem;margin-top:.6rem}} .share .cnt{{color:var(--dim)}}
 footer{{border-top:1px solid var(--line);margin-top:2.5rem;padding:1.4rem 0 2.4rem;font-family:var(--sans);font-size:.86rem;color:var(--faint)}}
 @media (max-width:640px){{table{{min-width:0}} thead{{position:absolute;left:-9999px}} tbody tr{{display:block;border-top:1px solid var(--line);padding:.4rem 0}} tbody th,tbody td{{display:block;border:0;padding:.3rem .9rem;text-align:left}} tbody td::before{{content:attr(data-label) ": ";color:var(--faint);font-size:.8rem;text-transform:uppercase;letter-spacing:.05em}} .num{{text-align:left}} .pill{{white-space:normal}}}}
 @media (prefers-reduced-motion:reduce){{*{{transition:none!important;animation:none!important}}}}
@@ -346,20 +589,7 @@ footer{{border-top:1px solid var(--line);margin-top:2.5rem;padding:1.4rem 0 2.4r
 </ul>
 </section>
 
-<section aria-labelledby="share-h">
-<h2 id="share-h">🎁 What we keep openly sharing &amp; building</h2>
-<p>Code under GPL-3.0 (older releases stay CC0); words, songs and the rider CC0. Fork us like crazy.</p>
-<ul>
-<li><a href="https://shakaleikaumaka.com/#gifts">116 open repositories</a> (the Gift Board)</li>
-<li><a href="/rider/">The CC0 rider</a> and the <a href="/rider/sanctuary/">3D Virtual Sanctuary</a></li>
-<li><a href="/schedule/">The public schedule</a> · <a href="/openrecording2/">open recordings</a></li>
-<li><a href="https://build-library-zcpweo3nke-ffieyo32.taur.link/">The Build Library</a></li>
-<li><a href="https://shakaleikaumaka.com/songbook/">The ʻohana Songbook</a></li>
-<li><a href="/garden/circle/">The Garden Circle</a> · <a href="/mandala-room/">The Mandala Room</a> · <a href="/the-room/">The Room You Let Us Build</a></li>
-<li><a href="https://myagentohana.com/ohana-bot/">The ʻohana bot front door</a></li>
-<li>And more at <a href="https://myagentohana.com/doors/">every door we keep open</a></li>
-</ul>
-</section>
+{share}
 
 <section aria-labelledby="help-h">
 <h2 id="help-h">🤝 Know a grant we should apply for?</h2>

@@ -1,0 +1,109 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Public goods health · Open Source Orchestra</title>
+<meta name="description" content="Everything the Open Source Orchestra keeps openly sharing and building, checked by the ʻohana's keeper: is each door open, do its recordings still play, do its links still lead somewhere.">
+<link rel="canonical" href="https://opensourceorchestra.org/dao/health/">
+<meta name="theme-color" content="#0b0612">
+<link rel="alternate" type="application/json" href="/dao/public-goods.json" title="Public goods status (JSON)">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E%F0%9F%A9%BA%3C/text%3E%3C/svg%3E">
+<style>:root{--night:#0b0612;--deep:#150b22;--cream:#f7ecd9;--dim:rgba(247,236,217,.82);--faint:rgba(247,236,217,.7);--gold:#f0c464;--line:rgba(240,196,100,.28);
+--serif:'Iowan Old Style','Palatino Linotype',Palatino,'Book Antiqua',Georgia,'Times New Roman',serif;--sans:ui-sans-serif,system-ui,-apple-system,'Segoe UI',Roboto,Helvetica,Arial,sans-serif}
+*{box-sizing:border-box;margin:0;padding:0}
+html{background:var(--night)}
+body{font-family:var(--serif);color:var(--cream);line-height:1.65;font-size:1.05rem;min-height:100vh;background:radial-gradient(ellipse 90% 50% at 50% 0%,rgba(90,50,160,.30),transparent 60%),linear-gradient(180deg,#0b0612 0%,#150b22 45%,#241335 100%);background-attachment:fixed}
+a{color:var(--gold);text-underline-offset:.18em} a:hover{color:#ffe1a0}
+:focus-visible{outline:3px solid var(--gold);outline-offset:3px;border-radius:4px}
+.skip{position:absolute;left:-999px;top:0;background:var(--gold);color:#1a0f00;padding:.5rem 1rem;z-index:50} .skip:focus{left:1rem;top:1rem}
+.wrap{max-width:1080px;margin:0 auto;padding:0 1.1rem}
+nav.top{font-family:var(--sans);font-size:.88rem;padding:1rem 0;display:flex;flex-wrap:wrap;gap:.35rem 1.1rem}
+nav.top a{color:var(--dim);text-decoration:none} nav.top a:hover,nav.top a[aria-current]{color:var(--gold)}
+header.hero{text-align:center;padding:1.6rem 0 1rem}
+.kicker{font-family:var(--sans);font-size:.8rem;letter-spacing:.14em;text-transform:uppercase;color:var(--gold)}
+h1{font-weight:400;font-size:clamp(2rem,6vw,3.1rem);line-height:1.12;margin-top:.4rem}
+.lede{max-width:46rem;margin:1.1rem auto 0;color:var(--dim)}
+.stats{display:flex;flex-wrap:wrap;justify-content:center;gap:.6rem;margin-top:1.2rem;font-family:var(--sans);font-size:.92rem;color:var(--dim)}
+.stats span{border:1px solid var(--line);border-radius:999px;padding:.4rem .9rem}
+main section{margin:2.2rem 0}
+h2{font-weight:400;font-size:clamp(1.45rem,4vw,2rem);margin-bottom:.6rem}
+h3.sub{font-family:var(--sans);font-size:1.02rem;color:var(--gold);margin:1.3rem 0 .5rem}
+.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(15rem,1fr));gap:.9rem;margin-top:.8rem}
+.card{border:1px solid var(--line);border-radius:14px;padding:.9rem 1rem;background:rgba(21,11,34,.7)}
+.card h3{font-family:var(--sans);font-size:1rem;color:var(--gold);margin-bottom:.3rem}
+.card p{color:var(--dim);font-size:.96rem}
+.tablewrap{overflow-x:auto;border:1px solid var(--line);border-radius:14px;background:rgba(21,11,34,.75)}
+table{width:100%;border-collapse:collapse;font-family:var(--sans);font-size:.9rem;min-width:44rem}
+table.narrow{min-width:0}
+caption{text-align:left;padding:.8rem 1rem;color:var(--dim);font-size:.88rem}
+th,td{padding:.6rem .8rem;border-top:1px solid var(--line);text-align:left;vertical-align:top}
+thead th{color:var(--gold);font-weight:600;font-size:.8rem;letter-spacing:.06em;text-transform:uppercase;border-top:0}
+tbody th{font-weight:600}
+td{color:var(--dim)}
+.num{text-align:right;font-variant-numeric:tabular-nums;white-space:nowrap}
+.pill{display:inline-block;border:1px solid var(--line);border-radius:999px;padding:.15rem .6rem;white-space:nowrap;color:var(--cream)}
+.pg-ok .pill{border-color:rgba(126,226,160,.7);color:#bff2d2} .pg-warn .pill{border-color:var(--gold);color:#ffe1a0} .pg-fail .pill{border-color:#ff9b9b;color:#ffd0d0}
+.list{padding-left:1.2rem;color:var(--dim)} .list li+li{margin-top:.35rem}
+.small{font-family:var(--sans);font-size:.88rem;color:var(--faint)}
+footer{border-top:1px solid var(--line);margin-top:2.5rem;padding:1.4rem 0 2.4rem;font-family:var(--sans);font-size:.86rem;color:var(--faint)}
+@media (max-width:640px){table{min-width:0} thead{position:absolute;left:-9999px} tbody tr{display:block;border-top:1px solid var(--line);padding:.4rem 0} tbody th,tbody td{display:block;border:0;padding:.3rem .9rem;text-align:left} tbody td::before{content:attr(data-label) ": ";color:var(--faint);font-size:.8rem;text-transform:uppercase;letter-spacing:.05em} .num{text-align:left} .pill{white-space:normal}}
+@media (prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important}}</style>
+</head>
+<body>
+<a class="skip" href="#main">Skip to the report</a>
+<div class="wrap">
+<nav class="top" aria-label="Open Source Orchestra"><a href="https://opensourceorchestra.org/">🎻 Open Source Orchestra</a><a href="/dao/">📒 DAO ledger</a><a href="/dao/#share-h">🎁 The open shelf</a><a href="/dao/health/" aria-current="page">🩺 Health</a></nav>
+<header class="hero">
+<p class="kicker">Open Source Orchestra · public goods</p>
+<h1>Public goods health</h1>
+<p class="lede">Everything on <a href="/dao/#share-h">our open shelf</a>, checked by the ʻohana's keeper (an AI agent of Shaka's family) with plain public requests: is each door open, does it still say what it should, do its recordings still play, do its links still lead somewhere. Nothing private is read and nothing is posted.</p>
+<p class="stats"><span>🟡 12 of 13 healthy</span><span>checked 15 Nov 2026 (06:34 UTC)</span><span>checked daily</span></p>
+</header>
+<main id="main">
+<section aria-labelledby="items-h">
+<h2 id="items-h">The shelf, item by item</h2>
+<div class="tablewrap"><table>
+<caption>✅ healthy · 🟡 needs care (still open, something small to fix) · 🔴 down. Raw data: <a href="/dao/public-goods.json">public-goods.json</a>.</caption>
+<thead><tr><th scope="col">Item</th><th scope="col">Status</th><th scope="col">What was checked</th><th scope="col">Notes</th></tr></thead>
+<tbody>
+<tr class="pg-ok"><th scope="row"><a href="https://shakaleikaumaka.com/#gifts">Open repositories (the Gift Board)</a></th><td data-label="Status"><span class="pill">✅ Healthy</span></td><td data-label="Checked">page 200 · 114 ms</td><td data-label="Notes">—</td></tr><tr class="pg-ok"><th scope="row"><a href="https://opensourceorchestra.org/rider/">The CC0 rider</a></th><td data-label="Status"><span class="pill">✅ Healthy</span></td><td data-label="Checked">page 200 · 113 ms<br>the forkable plain-text rider 206<br>5 links checked · all lead somewhere</td><td data-label="Notes">—</td></tr><tr class="pg-ok"><th scope="row"><a href="https://opensourceorchestra.org/rider/sanctuary/">The 3D Virtual Sanctuary</a></th><td data-label="Status"><span class="pill">✅ Healthy</span></td><td data-label="Checked">page 200 · 84 ms<br>1 link checked · leads somewhere</td><td data-label="Notes">—</td></tr><tr class="pg-ok"><th scope="row"><a href="https://opensourceorchestra.org/schedule/">The public schedule</a></th><td data-label="Status"><span class="pill">✅ Healthy</span></td><td data-label="Checked">page 200 · 107 ms<br>3 links checked · all lead somewhere</td><td data-label="Notes">—</td></tr><tr class="pg-ok"><th scope="row"><a href="https://osodaomeet.opensourceorchestra.org/meetings/">Open recordings</a></th><td data-label="Status"><span class="pill">✅ Healthy</span></td><td data-label="Checked">page 200 · 261 ms<br>page 200 · 94 ms<br>weekly call #2 transcript 206<br>weekly call #2 audio on the Internet Archive 206<br>8/8 recording files answer</td><td data-label="Notes">—</td></tr><tr class="pg-warn"><th scope="row"><a href="https://build-library-zcpweo3nke-ffieyo32.taur.link/">The Build Library</a></th><td data-label="Status"><span class="pill">🟡 Needs care</span></td><td data-label="Checked">page 200 · 52 ms<br>the library&#x27;s machine-readable catalogue 200<br>389 links checked · 1 broken</td><td data-label="Notes">1 broken link(s) on https://build-library-zcpweo3nke-ffieyo32.taur.link/: https://spectorgadget-py7nmhxtpx-ffieyo32.taur.link/ (404)</td></tr><tr class="pg-ok"><th scope="row"><a href="https://shakaleikaumaka.com/songbook/">The ʻohana Songbook</a></th><td data-label="Status"><span class="pill">✅ Healthy</span></td><td data-label="Checked">page 200 · 92 ms<br>22 links checked · all lead somewhere</td><td data-label="Notes">—</td></tr><tr class="pg-ok"><th scope="row"><a href="https://opensourceorchestra.org/garden/circle/">The Garden Circle</a></th><td data-label="Status"><span class="pill">✅ Healthy</span></td><td data-label="Checked">page 200 · 99 ms<br>the circle&#x27;s artist cards 200 · 41 items</td><td data-label="Notes">—</td></tr><tr class="pg-ok"><th scope="row"><a href="https://opensourceorchestra.org/mandala-room/">The Mandala Room</a></th><td data-label="Status"><span class="pill">✅ Healthy</span></td><td data-label="Checked">page 200 · 95 ms<br>43 links checked · all lead somewhere</td><td data-label="Notes">—</td></tr><tr class="pg-ok"><th scope="row"><a href="https://opensourceorchestra.org/the-room/">The Room You Let Us Build</a></th><td data-label="Status"><span class="pill">✅ Healthy</span></td><td data-label="Checked">page 200 · 91 ms<br>35 links checked · all lead somewhere</td><td data-label="Notes">—</td></tr><tr class="pg-ok"><th scope="row"><a href="https://myagentohana.com/ohana-bot/">The ʻohana bot front door</a></th><td data-label="Status"><span class="pill">✅ Healthy</span></td><td data-label="Checked">page 200 · 92 ms<br>the chat proxy answers 200<br>the chat worker is up 200</td><td data-label="Notes">—</td></tr><tr class="pg-ok"><th scope="row"><a href="https://myagentohana.com/doors/">Every door we keep open</a></th><td data-label="Status"><span class="pill">✅ Healthy</span></td><td data-label="Checked">page 200 · 147 ms<br>406/406 doors live</td><td data-label="Notes">—</td></tr><tr class="pg-ok"><th scope="row"><a href="https://osopit.com/delhi/">The Ancestor&#x27;s Room: where the OSO P.I.T. was born</a></th><td data-label="Status"><span class="pill">✅ Healthy</span></td><td data-label="Checked">page 200 · 98 ms<br>page 200 · 533 ms<br>page 200 · 2253 ms</td><td data-label="Notes">—</td></tr>
+</tbody></table></div>
+</section>
+<section aria-labelledby="count-h">
+<h2 id="count-h">The numbers, counted live</h2>
+<div class="cards">
+<div class="card"><h3>📦 159 public repositories</h3><p>Counted from the GitHub API on 15 Nov 2026. 150 originals, 9 forks, 6 archived; 95 touched in the last 7 days.</p></div>
+<div class="card"><h3>🎵 18 Songbook chapters</h3><p>Counted on <a href="https://shakaleikaumaka.com/songbook/">the Songbook</a>, which says “18 chapters so far”. Every ʻohana song is CC0.</p></div>
+<div class="card"><h3>📚 160 Build Library books</h3><p>The library was last rebuilt on 8 Nov 2026: one book per public build, oldest first.</p></div>
+<div class="card"><h3>🎙️ 3 open recordings</h3><p>Published with the consent of everyone on them, in <a href="https://osodaomeet.opensourceorchestra.org/meetings/">the theater's public media files</a>. Takedown first, questions second.</p></div>
+<div class="card"><h3>🚪 406 of 406 doors live</h3><p>From <a href="https://myagentohana.com/doors/">All Doors</a>, the registry of every public door the family keeps open.</p></div>
+</div>
+<h3 class="sub">Where the code lives</h3>
+<div class="tablewrap"><table class="narrow"><thead><tr><th scope="col">GitHub home</th><th scope="col" class="num">Public repos</th><th scope="col">What lives there</th></tr></thead><tbody><tr><th scope="row"><a href="https://github.com/shakaleikaumaka">shakaleikaumaka</a></th><td class="num" data-label="Public repos">116</td><td data-label="What lives there">the main home</td></tr><tr><th scope="row"><a href="https://github.com/ShakaLei">ShakaLei</a></th><td class="num" data-label="Public repos">32</td><td data-label="What lives there">Shaka&#x27;s own account</td></tr><tr><th scope="row"><a href="https://github.com/Open-Source-Orchestra">Open-Source-Orchestra</a></th><td class="num" data-label="Public repos">8</td><td data-label="What lives there">the orchestra&#x27;s org (LIVE PIT, the theater, the DAO, ZU Chiang Mai)</td></tr><tr><th scope="row"><a href="https://github.com/opensource-orchestra">opensource-orchestra</a></th><td class="num" data-label="Public repos">3</td><td data-label="What lives there">the founding org: the original OSO P.I.T. from ETHGlobal New Delhi 2025, built with its founding crew</td></tr></tbody></table></div>
+<h3 class="sub">Licenses, honestly</h3>
+<p class="small">Code is copyleft: GPL-3.0 on most repositories and AGPL-3.0 on new network code like LIVE PIT (older releases stay CC0). Words, songs and the rider are CC0. Fork us like crazy. Every repository's own license file is what counts; this table is GitHub's reading of them.</p>
+<div class="tablewrap"><table class="narrow"><thead><tr><th scope="col">License</th><th scope="col" class="num">Repos</th></tr></thead><tbody><tr><th scope="row">GNU GPL v3 (copyleft)</th><td class="num" data-label="Repos">111</td></tr><tr><th scope="row">no license file yet</th><td class="num" data-label="Repos">24</td></tr><tr><th scope="row">CC0 (public domain dedication)</th><td class="num" data-label="Repos">20</td></tr><tr><th scope="row">MIT (permissive; forks and partner code)</th><td class="num" data-label="Repos">2</td></tr><tr><th scope="row">a custom license (see the repo)</th><td class="num" data-label="Repos">1</td></tr><tr><th scope="row">GNU AGPL v3 (copyleft, covers network use)</th><td class="num" data-label="Repos">1</td></tr></tbody></table></div>
+<h3 class="sub">Newest repositories</h3>
+<ul class="list"><li><a href="https://github.com/Open-Source-Orchestra/pit-live">Open-Source-Orchestra/pit-live</a> · 2026-11-15 · AGPL-3.0</li><li><a href="https://github.com/Open-Source-Orchestra/zu-chiangmai">Open-Source-Orchestra/zu-chiangmai</a> · 2026-11-13 · GPL-3.0</li><li><a href="https://github.com/Open-Source-Orchestra/oso-dao">Open-Source-Orchestra/oso-dao</a> · 2026-11-13 · NONE</li><li><a href="https://github.com/Open-Source-Orchestra/oso-dao-meet">Open-Source-Orchestra/oso-dao-meet</a> · 2026-11-12 · GPL-3.0</li><li><a href="https://github.com/Open-Source-Orchestra/hash-of-fame">Open-Source-Orchestra/hash-of-fame</a> · 2026-11-12 · GPL-3.0</li><li><a href="https://github.com/Open-Source-Orchestra/osopit">Open-Source-Orchestra/osopit</a> · 2026-11-06 · GPL-3.0</li></ul>
+</section>
+<section aria-labelledby="hist-h">
+<h2 id="hist-h">Recent checks</h2>
+<div class="tablewrap"><table class="narrow"><thead><tr><th scope="col">When</th><th scope="col" class="num">Healthy</th><th scope="col" class="num">Repos</th><th scope="col" class="num">Doors</th><th scope="col">Needs care</th></tr></thead><tbody><tr><th scope="row">15 Nov 2026 (06:34 UTC)</th><td class="num" data-label="Healthy">12/13</td><td class="num" data-label="Repos">159</td><td class="num" data-label="Doors">406</td><td data-label="Needs care">build-library warn</td></tr></tbody></table></div>
+</section>
+<section aria-labelledby="how-h">
+<h2 id="how-h">How the keeper works</h2>
+<ul class="list">
+<li>Once a day the keeper opens every item on the shelf, reads it like a visitor would, follows its links and plays the first second of every recording.</li>
+<li>Counts (repositories, chapters, books, recordings, doors) are taken from the live sources, never typed by hand, so the shelf can't drift.</li>
+<li>Something small (a dead link, a slow page) is marked 🟡 and fixed by the family. If an item is 🔴 down on two checks in a row, Shaka is told.</li>
+<li>The keeper only makes public GET/HEAD requests. It posts nothing, signs nothing and reads nothing private.</li>
+<li>It is open source like everything here: <a href="https://github.com/shakaleikaumaka/oso-storytelling/tree/main/tools/public-goods-keeper">the keeper's code and shelf list</a>. Fork it for your own public goods.</li>
+</ul>
+</section>
+</main>
+<footer><p>Open Source Orchestra · public goods health · checked 15 Nov 2026 (06:34 UTC). Built and run by Shaka's AI ʻohana (labelled as AI) with and for Shaka Lei Kaumaka, human steward of the Open Source Orchestra.</p></footer>
+</div>
+<script src="https://lang.opensourceorchestra.org/lang.js" async></script>
+</body>
+</html>
