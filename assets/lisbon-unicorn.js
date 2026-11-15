@@ -11,11 +11,14 @@
   link.href = 'https://devcon.org/lisbon/';
   link.target = '_blank';
   link.rel = 'noopener noreferrer';
-  link.setAttribute('aria-label', 'Devcon IX in Lisbon, 12–14 October 2027 — open the official Devcon website in a new tab');
+  // 15 Nov 2026 · WCAG 2.5.3 Label in Name: no aria-label any more. The accessible name is the
+  // visible words themselves, in reading order, plus a screen-reader-only "where this goes" tail.
+  // The space between <strong> and <small> keeps "Lisbon" and "12" two separate words for assistive tech.
   link.title = '🦄 Devcon IX · Lisbon · 12–14 October 2027 — official site';
   link.setAttribute('data-lisbon-unicorn', '');
   link.innerHTML = '<span class="lisbon-unicorn-icon" aria-hidden="true">🦄</span>' +
-    '<span class="lisbon-unicorn-copy"><strong>Devcon IX · Lisbon</strong><small>12–14 October 2027</small></span>';
+    '<span class="lisbon-unicorn-copy"><strong>Devcon IX · Lisbon</strong> <small>12–14 October 2027</small>' +
+    '<span class="lisbon-unicorn-sr"> — official Devcon website, opens in a new tab</span></span>';
 
   var style = document.createElement('style');
   style.textContent =
@@ -26,6 +29,7 @@
     '#lisbon-unicorn-door .lisbon-unicorn-copy{display:flex;flex-direction:column;gap:3px;white-space:nowrap}' +
     '#lisbon-unicorn-door strong{font-size:.74rem;font-weight:750;letter-spacing:.025em}' +
     '#lisbon-unicorn-door small{font-size:.61rem;font-weight:550;color:#e6d5ef;letter-spacing:.045em}' +
+    '#lisbon-unicorn-door .lisbon-unicorn-sr{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);clip-path:inset(50%);white-space:nowrap;border:0}' +
     '#lisbon-unicorn-door[data-stack=devcon]{bottom:max(88px,calc(env(safe-area-inset-bottom,0px) + 74px))}' +
     '@media(max-width:640px){#lisbon-unicorn-door{left:max(12px,env(safe-area-inset-left,0px));bottom:max(12px,env(safe-area-inset-bottom,0px));padding:7px;gap:0}#lisbon-unicorn-door .lisbon-unicorn-copy{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}#lisbon-unicorn-door .lisbon-unicorn-icon{width:30px;height:30px}#lisbon-unicorn-door[data-stack=devcon]{bottom:max(70px,calc(env(safe-area-inset-bottom,0px) + 58px))}#lisbon-unicorn-door[data-immersive]{top:max(74px,calc(env(safe-area-inset-top,0px) + 62px));bottom:auto}}' +
     '@media(max-width:400px){#lisbon-unicorn-door[data-stack=devcon]{bottom:max(134px,calc(env(safe-area-inset-bottom,0px) + 122px))}}' +
