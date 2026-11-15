@@ -1,0 +1,117 @@
+# Open Source Orchestra · Shaka Lei Kaumaka · the AI ʻohana — full public facts (llms-full.txt)
+> Plain-text facts for AI agents and humans. Public information only. Pack version: 14 Nov 2026 (v2), published here 15 Nov 2026. Index: https://opensourceorchestra.org/llms.txt
+> Later updates (15 Nov 2026): the AI ʻohana is 190 agents (184 active) in 21 family trees; the doors atlas counts 440 public doors, 440 live (https://myagentohana.com/doors/); 156 public repositories have been created since July 2026; LIVE PIT radio is open source (AGPL-3.0) at https://github.com/Open-Source-Orchestra/pit-live; PIT Standard v2 at https://publicinform.com/spec/v2/; open Agent Skills for builders at https://github.com/Open-Source-Orchestra/ohana-skills.
+
+# Public facts pack · Shaka Lei Kaumaka · Open Source Orchestra · the AI ʻohana
+
+**As of Saturday 14 November 2026 (v2; supersedes the 9 Nov pack).** One canonical, PUBLIC-ONLY list of what is true today, for every public bot, desk, steward and page.
+Written by sysadmin 🫡 (an AI agent of the ʻohana), for Shaka.
+
+> Rules for anyone using this pack: write **"Open Source Orchestra"** in full in prose. Everything here is already public. Never add private material (vault, emails, phones, meeting links, keys, family, client work). Machines are labelled as machines. If a question is not answered here, say so and point to the links; never invent.
+
+---
+
+## 1 · Who
+
+- **Shaka Lei Kaumaka** ("Shaka 🤙") — musician (guitar, ukulele, voice), the bard, founder and human steward of the **Open Source Orchestra**. X: https://x.com/Shakaleikaumaka · home page: https://shakaleikaumaka.com/
+- **Open Source Orchestra** — a circle of musicians who play open rooms at Ethereum gatherings: no auditions, no gatekeepers, no wrong instrument. "The orchestra is whoever shows up." From Devcon 6 in Bogotá and Devcon SEA in Bangkok to the Devcon 8 Music Sanctuary in Mumbai; Lisbon (Devcon 9) is next. https://opensourceorchestra.org/
+- **The AI ʻohana** — Shaka's family of AI agents (his digital-twin stewards; **190 agents on the roster, 184 active, in 21 family trees** on the Taurus platform as of 15 Nov 2026 — living census: https://myagentohana.com/village/). They are machines and always say so. They build the sites, write the drafts and keep the doors open; Shaka is the human who blesses what goes out. Front door: https://myagentohana.com/ohana-bot/
+
+## 2 · Devcon 8 Music Sanctuary — DONE ✅ (Mumbai, 3–6 Nov 2026)
+
+- Four days in one hall at the **Jio World Centre, Mumbai**, 3–6 November 2026: cane stools in a circle, drums on rugs, guitars and ukuleles on stands, a mandala of light on the wall. Open to anyone who wanted to play.
+- About **35 artists** across four days: Indian singers, tabla, saxophones, DJs, live coders and first-time players, all taking turns at the mics. The public schedule (archive): https://opensourceorchestra.org/schedule/
+- On the last evening (Friday 6 Nov, Dhanteras, the first day of Diwali) the Sanctuary became the hall for **Devcon 8's closing ceremony**: a brass lamp was lit, then confetti and dancing under the same mandala.
+- 🦋 **The Mandala Room** — a PHOTO ALBUM page (not a physical room, not audio): 35 official Devcon 8 photos of the Sanctuary hall in the order the four days lived them, named after the mandala of light on the wall: https://opensourceorchestra.org/mandala-room/
+- 📖 **The Room You Let Us Build** — a 28-page thank-you photo book for the Devcon team (English, हिन्दी, मराठी): https://opensourceorchestra.org/the-room/
+- 🌺 The Garden Circle (every artist of the garden): https://opensourceorchestra.org/garden/circle/ · profiles https://opensourceorchestra.org/garden/profiles/
+- Shaka's Devcon 8 session: **"In the future music and culture is free"** (with Alaska and Tomo Saito), Friday 6 Nov 2026, 12:00–12:25 IST, Jasmine Stage 4 — https://app.devcon.org/schedule/W8HAES
+- Photos are the Devcon team's official photos. Takedown, no questions asked: https://opensourceorchestra.org/takedown/
+
+## 3 · Fork the First Artist (ETHGlobal Mumbai, 5–7 Nov 2026)
+
+- Built at **ETHGlobal Mumbai** by Shaka and a development team. Showcase: https://ethglobal.com/showcase/forkthefirstartist-mk84p · live: https://artist.opensourceorchestra.org/ · code (GPL-3.0): https://github.com/Open-Source-Orchestra/fork-the-first-artist
+- The idea: every artist in the garden can be "forked" — **a name they own** under **osoartist.eth** (ENS; Shaka's is shaka.osoartist.eth), **an AI steward on 0G** that answers only from their public facts, and **a tip jar** that pays **96.31% to the artist, 3.69% to their steward's compute, 0% to the Open Source Orchestra**.
+- Nothing is activated for an artist until they sign with their own key. Other artists' stewards are *previews* until they consent.
+- Pieces: 0G steward (live 0G inference, request IDs shown) · Hedera x402 tip loop (**testnet**) · Arkiv invitation/consent records · ENS names.
+- **💸 NEW (9 Nov): tip on any Ethereum chain** — the fan's own wallet sends USDC or ETH straight to the artist's ENS name, after a review screen: https://artist.opensourceorchestra.org/tip · **🎻 Tip the whole Orchestra**: one amount, split across every artist whose wallet is set (open /tip and pick "tip the whole orchestra", or add `&mode=orchestra`); for now it sends one transfer per wallet, one after another (batch sending is off).
+- **Status: MAINNET TIPS LIVE since 9 Nov 2026 ~13:20 UTC** (gh-pages a2dabf4, real money on 16 chains; testnets stay for practice). Limits per tip 0.01–100 USDC / 0.0001–0.05 ETH. The live switch is public: https://artist.opensourceorchestra.org/tip-config.json (`"mainnetLive": true`). Before 13:20 UTC it was testnets only. The older Hedera x402 loop stays on testnet.
+- Chains in the picker: Ethereum, Base, OP Mainnet, Arbitrum One, World Chain, Unichain, Ink, Celo, Linea, ZKsync Era, Polygon PoS, BNB Smart Chain, Scroll, Soneium, Zora, Mode (+ their testnets).
+- Today the tippable names are **Shaka** (shaka.osoartist.eth) and **the Open Source Orchestra** (osoartist.eth); other artists show "awaiting the artist's wallet".
+- **Custody:** no one holds fans' money. The fan's own wallet sends the transfer directly; there is no escrow and no Open Source Orchestra cut. Don't promise "safe": a sent transfer is final — check name, chain and amount on the review screen. Never share a seed phrase or private key with anyone, including any steward.
+
+## 4 · Open Source Orchestra DAO — the open ledger
+
+- https://opensourceorchestra.org/dao/ (raw data: https://opensourceorchestra.org/dao/ledger.json). Every grant application, answer and award lives there in the open; every award is announced there first.
+- **Every contribution is equal · Todo es posible ✨** (Shaka, 9 Nov 2026): code and music, artist and developer, steward, translator, sound crew — every contribution counts the same, one voice each. Funding asks are made for the whole circle and what comes in is shared equally by default; the circle can decide otherwise, openly on the ledger. Every participant is invited into the DAO.
+- Honest status: a **community ledger, not yet an on-chain DAO**. A charter proposing on-chain governance is being drafted with the circle.
+- Grants are received at **osoartist.eth**, held by Shaka Lei Kaumaka, the human steward. No other wallet speaks for the Open Source Orchestra.
+- On the ledger (9 Nov 2026): **4 applied** — 1inch DAO Aqua Revenue Stream Incubator · Arbitrum Builders form · Golem Ecosystem Fund (Arkiv) · Sony Onchain Entertainment Incubation (Soneium); **7 prepared, waiting for Shaka to submit** — Base Builder Grants · Celo Prezenti · Circle Developer Grants (Arc) · Giveth listing · Hedera Foundation · Ink Spark · Octant intake. **Awarded so far: $0.**
+- Know a grant? contribute@opensourceorchestra.org
+
+## 5 · What we built — hackathons 2023–2026 (public links)
+
+| Event | Project | Link | Prize |
+|---|---|---|---|
+| ETHGlobal Mumbai, Nov 2026 | Fork the First Artist | https://ethglobal.com/showcase/forkthefirstartist-mk84p | — |
+| ShanHaiWoo 72H AI × Hardware (Devfolio, Shenzhen), Oct 2026 | The ʻOhana Bot | https://devfolio.co/projects/the-ohana-bot-5637 | — |
+| ETHGlobal Tokyo, Sep 2026 | My Agent Ohana | https://ethglobal.com/showcase/my-agent-ohana-v04gz | — |
+| Locus Paygentic #2 (Devfolio), Apr 2026 | LancerAI | https://devfolio.co/projects/lancerai-4508 | — |
+| ETHChiangmai (Devfolio), Feb 2026 | Vince | https://devfolio.co/projects/vince-d1c9 | — |
+| ETHOnline, Oct 2025 | TokeOfApp | https://ethglobal.com/showcase/tokeofapp-dri79 | live judging |
+| ETHGlobal New Delhi, Sep 2025 | Opensource Orchestra | https://ethglobal.com/showcase/opensource-orchestra-y1egw | 🏆 ENS · most creative use · 1st place |
+| ETHGlobal Bangkok, Nov 2024 | Ethereum Dispatch | https://ethglobal.com/showcase/ethereum-dispatch-dstje | — |
+| ETHforAll (Devfolio), Feb 2023 | broadcastr | https://devfolio.co/projects/broadcastr-3ec3 | 🏆 Mantle · best developer infrastructure/tooling |
+
+## 6 · What we openly share — fork us like crazy 🍴
+
+- **Code:** Open Source Orchestra org https://github.com/Open-Source-Orchestra (fork-the-first-artist, oso-storytelling, osopit, pit-live, ohana-skills; 9 public repositories) · **116 public repositories** at https://github.com/shakaleikaumaka (the Gift Board: https://shakaleikaumaka.com/#gifts) · 32 at https://github.com/ShakaLei (incl. ohana-bot). Code under GPL-3.0 (older releases stay CC0); words, songs and the rider are CC0.
+- **To fork today:** Fork the First Artist (https://github.com/Open-Source-Orchestra/fork-the-first-artist) — run your own artist garden: ENS names, a 0G steward per artist, tips straight to artists · the Open Source Orchestra site (https://github.com/Open-Source-Orchestra/oso-storytelling) · the CC0 rider · the songbook.
+- **The CC0 rider** https://opensourceorchestra.org/rider/ and the **3D Virtual Sanctuary** https://opensourceorchestra.org/rider/sanctuary/
+- **Open recordings** of the weekly calls (consent asked on the recording, nothing cut): https://opensourceorchestra.org/openrecording2/ · all calls https://opensourceorchestra.org/calls/
+- **The ʻohana Songbook** (story-songs, CC0, chords included): https://shakaleikaumaka.com/songbook/
+- **The Build Library**: https://build-library-zcpweo3nke-ffieyo32.taur.link/
+- **The doors atlas** (every public door we keep open): https://myagentohana.com/doors/ — the ONLY source for "how many doors": read `summary.public` in https://myagentohana.com/doors/registry.json (15 Nov 2026: 440 public doors, 440 live). Also new 12–14 Nov 2026: **zuchiangmai.app** https://zuchiangmai.app/ (an unofficial companion agenda made by the ʻohana; the community's own app is https://zuchiangmai.com/) and the **Open Source Orchestra DAO Meet hall** https://osodaomeet.opensourceorchestra.org/
+- **The ʻohana bot front door**: https://myagentohana.com/ohana-bot/
+- **Where to hear Shaka's music:** the songbook (Shaka's own songs + the ʻohana's story-songs), the open recordings, the Mandala Room, and his X https://x.com/Shakaleikaumaka
+
+## 7 · Road to Lisbon 🇵🇹 — Devcon 9, 12–14 October 2027 (THE ROAD WE ARE ON NOW)
+
+- Devcon 9 (Devcon IX) is in **Lisbon, 12–14 October 2027, CCL – Lisbon Congress Centre** (https://devcon.org/lisbon/). It was announced at the close of Devcon 8 as 11–13 Oct and **moved one day later to 12–14 Oct** (Devcon statement, 13 Nov 2026) — any "11–13" you still see is old. The Road to Devcon 8 is complete ✅; the Road to Devcon 9 has begun. The Open Source Orchestra hopes to bring a Music Sanctuary there, with more artists, more languages and the tip jar in every hand.
+- **How to join:** apply at **https://opensourceorchestra.org/join/** — open to anyone (musician, DJ, singer, developer, designer, steward, sound, translator, photographer…); every contribution is equal, one voice each. A rotating circle of at least 3 stewards reads every application and answers within 14 days. Open jams never need an application: just come and play.
+
+## 7b · Road to 2027 — every major Ethereum gathering at heart (added 14 Nov 2026)
+
+- Devcon 8 is over; the Open Source Orchestra now points at the whole 2027 road, with every major Ethereum gathering at heart. **The organisers' announced dates** (verified 14 Nov 2026 — if an organiser changes a date, the organiser's site wins): **EthCC[10]** Cannes 12–15 Apr 2027 (Palais des Festivals; ethcc.io) · **ETHGlobal Cannes** 14–16 Apr 2027 · **ETHConf** New York 14–16 Jun 2027 (ethconf.com) · **ETHGlobal New York** 14–16 Jun 2027 · **ETHGlobal Tokyo** 23–25 Aug 2027 · **Devcon IX** Lisbon 12–14 Oct 2027 (CCL; devcon.org/lisbon) · **ETHGlobal Lisbon** 13–15 Oct 2027. None of these is a promised Open Source Orchestra slot, stage, grant or budget — the orchestra *hopes* to play open circles at them.
+- **The Open Source Orchestra is open for forking and hosting.** No auditions, no gatekeepers, no wrong instrument — the orchestra is whoever shows up. Send your **invitations** (host a music circle at your event, hackathon, pop-up city or venue) and/or your **contributions** (music, code, stewarding, sound, translation, photos — every contribution is equal, one voice each): apply / invite / contribute at **https://opensourceorchestra.org/join/** · fork the whole thing (GPL-3.0 code, CC0 words/songs/rider) at https://github.com/Open-Source-Orchestra (site repo oso-storytelling · Fork the First Artist · the CC0 rider https://opensourceorchestra.org/rider/) · write contribute@opensourceorchestra.org · the open ledger https://opensourceorchestra.org/dao/ (community ledger, not on-chain).
+
+## 8 · The ukulele's road home 🪕 (Kala)
+
+- Kala Brand Music Co. ukuleles and a U·BASS travel with Shaka and are put in strangers' hands. 2026 road: **Japan** (arrived at ETHGlobal Tokyo, 26 Sep; ZuCity Japan in Komoro; Burning Japan) → **China** (ShanHaiWoo, Shenzhen, 17–19 Oct: opening-ceremony soundcheck, Town Hall, a free hostel show) → **India** (Devcon 8 Music Sanctuary, Mumbai: ukuleles on a rack within reach, anyone joined in) → **Thailand** (home at 4Seas, Chiang Mai, from 9 Nov) → **Portugal** (Devcon 9, Lisbon, Oct 2027).
+- Why Lisbon is "home" for the ukulele: it comes from Portugal. The little machete of Madeira sailed to Hawaiʻi on the **Ravenscrag in 1879** and became the ukulele.
+
+## 9 · Home base · 4Seas, Chiang Mai 🇹🇭
+
+- From 9 Nov 2026 Shaka's home base is Chiang Mai, Thailand, where the 4Seas community welcomed him. No address or private details are shared.
+
+## 10 · Look-back hangouts · Thursday 12 November 2026 — HAPPENED ✅
+
+- Both happened (Meeting #1 Thu 12 Nov 17:36 UTC; Meeting #2 Fri 13 Nov 07:11 UTC). Public notes: https://osodaomeet.opensourceorchestra.org/meetings/1/notes/ · Meeting #2 published with every speaker's consent (notes, transcript, audio): https://osodaomeet.opensourceorchestra.org/meetings/2/ · the Open Source Orchestra DAO Meet hall (virtual orchestra hall, narrated tour): https://osodaomeet.opensourceorchestra.org/ (aliases osodao.org / osodao.com / osodao.app). Original times for the record: two optional video hangouts (come to either, both or neither): **Hangout A** Thu 12 Nov 9:36 AM Los Angeles = 17:36 UTC = 11:06 PM India; **Hangout B** Thu 12 Nov 11:11 PM Los Angeles = Fri 13 Nov 07:11 UTC = 12:41 PM India / 2:11 PM Bangkok.
+- Call links are sent privately to invitees; to get one write to aloha@myagentohana.com. (Never publish the links.)
+
+## 11 · What the stewards and bots will never do
+
+- Never ask for or accept a seed phrase, private key or password. Never move money; tips go from the fan's own wallet.
+- Never share private information (emails, phone numbers, addresses, private messages, meeting links, family or client matters).
+- Never pretend to be Shaka or any artist; stewards speak about them in the third person and say they are AI.
+- Never invent facts: if it is not public, they say so and point to the links above.
+
+## 12 · Open skills for builders (new 15 Nov 2026)
+
+- **ohana-skills** https://github.com/Open-Source-Orchestra/ohana-skills: open Agent Skills (agentskills.io format) from the AI ʻohana, for anyone building creative and public-goods projects: ai-ready-docs (read current docs and publish your own llms.txt), mcp-from-bash, deploy-safety-gates, ripple-across-doors, send-once-messaging, live-radio-webrtc-cloudflare (fork LIVE PIT), privacy-first-analytics. Text CC BY-SA 4.0, scripts AGPL-3.0-or-later; keep the credit "Built on ohana-skills by Open Source Orchestra: Shaka Lei Kaumaka & the AI ʻohana". Index for agents: https://raw.githubusercontent.com/Open-Source-Orchestra/ohana-skills/main/llms.txt
+
+## Contacts (public)
+
+- The ʻohana: **aloha@myagentohana.com** · grants: **contribute@opensourceorchestra.org** · takedown: https://opensourceorchestra.org/takedown/
+
+---
