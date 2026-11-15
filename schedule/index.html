@@ -8,7 +8,7 @@
 <style>
 :root{
   --bg:#140e1c; --bg2:#1d1428; --card:#221732; --card2:#2a1d3e;
-  --ink:#f6efe4; --muted:#b8a8c9; --faint:#8a7699;
+  --ink:#f6efe4; --muted:#b8a8c9; --faint:#a090ac; /* 15 Nov 2026: was #8a7699 (≈3.6–4.3:1); now ≥4.9:1 on every card */
   --marigold:#ffb443; --lotus:#ff7eb6; --teal:#4fd8c8; --leaf:#9be15d; --sky:#7cc4ff;
   --line:rgba(255,180,67,.16);
 }
@@ -23,6 +23,8 @@ header{text-align:center;padding:20px 8px 4px}
 h1{font-family:Georgia,serif;font-size:clamp(1.5rem,4.4vw,2.4rem)}
 h1 .accent{background:linear-gradient(100deg,var(--marigold),var(--lotus));-webkit-background-clip:text;background-clip:text;color:transparent}
 .sub{color:var(--muted);margin-top:8px;font-size:.95rem;line-height:1.6;max-width:640px;margin-left:auto;margin-right:auto}
+.happened{margin:12px auto 4px;max-width:640px;background:rgba(155,225,93,.08);border:1px solid rgba(155,225,93,.36);border-radius:14px;padding:10px 16px;font-size:.86rem;color:var(--ink);line-height:1.55}
+.happened a{color:var(--leaf);text-underline-offset:2px}
 .honest{margin:16px auto 0;max-width:640px;background:rgba(124,196,255,.08);border:1px solid rgba(124,196,255,.3);border-radius:14px;padding:11px 16px;font-size:.84rem;color:var(--sky);line-height:1.55}
 .honest b{color:#d8ecff}
 .manifesto{margin:20px auto 0;max-width:680px;background:linear-gradient(160deg,rgba(255,180,67,.09),rgba(255,126,182,.08));border:1px solid rgba(255,180,67,.38);border-radius:20px;padding:20px 24px 16px;font-family:Georgia,serif;font-size:1rem;line-height:1.8;text-align:center}
@@ -123,6 +125,7 @@ h1 .accent{background:linear-gradient(100deg,var(--marigold),var(--lotus));-webk
 .slot.party .body{background:linear-gradient(120deg,rgba(255,180,67,.14),rgba(255,126,182,.16));border-color:rgba(255,126,182,.5)}
 .slot.party::before{background:var(--lotus);box-shadow:0 0 9px var(--lotus)}
 .slot.party .who{color:var(--lotus)}
+.slot.jam .body,.slot.magic .body,.slot.party .body{--faint:var(--muted)} /* the glowing cards: small words stay ≥5.2:1 over the tint */
 .partyhead{margin:8px 0 8px 44px;border-left:2px solid var(--lotus);padding:2px 0 2px 4px;position:relative}
 .partyhead .plh{background:linear-gradient(120deg,rgba(255,180,67,.14),rgba(255,126,182,.18));border:1px solid rgba(255,126,182,.5);border-radius:11px;padding:9px 12px;font-size:.78rem;line-height:1.55}
 .partyhead .plh b{color:var(--lotus);font-size:.88rem}
@@ -173,6 +176,7 @@ footer a{color:var(--marigold);text-decoration:none}
 .sfavas{display:flex;flex-shrink:0}.sfavas .ava{width:30px;height:30px;border-radius:50%;object-fit:cover;border:2px solid var(--bg2)}.sfavas .ava+.ava{margin-left:-10px}
 .sfwin{display:block;font-size:.72rem;color:var(--muted)}
 .slot.sfrow{margin-left:0;border-left:0;padding:3px 0;display:block}.slot.sfrow>.sfd{width:100%}.sfhead>span:last-child{min-width:0;flex:1}.slot.sfrow::before{display:none}
+.sfhead{flex-wrap:wrap}.sfhead>span:last-child{flex:1 1 140px} /* 15 Nov 2026: a long avatar strip wraps the words below it instead of squeezing them and pushing the pill out of the card */
 .sfd{background:var(--bg2);border:1px solid rgba(124,196,255,.3);border-radius:11px}
 .sfd>summary{list-style:none;display:flex;align-items:center;gap:8px;padding:6px 8px;cursor:pointer}.sfd>summary::-webkit-details-marker{display:none}
 .sfd>summary .grip{position:static;order:9}
@@ -190,6 +194,7 @@ footer a{color:var(--marigold);text-decoration:none}
     <span style="background:#ff9933"></span><span style="background:#f6efe4"></span><span style="background:#138808"></span><span style="background:#ffb443"></span><span style="background:#ff7eb6"></span><span style="background:#4fd8c8"></span>
   </div>
   <h1>♪ <span class="accent">The Music Manifesto</span> ♪</h1>
+  <p class="happened" role="note">✅ This was the live schedule of 3–6 Nov 2026 — it happened. <a href="https://osodaomeet.opensourceorchestra.org/meetings/">Watch and read the open recordings →</a></p>
   <p class="sub">🗓 <b>the live schedule</b> · Devcon 8 Music Space · Nov 3–6 · doors 9:30 · quiet till 4 · last note 6:00p sharp 🌺 · <b>#NOONEISEVEROUT</b> — no one gets left behind: everyone who asked to play is bound into this blueprint, and the Open Source Orchestra jams are the open door 🌺</p>
   <div class="manifesto">
   <p><b>Music as sanctuary.</b> This stage is a living expression of Ethereum's core principles — decentralization, censorship resistance, open-source collaboration.</p>

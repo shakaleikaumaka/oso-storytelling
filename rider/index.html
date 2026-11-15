@@ -8,7 +8,7 @@
 <style>
 :root{
   --night:#0b0612; --deep:#150b22; --violet:#2a1740; --plum:#3d1c42;
-  --cream:#f7ecd9; --cream-dim:rgba(247,236,217,.72); --cream-faint:rgba(247,236,217,.45);
+  --cream:#f7ecd9; --cream-dim:rgba(247,236,217,.72); --cream-faint:rgba(247,236,217,.6); /* 15 Nov 2026: was .45 (≈4:1) → ≈6:1 */
   --gold:#f0c464; --gold-bright:#ffd97a; --gold-soft:rgba(240,196,100,.35);
   --coral:#ff8a5c; --rose:#e86a92; --teal:#2dd4bf;
   --serif:'Iowan Old Style','Palatino Linotype',Palatino,'Book Antiqua',Georgia,'Times New Roman',serif;
@@ -30,6 +30,9 @@ a{color:var(--gold-bright)}
 .spin-b{animation:spin 180s linear infinite reverse}
 @keyframes spin{to{transform:rotate(360deg)}}
 .kicker{font-family:var(--sans);font-size:.72rem;letter-spacing:.34em;text-transform:uppercase;color:var(--gold);position:relative}
+.played{position:relative;max-width:680px;margin:18px auto 0;font-family:var(--sans);font-size:.86rem;line-height:1.55;color:var(--cream);
+  background:rgba(45,212,191,.12);border:1px solid rgba(45,212,191,.55);border-radius:14px;padding:10px 16px}
+.played a{color:#8ff1e2}
 .hero h1{font-size:clamp(2rem,5.4vw,3.4rem);margin:.5rem 0 .3rem;position:relative}
 .hero h1 em{color:var(--gold);font-style:italic}
 .hero .sub{font-family:var(--sans);font-size:.95rem;color:var(--cream-dim);position:relative}
@@ -77,6 +80,7 @@ td{padding:8px 10px;border-bottom:1px solid rgba(247,236,217,.09);color:var(--cr
 tr:hover td{background:rgba(240,196,100,.045)}
 td:first-child{color:var(--cream)}
 .tbl-scroll{overflow-x:auto}
+.tbl-scroll:focus-visible{outline:2px solid var(--gold-bright);outline-offset:3px;border-radius:8px}
 .patch td:nth-child(1){color:var(--gold);font-weight:700;width:3ch}
 .tag-in{margin-left:6px}
 
@@ -158,6 +162,8 @@ footer .fork{font-size:.95rem;color:var(--cream-dim);margin-top:14px}
   td,th{border-color:#ddd;color:#333}
   td:first-child{color:#1a1410}
   .tag{border:1px solid #999;color:#1a1410;background:#fff}
+  .played{background:#fff;border:1px solid #999;color:#1a1410}
+  .played a{color:#1a1410}
   section{padding:14px 0;break-inside:avoid-page}
   .plot{grid-template-columns:1fr}
   footer p,footer .sig{color:#333}
@@ -189,6 +195,7 @@ footer .fork{font-size:.95rem;color:var(--cream-dim);margin-top:14px}
   <p class="kicker">Devcon 8 · Mumbai · Culture Track · DIP #8576</p>
   <h1>🎼 Open Source Orchestra<br><em>Music Space Rider</em></h1>
   <p class="sub">Technical rider &amp; instrument list · JIO World Convention Centre · November 3–6, 2026</p>
+  <p class="played" role="note">✅ Played at the Devcon 8 Music Sanctuary · Jio World Centre, Mumbai · 3–6 Nov 2026. Kept exactly as it was used, CC0 — fork it for your own room. 🦋 <a href="/mandala-room/">The Mandala Room</a> · 📺 <a href="https://osodaomeet.opensourceorchestra.org/">the theater with the films</a></p>
   <p class="vibe">"Sanctuary Tech — a circular, non-directional, conductorless stage.<br>The instruments are permissionless. The stage is a sanctuary."</p>
   <div class="meta-chips">
     <span class="chip" style="border-color:rgba(45,212,191,.55);color:#8ff1e2;background:rgba(45,212,191,.12)">✅ Backline approved · 2026-10-06</span>
@@ -217,7 +224,7 @@ footer .fork{font-size:.95rem;color:var(--cream-dim);margin-top:14px}
 
 <section id="facts">
   <div class="sec-head"><span class="num">§ 0</span><h2>Event <em>facts</em></h2></div>
-  <div class="card"><div class="tbl-scroll"><table>
+  <div class="card"><div class="tbl-scroll" role="region" tabindex="0" aria-label="Event facts table"><table>
     <tr><th>Fact</th><th>Status</th></tr>
     <tr><td>Devcon 8, Mumbai — November 3–6, 2026</td><td><span class="tag tag-confirmed">Confirmed</span></td></tr>
     <tr><td>JIO World Convention Centre</td><td><span class="tag tag-confirmed">Confirmed</span></td></tr>
@@ -231,7 +238,7 @@ footer .fork{font-size:.95rem;color:var(--cream-dim);margin-top:14px}
 <section id="space">
   <div class="sec-head"><span class="num">§ 1</span><h2>Space &amp; stage — <em>Sanctuary Tech</em></h2></div>
   <p class="lede">The stage is <em>circular and non-directional</em>. There is no "front." Performers face one another; the audience wraps around the music. Warmth, belonging, refuge — a home with clear boundaries and an open invitation.</p>
-  <div class="card"><div class="tbl-scroll"><table>
+  <div class="card"><div class="tbl-scroll" role="region" tabindex="0" aria-label="Space and stage table"><table>
     <tr><th>Requirement</th><th>Detail</th><th>Status</th></tr>
     <tr><td>Dedicated open space</td><td>100+ m², soundproof or acoustically isolated (per DIP)</td><td><span class="tag tag-confirmed">Confirmed ask</span> <span class="tag tag-tbd tag-in">Allocation TBD</span></td></tr>
     <tr><td>Circular stage</td><td>6 m Ø performance circle (fits 6–10 players + floor seating), defined by rugs + low LED ring — eye-level, walk-in, no barrier</td><td><span class="tag tag-proposed">Proposed</span></td></tr>
@@ -343,7 +350,7 @@ footer .fork{font-size:.95rem;color:var(--cream-dim);margin-top:14px}
 <section id="pa">
   <div class="sec-head"><span class="num">§ 2</span><h2>PA / mains — <em>sound in the round</em></h2></div>
   <p class="lede">Distributed, modest, warm. This is a sanctuary inside a convention centre — <em>coverage, not concert SPL</em>.</p>
-  <div class="card"><div class="tbl-scroll"><table>
+  <div class="card"><div class="tbl-scroll" role="region" tabindex="0" aria-label="PA and mains table"><table>
     <tr><th>Item</th><th>Spec</th><th>Status</th></tr>
     <tr><td>Mains</td><td>4× compact powered tops (10–12" class — QSC K12.2 / d&amp;b E-series class) on poles at the four quadrants, firing outward</td><td><span class="tag tag-proposed">Proposed</span></td></tr>
     <tr><td>Alternative</td><td>2× column arrays (Bose L1 Pro32 / Maui class) opposite — cleaner sightlines, easier load-in</td><td><span class="tag tag-proposed">Proposed fallback</span></td></tr>
@@ -355,7 +362,7 @@ footer .fork{font-size:.95rem;color:var(--cream-dim);margin-top:14px}
 
 <section id="foh">
   <div class="sec-head"><span class="num">§ 3</span><h2>Mixing &amp; <em>FOH</em></h2></div>
-  <div class="card"><div class="tbl-scroll"><table>
+  <div class="card"><div class="tbl-scroll" role="region" tabindex="0" aria-label="Mixing and FOH table"><table>
     <tr><th>Item</th><th>Spec</th><th>Status</th></tr>
     <tr><td>Console</td><td><b>32-channel digital</b> — Behringer X32, A&amp;H SQ-5/QU-32, or similar (32 inputs confirmed by Shaka, 2026-07-27)</td><td><span class="tag tag-proposed">Proposed · committee direction</span></td></tr>
     <tr><td>Aux sends</td><td>6–8 aux outs for individual monitor mixes</td><td><span class="tag tag-proposed">Proposed</span></td></tr>
@@ -369,7 +376,7 @@ footer .fork{font-size:.95rem;color:var(--cream-dim);margin-top:14px}
 <section id="patch">
   <div class="sec-head"><span class="num">§ 4</span><h2>Input list — the <em>32-channel Circle Patch</em></h2></div>
   <p class="lede">32 inputs per committee direction (Shaka, 2026-07-27). Channels 1–18 are the permanent community backline; <em>19–21 are the stewards' own voices</em> — Shaka's stereo uke looper and Alaska's sax; 22–26 the vocal ring; <em>27–29 the permissionless layer — three walk-up spots, always line-checked</em>, so a stranger is one fader away from the circle; 30–31 capture the room itself for the stream &amp; P.I.T. archive; 32 says yes.</p>
-  <div class="card"><div class="tbl-scroll"><table class="patch">
+  <div class="card"><div class="tbl-scroll" role="region" tabindex="0" aria-label="Input list table — the 32-channel Circle Patch"><table class="patch">
     <tr><th>Ch</th><th>Source</th><th>Mic / DI</th><th>Notes</th></tr>
     <tr><td>1</td><td>Kick / dhol low</td><td>Beta 52A / D112</td><td>Shared kit &amp; dhol</td></tr>
     <tr><td>2</td><td>Snare</td><td>SM57</td><td></td></tr>
@@ -408,7 +415,7 @@ footer .fork{font-size:.95rem;color:var(--cream-dim);margin-top:14px}
 
 <section id="mics">
   <div class="sec-head"><span class="num">§ 5–6</span><h2>Mics, <em>DI &amp; connectivity</em></h2></div>
-  <div class="card"><div class="tbl-scroll"><table>
+  <div class="card"><div class="tbl-scroll" role="region" tabindex="0" aria-label="Mics and DI table"><table>
     <tr><th>Qty</th><th>Type</th><th>Use</th><th>Status</th></tr>
     <tr><td>4</td><td>Dynamic vocal (SM58-class)</td><td>Rotating vocalists</td><td><span class="tag tag-proposed">Proposed</span></td></tr>
     <tr><td>2</td><td>Wireless handheld (Sennheiser EW-class)</td><td>Roaming performers, traditional instruments, MC</td><td><span class="tag tag-proposed">Proposed</span></td></tr>
@@ -419,7 +426,7 @@ footer .fork{font-size:.95rem;color:var(--cream-dim);margin-top:14px}
     <tr><td>2</td><td>Condenser pair (room/audience)</td><td>Ch 30–31 — the sound of the circle for stream &amp; P.I.T. archive</td><td><span class="tag tag-proposed">Proposed · per Shaka 07-27</span></td></tr>
     <tr><td>+1 ea</td><td>Spare of each class</td><td>Mic attrition at a 4-day permissionless jam is a law of nature</td><td><span class="tag tag-tbd">TBD — RIDEOSO adds</span></td></tr>
   </table></div></div>
-  <div class="card"><h3>Connectivity</h3><div class="tbl-scroll"><table>
+  <div class="card"><h3>Connectivity</h3><div class="tbl-scroll" role="region" tabindex="0" aria-label="Connectivity table"><table>
     <tr><th>Item</th><th>Status</th></tr>
     <tr><td>8–10 DI boxes (synths, drum machines, acoustic guitars, DJ gear, <b>+2 for Shaka's stereo uke looper</b>)</td><td><span class="tag tag-proposed">Proposed</span></td></tr>
     <tr><td>20+ XLR · 10+ ¼" instrument cables</td><td><span class="tag tag-proposed">Proposed</span></td></tr>
@@ -435,12 +442,12 @@ footer .fork{font-size:.95rem;color:var(--cream-dim);margin-top:14px}
   <div class="card" style="border-color:rgba(240,196,100,.5);background:linear-gradient(160deg,rgba(42,23,64,.9),rgba(21,11,34,.85))">
     <h3>🥽 Walk into the room</h3>
     <p style="margin:6px 0 14px">The <b>Virtual Sanctuary</b> is a 3D model of this rider: the circular stage with no front, four PA tops aimed outward, floor-seating cushions on the classical side, the booth opposite the entrance — and all 25 approved instruments, <b>each one playable</b> with a click. Works in any browser; put on a headset and the circle is life-size.</p>
-    <p><a class="tag tag-confirmed" style="font-size:.8rem;padding:.7em 1.6em;text-decoration:none;display:inline-block" href="/rider/sanctuary/">🎼 Enter the Virtual Sanctuary →</a></p>
+    <p><a class="tag tag-confirmed" style="font-size:.8rem;padding:.7em 1.6em;text-decoration:none;display:inline-block;white-space:normal;max-width:100%" href="/rider/sanctuary/">🎼 Enter the Virtual Sanctuary →</a></p>
     <p style="font-size:.76rem;color:var(--cream-faint);margin-top:12px">Zero install, zero trackers, no samples — every instrument is synthesised live in your browser. CC0, like the rest of this rider.</p>
   </div>
 
   <div class="card"><h3>✅ The twenty-five — as approved</h3>
-  <div class="tbl-scroll"><table class="onechart">
+  <div class="tbl-scroll" role="region" tabindex="0" aria-label="The approved backline table — the twenty-five"><table class="onechart">
     <tr><th style="width:52%">Line item</th><th>Spec as approved</th><th>Status</th></tr>
     <tr><td class="grp" colspan="3">🎸 Backline</td></tr>
     <tr><td>1 · Electric drum kit</td><td>e-kit — answers §7's open question: the room takes an <em>electric</em> kit</td><td><span class="tag tag-confirmed">Confirmed</span></td></tr>
@@ -487,7 +494,7 @@ footer .fork{font-size:.95rem;color:var(--cream-dim);margin-top:14px}
   #backline .onechart .qty{font-family:var(--sans);font-size:.82rem;white-space:nowrap}
   </style>
   <div class="card"><h3>🎛️ The community instruments — one chart <span style="font-size:.72rem;color:var(--cream-faint)">(rental ask per DIP · tuned with Aakash, Aug 4)</span></h3>
-  <div class="tbl-scroll"><table class="onechart">
+  <div class="tbl-scroll" role="region" tabindex="0" aria-label="The community instruments table — one chart"><table class="onechart">
     <tr><th style="width:58%">Item</th><th>Qty</th><th>Status</th></tr>
 
     <tr><td class="grp" colspan="3">🎸 Core band — rental</td></tr>
@@ -574,7 +581,7 @@ footer .fork{font-size:.95rem;color:var(--cream-dim);margin-top:14px}
 
 <section id="monitors">
   <div class="sec-head"><span class="num">§ 8</span><h2><em>Monitors</em></h2></div>
-  <div class="card"><div class="tbl-scroll"><table>
+  <div class="card"><div class="tbl-scroll" role="region" tabindex="0" aria-label="Monitors table"><table>
     <tr><th>Item</th><th>Status</th></tr>
     <tr><td>4× floor wedges minimum — a circular stage spreads performers wide</td><td><span class="tag tag-proposed">Proposed</span></td></tr>
     <tr><td>1× side-fill for wide-ensemble coverage · 6–8 independent mixes</td><td><span class="tag tag-proposed">Proposed</span></td></tr>
@@ -584,7 +591,7 @@ footer .fork{font-size:.95rem;color:var(--cream-dim);margin-top:14px}
 
 <section id="power">
   <div class="sec-head"><span class="num">§ 9</span><h2><em>Power</em></h2></div>
-  <div class="card"><div class="tbl-scroll"><table>
+  <div class="card"><div class="tbl-scroll" role="region" tabindex="0" aria-label="Power table"><table>
     <tr><th>Item</th><th>Status</th></tr>
     <tr><td>20+ circuits distributed around the circle (per DIP) · strips + extensions at every performer station</td><td><span class="tag tag-confirmed">Confirmed ask</span></td></tr>
     <tr><td>Dedicated clean circuit for FOH console + streaming rig; UPS on console/recorder — a 4-day jam losing a multitrack to a power blip is a tragedy preventable for $40</td><td><span class="tag tag-tbd">TBD — RIDEOSO adds</span></td></tr>
@@ -594,7 +601,7 @@ footer .fork{font-size:.95rem;color:var(--cream-dim);margin-top:14px}
 
 <section id="light">
   <div class="sec-head"><span class="num">§ 10</span><h2>Visual &amp; light — <em>serving the sanctuary</em></h2></div>
-  <div class="card"><div class="tbl-scroll"><table>
+  <div class="card"><div class="tbl-scroll" role="region" tabindex="0" aria-label="Visual and light table"><table>
     <tr><th>Item</th><th>Status</th></tr>
     <tr><td>6–8 LED PAR cans — warm, moodable; community-glow, not concert-blast</td><td><span class="tag tag-proposed">Proposed</span></td></tr>
     <tr><td>Low LED ring defining the circle's edge — the stage <em>is</em> the light</td><td><span class="tag tag-proposed">Proposed</span></td></tr>
@@ -606,7 +613,7 @@ footer .fork{font-size:.95rem;color:var(--cream-dim);margin-top:14px}
 
 <section id="recording">
   <div class="sec-head"><span class="num">§ 11</span><h2>Streaming &amp; recording — the <em>P.I.T. tie-in</em></h2></div>
-  <div class="card"><div class="tbl-scroll"><table>
+  <div class="card"><div class="tbl-scroll" role="region" tabindex="0" aria-label="Streaming and recording table"><table>
     <tr><th>Item</th><th>Status</th></tr>
     <tr><td>Board feed (stereo XLR or USB) + console multitrack of curated sets</td><td><span class="tag tag-proposed">Proposed</span></td></tr>
     <tr><td>Decentralized streaming + on-chain artist donations rig (Alaska's workstream) — needs reliable <b>hardline</b> internet at FOH</td><td><span class="tag tag-proposed">Proposed</span> <span class="tag tag-tbd tag-in">Hardline TBD</span></td></tr>
@@ -619,7 +626,7 @@ footer .fork{font-size:.95rem;color:var(--cream-dim);margin-top:14px}
 <section id="spl">
   <div class="sec-head"><span class="num">§ 12</span><h2>SPL &amp; the <em>convention centre</em></h2></div>
   <p class="lede">A music space inside a convention centre is a negotiation with physics and neighbours.</p>
-  <div class="card"><div class="tbl-scroll"><table>
+  <div class="card"><div class="tbl-scroll" role="region" tabindex="0" aria-label="SPL and the convention centre table"><table>
     <tr><th>Item</th><th>Status</th></tr>
     <tr><td>Soundproof / acoustically isolated room (per DIP) — the single most important line in this rider</td><td><span class="tag tag-confirmed">Confirmed ask</span></td></tr>
     <tr><td>Target: ≤ 85 dB(A) slow at room boundary · 90 dB(A) peaks in the circle</td><td><span class="tag tag-proposed">Proposed</span></td></tr>
@@ -631,7 +638,7 @@ footer .fork{font-size:.95rem;color:var(--cream-dim);margin-top:14px}
 
 <section id="flow">
   <div class="sec-head"><span class="num">§ 13</span><h2>Changeover — <em>the circle never stops</em></h2></div>
-  <div class="card"><div class="tbl-scroll"><table>
+  <div class="card"><div class="tbl-scroll" role="region" tabindex="0" aria-label="Changeover table"><table>
     <tr><th>Protocol</th><th>Status</th></tr>
     <tr><td><b>The Vamp Rule:</b> during any swap, hand percussion or the house DJ keeps a pulse — silence is the only failure state</td><td><span class="tag tag-proposed">Proposed</span></td></tr>
     <tr><td>Curated changeovers ≤ 15 min; next act line-checks on the walk-up channels (27–29) while the current act plays</td><td><span class="tag tag-proposed">Proposed</span></td></tr>
@@ -644,7 +651,7 @@ footer .fork{font-size:.95rem;color:var(--cream-dim);margin-top:14px}
 
 <section id="crew">
   <div class="sec-head"><span class="num">§ 14</span><h2>Crew &amp; <em>ops</em> <span style="font-size:.7rem;font-family:var(--sans);color:var(--cream-faint)">(OSO-provided — context, not an ask)</span></h2></div>
-  <div class="card"><div class="tbl-scroll"><table>
+  <div class="card"><div class="tbl-scroll" role="region" tabindex="0" aria-label="Crew and ops table"><table>
     <tr><th>Role</th><th>Status</th></tr>
     <tr><td>Core on-site team 10–12: Shaka (artistic steward) · 3–4 local Indian musicians (cultural anchors) · 3–4 OSO international (protocol maintainers / stage managers) · 3–4 volunteer coordinators</td><td><span class="tag tag-confirmed">Confirmed (DIP)</span></td></tr>
     <tr><td>2 Devcon-provided sound engineers · shift-based continuous facilitation, all 4 days</td><td><span class="tag tag-confirmed">Confirmed ask</span></td></tr>
@@ -655,7 +662,7 @@ footer .fork{font-size:.95rem;color:var(--cream-dim);margin-top:14px}
 
 <section id="schedule">
   <div class="sec-head"><span class="num">§ 15</span><h2>Schedule <em>skeleton</em></h2></div>
-  <div class="card"><div class="tbl-scroll"><table class="sched">
+  <div class="card"><div class="tbl-scroll" role="region" tabindex="0" aria-label="Schedule skeleton table"><table class="sched">
     <tr><th>When</th><th>What</th><th>Status</th></tr>
     <tr><td>Nov 1–2</td><td>Pre-production: load-in, install, soundcheck, volunteer training, storage systems live</td><td><span class="tag tag-confirmed">Confirmed</span></td></tr>
     <tr><td>Daily 09:30</td><td>Doors + 30-min line-check to Circle scene</td><td><span class="tag tag-proposed">Proposed</span></td></tr>
@@ -670,7 +677,7 @@ footer .fork{font-size:.95rem;color:var(--cream-dim);margin-top:14px}
 
 <section id="hospitality">
   <div class="sec-head"><span class="num">§ 16</span><h2><em>Hospitality</em></h2></div>
-  <div class="card"><div class="tbl-scroll"><table>
+  <div class="card"><div class="tbl-scroll" role="region" tabindex="0" aria-label="Hospitality table"><table>
     <tr><th>Item</th><th>Status</th></tr>
     <tr><td>Water at the circle at all times · hot chai station (Mumbai — non-negotiable)</td><td><span class="tag tag-proposed">Proposed</span></td></tr>
     <tr><td>Musician green corner: 6–8 seats, shade from house lights, device charging</td><td><span class="tag tag-proposed">Proposed</span></td></tr>
