@@ -209,6 +209,7 @@ def render_share(pg):
     nrec = rec.get("value")
     rec_a = f'<a href="https://osodaomeet.opensourceorchestra.org/meetings/">{e(nrec)} open recordings</a>' if nrec else '<a href="https://osodaomeet.opensourceorchestra.org/meetings/">open recordings</a>'
     li.append(f'<a href="/schedule/">The public schedule</a> · {rec_a}, each published with everyone\'s consent and playing in <a href="https://osodaomeet.opensourceorchestra.org/">the theater</a>')
+    li.append('<a href="https://live.zuchiangmai.app/">LIVE PIT</a>, the ʻohana radio from the orchestra pit that every door can carry, and its open transmitter <a href="https://github.com/Open-Source-Orchestra/pit-live">pit-live</a> (copyleft with credit)')
     li.append('<a href="https://build-library-zcpweo3nke-ffieyo32.taur.link/">The Build Library</a>' + (f' <span class="cnt">· {e(bk["value"])} books</span>' if bk.get("value") else ""))
     li.append('<a href="https://shakaleikaumaka.com/songbook/">The ʻohana Songbook</a>' + (f' <span class="cnt">· {e(ch["value"])} chapters</span>' if ch.get("value") else ""))
     li.append('<a href="/garden/circle/">The Garden Circle</a> · <a href="/mandala-room/">The Mandala Room</a> · <a href="/the-room/">The Room You Let Us Build</a>')
