@@ -759,7 +759,7 @@
 /* 🎻✨ ohana corner v4 life engine — bubble tips, heart glows, flying notes */
 (function(){
   var TIPS=[
-    ['oviol','join the orchestra 🎻 — Devcon open call!']
+    ['oviol','join the orchestra 🎻 — the circle is always open']
   ];
   function anyOpen(){return document.querySelector('#olangp.open');}
   function bubble(t,dur){
@@ -800,10 +800,10 @@
   var langShown=false;
   function langOnce(){if(langShown)return;if(anyOpen()||document.hidden){setTimeout(langOnce,4000);return;}langShown=true;bubble(LANGTIP,3000);}
   setTimeout(langOnce,4000);
-  setInterval(bubble,11000);
-  setInterval(glowRandom,17000);
-  setTimeout(note,2500);
-  setInterval(note,4200);
+  /* 15 Nov 2026 · Shaka: "make this stop playing so it only shows up once" — the corner tip now shows ONCE per browser, then rests. No loops: no repeating bubble, glow or notes (hover still makes music). */
+  (function tipOnce(){var K='oso_corner_tip_once_v1';try{if(localStorage.getItem(K))return;}catch(e){}
+    setTimeout(function go(){if(anyOpen()||document.hidden){setTimeout(go,4000);return;}
+      try{localStorage.setItem(K,'1');}catch(e){}bubble(null,4200);for(var i=0;i<3;i++)setTimeout(note,i*220);},9000);})();
   var vl=document.getElementById('oviol');
   if(vl)vl.addEventListener('mouseenter',function(){for(var i=0;i<5;i++)setTimeout(note,i*180);});
 })();
