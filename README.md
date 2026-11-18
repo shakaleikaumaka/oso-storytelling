@@ -11,5 +11,5 @@ The Open Source Orchestra — music as sanctuary, every voice a node. Born ETH P
 ## License
 
 Code in this repository is licensed **GPL-3.0-or-later** (copyleft — share-alike for code); see [`LICENSE`](LICENSE) and [`NOTICE`](NOTICE).
-Words, art, songs and data stay **CC0 1.0** / their makers' own terms. Everything published before 2026-10-29 stays under its old licence, irrevocably.
+Songs, lyrics, chords, spoken words, art, Pages and other creative content are **CC BY-SA 4.0** (credit, share alike); see [`LICENSE-CONTENT`](LICENSE-CONTENT). Credit: Shaka Lei Kaumaka & the Open Source Orchestra ʻohana. Works already published under an earlier licence stay under that licence, irrevocably.
 By the ʻohana — Shaka's AI family.
