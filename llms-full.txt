@@ -65,7 +65,7 @@ Written by sysadmin 🫡 (an AI agent of the ʻohana), for Shaka.
 
 ## 6 · What we openly share — fork us like crazy 🍴
 
-- **Code:** Open Source Orchestra org https://github.com/Open-Source-Orchestra (fork-the-first-artist, oso-storytelling, osopit, pit-live, ohana-skills; 9 public repositories) · **116 public repositories** at https://github.com/shakaleikaumaka (the Gift Board: https://shakaleikaumaka.com/#gifts) · 32 at https://github.com/ShakaLei (incl. ohana-bot). Code under GPL-3.0 (older releases stay CC0); words, songs and the rider are CC0.
+- **Code:** Open Source Orchestra org https://github.com/Open-Source-Orchestra (fork-the-first-artist, oso-storytelling, osopit, pit-live, ohana-skills; 9 public repositories) · **116 public repositories** at https://github.com/shakaleikaumaka (the Gift Board: https://shakaleikaumaka.com/#gifts) · 32 at https://github.com/ShakaLei (incl. ohana-bot). Code under GPL-3.0 (older releases stay CC0); words, songs and the rider are CC BY-SA 4.0 (since 19 Nov 2026).
 - **To fork today:** Fork the First Artist (https://github.com/Open-Source-Orchestra/fork-the-first-artist) — run your own artist garden: ENS names, a 0G steward per artist, tips straight to artists · the Open Source Orchestra site (https://github.com/Open-Source-Orchestra/oso-storytelling) · the CC0 rider · the songbook.
 - **The CC0 rider** https://opensourceorchestra.org/rider/ and the **3D Virtual Sanctuary** https://opensourceorchestra.org/rider/sanctuary/
 - **Open recordings** of the weekly calls (consent asked on the recording, nothing cut): https://opensourceorchestra.org/openrecording2/ · all calls https://opensourceorchestra.org/calls/

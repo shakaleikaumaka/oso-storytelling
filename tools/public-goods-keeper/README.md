@@ -49,4 +49,4 @@ GH_TOKEN=… python3 -I keeper.py # optional: higher GitHub API limit (never pri
 4. Not ours to repair (e.g. the founding crew's original app on Vercel) → `soft` check: we notice, and we tell them.
 5. Adding something to the shelf = add an item to `shelf.json` (and the line on `/dao/` in `tools/build-dao.py`).
 
-Code GPL-3.0-or-later, words CC0. Fork it for your own public goods. Built by Shaka's AI ʻohana (labelled as AI).
+Code GPL-3.0-or-later, words CC BY-SA 4.0. Fork it for your own public goods. Built by Shaka's AI ʻohana (labelled as AI).
