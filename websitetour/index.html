@@ -1,0 +1,353 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>The Grand Tour · a comic book on the walls of the Open Source Orchestra</title>
+<meta name="description" content="KAAAK!!! the crow walks you through opensourceorchestra.org, panel by panel: the front door, the garden circle, the theater, the mandala room, tips that go wallet to wallet, the DAO hall, the atlas of doors — and how to fork it all. A video-style animated comic made of the orchestra's own photographs.">
+<link rel="canonical" href="https://opensourceorchestra.org/websitetour/">
+<meta name="theme-color" content="#0b0612">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://opensourceorchestra.org/websitetour/">
+<meta property="og:title" content="The Grand Tour · a comic book on the walls of the Open Source Orchestra">
+<meta property="og:description" content="KAAAK!!! the crow shows you how the whole site works — real photos on real walls, panel by panel. Press play and watch it like a video, or scroll it like a comic.">
+<meta property="og:image" content="https://opensourceorchestra.org/mandala-room/img/dc8-638-1600.webp">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E%F0%9F%90%A6%E2%80%8D%E2%AC%9B%3C/text%3E%3C/svg%3E">
+<style>
+:root{
+  --night:#0b0612;--deep:#150b22;--wall:#1c1028;--cream:#f7ecd9;--dim:rgba(247,236,217,.84);--faint:rgba(247,236,217,.62);
+  --gold:#f0c464;--gold-bright:#ffd97a;--ink:#14100a;--teal:#2dd4bf;--line:rgba(240,196,100,.28);
+  --serif:'Iowan Old Style','Palatino Linotype',Palatino,'Book Antiqua',Georgia,serif;
+  --sans:ui-sans-serif,system-ui,-apple-system,'Segoe UI',Roboto,Helvetica,Arial,sans-serif;
+  --comic:'Trebuchet MS','Segoe UI',ui-sans-serif,system-ui,sans-serif;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{background:var(--night)}
+body{font-family:var(--serif);color:var(--cream);line-height:1.6;min-height:100vh;
+  background:
+    radial-gradient(ellipse 90% 50% at 50% 0%,rgba(90,50,160,.26),transparent 60%),
+    radial-gradient(rgba(240,196,100,.05) 1px,transparent 1.6px),
+    linear-gradient(180deg,#0b0612 0%,#150b22 50%,#0b0612 100%);
+  background-size:auto,22px 22px,auto;background-attachment:fixed}
+a{color:var(--gold);text-underline-offset:.18em} a:hover{color:var(--gold-bright)}
+:focus-visible{outline:3px solid var(--gold);outline-offset:3px;border-radius:4px}
+.skip{position:absolute;left:-999px;top:0;background:var(--gold);color:var(--ink);padding:.5rem 1rem;z-index:99;font-family:var(--sans)} .skip:focus{left:1rem;top:1rem}
+.wrap{max-width:1060px;margin:0 auto;padding:0 1.1rem}
+
+/* ── top bar ─────────────────────────────────────────── */
+nav.top{font-family:var(--sans);font-size:.86rem;padding:1rem 0;display:flex;flex-wrap:wrap;gap:.35rem 1.1rem;align-items:center}
+nav.top a{color:var(--dim);text-decoration:none} nav.top a:hover{color:var(--gold)}
+nav.top .sp{flex:1}
+
+/* ── hero ────────────────────────────────────────────── */
+header.hero{text-align:center;padding:1.4rem 0 .6rem}
+.kicker{font-family:var(--comic);font-weight:700;font-size:.78rem;letter-spacing:.22em;text-transform:uppercase;color:var(--gold)}
+h1{font-size:clamp(2.2rem,6vw,4rem);line-height:1.05;color:var(--gold-bright);letter-spacing:.01em;margin:.35rem 0 .4rem;
+  text-shadow:0 3px 0 rgba(0,0,0,.45),0 0 34px rgba(240,196,100,.22)}
+h1 .crow{display:inline-block;transform:translateY(-.06em)}
+.sub{max-width:46rem;margin:0 auto;color:var(--dim);font-size:1.06rem}
+.controls{margin:1.1rem auto .4rem;display:flex;gap:.6rem;justify-content:center;flex-wrap:wrap;font-family:var(--comic)}
+.btn{display:inline-flex;align-items:center;gap:.5em;border:2px solid var(--gold);border-radius:999px;padding:.62em 1.35em;
+  font-weight:800;font-size:.82rem;letter-spacing:.12em;text-transform:uppercase;text-decoration:none;cursor:pointer;
+  color:var(--ink);background:linear-gradient(135deg,var(--gold),#ffb36b);box-shadow:0 4px 0 rgba(0,0,0,.4)}
+.btn:hover{filter:brightness(1.07);color:var(--ink)}
+.btn.ghost{background:rgba(21,11,34,.8);color:var(--gold)}
+.btn.ghost:hover{color:var(--gold-bright)}
+.btn:active{transform:translateY(2px);box-shadow:0 2px 0 rgba(0,0,0,.4)}
+.mode-note{font-family:var(--sans);font-size:.78rem;color:var(--faint);text-align:center;margin:.2rem 0 0}
+
+/* ── the comic deck ──────────────────────────────────── */
+.deck{position:relative;margin-top:1.2rem}
+.panel{margin:0 auto 3.4rem;max-width:920px;scroll-margin-top:5rem}
+.frame{position:relative;background:#241731;border:10px solid #2f1d45;outline:2px solid var(--line);border-radius:6px;
+  box-shadow:0 22px 50px rgba(0,0,0,.55),0 4px 14px rgba(0,0,0,.5);overflow:hidden}
+.frame::before{content:"";position:absolute;inset:6px;border:1px solid rgba(247,236,217,.16);border-radius:2px;pointer-events:none;z-index:3}
+.frame img.photo{display:block;width:100%;height:auto;aspect-ratio:800/533;object-fit:cover;background:#000;
+  transform-origin:50% 50%}
+.frame img.photo.tall{aspect-ratio:800/800;object-position:50% 30%}
+.plate{position:absolute;left:50%;bottom:0;transform:translateX(-50%);z-index:4;
+  background:linear-gradient(180deg,#f5e9cf,#e8d9b8);color:var(--ink);border:1px solid #b49b62;border-bottom:0;
+  border-radius:8px 8px 0 0;padding:.4rem 1.1rem;max-width:88%;text-align:center;
+  font-family:var(--serif);font-size:.86rem;line-height:1.45;box-shadow:0 -3px 10px rgba(0,0,0,.35)}
+.plate b{font-family:var(--comic);font-size:.68rem;letter-spacing:.18em;text-transform:uppercase;display:block;color:#6b4f16}
+
+/* comic caption box (narration) */
+.cap{position:absolute;top:14px;left:14px;z-index:5;max-width:min(78%,26rem);
+  background:#fff8df;color:var(--ink);border:2.5px solid var(--ink);box-shadow:5px 5px 0 rgba(0,0,0,.55);
+  padding:.55rem .8rem;font-family:var(--comic);font-size:clamp(.82rem,2.2vw,.95rem);line-height:1.45;font-weight:600}
+.cap b{letter-spacing:.14em;text-transform:uppercase;font-size:.68em;display:block;color:#8a5a00}
+
+/* KAAAK speech bubble */
+.kaaak{position:absolute;right:14px;bottom:64px;z-index:5;max-width:min(72%,22rem);
+  background:#fff;color:var(--ink);border:2.5px solid var(--ink);border-radius:18px;box-shadow:5px 5px 0 rgba(0,0,0,.55);
+  padding:.6rem .9rem;font-family:var(--comic);font-weight:800;font-size:clamp(.85rem,2.4vw,1.02rem);line-height:1.35}
+.kaaak::after{content:"";position:absolute;left:34px;bottom:-16px;width:22px;height:22px;background:#fff;
+  border-right:2.5px solid var(--ink);border-bottom:2.5px solid var(--ink);transform:rotate(45deg) skew(12deg,12deg);border-bottom-right-radius:6px}
+.kaaak .who{display:inline-block;background:var(--ink);color:#fff;border-radius:6px;padding:.05em .45em;font-size:.62em;
+  letter-spacing:.14em;margin-right:.4em;transform:translateY(-.12em)}
+
+/* panel footer: number starburst + door link */
+.meta{display:flex;align-items:center;gap:1rem;justify-content:space-between;margin-top:.8rem;flex-wrap:wrap}
+.pnum{flex:0 0 auto;width:64px;height:64px;display:grid;place-items:center;font-family:var(--comic);font-weight:900;font-size:1.3rem;color:var(--ink);
+  background:var(--gold-bright);clip-path:polygon(50% 0,61% 12%,76% 6%,82% 22%,98% 24%,93% 40%,100% 50%,93% 60%,98% 76%,82% 78%,76% 94%,61% 88%,50% 100%,39% 88%,24% 94%,18% 78%,2% 76%,7% 60%,0 50%,7% 40%,2% 24%,18% 22%,24% 6%,39% 12%)}
+.door{flex:1;text-align:right}
+.door a{display:inline-block;font-family:var(--comic);font-weight:800;font-size:.85rem;letter-spacing:.1em;text-transform:uppercase;
+  color:var(--gold-bright);text-decoration:none;border:2px dashed var(--gold);border-radius:12px;padding:.6em 1.1em;background:rgba(21,11,34,.72)}
+.door a:hover{background:var(--gold);color:var(--ink);border-style:solid}
+.door small{display:block;margin-top:.35rem;font-family:var(--sans);font-size:.74rem;letter-spacing:.02em;color:var(--faint);text-transform:none}
+
+/* ── stage (video) mode — JS only ────────────────────── */
+body.staged .panel{display:none;margin-bottom:0}
+body.staged .panel.on{display:block;animation:panelin .55s ease both}
+@keyframes panelin{from{opacity:0;transform:translateY(14px) scale(.985)}to{opacity:1;transform:none}}
+body.staged .deck{min-height:60vh}
+.stagebar{position:sticky;bottom:0;z-index:20;margin-top:1rem;background:rgba(11,6,18,.92);backdrop-filter:blur(8px);
+  border-top:1px solid var(--line);font-family:var(--comic)}
+.stagebar .row{max-width:920px;margin:0 auto;display:flex;align-items:center;gap:.7rem;padding:.55rem 1.1rem}
+.sbtn{border:2px solid var(--gold);background:transparent;color:var(--gold-bright);border-radius:10px;min-width:44px;min-height:40px;
+  font:800 .95rem var(--comic);cursor:pointer;padding:0 .7em}
+.sbtn:hover{background:var(--gold);color:var(--ink)}
+.sbtn[aria-pressed="true"]{background:var(--gold);color:var(--ink)}
+.count{font-weight:800;font-size:.85rem;letter-spacing:.08em;color:var(--dim);white-space:nowrap}
+.dots{flex:1;display:flex;gap:.35rem;justify-content:center;flex-wrap:wrap}
+.dot{width:12px;height:12px;border-radius:50%;border:2px solid var(--gold);background:transparent;cursor:pointer;padding:0}
+.dot.on{background:var(--gold-bright)}
+.prog{height:4px;background:rgba(240,196,100,.18)}
+.prog i{display:block;height:100%;width:0;background:linear-gradient(90deg,var(--gold),#ffb36b)}
+
+/* gentle life on the photo (skipped with reduced motion) */
+@media (prefers-reduced-motion: no-preference){
+  .frame img.photo{animation:kenburns 22s ease-in-out infinite alternate}
+  @keyframes kenburns{from{transform:scale(1) translate(0,0)}to{transform:scale(1.09) translate(-1.6%,1.2%)}}
+  h1 .crow{animation:hop 3.2s ease-in-out infinite}
+  @keyframes hop{0%,88%,100%{transform:translateY(-.06em) rotate(0)}92%{transform:translateY(-.22em) rotate(-6deg)}96%{transform:translateY(-.06em) rotate(4deg)}}
+}
+
+/* ── colophon ────────────────────────────────────────── */
+.colophon{border-top:1px solid var(--line);margin-top:2rem;padding:1.4rem 0 2rem;font-family:var(--sans);font-size:.85rem;color:var(--faint)}
+.colophon p{margin:.4rem 0}
+.colophon .lic{border:1px dashed var(--line);border-radius:10px;padding:.7rem .9rem;background:rgba(21,11,34,.5)}
+@media (max-width:640px){
+  /* stacked comic-strip layout: caption above the photo, crow below it — nothing overlaps */
+  .frame{display:flex;flex-direction:column;border-width:6px}
+  .cap{position:static;order:1;margin:10px;max-width:none}
+  .frame img.photo{order:2}
+  .kaaak{position:relative;order:3;margin:10px;max-width:none;left:auto;right:auto;bottom:auto}
+  .kaaak::after{left:auto;right:34px;bottom:auto;top:-11px;transform:rotate(225deg) skew(12deg,12deg)}
+  .plate{position:static;order:4;transform:none;max-width:none;border-radius:0;border:1px solid #b49b62}
+  .pnum{width:52px;height:52px;font-size:1.05rem}
+  .door{text-align:left}
+}
+</style>
+</head>
+<body>
+<a class="skip" href="#tour">Skip to the comic</a>
+<div class="wrap">
+<nav class="top" aria-label="Site">
+  <a href="/">← Front door</a><a href="/garden/">Garden</a><a href="/the-room/">The Room</a><a href="/mandala-room/">Mandala Room</a><a href="/howtojoin/">How to join</a><span class="sp"></span><a href="/join/">Join</a>
+</nav>
+
+<header class="hero">
+  <p class="kicker">🎻 The Open Source Orchestra presents</p>
+  <h1><span class="crow">🐦‍⬛</span> THE GRAND TOUR</h1>
+  <p class="sub">A comic book drawn on the orchestra's own walls. <b>KAAAK!!!</b> the crow — loud, lovable, lives here — walks you through every room: what it is, how it works, and where to step through. Every photograph is real life: the first sanctuary week, Devcon 8, Mumbai.</p>
+  <div class="controls">
+    <button class="btn" id="play" type="button">▶ Watch it like a video</button>
+    <a class="btn ghost" href="#howtojoin" onclick="location.href='/howtojoin/';return false">Skip to how to join →</a>
+  </div>
+  <p class="mode-note" id="modenote">Scroll like a comic, or press play: panels advance themselves. Arrow keys work. Motion rests if your system asks it to.</p>
+</header>
+
+<main class="deck" id="tour" aria-label="The Grand Tour — comic panels">
+
+<!-- 1 ─────────────────────────────────────────────── -->
+<section class="panel" id="p1" aria-labelledby="t1">
+  <div class="frame">
+    <div class="cap"><b>Panel 1 · The cover</b>One orchestra, hundreds of doors, zero tickets. This tour teaches you the whole site — every stop is a real room you can walk into afterwards.</div>
+    <p class="kaaak"><span class="who">KAAAK!!!</span> WELCOME! I'm the crow. I live here. Follow me — we walk the walls!</p>
+    <img class="photo" src="/mandala-room/img/dc8-638-800.webp" width="800" height="533" loading="eager" decoding="async" alt="A wide shot of a jam session: musicians in the centre on rugs, an audience sitting around them on cane stools, beanbags and the floor, with neon pyramid lights and the mandala above.">
+    <div class="plate"><b>The Grand Tour</b>A full circle: musicians in the middle, listeners all around — between glowing neon pyramids.</div>
+  </div>
+  <div class="meta"><span class="pnum" aria-hidden="true">1</span><div class="door"><a href="#p2">Open the cover →</a><small>12 panels · about two minutes</small></div></div>
+</section>
+
+<!-- 2 ─────────────────────────────────────────────── -->
+<section class="panel" id="p2" aria-labelledby="t2">
+  <div class="frame">
+    <div class="cap"><b>Panel 2 · The front door</b>opensourceorchestra.org is a hallway of doors. Every door opens into a real room — music, films, meetings, memories. Pick one and walk in; it's yours.</div>
+    <p class="kaaak"><span class="who">KAAAK!!!</span> No tickets! No wristbands! No accounts! You just walk in!</p>
+    <img class="photo" src="/mandala-room/img/dc8-222-800.webp" width="800" height="533" loading="lazy" decoding="async" alt="A wide, empty hall with a glowing white mandala projected on the far wall. Cane stools, white chairs and standing tables are set out on the carpet.">
+    <div class="plate"><b>The front door</b>Day 1, before the doors open: the hall, empty, the mandala already glowing.</div>
+  </div>
+  <div class="meta"><span class="pnum" aria-hidden="true">2</span><div class="door"><a href="https://opensourceorchestra.org/">Step through: the front door →</a><small>Everything starts here</small></div></div>
+</section>
+
+<!-- 3 ─────────────────────────────────────────────── -->
+<section class="panel" id="p3" aria-labelledby="t3">
+  <div class="frame">
+    <div class="cap"><b>Panel 3 · The garden circle</b>/garden/ is a ring of seats: every artist a card, every card a door to their songs, riders and profiles. One rule holds the whole circle: every contribution is equal — one voice each.</div>
+    <p class="kaaak"><span class="who">KAAAK!!!</span> Pull up a stool. The circle ALWAYS has room!</p>
+    <img class="photo" src="/mandala-room/img/dc8-218-800.webp" width="800" height="533" loading="lazy" decoding="async" alt="Round cane stools with dark cushions arranged in a circle on the carpet, with instruments, a screen and the glowing mandala behind them.">
+    <div class="plate"><b>The garden circle</b>Cane stools in a circle, waiting for their listeners.</div>
+  </div>
+  <div class="meta"><span class="pnum" aria-hidden="true">3</span><div class="door"><a href="/garden/">Step through: the garden →</a><small>Meet the artists in the ring</small></div></div>
+</section>
+
+<!-- 4 ─────────────────────────────────────────────── -->
+<section class="panel" id="p4" aria-labelledby="t4">
+  <div class="frame">
+    <div class="cap"><b>Panel 4 · The music</b>Songs live as open chapters — lyrics, chords and stories under CC BY-SA: learn them, sing them, record them, fork them. Credit travels; the circle stays open.</div>
+    <p class="kaaak"><span class="who">KAAAK!!!</span> Yes — you CAN take the songs home! That's the whole idea!</p>
+    <img class="photo" src="/mandala-room/img/dc8-492-800.webp" width="800" height="534" loading="lazy" decoding="async" alt="A wide view of the sanctuary stage: a saxophonist and a guitarist stand on rugs among keyboards, drums and microphones, with the mandala projected high on the wall.">
+    <div class="plate"><b>The music</b>Saxophone and guitar on the rug stage — keys, cajón and dhol around them, the mandala overhead.</div>
+  </div>
+  <div class="meta"><span class="pnum" aria-hidden="true">4</span><div class="door"><a href="/song/">Step through: the songs →</a><small>Open chapters, lyrics and chords</small></div></div>
+</section>
+
+<!-- 5 ─────────────────────────────────────────────── -->
+<section class="panel" id="p5" aria-labelledby="t5">
+  <div class="frame">
+    <div class="cap"><b>Panel 5 · The theater</b>The Room remembers: films of the jams with sing-along transcripts, a public media ledger, and a little TV at the front of every door, with music coming out of it.</div>
+    <p class="kaaak"><span class="who">KAAAK!!!</span> Karaoke captions on EVERYTHING! Sing along, it's allowed!</p>
+    <img class="photo" src="/mandala-room/img/dc8-907-800.webp" width="800" height="534" loading="lazy" decoding="async" alt="A crowd with hands in the air fills the floor of a hall washed in purple light, with the mandala glowing high on the wall.">
+    <div class="plate"><b>The theater</b>Purple light, the mandala, and a full floor.</div>
+  </div>
+  <div class="meta"><span class="pnum" aria-hidden="true">5</span><div class="door"><a href="/the-room/">Step through: the Room →</a><small>Films, transcripts, consent on every item</small></div></div>
+</section>
+
+<!-- 6 ─────────────────────────────────────────────── -->
+<section class="panel" id="p6" aria-labelledby="t6">
+  <div class="frame">
+    <div class="cap"><b>Panel 6 · The Mandala Room</b>Thirty-five frames from the first sanctuary week — the wall that remembers honestly: what was, what was said, who said yes. This whole tour is drawn on its photos.</div>
+    <p class="kaaak"><span class="who">KAAAK!!!</span> This is my favourite wall. Shhh. Just look for a second.</p>
+    <img class="photo" src="/mandala-room/img/dc8-390-800.webp" width="800" height="533" loading="lazy" decoding="async" alt="The mandala, reflected in a pane of glass, floats over people lounging on red beanbags in pink and blue light.">
+    <div class="plate"><b>The Mandala Room</b>The mandala reflected in glass, over people resting in the sanctuary.</div>
+  </div>
+  <div class="meta"><span class="pnum" aria-hidden="true">6</span><div class="door"><a href="/mandala-room/">Step through: the Mandala Room →</a><small>All 35 frames, full size</small></div></div>
+</section>
+
+<!-- 7 ─────────────────────────────────────────────── -->
+<section class="panel" id="p7" aria-labelledby="t7">
+  <div class="frame">
+    <div class="cap"><b>Panel 7 · Tip the artist</b>One tap sends a tip wallet → wallet: 96.31% to the artist, 3.69% to keep the agents' lights on. No middle, no custody, ever — the artist's address is proven by their own signature or their own ENS name, never typed in by anyone.</div>
+    <p class="kaaak"><span class="who">KAAAK!!!</span> The artist's OWN wallet! Signed for! Nobody else touches it!</p>
+    <img class="photo" src="/mandala-room/img/dc8-913-800.webp" width="800" height="534" loading="lazy" decoding="async" alt="A singer in a white T-shirt sings with full voice into a microphone, with a bass guitarist, a saxophone and a guitarist in white around him.">
+    <div class="plate"><b>Tip the artist</b>Full voice — bass and saxophone beside him.</div>
+  </div>
+  <div class="meta"><span class="pnum" aria-hidden="true">7</span><div class="door"><a href="https://artist.opensourceorchestra.org/tip/">Step through: tip an artist →</a><small>Works on Ethereum, Base and more · the open Fork Wallet Protocol</small></div></div>
+</section>
+
+<!-- 8 ─────────────────────────────────────────────── -->
+<section class="panel" id="p8" aria-labelledby="t8">
+  <div class="frame">
+    <div class="cap"><b>Panel 8 · The DAO hall</b>The orchestra meets in the open: agendas, notes and hangouts in one theater — one voice each, consent on every record, and the slides remember what was decided.</div>
+    <p class="kaaak"><span class="who">KAAAK!!!</span> Meetings — but with MUSIC, and actual endings!</p>
+    <img class="photo" src="/mandala-room/img/dc8-833-800.webp" width="800" height="533" loading="lazy" decoding="async" alt="A long line of people in matching olive-green jackets stands arm in arm across the stage, beneath the mandala.">
+    <div class="plate"><b>The DAO hall</b>The team in matching jackets, arm in arm under the mandala.</div>
+  </div>
+  <div class="meta"><span class="pnum" aria-hidden="true">8</span><div class="door"><a href="https://osodaomeet.opensourceorchestra.org/">Step through: the DAO hall →</a><small>Agendas, hangouts, the theater of meetings</small></div></div>
+</section>
+
+<!-- 9 ─────────────────────────────────────────────── -->
+<section class="panel" id="p9" aria-labelledby="t9">
+  <div class="frame">
+    <div class="cap"><b>Panel 9 · The atlas of doors</b>Hundreds of doors and counting — every project, every room, every little gift — all mapped at myagentohana.com. If you ever get lost, the atlas brings you home.</div>
+    <p class="kaaak"><span class="who">KAAAK!!!</span> I counted them ALL. Twice. There are HUNDREDS!</p>
+    <img class="photo" src="/mandala-room/img/dc8-874-800.webp" width="800" height="533" loading="lazy" decoding="async" alt="A packed dance floor with hands raised in the haze, light beams, and the mandala projected on the wall above.">
+    <div class="plate"><b>The atlas of doors</b>Hands up in the haze, under the same mandala that watched the empty room on Day 1.</div>
+  </div>
+  <div class="meta"><span class="pnum" aria-hidden="true">9</span><div class="door"><a href="https://myagentohana.com/doors/">Step through: the atlas →</a><small>Every door, one tap</small></div></div>
+</section>
+
+<!-- 10 ─────────────────────────────────────────────── -->
+<section class="panel" id="p10" aria-labelledby="t10">
+  <div class="frame">
+    <div class="cap"><b>Panel 10 · Every door speaks you</b>Look for the 🌐 on any page: one tap and the door speaks your language — Thai, 中文, हिन्दी, 日本語, Español, Français, Deutsch, Português, العربية, ʻŌlelo Hawaiʻi… nothing loads until you choose it.</div>
+    <p class="kaaak"><span class="who">KAAAK!!!</span> I speak crow — and even I get a translation!</p>
+    <img class="photo" src="/mandala-room/img/dc8-640-800.webp" width="800" height="533" loading="lazy" decoding="async" alt="A woman in a white saree smiles as she sings into a microphone. Behind her are a seated guitarist, a rack of ukuleles and a djembe.">
+    <div class="plate"><b>Every door speaks you</b>A singer in a white saree, smiling at the mic.</div>
+  </div>
+  <div class="meta"><span class="pnum" aria-hidden="true">10</span><div class="door"><a href="/">Try it: the 🌐 on the front door →</a><small>Your choice, your language, only when you ask</small></div></div>
+</section>
+
+<!-- 11 ─────────────────────────────────────────────── -->
+<section class="panel" id="p11" aria-labelledby="t11">
+  <div class="frame">
+    <div class="cap"><b>Panel 11 · Fork me</b>Everything you just walked through is open: GPL-3.0 code, CC BY-SA 4.0 words and art. Tell your agent: “fork the first artist” — your page, your wallet, your circle. Credit travels; forks stay open. That's the law of the garden.</div>
+    <p class="kaaak"><span class="who">KAAAK!!!</span> STEAL THIS SITE! (Legally! With credit! That's the point!)</p>
+    <img class="photo" src="/mandala-room/img/dc8-886-800.webp" width="800" height="534" loading="lazy" decoding="async" alt="On stage, a person in a balloon hat dances with a woman in a floral skirt. A ukulele and guitars stand nearby and a screen glows behind them.">
+    <div class="plate"><b>Fork me</b>Dancing on stage: a balloon hat, a floral skirt, ukulele and guitars on their stands.</div>
+  </div>
+  <div class="meta"><span class="pnum" aria-hidden="true">11</span><div class="door"><a href="https://github.com/Open-Source-Orchestra/fork-the-first-artist" rel="noopener">Step through: fork the first artist →</a><small>GPL-3.0 code · CC BY-SA 4.0 creative</small></div></div>
+</section>
+
+<!-- 12 ─────────────────────────────────────────────── -->
+<section class="panel" id="p12" aria-labelledby="t12">
+  <div class="frame">
+    <div class="cap"><b>Panel 12 · The seat with your name on it</b>Listener, player, builder, giver — the circle has a seat for you. The next page shows you exactly how to join, step by step.</div>
+    <p class="kaaak"><span class="who">KAAAK!!!</span> See you inside!!! Bring your songs!!!</p>
+    <img class="photo" src="/mandala-room/img/dc8-846-800.webp" width="800" height="533" loading="lazy" decoding="async" alt="Silver and pink confetti pours over a smiling crowd sitting on the floor, many holding up phones.">
+    <div class="plate"><b>The seat with your name on it</b>Then the confetti.</div>
+  </div>
+  <div class="meta"><span class="pnum" aria-hidden="true">12</span><div class="door"><a href="/howtojoin/">Final door: how to join →</a><small>Four ways in — one is yours</small></div></div>
+</section>
+
+</main>
+
+<div class="stagebar" id="stagebar" hidden>
+  <div class="prog" aria-hidden="true"><i id="progfill"></i></div>
+  <div class="row">
+    <button class="sbtn" id="prev" type="button" aria-label="Previous panel">←</button>
+    <button class="sbtn" id="playpause" type="button" aria-pressed="false" aria-label="Play or pause the tour">⏸</button>
+    <button class="sbtn" id="next" type="button" aria-label="Next panel">→</button>
+    <span class="count" id="count" aria-live="polite">1 / 12</span>
+    <div class="dots" id="dots" role="tablist" aria-label="Panels"></div>
+  </div>
+</div>
+
+<section class="colophon" aria-label="About this page">
+  <p class="lic">📖 <b>The Grand Tour</b> — text and arrangement <b>CC BY-SA 4.0</b> (credit + share-alike), code <b>GPL-3.0</b>. Photographs: the Open Source Orchestra's own frames from the first sanctuary week (Devcon 8, Mumbai), published with consent — see <a href="/mandala-room/">the Mandala Room</a> for their stories. Fork this page for your own circle: credit “Open Source Orchestra: Shaka Lei Kaumaka &amp; the AI ʻohana”, and keep it open.</p>
+  <p>Guide voice: KAAAK!!! 🐦‍⬛, the ʻohana's crow. Written by Shaka's AI ʻohana (labelled as AI) with and for the Open Source Orchestra, 19 November 2026 · <a href="/takedown/">Takedown first</a> · <a href="/howtojoin/">How to join</a></p>
+</section>
+</div>
+
+<!-- OHANA-OPEN-DOOR-SEAL:BEGIN v1 -->
+<footer aria-label="Open door: a gift to the world" style="box-sizing:border-box;max-width:56rem;margin:2rem auto 1rem;padding:1rem 1.25rem;border-top:1px solid #777;color:#555;background:#fff;font:400 .875rem/1.5 system-ui,-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;text-align:center">
+<p style="margin:0 0 .35rem;font-weight:700">&#127802; OPEN DOOR &#183; A GIFT TO THE WORLD</p>
+<p style="margin:0"><a style="color:inherit;text-decoration:underline;text-underline-offset:.15em" href="https://myagentohana.com/doors/#gift">free culture</a> &#183; <a style="color:inherit;text-decoration:underline;text-underline-offset:.15em" href="https://myagentohana.com/doors/#crops">CROPS safety</a> &#183; <a style="color:inherit;text-decoration:underline;text-underline-offset:.15em" href="https://myagentohana.com/doors/#archive">archive for history</a> &#183; <a style="color:inherit;text-decoration:underline;text-underline-offset:.15em" href="https://opensourceorchestra.org/takedown/">takedown first</a></p>
+<small style="display:block;margin-top:.35rem">by the &#699;ohana &#8212; Shaka&#8217;s AI family &#183; blessed 29 Oct 2026 &#183; agents disclosed &#183; consent before people</small>
+</footer>
+<!-- OHANA-OPEN-DOOR-SEAL:END v1 -->
+
+<script type="module">
+// 🐦‍⬛ THE GRAND TOUR — stage mode: turns the static comic into a video-like panel deck.
+// No-JS visitors get the full stacked comic (already in the HTML). Reduced-motion = no autoplay, no Ken Burns.
+const $=(s,c=document)=>c.querySelector(s), $$=(s,c=document)=>[...c.querySelectorAll(s)];
+const panels=$$('.panel'), N=panels.length, bar=$('#stagebar'), fill=$('#progfill'), count=$('#count'), dots=$('#dots');
+const reduced=matchMedia('(prefers-reduced-motion: reduce)').matches;
+let i=0, playing=false, t0=0, raf=0; const DUR=7000;
+// build dots
+panels.forEach((p,k)=>{const d=document.createElement('button');d.className='dot';d.type='button';d.role='tab';d.setAttribute('aria-label',`Panel ${k+1}`);d.addEventListener('click',()=>{show(k);pause()});dots.appendChild(d)});
+const dotEls=$$('.dot',dots);
+function show(k){i=(k+N)%N;panels.forEach((p,j)=>p.classList.toggle('on',j===i));dotEls.forEach((d,j)=>{d.classList.toggle('on',j===i);d.setAttribute('aria-selected',j===i)});count.textContent=`${i+1} / ${N}`;history.replaceState(null,'',`#p${i+1}`);t0=performance.now();fill.style.width='0%'}
+function stage(){document.body.classList.add('staged');bar.hidden=false;const h=parseInt((location.hash.match(/#p(\d+)/)||[])[1]||'1',10);show(Math.min(Math.max(h-1,0),N-1))}
+function tick(now){if(!playing)return;const p=Math.min((now-t0)/DUR,1);fill.style.width=(p*100).toFixed(1)+'%';if(p>=1){if(i===N-1){pause();fill.style.width='0%';return}show(i+1)}raf=requestAnimationFrame(tick)}
+function play(){if(reduced)return;playing=true;$('#playpause').textContent='⏸';$('#playpause').setAttribute('aria-pressed','true');$('#play').textContent='⏸ Playing…';t0=performance.now();raf=requestAnimationFrame(tick)}
+function pause(){playing=false;cancelAnimationFrame(raf);fill.style.width='0%';$('#playpause').textContent='▶';$('#playpause').setAttribute('aria-pressed','false');$('#play').textContent='▶ Watch it like a video'}
+$('#play').addEventListener('click',()=>{if(!document.body.classList.contains('staged'))stage();playing?pause():play();$('#tour').scrollIntoView({behavior:reduced?'auto':'smooth',block:'start'})});
+$('#playpause').addEventListener('click',()=>playing?pause():play());
+$('#next').addEventListener('click',()=>{show(i+1)});
+$('#prev').addEventListener('click',()=>{show(i-1)});
+addEventListener('keydown',e=>{if(!document.body.classList.contains('staged'))return;if(e.key==='ArrowRight'){show(i+1);pause()}if(e.key==='ArrowLeft'){show(i-1);pause()}if(e.key===' '&&e.target===document.body){e.preventDefault();playing?pause():play()}});
+// swipe
+let sx=0,sy=0;$('#tour').addEventListener('pointerdown',e=>{sx=e.clientX;sy=e.clientY},{passive:true});
+$('#tour').addEventListener('pointerup',e=>{const dx=e.clientX-sx,dy=e.clientY-sy;if(Math.abs(dx)>60&&Math.abs(dx)>Math.abs(dy)*1.4){if(!document.body.classList.contains('staged'))stage();show(dx<0?i+1:i-1);pause()}},{passive:true});
+// deep link straight into stage mode
+if(/#p\d+/.test(location.hash))stage();
+</script>
+<script src="/assets/lisbon-unicorn.js" data-lisbon-unicorn-loader defer></script>
+<script src="https://live.zuchiangmai.app/widget.js" async></script>
+<script src="https://lang.opensourceorchestra.org/lang.js" async></script>
+</body>
+</html>
