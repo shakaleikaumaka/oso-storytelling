@@ -2,7 +2,7 @@
    Palette: night #0b0612 · cream #f7ecd9 · gold #f0c464 · coral #ff8a5c
    Rules: transform/opacity animations only · few elements · pointer-events none
    · fully disabled under prefers-reduced-motion. A concert hall breathing,
-   not a screensaver. CC0 🌺 */
+   not a screensaver. GPL-3.0 🌺 */
 
 /* floating note glyphs — embers rising from the pit */
 .oso-alive{position:fixed;inset:0;z-index:0;pointer-events:none;overflow:hidden}

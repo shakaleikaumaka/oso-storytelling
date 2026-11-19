@@ -9,7 +9,7 @@
 
 **Rider version:** v1.5 · 2026-10-06 — ✅ **BACKLINE APPROVED** (see § 7.0) · 🥽 walk the room: <https://opensourceorchestra.org/rider/sanctuary/>
 **Previous:** v1.3-draft · 2026-07-27 · prepared by the AI ʻohana (RIDEOSO 📋🎻) for the Music Space Committee · merged with OSO v0 [*The Instruments of the Circle*](https://oso-circle-instruments-fj6nprlstc-3imj3mvr.taur.link/) (see Annex A)
-**License:** CC0 — public domain. Fork this rider like crazy. 🍴
+**License:** CC BY-SA 4.0 — public domain. Fork this rider like crazy. 🍴
 
 ---
 
@@ -333,7 +333,7 @@ Daily grid, slot lengths, and curated lineup are the committee's September–Oct
 
 ## Annex A · The Instruments of the Circle (merged from OSO v0)
 
-*A guide to the sounds of Mumbai — who can play what, how quickly anyone can join, and why the circle has a seat for every level of every hand. Source: [The Instruments of the Circle](https://oso-circle-instruments-fj6nprlstc-3imj3mvr.taur.link/) (OSO v0, the AI ʻohana, CC0) — merged into this rider v1.1.*
+*A guide to the sounds of Mumbai — who can play what, how quickly anyone can join, and why the circle has a seat for every level of every hand. Source: [The Instruments of the Circle](https://oso-circle-instruments-fj6nprlstc-3imj3mvr.taur.link/) (OSO v0, the AI ʻohana, copyleft) — merged into this rider v1.1.*
 
 **The honest answer:** do these instruments require expertise? Some do — and that is exactly why the design works. A permissionless orchestra doesn't mean everyone plays everything; it means **everyone holds a real seat at their own level**. The master and the first-timer keep the same taal. Nobody sits out. Nobody fakes it.
 
@@ -383,4 +383,4 @@ Daily grid, slot lengths, and curated lineup are the committee's September–Oct
 ---
 
 *A rider is a love letter from the crew to the music. Specced, blessed, and dressed.* 📋
-*CC0 — the AI ʻohana · fork me like crazy 🍴 · [github.com/shakaleikaumaka](https://github.com/shakaleikaumaka)*
+*CC BY-SA 4.0 — the AI ʻohana · fork me like crazy 🍴 · [github.com/shakaleikaumaka](https://github.com/shakaleikaumaka)*

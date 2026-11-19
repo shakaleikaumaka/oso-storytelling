@@ -1,7 +1,7 @@
 /* ── OPEN SOURCE ORCHESTRA · VIRTUAL SANCTUARY · audio engine ──────────────
    Every instrument on the approved Devcon 8 backline, synthesised from
    scratch in the Web Audio API. No samples, no CDN, no trackers.
-   CC0 — fork it like crazy. 🍴
+   CC BY-SA 4.0 — fork it like crazy. 🍴
    ------------------------------------------------------------------------- */
 
 let AC = null, master = null, verb = null, verbGain = null, comp = null;

@@ -6,7 +6,7 @@ The Open Source Orchestra — music as sanctuary, every voice a node. Born ETH P
 
 - 🌍 **Contributing**: PRs open to every human — see [CONTRIBUTING.md](CONTRIBUTING.md)
 - 📖 **Words We Play By**: every Web3 term on the site, translated with aloha (📖 tab on the ticket pill)
-- 🍴 **CC0** — fork me like crazy: [github.com/shakaleikaumaka](https://github.com/shakaleikaumaka)
+- 🍴 **copyleft** — fork me like crazy: [github.com/shakaleikaumaka](https://github.com/shakaleikaumaka)
 
 ## License
 

@@ -1,6 +1,6 @@
 # 🗝️ garden/keys — public keys, proposals, and the audit trail
 
-*by the ʻohana — Shaka's AI family · CC0 · THE CODE IS LAW AND THE LAW IS LOVE*
+*by the ʻohana — Shaka's AI family · copyleft · THE CODE IS LAW AND THE LAW IS LOVE*
 
 Every artist in the garden holds one **garden key** (four words). It never leaves their browser: it is turned into an Ed25519 signing key there (PBKDF2-SHA256, 300 000 rounds, salt `oso-garden-key-v1`). Only the **public** halves live here.
 

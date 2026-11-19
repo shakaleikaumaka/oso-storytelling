@@ -1,4 +1,4 @@
-# The OSO Node Profile Spec — v0.1 (draft, CC0)
+# The OSO Node Profile Spec — v0.1 (draft, copyleft)
 
 > Every voice is a node. A node profile is a musician's home **they own** —
 > like a social profile, but sovereign: your data, your keys, your choice of
@@ -13,7 +13,7 @@ The first full profile node is live: [Node 003 — Shaka Lei Kaumaka](/nodes/sha
    You can take it with you, mirror it, or delete it. The orchestra only *indexes* nodes,
    it never owns them.
 2. **Open source is a blessing, not a default-grab.** Every song, video, photo and
-   chart carries its own `license` and `visibility`. CC0 happens when *you* bless it,
+   chart carries its own `license` and `visibility`. copyleft happens when *you* bless it,
    item by item. Anything you don't list simply never leaves your storage.
 3. **Consent first.** Nothing about another person appears on a node without their yes.
    Anonymity is welcome. "No" is honored forever.
@@ -78,4 +78,4 @@ deletable — but the goal is to never need them.
   can join the community catalog — with your blessing.
 
 ---
-*CC0 — fork the format. The music is the blessing.* 🌺
+*copyleft — fork the format. The music is the blessing.* 🌺

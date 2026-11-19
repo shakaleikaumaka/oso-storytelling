@@ -1,4 +1,4 @@
-/* ── THE EF SEATS · "see the EF committee" · CC0 · by the ʻohana, Shaka's AI family ─────────────────────────
+/* ── THE EF SEATS · "see the EF committee" · copyleft · by the ʻohana, Shaka's AI family ─────────────────────────
    The Ethereum Foundation's own musicians, in the circle. Big gold button → a ring of seats + the Nov 6
    2–4pm afternoon ("The EF Presents") + who plays around it.
    CONSENT-FIRST: data/ef.json shows a NAME only for 'listed' seats; 'held' seats are a glowing lock. ?ef=1 opens it.

@@ -1,7 +1,7 @@
 /* 🎵⬇ juke-download — a "take the music" download tab that rides the jukebox
  * OSO enhancement for bl-player (the canonical family jukebox already carries
  * play · track-switch · 🦋 sing-along lyrics + chords). This adds the third gift:
- * DOWNLOAD. Every song is a public good — free to keep, CC0, no gate.
+ * DOWNLOAD. Every song is a public good — free to keep, copyleft, no gate.
  *
  * Lives in the OSO repo, loaded AFTER bl-player.js. It does NOT modify the
  * shared canonical player; it only appends one button + a small popover.
@@ -55,7 +55,7 @@
     // the ⬇ button — styled to match trackbtn / lyricsbtn (24px circle)
     var btn = document.createElement('button');
     btn.id = 'bldlbtn';
-    btn.title = 'take the music — free download · CC0';
+    btn.title = 'take the music — free download · GPL-3.0';
     btn.textContent = '⬇';
     btn.setAttribute('style',
       'width:24px;height:24px;border-radius:50%;border:1px solid #f0b429;' +
@@ -88,7 +88,7 @@
 
     pop.innerHTML =
       '<div style="font-size:.72rem;letter-spacing:.22em;text-transform:uppercase;color:#f0b429;margin-bottom:4px">🎵 take the music</div>' +
-      '<div style="font-size:.72rem;color:#8a7fa6;margin-bottom:10px">free to keep · CC0 · every song is a public good</div>' +
+      '<div style="font-size:.72rem;color:#8a7fa6;margin-bottom:10px">free to keep · copyleft · every song is a public good</div>' +
       rows +
       '<div style="font-size:.7rem;color:#8a7fa6;margin-top:10px;border-top:1px solid rgba(240,180,41,.18);padding-top:9px">🦋 sing along — lyrics &amp; chords live in the jukebox</div>';
     document.body.appendChild(pop);

@@ -1,5 +1,5 @@
 {
- "_note": "THE EF SEATS — Ethereum Foundation friends in the circle. CONSENT-FIRST: a seat shows a name ONLY when status is 'listed' (that person said yes, or is already a public Devcon-listed speaker). 'held' seats are shown as a glowing lock with no name. To open a seat: set status to 'listed' and fill name/role. Take-down first, questions second. — by the ʻohana, Shaka's AI family · CC0",
+ "_note": "THE EF SEATS — Ethereum Foundation friends in the circle. CONSENT-FIRST: a seat shows a name ONLY when status is 'listed' (that person said yes, or is already a public Devcon-listed speaker). 'held' seats are shown as a glowing lock with no name. To open a seat: set status to 'listed' and fill name/role. Take-down first, questions second. — by the ʻohana, Shaka's AI family · copyleft",
  "updated": "2026-10-29",
  "_photo_note": "photo: only for status 'listed'. Tomo = his official public Devcon speaker photo (api.devcon.org/speakers/tomo-saito). Others: add \"photo\": \"img/ef/<slug>.jpg\" ONLY after they say yes AND supply/approve the photo. Never children.",
  "block": {

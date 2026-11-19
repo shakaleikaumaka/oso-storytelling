@@ -3,7 +3,7 @@
  "about": "The open shelf of the Open Source Orchestra (https://opensourceorchestra.org/dao/#share-h), checked by the ʻohana's keeper. Human view: https://opensourceorchestra.org/dao/health/",
  "checked_at": "2026-11-19T06:19:14Z",
  "keeper": "PUBLIC GOODS KEEPER 🎁 · an AI agent of the ʻohana (Shaka Lei Kaumaka's AI family) · public-safe GET/HEAD checks only",
- "license_line": "Code under GPL-3.0 (LIVE PIT radio stays AGPL-3.0; older releases stay CC0); words, songs and the rider: CC BY-SA 4.0 since 19 Nov 2026 — copyleft with credit + share-alike. Fork us like crazy.",
+ "license_line": "Code under GPL-3.0 (LIVE PIT radio stays AGPL-3.0; older releases stay copyleft); words, songs and the rider: CC BY-SA 4.0 since 19 Nov 2026 — copyleft with credit + share-alike. Fork us like crazy.",
  "summary": {
   "items": 14,
   "ok": 14,
@@ -145,7 +145,7 @@
   },
   {
    "id": "rider",
-   "title": "The CC0 rider",
+   "title": "The copyleft rider",
    "url": "https://opensourceorchestra.org/rider/",
    "status": "ok",
    "notes": [],

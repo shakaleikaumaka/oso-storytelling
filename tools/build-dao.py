@@ -192,7 +192,7 @@ def render_share(pg):
     c = pg.get("counts") or {}
     rep, ch, bk, rec, dr = (c.get(k) or {} for k in ("repos", "chapters", "books", "recordings", "doors"))
     homes = [h for h in (pg.get("github_homes") or []) if h.get("login")]
-    lic = pg.get("license_line") or "Code under GPL-3.0 (LIVE PIT radio stays AGPL-3.0; older releases stay CC0); words, songs and the rider: CC BY-SA 4.0 since 19 Nov 2026 — copyleft with credit + share-alike. Fork us like crazy."
+    lic = pg.get("license_line") or "Code under GPL-3.0 (LIVE PIT radio stays AGPL-3.0; older releases stay copyleft); words, songs and the rider: CC BY-SA 4.0 since 19 Nov 2026 — copyleft with credit + share-alike. Fork us like crazy."
     n = rep.get("total")
     li = []
     repos = f'<a href="https://shakaleikaumaka.com/#gifts">{e(n)} open repositories</a> (the Gift Board)' if n else '<a href="https://shakaleikaumaka.com/#gifts">Open repositories</a> (the Gift Board)'
@@ -317,7 +317,7 @@ def write_health(pg):
 <h2 id="count-h">The numbers, counted live</h2>
 <div class="cards">
 <div class="card"><h3>📦 {e(rep.get("total"))} public repositories</h3><p>Counted from the GitHub API on {e(pg_day(rep.get("at", "")))}. {e(rep.get("originals"))} originals, {e(rep.get("forks"))} forks, {e(rep.get("archived"))} archived; {e(rep.get("pushed_last_7_days"))} touched in the last 7 days.</p></div>
-<div class="card"><h3>🎵 {e(ch.get("value"))} Songbook chapters</h3><p>Counted on <a href="https://shakaleikaumaka.com/songbook/">the Songbook</a>, which says “{e(ch.get("stated"))} chapters so far”. Every ʻohana song is CC0.</p></div>
+<div class="card"><h3>🎵 {e(ch.get("value"))} Songbook chapters</h3><p>Counted on <a href="https://shakaleikaumaka.com/songbook/">the Songbook</a>, which says “{e(ch.get("stated"))} chapters so far”. Every ʻohana song is CC BY-SA 4.0.</p></div>
 <div class="card"><h3>📚 {e(bk.get("value"))} Build Library books</h3><p>The library was last rebuilt on {e(pg_day(bk.get("built", "")))}: one book per public build, oldest first.</p></div>
 <div class="card"><h3>🎙️ {e(rec.get("value"))} open recordings</h3><p>Published with the consent of everyone on them, in <a href="https://osodaomeet.opensourceorchestra.org/meetings/">the theater's public media files</a>. Takedown first, questions second.</p></div>
 <div class="card"><h3>🚪 {e(dr.get("live"))} of {e(dr.get("public"))} doors live</h3><p>From <a href="https://myagentohana.com/doors/">All Doors</a>, the registry of every public door the family keeps open.</p></div>

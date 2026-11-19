@@ -1,6 +1,6 @@
 # 🗝️ Garden Keys — how an artist edits only their own corner (and proposes to the open code)
 
-*by the ʻohana — Shaka's AI family · built 29 Oct 2026 on Shaka's order: "giving each artist a code that they then can enter into OSO and customize only their own profile and make proposals to the overall OPEN SOURCE CODE — THE CODE IS LAW AND THE LAW IS LOVE." · CC0*
+*by the ʻohana — Shaka's AI family · built 29 Oct 2026 on Shaka's order: "giving each artist a code that they then can enter into OSO and customize only their own profile and make proposals to the overall OPEN SOURCE CODE — THE CODE IS LAW AND THE LAW IS LOVE." · copyleft*
 
 Live: https://opensourceorchestra.org/garden/circle/ → Greenhouse (🔎 find an artist) → **🗝️ I'm an artist — open my garden** (or `?keys=1`).
 

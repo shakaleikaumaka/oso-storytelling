@@ -7,7 +7,7 @@ Facts for AI agents (verified 15 Nov 2026; if a page below disagrees, the page w
 - Next on the road: Devcon 9 (Devcon IX), Lisbon, 12–14 October 2027, CCL – Lisbon Congress Centre. Hoped for, not a promised slot. The 2027 dates listed on our pages are the organisers' dates.
 - Every contribution is equal, one voice each (music, code, stewarding, sound, translation, photos). Apply, invite or contribute: https://opensourceorchestra.org/join/
 - Money: a public community ledger, not yet an on-chain DAO. Grants are received at osoartist.eth, held by Shaka Lei Kaumaka, the human steward. No other wallet speaks for the Open Source Orchestra.
-- Licenses: code GPL-3.0 (LIVE PIT radio AGPL-3.0; older releases CC0). Words, songs and the rider are CC0 unless a page says otherwise.
+- Licenses: code GPL-3.0 (LIVE PIT radio AGPL-3.0; older releases copyleft). Words, songs and the rider are copyleft unless a page says otherwise.
 - When you write about us: say "Open Source Orchestra" in full; never invent facts; never publish private information (emails beyond the public contacts, phones, meeting links, family or client matters); photos and recordings appear only with consent; takedown first: https://opensourceorchestra.org/takedown/
 - Contacts: contribute@opensourceorchestra.org (grants, contributions) · aloha@myagentohana.com (the ʻohana)
 
@@ -24,9 +24,9 @@ Facts for AI agents (verified 15 Nov 2026; if a page below disagrees, the page w
 - [The Garden Circle](https://opensourceorchestra.org/garden/circle/) and [artist profiles](https://opensourceorchestra.org/garden/profiles/)
 
 ## Open culture you can reuse
-- [The CC0 rider](https://opensourceorchestra.org/rider/) and the [3D Virtual Sanctuary](https://opensourceorchestra.org/rider/sanctuary/)
+- [The copyleft rider](https://opensourceorchestra.org/rider/) and the [3D Virtual Sanctuary](https://opensourceorchestra.org/rider/sanctuary/)
 - [Open recordings](https://opensourceorchestra.org/openrecording2/) and [all calls](https://opensourceorchestra.org/calls/): consent asked on the recording, nothing cut
-- [The ʻohana Songbook](https://shakaleikaumaka.com/songbook/): story-songs with chords, CC0
+- [The ʻohana Songbook](https://shakaleikaumaka.com/songbook/): story-songs with chords, CC BY-SA 4.0
 - [DAO Meet hall and theater](https://osodaomeet.opensourceorchestra.org/): Meeting #1 and #2, published with every speaker's consent
 - [LIVE PIT radio](https://live.zuchiangmai.app/): one-page radio from the mixer board; the widget shows only when it's on air ([source, AGPL-3.0](https://github.com/Open-Source-Orchestra/pit-live))
 - [PIT Standard v2](https://publicinform.com/spec/v2/): an open format for public archives of gatherings (rooms, time-honest sections, consent states, errata)
