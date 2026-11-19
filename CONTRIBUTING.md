@@ -13,7 +13,7 @@ This repo isn't a mirror. **This repo IS the website.** When a PR merges to `mai
 ## The house rules (the only rules)
 - **The manifesto's heart stays verbatim** — philosophy changes come through the committee, not PRs. Typos, code, design, translations: always welcome.
 - **No names on the page** — the site speaks as a community. Credit lives in commit history.
-- **Code is GPL-3.0-or-later** (copyleft: share-alike for code) — by contributing code, you agree it is licensed that way. **Words, art and music stay CC0** (or their makers' own terms) — no rights reserved unless the maker says otherwise. See `LICENSE`, `LICENSE-CONTENT` and `NOTICE`.
+- **Code is GPL-3.0-or-later** (copyleft: share-alike for code) — by contributing code, you agree it is licensed that way. **Words, art and music are CC BY-SA 4.0 since 19 Nov 2026** (earlier CC0 releases stay CC0 forever; makers' own terms always stand). See `LICENSE`, `LICENSE-CONTENT` and `NOTICE`.
 - **Heart first, always.** 🌺
 
 *You don't join the Open Source Orchestra. You notice you were always in it.*
