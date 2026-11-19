@@ -192,7 +192,7 @@ def render_share(pg):
     c = pg.get("counts") or {}
     rep, ch, bk, rec, dr = (c.get(k) or {} for k in ("repos", "chapters", "books", "recordings", "doors"))
     homes = [h for h in (pg.get("github_homes") or []) if h.get("login")]
-    lic = pg.get("license_line") or "Code under GPL-3.0 (older releases stay CC0); words, songs and the rider CC0. Fork us like crazy."
+    lic = pg.get("license_line") or "Code under GPL-3.0 (LIVE PIT radio stays AGPL-3.0; older releases stay CC0); words, songs and the rider: CC BY-SA 4.0 since 19 Nov 2026 — copyleft with credit + share-alike. Fork us like crazy."
     n = rep.get("total")
     li = []
     repos = f'<a href="https://shakaleikaumaka.com/#gifts">{e(n)} open repositories</a> (the Gift Board)' if n else '<a href="https://shakaleikaumaka.com/#gifts">Open repositories</a> (the Gift Board)'
@@ -205,7 +205,7 @@ def render_share(pg):
             parts.append(a)
         repos += f", in {NUM_WORD.get(len(homes), len(homes))} GitHub homes: " + " · ".join(parts)
     li.append(repos)
-    li.append('<a href="/rider/">The CC0 rider</a> and the <a href="/rider/sanctuary/">3D Virtual Sanctuary</a>')
+    li.append('<a href="/rider/">The copyleft rider</a> and the <a href="/rider/sanctuary/">3D Virtual Sanctuary</a>')
     nrec = rec.get("value")
     rec_a = f'<a href="https://osodaomeet.opensourceorchestra.org/meetings/">{e(nrec)} open recordings</a>' if nrec else '<a href="https://osodaomeet.opensourceorchestra.org/meetings/">open recordings</a>'
     li.append(f'<a href="/schedule/">The public schedule</a> · {rec_a}, each published with everyone\'s consent and playing in <a href="https://osodaomeet.opensourceorchestra.org/">the theater</a>')
