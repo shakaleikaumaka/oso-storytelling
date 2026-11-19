@@ -21,6 +21,6 @@
     { "type": "youtube", "id": "SNYfUa7vO6w", "title": "Latashá on What It Means to Be a Music Artist in Web3", "channel": "nft now podcast", "visibility": "public" },
     { "type": "youtube", "id": "AydxbNAXAtg", "title": "Music NFT ARTIST @LATASHÁ Decode Web3 Industry", "channel": "gmoneynft", "visibility": "public" }
   ],
-  "license_default": "CC0 for node content — anything not listed here stays with the artist",
+  "license_default": "CC BY-SA 4.0 for node content — anything not listed here stays with the artist",
   "updated": "2026-08-16"
 }

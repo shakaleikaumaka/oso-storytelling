@@ -60,7 +60,7 @@
     ["Steward", "a gardener of the space. Stewards steer and tend, but never own, never gatekeep."],
     ["Sanctuary Tech", "technology arranged for belonging: our circular stage has no 'front,' so the music faces itself and everyone is inside the song."],
     ["DIP", "Devcon Improvement Proposal: the community's way of saying 'here's something beautiful we should do' — ours is DIP #8576, the Music Space."],
-    ["CC0", "the most open license there is: no rights reserved. This whole site, the songs, the rider — copy them freely, fork us like crazy. 🍴"],
+    ["CC BY-SA 4.0 + GPL-3.0", "copyleft since 19 Nov 2026 — credit the ʻohana, share alike. This whole site, the songs, the rider — copy them freely, fork us like crazy. 🍴"],
     ["Pluralistic Privacy", "privacy is power when private individuals choose to play together in public. You own your sound; you share it on your terms."],
     ["Self-owned", "your voice, your instrument, your recording — yours. The orchestra never takes custody of anyone's music."]
   ];

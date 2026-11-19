@@ -68,6 +68,6 @@
     { "type": "youtube", "id": "1QXzKjXwIbc", "title": "Ethereum Bard songs & OSO jam — CMU Convention Center, ETH ChiangMai", "channel": "ShaKa Lei Kaumaka", "visibility": "public" },
     { "type": "youtube", "id": "s2UR3L5DpKY", "title": "TODO ES POSIBLE — Devcon Scholars Edition 🍂", "channel": "Albert Cervera (community capture)", "visibility": "public" }
   ],
-  "license_default": "CC0 — blessed item by item; anything not listed here stays with the artist",
+  "license_default": "CC BY-SA 4.0 — blessed item by item; anything not listed here stays with the artist",
   "updated": "2026-08-15"
 }
