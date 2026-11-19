@@ -23,7 +23,7 @@
       "key": "C major",
       "progression": "C → Cmaj7 → F → F",
       "bpm": 81,
-      "license": "CC0",
+      "license": "CC-BY-SA-4.0",
       "visibility": "public",
       "media": {
         "karaoke_mp4": "https://kprot-drop.shakaverse.workers.dev/ready/todo-es-posible-karaoke.mp4",
@@ -38,7 +38,7 @@
       "status": "official-words · chords canon G–Em–C–D · chart in progress",
       "key": "G major",
       "progression": "G – Em – C – D",
-      "license": "CC0",
+      "license": "CC-BY-SA-4.0",
       "visibility": "public",
       "media": {
         "full_mix_mp3": "https://shakaleikaumaka.com/radio-assets/i-open-sourced-my-whole-universe.mp3"
@@ -51,7 +51,7 @@
       "key": "D major (mixolydian)",
       "progression": "D – C – G",
       "bpm": 129,
-      "license": "CC0",
+      "license": "CC-BY-SA-4.0",
       "visibility": "public",
       "media": {
         "full_mix_mp3": "https://shakaleikaumaka.com/radio-assets/a-planet-we-share-as-one.mp3",
