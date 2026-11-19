@@ -85,6 +85,11 @@ h1 .crow{display:inline-block;transform:translateY(-.06em)}
 .kaaak::after{content:"";position:absolute;left:34px;bottom:-16px;width:22px;height:22px;background:#fff;
   border-right:2.5px solid var(--ink);border-bottom:2.5px solid var(--ink);transform:rotate(45deg) skew(12deg,12deg);border-bottom-right-radius:6px}
 .kaaak .who{display:inline-block;background:var(--ink);color:#fff;border-radius:6px;padding:.05em .45em;font-size:.62em;
+  margin-left:46px}
+.kaaak .av{position:absolute;top:-24px;left:14px;width:44px;height:44px;display:grid;place-items:center;font-size:1.55rem;
+  background:#fff;border:2.5px solid var(--ink,#14100a);border-radius:12px;box-shadow:3px 3px 0 rgba(0,0,0,.45);
+  cursor:pointer;line-height:1;-webkit-tap-highlight-color:transparent}
+.kaaak .av:focus-visible{outline:3px solid var(--gold,#f0c464);outline-offset:2px}
   letter-spacing:.14em;margin-right:.4em;transform:translateY(-.12em)}
 
 /* panel footer: number starburst + door link */
@@ -132,7 +137,7 @@ body.staged .deck{min-height:60vh}
   .frame{display:flex;flex-direction:column;border-width:6px}
   .cap{position:static;order:1;margin:10px;max-width:none}
   .frame img.photo{order:2}
-  .kaaak{position:relative;order:3;margin:10px;max-width:none;left:auto;right:auto;bottom:auto}
+  .kaaak{position:relative;order:3;margin:30px 10px 10px;max-width:none;left:auto;right:auto;bottom:auto}
   .kaaak::after{left:auto;right:34px;bottom:auto;top:-11px;transform:rotate(225deg) skew(12deg,12deg)}
   .plate{position:static;order:4;transform:none;max-width:none;border-radius:0;border:1px solid #b49b62}
   .pnum{width:52px;height:52px;font-size:1.05rem}
@@ -164,7 +169,7 @@ body.staged .deck{min-height:60vh}
 <section class="panel" id="p1" aria-labelledby="t1">
   <div class="frame">
     <div class="cap"><b>Panel 1 · The cover</b>One orchestra, hundreds of doors, zero tickets. This tour teaches you the whole site — every stop is a real room you can walk into afterwards.</div>
-    <p class="kaaak"><span class="who">KAAAK!!!</span> WELCOME! I'm the crow. I live here. Follow me — we walk the walls!</p>
+    <p class="kaaak"><span class="av" data-kaaak role="button" tabindex="0" aria-label="KAAAK!!! the crow — click to meet him">🐦‍⬛</span><span class="who">KAAAK!!!</span> WELCOME! I'm the crow. I live here. Follow me — we walk the walls!</p>
     <img class="photo" src="/mandala-room/img/dc8-638-800.webp" width="800" height="533" loading="eager" decoding="async" alt="A wide shot of a jam session: musicians in the centre on rugs, an audience sitting around them on cane stools, beanbags and the floor, with neon pyramid lights and the mandala above.">
     <div class="plate"><b>The Grand Tour</b>A full circle: musicians in the middle, listeners all around — between glowing neon pyramids.</div>
   </div>
@@ -175,7 +180,7 @@ body.staged .deck{min-height:60vh}
 <section class="panel" id="p2" aria-labelledby="t2">
   <div class="frame">
     <div class="cap"><b>Panel 2 · The front door</b>opensourceorchestra.org is a hallway of doors. Every door opens into a real room — music, films, meetings, memories. Pick one and walk in; it's yours.</div>
-    <p class="kaaak"><span class="who">KAAAK!!!</span> No tickets! No wristbands! No accounts! You just walk in!</p>
+    <p class="kaaak"><span class="av" data-kaaak role="button" tabindex="0" aria-label="KAAAK!!! the crow — click to meet him">🐦‍⬛</span><span class="who">KAAAK!!!</span> No tickets! No wristbands! No accounts! You just walk in!</p>
     <img class="photo" src="/mandala-room/img/dc8-222-800.webp" width="800" height="533" loading="lazy" decoding="async" alt="A wide, empty hall with a glowing white mandala projected on the far wall. Cane stools, white chairs and standing tables are set out on the carpet.">
     <div class="plate"><b>The front door</b>Day 1, before the doors open: the hall, empty, the mandala already glowing.</div>
   </div>
@@ -186,7 +191,7 @@ body.staged .deck{min-height:60vh}
 <section class="panel" id="p3" aria-labelledby="t3">
   <div class="frame">
     <div class="cap"><b>Panel 3 · The garden circle</b>/garden/ is a ring of seats: every artist a card, every card a door to their songs, riders and profiles. One rule holds the whole circle: every contribution is equal — one voice each.</div>
-    <p class="kaaak"><span class="who">KAAAK!!!</span> Pull up a stool. The circle ALWAYS has room!</p>
+    <p class="kaaak"><span class="av" data-kaaak role="button" tabindex="0" aria-label="KAAAK!!! the crow — click to meet him">🐦‍⬛</span><span class="who">KAAAK!!!</span> Pull up a stool. The circle ALWAYS has room!</p>
     <img class="photo" src="/mandala-room/img/dc8-218-800.webp" width="800" height="533" loading="lazy" decoding="async" alt="Round cane stools with dark cushions arranged in a circle on the carpet, with instruments, a screen and the glowing mandala behind them.">
     <div class="plate"><b>The garden circle</b>Cane stools in a circle, waiting for their listeners.</div>
   </div>
@@ -197,7 +202,7 @@ body.staged .deck{min-height:60vh}
 <section class="panel" id="p4" aria-labelledby="t4">
   <div class="frame">
     <div class="cap"><b>Panel 4 · The music</b>Songs live as open chapters — lyrics, chords and stories under CC BY-SA: learn them, sing them, record them, fork them. Credit travels; the circle stays open.</div>
-    <p class="kaaak"><span class="who">KAAAK!!!</span> Yes — you CAN take the songs home! That's the whole idea!</p>
+    <p class="kaaak"><span class="av" data-kaaak role="button" tabindex="0" aria-label="KAAAK!!! the crow — click to meet him">🐦‍⬛</span><span class="who">KAAAK!!!</span> Yes — you CAN take the songs home! That's the whole idea!</p>
     <img class="photo" src="/mandala-room/img/dc8-492-800.webp" width="800" height="534" loading="lazy" decoding="async" alt="A wide view of the sanctuary stage: a saxophonist and a guitarist stand on rugs among keyboards, drums and microphones, with the mandala projected high on the wall.">
     <div class="plate"><b>The music</b>Saxophone and guitar on the rug stage — keys, cajón and dhol around them, the mandala overhead.</div>
   </div>
@@ -208,7 +213,7 @@ body.staged .deck{min-height:60vh}
 <section class="panel" id="p5" aria-labelledby="t5">
   <div class="frame">
     <div class="cap"><b>Panel 5 · The theater</b>The Room remembers: films of the jams with sing-along transcripts, a public media ledger, and a little TV at the front of every door, with music coming out of it.</div>
-    <p class="kaaak"><span class="who">KAAAK!!!</span> Karaoke captions on EVERYTHING! Sing along, it's allowed!</p>
+    <p class="kaaak"><span class="av" data-kaaak role="button" tabindex="0" aria-label="KAAAK!!! the crow — click to meet him">🐦‍⬛</span><span class="who">KAAAK!!!</span> Karaoke captions on EVERYTHING! Sing along, it's allowed!</p>
     <img class="photo" src="/mandala-room/img/dc8-907-800.webp" width="800" height="534" loading="lazy" decoding="async" alt="A crowd with hands in the air fills the floor of a hall washed in purple light, with the mandala glowing high on the wall.">
     <div class="plate"><b>The theater</b>Purple light, the mandala, and a full floor.</div>
   </div>
@@ -219,7 +224,7 @@ body.staged .deck{min-height:60vh}
 <section class="panel" id="p6" aria-labelledby="t6">
   <div class="frame">
     <div class="cap"><b>Panel 6 · The Mandala Room</b>Thirty-five frames from the first sanctuary week — the wall that remembers honestly: what was, what was said, who said yes. This whole tour is drawn on its photos.</div>
-    <p class="kaaak"><span class="who">KAAAK!!!</span> This is my favourite wall. Shhh. Just look for a second.</p>
+    <p class="kaaak"><span class="av" data-kaaak role="button" tabindex="0" aria-label="KAAAK!!! the crow — click to meet him">🐦‍⬛</span><span class="who">KAAAK!!!</span> This is my favourite wall. Shhh. Just look for a second.</p>
     <img class="photo" src="/mandala-room/img/dc8-390-800.webp" width="800" height="533" loading="lazy" decoding="async" alt="The mandala, reflected in a pane of glass, floats over people lounging on red beanbags in pink and blue light.">
     <div class="plate"><b>The Mandala Room</b>The mandala reflected in glass, over people resting in the sanctuary.</div>
   </div>
@@ -230,7 +235,7 @@ body.staged .deck{min-height:60vh}
 <section class="panel" id="p7" aria-labelledby="t7">
   <div class="frame">
     <div class="cap"><b>Panel 7 · Tip the artist</b>One tap sends a tip wallet → wallet: 96.31% to the artist, 3.69% to keep the agents' lights on. No middle, no custody, ever — the artist's address is proven by their own signature or their own ENS name, never typed in by anyone.</div>
-    <p class="kaaak"><span class="who">KAAAK!!!</span> The artist's OWN wallet! Signed for! Nobody else touches it!</p>
+    <p class="kaaak"><span class="av" data-kaaak role="button" tabindex="0" aria-label="KAAAK!!! the crow — click to meet him">🐦‍⬛</span><span class="who">KAAAK!!!</span> The artist's OWN wallet! Signed for! Nobody else touches it!</p>
     <img class="photo" src="/mandala-room/img/dc8-913-800.webp" width="800" height="534" loading="lazy" decoding="async" alt="A singer in a white T-shirt sings with full voice into a microphone, with a bass guitarist, a saxophone and a guitarist in white around him.">
     <div class="plate"><b>Tip the artist</b>Full voice — bass and saxophone beside him.</div>
   </div>
@@ -241,7 +246,7 @@ body.staged .deck{min-height:60vh}
 <section class="panel" id="p8" aria-labelledby="t8">
   <div class="frame">
     <div class="cap"><b>Panel 8 · The DAO hall</b>The orchestra meets in the open: agendas, notes and hangouts in one theater — one voice each, consent on every record, and the slides remember what was decided.</div>
-    <p class="kaaak"><span class="who">KAAAK!!!</span> Meetings — but with MUSIC, and actual endings!</p>
+    <p class="kaaak"><span class="av" data-kaaak role="button" tabindex="0" aria-label="KAAAK!!! the crow — click to meet him">🐦‍⬛</span><span class="who">KAAAK!!!</span> Meetings — but with MUSIC, and actual endings!</p>
     <img class="photo" src="/mandala-room/img/dc8-833-800.webp" width="800" height="533" loading="lazy" decoding="async" alt="A long line of people in matching olive-green jackets stands arm in arm across the stage, beneath the mandala.">
     <div class="plate"><b>The DAO hall</b>The team in matching jackets, arm in arm under the mandala.</div>
   </div>
@@ -252,7 +257,7 @@ body.staged .deck{min-height:60vh}
 <section class="panel" id="p9" aria-labelledby="t9">
   <div class="frame">
     <div class="cap"><b>Panel 9 · The atlas of doors</b>Hundreds of doors and counting — every project, every room, every little gift — all mapped at myagentohana.com. If you ever get lost, the atlas brings you home.</div>
-    <p class="kaaak"><span class="who">KAAAK!!!</span> I counted them ALL. Twice. There are HUNDREDS!</p>
+    <p class="kaaak"><span class="av" data-kaaak role="button" tabindex="0" aria-label="KAAAK!!! the crow — click to meet him">🐦‍⬛</span><span class="who">KAAAK!!!</span> I counted them ALL. Twice. There are HUNDREDS!</p>
     <img class="photo" src="/mandala-room/img/dc8-874-800.webp" width="800" height="533" loading="lazy" decoding="async" alt="A packed dance floor with hands raised in the haze, light beams, and the mandala projected on the wall above.">
     <div class="plate"><b>The atlas of doors</b>Hands up in the haze, under the same mandala that watched the empty room on Day 1.</div>
   </div>
@@ -263,7 +268,7 @@ body.staged .deck{min-height:60vh}
 <section class="panel" id="p10" aria-labelledby="t10">
   <div class="frame">
     <div class="cap"><b>Panel 10 · Every door speaks you</b>Look for the 🌐 on any page: one tap and the door speaks your language — Thai, 中文, हिन्दी, 日本語, Español, Français, Deutsch, Português, العربية, ʻŌlelo Hawaiʻi… nothing loads until you choose it.</div>
-    <p class="kaaak"><span class="who">KAAAK!!!</span> I speak crow — and even I get a translation!</p>
+    <p class="kaaak"><span class="av" data-kaaak role="button" tabindex="0" aria-label="KAAAK!!! the crow — click to meet him">🐦‍⬛</span><span class="who">KAAAK!!!</span> I speak crow — and even I get a translation!</p>
     <img class="photo" src="/mandala-room/img/dc8-640-800.webp" width="800" height="533" loading="lazy" decoding="async" alt="A woman in a white saree smiles as she sings into a microphone. Behind her are a seated guitarist, a rack of ukuleles and a djembe.">
     <div class="plate"><b>Every door speaks you</b>A singer in a white saree, smiling at the mic.</div>
   </div>
@@ -274,7 +279,7 @@ body.staged .deck{min-height:60vh}
 <section class="panel" id="p11" aria-labelledby="t11">
   <div class="frame">
     <div class="cap"><b>Panel 11 · Fork me</b>Everything you just walked through is open: GPL-3.0 code, CC BY-SA 4.0 words and art. Tell your agent: “fork the first artist” — your page, your wallet, your circle. Credit travels; forks stay open. That's the law of the garden.</div>
-    <p class="kaaak"><span class="who">KAAAK!!!</span> STEAL THIS SITE! (Legally! With credit! That's the point!)</p>
+    <p class="kaaak"><span class="av" data-kaaak role="button" tabindex="0" aria-label="KAAAK!!! the crow — click to meet him">🐦‍⬛</span><span class="who">KAAAK!!!</span> STEAL THIS SITE! (Legally! With credit! That's the point!)</p>
     <img class="photo" src="/mandala-room/img/dc8-886-800.webp" width="800" height="534" loading="lazy" decoding="async" alt="On stage, a person in a balloon hat dances with a woman in a floral skirt. A ukulele and guitars stand nearby and a screen glows behind them.">
     <div class="plate"><b>Fork me</b>Dancing on stage: a balloon hat, a floral skirt, ukulele and guitars on their stands.</div>
   </div>
@@ -285,7 +290,7 @@ body.staged .deck{min-height:60vh}
 <section class="panel" id="p12" aria-labelledby="t12">
   <div class="frame">
     <div class="cap"><b>Panel 12 · The seat with your name on it</b>Listener, player, builder, giver — the circle has a seat for you. The next page shows you exactly how to join, step by step.</div>
-    <p class="kaaak"><span class="who">KAAAK!!!</span> See you inside!!! Bring your songs!!!</p>
+    <p class="kaaak"><span class="av" data-kaaak role="button" tabindex="0" aria-label="KAAAK!!! the crow — click to meet him">🐦‍⬛</span><span class="who">KAAAK!!!</span> See you inside!!! Bring your songs!!!</p>
     <img class="photo" src="/mandala-room/img/dc8-846-800.webp" width="800" height="533" loading="lazy" decoding="async" alt="Silver and pink confetti pours over a smiling crowd sitting on the floor, many holding up phones.">
     <div class="plate"><b>The seat with your name on it</b>Then the confetti.</div>
   </div>
