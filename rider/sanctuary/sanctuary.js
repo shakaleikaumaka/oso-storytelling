@@ -2,7 +2,7 @@
    A walk-in model of the approved Devcon 8 Music Space: JIO World Convention
    Centre, Mumbai. Circular stage, no front, 25 approved backline items —
    every one of them playable. Desktop · mobile · WebXR.
-   three.js r169 vendored locally · no CDN, no trackers. CC0.
+   three.js r169 vendored locally · no CDN, no trackers. GPL-3.0.
    ------------------------------------------------------------------------- */
 import * as THREE from './three.module.min.js';
 import { VRButton } from './VRButton.js';

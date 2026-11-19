@@ -153,7 +153,7 @@ standing in a circle at the JIO World Convention Centre for **November 3–6, 20
 
 🥽 **Walk into it:** <https://opensourceorchestra.org/rider/sanctuary/> — a 3D model of this rider
 (circular stage, four PA tops aimed outward, floor-seating cushions, booth opposite the entrance) with
-**all 25 items playable** in any browser or VR headset. No install, no samples, no trackers. CC0.
+**all 25 items playable** in any browser or VR headset. No install, no samples, no trackers. CC BY-SA 4.0.
 
 | # | Line item | Spec as approved | Status |
 |---|---|---|---|
