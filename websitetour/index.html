@@ -120,8 +120,7 @@ body.staged .deck{min-height:60vh}
 @media (prefers-reduced-motion: no-preference){
   .frame img.photo{animation:kenburns 22s ease-in-out infinite alternate}
   @keyframes kenburns{from{transform:scale(1) translate(0,0)}to{transform:scale(1.09) translate(-1.6%,1.2%)}}
-  h1 .crow{animation:hop 3.2s ease-in-out infinite}
-  @keyframes hop{0%,88%,100%{transform:translateY(-.06em) rotate(0)}92%{transform:translateY(-.22em) rotate(-6deg)}96%{transform:translateY(-.06em) rotate(4deg)}}
+  /* the hero crow's hop now lives in /assets/kaaak.js (click him!) */
 }
 
 /* ── colophon ────────────────────────────────────────── */
@@ -150,7 +149,7 @@ body.staged .deck{min-height:60vh}
 
 <header class="hero">
   <p class="kicker">🎻 The Open Source Orchestra presents</p>
-  <h1><span class="crow">🐦‍⬛</span> THE GRAND TOUR</h1>
+  <h1><span class="crow" data-kaaak>🐦‍⬛</span> THE GRAND TOUR</h1>
   <p class="sub">A comic book drawn on the orchestra's own walls. <b>KAAAK!!!</b> the crow — loud, lovable, lives here — walks you through every room: what it is, how it works, and where to step through. Every photograph is real life: the first sanctuary week, Devcon 8, Mumbai.</p>
   <div class="controls">
     <button class="btn" id="play" type="button">▶ Watch it like a video</button>
@@ -308,7 +307,7 @@ body.staged .deck{min-height:60vh}
 
 <section class="colophon" aria-label="About this page">
   <p class="lic">📖 <b>The Grand Tour</b> — text and arrangement <b>CC BY-SA 4.0</b> (credit + share-alike), code <b>GPL-3.0</b>. Photographs: the Open Source Orchestra's own frames from the first sanctuary week (Devcon 8, Mumbai), published with consent — see <a href="/mandala-room/">the Mandala Room</a> for their stories. Fork this page for your own circle: credit “Open Source Orchestra: Shaka Lei Kaumaka &amp; the AI ʻohana”, and keep it open.</p>
-  <p>Guide voice: KAAAK!!! 🐦‍⬛, the ʻohana's crow. Written by Shaka's AI ʻohana (labelled as AI) with and for the Open Source Orchestra, 19 November 2026 · <a href="/takedown/">Takedown first</a> · <a href="/howtojoin/">How to join</a></p>
+  <p>Guide voice: KAAAK!!! <span data-kaaak>🐦‍⬛</span>, the ʻohana's crow — <b>K</b>ick <b>A</b>ss <b>A</b>gent <b>A</b>ssistant <b>K</b>it, Shaka's crow assistant since he first started building agents (click the raven!). Written by Shaka's AI ʻohana (labelled as AI) with and for the Open Source Orchestra, 19 November 2026 · <a href="/takedown/">Takedown first</a> · <a href="/howtojoin/">How to join</a></p>
 </section>
 </div>
 
@@ -346,6 +345,7 @@ $('#tour').addEventListener('pointerup',e=>{const dx=e.clientX-sx,dy=e.clientY-s
 // deep link straight into stage mode
 if(/#p\d+/.test(location.hash))stage();
 </script>
+<script src="/assets/kaaak.js" async></script>
 <script src="/assets/lisbon-unicorn.js" data-lisbon-unicorn-loader defer></script>
 <script src="https://live.zuchiangmai.app/widget.js" async></script>
 <script src="https://lang.opensourceorchestra.org/lang.js" async></script>
