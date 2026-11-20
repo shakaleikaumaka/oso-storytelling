@@ -1,37 +1,46 @@
 {
  "schema": "oso-public-goods/1",
  "about": "The open shelf of the Open Source Orchestra (https://opensourceorchestra.org/dao/#share-h), checked by the ʻohana's keeper. Human view: https://opensourceorchestra.org/dao/health/",
- "checked_at": "2026-11-19T06:19:14Z",
+ "checked_at": "2026-11-20T04:43:09Z",
  "keeper": "PUBLIC GOODS KEEPER 🎁 · an AI agent of the ʻohana (Shaka Lei Kaumaka's AI family) · public-safe GET/HEAD checks only",
- "license_line": "Code under GPL-3.0 (LIVE PIT radio stays AGPL-3.0; older releases stay copyleft); words, songs and the rider: CC BY-SA 4.0 since 19 Nov 2026 — copyleft with credit + share-alike. Fork us like crazy.",
+ "license_line": "Code under GPL-3.0 (LIVE PIT radio stays AGPL-3.0; older releases stay CC0); words, songs and the rider: CC BY-SA 4.0 since 19 Nov 2026 — copyleft with credit + share-alike. Fork us like crazy.",
  "summary": {
   "items": 14,
-  "ok": 14,
+  "ok": 13,
   "warn": 0,
-  "fail": 0
+  "fail": 1
  },
  "counts": {
   "repos": {
-   "total": 160,
+   "total": 162,
    "homes": {
     "shakaleikaumaka": 116,
     "ShakaLei": 32,
-    "Open-Source-Orchestra": 9,
+    "Open-Source-Orchestra": 11,
     "opensource-orchestra": 3
    },
    "licenses": {
-    "GPL-3.0": 147,
+    "GPL-3.0": 148,
     "NONE": 8,
+    "CC-BY-SA-4.0": 2,
     "MIT": 2,
-    "NOASSERTION": 1,
-    "AGPL-3.0": 1,
-    "CC-BY-SA-4.0": 1
+    "AGPL-3.0": 2
    },
-   "originals": 151,
+   "originals": 153,
    "forks": 9,
    "archived": 6,
-   "pushed_last_7_days": 151,
+   "pushed_last_7_days": 153,
    "newest": [
+    {
+     "repo": "Open-Source-Orchestra/frames",
+     "created": "2026-11-19",
+     "license": "AGPL-3.0"
+    },
+    {
+     "repo": "Open-Source-Orchestra/ohana-agents",
+     "created": "2026-11-19",
+     "license": "GPL-3.0"
+    },
     {
      "repo": "Open-Source-Orchestra/ohana-skills",
      "created": "2026-11-15",
@@ -51,33 +60,23 @@
      "repo": "Open-Source-Orchestra/oso-dao",
      "created": "2026-11-13",
      "license": "GPL-3.0"
-    },
-    {
-     "repo": "Open-Source-Orchestra/oso-dao-meet",
-     "created": "2026-11-12",
-     "license": "GPL-3.0"
-    },
-    {
-     "repo": "Open-Source-Orchestra/hash-of-fame",
-     "created": "2026-11-12",
-     "license": "GPL-3.0"
     }
    ],
    "source": "GitHub REST API (public repositories only)",
-   "at": "2026-11-19T06:19:14Z"
+   "at": "2026-11-20T04:43:09Z"
   },
   "chapters": {
    "value": 18,
    "stated": 18,
    "source": "https://shakaleikaumaka.com/songbook/",
-   "at": "2026-11-19T06:19:14Z"
+   "at": "2026-11-20T04:43:09Z"
   },
   "books": {
-   "value": 167,
-   "built": "2026-11-15",
+   "value": 168,
+   "built": "2026-11-19",
    "source": "https://build-library-zcpweo3nke-ffieyo32.taur.link/library.json",
-   "at": "2026-11-19T06:19:14Z",
-   "age_days": 4
+   "at": "2026-11-20T04:43:09Z",
+   "age_days": 1
   },
   "recordings": {
    "value": 3,
@@ -88,7 +87,7 @@
    ],
    "seconds_known": 6639,
    "source": "https://osodaomeet.opensourceorchestra.org/archive/status.json",
-   "at": "2026-11-19T06:19:14Z"
+   "at": "2026-11-20T04:43:09Z"
   },
   "doors": {
    "public": 440,
@@ -96,7 +95,7 @@
    "repair": 0,
    "blessed": "2026-10-29",
    "source": "https://myagentohana.com/doors/registry.json",
-   "at": "2026-11-19T06:19:14Z"
+   "at": "2026-11-20T04:43:09Z"
   }
  },
  "github_homes": [
@@ -138,30 +137,35 @@
      "type": "page",
      "url": "https://shakaleikaumaka.com/",
      "http": 200,
-     "ms": 191,
+     "ms": 162,
      "sev": "ok"
     }
    ]
   },
   {
    "id": "rider",
-   "title": "The copyleft rider",
+   "title": "The CC0 rider",
    "url": "https://opensourceorchestra.org/rider/",
-   "status": "ok",
-   "notes": [],
+   "status": "fail",
+   "notes": [
+    "https://opensourceorchestra.org/rider/ →  missing ['CC0']"
+   ],
    "checks": [
     {
      "type": "page",
      "url": "https://opensourceorchestra.org/rider/",
      "http": 200,
-     "ms": 116,
-     "sev": "ok"
+     "ms": 304,
+     "missing": [
+      "CC0"
+     ],
+     "sev": "fail"
     },
     {
      "type": "asset",
      "url": "https://opensourceorchestra.org/rider/rider.md",
      "http": 206,
-     "ms": 133,
+     "ms": 250,
      "why": "the forkable plain-text rider",
      "sev": "ok"
     },
@@ -188,7 +192,7 @@
      "type": "page",
      "url": "https://opensourceorchestra.org/rider/sanctuary/",
      "http": 200,
-     "ms": 121,
+     "ms": 137,
      "sev": "ok"
     },
     {
@@ -214,7 +218,7 @@
      "type": "page",
      "url": "https://opensourceorchestra.org/schedule/",
      "http": 200,
-     "ms": 133,
+     "ms": 277,
      "sev": "ok"
     },
     {
@@ -240,28 +244,28 @@
      "type": "page",
      "url": "https://osodaomeet.opensourceorchestra.org/",
      "http": 200,
-     "ms": 94,
+     "ms": 128,
      "sev": "ok"
     },
     {
      "type": "page",
      "url": "https://osodaomeet.opensourceorchestra.org/meetings/",
      "http": 200,
-     "ms": 223,
+     "ms": 255,
      "sev": "ok"
     },
     {
      "type": "page",
      "url": "https://opensourceorchestra.org/openrecording2/",
      "http": 200,
-     "ms": 128,
+     "ms": 255,
      "sev": "ok"
     },
     {
      "type": "asset",
      "url": "https://opensourceorchestra.org/openrecording2/transcript.txt",
      "http": 206,
-     "ms": 230,
+     "ms": 246,
      "why": "weekly call #2 transcript",
      "sev": "ok"
     },
@@ -269,7 +273,7 @@
      "type": "asset",
      "url": "https://archive.org/download/oso-weekly-call-2-2026-10-27/weekly-call-2-2026-10-27.mp3",
      "http": 206,
-     "ms": 1375,
+     "ms": 1878,
      "why": "weekly call #2 audio on the Internet Archive",
      "sev": "ok"
     },
@@ -350,14 +354,14 @@
      "type": "page",
      "url": "https://live.zuchiangmai.app/",
      "http": 200,
-     "ms": 130,
+     "ms": 154,
      "sev": "ok"
     },
     {
      "type": "json",
      "url": "https://live.zuchiangmai.app/live.json",
      "http": 200,
-     "ms": 242,
+     "ms": 129,
      "why": "the station's live manifest",
      "sev": "ok"
     },
@@ -365,7 +369,7 @@
      "type": "asset",
      "url": "https://live.zuchiangmai.app/widget.js",
      "http": 200,
-     "ms": 78,
+     "ms": 115,
      "why": "the one-line widget every door carries",
      "sev": "ok"
     },
@@ -373,7 +377,7 @@
      "type": "page",
      "url": "https://github.com/Open-Source-Orchestra/pit-live",
      "http": 200,
-     "ms": 843,
+     "ms": 596,
      "sev": "ok"
     }
    ]
@@ -389,14 +393,14 @@
      "type": "page",
      "url": "https://build-library-zcpweo3nke-ffieyo32.taur.link/",
      "http": 200,
-     "ms": 79,
+     "ms": 57,
      "sev": "ok"
     },
     {
      "type": "asset",
      "url": "https://build-library-zcpweo3nke-ffieyo32.taur.link/library.json",
      "http": 200,
-     "ms": 47,
+     "ms": 41,
      "why": "the library's machine-readable catalogue",
      "sev": "ok"
     },
@@ -423,7 +427,7 @@
      "type": "page",
      "url": "https://shakaleikaumaka.com/songbook/",
      "http": 200,
-     "ms": 156,
+     "ms": 122,
      "sev": "ok"
     },
     {
@@ -449,14 +453,14 @@
      "type": "page",
      "url": "https://opensourceorchestra.org/garden/circle/",
      "http": 200,
-     "ms": 97,
+     "ms": 130,
      "sev": "ok"
     },
     {
      "type": "json",
      "url": "https://opensourceorchestra.org/garden/circle/data/artists.json",
      "http": 200,
-     "ms": 250,
+     "ms": 231,
      "why": "the circle's artist cards",
      "items": 41,
      "sev": "ok"
@@ -474,7 +478,7 @@
      "type": "page",
      "url": "https://opensourceorchestra.org/mandala-room/",
      "http": 200,
-     "ms": 145,
+     "ms": 121,
      "sev": "ok"
     },
     {
@@ -500,7 +504,7 @@
      "type": "page",
      "url": "https://opensourceorchestra.org/the-room/",
      "http": 200,
-     "ms": 102,
+     "ms": 121,
      "sev": "ok"
     },
     {
@@ -526,14 +530,14 @@
      "type": "page",
      "url": "https://myagentohana.com/ohana-bot/",
      "http": 200,
-     "ms": 105,
+     "ms": 111,
      "sev": "ok"
     },
     {
      "type": "json",
      "url": "https://myagentohana.com/api/chat/poll?session=public-goods-keeper&after=0",
      "http": 200,
-     "ms": 134,
+     "ms": 148,
      "why": "the chat proxy answers",
      "sev": "ok"
     },
@@ -541,7 +545,7 @@
      "type": "json",
      "url": "https://ohana-chat.shakaverse.workers.dev/health",
      "http": 200,
-     "ms": 91,
+     "ms": 112,
      "why": "the chat worker is up",
      "sev": "ok"
     }
@@ -558,7 +562,7 @@
      "type": "page",
      "url": "https://myagentohana.com/doors/",
      "http": 200,
-     "ms": 155,
+     "ms": 220,
      "sev": "ok"
     },
     {
@@ -582,21 +586,21 @@
      "type": "page",
      "url": "https://osopit.com/delhi/",
      "http": 200,
-     "ms": 240,
+     "ms": 247,
      "sev": "ok"
     },
     {
      "type": "page",
      "url": "https://github.com/opensource-orchestra/osopit",
      "http": 200,
-     "ms": 857,
+     "ms": 885,
      "sev": "ok"
     },
     {
      "type": "page",
      "url": "https://osopit-web.vercel.app/",
      "http": 200,
-     "ms": 2995,
+     "ms": 2397,
      "sev": "ok"
     }
    ]
@@ -784,6 +788,65 @@
    "recordings": 3,
    "doors": 440,
    "bad": {},
+   "changes": []
+  },
+  {
+   "at": "2026-11-19T12:30:04Z",
+   "summary": {
+    "items": 14,
+    "ok": 13,
+    "warn": 0,
+    "fail": 1
+   },
+   "repos": 162,
+   "chapters": 18,
+   "books": 167,
+   "recordings": 3,
+   "doors": 440,
+   "bad": {
+    "rider": "fail"
+   },
+   "changes": [
+    "repos.total 160→162",
+    "rider ok→fail"
+   ]
+  },
+  {
+   "at": "2026-11-20T00:30:04Z",
+   "summary": {
+    "items": 14,
+    "ok": 13,
+    "warn": 0,
+    "fail": 1
+   },
+   "repos": 162,
+   "chapters": 18,
+   "books": 168,
+   "recordings": 3,
+   "doors": 440,
+   "bad": {
+    "rider": "fail"
+   },
+   "changes": [
+    "books.value 167→168"
+   ]
+  },
+  {
+   "at": "2026-11-20T04:43:09Z",
+   "summary": {
+    "items": 14,
+    "ok": 13,
+    "warn": 0,
+    "fail": 1
+   },
+   "repos": 162,
+   "chapters": 18,
+   "books": 168,
+   "recordings": 3,
+   "doors": 440,
+   "bad": {
+    "rider": "fail"
+   },
    "changes": []
   }
  ],
