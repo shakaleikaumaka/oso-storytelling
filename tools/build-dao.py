@@ -533,6 +533,7 @@ footer{{border-top:1px solid var(--line);margin-top:2.5rem;padding:1.4rem 0 2.4r
 <a class="cta" href="mailto:contribute@opensourceorchestra.org?subject=A%20grant%20for%20the%20Open%20Source%20Orchestra">🎻 Grant the orchestra</a></div>
 </div>
 <p class="small" style="margin-top:.8rem"><strong>Plain truth:</strong> today both lanes land in a wallet held by the same person (Shaka's own key), because the orchestra has no on-chain treasury yet. What makes them different is the promise written on this page: Lane B money is accounted for here, line by line, and shared; Lane A money is his to live on. If you are a grantor and need a legal entity or a different arrangement, write to us; we will say plainly what we can and cannot do.</p>
+<p class="small" style="margin-top:.6rem"><strong>Apply twice (Shaka's law, 21 Nov 2026):</strong> wherever a program's rules allow two distinct applicants, every program gets one Lane A application (Shaka Lei Kaumaka &amp; the AI ʻohana — his own development as artist, producer and builder) and one Lane B application (the Open Source Orchestra, managed by its DAO, shared equally). The <code>pair</code> field on each row of <a href="/dao/ledger.json">ledger.json</a> says where the twin stands, or why there is none.</p>
 </section>
 
 <section id="give" aria-labelledby="give-h">
