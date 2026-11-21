@@ -49,7 +49,7 @@
     },
     {
       "id": "rider",
-      "title": "The CC0 rider",
+      "title": "The rider (CC BY-SA 4.0)",
       "url": "https://opensourceorchestra.org/rider/",
       "checks": [
         {
@@ -57,7 +57,7 @@
           "url": "https://opensourceorchestra.org/rider/",
           "must": [
             "Rider",
-            "CC0"
+            "CC BY-SA 4.0"
           ],
           "max_ms": 4000
         },
