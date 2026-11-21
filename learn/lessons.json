@@ -1,7 +1,7 @@
 {
  "_license": "Words and chords CC BY-SA 4.0 · Open Source Orchestra. Schema and generator GPL-3.0.",
  "_schema": "lessons[{id,date,start,end,title,kicker,venue,city,eventUrl,arranger,strip[{chord,uke,guitar,note}],strums[],path[],songs[{n,title,subtitle,writer,credit,key,feel,chords[],loop,notes,sections[{label,lines[{chords:[{pos,chord}],text}]}]}],credits[],license}]",
- "built": "2026-11-21T05:36:32+00:00",
+ "built": "2026-11-21T06:04:41+00:00",
  "site": "https://opensourceorchestra.org/learn/",
  "sessions": {
   "_about": "Public sola.day sessions of the Open Source Orchestra at 4Seas, Chiang Mai (ICT, UTC+7). Rhythm: Lunch Open Jam 12–3 → Lesson & Rehearsal 3–6 → Live Concert Edition 6–9. Titles verified against sola.day on 21 Nov 2026.",
@@ -296,7 +296,23 @@
         }
        ]
       }
-     ]
+     ],
+     "photo": {
+      "src": "/mandala-room/img/dc8-799-800.webp",
+      "src2x": "/mandala-room/img/dc8-799-1600.webp",
+      "alt": "A huge hall in red light. A band plays in the centre on rugs while hundreds of people sit on the floor all around them.",
+      "caption": "The sanctuary becomes the closing-ceremony hall: the band in the middle, the whole room sitting on the floor.",
+      "credit": "official Devcon 8 photographers",
+      "from": "/mandala-room/"
+     },
+     "video": {
+      "mp4": "video/song-1-16x9.mp4",
+      "vertical": "video/song-1-9x16.mp4",
+      "vtt": "video/song-1.vtt",
+      "poster": "video/song-1-poster.jpg",
+      "duration": 56.9,
+      "disclosure": "How to play it, in Shaka's voice: this voice was made by the AI ʻohana in Shaka's voice — he blessed the lesson, the words are ours. Captions included."
+     }
     },
     {
      "n": 2,
@@ -471,7 +487,23 @@
         }
        ]
       }
-     ]
+     ],
+     "photo": {
+      "src": "/mandala-room/img/dc8-846-800.webp",
+      "src2x": "/mandala-room/img/dc8-846-1600.webp",
+      "alt": "Silver and pink confetti pours over a smiling crowd sitting on the floor, many holding up phones.",
+      "caption": "Then the confetti.",
+      "credit": "official Devcon 8 photographers",
+      "from": "/mandala-room/"
+     },
+     "video": {
+      "mp4": "video/song-2-16x9.mp4",
+      "vertical": "video/song-2-9x16.mp4",
+      "vtt": "video/song-2.vtt",
+      "poster": "video/song-2-poster.jpg",
+      "duration": 63.14,
+      "disclosure": "How to play it, in Shaka's voice: this voice was made by the AI ʻohana in Shaka's voice — he blessed the lesson, the words are ours. Captions included."
+     }
     },
     {
      "n": 3,
@@ -560,7 +592,23 @@
         }
        ]
       }
-     ]
+     ],
+     "photo": {
+      "src": "/mandala-room/img/dc8-219-800.webp",
+      "src2x": "/mandala-room/img/dc8-219-1600.webp",
+      "alt": "Close view of two dhol drums and other drums lying on a red Persian rug, with guitars, ukuleles and a drum kit on stands behind, under the mandala.",
+      "caption": "Dhols and barrel drums on a Persian rug, with guitars and ukuleles on their stands.",
+      "credit": "official Devcon 8 photographers",
+      "from": "/mandala-room/"
+     },
+     "video": {
+      "mp4": "video/song-3-16x9.mp4",
+      "vertical": "video/song-3-9x16.mp4",
+      "vtt": "video/song-3.vtt",
+      "poster": "video/song-3-poster.jpg",
+      "duration": 54.94,
+      "disclosure": "How to play it, in Shaka's voice: this voice was made by the AI ʻohana in Shaka's voice — he blessed the lesson, the words are ours. Captions included."
+     }
     },
     {
      "n": 4,
@@ -640,7 +688,23 @@
         }
        ]
       }
-     ]
+     ],
+     "photo": {
+      "src": "/mandala-room/img/dc8-642-800.webp",
+      "src2x": "/mandala-room/img/dc8-642-1600.webp",
+      "alt": "Seen from behind the performers: a singer in a teal kurta, a seated guitarist and a singer in a white saree face a large audience sitting on the floor.",
+      "caption": "From behind the players, looking out: the hall sits down to listen.",
+      "credit": "official Devcon 8 photographers",
+      "from": "/mandala-room/"
+     },
+     "video": {
+      "mp4": "video/song-4-16x9.mp4",
+      "vertical": "video/song-4-9x16.mp4",
+      "vtt": "video/song-4.vtt",
+      "poster": "video/song-4-poster.jpg",
+      "duration": 48.27,
+      "disclosure": "How to play it, in Shaka's voice: this voice was made by the AI ʻohana in Shaka's voice — he blessed the lesson, the words are ours. Captions included."
+     }
     },
     {
      "n": 5,
@@ -809,9 +873,58 @@
         }
        ]
       }
-     ]
+     ],
+     "photo": {
+      "src": "/mandala-room/img/dc8-945-800.webp",
+      "src2x": "/mandala-room/img/dc8-945-1600.webp",
+      "alt": "A long-haired, bearded man in a white kurta and patterned scarf plays ukulele at a microphone, next to a saxophonist in a blue cap and floral shirt and a pair of congas.",
+      "caption": "Ukulele, saxophone and congas, in white and in flowers.",
+      "credit": "official Devcon 8 photographers",
+      "from": "/mandala-room/"
+     },
+     "video": {
+      "mp4": "video/song-5-16x9.mp4",
+      "vertical": "video/song-5-9x16.mp4",
+      "vtt": "video/song-5.vtt",
+      "poster": "video/song-5-poster.jpg",
+      "duration": 56.91,
+      "disclosure": "How to play it, in Shaka's voice: this voice was made by the AI ʻohana in Shaka's voice — he blessed the lesson, the words are ours. Captions included."
+     }
     }
-   ]
+   ],
+   "photos": [
+    {
+     "src": "/mandala-room/img/dc8-638-800.webp",
+     "src2x": "/mandala-room/img/dc8-638-1600.webp",
+     "alt": "A wide shot of a jam session: musicians in the centre on rugs, an audience sitting around them on cane stools, beanbags and the floor, with neon pyramid lights and the mandala above.",
+     "caption": "A full circle: musicians in the middle, and listeners on cane stools, beanbags and the floor, between glowing neon pyramids.",
+     "credit": "official Devcon 8 photographers",
+     "from": "/mandala-room/"
+    },
+    {
+     "src": "/mandala-room/img/dc8-393-800.webp",
+     "src2x": "/mandala-room/img/dc8-393-1600.webp",
+     "alt": "A long-haired, bearded musician in a light denim jacket plays ukulele at a microphone, next to a guitarist in a plaid shirt.",
+     "caption": "A ukulele and a guitar at the sanctuary microphones.",
+     "credit": "official Devcon 8 photographers",
+     "from": "/mandala-room/"
+    },
+    {
+     "src": "/mandala-room/img/dc8-874-800.webp",
+     "src2x": "/mandala-room/img/dc8-874-1600.webp",
+     "alt": "A packed dance floor with hands raised in the haze, light beams, and the mandala projected on the wall above.",
+     "caption": "Hands up in the haze, under the same mandala that watched the empty room on Day 1.",
+     "credit": "official Devcon 8 photographers",
+     "from": "/mandala-room/"
+    }
+   ],
+   "colors": {
+    "1": "#ff9f5a",
+    "2": "#ff7eb6",
+    "3": "#4fd1c5",
+    "4": "#c084fc",
+    "5": "#f0c464"
+   }
   }
  ]
 }

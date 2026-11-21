@@ -138,6 +138,9 @@
       });
     });
   }
+  /* ʻŌLELO globe (lang.js) re-places itself only on resize; nudge it after scrolling so it folds off text (BUTTON LAW) */
+  var nt; function nudge() { clearTimeout(nt); nt = setTimeout(function () { try { window.dispatchEvent(new Event('resize')); } catch (e) { /* old engines */ } }, 220); }
+  page.addEventListener('scroll', nudge, { passive: true }); window.addEventListener('scroll', nudge, { passive: true });
   render();
   document.documentElement.classList.add('js');
 })();

@@ -18,6 +18,7 @@ BUILT = datetime.datetime.now(datetime.timezone.utc)
 
 sessions = json.loads((HERE / 'sessions.json').read_text(encoding='utf-8'))
 shapes = json.loads((HERE / 'shapes.json').read_text(encoding='utf-8'))
+home = json.loads((HERE / 'home.json').read_text(encoding='utf-8')) if (HERE / 'home.json').exists() else {}
 lessons = sorted((json.loads(p.read_text(encoding='utf-8')) for p in (HERE / 'lessons').glob('*.json')), key=lambda l: l['date'])
 
 E = lambda s: html.escape(str(s), quote=True)
@@ -107,8 +108,10 @@ def song_html(lesson, s):
     secs = ''.join(
         f'<section class="part" aria-label="{E(sec["label"])}"><h4 class="plabel">{E(sec["label"])}</h4>' + ''.join(line_html(l) for l in sec['lines']) + '</section>'
         for sec in s['sections'])
+    acc = (lesson.get('colors') or {}).get(str(s['n']), '')
+    style = f' style="--acc:{acc}"' if acc else ''
     return f'''
-<article class="song" id="{sid}" data-key="{E(s["key"])}" data-n="{s["n"]}">
+<article class="song" id="{sid}" data-key="{E(s["key"])}" data-n="{s["n"]}"{style}>
 <header class="shead">
 <p class="kicker">Song {s["n"]} · key of <span class="ch key" data-c="{E(s["key"])}">{E(s["key"])}</span></p>
 <h2 class="stitle">{E(s["title"])}</h2>{sub}
@@ -118,9 +121,34 @@ def song_html(lesson, s):
 {notes}
 <p class="tools"><a class="anchor" href="#{sid}">#</a> <button type="button" class="copy" data-href="#{sid}" hidden>copy link</button></p>
 </header>
+{video_html(s)}
 {secs}
+{photo_html(s.get('photo'))}
 </article>'''
 
+
+
+# ---------- phase 2: photos (consented, credited) + how-to-play videos ----------
+def photo_html(p, cls='photo', lazy=True):
+    if not p: return ''
+    srcset = f' srcset="{E(p["src"])} 800w, {E(p["src2x"])} 1600w" sizes="(max-width: 980px) 100vw, 980px"' if p.get('src2x') else ''
+    load = ' loading="lazy" decoding="async"' if lazy else ' fetchpriority="high"'
+    return (f'<figure class="{cls}"><img src="{E(p["src"])}"{srcset} alt="{E(p["alt"])}"{load}>'
+            f'<figcaption>{E(p.get("caption", ""))} <span class="pcredit">📸 {E(p["credit"])}</span></figcaption></figure>')
+
+
+def video_html(s):
+    v = s.get('video')
+    if not v: return ''
+    return f'''
+<figure class="howto" aria-label="How to play {E(s["title"])}, in Shaka's voice">
+<video controls playsinline preload="metadata" poster="{E(v["poster"])}" width="1920" height="1080">
+<source src="{E(v["mp4"])}" type="video/mp4">
+<track kind="captions" srclang="en" label="English" src="{E(v["vtt"])}" default>
+<a href="{E(v["mp4"])}">Download the video (MP4)</a>
+</video>
+<figcaption class="disc">🎙️ <strong>AI voice.</strong> {E(v["disclosure"])} {int(v["duration"])} s · <a href="{E(v["vertical"])}">phone version (9:16)</a> · <a href="{E(v["vtt"])}">captions (WebVTT)</a></figcaption>
+</figure>'''
 
 # ---------- shared chrome ----------
 def head(title, desc, url, og, extra=''):
@@ -214,6 +242,7 @@ def lesson_page(l):
 <p class="ctas"><a class="btn main" href="#songs">Open the songs ↓</a> <a class="btn alt" href="{E(l["downloads"]["pdf"])}" download>⬇ PDF (A4, 4 pages)</a> <a class="btn alt" href="{E(l["downloads"]["png"])}" download>⬇ phone card (PNG)</a></p>
 <p class="note">Big type on purpose: hold the phone at arm's length or throw it on the TV. Use the ± key buttons to transpose (on this device only). <a href="/learn/">All lessons →</a></p>
 </header>
+{''.join(photo_html(p, 'photo strip-photo', i > 0) for i, p in enumerate(l.get('photos') or [])) and '<div class="photos" aria-label="The circle, in photos">' + ''.join(photo_html(p, 'photo strip-photo', i > 0) for i, p in enumerate(l.get('photos') or [])) + '</div>'}
 
 <main id="main">
 <section aria-labelledby="strip-h" class="sec-strip">
@@ -318,6 +347,7 @@ def index_page(today):
 </header>
 
 <main id="main">
+{photo_html(home.get('hero'), 'photo hero-photo', False)}
 <section aria-labelledby="lessons-h">
 <h2 id="lessons-h">Lessons</h2>
 {cards}
@@ -329,6 +359,13 @@ def index_page(today):
 <ul class="sessions" id="upcoming">{upcoming}</ul>
 {past_html}
 <p class="small">Dates as announced on sola.day on {BUILT.strftime('%-d %b %Y')}. If an event page moves a date, the event page wins.</p>
+</section>
+
+<section aria-labelledby="who-h">
+<h2 id="who-h">Who plays</h2>
+<p>Whoever shows up. A few of the faces of the Garden Circle, from their public artist cards:</p>
+<ul class="folks">{''.join(f'<li><img src="{E(f["src"])}" alt="Portrait of {E(f["name"])}" width="480" height="480" loading="lazy" decoding="async"><b>{E(f["name"])}</b><span>{E(f["role"])}</span><small>{E(f["credit"])}</small></li>' for f in home.get('folks', []))}</ul>
+<div class="photos two">{''.join(photo_html(p, 'photo strip-photo') for p in home.get('more', []))}</div>
 </section>
 
 <section aria-labelledby="how-h">
