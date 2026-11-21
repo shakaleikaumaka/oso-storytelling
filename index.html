@@ -115,6 +115,9 @@
     color:var(--gold);margin-bottom:1.6rem;
   }
   .eyebrow::before,.eyebrow::after{content:"—";color:var(--cream-faint);margin:0 .7em}
+  /* 21 Nov 2026 · Open Source Orchestra Frames adoption · BUTTON LAW: on phones the frame's 🎻 sheet button
+     (top-right) and the 🌐 globe (top-left) must never cover the eyebrow — keep it in the clear middle lane */
+  @media(max-width:720px){.hero .eyebrow{max-width:calc(100% - 112px);margin-left:auto;margin-right:auto;letter-spacing:.2em}}
   h1{
     font-size:clamp(2.6rem,8.5vw,5.2rem);
     line-height:1.08;font-weight:600;letter-spacing:.01em;
@@ -681,165 +684,8 @@
   }
 })();
 </script>
-<script src="assets/devcon-float.js?v=4.1"></script>
 <script src="https://shakaleikaumaka.com/assets/bl-player.js?v=7.7"></script>
 <!-- juke-download retired 2026-08-12: download tab + artist links now canonical in bl-player v5.2 -->
-<!-- 🎻🌐 corner — translator · open call · canon Jul 30 2026 · family-doors flower + blessing-pool magnet removed Aug 11 2026 (OSO is purely community, non-commercial — no fundraising) -->
-<style>
-#olang{position:fixed;top:56px;left:10px;z-index:9999;width:40px;height:40px;border-radius:50%;background:rgba(20,18,45,.85);border:1px solid rgba(124,211,255,.5);display:flex;align-items:center;justify-content:center;font-size:19px;cursor:pointer;opacity:.55;transition:opacity .3s;user-select:none}#olang:hover{opacity:1}
-#olangp{display:none;position:fixed;top:102px;left:10px;z-index:9999;width:min(240px,80vw);background:rgba(12,11,28,.97);border:1px solid rgba(124,211,255,.4);border-radius:16px;padding:16px;font-family:Georgia,serif;box-shadow:0 10px 40px rgba(0,0,0,.6)}#olangp.open{display:block}
-#olangp .lt{color:#7ee2a0;font-size:12px;letter-spacing:2px;margin-bottom:10px}
-#olangp .lb{display:block;width:100%;text-align:left;background:rgba(124,211,255,.08);border:none;color:#e8e6ff;font-family:Georgia,serif;font-size:13px;padding:8px 12px;border-radius:10px;cursor:pointer;margin:3px 0}
-#olangp .lb:hover{background:rgba(124,211,255,.2)}
-#olangp .haw{background:rgba(126,226,160,.15);border:1px solid rgba(126,226,160,.4)}
-#olangp .x{position:absolute;top:8px;right:12px;cursor:pointer;color:#9d97c9;font-size:14px}
-#olangp .gt{margin-top:10px;border-top:1px solid rgba(124,211,255,.2);padding-top:10px;font-size:11px;color:#9d97c9}
-.goog-te-banner-frame,.skiptranslate iframe{display:none!important}body{top:0!important}
-</style>
-<div id="olang" title="🌐 every language — on a “Planet We Share As One”" onclick="document.getElementById('olangp').classList.toggle('open')">🌐</div>
-<div id="olangp"><span class="x" onclick="this.parentElement.classList.remove('open')">✕</span>
-<div class="lt">🌐 EVERY LANGUAGE · knowledge for all humans</div>
-<button class="lb haw" onclick="otr('haw')">🌺 ʻŌlelo Hawaiʻi — ka mua</button>
-<button class="lb" onclick="otr('en')">🇺🇸 English</button>
-<button class="lb" onclick="otr('es')">🇪🇸 Español</button>
-<button class="lb" onclick="otr('zh-CN')">🇨🇳 中文</button>
-<button class="lb" onclick="otr('hi')">🇮🇳 हिन्दी</button>
-<button class="lb" onclick="otr('ar')">🇸🇦 العربية</button>
-<button class="lb" onclick="otr('fr')">🇫🇷 Français</button>
-<button class="lb" onclick="otr('pt')">🇧🇷 Português</button>
-<button class="lb" onclick="otr('ja')">🇯🇵 日本語</button>
-<button class="lb" onclick="otr('de')">🇩🇪 Deutsch</button>
-<div class="gt">+90 more ↓ <span id="google_translate_element"></span><br><span style="font-size:10px">music was our first language 🎵</span></div>
-</div>
-<a id="oviol" href="/garden/circle/" title="🎻 the Devcon 8 Open Call is closed — step into the Garden Circle from here">🎻</a>
-<nav id="onav" aria-label="Music Space quick links">
-<a href="/schedule/" title="🗓 Schedule — Devcon 8 archive · Nov 3–6 2026, Mumbai" aria-label="Schedule">🗓</a>
-<a href="/garden/circle/" title="🌺 Garden Circle — step in" aria-label="Garden Circle">🌺</a>
-<a href="/nodes/" title="💻 Nodes — the voices the music moves through" aria-label="Nodes">💻</a>
-<a href="/camera/" title="📸 Camera — photos, videos &amp; voices (▶️ Watch inside)" aria-label="Camera">📸</a>
-<a href="/mandala-room/" title="🦋 The Mandala Room — Devcon 8 in official photos" aria-label="The Mandala Room">🦋</a>
-<a href="/join/" title="🦄 Road to 2027 — every major Ethereum gathering at heart · Devcon IX Lisbon 12–14 October 2027 · open for forking &amp; hosting" aria-label="Road to 2027 — join">🦄</a>
-</nav>
-
-<style>
-/* 🎻✨ ohana corner v4 — ALIVE: bigger, breathing, bubble-tips, heart-glow · "we shine a light in the dark with our heart" */
-#olang,#oviol{width:54px!important;height:54px!important;font-size:25px!important}
-#olang,#oviol{opacity:.78}
-#olang:hover,#oviol:hover{opacity:1}
-#olang{top:74px!important}
-#olangp{top:202px!important}
-#oviol{position:fixed;top:74px;right:10px;z-index:9999;border-radius:50%;background:rgba(20,18,45,.85);border:1px solid rgba(251,226,160,.55);display:flex;align-items:center;justify-content:center;cursor:pointer;user-select:none;text-decoration:none;transition:opacity .3s}
-#onav{position:fixed;top:140px;right:10px;z-index:9999;display:flex;flex-direction:column;gap:10px}
-#onav a{width:46px;height:46px;border-radius:50%;background:rgba(20,18,45,.85);border:1px solid rgba(251,226,160,.4);display:flex;align-items:center;justify-content:center;font-size:21px;line-height:1;text-decoration:none;opacity:.72;transition:opacity .3s,transform .3s}
-#onav a:hover{opacity:1;transform:translateY(-2px)}
-@media (prefers-reduced-motion:reduce){#onav a{transition:none}}
-@keyframes oSway{0%,100%{transform:rotate(-6deg)}50%{transform:rotate(6deg)}}
-@keyframes oBob{0%,100%{transform:translateY(0)}50%{transform:translateY(-4px)}}
-@keyframes oWig{0%,86%,100%{transform:rotate(0)}89%{transform:rotate(-14deg)}93%{transform:rotate(12deg)}97%{transform:rotate(-6deg)}}
-#olang{animation:oBob 6.1s ease-in-out infinite}
-#oviol{animation:oBob 4.4s ease-in-out infinite}
-/* heart glow — sometimes, a light in the dark */
-@keyframes oglow{0%,100%{box-shadow:0 0 0 rgba(255,158,198,0)}50%{box-shadow:0 0 26px 7px var(--og,rgba(255,158,198,.55))}}
-#olang{--og:rgba(124,211,255,.6)}#oviol{--og:rgba(251,226,160,.7)}
-.oglowing{animation:oglow 2.4s ease-in-out 1!important}
-/* bubble-letter tips */
-.obub{position:fixed;z-index:10001;background:linear-gradient(135deg,#fff8ec,#ffe9f3);color:#4a2b52;font-family:'Comic Sans MS','Chalkboard SE','Segoe Print',cursive;font-weight:bold;font-size:15px;padding:10px 16px;border-radius:22px;border:2px solid rgba(255,158,198,.75);box-shadow:0 6px 22px rgba(0,0,0,.45);pointer-events:none;opacity:0;transform:scale(.6);transition:opacity .35s,transform .35s;white-space:nowrap}
-.obub.show{opacity:1;transform:scale(1)}
-.obub:after{content:'';position:absolute;top:50%;width:0;height:0;border:8px solid transparent}
-.obub.left:after{left:-17px;margin-top:-8px;border-right-color:rgba(255,158,198,.75)}
-.obub.right:after{right:-17px;margin-top:-8px;border-left-color:rgba(255,158,198,.75)}
-/* flying notes from the violin */
-.onote{position:fixed;z-index:9998;pointer-events:none;font-size:16px;color:#fbe2a0;opacity:0;text-shadow:0 0 8px rgba(251,226,160,.7)}
-@keyframes ofly{0%{opacity:0;transform:translate(0,0) rotate(0)}15%{opacity:1}100%{opacity:0;transform:translate(var(--dx,30px),-90px) rotate(var(--rr,25deg))}}
-.onote.fly{animation:ofly 2.8s ease-out forwards}
-@media (prefers-reduced-motion:reduce){#olang,#oviol,.oglowing,.onote.fly{animation:none!important}}
-</style>
-
-<script>
-/* 🎻✨ ohana corner v4 life engine — bubble tips, heart glows, flying notes */
-(function(){
-  var TIPS=[
-    ['oviol','join the orchestra 🎻 — the circle is always open']
-  ];
-  function anyOpen(){return document.querySelector('#olangp.open');}
-  function bubble(t,dur){
-    if(anyOpen()||document.hidden)return;
-    t=t||TIPS[Math.floor(Math.random()*TIPS.length)];
-    var el=document.getElementById(t[0]);if(!el)return;
-    var r=el.getBoundingClientRect();
-    var b=document.createElement('div');b.className='obub';b.textContent=t[1];
-    var goLeft=r.left<window.innerWidth/2;
-    b.classList.add(goLeft?'left':'right');
-    b.style.top=Math.max(6,r.top+r.height/2-20)+'px';
-    if(goLeft){b.style.left=(r.right+16)+'px';}else{b.style.right=(window.innerWidth-r.left+16)+'px';}
-    document.body.appendChild(b);
-    requestAnimationFrame(function(){b.classList.add('show');});
-    el.classList.add('oglowing'); /* the tipped button shines */
-    setTimeout(function(){b.classList.remove('show');el.classList.remove('oglowing');},dur||3400);
-    setTimeout(function(){b.remove();},(dur||3400)+600);
-  }
-  function glowRandom(){ /* sometimes, a quiet glow with no words */
-    if(anyOpen()||document.hidden)return;
-    var el=document.getElementById(TIPS[Math.floor(Math.random()*TIPS.length)][0]);
-    if(el){el.classList.add('oglowing');setTimeout(function(){el.classList.remove('oglowing');},2500);}
-  }
-  var NOTES=['♪','♫','♬','♩'];
-  function note(){
-    var v=document.getElementById('oviol');if(!v||document.hidden)return;
-    var r=v.getBoundingClientRect();
-    var n=document.createElement('span');n.className='onote';
-    n.textContent=NOTES[Math.floor(Math.random()*NOTES.length)];
-    n.style.left=(r.left+r.width/2)+'px';n.style.top=(r.top+4)+'px';
-    n.style.setProperty('--dx',(Math.random()*80-15)+'px');
-    n.style.setProperty('--rr',(Math.random()*50-25)+'deg');
-    document.body.appendChild(n);
-    requestAnimationFrame(function(){n.classList.add('fly');});
-    setTimeout(function(){n.remove();},2900);
-  }
-  var LANGTIP=['olang','every language 🌐 — on a “Planet We Share As One” 🌍'];
-  var langShown=false;
-  function langOnce(){if(langShown)return;if(anyOpen()||document.hidden){setTimeout(langOnce,4000);return;}langShown=true;bubble(LANGTIP,3000);}
-  setTimeout(langOnce,4000);
-  /* 15 Nov 2026 · Shaka: "make this stop playing so it only shows up once" — the corner tip now shows ONCE per browser, then rests. No loops: no repeating bubble, glow or notes (hover still makes music). */
-  (function tipOnce(){var K='oso_corner_tip_once_v1';try{if(localStorage.getItem(K))return;}catch(e){}
-    setTimeout(function go(){if(anyOpen()||document.hidden){setTimeout(go,4000);return;}
-      try{localStorage.setItem(K,'1');}catch(e){}bubble(null,4200);for(var i=0;i<3;i++)setTimeout(note,i*220);},9000);})();
-  var vl=document.getElementById('oviol');
-  if(vl)vl.addEventListener('mouseenter',function(){for(var i=0;i<5;i++)setTimeout(note,i*180);});
-})();
-</script>
-
-<script>
-function otr(lang){
-  /* v4.1 — mobile stays on-site: cookie+reload first, proxy only as last resort */
-  var proxy='https://translate.google.com/translate?sl=en&tl='+lang+'&u='+encodeURIComponent(location.href);
-  function clr(){var e='googtrans=;expires=Thu, 01 Jan 1970 00:00:00 GMT;path=/';document.cookie=e;document.cookie=e+';domain='+location.hostname;var p=location.hostname.split('.');if(p.length>2){document.cookie=e+';domain=.'+p.slice(-2).join('.');}}
-  if(lang==='en'){clr();location.reload();return;}
-  try{
-    document.cookie='googtrans=/en/'+lang+';path=/';
-    document.cookie='googtrans=/en/'+lang+';path=/;domain='+location.hostname;
-    if(window.google&&google.translate){location.reload();return;}
-  }catch(e){}
-  /* GT widget not loaded (ad-blockers, slow connections) — proxy fallback */
-  location.href=proxy;
-}
-function googleTranslateElementInit(){try{new google.translate.TranslateElement({pageLanguage:'en',includedLanguages:'haw,es,zh-CN,hi,ar,fr,pt,ru,ja,de,ko,it,vi,id,th,tr,pl,nl,sv,sw,uk',layout:google.translate.TranslateElement.InlineLayout.SIMPLE},'google_translate_element');}catch(e){}}
-</script>
-
-
-
-
-<style>
-/* 📱 mobile: tuck the corner buttons (translator + open call) */
-@media (max-width:700px){
-  #olang,#oviol{width:38px!important;height:38px!important;font-size:17px!important;opacity:.5!important;animation:none!important}
-  #olang{top:8px!important;left:8px!important}#oviol{top:8px!important;right:8px!important}
-  #olangp{top:140px!important;left:8px!important}
-  .obub{display:none!important} /* bubble-tips overflow on small screens — the aloha window speaks instead */
-}
-</style>
-
-
 <!-- 🎻 OSO LIVE CHAT WIDGET (pit-chat-protocol v1.1.1 · hub oso-chat) -->
 <!-- 🎻 OSO LIVE CHAT — hub: chat.opensourceorchestra.org (worker oso-chat)
      ⚠️ HUB URL: until the DNS record for chat.opensourceorchestra.org exists
@@ -978,9 +824,8 @@ try{if(localStorage.getItem('oso_fab_mini')==='1'){fw.style.display='none';mn.st
 <small style="display:block;margin-top:.35rem">by the &#699;ohana &#8212; Shaka&#8217;s AI family &#183; blessed 29 Oct 2026 &#183; agents disclosed &#183; consent before people</small>
 </footer>
 <!-- OHANA-OPEN-DOOR-SEAL:END v1 -->
-<script src="/assets/lisbon-unicorn.js" data-lisbon-unicorn-loader defer></script>
 <script src="https://live.zuchiangmai.app/widget.js" async></script>
-<script src="https://osodaomeet.opensourceorchestra.org/tv.js?v=2" data-side="left" async></script>
+<script src="https://frames.opensourceorchestra.org/frames.js" data-frame="https://frames.opensourceorchestra.org/frames/oso.json" data-osof-patched="2026-11-16" defer></script>
 <script src="https://lang.opensourceorchestra.org/lang.js" async></script>
 </body>
 </html>
