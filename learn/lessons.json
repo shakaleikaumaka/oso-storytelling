@@ -1,7 +1,7 @@
 {
  "_license": "Words and chords CC BY-SA 4.0 · Open Source Orchestra. Schema and generator GPL-3.0.",
  "_schema": "lessons[{id,date,start,end,title,kicker,venue,city,eventUrl,arranger,strip[{chord,uke,guitar,note}],strums[],path[],songs[{n,title,subtitle,writer,credit,key,feel,chords[],loop,notes,sections[{label,lines[{chords:[{pos,chord}],text}]}]}],credits[],license}]",
- "built": "2026-11-21T05:23:13+00:00",
+ "built": "2026-11-21T05:36:32+00:00",
  "site": "https://opensourceorchestra.org/learn/",
  "sessions": {
   "_about": "Public sola.day sessions of the Open Source Orchestra at 4Seas, Chiang Mai (ICT, UTC+7). Rhythm: Lunch Open Jam 12–3 → Lesson & Rehearsal 3–6 → Live Concert Edition 6–9. Titles verified against sola.day on 21 Nov 2026.",

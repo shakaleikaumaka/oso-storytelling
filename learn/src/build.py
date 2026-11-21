@@ -201,7 +201,7 @@ def lesson_page(l):
     toc = ''.join(f'<li><a href="#song-{s["n"]}">{s["n"]} · {E(s["title"])}</a> <span class="ch">{E(s["key"])}</span></li>' for s in l['songs'])
     nxt = l.get('next')
     next_html = (f'<p class="next">Next: <strong>{E(nxt["title"])}</strong>, {E(nxt["when"])}, {E(nxt["venue"])} · <a href="{E(nxt["eventUrl"])}" rel="noopener">event page</a></p>' if nxt else '')
-    return head(title, desc, url, f'{url}og.png') + f'''
+    return head(title, desc, url, f'{SITE}/learn/og.png') + f'''
 <body class="lesson">
 <a class="skip" href="#songs">Skip to the songs</a>
 <div class="page" id="page"><div class="wrap">
