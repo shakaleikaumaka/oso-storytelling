@@ -1,0 +1,27 @@
+{
+ "_about": "Public sola.day sessions of the Open Source Orchestra at 4Seas, Chiang Mai (ICT, UTC+7). Rhythm: Lunch Open Jam 12–3 → Lesson & Rehearsal 3–6 → Live Concert Edition 6–9. Titles verified against sola.day on 21 Nov 2026.",
+ "venue": "4Seas, 1st Floor Event Space",
+ "city": "Chiang Mai",
+ "types": {
+  "lesson": {"title": "Lesson & Rehearsal", "time": "3–6 PM", "emoji": "🎵"},
+  "concert": {"title": "Live Concert Edition", "time": "6–9 PM", "emoji": "🎉"},
+  "jam": {"title": "Lunch Open Jam", "time": "12–3 PM", "emoji": "🌺"}
+ },
+ "sessions": [
+  {"date": "2026-11-21", "type": "lesson", "id": "3n2icoaalwq3g", "lesson": "2026-11-21"},
+  {"date": "2026-11-24", "type": "concert", "id": "3n2icpqpnts3g"},
+  {"date": "2026-11-27", "type": "jam", "id": "3n2icr2up5d3g"},
+  {"date": "2026-11-30", "type": "lesson", "id": "3n2icsfxyit3g"},
+  {"date": "2026-12-03", "type": "concert", "id": "3n2icuw4v533g"},
+  {"date": "2026-12-06", "type": "jam", "id": "3n2pqv7475t3g"},
+  {"date": "2026-12-09", "type": "lesson", "id": "3n2pqym6x5p3g"},
+  {"date": "2026-12-12", "type": "concert", "id": "3n2pqztvrnw3g"},
+  {"date": "2026-12-15", "type": "jam", "id": "3n2pr34l4l63g"},
+  {"date": "2026-12-18", "type": "lesson", "id": "3n2pr4f6vac3g"},
+  {"date": "2026-12-21", "type": "concert", "id": "3n2pra6h4ew3g"},
+  {"date": "2026-12-24", "type": "jam", "id": "3n2prcaao723g"},
+  {"date": "2026-12-27", "type": "lesson", "id": "3n2prdawbfg3g"},
+  {"date": "2026-12-30", "type": "concert", "id": "3n2pre7u7mx3g"},
+  {"date": "2027-01-02", "type": "jam", "id": "3n2prfohqjm3g"}
+ ]
+}

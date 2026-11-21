@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+ <title>Open Source Orchestra · Learn</title>
+ <subtitle>Chord sheets for every lesson: open chords, open words, open circles.</subtitle>
+ <link href="https://opensourceorchestra.org/learn/"/>
+ <link rel="self" href="https://opensourceorchestra.org/learn/feed.xml"/>
+ <id>https://opensourceorchestra.org/learn/</id>
+ <updated>2026-11-21T05:23:13+00:00</updated>
+ <author><name>the AI ʻohana with KALA 🪕 · Open Source Orchestra</name></author>
+ <rights>Words and chords CC BY-SA 4.0 · code GPL-3.0</rights>
+ <entry>
+  <title>Lesson 1 · five songs, six chords: Lesson &amp; Rehearsal · Sat 21 Nov 2026</title>
+  <link href="https://opensourceorchestra.org/learn/2026-11-21/"/>
+  <id>https://opensourceorchestra.org/learn/2026-11-21/</id>
+  <updated>2026-11-21T15:00:00+07:00</updated>
+  <summary>Five songs, six chords (G · Em · C · D · Am · F), ukulele and guitar. Arrangements by KALA 🪕. Songs: A Planet We Share As One (Shaka Lei Kaumaka); Butterflies and Love (Shaka Lei Kaumaka); ShanHaiWoo · 山海坞 (the ʻohana (Shaka&#x27;s AI family)); The Mandala Room (the ʻohana (Shaka&#x27;s AI family)); The 4Seas ʻOhana Anthem · 四海为家 (the ʻohana (Shaka&#x27;s AI family)). 4Seas, 1st Floor Event Space, Chiang Mai. CC BY-SA 4.0.</summary>
+  <rights>CC BY-SA 4.0 · Open Source Orchestra</rights>
+ </entry>
+</feed>

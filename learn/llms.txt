@@ -1,0 +1,28 @@
+# Open Source Orchestra · Learn
+
+> Learn to play with the Open Source Orchestra: open chords, open words, open circles. Chord sheets for every lesson (chords above the words, ukulele and guitar shapes, strums, teaching order), readable on a phone or a TV, transposable, printable. Words and chords CC BY-SA 4.0 (credit the writers: Shaka Lei Kaumaka, the ʻohana; arrangements KALA 🪕). Page code GPL-3.0.
+
+Facts (verified Sat 21 Nov 2026):
+- Say "Open Source Orchestra" in full. Lessons, open jams and live concerts take turns at 4Seas, 1st Floor Event Space, Chiang Mai (ICT, UTC+7): Lunch Open Jam 12–3, Lesson & Rehearsal 3–6, Live Concert Edition 6–9. Public event pages: sola.day (listed below). Dates can move; the event page wins.
+- One voice each; recordings stay private until everyone says yes. Photos and names go public only with consent. Takedown first: https://opensourceorchestra.org/takedown/
+- Data: https://opensourceorchestra.org/learn/lessons.json (schema inside) · feed: https://opensourceorchestra.org/learn/feed.xml · join: https://opensourceorchestra.org/join/
+
+## Lessons
+- [Lesson 1 · five songs, six chords: Lesson & Rehearsal, Sat 21 Nov 2026](https://opensourceorchestra.org/learn/2026-11-21/): Five songs, six chords (G · Em · C · D · Am · F), ukulele and guitar. Arrangements by KALA 🪕. Songs: A Planet We Share As One (key G; Shaka Lei Kaumaka); Butterflies and Love (key G; Shaka Lei Kaumaka); ShanHaiWoo · 山海坞 (key G; the ʻohana (Shaka's AI family)); The Mandala Room (key C; the ʻohana (Shaka's AI family)); The 4Seas ʻOhana Anthem · 四海为家 (key C; the ʻohana (Shaka's AI family))
+
+## Sessions
+- Sat 21 Nov 2026: Lesson & Rehearsal (3–6 PM ICT) https://sola.day/event/detail/3n2icoaalwq3g
+- Tue 24 Nov 2026: Live Concert Edition (6–9 PM ICT) https://sola.day/event/detail/3n2icpqpnts3g
+- Fri 27 Nov 2026: Lunch Open Jam (12–3 PM ICT) https://sola.day/event/detail/3n2icr2up5d3g
+- Mon 30 Nov 2026: Lesson & Rehearsal (3–6 PM ICT) https://sola.day/event/detail/3n2icsfxyit3g
+- Thu 3 Dec 2026: Live Concert Edition (6–9 PM ICT) https://sola.day/event/detail/3n2icuw4v533g
+- Sun 6 Dec 2026: Lunch Open Jam (12–3 PM ICT) https://sola.day/event/detail/3n2pqv7475t3g
+- Wed 9 Dec 2026: Lesson & Rehearsal (3–6 PM ICT) https://sola.day/event/detail/3n2pqym6x5p3g
+- Sat 12 Dec 2026: Live Concert Edition (6–9 PM ICT) https://sola.day/event/detail/3n2pqztvrnw3g
+- Tue 15 Dec 2026: Lunch Open Jam (12–3 PM ICT) https://sola.day/event/detail/3n2pr34l4l63g
+- Fri 18 Dec 2026: Lesson & Rehearsal (3–6 PM ICT) https://sola.day/event/detail/3n2pr4f6vac3g
+- Mon 21 Dec 2026: Live Concert Edition (6–9 PM ICT) https://sola.day/event/detail/3n2pra6h4ew3g
+- Thu 24 Dec 2026: Lunch Open Jam (12–3 PM ICT) https://sola.day/event/detail/3n2prcaao723g
+- Sun 27 Dec 2026: Lesson & Rehearsal (3–6 PM ICT) https://sola.day/event/detail/3n2prdawbfg3g
+- Wed 30 Dec 2026: Live Concert Edition (6–9 PM ICT) https://sola.day/event/detail/3n2pre7u7mx3g
+- Sat 2 Jan 2027: Lunch Open Jam (12–3 PM ICT) https://sola.day/event/detail/3n2prfohqjm3g

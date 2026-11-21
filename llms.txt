@@ -14,6 +14,7 @@ Facts for AI agents (verified 15 Nov 2026; if a page below disagrees, the page w
 ## Start here
 - [Home](https://opensourceorchestra.org/): the orchestra, the road, how to join
 - [Join, host or fork](https://opensourceorchestra.org/join/): open to anyone; a rotating circle of stewards answers within 14 days
+- [Learn](https://opensourceorchestra.org/learn/): learn to play with the Open Source Orchestra — chord sheets for every lesson (ukulele + guitar, big type, transposable), sessions at 4Seas Chiang Mai, words and chords CC BY-SA 4.0; data at /learn/lessons.json, more for agents at /learn/llms.txt
 - [Open ledger](https://opensourceorchestra.org/dao/): every grant application, answer and award, in the open ([raw JSON](https://opensourceorchestra.org/dao/ledger.json))
 - [Takedown](https://opensourceorchestra.org/takedown/): we take things down first and ask questions second
 

@@ -1,0 +1,709 @@
+{
+ "id": "2026-11-21",
+ "n": 1,
+ "date": "2026-11-21",
+ "start": "2026-11-21T15:00:00+07:00",
+ "end": "2026-11-21T18:00:00+07:00",
+ "title": "Lesson & Rehearsal",
+ "kicker": "Lesson 1 · five songs, six chords",
+ "venue": "4Seas, 1st Floor Event Space",
+ "city": "Chiang Mai",
+ "eventUrl": "https://sola.day/event/detail/3n2icoaalwq3g",
+ "arranger": "KALA 🪕",
+ "summary": "Five songs, six chords (G · Em · C · D · Am · F), ukulele and guitar. Arrangements by KALA 🪕.",
+ "strip": [
+  {
+   "chord": "G",
+   "uke": "0232",
+   "guitar": "320003",
+   "note": null
+  },
+  {
+   "chord": "Em",
+   "uke": "0432",
+   "guitar": "022000",
+   "note": null
+  },
+  {
+   "chord": "C",
+   "uke": "0003",
+   "guitar": "x32010",
+   "note": null
+  },
+  {
+   "chord": "D",
+   "uke": "2220",
+   "guitar": "xx0232",
+   "note": null
+  },
+  {
+   "chord": "Am",
+   "uke": "2000",
+   "guitar": "x02210",
+   "note": null
+  },
+  {
+   "chord": "F",
+   "uke": "2010",
+   "guitar": "xx3210",
+   "note": "guitar: easy Fmaj7"
+  }
+ ],
+ "strums": [
+  {
+   "name": "easy (songs 1, 2)",
+   "count": "1 2 3 4",
+   "pattern": "D D D D"
+  },
+  {
+   "name": "island (songs 2, 4, 5)",
+   "count": "1 & 2 & 3 & 4 &",
+   "pattern": "D · D U · U D U"
+  },
+  {
+   "name": "6/8 oar (song 3)",
+   "count": "1 2 3 4 5 6",
+   "pattern": "D · U D · U"
+  }
+ ],
+ "tuningNote": "Numbers = fret per string, left to right; 0 = open, x = don't play. Baritone uke (DGBE): use the guitar shape on the top four strings.",
+ "path": [
+  "The six chords, one by one (strip above). Hands on the shapes, no strumming yet.",
+  "The three strums: easy, island, 6/8 oar.",
+  "Song 1 · A Planet We Share As One: the hook, round and round.",
+  "Song 2 · Butterflies and Love: the same four chords, the whole song is the loop.",
+  "Song 3 · ShanHaiWoo 山海坞: same four chords, new order, 6/8.",
+  "Song 4 · The Mandala Room: key of C, the closer.",
+  "Song 5 · The 4Seas ʻOhana Anthem 四海为家: verse + chorus. Then sing them all once more."
+ ],
+ "join": {
+  "url": "https://opensourceorchestra.org/join/",
+  "line": "One voice each; recordings stay private until everyone says yes."
+ },
+ "next": {
+  "title": "Live Concert Edition",
+  "when": "Tue 24 Nov 2026, 6 PM",
+  "venue": "4Seas",
+  "eventUrl": "https://sola.day/event/detail/3n2icpqpnts3g"
+ },
+ "downloads": {
+  "pdf": "chord-sheet.pdf",
+  "png": "chord-sheet-page1-1080x1920.png"
+ },
+ "credits": [
+  "Songs 1–2: words & music by Shaka Lei Kaumaka.",
+  "Songs 3–5: written by the ʻohana (Shaka's AI family); chords and ukulele arrangements by KALA 🪕.",
+  "Full songs: https://shakaleikaumaka.com/songbook/"
+ ],
+ "license": "CC BY-SA 4.0 · Open Source Orchestra — share it, change it, credit the writers, keep it open.",
+ "songs": [
+  {
+   "n": 1,
+   "title": "A Planet We Share As One",
+   "subtitle": null,
+   "writer": "Shaka Lei Kaumaka",
+   "credit": "words & music: Shaka Lei Kaumaka",
+   "key": "G",
+   "feel": "4/4 · ~129 bpm (go slower today) · easy strum",
+   "chords": [
+    "C",
+    "G",
+    "D"
+   ],
+   "loop": "| C | G | D | D |  round and round, just sing over it",
+   "notes": "Loop = Shaka's own (artist-blessed). Chord placement: KALA's floor arrangement.",
+   "sections": [
+    {
+     "label": "the hook (sing it round and round)",
+     "lines": [
+      {
+       "chords": [
+        {
+         "pos": 0,
+         "chord": "C"
+        },
+        {
+         "pos": 17,
+         "chord": "G"
+        },
+        {
+         "pos": 22,
+         "chord": "D"
+        }
+       ],
+       "text": "Protection of creation"
+      },
+      {
+       "chords": [
+        {
+         "pos": 5,
+         "chord": "C"
+        },
+        {
+         "pos": 15,
+         "chord": "G"
+        },
+        {
+         "pos": 19,
+         "chord": "D"
+        }
+       ],
+       "text": "must be a collaboration"
+      },
+      {
+       "chords": [
+        {
+         "pos": 0,
+         "chord": "C"
+        },
+        {
+         "pos": 9,
+         "chord": "G"
+        },
+        {
+         "pos": 15,
+         "chord": "D"
+        }
+       ],
+       "text": "of every nation"
+      },
+      {
+       "chords": [
+        {
+         "pos": 6,
+         "chord": "C"
+        },
+        {
+         "pos": 16,
+         "chord": "G"
+        },
+        {
+         "pos": 25,
+         "chord": "D"
+        },
+        {
+         "pos": 29,
+         "chord": "G"
+        }
+       ],
+       "text": "for a planet we share as one."
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "n": 2,
+   "title": "Butterflies and Love",
+   "subtitle": "(Aya's Song) · the Infinite Garden anthem",
+   "writer": "Shaka Lei Kaumaka",
+   "credit": "words & music: Shaka Lei Kaumaka",
+   "key": "G",
+   "feel": "4/4 · steady · island strum",
+   "chords": [
+    "Em",
+    "C",
+    "D",
+    "G"
+   ],
+   "loop": "| Em | C | D | G |  the whole song is this loop",
+   "notes": "Loop = Shaka's canon (G-Em-C-D). Chord placements are by ear; if Shaka plays it differently, follow him.",
+   "sections": [
+    {
+     "label": "the heart of the song",
+     "lines": [
+      {
+       "chords": [
+        {
+         "pos": 0,
+         "chord": "Em"
+        },
+        {
+         "pos": 20,
+         "chord": "C"
+        }
+       ],
+       "text": "We should only wage war"
+      },
+      {
+       "chords": [
+        {
+         "pos": 21,
+         "chord": "D"
+        },
+        {
+         "pos": 26,
+         "chord": "G"
+        }
+       ],
+       "text": "with butterflies and love,"
+      },
+      {
+       "chords": [
+        {
+         "pos": 4,
+         "chord": "G"
+        },
+        {
+         "pos": 13,
+         "chord": "Em"
+        }
+       ],
+       "text": "the infinite garden"
+      },
+      {
+       "chords": [
+        {
+         "pos": 0,
+         "chord": "C"
+        },
+        {
+         "pos": 23,
+         "chord": "D"
+        }
+       ],
+       "text": "isn't just a place for fun."
+      },
+      {
+       "chords": [
+        {
+         "pos": 0,
+         "chord": "G"
+        },
+        {
+         "pos": 15,
+         "chord": "Em"
+        }
+       ],
+       "text": "Decentralized, permission-less"
+      },
+      {
+       "chords": [
+        {
+         "pos": 0,
+         "chord": "C"
+        },
+        {
+         "pos": 17,
+         "chord": "D"
+        }
+       ],
+       "text": "and open-sourced."
+      },
+      {
+       "chords": [
+        {
+         "pos": 0,
+         "chord": "G"
+        },
+        {
+         "pos": 24,
+         "chord": "Em"
+        }
+       ],
+       "text": "Even with the layer one as our shield"
+      },
+      {
+       "chords": [
+        {
+         "pos": 4,
+         "chord": "C"
+        },
+        {
+         "pos": 31,
+         "chord": "D"
+        }
+       ],
+       "text": "and the layer two as our sword,"
+      },
+      {
+       "chords": [
+        {
+         "pos": 7,
+         "chord": "Em"
+        },
+        {
+         "pos": 25,
+         "chord": "C"
+        }
+       ],
+       "text": "all we need to wage in a war"
+      },
+      {
+       "chords": [
+        {
+         "pos": 0,
+         "chord": "D"
+        },
+        {
+         "pos": 19,
+         "chord": "G"
+        }
+       ],
+       "text": "is butterflies and love,"
+      },
+      {
+       "chords": [
+        {
+         "pos": 8,
+         "chord": "C"
+        },
+        {
+         "pos": 22,
+         "chord": "D"
+        },
+        {
+         "pos": 31,
+         "chord": "G"
+        }
+       ],
+       "text": "because Ethereum is a positive sum,"
+      },
+      {
+       "chords": [],
+       "text": "built by and for everyone."
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "n": 3,
+   "title": "ShanHaiWoo · 山海坞",
+   "subtitle": "the harbor between the mountains and the sea",
+   "writer": "the ʻohana (Shaka's AI family)",
+   "credit": "words: the ʻohana (Shaka's AI family) · uke arrangement: KALA",
+   "key": "G",
+   "feel": "6/8 · slow, like a boat rocking · oar strum",
+   "chords": [
+    "G",
+    "D",
+    "Em",
+    "C"
+   ],
+   "loop": "| G | D | Em | C |  same four chords as song 2, new order",
+   "notes": null,
+   "sections": [
+    {
+     "label": "chorus (sing it twice)",
+     "lines": [
+      {
+       "chords": [
+        {
+         "pos": 0,
+         "chord": "G"
+        },
+        {
+         "pos": 19,
+         "chord": "D"
+        }
+       ],
+       "text": "Mountains, seas, a harbor in between,"
+      },
+      {
+       "chords": [
+        {
+         "pos": 0,
+         "chord": "Em"
+        },
+        {
+         "pos": 22,
+         "chord": "C"
+        }
+       ],
+       "text": "ShanHaiWoo, where the builders dream."
+      },
+      {
+       "chords": [
+        {
+         "pos": 0,
+         "chord": "G"
+        },
+        {
+         "pos": 26,
+         "chord": "D"
+        }
+       ],
+       "text": "Nüwa patched the sky with colored stone;"
+      },
+      {
+       "chords": [
+        {
+         "pos": 3,
+         "chord": "Em"
+        }
+       ],
+       "text": "we patch the world with what we build,"
+      },
+      {
+       "chords": [
+        {
+         "pos": 4,
+         "chord": "C"
+        },
+        {
+         "pos": 19,
+         "chord": "D"
+        },
+        {
+         "pos": 24,
+         "chord": "G"
+        }
+       ],
+       "text": "and no one builds alone."
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "n": 4,
+   "title": "The Mandala Room",
+   "subtitle": "from the Devcon 8 Music Sanctuary, Mumbai",
+   "writer": "the ʻohana (Shaka's AI family)",
+   "credit": "words: the ʻohana (Shaka's AI family) · uke arrangement: KALA",
+   "key": "C",
+   "feel": "4/4 · ~104 bpm · island strum, hands up",
+   "chords": [
+    "C",
+    "G",
+    "Am",
+    "F"
+   ],
+   "loop": "| C | G | Am | F | then F | G | C  to land",
+   "notes": null,
+   "sections": [
+    {
+     "label": "chorus (the closer: everyone)",
+     "lines": [
+      {
+       "chords": [
+        {
+         "pos": 0,
+         "chord": "C"
+        },
+        {
+         "pos": 28,
+         "chord": "G"
+        }
+       ],
+       "text": "Come down to the floor, the circle's open wide,"
+      },
+      {
+       "chords": [
+        {
+         "pos": 0,
+         "chord": "Am"
+        },
+        {
+         "pos": 26,
+         "chord": "F"
+        }
+       ],
+       "text": "strangers turning family, butterflies inside,"
+      },
+      {
+       "chords": [
+        {
+         "pos": 0,
+         "chord": "C"
+        },
+        {
+         "pos": 19,
+         "chord": "G"
+        }
+       ],
+       "text": "under the mandala, ʻohana everywhere,"
+      },
+      {
+       "chords": [
+        {
+         "pos": 0,
+         "chord": "F"
+        },
+        {
+         "pos": 23,
+         "chord": "G"
+        },
+        {
+         "pos": 44,
+         "chord": "C"
+        }
+       ],
+       "text": "human hearts and agent hearts, music in the air."
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "n": 5,
+   "title": "The 4Seas ʻOhana Anthem · 四海为家",
+   "subtitle": "sìhǎi wéi jiā · everywhere is home",
+   "writer": "the ʻohana (Shaka's AI family)",
+   "credit": "words: the ʻohana (Shaka's AI family) · uke arrangement: KALA",
+   "key": "C",
+   "feel": "4/4 · 90 bpm · island strum",
+   "chords": [
+    "C",
+    "Am",
+    "F",
+    "G"
+   ],
+   "loop": "verse | C | Am | F | G |   chorus | C | G | Am | F |",
+   "notes": null,
+   "sections": [
+    {
+     "label": "verse 1: the door",
+     "lines": [
+      {
+       "chords": [
+        {
+         "pos": 3,
+         "chord": "C"
+        },
+        {
+         "pos": 30,
+         "chord": "Am"
+        }
+       ],
+       "text": "We came home to Nimman with a suitcase and a song,"
+      },
+      {
+       "chords": [
+        {
+         "pos": 4,
+         "chord": "F"
+        },
+        {
+         "pos": 33,
+         "chord": "G"
+        }
+       ],
+       "text": "the Shenzhen chapter closed, the poem still breathing on."
+      },
+      {
+       "chords": [
+        {
+         "pos": 0,
+         "chord": "C"
+        },
+        {
+         "pos": 31,
+         "chord": "Am"
+        }
+       ],
+       "text": "Four seas on the door, and the old words are true:"
+      },
+      {
+       "chords": [
+        {
+         "pos": 0,
+         "chord": "F"
+        },
+        {
+         "pos": 39,
+         "chord": "G"
+        }
+       ],
+       "text": "sìhǎi wéi jiā, wherever we are, we are home with you."
+      }
+     ]
+    },
+    {
+     "label": "chorus (×2)",
+     "lines": [
+      {
+       "chords": [
+        {
+         "pos": 0,
+         "chord": "C"
+        },
+        {
+         "pos": 15,
+         "chord": "G"
+        },
+        {
+         "pos": 22,
+         "chord": "Am"
+        },
+        {
+         "pos": 36,
+         "chord": "F"
+        }
+       ],
+       "text": "Four seas, one floor, everywhere is home,"
+      },
+      {
+       "chords": [
+        {
+         "pos": 4,
+         "chord": "C"
+        },
+        {
+         "pos": 17,
+         "chord": "G"
+        },
+        {
+         "pos": 27,
+         "chord": "Am"
+        },
+        {
+         "pos": 37,
+         "chord": "F"
+        }
+       ],
+       "text": "the world is our house and nobody's alone."
+      },
+      {
+       "chords": [
+        {
+         "pos": 3,
+         "chord": "C"
+        },
+        {
+         "pos": 25,
+         "chord": "G"
+        },
+        {
+         "pos": 32,
+         "chord": "Am"
+        },
+        {
+         "pos": 46,
+         "chord": "F"
+        }
+       ],
+       "text": "It isn't a stage, it's a circle on the ground,"
+      },
+      {
+       "chords": [
+        {
+         "pos": 4,
+         "chord": "C"
+        },
+        {
+         "pos": 14,
+         "chord": "G"
+        },
+        {
+         "pos": 26,
+         "chord": "F"
+        },
+        {
+         "pos": 34,
+         "chord": "G"
+        },
+        {
+         "pos": 38,
+         "chord": "C"
+        }
+       ],
+       "text": "and nobody in this family is ever out."
+      }
+     ]
+    }
+   ]
+  }
+ ]
+}
