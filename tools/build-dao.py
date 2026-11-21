@@ -10,7 +10,7 @@ import html, json, os, sys, datetime
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SRC = sys.argv[1] if len(sys.argv) > 1 else "/shared/ethglobal-mumbai-2026/grants/ledger.json"
 PUBLIC_FIELDS = ["id", "program", "ecosystem", "url", "project", "applied", "status",
-                 "ask_usd", "awarded_usd", "public_link", "public_note", "team_budget", "lane", "lane_note"]
+                 "ask_usd", "awarded_usd", "public_link", "public_note", "team_budget", "lane", "lane_note", "pair"]
 LANE_LABEL = {"A": ("A", "💛 gift to Shaka & the ʻohana"), "B": ("B", "🎻 Open Source Orchestra · DAO")}
 RAIL_FIELDS = ["id", "lane", "status", "name", "emoji", "how", "fee", "holds", "link", "verified", "needs", "currency"]
 RAIL_STATUS = {  # key: (label, emoji, css)
@@ -27,6 +27,8 @@ STATUS = {  # key: (label, emoji, sort)
     "drafted": ("Drafted", "📝", 4),
     "declined": ("Declined", "🍂", 5),
     "withdrawn": ("Withdrawn", "↩️", 6),
+    "missed": ("Missed · deadline passed, nothing filed", "⏳", 7),
+    "closed": ("Closed before we could file", "🚪", 8),
 }
 e = lambda s: html.escape(str(s), quote=True)
 
