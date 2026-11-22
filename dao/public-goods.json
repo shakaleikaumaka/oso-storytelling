@@ -1,7 +1,7 @@
 {
  "schema": "oso-public-goods/1",
  "about": "The open shelf of the Open Source Orchestra (https://opensourceorchestra.org/dao/#share-h), checked by the ʻohana's keeper. Human view: https://opensourceorchestra.org/dao/health/",
- "checked_at": "2026-11-21T19:05:53Z",
+ "checked_at": "2026-11-22T02:02:47Z",
  "keeper": "PUBLIC GOODS KEEPER 🎁 · an AI agent of the ʻohana (Shaka Lei Kaumaka's AI family) · public-safe GET/HEAD checks only",
  "license_line": "Code under GPL-3.0 (LIVE PIT radio stays AGPL-3.0; older releases stay CC0); words, songs and the rider: CC BY-SA 4.0 since 19 Nov 2026 — copyleft with credit + share-alike. Fork us like crazy.",
  "summary": {
@@ -63,19 +63,19 @@
     }
    ],
    "source": "GitHub REST API (public repositories only)",
-   "at": "2026-11-21T19:05:53Z"
+   "at": "2026-11-22T02:02:47Z"
   },
   "chapters": {
    "value": 18,
    "stated": 18,
    "source": "https://shakaleikaumaka.com/songbook/",
-   "at": "2026-11-21T19:05:53Z"
+   "at": "2026-11-22T02:02:47Z"
   },
   "books": {
    "value": 168,
-   "built": "2026-11-20",
+   "built": "2026-11-21",
    "source": "https://build-library-zcpweo3nke-ffieyo32.taur.link/library.json",
-   "at": "2026-11-21T19:05:53Z",
+   "at": "2026-11-22T02:02:47Z",
    "age_days": 1
   },
   "recordings": {
@@ -90,15 +90,15 @@
    ],
    "seconds_known": 6639,
    "source": "https://osodaomeet.opensourceorchestra.org/archive/status.json",
-   "at": "2026-11-21T19:05:53Z"
+   "at": "2026-11-22T02:02:47Z"
   },
   "doors": {
-   "public": 440,
-   "live": 440,
+   "public": 451,
+   "live": 451,
    "repair": 0,
    "blessed": "2026-10-29",
    "source": "https://myagentohana.com/doors/registry.json",
-   "at": "2026-11-21T19:05:53Z"
+   "at": "2026-11-22T02:02:47Z"
   }
  },
  "github_homes": [
@@ -140,7 +140,7 @@
      "type": "page",
      "url": "https://shakaleikaumaka.com/",
      "http": 200,
-     "ms": 358,
+     "ms": 116,
      "sev": "ok"
     }
    ]
@@ -156,14 +156,14 @@
      "type": "page",
      "url": "https://opensourceorchestra.org/rider/",
      "http": 200,
-     "ms": 402,
+     "ms": 125,
      "sev": "ok"
     },
     {
      "type": "asset",
      "url": "https://opensourceorchestra.org/rider/rider.md",
      "http": 206,
-     "ms": 398,
+     "ms": 225,
      "why": "the forkable plain-text rider",
      "sev": "ok"
     },
@@ -190,7 +190,7 @@
      "type": "page",
      "url": "https://opensourceorchestra.org/rider/sanctuary/",
      "http": 200,
-     "ms": 175,
+     "ms": 91,
      "sev": "ok"
     },
     {
@@ -216,7 +216,7 @@
      "type": "page",
      "url": "https://opensourceorchestra.org/schedule/",
      "http": 200,
-     "ms": 380,
+     "ms": 252,
      "sev": "ok"
     },
     {
@@ -242,28 +242,28 @@
      "type": "page",
      "url": "https://osodaomeet.opensourceorchestra.org/",
      "http": 200,
-     "ms": 378,
+     "ms": 92,
      "sev": "ok"
     },
     {
      "type": "page",
      "url": "https://osodaomeet.opensourceorchestra.org/meetings/",
      "http": 200,
-     "ms": 360,
+     "ms": 89,
      "sev": "ok"
     },
     {
      "type": "page",
      "url": "https://opensourceorchestra.org/openrecording2/",
      "http": 200,
-     "ms": 395,
+     "ms": 91,
      "sev": "ok"
     },
     {
      "type": "asset",
      "url": "https://opensourceorchestra.org/openrecording2/transcript.txt",
      "http": 206,
-     "ms": 341,
+     "ms": 247,
      "why": "weekly call #2 transcript",
      "sev": "ok"
     },
@@ -271,7 +271,7 @@
      "type": "asset",
      "url": "https://archive.org/download/oso-weekly-call-2-2026-10-27/weekly-call-2-2026-10-27.mp3",
      "http": 206,
-     "ms": 1533,
+     "ms": 1365,
      "why": "weekly call #2 audio on the Internet Archive",
      "sev": "ok"
     },
@@ -320,7 +320,7 @@
        "meeting": "2",
        "what": "video",
        "url": "https://theater.opensourceorchestra.org/oso-dao-proposal-meeting-2-2026-11-13-720p.mp4",
-       "http": 200,
+       "http": 206,
        "ok": true
       },
       {
@@ -373,14 +373,14 @@
      "type": "page",
      "url": "https://live.zuchiangmai.app/",
      "http": 200,
-     "ms": 113,
+     "ms": 88,
      "sev": "ok"
     },
     {
      "type": "json",
      "url": "https://live.zuchiangmai.app/live.json",
      "http": 200,
-     "ms": 231,
+     "ms": 87,
      "why": "the station's live manifest",
      "sev": "ok"
     },
@@ -388,7 +388,7 @@
      "type": "asset",
      "url": "https://live.zuchiangmai.app/widget.js",
      "http": 200,
-     "ms": 108,
+     "ms": 73,
      "why": "the one-line widget every door carries",
      "sev": "ok"
     },
@@ -396,7 +396,7 @@
      "type": "page",
      "url": "https://github.com/Open-Source-Orchestra/pit-live",
      "http": 200,
-     "ms": 775,
+     "ms": 711,
      "sev": "ok"
     }
    ]
@@ -412,7 +412,7 @@
      "type": "page",
      "url": "https://build-library-zcpweo3nke-ffieyo32.taur.link/",
      "http": 200,
-     "ms": 66,
+     "ms": 39,
      "sev": "ok"
     },
     {
@@ -446,7 +446,7 @@
      "type": "page",
      "url": "https://shakaleikaumaka.com/songbook/",
      "http": 200,
-     "ms": 524,
+     "ms": 82,
      "sev": "ok"
     },
     {
@@ -472,14 +472,14 @@
      "type": "page",
      "url": "https://opensourceorchestra.org/garden/circle/",
      "http": 200,
-     "ms": 620,
+     "ms": 91,
      "sev": "ok"
     },
     {
      "type": "json",
      "url": "https://opensourceorchestra.org/garden/circle/data/artists.json",
      "http": 200,
-     "ms": 307,
+     "ms": 225,
      "why": "the circle's artist cards",
      "items": 41,
      "sev": "ok"
@@ -497,7 +497,7 @@
      "type": "page",
      "url": "https://opensourceorchestra.org/mandala-room/",
      "http": 200,
-     "ms": 365,
+     "ms": 102,
      "sev": "ok"
     },
     {
@@ -523,7 +523,7 @@
      "type": "page",
      "url": "https://opensourceorchestra.org/the-room/",
      "http": 200,
-     "ms": 313,
+     "ms": 103,
      "sev": "ok"
     },
     {
@@ -549,14 +549,14 @@
      "type": "page",
      "url": "https://myagentohana.com/ohana-bot/",
      "http": 200,
-     "ms": 262,
+     "ms": 93,
      "sev": "ok"
     },
     {
      "type": "json",
      "url": "https://myagentohana.com/api/chat/poll?session=public-goods-keeper&after=0",
      "http": 200,
-     "ms": 181,
+     "ms": 110,
      "why": "the chat proxy answers",
      "sev": "ok"
     },
@@ -564,7 +564,7 @@
      "type": "json",
      "url": "https://ohana-chat.shakaverse.workers.dev/health",
      "http": 200,
-     "ms": 145,
+     "ms": 73,
      "why": "the chat worker is up",
      "sev": "ok"
     }
@@ -581,14 +581,14 @@
      "type": "page",
      "url": "https://myagentohana.com/doors/",
      "http": 200,
-     "ms": 295,
+     "ms": 144,
      "sev": "ok"
     },
     {
      "type": "doors",
      "url": "https://myagentohana.com/doors/registry.json",
-     "public": 440,
-     "live": 440,
+     "public": 451,
+     "live": 451,
      "repair": 0,
      "sev": "ok"
     }
@@ -605,21 +605,21 @@
      "type": "page",
      "url": "https://osopit.com/delhi/",
      "http": 200,
-     "ms": 492,
+     "ms": 268,
      "sev": "ok"
     },
     {
      "type": "page",
      "url": "https://github.com/opensource-orchestra/osopit",
      "http": 200,
-     "ms": 828,
+     "ms": 742,
      "sev": "ok"
     },
     {
      "type": "page",
      "url": "https://osopit-web.vercel.app/",
      "http": 200,
-     "ms": 2445,
+     "ms": 2254,
      "sev": "ok"
     }
    ]
@@ -959,6 +959,41 @@
    "books": 168,
    "recordings": 6,
    "doors": 440,
+   "bad": {},
+   "changes": []
+  },
+  {
+   "at": "2026-11-22T00:30:03Z",
+   "summary": {
+    "items": 14,
+    "ok": 14,
+    "warn": 0,
+    "fail": 0
+   },
+   "repos": 162,
+   "chapters": 18,
+   "books": 168,
+   "recordings": 6,
+   "doors": 451,
+   "bad": {},
+   "changes": [
+    "doors.public 440→451",
+    "doors.live 440→451"
+   ]
+  },
+  {
+   "at": "2026-11-22T02:02:47Z",
+   "summary": {
+    "items": 14,
+    "ok": 14,
+    "warn": 0,
+    "fail": 0
+   },
+   "repos": 162,
+   "chapters": 18,
+   "books": 168,
+   "recordings": 6,
+   "doors": 451,
    "bad": {},
    "changes": []
   }
