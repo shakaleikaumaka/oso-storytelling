@@ -29,27 +29,29 @@
         "karaoke_mp4": "https://kprot-drop.shakaverse.workers.dev/ready/todo-es-posible-karaoke.mp4",
         "chord_chart_pdf": "https://kprot-drop.shakaverse.workers.dev/ready/todo-es-posible-karaoke.pdf",
         "instrumental_mp3": "https://kprot-drop.shakaverse.workers.dev/ready/todo-es-posible-instrumental.mp3",
-        "sing_along_html": "https://kprot-drop.shakaverse.workers.dev/ready/todo-es-posible-karaoke.html"
+        "sing_along_html": "https://kprot-drop.shakaverse.workers.dev/ready/todo-es-posible-karaoke.html",
+        "chart_html": "https://shakaleikaumaka.com/songbook/todo-es-posible/"
       }
     },
     {
       "title": "Butterflies and Love",
       "emoji": "🦋",
-      "status": "official-words · chords canon G–Em–C–D · chart in progress",
+      "status": "official-words · canon G–Em–C–D · full chart ✓",
       "key": "G major",
       "progression": "G – Em – C – D",
       "license": "CC-BY-SA-4.0",
       "visibility": "public",
       "media": {
-        "full_mix_mp3": "https://shakaleikaumaka.com/radio-assets/i-open-sourced-my-whole-universe.mp3"
+        "full_mix_mp3": "https://shakaleikaumaka.com/radio-assets/i-open-sourced-my-whole-universe.mp3",
+        "chart_html": "https://shakaleikaumaka.com/songbook/butterflies-and-love/"
       }
     },
     {
       "title": "A Planet We Share As One",
       "emoji": "🌍",
-      "status": "machine-draft · chart in progress",
-      "key": "D major (mixolydian)",
-      "progression": "D – C – G",
+      "status": "official-words · artist-blessed loop C–G–D–D in G (23 Sep 2026) · full chart ✓",
+      "key": "G major",
+      "progression": "C – G – D – D",
       "bpm": 129,
       "license": "CC-BY-SA-4.0",
       "visibility": "public",
@@ -58,16 +60,54 @@
         "karaoke_mp4": "https://kprot-drop.shakaverse.workers.dev/ready/a-planet-we-share-as-one-karaoke.mp4",
         "chord_chart_pdf": "https://kprot-drop.shakaverse.workers.dev/ready/a-planet-we-share-as-one-karaoke.pdf",
         "instrumental_mp3": "https://kprot-drop.shakaverse.workers.dev/ready/a-planet-we-share-as-one-instrumental.mp3",
-        "sing_along_html": "https://kprot-drop.shakaverse.workers.dev/ready/a-planet-we-share-as-one-karaoke.html"
+        "sing_along_html": "https://kprot-drop.shakaverse.workers.dev/ready/a-planet-we-share-as-one-karaoke.html",
+        "chart_html": "https://shakaleikaumaka.com/songbook/a-planet-we-share-as-one/"
+      }
+    },
+    {
+      "title": "Onchain Summer",
+      "emoji": "⛓️",
+      "status": "official-words · loop A–D–G–D from the bard · full chart ✓ · new 24 Nov 2026, not recorded yet",
+      "key": "D major (starts on A)",
+      "progression": "A – D – G – D",
+      "license": "CC-BY-SA-4.0",
+      "visibility": "public",
+      "media": {
+        "chart_html": "https://shakaleikaumaka.com/songbook/onchain-summer/",
+        "chordpro": "https://orchestrator.opensourceorchestra.org/catalog/shaka-lei-kaumaka/onchain-summer.pro"
       }
     }
   ],
   "media": [
-    { "type": "youtube", "id": "vf3ZitSmXDw", "title": "DEVCON 6 CHIVA CHILLOUT LOUNGE 2022 — Bogotá 🇨🇴", "channel": "ShaKa Lei Kaumaka", "visibility": "public" },
-    { "type": "youtube", "id": "hyWmLBrLcow", "title": "THE UKE NFT 4 DEVCON 2022", "channel": "ShaKa Lei Kaumaka", "visibility": "public" },
-    { "type": "youtube", "id": "1QXzKjXwIbc", "title": "Ethereum Bard songs & OSO jam — CMU Convention Center, ETH ChiangMai", "channel": "ShaKa Lei Kaumaka", "visibility": "public" },
-    { "type": "youtube", "id": "s2UR3L5DpKY", "title": "TODO ES POSIBLE — Devcon Scholars Edition 🍂", "channel": "Albert Cervera (community capture)", "visibility": "public" }
+    {
+      "type": "youtube",
+      "id": "vf3ZitSmXDw",
+      "title": "DEVCON 6 CHIVA CHILLOUT LOUNGE 2022 — Bogotá 🇨🇴",
+      "channel": "ShaKa Lei Kaumaka",
+      "visibility": "public"
+    },
+    {
+      "type": "youtube",
+      "id": "hyWmLBrLcow",
+      "title": "THE UKE NFT 4 DEVCON 2022",
+      "channel": "ShaKa Lei Kaumaka",
+      "visibility": "public"
+    },
+    {
+      "type": "youtube",
+      "id": "1QXzKjXwIbc",
+      "title": "Ethereum Bard songs & OSO jam — CMU Convention Center, ETH ChiangMai",
+      "channel": "ShaKa Lei Kaumaka",
+      "visibility": "public"
+    },
+    {
+      "type": "youtube",
+      "id": "s2UR3L5DpKY",
+      "title": "TODO ES POSIBLE — Devcon Scholars Edition 🍂",
+      "channel": "Albert Cervera (community capture)",
+      "visibility": "public"
+    }
   ],
   "license_default": "CC BY-SA 4.0 — blessed item by item; anything not listed here stays with the artist",
-  "updated": "2026-08-15"
+  "updated": "2026-11-24"
 }
