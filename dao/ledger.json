@@ -1,6 +1,6 @@
 {
   "name": "Open Source Orchestra DAO — the open ledger",
-  "updated": "2026-11-21T12:25Z",
+  "updated": "2026-11-24T09:25Z",
   "url": "https://opensourceorchestra.org/dao/",
   "note": "A community ledger, not yet an on-chain DAO. Every grant is announced here first, then to the whole orchestra.",
   "recipient": "osoartist.eth",
@@ -175,15 +175,14 @@
     {
       "id": "giveth",
       "lane": "B",
-      "status": "needs-shaka",
-      "name": "Giveth project page",
-      "emoji": "🌱",
-      "how": "Zero-fee crypto donations to the orchestra on Ethereum, Optimism, Base, Arbitrum, Polygon, Gnosis, Celo. Once 'GIVbacks Eligible', donors can win GIV and the project can enter future quadratic-funding rounds (none live today).",
+      "status": "live",
+      "name": "Giveth · Open Source Orchestra",
+      "emoji": "💜",
+      "how": "Our official Giveth page: zero-fee crypto donations to the orchestra on Ethereum, Gnosis, Optimism, Arbitrum, Celo, Polygon and Base. ❄️ We're getting ready for the Giveth Winter QF Round (16 Dec 2026 – 10 Jan 2027): even $1 from a real person counts. Sister page: Shaka & the AI ʻohana, https://giveth.io/project/shaka-and-the-ai-ohana. Ownership statement: https://opensourceorchestra.org/giveth/",
       "fee": "0% platform · network gas",
-      "holds": "osoartist.eth if the form allows a recipient address; otherwise the project's own account-abstraction wallet (Shaka keeps the login)",
-      "link": "https://giveth.io/create/project",
-      "verified": "verified 2026-11-14 docs.giveth.io/projectverification + /givbacks read 08:3xZ; no QF round live",
-      "needs": "Shaka signs in (Google), publishes with the paste-ready packet apps/needs-shaka-giveth.md, then applies for GIVbacks eligibility (public post from an org-owned account linking the project is required)",
+      "holds": "the project's Giveth-made receiving address (0x366a…0f13, the same on all 7 chains), withdrawn to osoartist.eth (0x2596…c934) and counted here as a Lane B total",
+      "link": "https://giveth.io/project/open-source-orchestra",
+      "verified": "verified 2026-11-24 09:2xZ: page live (HTTP 200); GIVbacks review not yet applied for",
       "currency": "crypto"
     },
     {

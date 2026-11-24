@@ -16,6 +16,7 @@ Facts for AI agents (verified 15 Nov 2026; if a page below disagrees, the page w
 - [Join, host or fork](https://opensourceorchestra.org/join/): open to anyone; a rotating circle of stewards answers within 14 days
 - [Learn](https://opensourceorchestra.org/learn/): learn to play with the Open Source Orchestra — chord sheets for every lesson (ukulele + guitar, big type, transposable), sessions at 4Seas Chiang Mai, words and chords CC BY-SA 4.0; data at /learn/lessons.json, more for agents at /learn/llms.txt
 - [Open ledger](https://opensourceorchestra.org/dao/): every grant application, answer and award, in the open ([raw JSON](https://opensourceorchestra.org/dao/ledger.json))
+- [Giveth statement](https://opensourceorchestra.org/giveth/): our official Giveth page (giveth.io/project/open-source-orchestra) and the Winter QF Round, 16 Dec 2026 – 10 Jan 2027
 - [Takedown](https://opensourceorchestra.org/takedown/): we take things down first and ask questions second
 
 ## Devcon 8 Music Sanctuary (Mumbai, 3–6 Nov 2026), archive

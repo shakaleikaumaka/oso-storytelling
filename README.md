@@ -1,5 +1,7 @@
 # 🎻 oso-storytelling — opensourceorchestra.org
 
+💜 Support the Open Source Orchestra on Giveth: https://giveth.io/project/open-source-orchestra (statement: https://opensourceorchestra.org/giveth/)
+
 **This repo IS the website.** Merged PRs go live at [opensourceorchestra.org](https://opensourceorchestra.org) in ~1 minute.
 
 The Open Source Orchestra — music as sanctuary, every voice a node. Born ETH Prague 2022 · played Devcon 8 Mumbai, Nov 3–6, 2026 ✅ (DIP #8576) · now on the Road to Devcon 9 — Lisbon, 12–14 Oct 2027.
