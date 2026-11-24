@@ -76,6 +76,34 @@
         "chart_html": "https://shakaleikaumaka.com/songbook/onchain-summer/",
         "chordpro": "https://orchestrator.opensourceorchestra.org/catalog/shaka-lei-kaumaka/onchain-summer.pro"
       }
+    },
+    {
+      "title": "The ETHGlobal Anthem",
+      "emoji": "🌍",
+      "status": "words ✓ (lyric cards + sung take) · chords machine draft (MORRICONE), awaiting the bard",
+      "key": "G major (heard)",
+      "progression": "C – G – D ×3 · Bm – C – D",
+      "bpm": 100,
+      "license": "CC-BY-SA-4.0",
+      "visibility": "public",
+      "media": {
+        "chart_html": "https://shakaleikaumaka.com/songbook/ethglobal-anthem/",
+        "video": "https://x.com/HarshaKaramchat/status/1728823384648413528"
+      }
+    },
+    {
+      "title": "Bangalore Beep Beep (The Push Song)",
+      "emoji": "🛺",
+      "status": "words transcribed from the live take · A–D loop machine draft, awaiting the bard",
+      "key": "A (heard, maybe D)",
+      "progression": "A – D",
+      "bpm": 84,
+      "license": "CC-BY-SA-4.0",
+      "visibility": "public",
+      "media": {
+        "chart_html": "https://shakaleikaumaka.com/songbook/bangalore-beep-beep/",
+        "video": "https://x.com/Shakaleikaumaka/status/1735250584608149553"
+      }
     }
   ],
   "media": [
