@@ -1,6 +1,6 @@
 {
   "name": "Open Source Orchestra DAO — the open ledger",
-  "updated": "2026-11-24T09:25Z",
+  "updated": "2026-11-28T14:26Z",
   "url": "https://opensourceorchestra.org/dao/",
   "note": "A community ledger, not yet an on-chain DAO. Every grant is announced here first, then to the whole orchestra.",
   "recipient": "osoartist.eth",
@@ -378,30 +378,6 @@
       "pair": "A = rhizome-microgrants-2026-individual (filed 19 Nov)."
     },
     {
-      "id": "base-builder-grants",
-      "program": "Base Builder Grants — Season 2",
-      "ecosystem": "Base",
-      "url": "https://base.org",
-      "project": "Fork the First Artist — USDC tips on Base",
-      "status": "needs-shaka",
-      "ask_usd": 5000,
-      "public_note": "Written; waiting for Shaka (account/login/KYC or his decision).",
-      "lane": "B",
-      "pair": "A = base-builder-rewards (automatic builder rewards; his sign-in)."
-    },
-    {
-      "id": "base-builder-rewards",
-      "program": "Base Builder Rewards (Talent Protocol) — automatic weekly ETH to top builders on Base",
-      "ecosystem": "Base · Talent Protocol",
-      "url": "https://talent.app/",
-      "project": "Lane A — personal support for Shaka Lei Kaumaka & the AI ʻohana",
-      "status": "needs-shaka",
-      "public_link": "https://paragraph.com/@talent/introducing-builder-rewards-weekly-eth-for-the-most-impactful-builders-on-base",
-      "public_note": "Automatic builder-rewards check (no application); whether a reward league is live today could not be verified — Shaka only needs to link GitHub and wallet.",
-      "lane": "A",
-      "pair": "B = base-builder-grants (prepared; his hands)."
-    },
-    {
       "id": "celo-prezenti",
       "program": "Celo Prezenti — Frontier pool",
       "ecosystem": "Celo",
@@ -573,19 +549,6 @@
       "pair": "B not applicable (individual fellowship)."
     },
     {
-      "id": "superteam-thailand-touching-grass",
-      "program": "Superteam Thailand — The Touching Grass Fund (up to 500 USDG, 1-week response)",
-      "ecosystem": "Superteam Thailand (Solana)",
-      "url": "https://superteam.fun/earn/grants/touching-grass-thailand",
-      "project": "Lane A — personal support for Shaka Lei Kaumaka & the AI ʻohana",
-      "status": "drafted",
-      "ask_usd": 500,
-      "public_link": "https://superteam.fun/earn/grants/touching-grass-thailand",
-      "public_note": "Thailand micro-grant for IRL community events; applications paused on 14 Nov and members-only, so this waits for the fund to reopen.",
-      "lane": "A",
-      "pair": "B shape drafted 21 Nov for when the fund reopens; rules on two applications unknown until then."
-    },
-    {
       "id": "mozilla-human-scale-ai-2026",
       "program": "Mozilla Foundation — Human-Scale AI Incubator (initial project proposal)",
       "ecosystem": "Mozilla Foundation",
@@ -607,6 +570,42 @@
       "public_note": "Google Form read 21 Nov 2026: 'no longer accepting responses' — closed before Shaka could file. Watch for the next phase.",
       "lane": "A",
       "pair": "B = arbitrum-builders-intake (applied 9 Nov)."
+    },
+    {
+      "id": "base-builder-grants",
+      "program": "Base Builder Grants — Season 2",
+      "ecosystem": "Base",
+      "url": "https://base.org",
+      "project": "Fork the First Artist — USDC tips on Base",
+      "status": "closed",
+      "ask_usd": 5000,
+      "public_note": "Read 28 Nov 2026: the Base Builder Grants form says Round 2 is closed; we are watching for Round 3.",
+      "lane": "B",
+      "pair": "A = base-builder-rewards (automatic builder rewards; his sign-in)."
+    },
+    {
+      "id": "base-builder-rewards",
+      "program": "Base Builder Rewards (Talent Protocol) — automatic weekly ETH to top builders on Base",
+      "ecosystem": "Base · Talent Protocol",
+      "project": "Lane A — personal support for Shaka Lei Kaumaka & the AI ʻohana",
+      "status": "closed",
+      "public_link": "https://paragraph.com/@talent/introducing-builder-rewards-weekly-eth-for-the-most-impactful-builders-on-base",
+      "public_note": "Read 28 Nov 2026: Talent Protocol ended Builder Rewards in 2026 (its own farewell post) and its old web address is now a parked domain, so we removed the link.",
+      "lane": "A",
+      "pair": "B = base-builder-grants (prepared; his hands)."
+    },
+    {
+      "id": "superteam-thailand-touching-grass",
+      "program": "Superteam Thailand — The Touching Grass Fund (up to 500 USDG, 1-week response)",
+      "ecosystem": "Superteam Thailand (Solana)",
+      "url": "https://superteam.fun/earn/grants/touching-grass-thailand",
+      "project": "Lane A — personal support for Shaka Lei Kaumaka & the AI ʻohana",
+      "status": "closed",
+      "ask_usd": 500,
+      "public_link": "https://superteam.fun/earn/grants/touching-grass-thailand",
+      "public_note": "Read 28 Nov 2026: the programme page says applications are paused.",
+      "lane": "A",
+      "pair": "B shape drafted 21 Nov for when the fund reopens; rules on two applications unknown until then."
     }
   ]
 }

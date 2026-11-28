@@ -42,7 +42,7 @@ STAMP = NOW.strftime("%Y-%m-%dT%H:%M:%SZ")
 # hosts that wall off robots or rate-limit us; a 401/403/429 there is "walled", never "broken"
 WALLED = ("x.com", "twitter.com", "linkedin.com", "instagram.com", "facebook.com", "t.me", "telegram.me", "luma.com", "lu.ma",
           "docs.google.com", "drive.google.com", "forms.gle", "meet.google.com", "open.spotify.com", "music.apple.com", "tiktok.com",
-          "youtube.com", "youtu.be", "ko-fi.com", "linktr.ee", "octant.build", "talent.app", "kalabrand.com")
+          "youtube.com", "youtu.be", "ko-fi.com", "linktr.ee", "octant.build", "kalabrand.com")
 ARCHIVE_HOSTS = ("web.archive.org", "archive.softwareheritage.org")  # checked by the archive keepers, not here (they throttle us)
 # Devcon IX Lisbon is 12–14 Oct 2027 (moved from 11–13 on 13 Nov 2026). Any page still saying 11–13 is stale.
 STALE_TEXT = [r"11\s*[–-]\s*13\s+Oct(ober)?\.?\s+2027"]
